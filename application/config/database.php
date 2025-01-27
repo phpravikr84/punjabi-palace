@@ -76,10 +76,15 @@ $active_record = TRUE;//ci version 2.x
 
 $db['default'] = array(
     'dsn'   => '',
+    // 'hostname' => '{HOSTNAME}',
+    // 'username' => '{USERNAME}',
+    // 'password' => '{PASSWORD}',
+    // 'database' => '{DATABASE}',
+   
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
-    'database' => 'punjabipalace_db',
+    'database' => 'bhojan_db',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
