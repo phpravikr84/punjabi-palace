@@ -191,6 +191,8 @@ class Order_model extends CI_Model {
 								'isgroup'		    	=>	1,
 								);
 								$this->db->insert('order_menu',$data3);
+								//Add Ingredient Transaction detail
+								$this->insert_itxn($orderid);
 							}
 						}
 					else{
@@ -206,6 +208,8 @@ class Order_model extends CI_Model {
 						'varientid'		    	=>	$item['sizeid'],
 					);
 					$this->db->insert('order_menu',$data3);
+					//Add Ingredient Transaction detail
+					$this->insert_itxn($orderid);
 					}
 					/***food habit module section***/
 					$scan = scandir('application/modules/');
@@ -2197,5 +2201,84 @@ public function get_orderlist(){
 		//echo $this->db->last_query();
 		return $orderdetails=$query->result();
 		}
+
+
+	/**
+	 *  New Code Added for handle enchance current features
+	 */
+
+	   /**
+     * Insert transaction record into the `itxn` table.
+     * 
+     * @param int $orderId Order ID from `order_menu`
+     */
+    public function insert_itxn($orderId) {
+
+        // Fetch order menu records for the given order ID
+        $this->db->select('row_id, order_id, menu_id, menuqty, addonsqty');
+        $this->db->where('order_id', $orderId);
+        $orderMenuRecords = $this->db->get('order_menu')->result_array();
+
+        foreach ($orderMenuRecords as $orderMenu) {
+            $menuId = $orderMenu['menu_id'];
+            $menuQty = $orderMenu['menuqty'];
+            $addonsQty = isset($orderMenu['addonsqty']) ? $orderMenu['addonsqty'] : 0;
+
+            // Fetch production details for the given menu_id
+            $this->db->select('pro_detailsid, foodid, pvarientid, ingredientid, qty');
+            $this->db->where('foodid', $menuId);
+            $productionDetails = $this->db->get('production_details')->result_array();
+		
+
+            foreach ($productionDetails as $production) {
+                $ingredientId = $production['ingredientid'];
+                $usedQty = $production['qty'] * ($menuQty);
+
+                // Fetch sales price for the ingredient from `purchase_details`
+				$this->db->select('price, uom_id');
+				$this->db->from('purchase_details');
+				$this->db->join('ingredients', 'purchase_details.indredientid = ingredients.id', 'left');
+				$this->db->join('unit_of_measurement', 'ingredients.uom_id = unit_of_measurement.id', 'left');
+				$this->db->where('purchase_details.indredientid', $ingredientId);
+				$purchaseDetail = $this->db->get()->row_array();
+
+
+				// Print the SQL query
+				// echo $this->db->last_query();
+				// exit;
+
+                $unitPrice = $purchaseDetail['price'] ?? 0;
+                $usedSalesPrice = $usedQty * $unitPrice;
+
+                // Fetch unit details
+                $this->db->select('id, uom_name');
+                $this->db->where('id', $purchaseDetail['uom_id']);
+                $unit = $this->db->get('unit_of_measurement')->row_array();
+
+                $unitId = $unit['id'] ?? null;
+
+                // Prepare data for insertion into `itxn`
+                $itxnData = [
+                    'order_id' => $orderId,
+                    'food_id' => $menuId,
+                    'pvarient_id' => $production['pvarientid'],
+                    'ingredient_id' => $ingredientId,
+                    'used_qty' => $usedQty,
+                    'used_sales_price' => $usedSalesPrice,
+                    'unit_id' => $unitId,
+                    'created_at' => date('Y-m-d')
+                ];
+
+				// echo '<pre>';
+				// print_r($itxnData);
+				// echo '</pre>';
+				// exit;
+
+
+                // Insert record into `itxn` table
+                $this->db->insert('itxn', $itxnData);
+            }
+        }
+    }
 
 }
