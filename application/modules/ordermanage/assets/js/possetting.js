@@ -1624,7 +1624,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
           inputval = inputval + inputdata;
 
       });
-      if (inputval < parseFloat(maintotalamount)) {
+      if (inputval < parseFloat(maintotalamount)) { 
 
           setTimeout(function() {
               toastr.options = {

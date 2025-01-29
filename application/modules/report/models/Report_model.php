@@ -83,6 +83,9 @@ class Report_model extends CI_Model {
 		$producreport=$query->result();
 		$myarray=array();
 		$i=0;
+		echo "<pre>";
+		print_r($producreport);
+		echo "</pre>";
 		foreach($producreport as $result){
 			$i++;
 			$inqty= $this->production($result->indredientid);
