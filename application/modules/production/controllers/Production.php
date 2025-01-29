@@ -283,5 +283,14 @@ class Production extends MX_Controller {
        $data['page']   = "productionsetting";   
        echo Modules::run('template/layout', $data); 
     }
- 
+	
+	/** Get UOM details by Ingredient Id */
+	public function getUomDetails($ingredient_id) {
+		$this->db->select('unit_of_measurement.*, ingredients.uom_id');
+		$this->db->from('ingredients');
+		$this->db->join('unit_of_measurement', 'ingredients.uom_id = unit_of_measurement.id', 'left');
+		$this->db->where('ingredients.id', $ingredient_id);
+		$units = $this->db->get()->result();
+		echo json_encode($units);
+	}
 }

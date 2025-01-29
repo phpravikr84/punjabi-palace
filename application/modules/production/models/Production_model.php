@@ -153,6 +153,8 @@ class Production_model extends CI_Model {
 		$itemid=$this->input->post('foodid');
 		$itemvarient=$this->input->post('foodvarientid');
 		$quantity = $this->input->post('product_quantity',true);
+		$unitid =  $this->input->post('unitid');
+		$unitname =  $this->input->post('unitname');
 		$newdate= date('Y-m-d');
 		$this->db->select('*');
 		$this->db->from('production_details');
@@ -166,12 +168,16 @@ class Production_model extends CI_Model {
 		for ($i=0, $n=count($p_id); $i < $n; $i++) {
 			$product_quantity = $quantity[$i];
 			$product_id = $p_id[$i];
+			$ingredientUnit_id =  $unitid[$i];
+			$ingredientUnit_name =  $unitname[$i];
 			
 			$data1 = array(
 				'foodid'		    =>	$itemid,
 				'pvarientid'		=>	$itemvarient,
 				'ingredientid'		=>	$product_id,
 				'qty'				=>	$product_quantity,
+				'unitid'			=>	$ingredientUnit_id,
+				'unitname'			=>	$ingredientUnit_name,
 				'createdby'			=>	$saveid,
 				'created_date'		=>	$newdate
 			);

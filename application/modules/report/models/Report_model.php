@@ -72,36 +72,69 @@ class Report_model extends CI_Model {
 		$myArray[0]['Stock']=$producreport->totalqty-$salereport->totalsaleqty;
 		return $myArray;
 		}
-	public function allingredient(){
-		$this->db->select("a.*,SUM(a.quantity) as totalqty, b.id,b.ingredient_name,b.stock_qty,c.uom_short_code");
+	// public function allingredient(){
+	// 	$this->db->select("a.*,SUM(a.quantity) as totalqty, b.id,b.ingredient_name,b.stock_qty,c.uom_short_code");
+	// 	$this->db->from('purchase_details a');
+	// 	$this->db->join('ingredients b','b.id = a.indredientid','left');
+	// 	$this->db->join('unit_of_measurement c','c.id = b.uom_id','inner');
+	// 	$this->db->group_by('a.indredientid');
+	// 	$this->db->order_by('a.purchasedate','desc');
+	// 	$query = $this->db->get();
+	// 	$producreport=$query->result();
+	// 	$myarray=array();
+	// 	$i=0;
+	// 	foreach($producreport as $result){
+	// 		$i++;
+	// 		$inqty= $this->production($result->indredientid);
+	// 		if($inqty==0){
+	// 			$saleqty=0;
+	// 			}
+	// 		else{
+	// 			$saleqty=$inqty;
+	// 			}
+	// 		$myArray[$i]['ProductName']=$result->ingredient_name;
+	// 		$myArray[$i]['In_Qnty']=$result->totalqty.' '.$result->uom_short_code;
+	// 		$myArray[$i]['Out_Qnty']=$result->totalqty-$result->stock_qty.' '.$result->uom_short_code;
+	// 		$myArray[$i]['Stock']=$result->stock_qty.' '.$result->uom_short_code;
+	// 		}
+	// 		return $myArray;
+	// 	}
+	public function allingredient()
+	{
+		$this->db->select("a.*, 
+						SUM(a.quantity) as totalqty, 
+						b.id as ingredient_id, 
+						b.ingredient_name, 
+						b.stock_qty, 
+						c.uom_short_code,
+						IFNULL(SUM(itxn.used_qty), 0) as used_qty_total");
 		$this->db->from('purchase_details a');
-		$this->db->join('ingredients b','b.id = a.indredientid','left');
-		$this->db->join('unit_of_measurement c','c.id = b.uom_id','inner');
-		$this->db->group_by('a.indredientid');
-		$this->db->order_by('a.purchasedate','desc');
+		$this->db->join('ingredients b', 'b.id = a.indredientid', 'left');
+		$this->db->join('unit_of_measurement c', 'c.id = b.uom_id', 'inner');
+		$this->db->join('itxn', 'itxn.ingredient_id = b.id', 'left');
+		$this->db->group_by('b.id');
+		$this->db->order_by('a.purchasedate', 'desc');
 		$query = $this->db->get();
-		$producreport=$query->result();
-		$myarray=array();
-		$i=0;
-		echo "<pre>";
-		print_r($producreport);
-		echo "</pre>";
-		foreach($producreport as $result){
+
+		$producreport = $query->result();
+		$myarray = array();
+		$i = 0;
+
+		foreach ($producreport as $result) {
 			$i++;
-			$inqty= $this->production($result->indredientid);
-			if($inqty==0){
-				$saleqty=0;
-				}
-			else{
-				$saleqty=$inqty;
-				}
-			$myArray[$i]['ProductName']=$result->ingredient_name;
-			$myArray[$i]['In_Qnty']=$result->totalqty.' '.$result->uom_short_code;
-			$myArray[$i]['Out_Qnty']=$result->totalqty-$result->stock_qty.' '.$result->uom_short_code;
-			$myArray[$i]['Stock']=$result->stock_qty.' '.$result->uom_short_code;
-			}
-			return $myArray;
+			$inqty = $this->production($result->ingredient_id);
+			$saleqty = $inqty == 0 ? 0 : $inqty;
+
+			$myArray[$i]['ProductName'] = $result->ingredient_name;
+			$myArray[$i]['In_Qnty'] = $result->totalqty . ' ' . $result->uom_short_code;
+			$myArray[$i]['Used_Qnty'] = $result->used_qty_total . ' ' . $result->uom_short_code;
+			$myArray[$i]['Out_Qnty'] = ($result->used_qty_total) . ' ' . $result->uom_short_code;
+			$myArray[$i]['Stock'] = ($result->totalqty - $result->used_qty_total) . ' ' . $result->uom_short_code;
 		}
+
+		return $myArray;
+	}
+
 	public function production($id){
 		    $foodwise=$this->db->select("production_details.foodid,production_details.ingredientid,production_details.qty,SUM(production.itemquantity*production_details.qty) as foodqty")->from('production_details')->join('production','production.itemid=production_details.foodid','Left')->where('production_details.ingredientid',$id)->group_by('production_details.foodid')->get()->result();
 		    $lastqty=0;

@@ -11,6 +11,31 @@ function product_list(sl) {
     	}
 		var product_id          = $('#product_id_'+sl).val();
 		var product_name = $('#product_id_'+sl+' option:selected').data('title');
+		//alert(product_id);
+
+		// Get Unit value based on selected Ingredient
+		var getUomIngredientUrl = $("#get_uom_listby_ing").val();
+		$.ajax({
+			type: "GET",
+			url: getUomIngredientUrl + '/' + product_id,
+			cache: false,
+			success: function (response) {
+				var uomData = JSON.parse(response);
+	
+				if (uomData && uomData.length > 0) {
+					// Assuming the API returns an array of unit objects
+					$('#unitid_' + sl).val(product_id);  // Set UOM ID
+					$('#unitname_' + sl).val(uomData[0].uom_short_code);  // Set UOM Name
+				} else {
+					alert('No UOM available for the selected product.');
+					$('#unitid_' + sl).val('');
+					$('#unitname_' + sl).val('');
+				}
+			},
+			error: function () {
+				alert('Error fetching UOM details.');
+			}
+		});
 		var csrf = $('#csrfhashresarvation').val();
 		$.ajax({
                 type: "POST",
@@ -56,7 +81,31 @@ function addmore(divName){
             var tab2 = tabindex + 2;
 			var tab3 = tabindex + 3;
             var tab4 = tabindex + 4;
-  newdiv.innerHTML ='<td class="span3 supplier"><select name="product_id[]" id="product_id_'+ count +'" class="postform resizeselect form-control" onchange="product_list('+ count +')">'+credit+'</select></td><td class="text-right"><input type="text" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="calprice(this)"  placeholder="0.00" value="" min="0"/>  </td><td class="text-right"><input type="text" tabindex="'+tab2+'" id="price_'+ count +'" class="form-control text-right store_cal_' + count + '"  placeholder="0.00" value="" min="0" readonly/>  </td><td> <input type="hidden" id="total_discount_1" class="" /> <input type="hidden" id="unit-total_'+count+'" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button class="btn btn-danger red text-right" class="btn btn-danger red" type="button" value="Delete" onclick="deleteRow(this)" tabindex="8">Delete</button></td>';
+  //newdiv.innerHTML ='<td class="span3 supplier"><select name="product_id[]" id="product_id_'+ count +'" class="postform resizeselect form-control" onchange="product_list('+ count +')">'+credit+'</select></td><td class="text-right"><input type="text" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="calprice(this)"  placeholder="0.00" value="" min="0"/>  </td><td class="text-right"><input type="text" tabindex="'+tab2+'" id="price_'+ count +'" class="form-control text-right store_cal_' + count + '"  placeholder="0.00" value="" min="0" readonly/>  </td><td> <input type="hidden" id="total_discount_1" class="" /> <input type="hidden" id="unit-total_'+count+'" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button class="btn btn-danger red text-right" class="btn btn-danger red" type="button" value="Delete" onclick="deleteRow(this)" tabindex="8">Delete</button></td>';
+
+			newdiv.innerHTML = `
+			<td class="span3 supplier">
+				<select name="product_id[]" id="product_id_${count}" class="postform resizeselect form-control" onchange="product_list(${count})">
+					${credit}
+				</select>
+			</td>
+			<td class="text-right">
+				<input type="text" name="product_quantity[]" tabindex="${tab2}" required id="cartoon_${count}" class="form-control text-right store_cal_${count}" onkeyup="calprice(this)" placeholder="0.00" value="" min="0"/>
+			</td>
+			<td class="text-right">
+				<input type="text" tabindex="${tab2}" id="price_${count}" class="form-control text-right store_cal_${count}" placeholder="0.00" value="" min="0" readonly/>
+			</td>
+			<td>
+				<input type="hidden" id="total_discount_${count}" class="" />
+				<input type="hidden" id="unit-total_${count}" class="" />
+				<input type="hidden" name="unitid[]" id="unitid_${count}" class="form-control text-right" placeholder="Unit ID" readonly />
+				<input type="text" name="unitname[]" id="unitname_${count}" class="form-control text-right" placeholder="Unit Name" readonly />
+				
+			</td>
+			<td>
+			<button class="btn btn-danger red text-right" type="button" value="Delete" onclick="deleteRow(this)" tabindex="8">Delete</button>
+			</td>
+			`;
             document.getElementById(divName).appendChild(newdiv);
             document.getElementById(tabin).focus();
             document.getElementById("add_invoice_item").setAttribute("tabindex", tab3);

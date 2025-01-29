@@ -41,6 +41,7 @@
                                             <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
                                             <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
                                             <th class="text-center"><?php echo display('price');?> </th>
+                                            <th class="text-center"><?php echo 'Unit'; ?> </th>
                                             <th class="text-center"></th>
                                         </tr>
                                 </thead>
@@ -52,15 +53,20 @@
                                         <select name="product_id[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
                     					<option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
 										<?php foreach ($ingrdientslist as $ingrdients) {?>
-                    							<option value="<?php echo $ingrdients->id;?>" data-title="<?php echo $ingrdients->ingredient_name;?>"><?php echo $ingrdients->ingredient_name;?></option>
+                    							<option value="<?php echo $ingrdients->id;?>" data-ingredientid="<?php echo $ingrdients->id;?>" data-title="<?php echo $ingrdients->ingredient_name;?>"><?php echo $ingrdients->ingredient_name;?></option>
                     					<?php }?>
                   						</select>
                                         </td>
                                             <td class="text-right">
                                                 <input type="text" name="product_quantity[]" id="cartoon_1" onkeyup='calprice(this)' class="form-control text-right store_cal_1" placeholder="0.00" value="" min="0" tabindex="6">
                                             </td>
-                                             <td class="text-right">
+                                            <td class="text-right">
                                                 <input type="text"  id="price_1" class="form-control text-right store_cal_1" placeholder="0.00" value="" min="0" tabindex="6" readonly>
+                                            </td>
+                                            <td class="text-right">
+                                                <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url("production/production/getUomDetails") ?>" />
+                                                <input type="hidden" name="unitid[]" id="unitid_1" class="form-control text-right store_unitid_1" tabindex="6" readonly>
+                                                <input type="text" name="unitname[]" id="unitname_1" class="form-control text-right store_unitname_1" tabindex="6" readonly>
                                             </td>
                                             <td>
                                                 <button  class="btn btn-danger red text-right" type="button" value="<?php echo display('delete') ?>" onclick="deleteRow(this)" tabindex="8"><?php echo display('delete') ?></button>

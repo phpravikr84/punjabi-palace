@@ -121,6 +121,17 @@
                     </div>
                     </div>
                     <div class="col-lg-6">
+                    
+                    <div class="form-group row">
+                        <label for="menu_type" class="col-sm-5 col-form-label"><?php echo 'Menu Type' ?></label>
+                        <div class="col-sm-7">
+                        <select name="kitchen" class="form-control" required="">
+                            <option value="restaurant" selected="selected"><?php echo 'Restaurant' ?></option> 
+                            <option value="banquet"><?php echo 'Banquet' ?></option>
+                        </select>
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label for="vat" class="col-sm-5 col-form-label"><?php echo display('vat') ?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Vat Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                         <div class="col-sm-7">
