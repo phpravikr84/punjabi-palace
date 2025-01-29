@@ -106,7 +106,7 @@
    			"set_productionunit" => array("controller" => "production","method"     => "productionunit","permission" => "create"),
    			"production_set_list" => array("controller" => "production","method"     => "index","permission" => "read"),
 			"production_add" => array("controller" => "production","method"     => "create","permission" => "create"),
-			"production_setting" => array("controller" => "production","method" => "possetting","permission" => "create")
+			//"production_setting" => array("controller" => "production","method" => "possetting","permission" => "create")
 			);
 		$HmvcMenu2["setting"] = array(
     		"icon"           => "<i class='fa fa-gear' aria-hidden='true'></i>", 
@@ -233,6 +233,45 @@
 		   ),
 		   
 		);
+
+		// Create php function to change label parent customization
+		function changeLabelMenu($name) {
+			switch ($name) {
+				case 'production':
+					echo 'Bill of Materials (BOM)';
+					break;
+		
+				default:
+					echo display($name);
+					break;
+			}
+		}
+
+		// Create php function to change label child customization
+		function changeLabelChildMenu($name) {
+			switch ($name) {
+				case 'set_productionunit':
+					echo 'Set Bill of Materials';
+					break;
+
+				case 'production_set_list':
+					echo 'Bill of Materials List';
+					break;
+				
+				case 'production_add':
+					echo 'Add Production Food Item';
+					break;
+
+				case 'add_group_item':
+					echo 'Add Combo Food Item';
+					break;
+		
+				default:
+					echo display($name);
+					break;
+			}
+		}
+		
         if(isset($HmvcMenu2) && $HmvcMenu2!=null && sizeof($HmvcMenu2) > 0)
         foreach ($HmvcMenu2 as $moduleName => $moduleData) {
           
@@ -245,7 +284,7 @@
                 <li class="treeview ">
                     
                     <a href="javascript:void(0)">
-                        <?php echo (($moduleData['icon']!=null)?$moduleData['icon']:null) ?> <span><?php echo display($moduleName) ?></span>
+                        <?php echo (($moduleData['icon']!=null)?$moduleData['icon']:null) ?> <span><?php echo display(changeLabelMenu($moduleName)) ?></span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -271,7 +310,7 @@
                             ?> 
                                
                                 <li class="<?php echo (($this->uri->segment(1)==$moduleName && $label['controller']==$this->uri->segment(2) && $this->uri->segment(3)==$label['method'])?"active":null) ?>">
-                                    <a href="<?php echo $furl;?>"><?php echo display($groupLabel) ?></a>
+                                    <a href="<?php echo $furl;?>"><?php echo display(changeLabelChildMenu($groupLabel)) ?></a>
                                 </li>
 
                             <?php 
@@ -297,7 +336,7 @@
                                             if($this->permission->check_label($name)->access()){
                                              
                                             ?>
-                                            <li class=""><a href="<?php echo base_url($moduleName."/".$value['controller']."/".$value['method']) ?>"><?php echo display($name) ?></a></li>
+                                            <li class=""><a href="<?php echo base_url($moduleName."/".$value['controller']."/".$value['method']) ?>"><?php echo display(changeLabelChildMenu($name)) ?></a></li>
                                             <?php 
                                             }
 											//endif
