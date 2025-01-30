@@ -40,13 +40,23 @@ class Foodvarient_model extends MX_Controller {
         return false;
 	} 
 
-	public function findById($id = null)
-	{ 
-		return $this->db->select("*")->from($this->table)
-			->where('variantid',$id) 
+	// public function findById($id = null)
+	// { 
+	// 	return $this->db->select("*")->from($this->table)
+	// 		->where('variantid',$id) 
+	// 		->get()
+	// 		->row();
+	// }
+	public function findById($id = null) 
+	{
+		return $this->db->select('variant.*, item_foods.ProductName, item_foods.cusine_type, item_foods.is_bom')
+			->from($this->table)
+			->join('item_foods', 'variant.menuid = item_foods.ProductsID', 'left')
+			->where('variant.variantid', $id)
 			->get()
 			->row();
-	} 
+	}
+
  
 public function count_varient()
 	{
