@@ -126,7 +126,7 @@ class Fooditem_model extends CI_Model {
         $this->db->order_by('ProductsID', 'desc');
    
         $query = $this->db->get();
-        if ($query->num_rows() > 0) {
+        if ($query->num_rows() > 0) { 
             return $query->result();    
         }
         return false;

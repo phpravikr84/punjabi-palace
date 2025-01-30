@@ -14,6 +14,7 @@
                             <th><?php echo 'Cusine Type'; ?></th> 
                             <th><?php echo display('component') ?></th>
                             <th><?php echo display('vat_tax') ?></th>  
+                            <th>BOM</th>
                             <th><?php echo display('status') ?></th>
                             <th><?php echo display('action') ?></th> 
                         </tr>
@@ -31,6 +32,7 @@
                                     <td><?php echo $fooditems->cusine_type==1 ? 'Restaurant' : 'Banquet' ; ?></td>
                                     <td><?php echo $fooditems->component; ?></td>
                                     <td><?php echo $fooditems->productvat; ?> %</td>
+                                    <td><?php if($fooditems->is_bom==1){echo display('YES');}else{echo display('NO');} ?></td>
                                     <td><?php if($fooditems->ProductsIsActive==1){echo display('active');}else{echo display('inactive');} ?></td>
                                     <td class="center">
                                     <?php if($this->permission->method('itemmanage','update')->access()): 
