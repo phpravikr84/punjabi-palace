@@ -53,7 +53,7 @@ class Item_food extends MX_Controller {
         /* ends of bootstrap */
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $data["fooditemslist"] = $this->fooditem_model->read_fooditem($config["per_page"], $page);
+        $data["fooditemslist"] = $this->fooditem_model->read_fooditem($config["per_page"], $page); 
 		$data['pagenum']=$page;
         $data["links"] = $this->pagination->create_links();
         #
