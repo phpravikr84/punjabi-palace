@@ -198,7 +198,7 @@ class Production_model extends CI_Model {
 	/*work on older methods*/
     public function read($limit = null, $start = null)
 	{
-	    $this->db->select('production_details.foodid,production_details.pvarientid,item_foods.ProductName,variant.variantName,variant.variantid');
+	    $this->db->select('production_details.foodid,production_details.pvarientid,item_foods.ProductName,item_foods.cusine_type,item_foods.is_bom,variant.variantName,variant.variantid');
         $this->db->from('production_details');
 		$this->db->join('item_foods','item_foods.ProductsID = production_details.foodid','left');
 		$this->db->join('variant','variant.variantid = production_details.pvarientid','left');
@@ -214,7 +214,7 @@ class Production_model extends CI_Model {
 	
 	 public function readset($id,$vid)
 	{
-	    $this->db->select('production_details.foodid,item_foods.ProductName,variant.variantName,variant.variantid');
+	    $this->db->select('production_details.foodid,item_foods.ProductName,item_foods.cusine_type,item_foods.is_bom,variant.variantName,variant.variantid');
         $this->db->from('production_details');
 		$this->db->join('item_foods','item_foods.ProductsID = production_details.foodid','left');
 		$this->db->join('variant','variant.variantid = production_details.pvarientid','left');
@@ -383,7 +383,8 @@ public function ingrediantlist()
 		$list[''] = 'Select '.display('item_name');
 		if (!empty($data)) {
 			foreach($data as $value)
-				$list[$value->ProductsID] = $value->ProductName;
+				//$list[$value->ProductsID] = $value->ProductName;
+				$list[$value->ProductsID] = $value->ProductName . ' ('. getCusineTypeName($value->cusine_type) .')';
 			return $list;
 		} else {
 			return false; 

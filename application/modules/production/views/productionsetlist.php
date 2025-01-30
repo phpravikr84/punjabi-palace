@@ -49,7 +49,7 @@
                             <?php foreach ($productionlist as $items) { ?>
                                 <tr class="<?php echo ($sl & 1)?"odd gradeX":"even gradeC" ?>">
                                     <td><?php echo $sl; ?></td>
-                                    <td><?php echo $items->ProductName; ?></td>
+                                    <td><?php echo $items->ProductName. ' ('.getCusineTypeName($items->cusine_type).')'; ?></td>
                                     <td><?php echo $items->variantName; ?></td>
                                     <td><?php echo number_format($items->totalcost,3); ?></td>
                                    <td class="center">
