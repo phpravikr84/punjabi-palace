@@ -181,6 +181,28 @@
           }
       });
   }
+  function getBanqcategory() {
+      var product_name = $('#product_name').val();
+      var csrf = $('#csrfhashresarvation').val();
+      var category_id = 0;
+      var myurl = $('#posBanqurl').val();
+      $.ajax({
+          type: "post",
+          async: false,
+          url: myurl,
+          data: { isuptade: 0, csrf_test_name: csrf },
+          success: function(data) {
+              if (data == '420') {
+                  $("#product_search").html('Product not found !');
+              } else {
+                  $("#product_search").html(data);
+              }
+          },
+          error: function() {
+              alert(lang.req_failed);
+          }
+      });
+  }
   //Product search button js
   $('body').on('click', '#search_button', function() {
       var product_name = $('#product_name').val();
