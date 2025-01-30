@@ -1,5 +1,6 @@
 /application/cache/*
 /application/config/database.php
 /system/*
+/assets/data/*
 /assets/data/outgoing/backup.sql
 /punjabi-palace/assets/js/product.json
