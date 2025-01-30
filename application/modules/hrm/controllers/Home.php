@@ -6,7 +6,7 @@
     public function __construct()
     {
         parent::__construct();
-        $this->db->query('SET SESSION sql_mode = ""');
+        //$this->db->query('SET SESSION sql_mode = ""');
         $this->load->model(array(
             'Csv_model'
         )); 

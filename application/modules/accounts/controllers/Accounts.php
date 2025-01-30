@@ -10,7 +10,7 @@ class Accounts extends MX_Controller {
 		$this->load->model(array(
 			'accounts_model'
 		));	
-		$this->db->query('SET SESSION sql_mode = ""');
+		//$this->db->query('SET SESSION sql_mode = ""');
 	}
 
 

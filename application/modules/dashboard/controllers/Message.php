@@ -10,7 +10,7 @@ class Message extends MX_Controller {
 		$this->load->model(array(
             'message_model' 
 		));   
-        $this->db->query('SET SESSION sql_mode = ""');
+        //$this->db->query('SET SESSION sql_mode = ""');
         if (!$this->session->userdata('isLogIn')) 
         redirect('login'); 
 	}

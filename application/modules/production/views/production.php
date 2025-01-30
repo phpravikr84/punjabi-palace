@@ -62,6 +62,13 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group row">
+                                	<div class="col-sm-2">
+                                        <input type="checkbox" id="is_outside_product" class="form-control" name="is_outside_product" aria-label="Outside Manifactured">
+                                    </div>
+                            	</div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group row">
                                 	<div class="col-sm-2"><input type="submit" id="add_production" class="btn btn-success btn-large" name="add-purchase" value="<?php echo display('submit') ?>"></div>
                             	</div>
                             </div>

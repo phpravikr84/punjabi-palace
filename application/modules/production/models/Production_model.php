@@ -447,9 +447,10 @@ public function countlist()
 	}
 #check stock
 	public function checkingredientstock($foodid,$vid,$foodqty){
-		$checksetitem=$this->db->select('ProductsID,isgroup')->from('item_foods')->where('ProductsID',$foodid)->where('isgroup',1)->get()->row();
+		$checksetitem=$this->db->select('ProductsID,isgroup','is_bom')->from('item_foods')->where('ProductsID',$foodid)->where('isgroup',1)->get()->row();
 		$isavailable=true;
 		if(!empty($checksetitem)){
+			if ($checksetitem->is_bom == 1) {
 			$groupitemlist=$this->db->select('items,varientid,item_qty')->from('tbl_groupitems')->where('gitemid',$checksetitem->ProductsID)->get()->result();
 			foreach($groupitemlist as $groupitem){
 				$this->db->select('*');
@@ -479,6 +480,8 @@ public function countlist()
 						}
 					 }
 				}
+				
+			}
 			return 1;
 		}else{
 			$this->db->select('*');

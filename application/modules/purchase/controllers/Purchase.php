@@ -6,7 +6,7 @@ class Purchase extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
-		$this->db->query('SET SESSION sql_mode = ""');
+		//$this->db->query('SET SESSION sql_mode = ""');
 		$this->load->model(array(
 			'purchase_model',
 			'logs_model'

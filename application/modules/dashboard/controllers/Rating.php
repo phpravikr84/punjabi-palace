@@ -11,7 +11,7 @@ class Rating extends MX_Controller {
  			'rating_model',
 			'logs_model'  
  		));
- 		$this->db->query('SET SESSION sql_mode = ""');
+ 		//$this->db->query('SET SESSION sql_mode = ""');
 		if (! $this->session->userdata('isAdmin'))
 			redirect('login');
  	}

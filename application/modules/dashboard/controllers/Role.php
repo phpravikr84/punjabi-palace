@@ -11,7 +11,7 @@ class Role extends MX_Controller {
  			'module_model', 
  			'role_model'
  		));
- 		$this->db->query('SET SESSION sql_mode = ""');
+ 		//$this->db->query('SET SESSION sql_mode = ""');
 		if (! $this->session->userdata('isAdmin'))
 			redirect('login');
  	}

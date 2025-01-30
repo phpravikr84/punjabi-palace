@@ -9,7 +9,7 @@ class Module extends MX_Controller {
  		$this->load->model(array(
  			'module_model' 
  		));
- 		$this->db->query('SET SESSION sql_mode = ""');
+ 		//$this->db->query('SET SESSION sql_mode = ""');
 		if (! $this->session->userdata('isAdmin'))
 			redirect('login');
  	}

@@ -25,7 +25,7 @@ class Autoupdate extends MX_Controller {
 	{
 		parent::__construct();
 		$this->load->library('user_agent');
-		$this->db->query('SET SESSION sql_mode = ""');
+		//$this->db->query('SET SESSION sql_mode = ""');
 	
 	}
 	 public function index(){ 

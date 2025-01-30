@@ -6,7 +6,7 @@ class Bank_list extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
-		$this->db->query('SET SESSION sql_mode = ""');
+		//$this->db->query('SET SESSION sql_mode = ""');
 		$this->load->model(array(
 			'banklist_model',
 			'logs_model'
