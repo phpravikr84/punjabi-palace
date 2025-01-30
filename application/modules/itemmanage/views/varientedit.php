@@ -42,7 +42,7 @@
                                 }
                             ?>
                             <!-- <label for="varientname" class="col-sm-4 col-form-label"><?php //echo display('varient_name') ?> *</label> -->
-                            <label for="varientname" class="col-sm-4 col-form-label"><?php echo $varientName; ?> *</label>
+                            <label for="varientname" class="col-sm-4 col-form-label select_varient_name"><?php echo $varientName; ?> *</label>
                             <div class="col-sm-8">
                                 <input name="varientname" class="form-control" type="text" placeholder="<?php echo display('add_varient') ?>" id="unitname" value="<?php echo (!empty($intinfo->variantName)?$intinfo->variantName:null) ?>">
                             </div>
