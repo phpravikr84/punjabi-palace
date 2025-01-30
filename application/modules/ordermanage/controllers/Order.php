@@ -277,7 +277,7 @@ class Order extends MX_Controller {
 		   $data['curtomertype']  = $this->order_model->ctype_dropdown();
 		   $data['thirdpartylist']  = $this->order_model->thirdparty_dropdown();
 		   $data['banklist']      = $this->order_model->bank_dropdown();
-		   $data['terminalist']   = $this->order_model->allterminal_dropdown();
+		   $data['terminalist']   = $this->order_model->allterminal_dropdown(); 
 	   	   $data['waiterlist']    = $this->order_model->waiter_dropdown();
 	   	   $data['tablelist']     = $this->order_model->table_dropdown();
 		   $data['itemlist']      =  $this->order_model->allfood2();
@@ -349,6 +349,32 @@ class Order extends MX_Controller {
 				$isuptade=$this->input->post('isuptade',true);
 				$catid=$this->input->post('category_id');
 				$getproduct = $this->order_model->searchprod($catid,$prod);
+				$settinginfo=$this->order_model->settinginfo();
+				$data['settinginfo']=$settinginfo;
+	   			$data['currency']=$this->order_model->currencysetting($settinginfo->currency);
+				if(!empty($getproduct)){
+				$data['itemlist']=$getproduct;
+				$data['module'] = "ordermanage"; 
+				 if($isuptade==1){
+					$data['page']   = "getfoodlistup";
+					$this->load->view('ordermanage/getfoodlistup', $data);
+				 }
+				 else{
+					 $data['page']   = "getfoodlist";
+					 $this->load->view('ordermanage/getfoodlist', $data);
+					 }
+				}
+				else{
+					echo 420;
+					}
+		}
+	public function getBanqitemlist(){
+				$this->permission->method('ordermanage','read')->redirect();
+				$data['title'] = display('supplier_edit');
+				// $prod=$this->input->post('product_name',true);
+				$isuptade=$this->input->post('isuptade',true);
+				// $catid=$this->input->post('category_id');
+				$getproduct = $this->order_model->allfoodBanq();
 				$settinginfo=$this->order_model->settinginfo();
 				$data['settinginfo']=$settinginfo;
 	   			$data['currency']=$this->order_model->currencysetting($settinginfo->currency);
