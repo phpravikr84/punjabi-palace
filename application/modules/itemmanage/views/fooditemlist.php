@@ -10,7 +10,8 @@
                             <th><?php echo display('serial') ?></th>
                             <th><?php echo display('image') ?></th>
                             <th><?php echo display('category_name') ?></th>
-                            <th><?php echo display('item_name') ?></th> 
+                            <th><?php echo display('item_name') ?></th>
+                            <th><?php echo 'Cusine Type'; ?></th> 
                             <th><?php echo display('component') ?></th>
                             <th><?php echo display('vat_tax') ?></th>  
                             <th><?php echo display('status') ?></th>
@@ -26,7 +27,8 @@
                                     <td><?php echo $sl; ?></td>
                                     <td><img src="<?php echo base_url(!empty($fooditems->ProductImage)?$fooditems->ProductImage:'assets/img/icons/default.jpg'); ?>" alt="Image" width="80" ></td>
                                      <td><?php echo $fooditems->Name; ?></td>
-                                    <td><?php echo $fooditems->ProductName; ?></td>
+                                    <td> <?php echo $fooditems->ProductName .  ($fooditems->is_bom == 0 ? ' (With BOM)' : ''); ?></td>
+                                    <td><?php echo $fooditems->cusine_type==1 ? 'Restaurant' : 'Banquet' ; ?></td>
                                     <td><?php echo $fooditems->component; ?></td>
                                     <td><?php echo $fooditems->productvat; ?> %</td>
                                     <td><?php if($fooditems->ProductsIsActive==1){echo display('active');}else{echo display('inactive');} ?></td>

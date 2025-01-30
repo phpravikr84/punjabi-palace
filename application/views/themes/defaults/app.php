@@ -432,8 +432,6 @@ if (($comparetime >= $starttime) && ($comparetime < $endtime)) {
     </div>
 
     <!--====== SCRIPTS JS ======-->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-messaging.js"></script>
     <link rel="manifest" href="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/js/manifest.json">
      <!-- get js from here  -->
     <script src="<?php echo base_url('/ordermanage/order/showljslang') ?>" type="text/javascript"></script>
