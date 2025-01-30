@@ -587,3 +587,11 @@ function generateRandomStr($length = 4) {
         return $randomStr;
     }
 }
+
+if (!function_exists('getCusineTypeName'))
+{
+function getCusineTypeName($id=1) {
+        return $id==1 ? 'Restaurant' : 'Banquet';
+    }
+}
+

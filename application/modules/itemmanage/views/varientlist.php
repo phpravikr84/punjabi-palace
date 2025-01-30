@@ -26,13 +26,28 @@
                         <label for="itemname" class="col-sm-4 col-form-label"><?php echo display('item_name') 	
 ?>*</label>
                         <div class="col-sm-8 customesl">
-                        <?php 
-						if(empty($itemdropdown)){$itemdropdown = array('' => '--Select--');}
-						echo form_dropdown('foodid',$itemdropdown,(!empty($intinfo->menuid)?$intinfo->menuid:null),'class="form-control"') ?>
+                            <select name="foodid" id="select_food_id" class="form-control">
+                                <?php 
+                                    if(empty($itemdropdown)){$itemdropdown = array('' => '--Select--');}
+                                    //echo form_dropdown('foodid',$itemdropdown,(!empty($intinfo->menuid)?$intinfo->menuid:null),'class="form-control"') 
+                                    if (!empty($itemdropdown)) {
+                                        foreach ($itemdropdown as $key => $item) {
+                                            if (is_array($item)) { 
+                                                $selected = (!empty($intinfo->menuid) && $intinfo->menuid == $key) ? 'selected' : '';
+                                                echo '<option value="' . $key . '" data-cusine-type="' . $item['cusine_type'] . '" ' . $selected . '>'
+                                                    . $item['title'] . '</option>';
+                                            } else {
+                                                // Fallback for simple array values
+                                                echo '<option value="' . $key . '">' . $item . '</option>';
+                                            }
+                                        }
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                         <div class="form-group row">
-                            <label for="varientname" class="col-sm-4 col-form-label"><?php echo display('varient_name') ?> *</label>
+                            <label for="varientname" class="col-sm-4 col-form-label select_varient_name"><?php echo display('varient_name') ?> *</label>
                             <div class="col-sm-8">
                                 <input name="varientname" class="form-control" type="text" placeholder="<?php echo display('add_varient') ?>" id="unitname" value="">
                             </div>
@@ -61,6 +76,20 @@
      
             </div>
             <div class="modal-footer">
+
+                <script>
+                    $(document).on('change', '#select_food_id', function(){
+                            const cusineType = $(this).find(':selected').data('cusine-type');
+                            console.log('Selected Cusine Type:', cusineType);
+                            if(cusineType == 2){
+                                $('.select_varient_name').text(' ');
+                                $('.select_varient_name').text('Heads Count* ');
+                            } else {
+                                $('.select_varient_name').text(' ');
+                                $('.select_varient_name').text('Variant Name* ');
+                            }
+                        })
+                </script>
 
             </div>
 
@@ -100,6 +129,7 @@
                             <th><?php echo display('Sl') ?></th>
                             <th><?php echo display('varient_name') ?></th>
                             <th><?php echo display('item_name') ?></th>
+                            <th><?php echo 'Cusine Type'; ?></th>
                             <th><?php echo display('action') ?></th> 
                            
                         </tr>
@@ -112,6 +142,7 @@
                                     <td><?php echo $sl; ?></td>
                                     <td><?php echo $varient->variantName; ?></td>
                                     <td><?php echo $varient->ProductName; ?></td>
+                                    <td><?php echo getCusineTypeName($varient->cusine_type); ?></td>
                                    <td class="center">
                                     <?php if($this->permission->method('itemmanage','update')->access()): ?>
 
