@@ -235,69 +235,6 @@
             $(".search_filter").removeClass("active");
         });
 
-// JavaScript Document
-"use strict";
-        // Initialize Firebase
-        /*Update this config*/
-        var firebaseConfig = {
-            apiKey: "AIzaSyA8tGpsorBrJKprwLsBJR0ouT2V9JtDknM",
-            authDomain: "restaurant-qr-71e84.firebaseapp.com",
-            databaseURL: "https://restaurant-qr-71e84.firebaseio.com",
-            projectId: "restaurant-qr-71e84",
-            storageBucket: "restaurant-qr-71e84.appspot.com",
-            messagingSenderId: "971686176036",
-            appId: "1:971686176036:web:b06e5395759a7ce5ce7fb1",
-            measurementId: "G-MCQRJSB92N"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Retrieve Firebase Messaging object.
-        const messaging = firebase.messaging();
-
-
-        messaging.requestPermission()
-            .then(function() {
-                console.log('Notification permission granted.');
-                // TODO(developer): Retrieve an Instance ID token for use with FCM.
-                if (isTokenSentToServer()) {
-                    console.log('Token already saved.');
-                    getRegToken();
-                } else {
-                   
-                    getRegToken();
-                }
-            })
-            .catch(function(err) {
-                console.log('Unable to get permission to notify.', err);
-                
-            });
-
-        function getRegToken(argument) {
-            messaging.getToken()
-                .then(function(currentToken) {
-                    if (currentToken) {
-                        saveToken(currentToken);
-                        console.log(currentToken);
-                        setTokenSentToServer(true);
-                    } else {
-                        console.log('No Instance ID token available. Request permission to generate one.');
-                        setTokenSentToServer(false);
-                    }
-                })
-                .catch(function(err) {
-                    console.log('An error occurred while retrieving token. ', err);
-                    setTokenSentToServer(false);
-                });
-        }
-
-        function setTokenSentToServer(sent) {
-            window.localStorage.setItem('sentToServer', sent ? 1 : 0);
-        }
-
-        function isTokenSentToServer() {
-            return window.localStorage.getItem('sentToServer') == 1;
-        }
 
         function saveToken(currentToken) {
             var myurl = basicinfo.baseurl+'hungry/savetoken/';

@@ -204,6 +204,8 @@ class Item_food extends MX_Controller {
 	   'DateInserted'       	=> date('Y-m-d H:i:s'),
 	   'DateUpdated'        	=> date('Y-m-d H:i:s'),
 	   'DateLocked'         	=> date('Y-m-d H:i:s'),
+	   'cusine_type'			=> $this->input->post('cusine_type'),
+	   'is_bom'					=> $this->input->post('is_bom'),
 	  );
 	  $logData = array(
 	   'action_page'         => "Add Food",
@@ -276,6 +278,8 @@ class Item_food extends MX_Controller {
 
 	   'UserIDUpdated'      => $savedid,
 	   'DateUpdated'        => date('Y-m-d H:i:s'),
+	   'cusine_type'			=> $this->input->post('cusine_type'),
+	   'is_bom'					=> $this->input->post('is_bom'),
 	  );
 	  $logData = array(
 	   'action_page'         => "Food List",

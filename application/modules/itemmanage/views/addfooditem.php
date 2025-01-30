@@ -41,10 +41,10 @@
             <div class="panel-heading">
                 <div class="panel-title">
                 <div class="btn-group pull-right"> 
-                            <?php if($this->permission->method('itemmanage','update')->access()): ?>
-<a data-target="#add0" data-toggle="modal" class="btn btn-primary btn-md"><i class="fa fa-plus-circle" aria-hidden="true"></i>
-<?php echo display('bulk_upload')?></a> 
-<?php endif; ?>
+                        <?php if($this->permission->method('itemmanage','update')->access()): ?>
+                        <a data-target="#add0" data-toggle="modal" class="btn btn-primary btn-md"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <?php echo display('bulk_upload')?></a> 
+                        <?php endif; ?>
                     </div>
                     <h4><?php echo (!empty($title)?$title:null) ?></h4>
                 </div>
@@ -61,6 +61,16 @@
                      <input name="smallimage" type="hidden" value="<?php echo (!empty($productinfo->small_thumb)?$productinfo->small_thumb:null) ?>" />
                      <div class="col-lg-6">
                     <div class="form-group row">
+
+                        <label for="cusine_type" class="col-sm-4 col-form-label"><?php echo 'Cuisine Type' ?></label>
+                        <div class="col-sm-8 mb-2">
+                        <select name="cusine_type" class="form-control" required="">
+                            <option value="1"><?php echo 'Restaurant' ?></option> 
+                            <option value="2"><?php echo 'Banquet' ?></option>
+                        </select>
+                        </div>
+
+
                         <label for="category" class="col-sm-4 col-form-label"><?php echo display('category') ?></label>
                         <div class="col-sm-8">
                         <select name="CategoryID" class="form-control" required="">
@@ -122,15 +132,7 @@
                     </div>
                     <div class="col-lg-6">
                     
-                    <div class="form-group row">
-                        <label for="menu_type" class="col-sm-5 col-form-label"><?php echo 'Menu Type' ?></label>
-                        <div class="col-sm-7">
-                        <select name="kitchen" class="form-control" required="">
-                            <option value="restaurant" selected="selected"><?php echo 'Restaurant' ?></option> 
-                            <option value="banquet"><?php echo 'Banquet' ?></option>
-                        </select>
-                        </div>
-                    </div>
+
 
                     <div class="form-group row">
                         <label for="vat" class="col-sm-5 col-form-label"><?php echo display('vat') ?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Vat Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
@@ -162,6 +164,21 @@
                                         <label for="customqty"></label>
                                     </div>
                         </div>
+                        <label for="is_bom" class="col-sm-3 col-form-label">Is BOM</label>
+                        <div class="col-sm-2">
+                            <div class="checkbox checkbox-success">
+                                <!-- Hidden field to ensure unchecked state passes 0 -->
+                                <input type="hidden" name="is_bom" value="0">
+
+                                <!-- Checkbox to capture value 1 when checked -->
+                                <input type="checkbox" name="is_bom" value="1" 
+                                id="is_bom"
+                                <?php echo (isset($productinfo) && $productinfo->is_bom == 1) ? 'checked' : ''; ?>>
+                                
+                                <label for="is_bom"></label>
+                            </div>
+                        </div>
+
                     </div>
                     <div id="offeractive" class="<?php if(!empty($productinfo)){if($productinfo->offerIsavailable==1){echo "";} else{ echo "showhide";}}else{echo "showhide";}?>">
                     <div class="form-group row">
