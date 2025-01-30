@@ -28,7 +28,7 @@ class Foodvarient_model extends MX_Controller {
 
     public function read_varient($limit = null, $start = null)
 	{
-	    $this->db->select('variant.*,item_foods.ProductName');
+	    $this->db->select('variant.*,item_foods.ProductName, item_foods.cusine_type', 'item_foods.is_bom');
         $this->db->from($this->table);
 		$this->db->join('item_foods','variant.menuid = item_foods.ProductsID','left');
         $this->db->order_by('variantid', 'desc');
@@ -50,7 +50,7 @@ class Foodvarient_model extends MX_Controller {
  
 public function count_varient()
 	{
-		$this->db->select('variant.*,item_foods.ProductName');
+		$this->db->select('variant.*,item_foods.ProductName', 'item_foods.cusine_type', 'item_foods.is_bom');
         $this->db->from($this->table);
 		$this->db->join('item_foods','variant.menuid = item_foods.ProductsID','left');
         $query = $this->db->get();

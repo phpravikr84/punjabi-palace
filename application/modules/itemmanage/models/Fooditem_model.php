@@ -196,7 +196,7 @@ class Fooditem_model extends CI_Model {
 		$list[''] = 'Select '.display('item_name');
 		if (!empty($data)) {
 			foreach($data as $value)
-				$list[$value->ProductsID] = $value->ProductName;
+				$list[$value->ProductsID] = $value->ProductName . ' ('. getCusineTypeName($value->cusine_type) .')';
 			return $list;
 		} else {
 			return false; 

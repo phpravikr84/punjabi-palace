@@ -100,6 +100,7 @@
                             <th><?php echo display('Sl') ?></th>
                             <th><?php echo display('varient_name') ?></th>
                             <th><?php echo display('item_name') ?></th>
+                            <th><?php echo 'Cusine Type'; ?></th>
                             <th><?php echo display('action') ?></th> 
                            
                         </tr>
@@ -112,6 +113,7 @@
                                     <td><?php echo $sl; ?></td>
                                     <td><?php echo $varient->variantName; ?></td>
                                     <td><?php echo $varient->ProductName; ?></td>
+                                    <td><?php echo getCusineTypeName($varient->cusine_type); ?></td>
                                    <td class="center">
                                     <?php if($this->permission->method('itemmanage','update')->access()): ?>
 

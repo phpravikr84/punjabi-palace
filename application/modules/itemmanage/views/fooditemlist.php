@@ -29,7 +29,7 @@
                                     <td><img src="<?php echo base_url(!empty($fooditems->ProductImage)?$fooditems->ProductImage:'assets/img/icons/default.jpg'); ?>" alt="Image" width="80" ></td>
                                      <td><?php echo $fooditems->Name; ?></td>
                                     <td> <?php echo $fooditems->ProductName .  ($fooditems->is_bom == 0 ? ' (With BOM)' : ''); ?></td>
-                                    <td><?php echo $fooditems->cusine_type==1 ? 'Restaurant' : 'Banquet' ; ?></td>
+                                    <td><?php echo getCusineTypeName($fooditems->cusine_type); ?></td>
                                     <td><?php echo $fooditems->component; ?></td>
                                     <td><?php echo $fooditems->productvat; ?> %</td>
                                     <td><?php if($fooditems->is_bom==1){echo display('YES');}else{echo display('NO');} ?></td>
