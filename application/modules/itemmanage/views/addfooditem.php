@@ -65,8 +65,8 @@
                         <label for="cusine_type" class="col-sm-4 col-form-label"><?php echo 'Cuisine Type' ?></label>
                         <div class="col-sm-8 mb-2">
                         <select name="cusine_type" class="form-control" required="">
-                            <option value="1"><?php echo 'Restaurant' ?></option> 
-                            <option value="2"><?php echo 'Banquet' ?></option>
+                            <option value="1" <?php if($productinfo->cusine_type==1){echo "selected";}?>><?php echo 'Restaurant' ?></option> 
+                            <option value="2" <?php if($productinfo->cusine_type==2){echo "selected";}?>><?php echo 'Banquet' ?></option>
                         </select>
                         </div>
 
@@ -168,14 +168,14 @@
                         <div class="col-sm-2">
                             <div class="checkbox checkbox-success">
                                 <!-- Hidden field to ensure unchecked state passes 0 -->
-                                <input type="hidden" name="is_bom" value="0">
+                                <input type="hidden" name="is_bom"  <?php echo (isset($productinfo) && $productinfo->is_bom == 0) ? 'checked' : ''; ?>>
 
                                 <!-- Checkbox to capture value 1 when checked -->
-                                <input type="checkbox" name="is_bom" value="1" 
-                                id="is_bom"
+                                <input type="checkbox" name="is_bom_check" 
+                                id="is_bom_check"
                                 <?php echo (isset($productinfo) && $productinfo->is_bom == 1) ? 'checked' : ''; ?>>
                                 
-                                <label for="is_bom"></label>
+                                <label for="is_bom_check"></label>
                             </div>
                         </div>
 
