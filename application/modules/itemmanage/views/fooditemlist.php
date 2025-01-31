@@ -39,7 +39,7 @@
 									if($fooditems->isgroup==1){
 									?>
                                         <a href="<?php echo base_url("itemmanage/item_food/addgroupfood/$fooditems->ProductsID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Update"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
-                                         <?php 
+                                        <?php 
 									}else{?>
                                     <a href="<?php echo base_url("itemmanage/item_food/create/$fooditems->ProductsID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
 									<?php }endif; 
