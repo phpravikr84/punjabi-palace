@@ -51,6 +51,8 @@ class Production_model extends CI_Model {
 							$this->db->where('id', $productiondetail->ingredientid);
 							$this->db->update('ingredients');
 							/*end add ingredients*/
+							//Add in Itxn table
+							$this->insert_itxn($productiondetail, $r_stock);
 					 }
 				}
 		}else{
@@ -66,6 +68,8 @@ class Production_model extends CI_Model {
 						$this->db->where('id', $productiondetail->ingredientid);
 						$this->db->update('ingredients');
 						/*end add ingredients*/
+						//Add in Itxn table
+						$this->insert_itxn($productiondetail, $r_stock);
 				}
 			}
 			
@@ -198,7 +202,7 @@ class Production_model extends CI_Model {
 	/*work on older methods*/
     public function read($limit = null, $start = null)
 	{
-	    $this->db->select('production_details.foodid,production_details.pvarientid,item_foods.ProductName,variant.variantName,variant.variantid');
+	    $this->db->select('production_details.foodid,production_details.pvarientid,item_foods.ProductName,item_foods.cusine_type,item_foods.is_bom,variant.variantName,variant.variantid');
         $this->db->from('production_details');
 		$this->db->join('item_foods','item_foods.ProductsID = production_details.foodid','left');
 		$this->db->join('variant','variant.variantid = production_details.pvarientid','left');
@@ -214,7 +218,7 @@ class Production_model extends CI_Model {
 	
 	 public function readset($id,$vid)
 	{
-	    $this->db->select('production_details.foodid,item_foods.ProductName,variant.variantName,variant.variantid');
+	    $this->db->select('production_details.foodid,item_foods.ProductName,item_foods.cusine_type,item_foods.is_bom,variant.variantName,variant.variantid');
         $this->db->from('production_details');
 		$this->db->join('item_foods','item_foods.ProductsID = production_details.foodid','left');
 		$this->db->join('variant','variant.variantid = production_details.pvarientid','left');
@@ -383,7 +387,8 @@ public function ingrediantlist()
 		$list[''] = 'Select '.display('item_name');
 		if (!empty($data)) {
 			foreach($data as $value)
-				$list[$value->ProductsID] = $value->ProductName;
+				//$list[$value->ProductsID] = $value->ProductName;
+				$list[$value->ProductsID] = $value->ProductName . ' ('. getCusineTypeName($value->cusine_type) .')';
 			return $list;
 		} else {
 			return false; 
@@ -581,5 +586,55 @@ public function checkingredient($nitqty,$ingredientid,$foodid,$proqty){
 			return 0;
 		}
 	}
+
+	/**
+	 *  New Code Added for handle enchance current features
+	 */
+
+	/**
+	 * Insert transaction record into the `itxn` table and update ingredient stock.
+	 * 
+	 * @param array|object $prod_dtls Production details as an object or array.
+	 * @param float $usedQty Quantity used in the transaction.
+	 * @param float $usedSalesPrice Sales price associated with the used quantity.
+	 */
+	public function insert_itxn($prod_dtls, $usedQty) {
+		// Ensure $prod_dtls is an array
+		if (is_object($prod_dtls)) {
+			$prod_dtls = (array) $prod_dtls;
+		}
+
+		if (!isset($prod_dtls['ingredientid']) || empty($usedQty)) {
+			log_message('error', 'Invalid product details or used quantity.');
+			return false;
+		}
+
+		$ingredientId = $prod_dtls['ingredientid'];
+		$orderId = isset($prod_dtls['order_id']) ? $prod_dtls['order_id'] : null;
+
+		// Prepare data for insertion into `itxn`
+		$itxnData = [
+			'food_id' => $prod_dtls['foodid'],
+			'pvarient_id' => $prod_dtls['pvarientid'],
+			'ingredient_id' => $ingredientId,
+			'used_qty' => $usedQty,
+			'unit_id' => $prod_dtls['unitid'],
+			'production_dtl_id' => $prod_dtls['pro_detailsid'],
+			'created_at' => date('Y-m-d H:i:s')
+		];
+
+		// Insert record into `itxn` table
+		if (!$this->db->insert('itxn', $itxnData)) {
+			log_message('error', 'Failed to insert transaction record into itxn table.');
+			return false;
+		}
+
+		if ($this->db->affected_rows() == 0) {
+			log_message('error', 'Failed to update ingredient stock quantity.');
+		}
+
+		return true;
+	}
+
     
 }
