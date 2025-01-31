@@ -90,6 +90,7 @@
                                             <th class="text-center"><?php echo display('stock') ?>/<?php echo display('qty') ?></th>
                                             <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
                                             <th class="text-center"><?php echo display('s_rate') ?><i class="text-danger">*</i></th>
+                                            <th class="text-center"><?php echo 'Unit' ?><i class="text-danger">*</i></th>
                                             <th class="text-center"><?php echo display('total') ?></th>
                                             <th class="text-center"></th>
                                         </tr>
@@ -117,6 +118,12 @@
                                             <td class="test">
                                                 <input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store(1);" onchange="calculate_store(1);" id="product_rate_1" class="form-control product_rate_1 text-right" placeholder="0.00" value="" min="0"  tabindex="7">
                                             </td>
+
+                                            <td class="text-right">
+                                                <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url("production/production/getUomDetails") ?>" />
+                                                <input type="hidden" name="unitid[]" id="unitid_1" class="form-control text-right store_unitid_1" tabindex="6" readonly>
+                                                <input type="text" name="unitname[]" id="unitname_1" class="form-control text-right store_unitname_1" tabindex="6" placeholder="Unit Name" readonly>
+                                            </td>
                                            
 
                                             <td class="text-right">
@@ -129,7 +136,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="3">
                                             <input type="button" id="add_invoice_item" class="btn btn-success" name="add-invoice-item" onclick="addmore('addPurchaseItem');" value="<?php echo display('add_more') ?> <?php echo display('item') ?>" tabindex="9">
                                         </td>
                                         <td  colspan="2" class="text-right"><b><?php echo display('grand') ?> <?php echo display('total') ?>:</b></td>
@@ -138,7 +145,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4"  class="text-right"><b><?php echo display('paid') ?> <?php echo display('amount') ?>:</b></td>
+                                        <td colspan="5"  class="text-right"><b><?php echo display('paid') ?> <?php echo display('amount') ?>:</b></td>
                                         <td class="text-right">
                                             <input type="text" id="paidamount" class="text-right form-control" name="paidamount" placeholder="0.00">
                                         </td>

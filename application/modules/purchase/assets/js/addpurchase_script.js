@@ -78,6 +78,30 @@ function product_list(sl) {
         return false;
     }
 
+    // Get Unit value based on selected Ingredient
+		var getUomIngredientUrl = $("#get_uom_listby_ing").val();
+		$.ajax({
+			type: "GET",
+			url: getUomIngredientUrl + '/' + product_id,
+			cache: false,
+			success: function (response) {
+				var uomData = JSON.parse(response);
+	
+				if (uomData && uomData.length > 0) {
+					// Assuming the API returns an array of unit objects
+					$('#unitid_' + sl).val(product_id);  // Set UOM ID
+					$('#unitname_' + sl).val(uomData[0].uom_short_code);  // Set UOM Name
+				} else {
+					alert('No UOM available for the selected product.');
+					$('#unitid_' + sl).val('');
+					$('#unitname_' + sl).val('');
+				}
+			},
+			error: function () {
+				alert('Error fetching UOM details.');
+			}
+		});
+
      $.ajax({
                 type: "POST",
                 url: baseurl+"purchase/purchase/purchasequantity",
@@ -116,7 +140,33 @@ var count = 2;
            
 
 
-  newdiv.innerHTML ='<td class="span3 supplier"><select name="product_id[]" id="product_id_'+ count +'" class="postform resizeselect form-control" onchange="product_list('+ count +')">'+credit+'</select></td><td class="wt"> <input type="text" id="available_quantity_'+ count +'" class="form-control text-right stock_ctn_'+ count +'" placeholder="0.00" readonly/> </td><td class="text-right"><input type="number" step="0.0001" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="calculate_store(' + count + ');" onchange="calculate_store(' + count + ');" placeholder="0.00" value="" min="0"/>  </td><td class="test"><input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store('+ count +');" onchange="calculate_store('+ count +');" id="product_rate_'+ count +'" class="form-control product_rate_'+ count +' text-right" placeholder="0.00" value="" tabindex="'+tab3+'"/></td><td class="text-right"><input class="form-control total_price text-right total_price_'+ count +'" type="text" name="total_price[]" id="total_price_'+ count +'" value="0.00" readonly="readonly" /> </td><td> <input type="hidden" id="total_discount_1" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button  class="btn btn-danger red text-right" type="button" value="Delete" onclick="purchasetdeleteRow(this)" tabindex="8">Delete</button></td>';
+  //newdiv.innerHTML ='<td class="span3 supplier"><select name="product_id[]" id="product_id_'+ count +'" class="postform resizeselect form-control" onchange="product_list('+ count +')">'+credit+'</select></td><td class="wt"> <input type="text" id="available_quantity_'+ count +'" class="form-control text-right stock_ctn_'+ count +'" placeholder="0.00" readonly/> </td><td class="text-right"><input type="number" step="0.0001" name="product_quantity[]" tabindex="'+tab2+'" required  id="cartoon_'+ count +'" class="form-control text-right store_cal_' + count + '" onkeyup="calculate_store(' + count + ');" onchange="calculate_store(' + count + ');" placeholder="0.00" value="" min="0"/>  </td><td class="test"><input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store('+ count +');" onchange="calculate_store('+ count +');" id="product_rate_'+ count +'" class="form-control product_rate_'+ count +' text-right" placeholder="0.00" value="" tabindex="'+tab3+'"/></td><td class="text-right"><input class="form-control total_price text-right total_price_'+ count +'" type="text" name="total_price[]" id="total_price_'+ count +'" value="0.00" readonly="readonly" /> </td><td> <input type="hidden" id="total_discount_1" class="" /><input type="hidden" id="all_discount_1" class="total_discount" /><button  class="btn btn-danger red text-right" type="button" value="Delete" onclick="purchasetdeleteRow(this)" tabindex="8">Delete</button></td>';
+    newdiv.innerHTML = `
+    <td class="span3 supplier">
+        <select name="product_id[]" id="product_id_${count}" class="postform resizeselect form-control" onchange="product_list(${count})">${credit}</select>
+    </td>
+    <td class="wt">
+        <input type="text" id="available_quantity_${count}" class="form-control text-right stock_ctn_${count}" placeholder="0.00" readonly/>
+    </td>
+    <td class="text-right">
+        <input type="number" step="0.0001" name="product_quantity[]" tabindex="${tab2}" required id="cartoon_${count}" class="form-control text-right store_cal_${count}" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" placeholder="0.00" value="" min="0"/>
+    </td>
+    <td class="test">
+        <input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" id="product_rate_${count}" class="form-control product_rate_${count} text-right" placeholder="0.00" value="" tabindex="${tab3}"/>
+    </td>
+    <td class="test">
+        <input type="hidden" name="unitid[]" id="unitid_${count}" class="form-control text-right" placeholder="Unit ID" readonly/>
+        <input type="text" name="unitname[]" id="unitname_${count}" class="form-control text-right" placeholder="Unit Name" readonly/>
+    </td>
+    <td class="text-right">
+        <input class="form-control total_price text-right total_price_${count}" type="text" name="total_price[]" id="total_price_${count}" value="0.00" readonly="readonly" />
+    </td>
+    <td>
+        <input type="hidden" id="total_discount_1" class="" />
+        <input type="hidden" id="all_discount_1" class="total_discount" />
+        <button class="btn btn-danger red text-right" type="button" value="Delete" onclick="purchasetdeleteRow(this)" tabindex="8">Delete</button>
+    </td>`;
+
             document.getElementById(divName).appendChild(newdiv);
             document.getElementById(tabin).focus();
             document.getElementById("add_invoice_item").setAttribute("tabindex", tab5);

@@ -2267,18 +2267,21 @@ public function get_orderlist(){
     public function insert_itxn($orderId) {
 
         // Fetch order menu records for the given order ID
-        $this->db->select('row_id, order_id, menu_id, menuqty, addonsqty');
+        $this->db->select('row_id, order_id, menu_id, menuqty, varientid, addonsqty');
         $this->db->where('order_id', $orderId);
         $orderMenuRecords = $this->db->get('order_menu')->result_array();
 
         foreach ($orderMenuRecords as $orderMenu) {
             $menuId = $orderMenu['menu_id'];
             $menuQty = $orderMenu['menuqty'];
+			$menuVarientId =  $orderMenu['varientid'];
             $addonsQty = isset($orderMenu['addonsqty']) ? $orderMenu['addonsqty'] : 0;
 
             // Fetch production details for the given menu_id
             $this->db->select('pro_detailsid, foodid, pvarientid, ingredientid, qty');
             $this->db->where('foodid', $menuId);
+			$this->db->where('pvarientid', $menuVarientId);
+
             $productionDetails = $this->db->get('production_details')->result_array();
 		
 
@@ -2320,17 +2323,16 @@ public function get_orderlist(){
                     'unit_id' => $unitId,
                     'created_at' => date('Y-m-d')
                 ];
-
-				// echo '<pre>';
-				// print_r($itxnData);
-				// echo '</pre>';
-				// exit;
-
-
                 // Insert record into `itxn` table
                 $this->db->insert('itxn', $itxnData);
+
+				 // Step 5: Deduct used quantity from ingredients stock_qty
+				 $this->db->set('stock_qty', "GREATEST(stock_qty - {$usedQty}, 0)", false);
+				 $this->db->where('id', $ingredientId);
+				 $this->db->update('ingredients');
             }
         }
     }
+
 
 }
