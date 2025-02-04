@@ -678,6 +678,30 @@ function sumcalculation(id=null){
     });
         return check;
     }
+     function checkproductionOrder(foodid,vid,servingqty){
+    	var myurl = $('#production_urlOrder').val();
+		var csrf = $('#csrfhashresarvation').val();
+        var dataString = "foodid="+foodid+'&vid='+vid+'&qty='+servingqty+'&csrf_test_name='+csrf;
+  
+       var check =true;
+         $.ajax({
+         type: "POST",
+         url: myurl,
+         async: false,
+         global: false,
+         data: dataString,
+         success: function(data) {
+           
+            if(data !=1){
+                alert(data);
+                check = false;
+                }
+                
+           
+         } 
+    });
+        return check;
+    }
 
 //Product search button js
     $('body').on('click', '.update_select_product', function(e) {

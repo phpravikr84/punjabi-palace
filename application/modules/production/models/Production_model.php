@@ -368,6 +368,7 @@ class Production_model extends CI_Model
 	{
 		$data = $this->db->select("*")
 			->from('item_foods')
+			->where('is_bom', 1)
 			->get()
 			->result();
 
@@ -440,12 +441,56 @@ class Production_model extends CI_Model
 	#check stock
 	public function checkingredientstock($foodid, $vid, $foodqty)
 	{
+		$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID, b.ProductName");
+		$this->db->from('production a');
+		$this->db->join('item_foods b','b.ProductsID = a.itemid','left');
+		$this->db->where('b.ProductsID', $foodid);
+		$this->db->group_by('a.itemid');
+		$this->db->order_by('a.saveddate','desc');
+		$query = $this->db->get();
+		$producreport=$query->result();
+		$result=$producreport[0];
+		$dateRange2 = "a.menu_id='$result->itemid' AND b.order_status!=5";
+		$this->db->select("SUM(a.menuqty) as totalsaleqty,b.order_date");
+		$this->db->from('order_menu a');
+		$this->db->join('customer_order b', 'b.order_id = a.order_id', 'left');
+		$this->db->where($dateRange2, NULL, FALSE);
+		$this->db->order_by('b.order_date', 'desc');
+		$query = $this->db->get();
+		$salereport = $query->row();
+		if (empty($salereport->totalsaleqty)) {
+			$tout = 0;
+		} else {
+			$tout = $salereport->totalsaleqty;
+		}
+		$productName = $result->ProductName;
+		$in_Qnty = $result->totalqty;
+		$out_Qnty = $tout;
+		$stock = $result->totalqty - $salereport->totalsaleqty;
+
+		// echo "<pre>";
+		// print_r($result);
+		// echo "</pre>";
+		// echo "<br />";
+		// echo "productName: ".$productName."<br />";
+		// echo "in_Qnty: ".$in_Qnty."<br />";
+		// echo "out_Qnty: ".$out_Qnty."<br />";
+		// echo "stock: ".$stock;
+		// exit;
+
+		// if ($stock <= 0) {
+		// 	return 'Insufficient Stock !!!';
+		// 	// break;
+		// } else {
+
+		// }
+
 		$checksetitem = $this->db->select('ProductsID,isgroup', 'is_bom')->from('item_foods')->where('ProductsID', $foodid)->where('isgroup', 1)->get()->row();
 		$isavailable = true;
 		if (!empty($checksetitem)) {
 			if ($checksetitem->is_bom == 1) {
 				$groupitemlist = $this->db->select('items,varientid,item_qty')->from('tbl_groupitems')->where('gitemid', $checksetitem->ProductsID)->get()->result();
-				foreach ($groupitemlist as $groupitem) {
+				foreach ($groupitemlist as $groupitem) { 
 					$this->db->select('*');
 					$this->db->from('production_details');
 					$this->db->where('foodid', $groupitem->items);
@@ -509,6 +554,120 @@ class Production_model extends CI_Model
 			}
 		}
 		return 1;
+	}
+	public function checkingredientstockOrder($foodid, $vid, $foodqty)
+	{
+		$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID, b.ProductName");
+		$this->db->from('production a');
+		$this->db->join('item_foods b','b.ProductsID = a.itemid','left');
+		$this->db->where('b.ProductsID', $foodid);
+		$this->db->group_by('a.itemid');
+		$this->db->order_by('a.saveddate','desc');
+		$query = $this->db->get();
+		$producreport=$query->result();
+		$result=$producreport[0];
+		$dateRange2 = "a.menu_id='$result->itemid' AND b.order_status!=5";
+		$this->db->select("SUM(a.menuqty) as totalsaleqty,b.order_date");
+		$this->db->from('order_menu a');
+		$this->db->join('customer_order b', 'b.order_id = a.order_id', 'left');
+		$this->db->where($dateRange2, NULL, FALSE);
+		$this->db->order_by('b.order_date', 'desc');
+		$query = $this->db->get();
+		$salereport = $query->row();
+		if (empty($salereport->totalsaleqty)) {
+			$tout = 0;
+		} else {
+			$tout = $salereport->totalsaleqty;
+		}
+		$productName = $result->ProductName;
+		$in_Qnty = $result->totalqty;
+		$out_Qnty = $tout;
+		$stock = $result->totalqty - $salereport->totalsaleqty;
+
+		// echo "<pre>";
+		// print_r($result);
+		// echo "</pre>";
+		// echo "<br />";
+		// echo "productName: ".$productName."<br />";
+		// echo "in_Qnty: ".$in_Qnty."<br />";
+		// echo "out_Qnty: ".$out_Qnty."<br />";
+		// echo "stock: ".$stock;
+		// exit;
+
+		if ($stock <= 0) {
+			return 'Insufficient Stock !!!';
+			// break;
+		} else {
+			$checksetitem = $this->db->select('ProductsID,isgroup', 'is_bom')->from('item_foods')->where('ProductsID', $foodid)->where('isgroup', 1)->get()->row();
+			$isavailable = true;
+			if (!empty($checksetitem)) {
+				if ($checksetitem->is_bom == 1) {
+					$groupitemlist = $this->db->select('items,varientid,item_qty')->from('tbl_groupitems')->where('gitemid', $checksetitem->ProductsID)->get()->result();
+					foreach ($groupitemlist as $groupitem) { 
+						$this->db->select('*');
+						$this->db->from('production_details');
+						$this->db->where('foodid', $groupitem->items);
+						$this->db->where('pvarientid', $groupitem->varientid);
+						$productiondetails = $this->db->get()->result();
+						if (empty($productiondetails)) {
+							$isavailable = false;
+							return 'Please set Ingredients!!first!!!' . $groupitem->items;
+							break;
+						} else {
+							foreach ($productiondetails as $productiondetail) {
+								$r_stock = $productiondetail->qty * ($foodqty * $groupitem->item_qty);
+								/*add stock in ingredients*/
+								$this->db->select('*');
+								$this->db->from('ingredients');
+								$this->db->where('id', $productiondetail->ingredientid);
+								$this->db->where('stock_qty >=', $r_stock);
+								$stockcheck = $this->db->get()->num_rows();
+	
+								if ($stockcheck == 0) {
+									return 'Please check Ingredients!!Some Ingredients are not Available!!!' . $groupitem->items;
+								}
+								/*end add ingredients*/
+							}
+						}
+					}
+				}
+				return 1;
+			} else {
+				$this->db->select('*');
+				$this->db->from('production_details');
+				$this->db->where('foodid', $foodid);
+				$this->db->where('pvarientid', $vid);
+				$productiondetails = $this->db->get()->result();
+			}
+	
+	
+			if (!empty($productiondetails)) {
+	
+				foreach ($productiondetails as $productiondetail) {
+					$r_stock = $productiondetail->qty * $foodqty;
+					/*add stock in ingredients*/
+					$this->db->select('*');
+					$this->db->from('ingredients');
+					$this->db->where('id', $productiondetail->ingredientid);
+					$this->db->where('stock_qty >=', $r_stock);
+					$stockcheck = $this->db->get()->num_rows();
+	
+					if ($stockcheck == 0) {
+						return 'Please check Ingredients!!Some Ingredients are not Available!!!';
+					}
+	
+	
+					/*end add ingredients*/
+				}
+			} else {
+				if ($checksetitem->is_bom == 1) {
+					return 'Please set Ingredients!!first!!!';
+				} else {
+					return 1;
+				}
+			}
+			return 1;
+		}
 	}
 	public function checkmeterials($foodid, $qty)
 	{

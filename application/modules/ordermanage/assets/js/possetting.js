@@ -260,7 +260,8 @@
                   var checkqty = qty;
               }
 
-              var checkvalue = checkproduction(pid, sizeid, checkqty);
+            //   var checkvalue = checkproduction(pid, sizeid, checkqty);
+              var checkvalue = checkproductionOrder(pid, sizeid, checkqty);
 
               if (checkvalue == false) {
                   return false;
@@ -330,7 +331,7 @@
 				  }
                   $('#grandtotal').val(tgtotal);
                   $('#orggrandTotal').val(tgtotal);
-                  $('#orginattotal').val(tgtotal);
+                  $('#orginattotal').val(tgtotal); 
               }
           });
       }

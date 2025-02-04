@@ -1124,7 +1124,7 @@ foreach ($scan as $file) {
                                           echo "(%)";
                                         } ?>
                                         :</label>
-                                      <div class="col-sm-4 p-0">
+                                      <div class="col-sm-4 p-0"> 
                                         <input type="text" id="service_charge" onkeyup="calculatetotal();" class="form-control text-right mb-5" value="<?php echo $servicecharge; ?>" name="service_charge" placeholder="0.00" />
                                       </div>
                                     </td>
@@ -1139,6 +1139,7 @@ foreach ($scan as $file) {
 
                                 <input type="hidden" id="production_setting" value="<?php echo $possetting->productionsetting; ?>">
                                 <input type="hidden" id="production_url" value="<?php echo base_url("production/production/ingredientcheck") ?>">
+                                <input type="hidden" id="production_urlOrder" value="<?php echo base_url("production/production/ingredientcheckOrder") ?>">
                               </div>
                             </div>
                           </div>

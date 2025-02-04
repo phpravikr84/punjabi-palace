@@ -5144,7 +5144,7 @@ class Order extends MX_Controller {
 				$foodid = $iteminfo->menu_id;
 				$qty = $iteminfo->menuqty;
 				$vid=$iteminfo->varientid;
-				$available = $this->order_model->checkingredientstock($foodid,$vid,$qty);
+				$available = $this->order_model->checkingredientstockOrder($foodid,$vid,$qty);
 				if($available !=1){
 					break;
 				}
