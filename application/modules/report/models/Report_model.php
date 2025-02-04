@@ -13,8 +13,8 @@ class Report_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	} 
-	public function productreportall(){
-		$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID,b.ProductName");
+	public function productreportall(){ 
+		$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID, b.ProductName");
 		$this->db->from('production a');
 		$this->db->join('item_foods b','b.ProductsID = a.itemid','left');
 		$this->db->group_by('a.itemid');

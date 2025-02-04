@@ -52,7 +52,7 @@ class Reports extends MX_Controller {
 	
 	public function productwise(){
 		$this->permission->method('report','read')->redirect();
-        $data['title']    = display('purchase_report'); 
+        $data['title']    = display('stock_report');
 		
 		$data['allproduct']=$this->report_model->productreportall();
 		$settinginfo=$this->report_model->settinginfo();
@@ -81,7 +81,7 @@ class Reports extends MX_Controller {
    public function ingredientwise(){
 		$this->permission->method('report','read')->redirect();
         $data['title']    = display('purchase_report'); 
-		
+		 
 		$data['allproduct']=$this->report_model->allingredient();
 		$settinginfo=$this->report_model->settinginfo();
 		$data['setting']=$settinginfo;
