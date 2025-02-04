@@ -106,6 +106,7 @@
    			"set_productionunit" => array("controller" => "production","method"     => "productionunit","permission" => "create"),
    			"production_set_list" => array("controller" => "production","method"     => "index","permission" => "read"),
 			"production_add" => array("controller" => "production","method"     => "create","permission" => "create"),
+			"production_setting" => array("controller" => "productiondetails","method"     => "productionDetails","permission" => "read"),
 			//"production_setting" => array("controller" => "production","method" => "possetting","permission" => "create")
 			);
 		$HmvcMenu2["setting"] = array(
@@ -264,6 +265,10 @@
 
 				case 'add_group_item':
 					echo 'Add Combo Food Item';
+					break;
+				
+				case 'production_setting':
+					echo 'Production Details';
 					break;
 		
 				default:
