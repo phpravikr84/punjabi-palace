@@ -293,4 +293,18 @@ class Production extends MX_Controller {
 		$units = $this->db->get()->result();
 		echo json_encode($units);
 	}
+
+	/** Get Production Detail */
+	public function productionDetails(){
+		$this->permission->method('productiondetails','read')->redirect();
+       	$data['title'] = display('production_details');
+		
+		$data['allproduct']=$this->production_model->productionall();
+		$settinginfo=$this->production_model->settinginfo();
+		$data['setting']=$settinginfo;
+		$data['currency']=$this->production_model->currencysetting($settinginfo->currency);
+		$data['module'] = "production";
+		$data['page']   = "productiondetails";   
+		echo Modules::run('template/layout', $data); 
+	}
 }

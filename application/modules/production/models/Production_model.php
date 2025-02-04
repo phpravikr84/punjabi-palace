@@ -621,4 +621,38 @@ class Production_model extends CI_Model
 
 		return true;
 	}
+
+	public function productionall(){ 
+		$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID, b.ProductName");
+		$this->db->from('production a');
+		$this->db->join('item_foods b','b.ProductsID = a.itemid','left');
+		$this->db->group_by('a.itemid');
+		$this->db->order_by('a.saveddate','desc');
+		$query = $this->db->get();
+		$producreport=$query->result();
+		$myArray=array();
+		$i=0;
+		foreach($producreport as $result){
+			$i++;
+			$dateRange2 = "a.menu_id='$result->itemid' AND b.order_status!=5";
+			$this->db->select("SUM(a.menuqty) as totalsaleqty,b.order_date");
+			$this->db->from('order_menu a');
+			$this->db->join('customer_order b','b.order_id = a.order_id','left');
+			$this->db->where($dateRange2, NULL, FALSE); 	
+			$this->db->order_by('b.order_date','desc');
+			$query = $this->db->get();
+			$salereport=$query->row();
+			if(empty($salereport->totalsaleqty)){
+				$tout=0;
+			}else{
+				$tout=$salereport->totalsaleqty;
+				}
+			$myArray[$i]['ProductName']=$result->ProductName;
+			$myArray[$i]['In_Qnty']=$result->totalqty;
+			$myArray[$i]['Out_Qnty']=$tout;
+			$myArray[$i]['Stock']=$result->totalqty-$salereport->totalsaleqty;
+			}
+			return $myArray;
+		}
+	
 }
