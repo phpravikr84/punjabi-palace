@@ -111,43 +111,90 @@ class Production extends MX_Controller {
 	   $saveid=$this->session->userdata('id');
 	  $data['intinfo']="";
 	 
-	   $data['item']   = $this->production_model->item_dropdown();
+	   $data['item']   = $this->production_model->item_dropdown_all();
+	    $data['supplier']   = $this->production_model->supplier_dropdown();
 		
 	   $data['module'] = "production";
 	   $data['page']   = "production";   
 	   echo Modules::run('template/layout', $data); 
     }
-	public function insert_production(){
-			$this->permission->method('production','create')->redirect();
-			$this->form_validation->set_rules('foodid','Food Name','required');
-			$this->form_validation->set_rules('foodvarientid','Varient Name','required');
-			$this->form_validation->set_rules('pro_qty','Serving Unit','required');
-			$this->form_validation->set_rules('production_date','Production Date','required');
-			$this->form_validation->set_rules('expire_date','Production Expire Date','required');
-	        $saveid=$this->session->userdata('id'); 
-		    if ($this->form_validation->run()) { 
-			$this->permission->method('production','create')->redirect();
-			 $logData = [
-			   'action_page'         => "Add Production",
-			   'action_done'     	 => "Insert Data", 
-			   'remarks'             => "Add Production Created",
-			   'user_name'           => $this->session->userdata('fullname'),
-			   'entry_date'          => date('Y-m-d H:i:s'),
-			  ];
-			if ($this->production_model->create()) { 
-			 $this->logs_model->log_recorded($logData);
-			 $this->session->set_flashdata('message', display('save_successfully'));
-			 redirect('production/production/create');
-			} 
-			else{
-				$this->session->set_flashdata('exception', display('please_try_again'));
-				redirect('production/production/create');
-				}
-			redirect("production/production/create"); 
-		  } else { 
-		  redirect("production/production/create"); 
-		   }  
+	// public function insert_production(){
+	// 	$this->permission->method('production','create')->redirect();
+	// 	$this->form_validation->set_rules('foodid','Food Name','required');
+	// 	$this->form_validation->set_rules('foodvarientid','Varient Name','required');
+	// 	$this->form_validation->set_rules('pro_qty','Serving Unit','required');
+	// 	$this->form_validation->set_rules('production_date','Production Date','required');
+	// 	$this->form_validation->set_rules('expire_date','Production Expire Date','required');
+	// 	$saveid=$this->session->userdata('id'); 
+	// 	if ($this->form_validation->run()) { 
+	// 	$this->permission->method('production','create')->redirect();
+	// 		$logData = [
+	// 		'action_page'         => "Add Production",
+	// 		'action_done'     	 => "Insert Data", 
+	// 		'remarks'             => "Add Production Created",
+	// 		'user_name'           => $this->session->userdata('fullname'),
+	// 		'entry_date'          => date('Y-m-d H:i:s'),
+	// 		];
+	// 	if ($this->production_model->create()) { 
+	// 		$this->logs_model->log_recorded($logData);
+	// 		$this->session->set_flashdata('message', display('save_successfully'));
+	// 		redirect('production/production/create');
+	// 	} 
+	// 	else{
+	// 		$this->session->set_flashdata('exception', display('please_try_again'));
+	// 		redirect('production/production/create');
+	// 		}
+	// 	redirect("production/production/create"); 
+	// 	} else { 
+	// 	redirect("production/production/create"); 
+	// 	}  
+	// }
+	/** Change Insert Production logic */
+	public function insert_production() {
+		$this->permission->method('production', 'create')->redirect();
+	
+		// Always set required rules for basic fields
+		$this->form_validation->set_rules('foodid', 'Food Name', 'required');
+		$this->form_validation->set_rules('foodvarientid', 'Varient Name', 'required');
+		$this->form_validation->set_rules('pro_qty', 'Serving Unit', 'required');
+		$this->form_validation->set_rules('production_date', 'Production Date', 'required');
+		$this->form_validation->set_rules('expire_date', 'Production Expire Date', 'required');
+	
+		// Check if the suplierid input exists and make it mandatory
+		if ($this->input->post('suplierid')) {
+			$this->form_validation->set_rules('suplierid', 'Supplier ID', 'required');
 		}
+	
+		$saveid = $this->session->userdata('id');
+	
+		if ($this->form_validation->run()) {
+			$this->permission->method('production', 'create')->redirect();
+	
+			$logData = [
+				'action_page' => "Add Production",
+				'action_done' => "Insert Data", 
+				'remarks'     => "Add Production Created",
+				'user_name'   => $this->session->userdata('fullname'),
+				'entry_date'  => date('Y-m-d H:i:s'),
+			];
+	
+			if ($this->production_model->create()) { 
+				$this->logs_model->log_recorded($logData);
+				$this->session->set_flashdata('message', display('save_successfully'));
+				redirect('production/production/create');
+			} else {
+				$this->session->set_flashdata('exception', display('please_try_again'));
+				log_message('error', 'Failed to create production record.');
+				redirect('production/production/create');
+			}
+		} else { 
+			// Show form validation errors or redirect based on your flow
+			$this->session->set_flashdata('exception', validation_errors());
+			log_message('error', 'validation error production record.'.validation_errors());
+			redirect("production/production/create");
+		}
+	}
+	
 		/*change*/
 	
 	public function productionitem(){
@@ -161,7 +208,7 @@ class Production extends MX_Controller {
 		} 
         echo json_encode($json_product);
 
-		}
+	}
 	public function getfoodfarient($id){
 			$varientlist=$this->production_model->foodvarientlist($id);
 			if(!empty($varientlist)){
@@ -313,4 +360,25 @@ class Production extends MX_Controller {
 		$data['page']   = "productiondetails";   
 		echo Modules::run('template/layout', $data); 
 	}
+
+	/** Check food item is BOM */
+	public function check_food_item_without_bom() {
+		// Get food ID from GET request
+		$foodid = $this->input->get('foodid');
+	
+		// Validate the input
+		if (empty($foodid) || !is_numeric($foodid)) {
+			echo json_encode(['status' => false, 'message' => 'Invalid food ID']);
+			return;
+		}
+
+		// Call the model function
+		$result = $this->production_model->checkfooditemwithoutbom($foodid);
+		// echo $result;
+		// exit;
+	
+		// Return JSON response
+		echo json_encode(['status' => $result]);
+	}
+	
 }

@@ -80,6 +80,7 @@ class Purchase extends MX_Controller {
 	 
 	   $data['supplier']   = $this->purchase_model->supplier_dropdown();
 	   $data['ingrdientslist']   = $this->purchase_model->ingrediantlist();
+	   $data['purchaseitems'] = $this->purchase_model->read(1);
 	   $data['module'] = "purchase";
 	   $data['page']   = "addpurchase";   
 	   echo Modules::run('template/layout', $data); 

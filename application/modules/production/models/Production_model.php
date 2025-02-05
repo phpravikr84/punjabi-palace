@@ -17,20 +17,99 @@ class Production_model extends CI_Model
 		$foodid = $this->input->post('foodid');
 		$fvid = $this->input->post('foodvarientid');
 		$foodqty = $this->input->post('pro_qty');
+		$is_bom = $this->checkfooditemwithoutbom($foodid);
 		$data = array(
 			'itemid'				  =>	$this->input->post('foodid'),
 			'itemvid'				  =>	$this->input->post('foodvarientid'),
 			'itemquantity'			  =>	$this->input->post('pro_qty', true),
 			'savedby'	     		  =>	$saveid,
+			'suplierid'			  		=>	$this->input->post('suplierid'),
+			'is_bom'					=> $is_bom==1 ? 0 : 1,
 			'saveddate'	              =>	$newdate,
 			'productionexpiredate'	  =>	$exdate
 		);
-		$this->checkproductiondetails($foodid, $fvid, $foodqty);
+
+		// Check that food is with bom or without bom
+		if($this->checkfooditemwithoutbom($foodid)){
+			//Without Bom
+			// Get Food Name, price, quantity
+			$food = $this->findByFoodItemId($this->input->post('foodid'));
+			$food_varient = $this->findByFoodVarientId($this->input->post('foodvarientid'));
+			$insertpurchase =  array(
+				'suplierID' => $this->input->post('suplierid'),
+				'total_price' => $this->input->post('pro_qty', true) * $food_varient->price,
+				'paid_amount' => $this->input->post('pro_qty', true) * $food_varient->price,
+				'details' => $food->ProductName,
+				'is_bom'=> $is_bom==1 ? 0 : 1, 
+			);
+
+			$this->insert_purchase($insertpurchase);
+
+		} else { 
+			//BOM with ingredients
+			$this->checkproductiondetails($foodid, $fvid, $foodqty);
+		}
 		$this->db->insert('production', $data);
 
 		$returnid = $this->db->insert_id();
 		return true;
 	}
+
+	#check foodItemWithBom
+	public function checkfooditemwithoutbom($foodid) {
+
+		$this->db->select('*');
+		$this->db->from('item_foods');
+		$this->db->where('ProductsID', $foodid);
+		$this->db->where('is_bom', 0); // Ensure this matches the desired value
+
+		$query = $this->db->get();
+		// echo $this->db->last_query(); // Show the generated query for debugging
+		// exit();
+	
+		$checkfooditem = $query->row();
+		
+		if(!empty($checkfooditem)){
+			$result = 1;
+		} else {
+			$result = 0;
+		}
+		return $result;
+	}
+	
+	public function insert_purchase($data) {
+        // dynamic data for purchase
+		$invid = $this->readPurchase(1);
+		// print_r($invid);
+		// echo '===';
+		// echo $invid[0]->purID;
+		// exit;
+        $purchaseData = [
+            'invoiceid' => isset($invid) ? 'INV-'.$invid[0]->purID+1 : '',
+            'suplierID' => $data['suplierID'],
+            'paymenttype' => 2,
+            'bankid' => 3,
+            'total_price' => $data['total_price'],
+            'paid_amount' => $data['paid_amount'],
+            'details' => $data['details'],
+            'purchasedate' =>  date('Y-m-d'),
+            'purchaseexpiredate' => date('Y-m-d', strtotime('+60 days')),
+            'savedby' => 2,
+			'is_bom' => $data['is_bom']
+        ];
+
+        $this->add_purchase($purchaseData);
+
+    }
+	
+	public function add_purchase($purchaseData) {
+         // Log the generated SQL query
+			$sql = $this->db->set($purchaseData)->get_compiled_insert('purchaseitem');
+			log_message('debug', 'Generated SQL Query: ' . $sql);
+
+			// Execute the insert query
+			$this->db->insert('purchaseitem', $purchaseData);
+    }
 
 	#check productiondetails
 	public function checkproductiondetails($foodid, $fvid, $foodqty)
@@ -369,6 +448,27 @@ class Production_model extends CI_Model
 		$data = $this->db->select("*")
 			->from('item_foods')
 			->where('is_bom', 1)
+			->get()
+			->result();
+
+		$list[''] = 'Select ' . display('item_name');
+		if (!empty($data)) {
+			foreach ($data as $value)
+				//$list[$value->ProductsID] = $value->ProductName;
+				$list[$value->ProductsID] = $value->ProductName . ' (' . getCusineTypeName($value->cusine_type) . ')';
+			return $list;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Item dropdown all
+	 */
+	public function item_dropdown_all()
+	{
+		$data = $this->db->select("*")
+			->from('item_foods')
 			->get()
 			->result();
 
@@ -813,5 +913,37 @@ class Production_model extends CI_Model
 			}
 			return $myArray;
 		}
+
+		public function readPurchase($limit = null, $start = null)
+		{
+			$this->db->select('purchaseitem.*,supplier.supName');
+			$this->db->from('purchaseitem');
+			$this->db->join('supplier','purchaseitem.suplierID = supplier.supid','left');
+			$this->db->order_by('purID', 'desc');
+			$this->db->limit($limit, $start);
+			$query = $this->db->get();
+			if ($query->num_rows() > 0) {
+				return $query->result();    
+			}
+			return false;
+		}
+		public function findByFoodItemId($id = null)
+		{ 
+			return $this->db->select("*")->from('item_foods')
+				->where('ProductsID',$id) 
+				->get()
+				->row();
+		}
+
+		public function findByFoodVarientId($id = null) 
+		{
+			return $this->db->select('variant.*, item_foods.ProductName, item_foods.cusine_type, item_foods.is_bom')
+				->from('variant')
+				->join('item_foods', 'variant.menuid = item_foods.ProductsID', 'left')
+				->where('variant.variantid', $id)
+				->get()
+				->row();
+		}
+	
 	
 }

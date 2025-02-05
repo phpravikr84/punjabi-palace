@@ -60,13 +60,38 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <!-- <div class="col-sm-4">
                                 <div class="form-group row">
                                 	<div class="col-sm-2">
                                         <input type="checkbox" id="is_outside_product" class="form-control" name="is_outside_product" aria-label="Outside Manifactured">
                                     </div>
                             	</div>
+                            </div> -->
+                            <input type="hidden" name="foodCheckBomorNotBomUrl" id="foodCheckBomorNotBomUrl" value="<?php echo base_url('production/production/check_food_item_without_bom'); ?>"/>
+                            <div class="col-sm-4 supplier-widget">
+                                <div class="form-group row">
+                                    <label for="supplier_sss" class="col-sm-3 col-form-label">
+                                        <?php echo display('supplier_name') ?> <i class="text-danger">*</i>
+                                    </label>
+
+                                    <div class="col-sm-5">
+                                        <?php 
+                                        if (empty($supplier)) {
+                                            $supplier = array('' => '--Select--');
+                                        }
+                                        echo form_dropdown('suplierid', $supplier, (!empty($intinfo->suplierID) ? $intinfo->suplierID : null), 'class="form-control" id="suplierid"');
+                                        ?>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <a href="<?php echo base_url('purchase/supplierlist/index'); ?>" class="btn btn-link">
+                                            <?php echo display('supplier_add'); ?>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+
+
                             <div class="col-sm-4">
                                 <div class="form-group row">
                                 	<div class="col-sm-2"><input type="submit" id="add_production" class="btn btn-success btn-large" name="add-purchase" value="<?php echo display('submit') ?>"></div>

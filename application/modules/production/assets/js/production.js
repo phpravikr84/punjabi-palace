@@ -142,6 +142,7 @@ function checkavailablity(){
 		var foodvarientid=$("#foodvarientid").val();
 		var servingqty=$("#pro_qty").val();
 		var csrf = $('#csrfhashresarvation').val();
+		
 		if(servingqty=='' || servingqty==0){
 		$('#add_production').prop("disabled", true);
 		return false;	
@@ -176,13 +177,17 @@ function checkavailablity(){
 $(document).ready(function() {
 "use strict";
 $('#add_production').prop("disabled", true);
+$('.supplier-widget').hide();
 });
 $(document).on('change','#foodid',function(){
-         "use strict";
+         //"use strict";
           var id = $(this).children("option:selected").val();
 		  var csrf = $('#csrfhashresarvation').val();
 		  var datastring="csrf_test_name="+csrf
           var url= 'getfoodfarient'+'/'+id;
+		  //Check if foodId is Bom or not Bom
+		  console.log('hi');
+		  checkFoodItem(id);
          $.ajax({
              type: "GET",
              url: url,
@@ -220,3 +225,26 @@ $('input[type="checkbox"]').click(function(){
 				    }
 			    });
         });
+
+		function checkFoodItem(foodid) {
+			let geturl = $('#foodCheckBomorNotBomUrl').val();
+			$.ajax({
+				url: geturl,
+				type: "GET",
+				dataType: "json",
+				data: { foodid: foodid },
+				success: function (response) {
+					if (response.status > 0) {
+						console.log("The food item does not have a BOM ie. Without BOM.");
+						$('.supplier-widget').show();
+					} else {
+						console.log("The food item has a BOM ie. With BOM.");
+						$('.supplier-widget').hide();
+					}
+				},
+				error: function () {
+					console.error("An error occurred while checking the food item.");
+				}
+			});
+		}
+		

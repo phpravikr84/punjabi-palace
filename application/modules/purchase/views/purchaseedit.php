@@ -40,7 +40,7 @@
                                     <label for="invoice_no" class="col-sm-4 col-form-label"><?php echo display('invoice_no') ?> <i class="text-danger">*</i>
                                     </label>
                                     <div class="col-sm-8">
-                                        <input type="text" tabindex="3" class="form-control" name="invoice_no" value="<?php echo $purchaseinfo->invoiceid;?>" placeholder="<?php echo display('invoice_no') ?>" id="invoice_no" required="">
+                                        <input type="text" tabindex="3" class="form-control" name="invoice_no" value="<?php echo $purchaseinfo->invoiceid;?>" placeholder="<?php echo display('invoice_no') ?>" id="invoice_no" required="" readonly>
                                     </div>
                                 </div>
                             </div>

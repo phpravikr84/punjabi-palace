@@ -31,7 +31,16 @@
                                     <label for="invoice_no" class="col-sm-4 col-form-label"><?php echo display('invoice_no') ?><i class="text-danger">*</i>
                                     </label>
                                     <div class="col-sm-8">
-                                    	<input type="text" tabindex="3" class="form-control" name="invoice_no" placeholder="<?php echo display('invoice_no') ?>" id="invoice_no" required="">
+                                        <?php
+                                            if($purchaseitems){
+                                                foreach($purchaseitems as $purchaseitem){
+                                                    $invoice_no = 'INV-'.$purchaseitem->purID+1;
+                                                }
+                                            } else {
+                                                $invoice_no = display('invoice_no');
+                                            }
+                                        ?>
+                                    	<input type="text" tabindex="3" class="form-control" name="invoice_no" placeholder="<?php echo $invoice_no; ?>" id="invoice_no" required="" readonly>
                                     </div>
                                 </div>
                             </div>
