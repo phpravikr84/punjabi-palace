@@ -34,7 +34,7 @@
                                         <?php
                                             if($purchaseitems){
                                                 foreach($purchaseitems as $purchaseitem){
-                                                    $invoice_no = 'INV-'.$purchaseitem->purID+1;
+                                                    $invoice_no = $purchaseitem->purID+1;
                                                 }
                                             } else {
                                                 $invoice_no = display('invoice_no');
