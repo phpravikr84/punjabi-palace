@@ -1,65 +1,65 @@
 <link href="<?php echo base_url('application/modules/dashboard/assest/css/home_dashboard.css'); ?>" rel="stylesheet" type="text/css"/>
 
 <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="panel home-panel-bd bg-gradient-custom-orange d-flex align-items-center justify-content-center">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 mt-10">
+                <div class="panel home-panel-bd bg-alice-blue rounded-15 d-flex align-items-center justify-content-center">
                     <div class="panel-body">
                         <div class="statistic-box text-center text-white">
-                            <h2><span class="count-number"><?php echo $totalorder; ?></span> <span class="slight"> </span></h2>
-                            <div class="lifeord"><?php echo display('lifeord')?></div>
+                            <h2><span class="count-number text-inverse fs-24"><?php echo $totalorder; ?></span> <span class="slight"> </span></h2>
+                            <div class="lifeord text-orange"><?php echo display('lifeord')?></div>
                         </div>
                     </div>
                 </div>
             </div>
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="panel home-panel-bd bg-gradient-custom-pink d-flex align-items-center justify-content-center">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 mt-10">
+                <div class="panel home-panel-bd bg-alice-blue rounded-15 d-flex align-items-center justify-content-center">
                     <div class="panel-body">
                         <div class="statistic-box text-center text-white">
-                            <h2><span class="count-number"><?php echo $todayorder; ?></span> <span class="slight"> </span></h2>
-                            <div class="lifeord"><?php echo display('tdayorder')?></div>
+                            <h2><span class="count-number text-inverse fs-24"><?php echo $todayorder; ?></span> <span class="slight"> </span></h2>
+                            <div class="lifeord text-green"><?php echo display('tdayorder')?></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="panel home-panel-bd bg-gradient-custom-teal d-flex align-items-center justify-content-center">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 mt-10">
+                <div class="panel home-panel-bd bg-alice-blue rounded-15 d-flex align-items-center justify-content-center">
                     <div class="panel-body">
                         <div class="statistic-box text-center text-white">
-                            <h2><span class="count-number"><?php echo $todayamount; ?></span></h2>
-                            <div class="lifeord"><?php echo display('tdaysell')?></div>
+                            <h2><span class="count-number text-inverse fs-24"><?php echo $todayamount; ?></span></h2>
+                            <div class="lifeord text-orange"><?php echo display('tdaysell')?></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="panel home-panel-bd bg-gradient-custom-indigo d-flex align-items-center justify-content-center">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 mt-10">
+                <div class="panel home-panel-bd bg-alice-blue rounded-15 d-flex align-items-center justify-content-center">
                     <div class="panel-body">
                         <div class="statistic-box text-center text-white">
-                            <h2><span class="count-number"><?php echo $totalcustomer; ?></span> <span class="slight"> </span></h2>
-                            <div class="lifeord"><?php echo display('tcustomer')?></div>
+                            <h2><span class="count-number text-inverse fs-24"><?php echo $totalcustomer; ?></span> <span class="slight"> </span></h2>
+                            <div class="lifeord text-green"><?php echo display('tcustomer')?></div>
                         </div>
                     </div>
                 </div>
             </div>
            
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="panel home-panel-bd bg-gradient-custom-blue d-flex align-items-center justify-content-center">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 mt-10">
+                <div class="panel home-panel-bd bg-alice-blue rounded-15 d-flex align-items-center justify-content-center">
                     <div class="panel-body">
                         <div class="statistic-box text-center text-white">
-                            <h2><span class="count-number"><?php echo $completeord; ?></span></h2>
-                            <div class="lifeord"><?php echo display('tdeliv')?></div>
+                            <h2><span class="count-number text-inverse fs-24"><?php echo $completeord; ?></span></h2>
+                            <div class="lifeord text-violet"><?php echo display('tdeliv')?></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                <div class="panel home-panel-bd bg-gradient-yellow-red d-flex align-items-center justify-content-center">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-2 mt-10">
+                <div class="panel home-panel-bd bg-alice-blue rounded-15 d-flex align-items-center justify-content-center">
                     <div class="panel-body">
                         <div class="statistic-box text-center text-white">
-                            <h2><span class="count-number"><?php echo $totalreservation;?></span> <span class="slight"> </span></h2>
-                            <div class="lifeord"><?php echo display('treserv')?></div>
+                            <h2><span class="count-number text-inverse fs-24"><?php echo $totalreservation;?></span> <span class="slight"> </span></h2>
+                            <div class="lifeord text-info"><?php echo display('treserv')?></div>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
 <div class="row">
     <!-- Latest Order -->
     <div class="col-sm-12 col-md-4">
-        <div class="panel panel-bd">
+        <div class="panel panel-bd shadow-1 border-none rounded-10">
             <div class="panel-heading latestord">
                 <div class="panel-title bg-success">
                     <h4><?php echo display('latestord')?></h4>
@@ -98,7 +98,7 @@
     </div>
     <!-- Latest Reservation -->
     <div class="col-sm-12 col-md-4">
-        <div class="panel panel-bd">
+        <div class="panel panel-bd shadow-1 border-none rounded-10">
             <div class="panel-heading latest_reser">
                 <div class="panel-title">
                     <h4><?php echo display('latest_reser')?></h4>
@@ -125,7 +125,7 @@
     </div>
     <!-- Online Order -->
     <div class="col-sm-12 col-md-4">
-        <div class="panel panel-bd">
+        <div class="panel panel-bd shadow-1 border-none rounded-10">
             <div class="panel-heading latestolorder">
                 <div class="panel-title">
                     <h4><?php echo display('latestolorder')?></h4>
@@ -155,7 +155,7 @@
 <div class="row">
  <!-- Monthly Sales Amount and Order -->
     <div class="col-sm-12 col-lg-4">
-        <div class="panel panel-bd">
+        <div class="panel panel-bd shadow-1 border-none rounded-10">
             <div class="panel-heading topselleingitem">
                 <div class="panel-title">
                     <h4><?php echo display('topselleingitem')?></h4>
@@ -190,7 +190,7 @@
         </div>
     </div>
     <div class="col-sm-12 col-lg-8">
-        <div class="panel panel-bd">
+        <div class="panel panel-bd shadow-1 border-none rounded-10">
             <div class="panel-heading monsalamntorder">
                 <div class="panel-title">
                     <h4><?php echo display('monsalamntorder')?></h4>
@@ -209,7 +209,7 @@
 <div class="row">
     <!-- Online Vs Offline Order and sales -->
     <div class="col-sm-12 col-lg-8">
-        <div class="panel panel-bd">
+        <div class="panel panel-bd shadow-1 border-none rounded-10">
 
             <div class="panel-heading onlineofline">
                 <div class="panel-title">
@@ -223,7 +223,7 @@
     </div>
     <!-- Pie Chart -->
     <div class="col-sm-12 col-lg-4">
-        <div class="panel panel-bd">
+        <div class="panel panel-bd shadow-1 border-none rounded-10">
             <div class="panel-heading pending_ord">
                 <div class="panel-title">
                     <h4><?php echo display('pending_ord')?></h4>

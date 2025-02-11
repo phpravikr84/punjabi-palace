@@ -8,7 +8,7 @@
             timeOut: 4000
                    
         };
-        toastr.success('<?php echo $this->session->flashdata('message') ?>', 'Success');
+        //toastr.success('<?php echo $this->session->flashdata('message') ?>', 'Success');
 
     }, 1300);
 </script>

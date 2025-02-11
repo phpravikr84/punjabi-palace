@@ -85,7 +85,7 @@ class Production_model extends CI_Model
 		// echo $invid[0]->purID;
 		// exit;
         $purchaseData = [
-            'invoiceid' => isset($invid) ? 'INV-'.$invid[0]->purID+1 : '',
+            'invoiceid' => isset($invid) ? 'INV'.$invid[0]->purID+1 : '',
             'suplierID' => $data['suplierID'],
             'paymenttype' => 2,
             'bankid' => 3,

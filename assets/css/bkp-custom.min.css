@@ -6190,6 +6190,14 @@ pre .arg {
     margin-top: 0px;
     margin-bottom: 2px;
 }
+.ongo-order-tab {
+    box-shadow: none !important;
+    background-color: #219653 !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    line-height: 23px !important;
+    margin-right: 5px !important;
+}
 
 @media (max-width:767px) {
     .mobile-sidebar-link {

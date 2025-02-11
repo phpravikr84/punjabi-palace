@@ -34,13 +34,15 @@
                                         <?php
                                             if($purchaseitems){
                                                 foreach($purchaseitems as $purchaseitem){
-                                                    $invoice_no = $purchaseitem->purID+1;
+                                                    $invoice_no = 'INV'.$purchaseitem->purID+1;
                                                 }
                                             } else {
                                                 $invoice_no = display('invoice_no');
                                             }
+
+
                                         ?>
-                                    	<input type="text" tabindex="3" class="form-control" name="invoice_no" placeholder="<?php echo $invoice_no; ?>" id="invoice_no" required="" readonly>
+                                    	<input type="text" tabindex="3" class="form-control" name="invoice_no" placeholder="Enter Invoice No" id="invoice_no" value="<?php echo $invoice_no; ?>" required="" >
                                     </div>
                                 </div>
                             </div>

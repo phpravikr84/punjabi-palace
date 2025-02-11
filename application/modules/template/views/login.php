@@ -20,12 +20,47 @@
     <link href="<?php echo base_url('assets/css/pe-icon-7-stroke.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url('assets/css/custom.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url('assets/css/extra.css') ?>" rel="stylesheet" type="text/css" />
+    <style>
+
+  body {
+    background: url('assets/img/login-bg.jpeg') no-repeat center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+   .circle-logo {
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding:10px;
+    border-radius:100%;
+  }
+
+  .circle-logo img {
+    width: 70%;
+    height: auto;
+    position: relative;
+  }
+
+</style>
+
 </head>
 
 <body>
     <div class="login vh100">
         <div class="login-content login-content_bg">
-        	<div class="">
+        <div class="circle-logo text-center">
+      <img src="assets/logo.png" alt="Logo" class="rounded-circle img-fluid">
+    </div>
+        	<div class="mb-3">
                             <!-- alert message -->
                             <?php if ($this->session->flashdata('message') != null) {  ?>
                             <div class="alert alert-info alert-dismissable">
@@ -49,10 +84,10 @@
                             <?php } ?> 
                         </div>
                  <div class="text-center mb-5">
-                    <h1 class="mt-0"><?php echo display('login') ?></h1>
-                    <div class="text-muted">
+                    <h1 class="mt-4 text-white"><?php echo display('login') ?></h1>
+                    <!-- <div class="text-white">
                         <?php echo (!empty($setting->title)?$setting->title:null) ?>
-                    </div>
+                    </div> -->
                 </div>
                 <?php echo form_open('login','id="loginForm" novalidate'); ?>            
                 <div class="form-group">
@@ -73,6 +108,31 @@
             </form>
         </div>
     </div>
+    <footer class="footer bg-white py-2 shadow-sm">
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6 text-start">
+                ©2025 Punjabi Palace
+            </div>
+            <div class="col-md-6 text-right">
+                Developed with ❤️ by Adzguru (PNG) Limited
+            </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Footer Styling -->
+<style>
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding:10px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+</style>
+
     <script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js') ?>" type="text/javascript"></script>
         <!-- Bootstrap -->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>" type="text/javascript"></script>

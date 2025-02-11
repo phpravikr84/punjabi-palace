@@ -87,7 +87,7 @@ class Purchase extends MX_Controller {
     }
 	public function purchase_entry(){
 
-		//$this->form_validation->set_rules('invoice_no','Invoice Number','required');
+		$this->form_validation->set_rules('invoice_no','Invoice Number','required');
 		$this->form_validation->set_rules('purchase_date','Purchase Date'  ,'required');
 	    $saveid=$this->session->userdata('id'); 
 		
