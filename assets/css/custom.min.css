@@ -609,15 +609,15 @@ hr {
 .main-header .logo {
     display: block;
     float: left;
-    height: 60px;
+    height: 62px;
     font-size: 20px;
-    line-height: 60px;
+    line-height: 62px;
     text-align: center;
     width: 250px;
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
-    background-color: #1f1f31;
+    background-color: #f5f7fa;
     color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     -webkit-transition: width 0.3s ease-in-out;
@@ -631,7 +631,7 @@ hr {
 
 .main-header .logo .logo-lg img,
 .main-header .logo .logo-mini img {
-    height: 55px;
+    height: 50px;
 }
 
 .main-header .logo .logo-mini {
@@ -5699,7 +5699,7 @@ pre .arg {
 .col-form-label {
     padding-top: 7px;
     margin-bottom: 0;
-    text-align: right;
+    text-align: left;
 }
 
 .select2-container--default .select2-selection--single {
@@ -6230,77 +6230,87 @@ New Bootstrap CSS override
 */
 /* Primary Button */
 /* Primary Button */
+/* Primary Button - Glossy Effect */
 .btn-primary {
-    background-color: #2972FF !important; /* Bright blue background */
-    color: #ffffff !important; /* White text */
-    /* box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease-in-out; */
-    border-radius: 8px !important;
-  }
-  
-  .btn-primary:hover {
-    background-color: #4A8FFF !important; /* Slightly lighter blue on hover */
+    background: linear-gradient(to bottom, #4A8FFF 0%, #2972FF 100%) !important; /* Glossy gradient */
     color: #ffffff !important;
-    /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05); */
-  }
-  
-  /* Secondary Button */
-  .btn-secondary {
-    background-color: #6A4E3C !important; /* Neutral brown tone */
-    color: #ffffff !important;
-    /* box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease-in-out; */
     border-radius: 8px !important;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #8A6C59 !important; /* Slightly lighter brown */
-    /* box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05); */
-  }
-  
-  /* Success Button */
-  .btn-success {
-    background-color: #47CD6B !important; /* Vibrant green */
+    border: 1px solid #1A5ED3 !important;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), /* Inner gloss */
+                0 4px 8px rgba(0, 0, 0, 0.3); /* Outer shadow */
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to bottom, #5CA9FF 0%, #4A8FFF 100%) !important;
+    box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.5), 
+                0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Secondary Button - Glossy Effect */
+.btn-secondary {
+    background: linear-gradient(to bottom, #8A6C59 0%, #6A4E3C 100%) !important;
     color: #ffffff !important;
-    /* box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease-in-out; */
     border-radius: 8px !important;
-  }
-  
-  .btn-success:hover {
-    background-color: #4DF582 !important;
-    /* box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05); */
-  }
-  
-  /* Danger Button */
-  .btn-danger {
-    background-color: #F05E36 !important;
+    border: 1px solid #5A3E2A !important;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 
+                0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(to bottom, #A07D66 0%, #8A6C59 100%) !important;
+    box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.5), 
+                0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Success Button - Glossy Effect */
+.btn-success {
+    background: linear-gradient(to bottom, #4DF582 0%, #47CD6B 100%) !important;
     color: #ffffff !important;
-    /* box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease-in-out; */
     border-radius: 8px !important;
-  }
-  
-  .btn-danger:hover {
-    background-color: #FF8564 !important;
-    /* box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05); */
-   
-  }
-  
-  /* Common Button Styles */
-  button.btn {
+    border: 1px solid #2DA155 !important;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 
+                0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+    background: linear-gradient(to bottom, #6DFB97 0%, #4DF582 100%) !important;
+    box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.5), 
+                0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Danger Button - Glossy Effect */
+.btn-danger {
+    background: linear-gradient(to bottom, #FF8564 0%, #F05E36 100%) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    border: 1px solid #C54529 !important;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 
+                0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(to bottom, #FF9A7E 0%, #FF8564 100%) !important;
+    box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.5), 
+                0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Common Button Styles */
+button.btn {
     border-radius: 4px !important;
     padding: 8px 16px !important;
     font-weight: 600 !important;
     font-size: 14px !important;
-  }
-  
-  button.btn:focus {
+}
+
+button.btn:focus {
     outline: none !important;
-    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.5);
-  }
-  
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.5);
+}

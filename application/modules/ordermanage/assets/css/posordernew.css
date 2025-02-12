@@ -235,7 +235,7 @@ listcat.listcat {
         padding: 0 9px;
         margin-right: 6px;
     } */
-    .nav-tabs > li > a.maindashboard {
+    /* .nav-tabs > li > a.maindashboard {
         background: #47CD6B;
         color: #fff;
         border-radius: 8px;
@@ -245,7 +245,36 @@ listcat.listcat {
         display: flex;
         align-items: center;
         gap: 7px;
+        
+    } */
+    .nav-tabs > li > a.maindashboard {
+        color:#000;
+        background: #fff;
+        border-radius: 12px;
+        padding: 12px 15px;
+        margin-right: 6px;
+        line-height: 18px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
     }
+
+    .nav-tabs > li > a.maindashboard:hover {
+        background: #FFF2E8 !important;
+                 color: #FC8019 !important;
+                 border-radius: 12px;
+                 display: flex;
+                 align-items: center;
+                 border: 1px solid #FC8019 !important;
+     }
+     .nav-tabs > li > a.maindashboard svg {
+        fill: #000 !important;
+    }
+     .nav-tabs > li > a.maindashboard:hover svg {
+        fill: #FC8019 !important;
+    }
+    
+    
     .justify-content-end{
         justify-content: end;
     }
@@ -319,6 +348,129 @@ search-custom .select2-container--default .select2-selection--single .select2-se
 .p-10 {
     padding: 10px;
 }
+/* Form container */
+.pos-newform {
+    background: #FFF2E8 !important;
+    color: #FC8019 !important;
+    border-radius: 12px;
+    border: 1px solid #FC8019 !important;
+    padding: 10px;
+    max-width: 600px; /* Adjust form width */
+    margin: auto;
+}
+
+.pos-newform label {
+    font-size: 1.3rem;
+}
+#table_person svg {
+    width: 20px;  /* Adjust the width to your preference */
+    height: 20px; /* Adjust the height to match the width */
+}
+/* Tooltip CSS (for custom styles) */
+
+/* Tooltip CSS */
+
+#table_person {
+    position: relative;
+}
+
+/* Tooltip Box */
+#table_person:hover::after {
+    content: 'Add Peoples';
+    position: absolute;
+    top: 100%; /* Move the tooltip box above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: rgb(148, 148, 148);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+/* Tooltip Arrow */
+#table_person:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Arrow points upwards above the tooltip box */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent; /* Matches tooltip box color */
+}
+
+/* Show Tooltip and Arrow on Hover */
+#table_person:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+#table_person:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+#add_cust {
+    position: relative;
+}
+
+/* Tooltip Box */
+#add_cust:hover::after {
+    content: 'Add Customer';
+    position: absolute;
+    top: 100%; /* Move the tooltip box above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: rgb(148, 148, 148);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+/* Tooltip Arrow */
+#add_cust:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Arrow points upwards above the tooltip box */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent; /* Matches tooltip box color */
+}
+
+/* Show Tooltip and Arrow on Hover */
+#add_cust:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+#add_cust:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .pos-newform {
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
 @media (min-width: 992px) {
     .leftSidebarPosMain {
         height: calc(-90px + 100vh) !important;

@@ -131,12 +131,9 @@
 }
 .login .login-content.login-content_bg{
 	 max-width: 40rem;
-	background-color: #ffffff61;
-	padding: 50px;
+	background-color: #000;
+	padding: 60px;
 	border-radius: 9px;
-
-    border: 1px solid #ffffff47;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .login .form-control {
     border: 1px solid #c9d2e3;
@@ -157,6 +154,7 @@
 
 .login .btn {
     border-radius: 9px;
+    max-width: 200px;
 }
 .login .btn-success {
     background-color: #198754;
@@ -180,6 +178,7 @@
     width: 100%;
     overflow: hidden;
     border-radius: 9px;
+    height: 38px;
 }
 #Imageid{
  border: 1px solid #c9d2e3;
