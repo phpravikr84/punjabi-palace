@@ -198,7 +198,7 @@ p {
 }
 
 a {
-    color: #FECD4C;
+    color: #ff784a;
     text-decoration: none
 }
 
@@ -322,7 +322,7 @@ hr {
 }
 
 .text-success {
-    color: #9E5C3B!important
+    color: green!important
 }
 
 .text-info {
@@ -617,12 +617,12 @@ hr {
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
-    background-color: #f5f7fa;
+    background-color: #F2E9E0;
     color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); */
     -webkit-transition: width 0.3s ease-in-out;
     transition: width 0.3s ease-in-out;
-    border-bottom: 1px solid #313f6b;
+    /* border-bottom: 1px solid #313f6b; */
 }
 
 .main-header .logo .logo-lg {
@@ -815,7 +815,7 @@ hr {
     transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-    background-color: #1f1f31;
+    background-color: #F2E9E0;
 }
 
 @media (max-width:767px) {
@@ -924,7 +924,7 @@ hr {
 
 .user-panel .info p {
     font-weight: 500;
-    color: #fff;
+    color: #ff784a;
     margin: 5px 0;
     text-transform: uppercase;
     letter-spacing: 1px
@@ -956,9 +956,9 @@ hr {
 }
 
 .sidebar-menu>li>a {
-    padding: 12px 5px 12px 15px;
+    padding: 11.3px 5px 11.3px 15px;
     display: block;
-    color: #c1b9b9;
+    color: #938372;
     position: relative;
     font-size: 15px;
     font-weight: 500;
@@ -983,7 +983,7 @@ hr {
 .sidebar-menu>li.active>a,
 .sidebar-menu>li:hover>a {
     color: #fff;
-    background: #33383e;
+    background: #ff784a;
 }
 
 .sidebar-menu>li>a>.fa,
@@ -1031,7 +1031,7 @@ hr {
     list-style: none;
     padding: 5px 0 10px 35px;
     margin: 0;
-    background-color: #18182c;
+    background-color: #F2E9E0;
 }
 
 .sidebar-menu .treeview-menu:before {
@@ -1045,7 +1045,7 @@ hr {
 }
 
 .sidebar-menu .treeview-menu .treeview-menu {
-    padding-left: 20px
+    /* padding-left: 20px */
 }
 
 .sidebar-menu .treeview-menu>li {
@@ -1056,7 +1056,7 @@ hr {
 .sidebar-menu .treeview-menu>li>a {
     padding: 5px 5px 5px 20px;
     display: block;
-    color: #a6a6a6;
+    color: #938372;
     letter-spacing: .3px
 }
 
@@ -1075,7 +1075,8 @@ hr {
 
 .sidebar-menu .treeview-menu>li.active>a,
 .sidebar-menu .treeview-menu>li:hover>a {
-    color: #fc0;
+    color: #ff784a;
+    font-weight:bold;
 }
 
 .sidebar-menu .treeview-menu>li::before {

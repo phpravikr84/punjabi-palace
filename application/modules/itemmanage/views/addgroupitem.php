@@ -122,8 +122,8 @@
                     </div>
                     <div class="form-group row">
                     <?php if(!empty($todaymenu)){?>
-                        <label for="menutype" class="col-sm-5 col-form-label"><?php echo display('menu_type');?></label>
-                        <div class="col-sm-7">
+                        <label for="menutype" class="col-sm-4 col-form-label"><?php echo display('menu_type');?></label>
+                        <div class="col-sm-8">
                         <?php 
 						$searcharray=explode(',',(!empty($productinfo->menutype)?$productinfo->menutype:null));
 						$m=0;
@@ -131,7 +131,7 @@
 							$m++;
 							 $key = array_search($tmenu->menutypeid, $searcharray);
 							?>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 mtype">
                                     <div class="checkbox checkbox-success">
                                     <input type="checkbox" name="menutype[]" value="<?php echo $tmenu->menutypeid;?>" <?php if(!empty($productinfo))if($searcharray[$key]==$tmenu->menutypeid){echo "checked";}?> id="<?php echo $m;?>">
                                         <label for="<?php echo $m;?>"><?php echo $tmenu->menutype;?></label>
@@ -223,3 +223,8 @@
     </div>
 </div>
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addgroupitem_script.js'); ?>" type="text/javascript"></script>
+<style>
+.mtype {
+    margin-left: 5px; /* Adds bottom space between columns */
+}
+</style>

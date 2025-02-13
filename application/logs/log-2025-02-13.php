@@ -548,3 +548,1503 @@ ERROR - 2025-02-13 08:46:28 --> 404 Page Not Found: /index
 ERROR - 2025-02-13 08:46:28 --> 404 Page Not Found: /index
 ERROR - 2025-02-13 08:46:29 --> 404 Page Not Found: /index
 ERROR - 2025-02-13 08:46:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:54:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 09:54:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 09:54:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:54:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:54:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:54:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:56:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 09:56:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 09:56:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:56:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:56:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:56:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:58:46 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 09:58:46 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 09:58:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:58:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:58:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 09:58:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:01:07 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:01:07 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:01:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:01:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:01:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:01:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:03:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:03:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:03:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:03:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:03:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:03:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:05:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:05:08 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:08 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:53 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:05:53 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:05:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:05:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:06:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:06:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:06:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:06:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:06:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:06:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:08:26 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:08:26 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:08:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:08:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:08:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:08:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:10:19 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:10:19 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:10:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:10:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:10:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:10:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:11:04 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:11:04 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:11:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:11:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:11:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:11:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:15:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:15:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:15:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:15:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:15:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:15:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:17:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:17:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:17:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:17:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:17:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:17:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:19:28 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:19:28 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:19:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:19:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:19:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:19:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:19:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:19:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:20:32 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:20:32 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:20:32 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:20:32 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:20:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:20:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:20:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:20:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:22:04 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:22:04 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:22:04 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:22:04 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:22:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:22:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:22:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:22:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:24:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:24:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:24:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:24:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:24:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:24:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:24:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:24:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:29:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:29:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:29:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:29:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:29:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:29:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:29:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:29:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:41:47 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:41:47 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:41:47 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:41:47 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:41:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:41:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:41:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:41:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:41:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:41:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:41:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:41:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:42:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:07 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:42:07 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:42:08 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:08 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:42:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:42:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:28 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:28 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:47 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:47 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:49 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:44:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:44:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:46:02 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:46:02 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:46:12 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:46:12 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:46:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:46:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:46:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:46:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:47:42 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:47:42 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:47:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:47:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:47:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:47:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:48:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:48:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:48:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:48:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:48:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:48:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:49:25 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:49:25 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:49:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:49:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:49:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:49:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:54:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:54:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:54:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:54:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:54:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:54:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:48 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:55:48 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:55:50 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:50 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:50 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:50 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:55:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:55:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:55:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:55:57 --> Severity: Warning --> Undefined array key 0 D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 10:55:57 --> Severity: Warning --> Attempt to read property "identity" on null D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 10:55:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:55:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:56:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:56:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:56:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:56:12 --> Severity: Warning --> Undefined array key 0 D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 10:56:12 --> Severity: Warning --> Attempt to read property "identity" on null D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 10:56:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:53 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:56:53 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 10:56:53 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 10:56:53 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 10:56:54 --> Severity: Warning --> Undefined array key 0 D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 10:56:54 --> Severity: Warning --> Attempt to read property "identity" on null D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 10:56:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:56 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 10:56:56 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:00:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:00:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:00:30 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:00:30 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:00:31 --> Severity: Warning --> Undefined array key 0 D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:00:31 --> Severity: Warning --> Attempt to read property "identity" on null D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:00:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:00:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:00:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:00:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:02:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:02:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:02:10 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:02:10 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:02:11 --> Severity: Warning --> Undefined array key 0 D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:02:11 --> Severity: Warning --> Attempt to read property "identity" on null D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:02:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:02:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:02:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:02:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:03:39 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:03:39 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:03:39 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:03:39 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:04:52 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:04:52 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:04:52 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:04:52 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:04:53 --> Severity: Warning --> Undefined array key 0 D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:04:53 --> Severity: Warning --> Attempt to read property "identity" on null D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:04:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:04:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:11:47 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:11:47 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:11:47 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:11:47 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:11:48 --> Severity: Warning --> Undefined array key 0 D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:11:48 --> Severity: Warning --> Attempt to read property "identity" on null D:\xampp\htdocs\punjabi-palace\application\modules\addon\views\module\list.php 119
+ERROR - 2025-02-13 11:38:50 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:38:50 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:38:50 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:38:50 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:38:57 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:38:57 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:38:57 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:38:57 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:42:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:42:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:42:13 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:42:13 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 68
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 68
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 69
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 69
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 79
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 82
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:15 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 94
+ERROR - 2025-02-13 11:42:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:42:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:42:21 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:42:21 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:42:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:42:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:42:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:42:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:43:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:43:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:43:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:43:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:44:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:44:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:44:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:44:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:44:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:44:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:44:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:44:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:44:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:48:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:48:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:48:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:48:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:48:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:48:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:48:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:48:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:50:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:50:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:50:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:50:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:50:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:50:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:50:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:50:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:52:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:52:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:52:29 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:52:29 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:52:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:52:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:52:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:52:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:53:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:53:21 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:53:22 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:39 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:53:39 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:53:39 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:53:39 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:53:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:53:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:54:28 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:54:28 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-13 11:54:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-13 11:54:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 29
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addgroupitem.php 32
+ERROR - 2025-02-13 11:54:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:54:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:54:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-13 11:54:30 --> 404 Page Not Found: /index
