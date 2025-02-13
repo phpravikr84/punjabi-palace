@@ -153,8 +153,8 @@
 }
 
 .login .btn {
-    border-radius: 9px;
     max-width: 200px;
+    margin-top:40px;
 }
 .login .btn-success {
     background-color: #198754;

@@ -342,6 +342,12 @@ search-custom .select2-container--default .select2-selection--single .select2-se
 .pb-60 {
     padding: 20px;
 }
+.pb-10 {
+    padding: 10px;
+}
+.pb-5 {
+    padding: 5px;
+}
 .product-h {
     min-height: 24rem;
 }

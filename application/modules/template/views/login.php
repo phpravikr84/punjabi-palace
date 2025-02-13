@@ -28,7 +28,7 @@
     <div class="login vh100 d-flex align-items-center justify-content-center">
         <div class="login-content login-content_bg p-4">
             <div class="circle-logo text-center">
-                <img src="assets/logo.png" alt="Logo" class="rounded-circle img-fluid">
+                <img src="assets/img/adzguru-icon.png" alt="Logo" class="rounded-circle img-fluid">
             </div>
             
             <div class="mt-3">
@@ -55,42 +55,55 @@
             </div>
 
             <div class="text-center mt-3">
-                <h1 class="text-white login-textheading"><?php echo 'Welcome!'; ?></h1>
+                <h1 class="text-white login-textheading"><?php echo 'Welcome !'; ?></h1>
             </div>
 
             <?php echo form_open('login','id="loginForm" novalidate'); ?>   
                 <div class="form-group mt-4">
                     <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-envelope text-white"></i></span>
+                        <span class="input-group-text"><i class="fas fa-envelope" style="color: #999;"></i></span>
                         <input type="text" placeholder="<?php echo display('email') ?>" name="email" id="email" class="form-control fs-15px inpt-cuslogform" autocomplete="off">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-lock text-white"></i></span>
+                        <span class="input-group-text"><i class="fas fa-lock" style="color: #999;"></i></span>
                         <input type="password" placeholder="<?php echo display('password') ?>" name="password" id="password" class="form-control fs-15px inpt-cuslogform" autocomplete="off">
                     </div>
                 </div>
 
-                <div class="row captcha-row">
-                    <div class="form-group col-md-6">
-                        <label class="control-label" for="captcha"><?php echo $captcha_image ?></label>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" placeholder="<?php echo display('captcha') ?>" name="captcha" id="captcha" class="form-control fs-15px" autocomplete="off">
+                <div class="form-group">
+                    <div class="captcha-row">
+                        <div class="col-md-6" style="padding-left: unset; padding-right: 3px;">
+                            <label class="control-label" for="captcha"><?php echo $captcha_image ?></label>
+                        </div>
+                        <div class="col-md-6" style="padding-left: 3px; padding-right: unset;">
+                            <input type="text" placeholder="Write captcha"laceholder="<?php echo display('captcha') ?>" name="captcha" id="captcha" class="form-control fs-15px" autocomplete="off" wfd-id="id3">
+                        </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-login btn-lg btn-block mb-3"><?php echo 'SignIn'; ?></button>
+                <button type="submit" class="btn btn-login btn-lg btn-block mb-3"><?php echo 'Sign In'; ?></button>
 
-                <div class="text-center mt-3">
+                <!-- <div class="text-center mt-3">
                     <img src="assets/adzguru-logo.jpg" class="img-fluid" alt="company Image" width="90">
-                </div>
+                </div> -->
+
+
             </form>
         </div>
     </div>
-
+    
+    <footer class="footer bg-white py-2 shadow-sm">
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12 text-right text-light">
+                Powered by ❤️ Adzguru (PNG) Limited
+            </div>
+            </div>
+        </div>
+    </footer>
     <style>
     body {
     background: url('assets/img/login-bgnew.jpg') no-repeat center;
@@ -101,7 +114,14 @@
     align-items: center;
     position: relative;
 }
-
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding:10px;
+    color: #fff;
+    /* background-color: rgba(255, 255, 255, 0.25); */
+  }
 .login-content {
     width: 400px;
     background-color: rgba(0, 0, 0, 0.8);

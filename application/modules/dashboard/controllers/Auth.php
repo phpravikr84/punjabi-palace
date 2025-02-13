@@ -146,11 +146,11 @@ class Auth extends MX_Controller {
 			    'img_path'      => './assets/img/captcha/',
 			    'img_url'       => base_url('assets/img/captcha/'),
 			    'font_path'     => './assets/fonts/themify.ttf',
-			    'img_width'     => '328',
-			    'img_height'    => 64,
+			    'img_width'     => '220',
+			    'img_height'    => 35,
 			    'expiration'    => 600, //5 min
 			    'word_length'   => 4,
-			    'font_size'     => 40,
+			    'font_size'     => 20,
 			    'img_id'        => 'Imageid',
 			    'pool'          => '23456789abcdefghijkmnpqrstuvwxyz',
 

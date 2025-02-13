@@ -727,7 +727,7 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
                 <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <div class="row">
                       <div class="col-md-12">
                         <form class="navbar-search" method="get" action="<?php echo base_url("ordermanage/order/pos_invoice") ?>">
@@ -740,7 +740,7 @@ foreach ($scan as $file) {
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-3 col-lg-2">
+                      <div class="col-md-3 col-lg-3">
                         <div class="leftSidebarPosMain">
                           <div class="slimScrollDiv">
                             <div class="product-category">
@@ -774,8 +774,8 @@ foreach ($scan as $file) {
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-9 col-lg-10">
-                        <div class="leftSidebarPosMain bg-alice-blue pb-60">
+                      <div class="col-md-9 col-lg-9">
+                        <div class="leftSidebarPosMain bg-alice-blue pb-5">
                           <div class="slimScrollDiv">
                             <div class="row row-m-3" id="product_search">
                               <?php $i = 0;
@@ -794,7 +794,7 @@ foreach ($scan as $file) {
                                 }
                               ?>
                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-p-3">
-                                  <div class="panel panel-bd product-panel select_product p-10 product-h rounded-lg">
+                                  <div class="panel panel-bd product-panel select_product p-10 rounded-lg">
                                     <div class="panel-body"> <img src="<?php echo base_url(!empty($item->small_thumb) ? $item->small_thumb : 'assets/img/icons/default_pos_pro.jpg'); ?>" class="img-responsive" alt="<?php echo $item->ProductName; ?>">
                                       <input type="hidden" name="select_product_id" class="select_product_id" value="<?php echo $item->ProductsID; ?>">
                                       <input type="hidden" name="select_totalvarient" class="select_totalvarient" value="<?php echo $item->totalvarient; ?>">
@@ -811,11 +811,11 @@ foreach ($scan as $file) {
                                       <input type="hidden" name="select_addons" class="select_addons" value="<?php echo $getadons; ?>">
                                     </div>
                                     <div class="text-center">
-                                      <h4><?php echo $item->ProductName; ?> (<?php echo $item->variantName; ?>)
+                                      <h5><?php echo $item->ProductName; ?> (<?php echo $item->variantName; ?>)
                                         <?php if (!empty($item->itemnotes)) {
                                           echo " -" . $item->itemnotes;
                                         } ?>
-                                      </h4>
+                                      </h5>
                                     </div>
                                   </div>
                                 </div>
@@ -828,8 +828,8 @@ foreach ($scan as $file) {
                   </div>
                   <form action="<?php echo base_url("ordermanage/order/pos_order") ?>" class="form-vertical" id="onlineordersubmit" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 
-                    <div class="col-md-4">
-                      <div class="leftSidebarPosMain bg-alice-blue pb-60 px-3 py-3">
+                    <div class="col-md-5">
+                      <div class="leftSidebarPosMain bg-alice-blue pb-5 px-3 py-3">
                         <div class="slimScrollDiv">
                           <div class="row pos-newform">
                             <div class="col-md-6 form-group">
@@ -884,8 +884,8 @@ foreach ($scan as $file) {
                                 </div>
                                 <?php
                                 ?>
-                                <div class="col-md-3 form-group" id="cookingtime">
-                                  <label for="Cooked Time"><?php echo display('cookedtime'); ?></label>
+                                <div class="col-md-3 form-group px-0" id="cookingtime">
+                                  <label for="Cooked Time"><?php echo 'Cook Time'; ?></label>
                                   <input name="cookedtime" type="text" class="form-control timepicker3" id="cookedtime" placeholder="00:00:00" autocomplete="off" />
                                 </div>
 
