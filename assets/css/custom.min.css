@@ -167,13 +167,13 @@ body.hold-transition .right-side {
 }
 
 ::-moz-selection {
-    color: #fff;
+    /* color: #333; */
     /* background: #9E5C3B; */
     text-shadow: none
 }
 
 ::selection {
-    color: #fff;
+    /* color: #333; */
     /* background: #9E5C3B; */
     text-shadow: none
 }

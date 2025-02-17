@@ -24,7 +24,7 @@
             timeOut: 4000
                   
         };
-        toastr.error('<?php echo $this->session->flashdata('exception') ?>', 'Something Wrong');
+        //toastr.error('<?php echo $this->session->flashdata('exception') ?>', 'Something Wrong');
 
     }, 1300);
 </script>

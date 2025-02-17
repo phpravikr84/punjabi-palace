@@ -5938,4 +5938,24 @@ class Order extends MX_Controller {
 		$data['customerorder']=$this->order_model->read('*', 'customer_order', array('order_id' => $id));
 		echo('window.orderinfo = ' . json_encode($data['customerorder']) . ';');
 		}
+
+	/**
+	 *  All Tables
+	 */
+	public function alltables(){
+		$this->permission->method('ordermanage','read')->redirect();
+		if($this->permission->method('ordermanage','read')->access()==FALSE){
+			redirect('dashboard/auth/logout');
+		}
+		$data['tablefloor'] = $this->order_model->tablefloor();
+		//$this->load->view('tablemodal', $data);
+		//$floorid=$this->input->post('floorid');
+		//$data['tableinfo'] = $this->order_model->get_table_total($floorid);
+		$data['tableinfo'] =  $this->order_model->get_all_table_total();
+		$data['title']="Counter Dashboard";
+		$data['module'] = "ordermanage";
+		$data['page']   = "alltables";   
+		echo Modules::run('template/layout', $data); 
+	}
+
 }
