@@ -1365,8 +1365,8 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
   function load_unseen_notification(view = '') {
       var csrf = $('#csrfhashresarvation').val();
-      var myAudio = document.getElementById("myAudio");
-      var soundenable = possetting.soundenable;
+    //   var myAudio = document.getElementById("myAudio");
+    //   var soundenable = possetting.soundenable;
       $.ajax({
           url: "notification",
           method: "POST",
@@ -1375,13 +1375,13 @@ $(document).on("keypress", '#itemqty_1', function(e){
           success: function(data) {
               if (data.unseen_notification > 0) {
                   $('.count').html(data.unseen_notification);
-                  if (soundenable == 1) {
-                      myAudio.play();
-                  }
+                //   if (soundenable == 1) {
+                //       myAudio.play();
+                //   }
               } else {
-                  if (soundenable == 1) {
-                      myAudio.pause();
-                  }
+                //   if (soundenable == 1) {
+                //       myAudio.pause();
+                //   }
                   $('.count').html(data.unseen_notification);
               }
 
@@ -1395,8 +1395,8 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
   function load_unseen_notificationqr(view = '') {
       var csrf = $('#csrfhashresarvation').val();
-      var myAudio = document.getElementById("myAudio");
-      var soundenable = possetting.soundenable;
+    //   var myAudio = document.getElementById("myAudio");
+    //   var soundenable = possetting.soundenable;
       $.ajax({
           url: basicinfo.baseurl + "ordermanage/order/notificationqr",
           method: "POST",
@@ -1405,13 +1405,13 @@ $(document).on("keypress", '#itemqty_1', function(e){
           success: function(data) {
               if (data.unseen_notificationqr > 0) {
                   $('.count2').html(data.unseen_notificationqr);
-                  if (soundenable == 1) {
-                      myAudio.play();
-                  }
+                //   if (soundenable == 1) {
+                //       myAudio.play();
+                //   }
               } else {
-                  if (soundenable == 1) {
-                      myAudio.pause();
-                  }
+                //   if (soundenable == 1) {
+                //       myAudio.pause();
+                //   }
                   $('.count2').html(data.unseen_notification);
               }
           }
@@ -1834,8 +1834,10 @@ $(document).on("keypress", '#itemqty_1', function(e){
               url: url,
               data: { csrf_test_name: csrf },
               success: function(data) {
+                console.log('it goes in if condition');
                   if (order_person > data) {
-
+                    console.log('it goes if comparison');
+                    alert('table capacity overflow');
                       setTimeout(function() {
 
                           toastr.options = {
@@ -1851,12 +1853,14 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
                       }, 300);
                   } else {
+                    console.log('it goes in else with id');
                       if (id != null) {
+                        console.log('it goes in else with id');
                           $('#tableid').val(id).trigger('change');
                           $('#table_member_multi').val(0);
                           $('#table_member_multi_person').val(0);
                           $('#table_person').val(order_person);
-                          $('#tablemodal').modal('hide');
+                          $('#tablebookviewmodal').modal('hide');
                       }
 
                       return false;
@@ -1890,7 +1894,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
   function showTablemodal() {
       var url = "showtablemodal";
-      getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
+      getAjaxModal(url, false, '#table-ajaxview', '#tablebookviewmodal');
 
   }
 
@@ -1964,7 +1968,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
       $('#table_person').val(order_person_t);
       $('#table_member_multi_person').val(value);
 
-      $('#tablemodal').modal('hide');
+      $('#tablebookviewmodal').modal('hide');
       $('#tableid').val(arr[0]).trigger('change');
   }
   $(document).on('change', '#update_product_name', function() {
@@ -2075,7 +2079,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
       };
       if (option == null) {
 
-          getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
+          getAjaxModal(url, false, '#table-ajaxview', '#tablebookviewmodal');
       } else {
           getAjaxModal(url, callback);
       }
@@ -2150,7 +2154,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
           var service = $('#service-' + id).val();
           var total = $('#total-sub-' + id).val();
           var customerid = $('#customer-' + id).val();
-          $('#tablemodal').modal('hide');
+          $('#tablebookviewmodal').modal('hide');
           $("#modal-ajaxview").empty();
           var data = 'sub_id=' + id + '&vat=' + vat + '&service=' + service + '&total=' + total + '&customerid=' + customerid;
           getAjaxModal(url, false, '#modal-ajaxview-split', '#payprint_split', data, 'post')

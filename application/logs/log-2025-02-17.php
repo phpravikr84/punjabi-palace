@@ -19474,3 +19474,57 @@ ERROR - 2025-02-17 13:44:31 --> Severity: Warning --> Undefined array key "order
 ERROR - 2025-02-17 13:44:31 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
 ERROR - 2025-02-17 13:44:31 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
 ERROR - 2025-02-17 13:44:31 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:48 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-17 13:44:48 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-17 13:44:48 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-17 13:44:48 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:44:49 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-17 13:45:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-17 13:45:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:06 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-17 13:45:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-17 13:45:23 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-17 13:45:23 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-17 13:45:24 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76

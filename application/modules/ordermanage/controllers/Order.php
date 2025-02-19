@@ -5122,6 +5122,13 @@ class Order extends MX_Controller {
 		$data['tablefloor'] = $this->order_model->tablefloor();
 		$this->load->view('tablemodal', $data);  
 	}
+
+	public function showtablemodalnew($tableid = null)
+	{
+		$data['tableinfo'] = $this->order_model->get_table_total_bytableid($tableid);
+		$this->load->view('tablebookviewmodal', $data);
+	}
+
 	public function fllorwisetable(){
 		$floorid=$this->input->post('floorid');
 		$data['tableinfo'] = $this->order_model->get_table_total($floorid);
@@ -5137,20 +5144,20 @@ class Order extends MX_Controller {
 	}
 	public function checkstock(){
 			
-			$orderid=$this->input->post('orderid');
-			$iteminfos       = $this->order_model->customerorder($orderid);
-			$available = 1;
-			foreach ($iteminfos as $iteminfo) {
-				$foodid = $iteminfo->menu_id;
-				$qty = $iteminfo->menuqty;
-				$vid=$iteminfo->varientid;
-				$available = $this->order_model->checkingredientstockOrder($foodid,$vid,$qty);
-				if($available !=1){
-					break;
-				}
+		$orderid=$this->input->post('orderid');
+		$iteminfos       = $this->order_model->customerorder($orderid);
+		$available = 1;
+		foreach ($iteminfos as $iteminfo) {
+			$foodid = $iteminfo->menu_id;
+			$qty = $iteminfo->menuqty;
+			$vid=$iteminfo->varientid;
+			$available = $this->order_model->checkingredientstockOrder($foodid,$vid,$qty);
+			if($available !=1){
+				break;
 			}
-			echo $available;
 		}
+		echo $available;
+	}
 
    public function removeformstock($orderid){
    	$possetting =$this->db->select('*')->from('tbl_posetting')->where('possettingid',1)->get()->row();
@@ -5951,6 +5958,9 @@ class Order extends MX_Controller {
 		//$this->load->view('tablemodal', $data);
 		//$floorid=$this->input->post('floorid');
 		//$data['tableinfo'] = $this->order_model->get_table_total($floorid);
+		$data['possetting']=$this->order_model->read('*', 'tbl_posetting', array('possettingid' => 1));
+		//$data['possetting2']=$this->order_model->read('*', 'tbl_quickordersetting', array('quickordid' => 1));
+		$data['soundsetting']=$this->order_model->read('*', 'tbl_soundsetting', array('soundid' => 1));
 		$data['tableinfo'] =  $this->order_model->get_all_table_total();
 		$data['title']="Counter Dashboard";
 		$data['module'] = "ordermanage";

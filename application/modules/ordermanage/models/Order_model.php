@@ -1940,6 +1940,28 @@ class Order_model extends CI_Model
 		return $table;
 	}
 
+	public function get_table_total_bytableid($tableid)
+	{
+		$where = "table_details.delete_at = 0 AND table_details.created_at= '" . date('Y-m-d') . "'";
+		$this->db->select('rest_table.*,tbl_tablefloor.*');
+		$this->db->from('rest_table');
+		$this->db->join('tbl_tablefloor', 'tbl_tablefloor.tbfloorid=rest_table.floor', 'left');
+		$this->db->where('rest_table.tableid', $tableid);
+		$query = $this->db->get();
+		// $str = $this->db->last_query();
+		// echo $str;
+		// exit;
+		$table = $query->result_array();
+		$i = 0;
+		foreach ($table as $value) {
+			$table[$i]['table_details'] = $this->get_table_order($tableid);
+			$sum = $this->get_table_total_customer($tableid);
+			$table[$i]['sum'] =  $sum->total;
+			$i++;
+		}
+		return $table;
+	}
+
 	public function checkingredientstock($foodid, $vid, $foodqty)
 	{
 		$checksetitem = $this->db->select('ProductsID,isgroup', 'is_bom')->from('item_foods')->where('ProductsID', $foodid)->where('isgroup', 1)->get()->row();
