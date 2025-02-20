@@ -12,28 +12,53 @@
     <div class="row my-3 text-center">
         <div class="col-md-4">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>
-                        <span class="status-badge available">18</span> Available
-                    </h5>
-                </div>
-                <div class="col-md-4">
-                    <h5>
-                        <span class="status-badge occupied">6</span> Occupied
-                    </h5>
-                </div>
-                <div class="col-md-4">
-                    <h5>
-                        <span class="status-badge reserved">4</span> Reserved
-                    </h5>
-                </div>
+            <?php 
+                $countAvailable = 0;
+                $countOccupied = 0;
+                $countReserved = 0;
+
+                $numOfCols = 6; 
+                $rowCount = 0;
+                $tdtlsArrIndex = 0;
+
+                foreach ($tableinfo as $table) {
+                    $availableSeats = $table['person_capicity'] - $table['sum'];
+
+                    // Count logic
+                    if ($availableSeats == $table['person_capicity']) {
+                        $countAvailable++;
+                    } elseif ($availableSeats == 0 || $availableSeats < $table['person_capicity']) {
+                        $countOccupied++;
+                    //} elseif ($availableSeats < $table['person_capicity']) {
+                    } else {
+                        $countReserved;
+                    }
+                }
+            ?>
+
+            <div class="col-md-4">
+                <h5>
+                    <span class="status-badge available"><?php echo $countAvailable; ?></span> Available
+                </h5>
+            </div>
+            <div class="col-md-4">
+                <h5>
+                    <span class="status-badge occupied"><?php echo $countOccupied; ?></span> Occupied
+                </h5>
+            </div>
+            <div class="col-md-4">
+                <h5>
+                    <span class="status-badge reserved"><?php echo $countReserved; ?></span> Reserved
+                </h5>
+            </div>
+
             </div>
         </div>
         <div class="col-md-4">
             <input type="datetime-local" class="calendar-container" value="<?php echo date('Y-m-d H:i:s'); ?>" readonly>
         </div>
         <div class="col-md-4">
-            <button class="btn select-pay w-100">Select & Pay</button>
+            <!-- <button class="btn select-pay w-100">Select & Pay</button> -->
         </div>
     </div>
 

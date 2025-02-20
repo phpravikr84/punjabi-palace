@@ -103,8 +103,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" onclick="multi_table()"class="btn btn-success btn-md"><?php echo display('submit')?></button>
-                <button type="button" class="btn btn-danger btn-md" data-dismiss="modal"><?php echo display('cancel')?></button>
+                <!-- <button type="button" onclick="multi_table()"class="btn btn-success btn-md"><?php echo display('submit')?></button>
+                <button type="button" class="btn btn-danger btn-md" data-dismiss="modal"><?php echo display('cancel')?></button> -->
             </div>
         </div>
 </div>

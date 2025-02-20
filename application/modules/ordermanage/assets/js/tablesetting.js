@@ -1,5 +1,5 @@
   // JavaScript Document
-   var editpos=0;
+  var editpos=0;
   $(document).ready(function() {
       "use strict";
  	
@@ -166,6 +166,11 @@
                         $('#table_member_multi_person').val(0);
                         $('#table_person').val(order_person);
                         $('#tablebookviewmodal').modal('hide');
+                        /**
+                         * In below line ps is the number of person and tid is the table id
+                         * tmmulti is the table_member_multi and table_member_multi_person is the number of person
+                         */
+                        window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice?ps=" + order_person + "&tid=" + id + "&tmmulti=0&tmmultipr=0";
 
                       return false;
 
@@ -176,21 +181,21 @@
           });
       } else {
 
-          setTimeout(function() {
-              $("#table_member").focus();
+        //   setTimeout(function() {
+        //       $("#table_member").focus();
 
-              toastr.options = {
-                  closeButton: true,
-                  progressBar: true,
-                  showMethod: 'slideDown',
-                  timeOut: 4000,
+        //       toastr.options = {
+        //           closeButton: true,
+        //           progressBar: true,
+        //           showMethod: 'slideDown',
+        //           timeOut: 4000,
 
-              };
-              toastr.error('Please type Number of person', 'Error');
+        //       };
+        //       toastr.error('Please type Number of person', 'Error');
 
 
 
-          }, 300);
+        //   }, 300);
 
 
       }
@@ -473,19 +478,3 @@
       });
 
   }
-
- 
-
-
-
-
-
-
-
-  
-
-  
-  
-  
- 
- 
