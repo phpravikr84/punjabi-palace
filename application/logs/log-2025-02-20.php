@@ -238,3 +238,58 @@ ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
 ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
 ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
 ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 16:03:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:03:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 07:03:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:03:29 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:03:49 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:03:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:03:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:03:58 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:04:52 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:04:52 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 07:05:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:05:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:05:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:05:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:06:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:06:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:06:36 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:07:12 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:07:53 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:08:42 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:11:04 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:12:05 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:16:34 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 2551
+ERROR - 2025-02-20 16:16:36 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 2551
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 16:29:36 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 3462
+ERROR - 2025-02-20 16:29:39 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 3462
+ERROR - 2025-02-20 16:31:31 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 3937
+ERROR - 2025-02-20 16:32:26 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Worksheet\AutoFilter.php 720
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
