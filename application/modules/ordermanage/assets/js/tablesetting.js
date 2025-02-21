@@ -419,6 +419,43 @@
       }
   }
 
+  $('.reserve-details').hide();
+   // Function to update the table status
+   function updateReservations() {
+        $.ajax({
+            url: basicinfo.baseurl + '/ordermanage/order/get_reservation', // Replace with your controller route
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                console.log(response); // Correct console log
+
+                // Reset all tables to available first
+                $('.table-status').removeClass('status-reserved').addClass('status-available');
+                
+
+                // Loop through reservations
+                if (response && response.length > 0) {
+                    response.forEach(function (reservation) {
+                        var tableId = reservation.tableid;
+                        var tableSelector = $('#table_status_' + tableId);
+
+                        if (tableSelector.length) {
+                            tableSelector.removeClass('status-available').addClass('status-reserved');
+                            $('#reserve_details_'+tableId).show();
+                        }
+                    });
+                }
+            },
+            error: function () {
+                console.log('Error fetching reservations');
+            }
+        });
+    }
+
+    // Call every 1 second
+    setInterval(updateReservations, 1000);
+
+    
   function submitmultiplepaysub(subid) {
       var thisForm = $('#paymodal-multiple-form');
       var inputval = parseFloat(0);

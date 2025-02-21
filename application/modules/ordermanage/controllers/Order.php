@@ -5962,10 +5962,28 @@ class Order extends MX_Controller {
 		//$data['possetting2']=$this->order_model->read('*', 'tbl_quickordersetting', array('quickordid' => 1));
 		$data['soundsetting']=$this->order_model->read('*', 'tbl_soundsetting', array('soundid' => 1));
 		$data['tableinfo'] =  $this->order_model->get_all_table_total();
+		//Get Reservation details
+		$data['reservations'] = $this->order_model->get_reservation();
 		$data['title']="Counter Dashboard";
 		$data['module'] = "ordermanage";
 		$data['page']   = "alltables";   
 		echo Modules::run('template/layout', $data); 
 	}
+
+	// Get Reservation Details
+	public function get_reservation() {
+		$data['reservations'] = $this->order_model->get_reservation();
+		header('Content-Type: application/json');
+		echo json_encode($data['reservations']);
+		exit();
+	}
+
+	public function showreservationmodalnew($tableid = null)
+	{
+		$data['reservations'] = $this->order_model->get_reservationbytable($table);
+		$this->load->view('tablereservationviewmodal', $data);
+	}
+
+	
 
 }

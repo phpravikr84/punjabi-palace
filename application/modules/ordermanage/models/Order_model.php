@@ -2404,4 +2404,52 @@ class Order_model extends CI_Model
 			}
 		}
 	}
+	/**
+	 * Get Reservation Detail 
+	 */
+	public function get_reservation()
+	{
+	    $this->db->where('reserveday', date('Y-m-d'));
+		$this->db->select('tblreservation.*,customer_info.*,rest_table.tablename,rest_table.person_capicity as tablecapacity');
+        $this->db->from('tblreservation');
+		$this->db->join('customer_info','customer_info.customer_id = tblreservation.cid','left');
+		$this->db->join('rest_table','rest_table.tableid = tblreservation.tableid','left');
+        $this->db->order_by('reserveid', 'desc');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();    
+        }
+        return false;
+	}
+
+	public function get_reservationbytable($tableid)
+	{
+	    $this->db->where('reserveday', date('Y-m-d'));
+		$this->db->where('tblreservation.tableid', $tableid);
+		$this->db->select('tblreservation.*,customer_info.*,rest_table.tablename,rest_table.person_capicity as tablecapacity');
+        $this->db->from('tblreservation');
+		$this->db->join('customer_info','customer_info.customer_id = tblreservation.cid','left');
+		$this->db->join('rest_table','rest_table.tableid = tblreservation.tableid','left');
+        $this->db->order_by('reserveid', 'desc');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();    
+        }
+        return false;
+	} 
+
+	public function findByReservationId($id = null)
+	{ 
+		return $this->db->select("*")->from($this->table)
+			->where('reserveid',$id) 
+			->get()
+			->row();
+	}
+	public function findByCusId($id = null)
+	{ 
+		return $this->db->select("*")->from('customer_info')
+			->where('customer_id',$id) 
+			->get()
+			->row();
+	}
 }

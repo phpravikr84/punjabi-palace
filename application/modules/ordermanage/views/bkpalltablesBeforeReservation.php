@@ -34,6 +34,10 @@
                         $countReserved;
                     }
                 }
+                // echo '<pre>';
+                // print_r($reservations);
+                // echo count($reservations);
+                // $countReserved == 0 ?? count($reservations);
                 $countReserved = count($reservations);
             ?>
 
@@ -118,7 +122,7 @@
                                         $statusClass = "status-half"; // Half Available (Blue & Red)
                                     }
                                 ?>
-                                <div id="<?php echo 'table_status_'.$table['tablename']; ?>" class="table-status <?php echo $statusClass; ?>">
+                                <div class="table-status <?php echo $statusClass; ?>">
                                     <?php echo 'T '.$table['tablename']; ?>
                                 </div>
 
@@ -141,17 +145,7 @@
                                                     }
                                             } ?>
                                         </div>
-
                                         <div class="col-md-6">
-                                        
-                                            <div  class="reserve-details" id="<?php echo 'reserve_details_'.$table['tablename']; ?>">
-                                                <a href="javascript:void(0);" onclick="showstabledetails(<?php echo $table_details->table_id; ?>)">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-                                                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
-                                                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-                                                    </svg>
-                                                </a>
-                                            </div>
                                             <div class="seat-time">
                                                 <?php if(!empty($table['table_details'])){
                                                                 foreach ($table['table_details'] as $table_details) {
@@ -217,20 +211,11 @@
   <div class="modal-dialog modal-inner" id="tablebookview"> </div>
 </div>
 
-<div id="tablereservationviewmodal" class="modal fade  bd-example-modal-lg" role="dialog">
-  <div class="modal-dialog modal-inner" id="tablereservationview"> </div>
-</div>
-
 <script>
      function showstabledetails(tableId) {
-        var url = basicinfo.baseurl + 'ordermanage/order/showtablemodalnew/' + tableId;
-        getAjaxModalNew(url, false, '#tablebookview', '#tablebookviewmodal', '', 'GET');
-    }
-
-    function showsreservationdetails(tableId) {
-        var url = basicinfo.baseurl + 'ordermanage/order/showreservatioinmodalnew/' + tableId;
-        getReservationAjaxModal(url, false, '#tablereservationview', '#tablereservationviewmodal', '', 'GET');
-    }
+    var url = basicinfo.baseurl + 'ordermanage/order/showtablemodalnew/' + tableId;
+    getAjaxModalNew(url, false, '#tablebookview', '#tablebookviewmodal', '', 'GET');
+}
 
 </script>
 
@@ -393,7 +378,6 @@
 
 .status-available { background-color: #CEE3FF; }
 .status-occupied { background-color: #FFB1A8; }
-.status-reserved { background-color: #F8EB7B; }
 .status-half { background: linear-gradient(to right, #CEE3FF 50%, #FFB1A8 50%); }
 
 /* Table Name */
@@ -401,5 +385,4 @@
     font-weight: bold;
     font-size: 12px;
 }
-.reserve-details{ position: relative;}
 </style>
