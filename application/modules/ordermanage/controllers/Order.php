@@ -5978,11 +5978,34 @@ class Order extends MX_Controller {
 		exit();
 	}
 
-	public function showreservationmodalnew($tableid = null)
+	public function showreservationmodalnew($table = null)
 	{
 		$data['reservations'] = $this->order_model->get_reservationbytable($table);
 		$this->load->view('tablereservationviewmodal', $data);
 	}
+
+	// API 1: Check and update reservation if order exists
+    public function check_order() {
+        $result = $this->Order_model->check_order_exists();
+        if ($result) {
+            $response = ['status' => true, 'message' => $result];
+        } else {
+            $response = ['status' => false, 'message' => 'No order found within reservation time range'];
+        }
+        echo json_encode($response);
+    }
+
+    // API 2: Check and update expired reservations
+    public function check_expired_reservations() {
+        $result = $this->Order_model->update_expired_reservations();
+        if ($result) {
+            $response = ['status' => true, 'message' => $result];
+        } else {
+            $response = ['status' => false, 'message' => 'No expired reservations found'];
+        }
+        echo json_encode($response);
+    }
+
 
 	
 

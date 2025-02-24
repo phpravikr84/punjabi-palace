@@ -4,6 +4,8 @@
 <!-- Modal -->
 <div id="tablebookviewmodal" class="modal-dialog modal-inner" role="document">
         <div class="modal-content">
+
+            <!-- Modal Header -->
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -11,65 +13,65 @@
                 <h4 class="modal-title">Reservation Information</h4>
             </div>
 
+            <!-- Modal Body -->
             <div class="modal-body">
                 <div class="tab-content">
                     <div class="row reservation-tab">
-                        <?php 
-                        $numOfCols = 3;
-                        $rowCount = 0;
+                        <div class="col-md-12">
+                            <div class="info_part">
+                                <table class="table table-bordered table-modal table-info text-center">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th><?php //echo display('Sl'); ?></th> -->
+                                            <th><?php echo 'Name'; //display('customer_name'); ?></th>
+                                            <th><?php echo display('tabltno'); ?></th>
+                                            <th><?php echo 'Person';//display('no_of_people'); ?></th>
+                                            <th><?php echo display('s_time'); ?></th>
+                                            <!-- <th><?php //echo display('e_time'); ?></th> -->
+                                            <th><?php echo display('date'); ?></th>
+                                            <th><?php echo display('status'); ?></th>
+                                            <th><?php echo 'Action'; ?></th>
+                                        </tr>
+                                    </thead>
 
-                        foreach($tableinfo as $table) { ?>
-                            <div class="col-md-12">
-                                <div class="info_part <?php if($table['sum'] >= $table['person_capicity']){ echo 'booked';}?>">
-                                    <table class="table table-bordered table-modal table-info text-center">
-                                        <?php $table_count = count($table['table_details']); ?>
-                                        <thead <?= ($table_count > 3) ? 'class="ws"' : '' ?>>
-                                            <tr>
-                                                <th><?= display('ord') ?></th>
-                                                <th><?= display('seat_time') ?></th>
-                                                <th><?= display('person') ?></th>
-                                                <th><?= display('action') ?></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="table-tbody-<?= $table['tableid'] ?>">
-                                            <?php if (!empty($table['table_details'])) {
-                                                foreach ($table['table_details'] as $table_details) { ?>
-                                                    <tr id="table-tr-<?= $table_details->id ?>">
-                                                        <td><?= $table_details->order_id ?></td>
-                                                        <td><?= $table_details->time_enter ?></td>
-                                                        <td><?= $table_details->total_people ?></td>
-                                                        <td>
-                                                            <button class="btn btn-del" onClick="deleterow_table(<?= $table_details->id ?>)">
-                                                                <i class="ti-trash"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                <?php } 
-                                            } else { ?>
-                                                <tr>
-                                                    <td colspan="4">
-                                                        <h6><?= display('no_customer') ?></h6>
+                                    <tbody>
+                                        <?php if (!empty($reservations)) : ?>
+                                            <?php $sl = isset($pagenum) ? $pagenum + 1 : 1; ?>
+                                            <?php foreach ($reservations as $reservation) : ?>
+                                                <!-- <tr class="<?php //echo ($sl % 2 == 0) ? 'even gradeC' : 'odd gradeX'; ?>"> -->
+                                                    <!-- <td><?php //echo $sl; ?></td> -->
+                                                    <td><?php echo $reservation->customer_name; ?></td>
+                                                    <td><?php echo $reservation->tablename; ?></td>
+                                                    <td><?php echo $reservation->person_capicity; ?></td>
+                                                    <td><?php echo $reservation->formtime; ?></td>
+                                                    <!-- <td><?php //echo $reservation->totime; ?></td> -->
+                                                    <td><?php echo $reservation->reserveday; ?></td>
+                                                    <td><?php echo ($reservation->status == 1) ? 'Free' : (($reservation->status == 2) ? 'Booked' : 'Unknown'); ?></td>
+                                                    <td> <a href="<?php echo site_url('ordermanage/order/pos_invoice?ps=' . $reservation->person_capicity . '&tid=' . $reservation->tablename . '&cid=' . $reservation->cid . '&tmmulti=0&tmmultipr=0'); ?>" 
+                                                            class="btn btn-success btn-md">
+                                                            Order
+                                                            </a>
                                                     </td>
                                                 </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                <?php $sl++; ?>
+                                            <?php endforeach; ?>
+                                        <?php else : ?>
+                                            <tr>
+                                                <td colspan="8">No reservations found.</td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </tbody>
+                                </table>
                             </div>
-
-                            <?php 
-                            $rowCount++;
-                            if ($rowCount % $numOfCols == 0) {
-                                echo '</div><div class="row kitchen-tab">';
-                            }
-                        } ?>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Modal Footer -->
             <div class="modal-footer">
-                <!-- <button type="button" onclick="multi_table()"class="btn btn-success btn-md"><?php echo display('submit')?></button>
-                <button type="button" class="btn btn-danger btn-md" data-dismiss="modal"><?php echo display('cancel')?></button> -->
+                <button type="button" class="btn btn-danger btn-md" data-dismiss="modal">Close</button>
             </div>
+
         </div>
 </div>

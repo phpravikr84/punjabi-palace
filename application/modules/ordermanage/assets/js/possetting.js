@@ -1888,16 +1888,17 @@ $(document).on("keypress", '#itemqty_1', function(e){
       }
   }
 
-      function showTablemodal() {
-          var url = "showtablemodal";
-          getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
+    //   function showTablemodal() {
+    //       var url = "showtablemodal";
+    //       getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
 
-      }
+    //   }
 
-    // function showTablemodal() {
-    //     window.location.href = basicinfo.baseurl + "ordermanage/order/alltables";
-    // }
-  
+    function showTablemodal() {
+        window.location.href = basicinfo.baseurl + "ordermanage/order/alltables";
+    }
+
+ 
 
   function showfloor(floorid) {
       var csrf = $('#csrfhashresarvation').val();

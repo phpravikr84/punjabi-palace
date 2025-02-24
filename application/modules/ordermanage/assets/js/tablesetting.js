@@ -440,8 +440,12 @@
                         var tableSelector = $('#table_status_' + tableId);
 
                         if (tableSelector.length) {
-                            tableSelector.removeClass('status-available').addClass('status-reserved');
-                            $('#reserve_details_'+tableId).show();
+                            if (tableSelector.hasClass('status-occupied')) {
+                                tableSelector.removeClass('status-reserved').addClass('status-occupied');
+                            } else {
+                                tableSelector.removeClass('status-available').addClass('status-reserved');
+                            }
+                            $('#reserve_details_' + tableId).show();
                         }
                     });
                 }
@@ -515,3 +519,72 @@
       });
 
   }
+
+
+  // Function 1: Get orders within reservation time range
+function fetchOrdersWithinReservation() {
+    $.ajax({
+        url: basicinfo.baseurl + '/ordermanage/order/check_order',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            console.log('Orders within reservation:', response);
+
+            // Reset all tables to available first
+            $('.table-status').removeClass('status-reserved status-occupied').addClass('status-available');
+
+            if (response.status && response.message) {
+                response.message.forEach(function (reservation) {
+                    var tableId = reservation.tableid;
+                    var tableSelector = $('#table_status_' + tableId);
+
+                    if (tableSelector.length) {
+                        if (tableSelector.hasClass('status-occupied')) {
+                            tableSelector.removeClass('status-reserved').addClass('status-occupied');
+                        } else {
+                            tableSelector.removeClass('status-available').addClass('status-reserved');
+                        }
+                        $('#reserve_details_' + tableId).show();
+                    }
+                });
+            }
+        },
+        error: function () {
+            console.log('Error fetching orders within reservation time range');
+        }
+    });
+}
+
+// Function 2: Get expired reservations
+function fetchExpiredReservations() {
+    $.ajax({
+        url: basicinfo.baseurl + '/ordermanage/order/check_expired_reservations',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            console.log('Expired reservations:', response);
+
+            if (response.status && response.message) {
+                response.message.forEach(function (reservation) {
+                    var tableId = reservation.tableid;
+                    var tableSelector = $('#table_status_' + tableId);
+
+                    if (tableSelector.length) {
+                        tableSelector.removeClass('status-reserved status-occupied').addClass('status-expired');
+                        $('#reserve_details_' + tableId).hide();
+                    }
+                });
+            }
+        },
+        error: function () {
+            console.log('Error fetching expired reservations');
+        }
+    });
+}
+
+// Main function to call both APIs
+function refreshTableReservations() {
+    fetchOrdersWithinReservation();
+    fetchExpiredReservations();
+}
+

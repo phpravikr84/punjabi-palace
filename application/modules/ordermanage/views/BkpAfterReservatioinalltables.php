@@ -34,12 +34,7 @@
                         $countReserved;
                     }
                 }
-                //$countReserved = count($reservations);
-                if(isset($reservations) && !empty($reservations)){
-                    $countReserved = count($reservations);
-                } else {
-                    $countReserved = 0;
-                }
+                $countReserved = count($reservations);
             ?>
 
             <div class="col-md-4">
@@ -150,7 +145,7 @@
                                         <div class="col-md-6">
                                         
                                             <div  class="reserve-details" id="<?php echo 'reserve_details_'.$table['tablename']; ?>">
-                                                <a href="javascript:void(0);" onclick="showsreservationdetails(<?php echo $table['tablename']; ?>)">
+                                                <a href="javascript:void(0);" onclick="showstabledetails(<?php echo $table_details->table_id; ?>)">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
                                                         <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
                                                         <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
@@ -233,7 +228,7 @@
     }
 
     function showsreservationdetails(tableId) {
-        var url = basicinfo.baseurl + 'ordermanage/order/showreservationmodalnew/' + tableId;
+        var url = basicinfo.baseurl + 'ordermanage/order/showreservatioinmodalnew/' + tableId;
         getReservationAjaxModal(url, false, '#tablereservationview', '#tablereservationviewmodal', '', 'GET');
     }
 
@@ -406,17 +401,5 @@
     font-weight: bold;
     font-size: 12px;
 }
-.reserve-details{ 
-    position: relative;
-    background-color: #F8EB7B;
-    color: black;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-    border-radius: 50%;
-    font-weight: bold;
-    margin-right: 8px;
-}
+.reserve-details{ position: relative;}
 </style>
