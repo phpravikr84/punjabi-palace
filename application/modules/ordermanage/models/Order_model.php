@@ -2417,6 +2417,8 @@ class Order_model extends CI_Model
 		$this->db->join('rest_table','rest_table.tableid = tblreservation.tableid','left');
         $this->db->order_by('reserveid', 'desc');
         $query = $this->db->get();
+		// echo $this->db->last_query();
+		// exit;
         if ($query->num_rows() > 0) {
             return $query->result();    
         }
@@ -2460,13 +2462,28 @@ class Order_model extends CI_Model
         $this->db->from('tblreservation r');
         $this->db->join('customer_order o', 'r.tableid = o.table_no AND r.reserveday = o.order_date');
         $this->db->where('o.order_time >= r.formtime');
-        $this->db->where('o.order_time <= r.totime');
+        //$this->db->where('o.order_time <= r.totime');
+		$this->db->where('r.reserveday', date('Y-m-d'));
+		$this->db->where('r.status!=', 3);
         $query = $this->db->get();
+
+		// Print the SQL query
+		// echo $this->db->last_query();
+		// exit;
 
         if ($query->num_rows() > 0) {
             // Order found, update status to 3 (complete)
-            $reserveIds = array_column($query->result_array(), 'reserveid');
-            $this->db->where_in('reserveid', $reserveIds);
+            //$reserveIds = array_column($query->result_array(), 'reserveid');
+            //$this->db->where_in('reserveid', $reserveIds);
+			$reserveIds = array_column($query->result_array(), 'reserveid');
+	
+			if (count($reserveIds) === 1) {
+				// Single value: Use where()
+				$this->db->where('reserveid', $reserveIds[0]);
+			} else {
+				// Multiple values: Use where_in()
+				$this->db->where_in('reserveid', $reserveIds);
+			}
             $this->db->update('tblreservation', ['status' => 3]);
             return 'Order exists - Reservation status updated to complete (3)';
         }
@@ -2475,22 +2492,37 @@ class Order_model extends CI_Model
 
     // 2. Check expired reservations based on current time
     public function update_expired_reservations() {
-        $currentTime = date('H:i:s');
-        $currentDate = date('Y-m-d');
+		$currentTime = date('H:i:s', strtotime('+10 minutes')); // Current time + 10 minutes
+		$currentDate = date('Y-m-d');
+	
+		$this->db->select('reserveid');
+		$this->db->from('tblreservation');
+		$this->db->where('reserveday', $currentDate);
+		$this->db->where('formtime <', $currentTime);
+		$this->db->where('status !=', 3); // Exclude completed reservations
+		$query = $this->db->get();
 
-        $this->db->select('reserveid');
-        $this->db->from('tblreservation');
-        $this->db->where('reserveday', $currentDate);
-        $this->db->where('totime <', $currentTime);
-        $this->db->where('status !=', 3); // Exclude completed reservations
-        $query = $this->db->get();
+		// Print the SQL query
+		// echo $this->db->last_query();
+		// exit;
+	
+		if ($query->num_rows() > 0) {
+			$reserveIds = array_column($query->result_array(), 'reserveid');
+	
+			if (count($reserveIds) === 1) {
+				// Single value: Use where()
+				$this->db->where('reserveid', $reserveIds[0]);
+			} else {
+				// Multiple values: Use where_in()
+				$this->db->where_in('reserveid', $reserveIds);
+			}
+	
+			$this->db->update('tblreservation', ['status' => 4]);
+			return 'Expired reservations updated to status 4';
+		}
+	
+		return false;
+	}
+	
 
-        if ($query->num_rows() > 0) {
-            $reserveIds = array_column($query->result_array(), 'reserveid');
-            $this->db->where_in('reserveid', $reserveIds);
-            $this->db->update('tblreservation', ['status' => 4]);
-            return 'Expired reservations updated to status 4';
-        }
-        return false;
-    }
 }

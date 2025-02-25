@@ -1878,7 +1878,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
               };
               
-              toastr.error('Please type Number of person22', 'Error');
+              toastr.error('Please type Number of person', 'Error');
 
 
 
@@ -2440,9 +2440,11 @@ $(document).on("keypress", '#itemqty_1', function(e){
     const tmmulti = getQueryParam('tmmulti');
     const tmmultipr = getQueryParam('tmmultipr');
     const ps = getQueryParam('ps');
+    const custid =  getQueryParam('cid');
 
 
-    $('#table_member').val(parseInt(ps));
+
+
     // Set values if available
     if (tid !== null) $('#tableid').val(tid).trigger('change');
     if (tmmulti !== null) $('#table_member_multi').val(tmmulti);
@@ -2450,6 +2452,10 @@ $(document).on("keypress", '#itemqty_1', function(e){
     if (ps !== null || ps !== 'undefined' || ps !== '') {
         $('#table_person').attr('value', ps); // Set button value
         $('#table_person').val(ps);
+        $('#table_member').val(parseInt(ps));
+    }
+    if(custid !== null || custid !== 'undefined' || custid != ''){
+        $("#customer_name").select2().val(custid).trigger('change');
     }
 });
 

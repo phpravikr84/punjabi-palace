@@ -457,7 +457,7 @@
     }
 
     // Call every 1 second
-    setInterval(updateReservations, 1000);
+    setInterval(updateReservations, 5000);
 
     
   function submitmultiplepaysub(subid) {
@@ -520,71 +520,49 @@
 
   }
 
-
-  // Function 1: Get orders within reservation time range
-function fetchOrdersWithinReservation() {
+// Combined function to get orders or expired reservations
+function fetchOrdersOrExpiredReservations() {
     $.ajax({
-        url: basicinfo.baseurl + '/ordermanage/order/check_order',
+        url: basicinfo.baseurl + '/ordermanage/order/check_order_or_expire', // Combined API
         type: 'GET',
         dataType: 'json',
         success: function (response) {
-            console.log('Orders within reservation:', response);
+            console.log('Response:', response);
 
             // Reset all tables to available first
-            $('.table-status').removeClass('status-reserved status-occupied').addClass('status-available');
+            $('.table-status').removeClass('status-reserved status-occupied status-expired').addClass('status-available');
 
-            if (response.status && response.message) {
+            // Check if response.message is an array
+            if (response.status && Array.isArray(response.message) && response.message.length > 0) {
                 response.message.forEach(function (reservation) {
                     var tableId = reservation.tableid;
                     var tableSelector = $('#table_status_' + tableId);
 
                     if (tableSelector.length) {
-                        if (tableSelector.hasClass('status-occupied')) {
-                            tableSelector.removeClass('status-reserved').addClass('status-occupied');
-                        } else {
-                            tableSelector.removeClass('status-available').addClass('status-reserved');
+                        if (response.messageType === 'order') {
+                            // For orders within reservation time range
+                            if (tableSelector.hasClass('status-occupied')) {
+                                tableSelector.removeClass('status-reserved').addClass('status-occupied');
+                            } else {
+                                tableSelector.removeClass('status-available').addClass('status-reserved');
+                            }
+                            $('#reserve_details_' + tableId).show();
+                        } else if (response.messageType === 'expired') {
+                            // For expired reservations
+                            tableSelector.removeClass('status-reserved status-occupied').addClass('status-expired');
+                            $('#reserve_details_' + tableId).hide();
                         }
-                        $('#reserve_details_' + tableId).show();
                     }
                 });
+            } else {
+                console.log('No reservations found or invalid data structure');
             }
         },
         error: function () {
-            console.log('Error fetching orders within reservation time range');
+            console.log('Error fetching orders or expired reservations');
         }
     });
 }
 
-// Function 2: Get expired reservations
-function fetchExpiredReservations() {
-    $.ajax({
-        url: basicinfo.baseurl + '/ordermanage/order/check_expired_reservations',
-        type: 'GET',
-        dataType: 'json',
-        success: function (response) {
-            console.log('Expired reservations:', response);
-
-            if (response.status && response.message) {
-                response.message.forEach(function (reservation) {
-                    var tableId = reservation.tableid;
-                    var tableSelector = $('#table_status_' + tableId);
-
-                    if (tableSelector.length) {
-                        tableSelector.removeClass('status-reserved status-occupied').addClass('status-expired');
-                        $('#reserve_details_' + tableId).hide();
-                    }
-                });
-            }
-        },
-        error: function () {
-            console.log('Error fetching expired reservations');
-        }
-    });
-}
-
-// Main function to call both APIs
-function refreshTableReservations() {
-    fetchOrdersWithinReservation();
-    fetchExpiredReservations();
-}
-
+// Main function to refresh every 5 seconds
+setInterval(fetchOrdersOrExpiredReservations, 5000);

@@ -68,6 +68,7 @@ function current_version(){
                 if($this->permission->method('itemmanage','create')->access()){ 
                 if(($title=='Home') || ($title2=='dashboard')){
                 ?>
+                <a href="<?php echo base_url("ordermanage/order/alltables") ?>" class="btn custom_btn_in_header text-primary"><i class="fa fa-plus text-primary"></i> <?php echo 'Book Tables'; ?></a>
                 <a href="<?php echo base_url("ordermanage/order/pos_invoice") ?>" class="btn custom_btn_in_header text-green"><i class="fa fa-plus text-green"></i> <?php echo display('pos_invoice') ?></a>
                 <a href="<?php echo base_url("ordermanage/order/orderlist") ?>" class="btn custom_btn_in_header text-orange"><i class="fa fa-list text-orange"></i> <?php echo display('order_list') ?></a>
                 <a href="<?php echo base_url("ordermanage/order/allkitchen") ?>" class="btn custom_btn_in_header text-violet"><i class="fa fa-user-o text-violet" aria-hidden="true"></i> <?php echo display('kitchen_dashboard') ?></a>

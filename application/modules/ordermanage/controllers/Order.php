@@ -5985,26 +5985,29 @@ class Order extends MX_Controller {
 	}
 
 	// API 1: Check and update reservation if order exists
-    public function check_order() {
-        $result = $this->Order_model->check_order_exists();
-        if ($result) {
-            $response = ['status' => true, 'message' => $result];
-        } else {
-            $response = ['status' => false, 'message' => 'No order found within reservation time range'];
-        }
-        echo json_encode($response);
-    }
-
-    // API 2: Check and update expired reservations
-    public function check_expired_reservations() {
-        $result = $this->Order_model->update_expired_reservations();
-        if ($result) {
-            $response = ['status' => true, 'message' => $result];
-        } else {
-            $response = ['status' => false, 'message' => 'No expired reservations found'];
-        }
-        echo json_encode($response);
-    }
+	public function check_order_or_expire() {
+		// Check if order exists
+		$orderResult = $this->order_model->check_order_exists();
+	
+		if ($orderResult) {
+			// If order exists
+			$response = ['status' => true, 'message' => $orderResult];
+		} else {
+			// If no order found, check for expired reservations
+			$expireResult = $this->order_model->update_expired_reservations();
+			//  echo '<pre>';
+			//  print_r($expireResult);
+			//  exit();
+			if ($expireResult) {
+				$response = ['status' => true, 'message' => $expireResult];
+			} else {
+				$response = ['status' => false, 'message' => 'No order or expired reservations or any reservation found'];
+			}
+		}
+	
+		echo json_encode($response);
+	}
+	
 
 
 	

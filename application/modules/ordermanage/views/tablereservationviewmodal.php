@@ -46,11 +46,35 @@
                                                     <td><?php echo $reservation->formtime; ?></td>
                                                     <!-- <td><?php //echo $reservation->totime; ?></td> -->
                                                     <td><?php echo $reservation->reserveday; ?></td>
-                                                    <td><?php echo ($reservation->status == 1) ? 'Free' : (($reservation->status == 2) ? 'Booked' : 'Unknown'); ?></td>
-                                                    <td> <a href="<?php echo site_url('ordermanage/order/pos_invoice?ps=' . $reservation->person_capicity . '&tid=' . $reservation->tablename . '&cid=' . $reservation->cid . '&tmmulti=0&tmmultipr=0'); ?>" 
+                                                    <!-- <td><?php //echo ($reservation->status == 1) ? 'Free' : (($reservation->status == 2) ? 'Booked' : 'Unknown'); ?></td> -->
+                                                    <td>
+                                                        <?php if($reservation->status == 1) { ?>
+                                                           Free
+                                                            <?php } elseif($reservation->status == 2) { ?>
+                                                          Booked
+                                                        <?php } elseif($reservation->status == 3) { ?>
+                                                            Complete
+                                                        <?php }else { ?>
+                                                                <span>Expire</span>
+                                                       <?php  }
+                                                        ?>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        <?php if($reservation->status == 2) { ?>
+                                                            <a href="<?php echo site_url('ordermanage/order/pos_invoice?ps=' . $reservation->person_capicity . '&tid=' . $reservation->tablename . '&cid=' . $reservation->cid . '&tmmulti=0&tmmultipr=0'); ?>" 
                                                             class="btn btn-success btn-md">
                                                             Order
                                                             </a>
+                                                        <?php } elseif($reservation->status == 3) { ?>
+                                                            <span class="badge badge-success text-light">Complete</span>
+                                                        <?php } elseif($reservation->status == 4) { ?>
+                                                            <span class="badge badge-danger text-light">Expire</span>
+                                                        <?php }else { ?>
+                                                                <span>--</span>
+                                                       <?php  }
+                                                        ?>
+                                                        
                                                     </td>
                                                 </tr>
                                                 <?php $sl++; ?>
