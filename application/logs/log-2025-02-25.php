@@ -1372,3 +1372,5 @@ ERROR - 2025-02-25 21:34:43 --> Severity: Warning --> file_get_contents(): php_n
 ERROR - 2025-02-25 21:34:43 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
 ERROR - 2025-02-25 21:34:43 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
 ERROR - 2025-02-25 21:34:43 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-02-25 13:19:05 --> 404 Page Not Found: ../modules/itemmanage/controllers//index
+ERROR - 2025-02-25 22:21:09 --> 404 Page Not Found: ../modules/itemmanage/controllers/Modifiers_groups/index
