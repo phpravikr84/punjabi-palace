@@ -5122,6 +5122,13 @@ class Order extends MX_Controller {
 		$data['tablefloor'] = $this->order_model->tablefloor();
 		$this->load->view('tablemodal', $data);  
 	}
+
+	public function showtablemodalnew($tableid = null)
+	{
+		$data['tableinfo'] = $this->order_model->get_table_total_bytableid($tableid);
+		$this->load->view('tablebookviewmodal', $data);
+	}
+
 	public function fllorwisetable(){
 		$floorid=$this->input->post('floorid');
 		$data['tableinfo'] = $this->order_model->get_table_total($floorid);
@@ -5137,20 +5144,20 @@ class Order extends MX_Controller {
 	}
 	public function checkstock(){
 			
-			$orderid=$this->input->post('orderid');
-			$iteminfos       = $this->order_model->customerorder($orderid);
-			$available = 1;
-			foreach ($iteminfos as $iteminfo) {
-				$foodid = $iteminfo->menu_id;
-				$qty = $iteminfo->menuqty;
-				$vid=$iteminfo->varientid;
-				$available = $this->order_model->checkingredientstockOrder($foodid,$vid,$qty);
-				if($available !=1){
-					break;
-				}
+		$orderid=$this->input->post('orderid');
+		$iteminfos       = $this->order_model->customerorder($orderid);
+		$available = 1;
+		foreach ($iteminfos as $iteminfo) {
+			$foodid = $iteminfo->menu_id;
+			$qty = $iteminfo->menuqty;
+			$vid=$iteminfo->varientid;
+			$available = $this->order_model->checkingredientstockOrder($foodid,$vid,$qty);
+			if($available !=1){
+				break;
 			}
-			echo $available;
 		}
+		echo $available;
+	}
 
    public function removeformstock($orderid){
    	$possetting =$this->db->select('*')->from('tbl_posetting')->where('possettingid',1)->get()->row();
@@ -5938,4 +5945,71 @@ class Order extends MX_Controller {
 		$data['customerorder']=$this->order_model->read('*', 'customer_order', array('order_id' => $id));
 		echo('window.orderinfo = ' . json_encode($data['customerorder']) . ';');
 		}
+
+	/**
+	 *  All Tables
+	 */
+	public function alltables(){
+		$this->permission->method('ordermanage','read')->redirect();
+		if($this->permission->method('ordermanage','read')->access()==FALSE){
+			redirect('dashboard/auth/logout');
+		}
+		$data['tablefloor'] = $this->order_model->tablefloor();
+		//$this->load->view('tablemodal', $data);
+		//$floorid=$this->input->post('floorid');
+		//$data['tableinfo'] = $this->order_model->get_table_total($floorid);
+		$data['possetting']=$this->order_model->read('*', 'tbl_posetting', array('possettingid' => 1));
+		//$data['possetting2']=$this->order_model->read('*', 'tbl_quickordersetting', array('quickordid' => 1));
+		$data['soundsetting']=$this->order_model->read('*', 'tbl_soundsetting', array('soundid' => 1));
+		$data['tableinfo'] =  $this->order_model->get_all_table_total();
+		//Get Reservation details
+		$data['reservations'] = $this->order_model->get_reservation();
+		$data['title']="Counter Dashboard";
+		$data['module'] = "ordermanage";
+		$data['page']   = "alltables";   
+		echo Modules::run('template/layout', $data); 
+	}
+
+	// Get Reservation Details
+	public function get_reservation() {
+		$data['reservations'] = $this->order_model->get_reservation();
+		header('Content-Type: application/json');
+		echo json_encode($data['reservations']);
+		exit();
+	}
+
+	public function showreservationmodalnew($table = null)
+	{
+		$data['reservations'] = $this->order_model->get_reservationbytable($table);
+		$this->load->view('tablereservationviewmodal', $data);
+	}
+
+	// API 1: Check and update reservation if order exists
+	public function check_order_or_expire() {
+		// Check if order exists
+		$orderResult = $this->order_model->check_order_exists();
+	
+		if ($orderResult) {
+			// If order exists
+			$response = ['status' => true, 'message' => $orderResult];
+		} else {
+			// If no order found, check for expired reservations
+			$expireResult = $this->order_model->update_expired_reservations();
+			//  echo '<pre>';
+			//  print_r($expireResult);
+			//  exit();
+			if ($expireResult) {
+				$response = ['status' => true, 'message' => $expireResult];
+			} else {
+				$response = ['status' => false, 'message' => 'No order or expired reservations or any reservation found'];
+			}
+		}
+	
+		echo json_encode($response);
+	}
+	
+
+
+	
+
 }

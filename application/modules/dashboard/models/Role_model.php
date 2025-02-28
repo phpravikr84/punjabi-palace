@@ -110,6 +110,15 @@ class Role_model extends CI_Model {
 		return $this->db->where('fk_role_id', $role_id)
 			->delete("user_role_access_tbl");
 	}
+
+	public function getUserById()
+	{
+		return $this->db->select('*')
+			->from('user')
+			->where('id', $id)
+			->get()
+			->row();
+	}
  
   
 }

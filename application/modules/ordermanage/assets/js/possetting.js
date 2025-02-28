@@ -1826,7 +1826,6 @@ $(document).on("keypress", '#itemqty_1', function(e){
           var url = 'checktablecap/' + idd;
       }
       var order_person = $('#table_member').val();
-
       if (order_person != "") {
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
@@ -1867,7 +1866,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
           });
       } else {
-
+      
           setTimeout(function() {
               $("#table_member").focus();
 
@@ -1878,21 +1877,28 @@ $(document).on("keypress", '#itemqty_1', function(e){
                   timeOut: 4000,
 
               };
+              
               toastr.error('Please type Number of person', 'Error');
 
 
 
-          }, 300);
+          }, 5000);
 
 
       }
   }
 
-  function showTablemodal() {
-      var url = "showtablemodal";
-      getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
+    //   function showTablemodal() {
+    //       var url = "showtablemodal";
+    //       getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
 
-  }
+    //   }
+
+    function showTablemodal() {
+        window.location.href = basicinfo.baseurl + "ordermanage/order/alltables";
+    }
+
+ 
 
   function showfloor(floorid) {
       var csrf = $('#csrfhashresarvation').val();
@@ -2422,9 +2428,36 @@ $(document).on("keypress", '#itemqty_1', function(e){
   });
   
   
+  $(window).on('load', function () {
+    // Function to get query parameters
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
 
-  
-  
-  
+    // Get query parameters
+    const tid = getQueryParam('tid');
+    const tmmulti = getQueryParam('tmmulti');
+    const tmmultipr = getQueryParam('tmmultipr');
+    const ps = getQueryParam('ps');
+    const custid =  getQueryParam('cid');
+
+
+
+
+    // Set values if available
+    if (tid !== null) $('#tableid').val(tid).trigger('change');
+    if (tmmulti !== null) $('#table_member_multi').val(tmmulti);
+    if (tmmultipr !== null) $('#table_member_multi_person').val(tmmultipr);
+    if (ps !== null || ps !== 'undefined' || ps !== '') {
+        $('#table_person').attr('value', ps); // Set button value
+        $('#table_person').val(ps);
+        $('#table_member').val(parseInt(ps));
+    }
+    if(custid !== null || custid !== 'undefined' || custid != ''){
+        $("#customer_name").select2().val(custid).trigger('change');
+    }
+});
+
  
  

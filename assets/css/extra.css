@@ -118,8 +118,8 @@
     -ms-flex-align: center;
     align-items: center;
    
-    background-color: #ebeef4;
-    border-top: 3px solid #198754;
+    /* background-color: #ebeef4; */
+    /* border-top: 3px solid #198754; */
 }
 .login .login-content {
     max-width: 35rem;
@@ -131,8 +131,8 @@
 }
 .login .login-content.login-content_bg{
 	 max-width: 40rem;
-	background-color: #fff;
-	padding: 50px;
+	background-color: #000;
+	padding: 60px;
 	border-radius: 9px;
 }
 .login .form-control {
@@ -153,13 +153,16 @@
 }
 
 .login .btn {
-    border-radius: 9px;
+    max-width: 200px;
+    margin-top:40px;
 }
 .login .btn-success {
     background-color: #198754;
     border-color: #198754;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
 }
+.text-white { color: #fff; }
+.text-green { color: #4aa103; }
 .btn-success:hover {
     background-color: #157347;
     border-color: #146c43;
@@ -175,6 +178,7 @@
     width: 100%;
     overflow: hidden;
     border-radius: 9px;
+    height: 38px;
 }
 #Imageid{
  border: 1px solid #c9d2e3;

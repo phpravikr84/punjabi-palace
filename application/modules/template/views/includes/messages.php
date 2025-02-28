@@ -8,7 +8,7 @@
             timeOut: 4000
                    
         };
-        toastr.success('<?php echo $this->session->flashdata('message') ?>', 'Success');
+        //toastr.success('<?php echo $this->session->flashdata('message') ?>', 'Success');
 
     }, 1300);
 </script>
@@ -24,7 +24,7 @@
             timeOut: 4000
                   
         };
-        toastr.error('<?php echo $this->session->flashdata('exception') ?>', 'Something Wrong');
+        //toastr.error('<?php echo $this->session->flashdata('exception') ?>', 'Something Wrong');
 
     }, 1300);
 </script>

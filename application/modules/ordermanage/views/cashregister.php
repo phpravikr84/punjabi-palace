@@ -8,8 +8,21 @@
                 <div class="col-md-12">
                   <div class="form-group row">
                     <label for="bank" class="col-sm-4 col-form-label"><?php echo display('counter_no');?></label>
-                    <div class="col-sm-7 customesl"> 					
-					<?php echo form_dropdown('counter',$allcounter,'','class="postform resizeselect form-control" id="counter"') ?> </div>
+                    <div class="col-sm-5 customesl"> 					
+					            <?php //echo form_dropdown('counter',$allcounter,'','class="postform resizeselect form-control" id="counter"') ?> 
+                        <?php 
+                            $placeholder = ['' => 'Select a Wallet']; // Placeholder option
+                            $options = $placeholder + $allcounter; // Merge placeholder with existing options
+
+                            // Now pass $options instead of $allcounter to form_dropdown
+                            echo form_dropdown('counter', $options, '', 'class="postform resizeselect form-control" id="counter"');
+                      ?>
+                    </div>
+                    <div class="col-sm-2"> 
+                      <!-- Add Wallet Button -->
+                      <a href="<?php echo base_url('ordermanage/order/counterlist'); ?>" class="btn btn-primary mt-3">Add Wallet</a> <!-- Redirects to homepage -->
+                    </div>
+                    </div>
                   </div>
                   <div class="form-group row">
                     <label for="4digit" class="col-sm-4 col-form-label"><?php echo display('total_amount');?></label>

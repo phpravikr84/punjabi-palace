@@ -86,12 +86,16 @@ class Purchase extends MX_Controller {
 	   echo Modules::run('template/layout', $data); 
     }
 	public function purchase_entry(){
-		$this->form_validation->set_rules('invoice_no','Invoice Number','required|max_length[50]');
+
+		$this->form_validation->set_rules('invoice_no','Invoice Number','required');
 		$this->form_validation->set_rules('purchase_date','Purchase Date'  ,'required');
 	    $saveid=$this->session->userdata('id'); 
 		
+	
+
 	   if ($this->form_validation->run()) { 
 		$this->permission->method('purchase','create')->redirect();
+
 		 $logData = array(
 		   'action_page'         => "Add Purchase",
 		   'action_done'     	 => "Insert Data", 
@@ -99,6 +103,9 @@ class Purchase extends MX_Controller {
 		   'user_name'           => $this->session->userdata('fullname'),
 		   'entry_date'          => date('Y-m-d H:i:s'),
 		  );
+
+		
+
 		if ($this->purchase_model->create()) { 
 		 $this->logs_model->log_recorded($logData);
 		 $this->session->set_flashdata('message', display('save_successfully'));

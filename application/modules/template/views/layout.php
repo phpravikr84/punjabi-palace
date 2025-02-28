@@ -96,7 +96,7 @@
                                         echo "ml-0";
                                     } ?>">
             <!-- Content Header (Page header) -->
-            <?php if (($title != 'posinvoiceloading') && ($title != 'Counter Dashboard')) { ?>
+            <?php if (($title != 'posinvoiceloading') && ($title != 'Counter Dashboard') && ($title != 'Home')) { ?>
                 <section class="content-header">
                     <div class="header-icon"><i class="pe-7s-home"></i></div>
                     <div class="header-title">
@@ -174,7 +174,7 @@
                 <strong>
                     <?php echo (!empty($setting->footer_text) ? $setting->footer_text : null) ?>
                 </strong>
-                <a href="<?php echo current_url() ?>">
+                <a href="<?php echo current_url() ?>" class="text-orange">
                     <?php echo (!empty($setting->title) ? $setting->title : null) ?></a>
             </footer>
         <?php } ?>

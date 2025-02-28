@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title dsgsdfgsfgsgfs" id="myModalLabel"><ul class="nav nav-tabs" role="tablist">
+                        <h4 class="modal-title" id="myModalLabel"><ul class="nav nav-tabs" role="tablist">
                         	<?php 
 							if(!empty($tablefloor)){
 							$f=0;	

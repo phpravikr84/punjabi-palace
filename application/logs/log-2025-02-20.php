@@ -1,1678 +1,2005 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-ERROR - 2025-02-20 05:14:41 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:14:50 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:14:50 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:14:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:14:52 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 05:14:52 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 05:14:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:14:54 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:14:54 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:14:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:15:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:15:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:15:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:15:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:15:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:15:57 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:16:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:16:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:16:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:16:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:16:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:16:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:17:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:17:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:17:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:17:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:18:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:18:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:18:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:18:47 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:18:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:19:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:19:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:19:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:19:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:19:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:19:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:20:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:20:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:20:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:20:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:20:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:20:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:21:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:21:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:21:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:21:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:21:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:21:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:22:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:22:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:22:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:22:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:22:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:24:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:25:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:26:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:26:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:26:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:26:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:26:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:26:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:26:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:27:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:27:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:27:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:27:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:27:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:27:57 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:28:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:28:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:28:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:28:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:28:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:28:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:29:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:29:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:29:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:29:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:30:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:30:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:30:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:30:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:31:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:31:30 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:31:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:31:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:31:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
-ERROR - 2025-02-20 05:32:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
-ERROR - 2025-02-20 05:32:05 --> Severity: Warning --> Undefined variable $subcat C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 755
-ERROR - 2025-02-20 05:32:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 755
-ERROR - 2025-02-20 05:32:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:07 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:07 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:08 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:08 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:19 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:29 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:49 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:32:59 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:08 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:34:10 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:34:10 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:34:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:21 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:27 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:35:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:36:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:36:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:36:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:36:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:37:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:38:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:39:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:40:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:41:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:42:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:43:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:44:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:47:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:48:43 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:49:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:50:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:51:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:52:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:53:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:54:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:55:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:56:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:57:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:58:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 05:59:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:00:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:01:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:02:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:03:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:04:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:05:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:07:41 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:08:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:09:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:11:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:12:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:13:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:14:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:15:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:16:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:17:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:18:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:19:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:20:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:21:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:22:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:24:29 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:24:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:24:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:24:49 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:24:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:24:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:24:49 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:24:49 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:24:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:24:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:24:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:03 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:10 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:25:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:25:10 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:25:10 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:25:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:33 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:43 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:25:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:03 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:03 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:26:03 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:26:03 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:26:03 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:26:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:26:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:27:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:27:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:27:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:27:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:27:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:27:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:28:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:28:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:28:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:28:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:28:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:28:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:07 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:07 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:29:07 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:29:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:10 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:12 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
-ERROR - 2025-02-20 06:29:12 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
-ERROR - 2025-02-20 06:29:12 --> Severity: Warning --> Undefined variable $subcat C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 755
-ERROR - 2025-02-20 06:29:12 --> Severity: Warning --> Attempt to read property "CategoryID" on null C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 755
-ERROR - 2025-02-20 06:29:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:14 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:14 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:17 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:20 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:21 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:27 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:44 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:48 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:48 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:29:48 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:29:48 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:29:48 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:29:49 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:50 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:29:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:01 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:30:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:30:10 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:30:10 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:30:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:19 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:19 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:30:19 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:30:19 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:30:19 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:30:20 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:21 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:22 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:31 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:30:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:30:31 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:30:31 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:30:32 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:33 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:34 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:44 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:54 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:30:57 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:09 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:31:09 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:31:10 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:18 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:18 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:18 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:18 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:31:18 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:31:19 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:20 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:21 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:28 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:28 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:28 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:29 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:30 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:31:30 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:31:31 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:31 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:33 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:38 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:38 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:31:38 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:31:38 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:31:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:41 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:43 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:44 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:49 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:50 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:31:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:32:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:32:58 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:21 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:31 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:41 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:33:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:21 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:31 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:41 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:34:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:22 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:32 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:42 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:35:52 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:36:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:37:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:38:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:39:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:40:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:41:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:41:41 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:42:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:43:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:44:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:45:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:46:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:47:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:48:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:49:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:50:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:40 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:51:40 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:51:41 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:42 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:42 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:42 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:44 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:52 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:51:54 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:14 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:32 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:52:34 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:53:33 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:53:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:53:51 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:53:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:54:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:54:14 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:54:24 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:54:34 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:54:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:54:44 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:54:54 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:55:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:55:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:55:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:55:59 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:55:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:55:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:56:00 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:01 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:01 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:03 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:03 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:04 --> 404 Page Not Found: /index
-ERROR - 2025-02-20 06:56:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:56:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:56:13 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:56:13 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:56:14 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:20 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:20 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:20 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:22 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:22 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:56:22 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:56:22 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:56:22 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:56:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:27 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:30 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:30 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:31 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:47 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:52 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:53 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:56:53 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:56:53 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:56:53 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:56:54 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:54 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:56:57 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:07 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:17 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:57:55 --> 404 Page Not Found: /index
-ERROR - 2025-02-20 06:57:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:58:06 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:58:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:58:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:21 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:59:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:59:21 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:59:21 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:59:22 --> 404 Page Not Found: /index
-ERROR - 2025-02-20 06:59:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:25 --> 404 Page Not Found: /index
-ERROR - 2025-02-20 06:59:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:50 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:59:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 06:59:51 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 06:59:51 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 06:59:51 --> Severity: Warning --> Undefined variable $division_type C:\xampp\htdocs\punjabi-palace\application\modules\hrm\views\update_employee_form.php 150
-ERROR - 2025-02-20 06:59:51 --> Severity: Warning --> Undefined variable $division_type C:\xampp\htdocs\punjabi-palace\application\modules\hrm\views\update_employee_form.php 151
-ERROR - 2025-02-20 06:59:52 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:53 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 06:59:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:00:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:01:58 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:07 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:17 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:27 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:47 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:57 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:02:57 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported C:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
-ERROR - 2025-02-20 07:02:57 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:01 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:01 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported C:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
-ERROR - 2025-02-20 07:03:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:04 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported C:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
-ERROR - 2025-02-20 07:03:09 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 07:03:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 07:03:09 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 07:03:09 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 07:03:09 --> Severity: Warning --> Undefined variable $division_type C:\xampp\htdocs\punjabi-palace\application\modules\hrm\views\update_employee_form.php 150
-ERROR - 2025-02-20 07:03:09 --> Severity: Warning --> Undefined variable $division_type C:\xampp\htdocs\punjabi-palace\application\modules\hrm\views\update_employee_form.php 151
-ERROR - 2025-02-20 07:03:10 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:23 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:29 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 07:03:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 07:03:29 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 07:03:29 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 07:03:30 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:31 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:32 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:42 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:03:52 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:04:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:04:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:04:22 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:04:32 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:04:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:05:33 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:05:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:05:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:05:40 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported C:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
-ERROR - 2025-02-20 07:05:47 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:05:57 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:06:07 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:06:17 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:06:27 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:06:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:06:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:07:30 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:07:30 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported C:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
-ERROR - 2025-02-20 07:07:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:07:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:08:08 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:08:08 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported C:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
-ERROR - 2025-02-20 07:08:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:09:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:10:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:11:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:12:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:13:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:14:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:15:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:16:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:17:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:18:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:11 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:12 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 07:19:12 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 07:19:12 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 07:19:12 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 07:19:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:19:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:20:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:20:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:20:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:20:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:20:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:20:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:21:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:22:18 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:22:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:22:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:22:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:22:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:22:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:23:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:23:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:23:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:23:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:24:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:24:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:25:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:25:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:26:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:26:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:27:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:27:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:27:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:28:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:29:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:29:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:29:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:29:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:29:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:30:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:30:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:30:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:31:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:31:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:32:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:32:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:33:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:34:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:35:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:36:34 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:36:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:36:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:36:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:36:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:37:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:38:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:39:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:40:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:40:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:40:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:40:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:40:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:41:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:41:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:42:37 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:42:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:43:38 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:43:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:44:27 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:44:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:44:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:44:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:44:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:45:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:46:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:47:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:48:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:49:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:50:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:51:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:52:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:53:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:53:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:53:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:54:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:55:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:56:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:57:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:58:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:59:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 07:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:00:28 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:00:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:00:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:00:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:00:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:01:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:01:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:01:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:01:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:02:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:03:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:04:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:05:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:06:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:07:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:08:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:09:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:10:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:11:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:12:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:13:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:14:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:15:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:16:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:17:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:18:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:19:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:20:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:21:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:22:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:24:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:25:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:26:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:27:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:28:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:29:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:30:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:30:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:30:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:31:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:31:42 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:32:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:33:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:34:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:35:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:36:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:37:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:38:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:39:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:40:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:41:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:42:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:43:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:44:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:45:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:46:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:47:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:48:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:49:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:50:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:51:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:52:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:53:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:54:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:55:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:56:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:57:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:58:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:59:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 08:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:00:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:01:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:02:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:03:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:04:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:05:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:06:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:07:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:08:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:09:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:10:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:11:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:12:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:13:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:14:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:15:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:16:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:17:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:18:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:19:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:20:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:21:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:22:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:24:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:25:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:26:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:27:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:28:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:29:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:30:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:30:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:30:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:31:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:32:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:33:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:34:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:35:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:36:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:37:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:38:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:39:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:40:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:41:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:42:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:43:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:44:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:45:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:46:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:47:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:48:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:49:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:50:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:51:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:52:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:53:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:54:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:55:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:56:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:57:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:58:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:59:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 09:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:00:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:01:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:02:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:03:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:04:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:05:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:06:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:07:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:08:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:09:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:10:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:11:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:12:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:13:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:14:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:15:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:16:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:17:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:18:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:19:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:20:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:21:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:22:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:24:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:25:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:26:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:27:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:28:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:29:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:30:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:30:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:30:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:31:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:31:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:32:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:33:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:34:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:35:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:36:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:37:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:38:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:39:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:39:42 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:40:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:41:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:42:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:43:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:44:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:45:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:46:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:47:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:48:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:49:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:50:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:51:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:52:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:53:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:54:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:55:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:56:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:57:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:58:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:59:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 10:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:00:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:01:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:02:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:03:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:04:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:05:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:06:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:07:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:08:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:09:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:10:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:11:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:12:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:13:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:14:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:15:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:16:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:17:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:18:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:19:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:20:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:21:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:22:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:24:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:25:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:26:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:27:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:02 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:04 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:07 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 11:28:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
-ERROR - 2025-02-20 11:28:09 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
-ERROR - 2025-02-20 11:28:09 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
-ERROR - 2025-02-20 11:28:12 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:13 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:16 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:26 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:36 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:46 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:28:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:29:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:29:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:29:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:29:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:29:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:29:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:29:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:30:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:30:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:30:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:30:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:30:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:30:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:30:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:31:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:31:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:31:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:31:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:31:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:31:45 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:31:55 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:32:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:32:15 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:32:25 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:32:35 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:32:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:32:49 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:32:56 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:33:05 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:33:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:34:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:34:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:35:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:35:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:36:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:36:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:37:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:37:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:38:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:38:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:39:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:39:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:40:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:40:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:41:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:41:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:42:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:42:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:43:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:43:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:44:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:44:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:45:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:45:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:46:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:46:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:47:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:47:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:48:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:48:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:49:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:49:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:50:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:50:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:51:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:51:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:52:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:52:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:53:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:53:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:54:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:54:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:55:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:55:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:56:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:56:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:57:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:57:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:58:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:58:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:59:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 11:59:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:00:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:00:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:01:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:01:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:02:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:02:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:03:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:03:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:04:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:04:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:05:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:05:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:06:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:06:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:07:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:07:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:08:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:08:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:09:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:09:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:10:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:10:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:11:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:11:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:12:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:12:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:13:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:13:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:14:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:14:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:15:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:15:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:16:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:16:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:17:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:17:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:18:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:18:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:19:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:19:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:20:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:20:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:21:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:21:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:22:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:22:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:23:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:23:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:24:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:24:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:25:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:25:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:26:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:26:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:27:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:27:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:28:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:28:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:29:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:29:40 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
-ERROR - 2025-02-20 12:30:39 --> Severity: Warning --> mkdir(): No such file or directory C:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 573
+ERROR - 2025-02-20 04:54:56 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:55:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 13:55:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 13:56:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 13:56:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 13:56:29 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 13:56:29 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:30 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 13:56:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 13:56:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 13:56:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 13:56:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 04:58:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 04:58:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 04:58:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 04:58:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 14:17:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:17:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:17:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:17:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 05:23:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:23:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:23:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:23:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 14:23:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:23:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:23:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:23:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 14:23:45 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:23:45 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:23:48 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 14:23:48 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 14:23:48 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 14:23:48 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 14:23:57 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 14:23:57 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 14:23:57 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 14:23:57 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 14:24:39 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:24:39 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:24:39 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:24:39 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 14:36:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:36:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:36:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:36:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 05:36:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:36:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:36:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:36:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 14:38:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:38:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:38:35 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:38:35 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 05:38:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:38:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:38:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:38:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 14:39:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:39:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:39:58 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:39:58 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 05:40:00 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:40:00 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:40:00 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:40:00 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:41:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:41:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:41:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:41:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 14:49:18 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 14:49:18 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 14:49:18 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 14:49:18 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 05:49:19 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:49:19 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:49:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:49:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 14:49:28 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:49:28 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:49:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:49:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 05:49:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:49:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:49:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:49:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:57:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 14:57:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:57:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 14:57:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 14:57:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 05:57:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:57:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:57:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 05:57:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:03:15 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:03:15 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:03:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:03:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:03:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:03:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:03:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:03:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:04:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:04:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:04:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:04:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 15:05:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:05:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:05:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:05:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:05:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:05:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:05:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:05:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:06:16 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:06:16 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:06:16 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:06:16 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:06:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:06:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:06:18 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:06:18 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:06:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:06:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:06:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:06:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:06:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:06:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:06:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:06:59 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:07:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:07:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:07:58 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:07:58 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 15:08:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:08:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:08:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:08:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 15:08:01 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:08:01 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:08:01 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:08:01 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:08:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:08:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:08:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:08:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:09:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:09:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:09:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:09:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:09:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:09:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:09:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:09:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:11:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:11:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:11:49 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:11:50 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:11:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:11:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:11:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:11:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:12:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:12:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:12:06 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:12:06 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:12:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:12:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:12:08 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:12:08 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:12:40 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:12:40 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:12:40 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:12:40 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:12:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:12:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:12:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:12:43 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:13:25 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:13:25 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:13:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:13:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:13:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:13:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:13:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:13:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:20:41 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:20:41 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:20:41 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:20:42 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:20:43 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:20:43 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:20:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:20:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:21:15 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:21:15 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:21:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:21:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:21:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:21:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:21:18 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:21:18 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:23:37 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 15:28:54 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 15:29:13 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 15:29:13 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 15:29:13 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 15:29:13 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 15:29:13 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 15:29:19 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:29:19 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 15:29:19 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 15:29:19 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 06:29:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 15:56:10 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 16:03:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:03:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 07:03:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:03:29 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:03:49 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:03:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:03:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:03:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:03:58 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:04:52 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:04:52 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:04:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 16:05:21 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 07:05:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:05:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:05:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 07:05:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 16:06:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:06:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:06:36 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:07:12 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:07:53 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:08:42 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:11:04 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:12:05 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Shared\String.php 526
+ERROR - 2025-02-20 16:16:34 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 2551
+ERROR - 2025-02-20 16:16:36 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 2551
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 16:17:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 16:29:36 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 3462
+ERROR - 2025-02-20 16:29:39 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 3462
+ERROR - 2025-02-20 16:31:31 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Calculation.php 3937
+ERROR - 2025-02-20 16:32:26 --> Severity: Compile Error --> Array and string offset access syntax with curly braces is no longer supported D:\xampp\htdocs\punjabi-palace\application\libraries\PHPExcel\Worksheet\AutoFilter.php 720
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 16:33:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 18:38:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 18:38:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 18:39:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:39:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:39:37 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:39:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:53:18 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 18:53:18 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 18:53:18 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 18:53:18 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 09:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 09:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 09:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 09:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 18:53:32 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:53:32 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:53:33 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:53:33 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 09:53:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 09:53:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 09:53:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 09:53:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 18:53:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:53:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:53:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:53:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:54:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:54:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:54:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:54:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:54:34 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:54:34 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:54:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:54:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:55:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:55:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:55:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:55:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:55:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:55:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:55:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:55:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:56:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:56:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:56:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:56:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:56:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:56:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:56:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:56:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:57:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:57:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:57:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:57:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:58:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:58:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:58:59 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:58:59 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:59:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:59:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 18:59:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 18:59:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:00:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:00:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:00:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:00:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:01:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:01:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:01:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:01:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:02:16 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:02:16 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:02:16 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:02:16 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:02:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:02:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:02:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:02:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:03:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:03:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:03:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:03:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:03:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:03:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:03:59 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:03:59 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:04:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:04:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:04:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:04:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:05:22 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:05:22 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:05:22 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:05:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:05:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:05:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:05:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:05:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:06:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:06:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:06:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:06:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:06:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:06:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:06:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:06:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:07:04 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:07:04 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:07:04 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:07:04 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:07:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:07:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:07:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:07:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:08:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:08:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:08:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:08:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:08:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:08:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:08:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:08:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:09:18 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:09:18 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:09:18 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:09:18 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:09:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:09:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:09:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:09:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:10:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:10:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:10:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:10:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:10:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:10:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:10:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:10:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:11:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:11:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:11:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:11:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:12:24 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:12:24 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:12:24 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:12:24 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:12:34 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:12:34 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:12:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:12:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:13:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:13:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:13:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:13:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:13:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:13:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:13:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:13:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:14:04 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:14:04 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:14:04 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:14:04 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:14:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:14:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:14:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:14:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:15:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:15:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:15:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:15:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:15:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:15:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:15:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:15:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:16:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:16:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:16:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:16:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:17:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:17:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:17:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:17:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:19:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:19:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:19:00 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:19:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:19:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:19:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:19:13 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:19:13 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:19:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:19:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:19:37 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:19:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:20:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:20:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:20:07 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:20:07 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:21:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:21:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:21:00 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:21:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:21:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:21:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:22:00 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:22:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:22:55 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:22:55 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:22:56 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:22:56 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:23:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:23:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:23:06 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:23:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:23:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:23:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:23:36 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:23:36 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:24:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:24:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:24:06 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:24:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:24:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:24:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:24:36 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:24:36 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:25:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:25:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:25:06 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:25:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:25:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:25:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:25:36 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:25:36 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:26:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:26:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:26:06 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:26:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:26:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:26:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:26:37 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:26:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:27:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:27:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:27:07 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:27:07 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:27:37 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:27:37 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:27:37 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:27:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:28:57 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:28:57 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:28:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:28:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:29:19 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:29:19 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:29:20 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:29:20 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:29:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:29:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:29:36 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:29:36 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:30:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:30:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:30:06 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:30:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:30:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:30:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:30:37 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:30:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:31:57 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:31:57 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:31:58 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:31:58 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:32:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:32:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:32:30 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:32:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:32:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:32:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:32:36 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:32:36 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:00 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:33:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:33:04 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:04 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:04 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:04 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:28 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:28 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:28 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:33:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:33:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:30 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:33 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:33 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:33:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:33:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:36 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:36 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:50 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:50 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:50 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:33:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:33:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:33:53 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:53 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:33:53 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:33:53 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:12 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:12 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:12 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:12 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:14 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:14 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:14 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:34:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:34:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:34:16 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:16 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:16 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:16 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:17 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:17 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:17 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:17 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:22 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:22 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:22 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:29 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:30 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:30 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:34:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:34:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:34:32 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:32 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:33 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:33 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:34 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:34 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:34 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:34 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:43 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:43 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:43 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:43 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:34:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:34:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:34:45 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:45 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:45 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:34:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:34:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:34:47 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:47 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:34:47 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:34:47 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:02 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:02 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:02 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:02 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:35:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:35:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:35:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:35:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:35:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:05 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:05 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:09 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:12 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:12 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:35:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:35:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:35:14 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:14 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:14 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:15 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:15 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:15 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:41 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:41 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:41 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:41 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:35:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:35:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:35:43 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:43 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:43 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:43 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:35:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:35:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:35:45 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:45 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:45 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:49 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:49 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:51 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:51 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:35:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:35:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:35:54 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:54 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:54 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:54 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:55 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:55 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:35:55 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:35:55 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:12 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:12 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:36:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:36:15 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:15 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:15 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:15 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:18 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:18 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:18 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:18 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:20 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:20 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:36:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:36:22 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:22 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:22 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:24 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:24 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:44 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:44 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:50 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:50 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:50 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:36:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 10:36:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:36:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:36:56 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:36:56 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:36:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:36:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:37:52 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:37:52 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:37:52 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:37:52 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:37:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:37:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:37:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:37:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:38:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:38:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:38:22 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:38:22 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:38:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:38:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:38:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:38:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:40:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:40:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:40:23 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:40:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:40:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:25 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:25 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:40:42 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:40:42 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 10:40:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:40:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:40:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:40:49 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:40:49 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:40:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 10:40:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:40:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:41:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:41:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:41:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:41:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 10:41:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:41:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:41:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:41:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:41:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:41:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:41:33 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:41:33 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:41:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:41:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:41:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:41:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:41:54 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 19:43:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:43:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:43:08 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:43:08 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:43:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:43:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:43:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 10:43:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:43:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:43:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:43:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:43:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:43:57 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 10:43:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:43:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:44:04 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:44:04 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:44:04 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:44:04 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 10:44:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:44:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:44:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:44:20 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:44:20 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:44:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:44:32 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:44:32 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:44:32 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:44:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:44:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:44:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:45:38 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:45:38 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:45:38 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:45:38 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:45:39 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:45:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:45:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:45:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:46:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:46:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:46:00 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:46:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 10:46:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:46:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:46:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:46:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:46:25 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:46:25 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 19:46:26 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:46:26 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 19:49:09 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 19:49:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:49:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 10:49:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:49:38 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:49:38 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:49:38 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:49:39 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 10:49:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:49:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:49:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:49:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:49:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 10:49:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:49:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:53:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:55:24 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:55:24 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 10:55:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:55:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:55:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:55:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:58:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:58:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 10:58:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:58:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:58:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:58:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:59:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:59:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:59:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:59:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 19:59:45 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 10:59:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:59:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:59:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:59:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 19:59:52 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:59:52 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 19:59:52 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 19:59:53 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 10:59:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:59:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:59:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 10:59:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:00:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:00:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 11:00:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:00:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:00:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:00:13 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:00:13 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:00:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:00:26 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:00:26 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:00:26 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:00:26 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:00:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:00:43 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:00:43 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:00:43 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:00:43 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:00:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:00:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:01:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:01:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:01:00 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:01:00 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:01:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:01:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:01:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:01:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:01:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:01:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:01:21 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:01:21 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:01:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:01:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:01:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:01:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:02:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:02:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:02:13 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:02:13 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:02:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:02:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:02:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:02:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:03:53 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:03:53 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:03:54 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:03:54 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:03:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:03:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:03:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:03:55 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:05:01 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:05:01 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:05:01 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:05:01 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:05:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:05:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:05:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:05:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:05:46 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:05:46 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:05:46 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:05:46 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:05:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:05:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:05:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:05:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:06:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:06:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:06:49 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:06:49 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:06:50 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:06:50 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:06:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:06:51 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:07:26 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:07:26 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:07:26 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:07:26 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:07:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:07:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:07:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:07:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:08:40 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:08:40 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:08:40 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:08:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:08:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:08:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:08:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:08:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:12:32 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:12:32 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:12:33 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:12:33 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:12:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:12:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:12:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:12:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:14:39 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:14:39 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:14:39 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:14:39 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:14:52 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 20:15:07 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:15:07 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:15:07 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:15:07 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:15:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:15:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:15:59 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:15:59 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:16:11 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 20:16:11 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:16:11 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:16:11 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:16:11 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:16:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:16:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:16:23 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:16:23 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:16:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:24 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:16:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:16:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:16:35 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:16:35 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:16:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:16:43 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:16:43 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:16:44 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:16:44 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:16:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:16:45 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:16:57 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 20:17:00 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 20:17:00 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:17:00 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:17:00 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:17:00 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:17:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:17:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:17:09 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:17:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:17:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:17:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:17:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:17:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:18:03 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:18:03 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:18:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:18:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:18:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:18:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:18:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:18:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:18:24 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:18:24 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:18:25 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:18:25 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:18:25 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:18:25 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:18:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:18:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:18:46 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 20:18:51 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 20:18:51 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:18:51 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:18:51 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:18:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:20:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:20:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:20:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:20:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:20:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:20:15 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:20:15 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:20:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:20:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:20:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:17 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:20:43 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:20:43 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:20:43 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:20:43 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:20:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:20:44 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:21:32 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:21:32 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:21:32 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:21:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:21:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:21:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:21:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:21:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:21:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:21:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 11:21:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:21:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:21:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:21:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:22:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:22:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:22:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:22:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:22:01 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 11:22:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:22:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:22:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:22:02 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:22:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:22:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:22:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:22:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:22:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:22:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:22:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:22:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:23:46 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:23:46 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:23:46 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:23:46 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:23:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:23:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:23:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:23:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:23:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:23:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:23:52 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:23:52 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:23:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:23:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:23:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:23:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:24:03 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:24:03 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:24:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:24:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:24:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:24:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:24:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:24:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:27:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:27:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:27:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:27:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:27:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:27:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:27:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:27:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:28:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:28:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:28:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:28:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:28:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:28:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:28:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:28:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:30:19 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:30:19 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:30:19 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:30:19 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:30:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:30:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:30:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:30:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:33:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:33:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:33:30 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:33:30 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:33:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:33:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:33:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:33:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:33:52 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:33:52 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:33:52 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:33:52 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:33:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:33:54 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:33:56 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:33:56 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:45:47 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 20:46:07 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 20:46:07 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:46:07 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:46:07 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:46:07 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:56:54 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:56:54 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 11:56:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:56:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:56:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:56:57 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:57:06 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:57:06 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:57:06 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:57:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:57:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:57:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:57:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 11:57:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 20:57:19 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 11:57:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:20 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:57:26 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:57:26 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 20:57:26 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 20:57:26 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 11:57:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:57:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:57:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 20:57:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 20:57:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 11:57:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 11:57:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 20:57:48 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 20:57:51 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 20:57:51 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:57:51 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 20:57:51 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 20:57:51 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 21:02:26 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:02:26 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:02:26 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:02:26 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 12:02:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:02:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:02:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:02:28 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:03:39 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:03:39 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:03:39 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:03:39 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 12:03:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:03:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:03:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:03:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:04:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:04:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:04:21 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:04:21 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 12:04:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:04:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:04:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:04:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:05:25 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:05:25 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:05:25 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:05:25 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 12:05:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:05:26 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:05:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:05:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:06:37 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:06:37 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:06:37 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:06:37 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 12:06:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:06:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:06:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:06:38 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:08:18 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:08:18 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:08:18 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:08:18 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:08:48 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:08:48 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:08:48 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:08:48 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:09:38 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:09:38 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:09:38 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:09:38 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:09:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:09:40 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:09:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:09:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:09:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:09:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:09:50 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:09:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:11:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:11:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:11:21 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:11:21 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:12:45 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:12:45 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:12:45 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:12:45 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:13:39 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:13:39 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:13:39 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:13:39 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:14:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:14:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:14:08 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:14:08 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:14:43 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:14:43 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:14:43 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:14:43 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:15:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:15:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:15:21 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:15:21 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:15:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:15:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:15:59 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:15:59 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:16:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:16:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:16:44 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:16:44 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:17:35 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:17:35 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:17:35 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:17:35 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:18:14 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:18:14 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:18:14 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:18:14 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:19:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:19:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:19:33 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:19:33 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:20:28 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:20:28 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:20:28 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:20:28 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:21:03 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:21:03 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:21:03 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:21:03 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:21:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:21:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:21:29 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:21:29 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:23:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:23:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:23:17 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:23:17 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:23:17 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:23:17 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:18 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:23:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:23:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:23:23 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:23:24 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 21:23:39 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:23:39 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:23:40 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:23:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:23:52 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 21:23:56 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 21:23:56 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 21:23:56 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 21:23:56 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 21:23:56 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 12:25:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:25:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:25:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:25:13 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:27:45 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:27:45 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 12:27:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:27:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:27:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:27:48 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:27:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:27:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:27:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:27:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> Undefined array key "orderlist" D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 21:27:52 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\allkitchen.php 76
+ERROR - 2025-02-20 12:27:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:27:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:27:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:27:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:27:58 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:27:58 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:27:58 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:27:58 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:28:00 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:28:00 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:28:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:28:01 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:29:02 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:29:02 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:29:02 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:29:02 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:29:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:29:03 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:29:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:29:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:29:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:29:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:29:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:29:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:29:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:29:22 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:29:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:29:23 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:30:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:30:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:30:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:30:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:30:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:30:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:30:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:30:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:30:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:30:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 21:30:36 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 21:30:36 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 12:30:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:30:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:30:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:30:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:30:55 --> Severity: Warning --> Attempt to read property "is_bom" on null D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 650
+ERROR - 2025-02-20 21:31:01 --> Severity: Warning --> Attempt to read property "is_bom" on null D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 650
+ERROR - 2025-02-20 21:31:02 --> Severity: Warning --> Attempt to read property "is_bom" on null D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 650
+ERROR - 2025-02-20 21:31:03 --> Severity: Warning --> Attempt to read property "is_bom" on null D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 650
+ERROR - 2025-02-20 21:31:07 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 21:31:07 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 21:31:07 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 21:31:07 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 21:31:07 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 21:31:19 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:31:19 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:31:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:31:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:31:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:31:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:31:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:31:21 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:46:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:46:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:46:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:46:45 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:46:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:46:46 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:46:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:46:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:53:39 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:53:39 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:53:39 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:53:39 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 26
+ERROR - 2025-02-20 21:53:40 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 28
+ERROR - 2025-02-20 12:53:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:53:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:53:41 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:53:42 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:54:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:54:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:54:30 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:54:30 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 12:54:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:54:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:54:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:54:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:58:29 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:58:29 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:58:29 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:58:29 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:30 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 12:58:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:58:31 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:58:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:58:32 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:58:34 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:58:34 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:58:34 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:58:34 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:58:35 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 12:58:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:58:36 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:58:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:58:37 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 21:59:14 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:59:14 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 21:59:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 21:59:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 21:59:15 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 12:59:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:59:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:59:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 12:59:16 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:03:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:03:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:03:13 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:03:13 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:03:14 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 13:03:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:03:14 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:03:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:03:15 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:11:04 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:11:04 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:11:04 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:11:04 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 27
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 22:11:05 --> Severity: Warning --> Undefined variable $availableSeats D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\alltables.php 29
+ERROR - 2025-02-20 13:11:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:11:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:11:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:11:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:13:03 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:13:03 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:13:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:13:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:13:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:13:04 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:13:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:13:05 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:14:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:14:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:14:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:14:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:14:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:14:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:14:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:14:53 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:15:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:15:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:15:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:15:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:15:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:15:06 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:15:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:15:07 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:15:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:15:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:15:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:15:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:15:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:15:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:15:58 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:15:59 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:18:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:18:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:18:09 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:18:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 13:18:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:18:09 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:18:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:18:10 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:18:23 --> Severity: Warning --> Attempt to read property "is_bom" on null D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 650
+ERROR - 2025-02-20 22:18:27 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 22:18:27 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:18:27 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:18:27 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:18:27 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:18:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:18:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:18:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:18:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:18:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:18:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:18:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:18:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:19:46 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:19:46 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:19:46 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:19:46 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 13:19:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:19:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:19:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:19:47 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:19:53 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 22:19:59 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 22:20:00 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:20:00 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:20:00 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:20:00 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:20:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:20:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:20:10 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:20:10 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:20:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:11 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:12 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:20:34 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:20:34 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:20:34 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:20:34 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 13:20:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:20:42 --> Severity: Warning --> Attempt to read property "is_bom" on null D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 650
+ERROR - 2025-02-20 22:20:47 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 22:20:47 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:20:47 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:20:47 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:20:47 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:20:51 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:20:51 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:20:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:20:51 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:20:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:20:52 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:25:01 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:25:01 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:25:01 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:25:01 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:25:07 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:25:07 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:25:07 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:25:07 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 22:25:38 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:25:38 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:25:38 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:25:38 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:25:46 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:25:46 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:25:46 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:25:46 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 22:26:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:26:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:26:10 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:26:10 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:26:18 --> Severity: Warning --> Undefined property: stdClass::$is_bom D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 704
+ERROR - 2025-02-20 22:26:21 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 22:26:21 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:26:21 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:26:21 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:26:21 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:26:25 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:26:25 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:26:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:26:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 22:26:57 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:26:57 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:26:57 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:26:57 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:27:15 --> Severity: Warning --> Attempt to read property "is_bom" on null D:\xampp\htdocs\punjabi-palace\application\modules\production\models\Production_model.php 650
+ERROR - 2025-02-20 22:27:21 --> Severity: Warning --> Undefined variable $customerid D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 1292
+ERROR - 2025-02-20 22:27:21 --> Severity: Warning --> Attempt to read property "menu_id" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:27:21 --> Severity: Warning --> Attempt to read property "isupdate" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 76
+ERROR - 2025-02-20 22:27:21 --> Severity: Warning --> Undefined variable $exitsitem D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:27:21 --> Severity: Warning --> foreach() argument must be of type array|object, null given D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\postoken.php 130
+ERROR - 2025-02-20 22:27:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:27:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:27:23 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:27:23 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 22:30:28 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:30:28 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:30:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:30:28 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:30:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:30:29 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:30:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:30:30 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:30:32 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:30:32 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:30:32 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:30:32 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:30:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:30:33 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:30:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:30:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:32:25 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:32:25 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:32:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:32:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:32:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:32:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:32:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:32:27 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:34:20 --> Severity: Warning --> mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() D:\xampp\htdocs\punjabi-palace\system\libraries\Email.php 1896
+ERROR - 2025-02-20 22:34:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:34:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:34:21 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:34:21 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 22:34:22 --> Severity: Warning --> Attempt to read property "customer_id" on array D:\xampp\htdocs\punjabi-palace\application\modules\reservation\models\Reservation_model.php 19
+ERROR - 2025-02-20 22:34:22 --> Severity: error --> Exception: Column 'cid' cannot be null D:\xampp\htdocs\punjabi-palace\system\database\drivers\mysqli\mysqli_driver.php 317
+ERROR - 2025-02-20 22:34:33 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:34:33 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:34:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-02-20 22:34:33 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 132
+ERROR - 2025-02-20 13:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:34:34 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:34:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 13:34:35 --> 404 Page Not Found: /index
+ERROR - 2025-02-20 22:40:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:40:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-02-20 22:40:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:40:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 5
+ERROR - 2025-02-20 22:40:49 --> Severity: Warning --> Undefined variable $subcat D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757
+ERROR - 2025-02-20 22:40:49 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 757

@@ -125,11 +125,22 @@ class Auth extends MX_Controller {
 					$this->auth_model->last_login();
 					//welcome message
 					$this->session->set_flashdata('message', display('welcome_back').' '.$user->row()->fullname);
+					//check waiter login
+					$waiter_exist = $this->db->select('*')  // Select all columns
+                         ->from('sec_user_access_tbl') // Specify table name
+                         ->where('fk_user_id', $user->row()->id)
+                         ->where('fk_role_id', 3)
+                         ->get();  // Execute query
 					if(!empty($chefid)){
 					redirect('ordermanage/order/allkitchen');
 					}
 					else if($user->row()->counter==1){
 						redirect('ordermanage/order/counterboard');
+						}
+					//Add Waiter login
+					else if($waiter_exist->num_rows() > 0){
+					
+						redirect('ordermanage/order/pos_invoice');
 						}
 					else{
 					redirect('dashboard/home');
@@ -146,11 +157,11 @@ class Auth extends MX_Controller {
 			    'img_path'      => './assets/img/captcha/',
 			    'img_url'       => base_url('assets/img/captcha/'),
 			    'font_path'     => './assets/fonts/themify.ttf',
-			    'img_width'     => '328',
-			    'img_height'    => 64,
+			    'img_width'     => '220',
+			    'img_height'    => 35,
 			    'expiration'    => 600, //5 min
 			    'word_length'   => 4,
-			    'font_size'     => 40,
+			    'font_size'     => 20,
 			    'img_id'        => 'Imageid',
 			    'pool'          => '23456789abcdefghijkmnpqrstuvwxyz',
 

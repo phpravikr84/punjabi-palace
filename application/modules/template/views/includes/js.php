@@ -55,3 +55,31 @@
         }   
     }   
 ?>
+
+<script>
+    
+$(document).ready(function () {
+    $(".sidebar-toggle").on("click", function () {
+        if ($("body").hasClass("sidebar-collapse")) {
+            console.log("class exist in body");
+            $(".leftSidebarPosMain").css("overflow", "hidden");
+            $(".slimScrollDiv").css({
+                "overflow-y": "auto",
+                "overflow-x": "hidden",
+                "padding-right": "5px"
+            });
+           
+        } else {
+            console.log("class not exist in body");
+           
+            $(".leftSidebarPosMain").css("overflow", "visible");
+            $(".slimScrollDiv").css({
+                "overflow-y": "visible",
+                "overflow-x": "visible",
+                "padding-right": "0px"
+            });
+        }
+    });
+});
+
+</script>

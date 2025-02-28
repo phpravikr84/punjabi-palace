@@ -1921,6 +1921,47 @@ class Order_model extends CI_Model
 		return $table;
 	}
 
+	public function get_all_table_total()
+	{
+		$where = "table_details.delete_at = 0 AND table_details.created_at= '" . date('Y-m-d') . "'";
+		$this->db->select('rest_table.*,tbl_tablefloor.*');
+		$this->db->from('rest_table');
+		$this->db->join('tbl_tablefloor', 'tbl_tablefloor.tbfloorid=rest_table.floor', 'left');
+		$query = $this->db->get();
+		$table = $query->result_array();
+		$i = 0;
+		foreach ($table as $value) {
+			$table[$i]['table_details'] = $this->get_table_order($value['tableid']);
+			$sum = $this->get_table_total_customer($value['tableid']);
+			$table[$i]['sum'] =  $sum->total;
+			$i++;
+		}
+
+		return $table;
+	}
+
+	public function get_table_total_bytableid($tableid)
+	{
+		$where = "table_details.delete_at = 0 AND table_details.created_at= '" . date('Y-m-d') . "'";
+		$this->db->select('rest_table.*,tbl_tablefloor.*');
+		$this->db->from('rest_table');
+		$this->db->join('tbl_tablefloor', 'tbl_tablefloor.tbfloorid=rest_table.floor', 'left');
+		$this->db->where('rest_table.tableid', $tableid);
+		$query = $this->db->get();
+		// $str = $this->db->last_query();
+		// echo $str;
+		// exit;
+		$table = $query->result_array();
+		$i = 0;
+		foreach ($table as $value) {
+			$table[$i]['table_details'] = $this->get_table_order($tableid);
+			$sum = $this->get_table_total_customer($tableid);
+			$table[$i]['sum'] =  $sum->total;
+			$i++;
+		}
+		return $table;
+	}
+
 	public function checkingredientstock($foodid, $vid, $foodqty)
 	{
 		$checksetitem = $this->db->select('ProductsID,isgroup', 'is_bom')->from('item_foods')->where('ProductsID', $foodid)->where('isgroup', 1)->get()->row();
@@ -2363,4 +2404,125 @@ class Order_model extends CI_Model
 			}
 		}
 	}
+	/**
+	 * Get Reservation Detail 
+	 */
+	public function get_reservation()
+	{
+		$this->db->where('tblreservation.reserveday', date('Y-m-d'));
+		$this->db->where_in('tblreservation.status', [1, 2]); // Use where_in for cleaner syntax
+		$this->db->select('tblreservation.*,customer_info.*,rest_table.tablename,rest_table.person_capicity as tablecapacity');
+        $this->db->from('tblreservation');
+		$this->db->join('customer_info','customer_info.customer_id = tblreservation.cid','left');
+		$this->db->join('rest_table','rest_table.tableid = tblreservation.tableid','left');
+        $this->db->order_by('reserveid', 'desc');
+        $query = $this->db->get();
+		// echo $this->db->last_query();
+		// exit;
+        if ($query->num_rows() > 0) {
+            return $query->result();    
+        }
+        return false;
+	}
+
+	public function get_reservationbytable($tableid)
+	{
+	    $this->db->where('reserveday', date('Y-m-d'));
+		$this->db->where('tblreservation.tableid', $tableid);
+		$this->db->select('tblreservation.*,customer_info.*,rest_table.tablename,rest_table.person_capicity as tablecapacity');
+        $this->db->from('tblreservation');
+		$this->db->join('customer_info','customer_info.customer_id = tblreservation.cid','left');
+		$this->db->join('rest_table','rest_table.tableid = tblreservation.tableid','left');
+        $this->db->order_by('reserveid', 'desc');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();    
+        }
+        return false;
+	} 
+
+	public function findByReservationId($id = null)
+	{ 
+		return $this->db->select("*")->from($this->table)
+			->where('reserveid',$id) 
+			->get()
+			->row();
+	}
+	public function findByCusId($id = null)
+	{ 
+		return $this->db->select("*")->from('customer_info')
+			->where('customer_id',$id) 
+			->get()
+			->row();
+	}
+
+	 // 1. Check if a customer order exists within reservation time range
+	 public function check_order_exists() {
+        $this->db->select('r.reserveid');
+        $this->db->from('tblreservation r');
+        $this->db->join('customer_order o', 'r.tableid = o.table_no AND r.reserveday = o.order_date');
+        $this->db->where('o.order_time >= r.formtime');
+        //$this->db->where('o.order_time <= r.totime');
+		$this->db->where('r.reserveday', date('Y-m-d'));
+		$this->db->where('r.status!=', 3);
+        $query = $this->db->get();
+
+		// Print the SQL query
+		// echo $this->db->last_query();
+		// exit;
+
+        if ($query->num_rows() > 0) {
+            // Order found, update status to 3 (complete)
+            //$reserveIds = array_column($query->result_array(), 'reserveid');
+            //$this->db->where_in('reserveid', $reserveIds);
+			$reserveIds = array_column($query->result_array(), 'reserveid');
+	
+			if (count($reserveIds) === 1) {
+				// Single value: Use where()
+				$this->db->where('reserveid', $reserveIds[0]);
+			} else {
+				// Multiple values: Use where_in()
+				$this->db->where_in('reserveid', $reserveIds);
+			}
+            $this->db->update('tblreservation', ['status' => 3]);
+            return 'Order exists - Reservation status updated to complete (3)';
+        }
+        return false;
+    }
+
+    // 2. Check expired reservations based on current time
+    public function update_expired_reservations() {
+		$currentTime = date('H:i:s', strtotime('+10 minutes')); // Current time + 10 minutes
+		$currentDate = date('Y-m-d');
+	
+		$this->db->select('reserveid');
+		$this->db->from('tblreservation');
+		$this->db->where('reserveday', $currentDate);
+		$this->db->where('formtime <', $currentTime);
+		$this->db->where('status !=', 3); // Exclude completed reservations
+		$query = $this->db->get();
+
+		// Print the SQL query
+		// echo $this->db->last_query();
+		// exit;
+	
+		if ($query->num_rows() > 0) {
+			$reserveIds = array_column($query->result_array(), 'reserveid');
+	
+			if (count($reserveIds) === 1) {
+				// Single value: Use where()
+				$this->db->where('reserveid', $reserveIds[0]);
+			} else {
+				// Multiple values: Use where_in()
+				$this->db->where_in('reserveid', $reserveIds);
+			}
+	
+			$this->db->update('tblreservation', ['status' => 4]);
+			return 'Expired reservations updated to status 4';
+		}
+	
+		return false;
+	}
+	
+
 }
