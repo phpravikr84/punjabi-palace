@@ -74,6 +74,10 @@ class Hungry extends CI_Controller
 		}
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/home', $data, TRUE);
 		$data['todaymenu_menu'] =  $this->hungry_model->read_all('*', 'tbl_menutype', 'menutype', '', '', '');
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		// exit;
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
 	public function getdelivarylocation()

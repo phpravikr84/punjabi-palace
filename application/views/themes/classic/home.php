@@ -172,7 +172,7 @@ if (!empty($reservation)) {
     </div>
 </section>
 <!--End Table Chart-->
-<!--Start Gallery Area-->
+<!--Start Gallery Area--> 
 <?php $photogallery = $this->db->select('*')->from('tbl_widget')->where('widgetid', 21)->where('status', 1)->get()->row();
 if (!empty($photogallery)) {
 ?>

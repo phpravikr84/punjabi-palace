@@ -7,7 +7,7 @@ class Fileupload
     // $this->fileupload->do_upload($upload_path = 'assets/images/profile/', $field_name = 'userfile');
 
     function do_upload($upload_path = null, $field_name = null) {
-        if (empty($_FILES[$field_name]['name'])) {
+        if (empty($_FILES[$field_name]['name'])) { 
             return null;
         } else {
             //-----------------------------
@@ -23,7 +23,7 @@ class Fileupload
             //set config 
             $config = [
                 'upload_path'   => $file_path,
-                'allowed_types' => 'gif|jpg|png|jpeg|ico|mp3',
+                'allowed_types' => 'gif|jpg|png|jpeg|ico|mp3|webp',
                 'max_filename'  => 5,
                 'overwrite'     => false,
                 'maintain_ratio' => true,

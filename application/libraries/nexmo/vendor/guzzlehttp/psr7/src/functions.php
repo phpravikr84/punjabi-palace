@@ -671,6 +671,7 @@ function mimetype_from_extension($extension)
         'jpe' => 'image/jpeg',
         'jpeg' => 'image/jpeg',
         'jpg' => 'image/jpeg',
+        'webp' => 'image/webp',
         'js' => 'text/javascript',
         'json' => 'application/json',
         'latex' => 'application/x-latex',

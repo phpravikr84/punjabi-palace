@@ -12,7 +12,7 @@ class Customerlist extends MX_Controller {
 			'logs_model',
 			'ordermanage/order_model'
 		));
-		$this->load->library('excel');	
+		// $this->load->library('excel');	
     }
  
     public function index($id = null)
@@ -26,6 +26,10 @@ class Customerlist extends MX_Controller {
         #
         $config["base_url"] = base_url('setting/customerlist/index');
         $config["total_rows"]  = $this->supplier_model->countcustomerlist();
+		// echo "<pre>";
+		// print_r($config["total_rows"]);
+		// echo "</pre>";
+		// exit;
         $config["per_page"]    = 25;
         $config["uri_segment"] = 4;
         $config["last_link"] = "Last"; 

@@ -23,7 +23,7 @@ class MyUpload
             //set config 
             $config = [
                 'upload_path'   => $file_path,
-                'allowed_types' => 'gif|jpg|png|jpeg',
+                'allowed_types' => 'gif|jpg|png|jpeg|webp',
                 'max_filename'  => 7,
                 'overwrite'     => fales,
                 'maintain_ratio' => true,

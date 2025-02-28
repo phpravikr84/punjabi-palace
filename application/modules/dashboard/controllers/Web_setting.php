@@ -44,11 +44,18 @@ class Web_setting extends MX_Controller {
 			'logo'
 		);
 		// if logo is uploaded then resize the logo
+		// if ($logo !== false && $logo != null) {
+		// 	$this->fileupload->do_resize(
+		// 		$logo, 
+		// 		168,
+		// 		65
+		// 	);
+		// }
 		if ($logo !== false && $logo != null) {
 			$this->fileupload->do_resize(
 				$logo, 
-				168,
-				65
+				60,
+				75
 			);
 		}
 		//if logo is not uploaded
@@ -61,11 +68,18 @@ class Web_setting extends MX_Controller {
 			'logofooter'
 		);
 		// if logo is uploaded then resize the logo
+		// if ($footerlogo !== false && $footerlogo != null) {
+		// 	$this->fileupload->do_resize(
+		// 		$footerlogo, 
+		// 		168,
+		// 		65
+		// 	);
+		// }
 		if ($footerlogo !== false && $footerlogo != null) {
 			$this->fileupload->do_resize(
 				$footerlogo, 
-				168,
-				65
+				60,
+				75
 			);
 		}
 		//if logo is not uploaded

@@ -252,7 +252,7 @@ class Restauranttable extends MX_Controller {
 				  $_FILES['file']['size'] = $_FILES['file_source']['size'][$i];
 		
 				$config['upload_path']          = 'assets/img/icons/resttable/';
-				$config['allowed_types']        = 'gif|jpg|png|jpeg';
+				$config['allowed_types']        = 'gif|jpg|png|jpeg|webp';
 				$config['max_size']             = 100000;
 				$this->load->library('upload', $config);
 				$this->upload->initialize($config);
