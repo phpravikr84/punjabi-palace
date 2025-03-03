@@ -1,14 +1,7 @@
 <?php
-// Initialize variables
-$group_name = '';
-$addons = [];
-
-// Check if addonsinfo is not empty
 if (!empty($addonsinfo)) {
-    foreach ($addonsinfo as $group) {
+    foreach ($addonsinfo as $group){
         $group_name = $group->name;
-        $addons = $group->addons; // Store addons array
-        $modifier_setting = $group->min_selection;
     }
 }
 ?>
@@ -26,74 +19,47 @@ if (!empty($addonsinfo)) {
                 <?php echo form_open_multipart("itemmanage/menu_addons/create"); ?>
 
                 <?php echo form_hidden('id', $this->session->userdata('id')); ?>
-              
+                <?php echo form_hidden('add_on_id', (!empty($addonsinfo->add_on_id) ? $addonsinfo->add_on_id : null)); ?>
+
                 <div class="row">
                     <!-- Modifier Set Name -->
                     <div class="col-lg-12">
                         <div class="form-group row modifiersetname">
                             <label for="modifiersetname" class="col-sm-4 col-form-label"><?php echo 'Modifier Set Name'; ?> *</label>
                             <div class="col-sm-8">
-                                <input name="modifiersetname" class="form-control" type="text" placeholder="<?php echo 'Modifier Set Name'; ?>" id="modifiersetname" value="<?php echo (!empty($group_name) ? $group_name : ''); ?>">
+                                <input name="modifiersetname" class="form-control" type="text" placeholder="<?php echo 'Modifier Set Name'; ?>" id="modifiersetname" value=""<?php echo (!empty($group_name)?$group_name:null) ?>">
                             </div>
                         </div>
                     </div>
 
-                     <!-- Modifier Fields -->
+                    <!-- Modifier Fields -->
                     <div class="col-lg-12 modifier-container sortable">
-                        <?php if (!empty($addons)) {
-                            foreach ($addons as $addon) { ?>
-                            <?php echo form_hidden('add_on_id[]', (!empty($addon->add_on_id) ? $addon->add_on_id : null)); ?>
-                            <div class="form-row align-items-end modifier-row">
-                                <div class="form-group col-md-1 drag-handle">
-                                    <span class="fa fa-bars"></span>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label>Modifier *</label>
-                                    <input name="addonsname[]" class="form-control" type="text" placeholder="Modifier Name" value="<?php echo $addon->add_on_name; ?>">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label>Price *</label>
-                                    <input name="addonsprice[]" class="form-control" type="text" placeholder="Price" value="<?php echo $addon->price; ?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label>Status</label>
-                                    <select name="status[]" class="form-control">
-                                        <option value="" selected="selected">Select Option</option>
-                                        <option value="1" <?php echo ($addon->is_active == 1) ? "selected" : ""; ?>>Active</option>
-                                        <option value="0" <?php echo ($addon->is_active == 0) ? "selected" : ""; ?>>Inactive</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 text-left">
-                                    <button type="button" class="btn btn-danger remove-row mt-4">&times;</button>
-                                </div>
+                        <div class="form-row align-items-end modifier-row">
+                            <div class="form-group col-md-1 drag-handle">
+                                <span class="fa fa-bars"></span>
                             </div>
-                        <?php }
-                        } else { ?>
-                            <div class="form-row align-items-end modifier-row">
-                                <div class="form-group col-md-1 drag-handle">
-                                    <span class="fa fa-bars"></span>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label>Modifier *</label>
-                                    <input name="addonsname[]" class="form-control" type="text" placeholder="Modifier Name">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label>Price *</label>
-                                    <input name="addonsprice[]" class="form-control" type="text" placeholder="Price">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label>Status</label>
-                                    <select name="status[]" class="form-control">
-                                        <option value="" selected="selected">Select Option</option>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 text-left">
-                                    <button type="button" class="btn btn-danger remove-row mt-4">&times;</button>
-                                </div>
+                            <div class="form-group col-md-3">
+                                <label>Modifier *</label>
+                                <input name="addonsname[]" class="form-control" type="text" placeholder="Modifier Name" placeholder="<?php echo display('addons_name') ?>" id="addonsname"  value="<?php echo (!empty($addonsinfo->add_on_name)?$addonsinfo->add_on_name:null) ?>">
                             </div>
-                        <?php } ?>
+                            <div class="form-group col-md-3">
+                                <label>Price *</label>
+                                <input name="addonsprice[]" class="form-control" type="text" placeholder="Price" value="<?php echo (!empty($addonsinfo->price)?$addonsinfo->price:null) ?>">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label>Status</label>
+                                <select name="status[]" class="form-control">
+                                    <option value=""  selected="selected"><?php echo display('select_option');?></option>
+                                    <option value="1" <?php if(!empty($addonsinfo)){if($addonsinfo->is_active==1){echo "Selected";}} else{echo "Selected";} ?>><?php echo display('active')?></option>
+                                    <option value="0" <?php if(!empty($addonsinfo)){if($addonsinfo->is_active==0){echo "Selected";}} ?>><?php echo display('inactive')?></option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 text-left">
+                                <button type="button" class="btn btn-danger remove-row mt-4" style="display: none;">&times;</button>
+                            </div>
+                            <!-- Hidden field to store order -->
+                            <input type="hidden" name="sort_order[]" class="sort-order" value="">
+                        </div>
                     </div>
 
                     <!-- "Add Modifiers" Button -->
@@ -109,7 +75,7 @@ if (!empty($addonsinfo)) {
                             <div class="col-sm-8">
                                 <!-- Bootstrap 5 Switch -->
                                 <div class="form-check form-switch">
-                                    <input id="modifier_setting" name="modifier_setting" class="form-check-input" type="checkbox" data-toggle="toggle" data-style="mr-1" <?php echo (!empty($modifier_setting) && $modifier_setting==1) ?  'checked' : ''; ?>>
+                                    <input id="modifier_setting" name="modifier_setting" class="form-check-input" type="checkbox" data-toggle="toggle" data-style="mr-1">
                                     <label for="modifier_setting" class="form-check-label"></label>
                                 </div>
                             </div>

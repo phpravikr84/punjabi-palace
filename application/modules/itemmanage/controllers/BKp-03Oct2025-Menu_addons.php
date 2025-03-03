@@ -47,7 +47,7 @@ class Menu_addons extends MX_Controller {
         /* ends of bootstrap */
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $data["addonslist"] = $this->addons_model->read_modified_groups_addons($config["per_page"], $page);
+        $data["addonslist"] = $this->addons_model->read_addons($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 		$data['pagenum']=$page;
 		$settinginfo=$this->addons_model->settinginfo();
@@ -145,7 +145,7 @@ class Menu_addons extends MX_Controller {
  
     } */
 
-	/*public function create($id = null)
+	public function create($id = null)
 	{
 		$this->permission->method('itemmanage', 'create')->redirect();
 		$data['title'] = empty($id) ? 'Add Modifiers' : 'Update Modifiers';
@@ -217,110 +217,16 @@ class Menu_addons extends MX_Controller {
 			// Load data for edit
 			if (!empty($id)) {
 				$data['title'] = 'Update Modifiers';
-				$modifiedGroups  = $this->addons_model->findModifierGroupsById($id);
-				$data['addonsinfo'] = $this->singleObjectArray($modifiedGroups);
+				$data['modifier_groups'] = $this->db->get_where('modifier_groups', ['id' => $id])->row();
+				$data['addons'] = $this->db->get_where('add_ons', ['modifier_set_id' => $id])->result();
+				$data['addonsinfo']   = $this->addons_model->findById($id);
 			}
 
 			$data['module'] = "itemmanage";
 	   		$data['page']   = "addonscreate";
 			$this->load->view('template/layout', $data);
 		}
-	} */
-
-	public function create($id = null)
-	{
-		$this->permission->method('itemmanage', 'create')->redirect();
-		$data['title'] = empty($id) ? 'Add Modifiers' : 'Update Modifiers';
-
-		// Set validation rules
-		$this->form_validation->set_rules('modifiersetname', 'Modifier Set Name', 'required|max_length[100]');
-		$this->form_validation->set_rules('addonsname[]', 'Modifier Name', 'required');
-		$this->form_validation->set_rules('status[]', 'Status', 'required|in_list[0,1]');
-
-		if ($this->form_validation->run() === true) {
-			$savedid = $this->session->userdata('id');
-
-			// Modifier Group Data
-			$modifierData = [
-				'name'          => $this->db->escape_str($this->input->post('modifiersetname', true)),
-				'description'   => $this->db->escape_str($this->input->post('description', true)),
-				'is_required'   => $this->input->post('modifier_setting') ? 1 : 0,
-				'min_selection' => $this->input->post('modifier_setting') ? 1 : 0,
-				'updated_at'    => date('Y-m-d H:i:s')
-			];
-
-			// Start Database Transaction
-			$this->db->trans_start();
-
-			if (empty($id)) {
-				// Insert new modifier set
-				$modifierData['created_at'] = date('Y-m-d H:i:s');
-				$this->db->insert('modifier_groups', $modifierData);
-				$modifier_set_id = $this->db->insert_id();
-				$action = "created";
-			} else {
-				// Update existing modifier set
-				$this->db->where('id', $id);
-				$this->db->update('modifier_groups', $modifierData);
-				$modifier_set_id = $id;
-				$action = "updated";
-			}
-
-			// Process Add-ons
-			$addonsname  = $this->input->post('addonsname', true);
-			$addonsprice = $this->input->post('addonsprice', true);
-			$status      = $this->input->post('status', true);
-			$sort_order  = $this->input->post('sort_order', true);
-			$addon_ids   = $this->input->post('addon_ids', true); // Expecting hidden input field with addon IDs
-
-			if (!empty($addonsname)) {
-				foreach ($addonsname as $key => $name) {
-					if (!empty($name)) {
-						$addonData = [
-							'modifier_set_id' => $modifier_set_id,
-							'add_on_name'     => $this->db->escape_str($name),
-							'price'           => isset($addonsprice[$key]) ? floatval($addonsprice[$key]) : 0.00,
-							'sort_order'      => isset($sort_order[$key]) ? intval($sort_order[$key]) : 0,
-							'is_active'       => isset($status[$key]) ? intval($status[$key]) : 1
-						];
-
-						if (!empty($addon_ids[$key])) {
-							// Update existing add-on
-							$this->db->where('id', $addon_ids[$key]);
-							$this->db->update('add_ons', $addonData);
-						} else {
-							// Insert new add-on
-							$this->db->insert('add_ons', $addonData);
-						}
-					}
-				}
-			}
-
-			// Complete transaction (commit or rollback)
-			$this->db->trans_complete();
-
-			if ($this->db->trans_status() === false) {
-				$this->session->set_flashdata('error', "Error while saving modifier set!");
-			} else {
-				$this->session->set_flashdata('message', "Modifier set {$action} successfully!");
-			}
-
-			redirect('itemmanage/menu_addons');
-		} else {
-			// Load data for edit
-			if (!empty($id)) {
-				$data['title'] = 'Update Modifiers';
-				$modifiedGroups  = $this->addons_model->findModifierGroupsById($id);
-				$data['addonsinfo'] = $this->singleObjectArray($modifiedGroups);
-			}
-
-			$data['module'] = "itemmanage";
-			$data['page']   = "addonscreate";
-			$this->load->view('template/layout', $data);
-		}
 	}
-
-
 
 
 	
@@ -515,39 +421,5 @@ class Menu_addons extends MX_Controller {
 		}
 		redirect('itemmanage/menu_addons/assignaddons');
     }
-
-	private function singleObjectArray($originalArray){
-		$result = [];
-				$grouped = [];
-
-				// Grouping by group_id
-				foreach ($originalArray as $item) {
-					$group_id = $item->group_id;
-					$group_name = $item->name;
-					$group_min_selection = $item->min_selection;
-					$group_modifier_set_id = $item->modifier_set_id;
-					if (!isset($grouped[$group_id])) {
-						$grouped[$group_id] = (object) [
-							'group_id' => $group_id,
-							'name'	=> $group_name,
-							'min_selection' => $group_min_selection,
-							'modifier_set_id' => $group_modifier_set_id,
-							'addons' => []
-						];
-					}
-					
-					// Remove group_id before adding to addons
-					$addon = clone $item;
-					unset($addon->group_id);
-					unset($addon->name);
-					unset($addon->min_selection);
-					unset($addon->modifier_set_id);
-					$grouped[$group_id]->addons[] = $addon;
-				}
-
-				$result = array_values($grouped);
-
-				return $result;
-	}
  
 }

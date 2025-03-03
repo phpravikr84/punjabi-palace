@@ -1,10 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Addons_model extends CI_Model {
+class BkpAddons_model extends CI_Model {
 	
 	private $table = 'add_ons';
-	private $table1 = 'modifier_groups';
 	private $table2 = 'menu_add_on';
  
 	public function addons_create($data = array())
@@ -65,25 +64,7 @@ class Addons_model extends CI_Model {
             return $query->result();    
         }
         return false;
-	}
-	public function read_modified_groups_addons($limit = null, $start = null)
-	{
-		$this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, 
-							GROUP_CONCAT(add_ons.add_on_name ORDER BY add_ons.add_on_id SEPARATOR ', ') as add_on_names,
-							GROUP_CONCAT(add_ons.price ORDER BY add_ons.add_on_id SEPARATOR ', ') as prices,
-							add_ons.is_active");
-		$this->db->from('modifier_groups');
-		$this->db->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left');
-		$this->db->group_by('modifier_groups.id');
-		$this->db->order_by('modifier_groups.id', 'desc');
-
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			return $query->result();
-		}
-		return false;
-	}
-
+	} 
 	public function read_menuaddons($limit = null, $start = null)
 	{
 	    $this->db->select('menu_add_on.*,item_foods.ProductName,add_ons.add_on_name');
@@ -98,18 +79,6 @@ class Addons_model extends CI_Model {
         }
         return false;
 	}
-
-	public function findModifierGroupsById($id = null)
-	{ 
-		return $this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, add_ons.*")
-			->from('modifier_groups')
-			->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left')
-			->where('modifier_groups.id', $id)
-			->get()
-			->result();  // Use result() instead of row()
-	}
-
-
 
 	public function findById($id = null)
 	{ 
