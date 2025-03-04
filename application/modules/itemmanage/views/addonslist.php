@@ -9,7 +9,7 @@
                         <tr>
                             <th><?php echo display('Sl') ?></th>
                             <th><?php echo 'Modifier Set Name'; ?></th>
-                            <th><?php echo display('addons_name') ?></th>
+                            <th><?php echo 'Modifier Items' ?></th>
                             <th><?php echo display('price') ?></th> 
                             <th><?php echo display('action') ?></th> 
                         </tr>
@@ -23,13 +23,7 @@
                                     <td><?php echo $addons->name; ?></td>
                                     <td><?php echo $addons->add_on_names; ?></td> <!-- Now comma-separated -->
                                     <td>
-                                        <?php if ($currency->position == 1) {
-                                            echo $currency->curr_icon;
-                                        } ?>
-                                        <?php echo $addons->prices; ?> <!-- Now comma-separated -->
-                                        <?php if ($currency->position == 2) {
-                                            echo $currency->curr_icon;
-                                        } ?>
+                                        <?php echo $addons->prices; ?> <!-- Now comma-separated -->(In <?php echo $currency->curr_icon; ?>)
                                     </td>
                                     <td><?php echo ($addons->is_active == 1) ? display('active') : display('inactive'); ?></td>
                                     <td class="center">
@@ -40,7 +34,7 @@
                                             </a>
                                         <?php endif;
                                         if ($this->permission->method('itemmanage', 'delete')->access()) : ?>
-                                            <a href="<?php echo base_url("itemmanage/menu_addons/delete/$addons->group_id") ?>" 
+                                            <a href="<?php echo base_url("itemmanage/menu_addons/deleteModifiers/$addons->group_id") ?>" 
                                             onclick="return confirm('<?php echo display("are_you_sure") ?>')" 
                                             class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="<?php echo display('delete') ?>">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>

@@ -240,6 +240,9 @@ class Menu_addons extends MX_Controller {
 		if ($this->form_validation->run() === true) {
 			$savedid = $this->session->userdata('id');
 
+			//Get Group id
+			$groupid = $this->input->post('group_id');
+
 			// Modifier Group Data
 			$modifierData = [
 				'name'          => $this->db->escape_str($this->input->post('modifiersetname', true)),
@@ -252,7 +255,7 @@ class Menu_addons extends MX_Controller {
 			// Start Database Transaction
 			$this->db->trans_start();
 
-			if (empty($id)) {
+			if (empty($groupid)) {
 				// Insert new modifier set
 				$modifierData['created_at'] = date('Y-m-d H:i:s');
 				$this->db->insert('modifier_groups', $modifierData);
@@ -260,9 +263,9 @@ class Menu_addons extends MX_Controller {
 				$action = "created";
 			} else {
 				// Update existing modifier set
-				$this->db->where('id', $id);
+				$this->db->where('id', $groupid);
 				$this->db->update('modifier_groups', $modifierData);
-				$modifier_set_id = $id;
+				$modifier_set_id = $groupid;
 				$action = "updated";
 			}
 
@@ -283,18 +286,26 @@ class Menu_addons extends MX_Controller {
 							'sort_order'      => isset($sort_order[$key]) ? intval($sort_order[$key]) : 0,
 							'is_active'       => isset($status[$key]) ? intval($status[$key]) : 1
 						];
-
-						if (!empty($addon_ids[$key])) {
-							// Update existing add-on
-							$this->db->where('id', $addon_ids[$key]);
+	
+						if (!empty($groupid) && !empty($addon_ids[$key])) {
+							
+							// DELETE OLD ADD-ONS NOT IN THE UPDATED LIST
+							if (!empty($groupid) && !empty($addon_ids)) {
+								$this->db->where('modifier_set_id', $groupid);
+								$this->db->where_not_in('add_on_id', $addon_ids);
+								$this->db->delete('add_ons'); // Remove old add-ons that are not part of the update
+							}
+							// UPDATE existing add-on (only if $addon_ids[$key] exists)
+							$this->db->where('add_on_id', $addon_ids[$key]);
 							$this->db->update('add_ons', $addonData);
 						} else {
-							// Insert new add-on
+							//INSERT new add-on when updating or creating
 							$this->db->insert('add_ons', $addonData);
 						}
 					}
 				}
 			}
+			
 
 			// Complete transaction (commit or rollback)
 			$this->db->trans_complete();
@@ -345,6 +356,49 @@ class Menu_addons extends MX_Controller {
 		}
 		redirect('itemmanage/menu_addons/index');
     }
+
+	public function deleteModifiers($id = null)
+	{
+		//$this->permission->module('itemmanage', 'delete')->redirect();
+		
+
+		if (!$id) {
+			$this->session->set_flashdata('exception', display('invalid_request'));
+			redirect('itemmanage/menu_addons/index');
+			return;
+		}
+
+		$logData = [
+			'action_page'   => "Add-ons List",
+			'action_done'   => "Delete Data",
+			'remarks'       => "Add-ons Deleted",
+			'user_name'     => $this->session->userdata('fullname', true),
+			'entry_date'    => date('Y-m-d H:i:s'),
+		];
+
+		// Fetch add-ons associated with this modifier set ID
+		$addons = $this->addons_model->get_addons_bymodifiers($id);
+		
+		if (!$addons) {
+			$this->session->set_flashdata('exception', display('no_addons_found'));
+			redirect('itemmanage/menu_addons/index');
+			return;
+		}
+
+		foreach ($addons as $addon) {
+
+			if ($this->addons_model->addons_modifiers_delete($addon->add_on_id)) {
+				
+				$this->session->set_flashdata('message', display('delete_successfully'));
+			} else {
+				$this->session->set_flashdata('exception', display('please_try_again'));
+			}
+		}
+
+		redirect('itemmanage/menu_addons/index');
+	}
+
+
 	private function taxchecking()
     {
     	$taxinfos = '';
@@ -515,6 +569,38 @@ class Menu_addons extends MX_Controller {
 		}
 		redirect('itemmanage/menu_addons/assignaddons');
     }
+
+	public function addonsdelete($addons = null)
+	{
+		// Check user permissions
+		$this->permission->module('itemmanage', 'delete')->redirect();
+
+		// Load necessary models
+		$this->load->model('addons_model');
+		$this->load->model('logs_model');
+
+		// Log action details
+		$logData = [
+			'action_page'     => "Add-ons List",
+			'action_done'     => "Delete Data",
+			'remarks'         => "Add-ons Assign Menu Deleted",
+			'user_name'       => $this->session->userdata('fullname'),
+			'entry_date'      => date('Y-m-d H:i:s'),
+		];
+
+		// Attempt to delete the add-on
+		if ($this->addons_model->menuaddons_delete($addons)) {
+			// Record deletion in logs
+			$this->logs_model->log_recorded($logData);
+
+			// Send success response
+			echo json_encode(['status' => 'success', 'message' => display('delete_successfully')]);
+		} else {
+			// Send failure response
+			echo json_encode(['status' => 'error', 'message' => display('please_try_again')]);
+		}
+	}
+
 
 	private function singleObjectArray($originalArray){
 		$result = [];

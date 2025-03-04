@@ -6,6 +6,7 @@ $addons = [];
 // Check if addonsinfo is not empty
 if (!empty($addonsinfo)) {
     foreach ($addonsinfo as $group) {
+        $group_id = $group->group_id;
         $group_name = $group->name;
         $addons = $group->addons; // Store addons array
         $modifier_setting = $group->min_selection;
@@ -26,7 +27,7 @@ if (!empty($addonsinfo)) {
                 <?php echo form_open_multipart("itemmanage/menu_addons/create"); ?>
 
                 <?php echo form_hidden('id', $this->session->userdata('id')); ?>
-              
+                <?php echo form_hidden('group_id',  (!empty($group_id) ? $group_id : null)); ?>
                 <div class="row">
                     <!-- Modifier Set Name -->
                     <div class="col-lg-12">
@@ -42,8 +43,9 @@ if (!empty($addonsinfo)) {
                     <div class="col-lg-12 modifier-container sortable">
                         <?php if (!empty($addons)) {
                             foreach ($addons as $addon) { ?>
-                            <?php echo form_hidden('add_on_id[]', (!empty($addon->add_on_id) ? $addon->add_on_id : null)); ?>
+                           
                             <div class="form-row align-items-end modifier-row">
+                                <?php echo form_hidden('addon_ids[]', (!empty($addon->add_on_id) ? $addon->add_on_id : null)); ?>
                                 <div class="form-group col-md-1 drag-handle">
                                     <span class="fa fa-bars"></span>
                                 </div>
@@ -52,7 +54,7 @@ if (!empty($addonsinfo)) {
                                     <input name="addonsname[]" class="form-control" type="text" placeholder="Modifier Name" value="<?php echo $addon->add_on_name; ?>">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label>Price *</label>
+                                    <label>Price </label>
                                     <input name="addonsprice[]" class="form-control" type="text" placeholder="Price" value="<?php echo $addon->price; ?>">
                                 </div>
                                 <div class="form-group col-md-2">
@@ -64,8 +66,10 @@ if (!empty($addonsinfo)) {
                                     </select>
                                 </div>
                                 <div class="col-md-2 text-left">
-                                    <button type="button" class="btn btn-danger remove-row mt-4">&times;</button>
+                                    <button type="button" id="<?php echo !empty($addon->add_on_id) ? $addon->add_on_id : ''; ?>" class="btn btn-danger remove-row mt-4">&times;</button>
                                 </div>
+                                <!-- Hidden field to store order -->
+                                <input type="hidden" name="sort_order[]" class="sort-order" value="">
                             </div>
                         <?php }
                         } else { ?>
@@ -78,7 +82,7 @@ if (!empty($addonsinfo)) {
                                     <input name="addonsname[]" class="form-control" type="text" placeholder="Modifier Name">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label>Price *</label>
+                                    <label>Price </label>
                                     <input name="addonsprice[]" class="form-control" type="text" placeholder="Price">
                                 </div>
                                 <div class="form-group col-md-2">
@@ -92,6 +96,8 @@ if (!empty($addonsinfo)) {
                                 <div class="col-md-2 text-left">
                                     <button type="button" class="btn btn-danger remove-row mt-4">&times;</button>
                                 </div>
+                                <!-- Hidden field to store order -->
+                                <input type="hidden" name="sort_order[]" class="sort-order" value="">
                             </div>
                         <?php } ?>
                     </div>
@@ -198,6 +204,11 @@ $(document).ready(function () {
         $(this).closest(".modifier-row").remove();
         updateSortOrder(); // Update sorting after removal
         checkRemoveButton(); // Check remove button visibility
+
+        // Remove from add on record and also check that its not assign in a menu
+        var addonId =  this.id;
+        console.log('Add on Id'+addonId);
+  
     });
 
     // Check remove button visibility (only show if more than one row exists)
@@ -212,6 +223,8 @@ $(document).ready(function () {
     // Run this on page load
     updateSortOrder();
     checkRemoveButton();
+
+    
 });
 
 </script>

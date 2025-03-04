@@ -1749,3 +1749,7 @@ ERROR - 2025-03-03 22:39:58 --> Severity: Warning --> Undefined variable $title2
 ERROR - 2025-03-03 22:39:58 --> Severity: Warning --> Undefined variable $setting D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 109
 ERROR - 2025-03-03 22:39:58 --> Severity: Warning --> Attempt to read property "language" on null D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 109
 ERROR - 2025-03-03 22:39:58 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-03 13:44:46 --> 404 Page Not Found: /index
+ERROR - 2025-03-03 13:44:46 --> 404 Page Not Found: /index
+ERROR - 2025-03-03 13:44:47 --> 404 Page Not Found: /index
+ERROR - 2025-03-03 13:44:47 --> 404 Page Not Found: /index

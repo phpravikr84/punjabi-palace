@@ -27,7 +27,47 @@ class Addons_model extends CI_Model {
 		} else {
 			return false;
 		}
-	} 
+	}
+
+	
+	public function addons_modifiers_delete($id = null)
+	{
+		if (!$id) {
+			return false; // Ensure ID is provided
+		}
+
+		// Check if the add-on is assigned in menu_add_on table
+		$menuassign = $this->db->where('add_on_id', $id)->count_all_results($this->table2);
+		if ($menuassign > 0) {
+			return false; // Prevent deletion if assigned to a menu
+		}
+
+		// Get the modifier_set_id associated with the add_on_id
+		$modifiers = $this->db->select('modifier_set_id')
+							->from($this->table)
+							->where('add_on_id', $id)
+							->group_by('modifier_set_id')
+							->get()
+							->row(); // Changed row() to result() for multiple entries
+
+		// Delete from modifier_groups table
+		$this->db->where('id', $modifiers->modifier_set_id)->delete($this->table1);
+		// Delete from add_ons table
+		$this->db->where('add_on_id', $id)->delete($this->table);
+
+		if ($this->db->affected_rows() > 0) {
+			// Ensure complete cleanup by deleting from menu_add_on
+			foreach ($modifiers as $modifier) {
+				$this->db->where('add_on_id', $id)->delete($this->table2);
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
+	
   public function menuaddons_delete($id = null)
 	{
 		$this->db->where('row_id',$id)
@@ -66,16 +106,44 @@ class Addons_model extends CI_Model {
         }
         return false;
 	}
+
+	public function get_addons_bymodifiers($id =  null)
+	{
+	   $this->db->select('add_on_id');
+        $this->db->from('add_ons');
+		$this->db->where('modifier_set_id', $id);
+        $this->db->order_by('add_on_id', 'desc');
+       
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();    
+        }
+        return false;
+	}
 	public function read_modified_groups_addons($limit = null, $start = null)
 	{
-		$this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, 
-							GROUP_CONCAT(add_ons.add_on_name ORDER BY add_ons.add_on_id SEPARATOR ', ') as add_on_names,
-							GROUP_CONCAT(add_ons.price ORDER BY add_ons.add_on_id SEPARATOR ', ') as prices,
-							add_ons.is_active");
-		$this->db->from('modifier_groups');
-		$this->db->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left');
-		$this->db->group_by('modifier_groups.id');
-		$this->db->order_by('modifier_groups.id', 'desc');
+		// $this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, 
+		// 					GROUP_CONCAT(add_ons.add_on_name ORDER BY add_ons.add_on_id SEPARATOR ', ') as add_on_names,
+		// 					GROUP_CONCAT(add_ons.price ORDER BY add_ons.add_on_id SEPARATOR ', ') as prices,
+		// 					add_ons.is_active");
+		// $this->db->from('modifier_groups');
+		// $this->db->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left');
+		// $this->db->group_by('modifier_groups.id');
+		// $this->db->order_by('modifier_groups.id', 'desc');
+		
+		$this->db->select("
+			mg.id as group_id, 
+			mg.name, 
+			mg.min_selection, 
+			GROUP_CONCAT(ao.add_on_name ORDER BY ao.sort_order SEPARATOR ', ') as add_on_names,
+			GROUP_CONCAT(ao.price ORDER BY ao.sort_order SEPARATOR ', ') as prices,
+			MAX(ao.is_active) as is_active
+		");
+		$this->db->from('modifier_groups mg');
+		$this->db->join('add_ons ao', 'mg.id = ao.modifier_set_id', 'left');
+		$this->db->group_by('mg.id');
+		$this->db->order_by('mg.id', 'desc');
+
 
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -105,6 +173,7 @@ class Addons_model extends CI_Model {
 			->from('modifier_groups')
 			->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left')
 			->where('modifier_groups.id', $id)
+			->order_by('sort_order', 'asc')
 			->get()
 			->result();  // Use result() instead of row()
 	}
