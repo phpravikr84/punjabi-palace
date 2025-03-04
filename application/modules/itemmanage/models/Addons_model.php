@@ -267,6 +267,61 @@ public function count_menuaddons()
 			->where('currencyid',$id) 
 			->get()
 			->row();
-	} 
+	}
+
+	public function findByGroupsId($id = null)
+	{ 
+		return $this->db->select("*")->from('add_ons')
+			->where('modifier_set_id',$id) 
+    		->limit($limit, $start)
+			->get()
+			->row();
+	}
+
+	public function get_selected_addons($group_id) {
+		$this->db->select('add_on_id');
+		$this->db->from('menu_add_on');
+		$this->db->where('group_id', $group_id);
+		$query = $this->db->get();
+
+		return array_column($query->result_array(), 'add_on_id');
+	}
+
+	public function addons_dropdown_modifiers($id)
+	{
+		$data = $this->db->select("*")
+			->from($this->table)
+			->where("is_active", 1)
+			->where("modifier_set_id", $id)
+			->get()
+			->result();
+
+		//$list[''] = display('addons_list');
+		if (!empty($data)) {
+			foreach($data as $value)
+				$list[$value->add_on_id] = $value->add_on_name;
+			return $list;
+		} else {
+			return false; 
+		}
+	}
+
+	public function menu_dropdown_modifiers()
+	{
+		$data = $this->db->select("*")
+			->from('item_foods')
+			->where("ProductsIsActive", 1)
+			->get()
+			->result();
+
+		//$list[''] = display('item_name');
+		if (!empty($data)) {
+			foreach($data as $value)
+				$list[$value->ProductsID] = $value->ProductName;
+			return $list;
+		} else {
+			return false; 
+		}
+	}
     
 }

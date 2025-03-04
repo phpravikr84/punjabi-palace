@@ -635,5 +635,116 @@ class Menu_addons extends MX_Controller {
 
 				return $result;
 	}
+
+	public function get_addons_by_group()
+	{
+		$group_id = $this->input->post('group_id');
+		$addons = $this->addons_model->findByGroupsId($group_id);
+		echo json_encode($addons);
+	}
+
+	public function assignaddonmodifieritems($id){
+	  
+		$this->permission->method('itemmanage','update')->redirect();
+		$data['title'] = display('assign_adons_list');
+		#$data['addonsinfo']   = $this->addons_model->findBymenuaddons($id);
+		$data['menudropdown']   =  $this->addons_model->menu_dropdown_modifiers();
+		//$data['addonsdropdown']   =  $this->addons_model->addons_dropdown();
+		$data['addonsdropdown']   =  $this->addons_model->addons_dropdown_modifiers($id);
+        $data['module'] = "itemmanage";  
+        $data['page']   = "assignaddonsemodifiers";
+		$this->load->view('itemmanage/assignaddonsemodifiers', $data);   
+    
+	}
+	
+	public function assignaddonscreatemultiple($id = null)
+	{
+		$this->permission->method('itemmanage', 'create')->redirect();
+		$data['title'] = display('assign_adons');
+
+		// Validate multiple select fields correctly
+		$this->form_validation->set_rules('addonsid[]', display('addonsname'), 'required');
+		$this->form_validation->set_rules('menuid[]', display('item_name'), 'required');
+
+		$savedid = $this->session->userdata('id');
+		
+		$addonsIds = $this->input->post('addonsid', true);
+		$menuIds = $this->input->post('menuid', true);
+
+		if ($this->form_validation->run()) {
+			if (empty($this->input->post('row_id', true))) {
+				$this->permission->method('itemmanage', 'create')->redirect();
+
+				// Loop through addons and menu IDs to insert multiple records
+				foreach ($menuIds as $menuId) {
+					foreach ($addonsIds as $addonId) {
+						$postData = [
+							'add_on_id' => $addonId,
+							'menu_id'   => $menuId,
+							'is_active' => 1,
+						];
+
+						$this->addons_model->menuaddons_create($postData);
+					}
+				}
+
+				// Logging the action
+				$logData = [
+					'action_page'  => "Add-ons Assign",
+					'action_done'  => "Insert Data",
+					'remarks'      => "Assigned multiple Add-ons to Menus",
+					'user_name'    => $this->session->userdata('fullname'),
+					'entry_date'   => date('Y-m-d H:i:s'),
+				];
+				$this->logs_model->log_recorded($logData);
+
+				$this->session->set_flashdata('message', display('save_successfully'));
+				redirect('itemmanage/menu_addons/assignaddons');
+			} else {
+				$this->permission->method('itemmanage', 'update')->redirect();
+
+				// Delete existing records for selected menu items before inserting new ones
+				foreach ($menuIds as $menuId) {
+					$this->addons_model->delete_by_menu_id($menuId); // You need to create this function
+				}
+
+				// Insert new records
+				foreach ($menuIds as $menuId) {
+					foreach ($addonsIds as $addonId) {
+						$postData = [
+							'add_on_id' => $addonId,
+							'menu_id'   => $menuId,
+							'is_active' => 1,
+						];
+
+						$this->addons_model->menuaddons_create($postData);
+					}
+				}
+
+				// Logging update action
+				$logData = [
+					'action_page'  => "Add-ons Assign List",
+					'action_done'  => "Update Data",
+					'remarks'      => "Updated Add-ons Assign List",
+					'user_name'    => $this->session->userdata('fullname'),
+					'entry_date'   => date('Y-m-d H:i:s'),
+				];
+				$this->logs_model->log_recorded($logData);
+
+				$this->session->set_flashdata('message', display('update_successfully'));
+				redirect("itemmanage/menu_addons/assignaddons");
+			}
+		} else {
+			if (!empty($id)) {
+				$data['title'] = display('update_adons');
+				$data['addonsinfo'] = $this->addons_model->findById($id);
+			}
+			$data['module'] = "itemmanage";
+			$data['page']   = "assignaddons";
+			echo Modules::run('template/layout', $data);
+		}
+	}
+
+
  
 }

@@ -25,7 +25,7 @@
                                     <td>
                                         <?php echo $addons->prices; ?> <!-- Now comma-separated -->(In <?php echo $currency->curr_icon; ?>)
                                     </td>
-                                    <td><?php echo ($addons->is_active == 1) ? display('active') : display('inactive'); ?></td>
+                                    
                                     <td class="center">
                                         <?php if ($this->permission->method('itemmanage', 'update')->access()) : ?>
                                             <a href="<?php echo base_url("itemmanage/menu_addons/create/$addons->group_id") ?>" 
@@ -40,6 +40,7 @@
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </a>
                                         <?php endif; ?>
+                                        <a onclick="addapplyitems('<?php echo $addons->group_id; ?>')" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo 'Apply Items'; ?>">Apply to items</a>
                                     </td>
                                 </tr>
                                 <?php $sl++; ?>
@@ -52,4 +53,24 @@
         </div>
     </div>
 </div>
- 
+
+<div id="assignmenuitems" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <strong><?php echo 'Apply Set to Items';?></strong>
+            </div>
+            <div class="modal-body setitemsinfo">
+            
+    		</div>
+     
+            </div>
+            <div class="modal-footer">
+
+            </div>
+
+        </div>
+
+    </div>
+    

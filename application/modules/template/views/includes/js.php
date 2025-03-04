@@ -1,4 +1,4 @@
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- jquery-ui --> 
 <script src="<?php echo base_url('/ordermanage/order/showljslang') ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('/ordermanage/order/basicjs') ?>" type="text/javascript"></script>
