@@ -63,3 +63,40 @@ function editavailable(id){
 		 } 
 	});
 	}
+
+// Assign Menu to Modifier Items
+// function addapplyitems(id){
+// 	var myurl =baseurl+'itemmanage/menu_addons/assignaddonsupdateinfo/'+id;
+// 	var csrf = $('#csrfhashresarvation').val();
+// 	 var dataString = "unitid="+id+"&csrf_test_name="+csrf;
+  
+// 	  $.ajax({
+// 	  type: "GET",
+// 	  url: myurl,
+// 	  data: dataString,
+// 	  success: function(data) {
+// 		  $('.editinfo').html(data);
+// 		  $('#edit').modal('show');
+// 	  } 
+//  });
+//  }
+
+ // Modal pop
+
+ function addapplyitems(id) {
+    var myurl =baseurl+'itemmanage/menu_addons/assignaddonmodifieritems/'+id;
+	   var csrf = $('#csrfhashresarvation').val();
+	    var dataString = "unitid="+id+"&csrf_test_name="+csrf;
+	 
+		 $.ajax({
+		 type: "GET",
+		 url: myurl,
+		 data: dataString,
+		 success: function(data) {
+			 $('.setitemsinfo').html(data);
+			 $('#assignmenuitems').modal('show');
+		 } 
+	});
+}
+
+

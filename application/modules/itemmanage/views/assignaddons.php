@@ -1,7 +1,7 @@
 <div class="form-group text-right">
  <?php if($this->permission->method('itemmanage','create')->access()): ?>
-<button type="button" class="btn btn-primary btn-md" data-target="#add0" data-toggle="modal"  ><i class="fa fa-plus-circle" aria-hidden="true"></i>
-<?php echo display('assign_adons')?></button> 
+<!-- <button type="button" class="btn btn-primary btn-md" data-target="#add0" data-toggle="modal"  ><i class="fa fa-plus-circle" aria-hidden="true"></i>
+<?php //echo display('assign_adons')?></button>  -->
 <?php endif; ?>
 
 </div>
@@ -92,8 +92,8 @@
                     <thead>
                         <tr>
                             <th><?php echo display('Sl') ?></th>
-                            <th><?php echo display('addons_name') ?></th>
-                            <th><?php echo display('item_name') ?></th>
+                            <th><?php echo 'Modifier Item'; ?></th>
+                            <th><?php echo 'Menu Name'; ?></th>
                             <th><?php echo display('action') ?></th> 
                            
                         </tr>

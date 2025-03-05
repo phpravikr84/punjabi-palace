@@ -75,4 +75,3 @@
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/js/jquery-1.12.4.min.js') ?>" type="text/javascript"></script>
 
-
