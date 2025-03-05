@@ -287,7 +287,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
                                 <div class="totals-value" id="cart-subtotal"><?php if($this->storecurrency->position==1){echo $this->storecurrency->curr_icon;}?><span id="subtotal"><?php echo $itemtotal;?></span><?php if($this->storecurrency->position==2){echo $this->storecurrency->curr_icon;}?></div>
                             </div>
                             <div class="totals-item">
-                                <label>Vat </label>
+                                <label><?=display("vat_tax");?></label>
                                 <div class="totals-value" id="cart-tax"><?php if($this->storecurrency->position==1){echo $this->storecurrency->curr_icon;}?><span id="vat"><?php echo $calvat;?></span><?php if($this->storecurrency->position==2){echo $this->storecurrency->curr_icon;}?></div>
                             </div>
                             <div class="totals-item">
@@ -320,7 +320,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
 											}
 								
 								echo number_format($gtotal,2);?></span><?php if($this->storecurrency->position==2){echo $this->storecurrency->curr_icon;}?></div>
-                            </div>
+                            </div> 
                         </div> 
                         <a onclick="gotocheckout()" class="checkout serach text-white">Proceed to checkout</a>
                     </div>

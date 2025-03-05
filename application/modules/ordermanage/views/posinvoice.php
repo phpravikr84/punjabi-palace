@@ -385,7 +385,8 @@ body
                     <div class="item-info">
                         <h5 class="item-title"><?php echo display('date');?>: <?php echo date("M d, Y", strtotime($orderinfo->order_date));?></h5>
                     </div>
-                    <?php if($storeinfo->isvatnumshow==1){?><h5 class="item-title"><?php echo display('tinvat');?>: <?php echo $storeinfo->vattinno;?></h5><?php } ?>
+                    <!-- <?php if($storeinfo->isvatnumshow==1){?><h5 class="item-title"><?php ##echo display('tinvat');?>: <?php ##echo $storeinfo->vattinno;?></h5><?php } ?> -->
+                    <?php if($storeinfo->isvatnumshow==1){?><h5 class="item-title">TIN/GST NO.: <?php echo $storeinfo->vattinno;?></h5><?php } ?>
                 </div>
             </div>
             <div class="invoice-details">
@@ -509,7 +510,8 @@ body
                 <?php if(empty($taxinfos)){?>
       <div class="row-data">
         <div class="item-info">
-          <h5 class="item-title"><?php echo display('vat_tax')?>(<?php echo $storeinfo->vat;?>%)</h5>
+          <!-- <h5 class="item-title"><?php ##echo display('vat_tax')?>(<?php ##echo $storeinfo->vat;?>%)</h5> -->
+          <h5 class="item-title">GST(<?php echo $storeinfo->vat;?>%)</h5>
         </div>
         <h5 class="my-5">
           <?php if($currency->position==1){echo $currency->curr_icon;}?>

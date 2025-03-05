@@ -88,7 +88,7 @@ public function countlist()
         $this->db->from('customer_info');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
-            return $query->num_rows();  
+            return $query->num_rows();
         }
         return false;
 	} 

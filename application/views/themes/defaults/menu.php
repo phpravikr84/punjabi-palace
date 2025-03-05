@@ -40,7 +40,14 @@ $acthemename = $activethemeinfo->themename;
         <?php if ($this->session->flashdata('message')) { ?>
             <div class="alert alert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <?php echo $this->session->flashdata('message') ?>
+                <?php 
+                echo $this->session->flashdata('message');
+                // echo "<pre>";
+                // print_r($_SESSION['message']);
+                // echo "</pre>";
+                // exit;
+                unset($_SESSION['message']);
+                ?>
             </div>
         <?php } ?>
         <?php if ($this->session->flashdata('exception')) { ?>

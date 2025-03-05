@@ -104,7 +104,7 @@ if (!empty($story)) {
 
 <!--Start Offer Area-->
 <?php $carousal = $this->db->select('*')->from('tbl_widget')->where('widgetid', 15)->where('status', 1)->get()->row();
-if (!empty($carousal)) {
+if (!empty($carousal)) { 
 ?>
     <section class="offer_area bg_two sect_pad">
         <div class="container">
@@ -133,7 +133,26 @@ if (!empty($carousal)) {
                         $restaurantisopen = 1;
                     }
                     $id = 0;
-                    foreach ($best_seller as $best) {
+                    // echo "<pre>";
+                    // print_r($food_list);
+                    // echo "</pre>";
+                    // exit();
+                    $aa=[];
+                    if (count($best_seller)>0) {
+                        $aa=$best_seller;
+                    } else {
+                        if (count($food_list)>0) {
+                            for ($i=0; $i < 10; $i++) {
+                                $aa[]=$food_list[$i];
+                            }
+                        }
+                        // $aa=$food_list;
+                        // echo "<pre>";
+                        // print_r($aa);
+                        // echo "</pre>";
+                        // exit();
+                        }
+                    foreach ($aa as $best) {
 						$best=(object)$best;
                         $id++;
                         $this->db->select('*');

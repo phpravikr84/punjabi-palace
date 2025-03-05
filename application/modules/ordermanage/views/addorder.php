@@ -370,7 +370,7 @@
                                     </div>
                                     <div class="col-sm-7">
                                     	<div class="form-group row mb-0">
-                                            <div class="col-sm-3"> Vat/Tax:<strong><input type="hidden" name="vat" value="<?php echo $calvat;?>"/><?php if($currency->position==1){echo $currency->curr_icon;}?><span id="calvat"> <?php echo $calvat;?></span><?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></div> 
+                                            <div class="col-sm-3"> GST/Tax:<strong><input type="hidden" name="vat" value="<?php echo $calvat;?>"/><?php if($currency->position==1){echo $currency->curr_icon;}?><span id="calvat"> <?php echo $calvat;?></span><?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></div> 
                                             <div class="col-sm-5"> <label for="scharge" class="col-sm-5 col-form-label">Service Charge</label><div class="col-sm-7"> <input type="text" id="service_charge" 
                                             onkeyup="calculatetotal();"  class="form-control text-right mb-5" name="service_charge" placeholder ="0.00" /></div></div>
                                             <div class="col-sm-4 grandtxt">&nbsp;</div>

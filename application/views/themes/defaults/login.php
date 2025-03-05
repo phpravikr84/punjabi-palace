@@ -1,3 +1,13 @@
+ <style>
+    .eye
+    {
+        font-size: 22px; padding: 7px; cursor:pointer;
+    }
+    .input-group-append
+    {
+        align-content: center; background: #F6F7FB;
+    }
+ </style>
  <div class="modal fade" id="lostpassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -34,7 +44,13 @@
                      <div class="col-sm-6">
                          <div class="form-group">
                              <label class="control-label" for="u_pass"><?php echo display('password') ?> <abbr class="required" title="required">*</abbr></label>
-                             <input type="password" id="u_pass" class="form-control" name="u_pass">
+                             <!-- <input type="password" id="u_pass" class="form-control" name="u_pass"> -->
+                             <div class="input-group mb-3">
+                                <input type="password" id="u_pass" class="form-control" name="u_pass" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text eye" id="basic-addon2" onclick="togglePassword($(this));"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                </div>
+                            </div>
                          </div>
                      </div>
                      <div class="col-sm-12">
@@ -43,8 +59,8 @@
                              <label for="brand1"><?php echo display('remember_me')?></label>
                              <a   class="lost-pass login_pa_cursor" data-toggle="modal" data-target="#lostpassword" data-dismiss="modal"><?php echo display('forgot_password')?></a>
                          </div>
-                         <a  class="btn btn-success btn-sm search login_pa_cursors" onclick="logincustomer();"><?php echo display('login')?></a>&nbsp; <?php echo display('or')?> &nbsp;<a href="<?php echo base_url() . 'hungry/signup' ?>" class="btn btn-success btn-sm search"><?php echo display('register')?></a><?php $facrbooklogn = $this->db->where('directory', 'facebooklogin')->where('status', 1)->get('module')->num_rows(); if ($facrbooklogn == 1) { ?>&nbsp; <?php echo display('or')?> &nbsp;
-                         <a class="btn btn-primary btn-sm  search text-white" href="<?php echo base_url('facebooklogin/facebooklogin/index/1') ?>"><i class="fa fa-facebook pr-1"></i><?php echo display('facebook_login') ?></a>
+                         <a  class="btn btn-success btn-sm search login_pa_cursors" onclick="logincustomer();"><?php echo display('login')?></a>&nbsp; <?php echo display('or')?> &nbsp;<a href="<?php echo base_url() . 'hungry/signup' ?>" class="btn btn-success btn-sm search"><?php echo display('register')?></a><?php $facrbooklogn = $this->db->where('directory', 'facebooklogin')->where('status', 1)->get('module')->num_rows(); if ($facrbooklogn == 1) { ?>
+                         <!-- &nbsp; <?php echo display('or')?> &nbsp;<a class="btn btn-primary btn-sm  search text-white" href="<?php echo base_url('facebooklogin/facebooklogin/index/1') ?>"><i class="fa fa-facebook pr-1"></i><?php echo display('facebook_login') ?></a> -->
                      <?php } ?>
                      </div>
                  </div>
@@ -54,7 +70,7 @@
  </section>
  <?php 
  $webinfo = $this->webinfo;
-$activethemeinfo = $this->themeinfo;
+$activethemeinfo = $this->themeinfo; 
 $acthemename = $activethemeinfo->themename;?>
  <!--End Login Area-->
  <script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/js/login.js"></script>

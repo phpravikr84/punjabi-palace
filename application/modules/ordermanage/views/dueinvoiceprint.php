@@ -12,7 +12,8 @@
         <div>
             <p class="mb-0"><b class="text-bold"><?php echo display('recept')?>: </b> #<?php echo $orderinfo->saleinvoice;?></p>
             <p class="mb-0"><b class="text-bold"><?php echo display('table');?>: </b> <?php echo $tableinfo->tablename;?></p>
-            <?php if($storeinfo->isvatnumshow==1){?><p class="mb-0"><b class="text-bold"><?php echo display('tinvat');?>: </b><?php echo $storeinfo->vattinno;?></p><?php } ?>
+            <!-- <?php if($storeinfo->isvatnumshow==1){?><p class="mb-0"><b class="text-bold"><?php ##echo display('tinvat');?>: </b><?php ##echo $storeinfo->vattinno;?></p><?php } ?> -->
+            <?php if($storeinfo->isvatnumshow==1){?><p class="mb-0"><b class="text-bold">TIN/GST NO.: </b><?php echo $storeinfo->vattinno;?></p><?php } ?>
             <p class="mb-0"><b class="text-bold"><?php echo display('date');?>: </b><?php echo date("M d, Y", strtotime($orderinfo->order_date));?></p>
             <div class="d-flex justify-content-between">
                 <p class="mb-0"><b class="text-bold"><?php echo display('checkin')?>: </b> <?php echo $orderinfo->order_time;?></p>
@@ -127,7 +128,8 @@
                 <p class="mb-0 text-note text-primary"><?php if($currency->position==1){echo $currency->curr_icon;}?><?php $sdcharge=0; if(empty($billinfo)){ echo $sdcharge;} else{echo $sdcharge=$billinfo->service_charge;} ?><?php if($currency->position==2){echo $currency->curr_icon;}?></p>
             </div>
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <p class="mb-0 text-note text-primary"><?php echo display('vat_tax')?>(<?php echo $storeinfo->vat;?>%):</p>
+                <!-- <p class="mb-0 text-note text-primary"><?php ##echo display('vat_tax')?>(<?php ##echo $storeinfo->vat;?>%):</p> -->
+                <p class="mb-0 text-note text-primary">VAT/TAX(<?php echo $storeinfo->vat;?>%):</p>
                 <p class="mb-0 text-note text-primary"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $calvat=$billinfo->VAT; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></p>
             </div>
         </div>

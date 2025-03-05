@@ -63,6 +63,7 @@ $route['mylogin'] = "hungry/login";
 $route['signup'] = "hungry/signup";
 $route['orderdelevered/(:any)'] = "hungry/orderdelevered/$1";
 $route['about'] = "hungry/about";
+$route['services'] = "hungry/services";
 $route['contact'] = "hungry/contact";
 $route['privacy'] = "hungry/privacy";
 $route['terms'] = "hungry/terms";

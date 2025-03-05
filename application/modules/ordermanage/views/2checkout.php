@@ -111,7 +111,7 @@
                                         <td class="text-right"><strong><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php $servicecharge=0; if(empty($mybill)){ echo $servicecharge;} else{echo $servicecharge=$mybill->service_charge;} ?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></td>
                                     </tr>
                                     <tr>
-                                    	<td class="text-right" colspan="4"><strong>Vat (15%)</strong></td>
+                                    	<td class="text-right" colspan="4"><strong>GST (%)</strong></td>
                                         <td class="text-right"><strong><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $calvat; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></td>
                                     </tr>
                                     <tr>

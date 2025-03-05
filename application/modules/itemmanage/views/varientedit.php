@@ -53,6 +53,24 @@
                                 <input name="price" class="form-control" type="text" placeholder="<?php echo display('price') ?>" id="price" value="<?php echo (!empty($intinfo->price)?$intinfo->price:null) ?>"><a class="cattooltips" data-toggle="tooltip" data-placement="top" title=""><?php echo $currency->curr_icon;?></i></a>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="takeawayPrice" class="col-sm-4 col-form-label">Takeaway Price <span class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                                <input name="takeawayPrice" class="form-control" type="text" placeholder="Enter Takeaway Price" id="takeawayPrice" value="<?php echo (!empty($intinfo->takeaway_price)?$intinfo->takeaway_price:null) ?>" /><a class="cattooltips" data-toggle="tooltip" data-placement="top" title=""><?php echo $currency->curr_icon; ?></i></a>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="uberEatsPrice" class="col-sm-4 col-form-label">Uber Eats / Doordash Price <span class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                                <input name="uberEatsPrice" class="form-control" type="text" placeholder="Enter Uber Eats / Doordash Price" id="uberEatsPrice" value="<?php echo (!empty($intinfo->uber_eats_price)?$intinfo->uber_eats_price:null) ?>" /><a class="cattooltips" data-toggle="tooltip" data-placement="top" title=""><?php echo $currency->curr_icon; ?></i></a>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="webOrderPrice" class="col-sm-4 col-form-label">Web Order Price <span class="text-danger">*</span></label>
+                            <div class="col-sm-8">
+                                <input name="webOrderPrice" class="form-control" type="text" placeholder="Enter Web Order Price" id="webOrderPrice" value="<?php echo (!empty($intinfo->web_order_price)?$intinfo->web_order_price:null) ?>" /><a class="cattooltips" data-toggle="tooltip" data-placement="top" title=""><?php echo $currency->curr_icon; ?></i></a>
+                            </div>
+                        </div>
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-success w-md m-b-5"><?php echo display('update') ?></button>
                         </div>

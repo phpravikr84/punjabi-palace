@@ -1,3 +1,7 @@
+<?php 
+    // echo "product Id: ". $productinfo->ProductsID;
+    // exit;
+?>
 <div id="add0" class="modal fade" role="dialog">
     <div class="modal-dialog modal-md">
         <div class="modal-content customer-list">
@@ -97,7 +101,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="foodname" class="col-sm-4 col-form-label"><?php echo display('food_name') ?> *</label>
+                        <label for="foodname" class="col-sm-4 col-form-label"><?php echo display('food_name') ?> <span class="text-danger">*</span></label>
                         <div class="col-sm-8">
                             <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (!empty($productinfo->ProductName)?$productinfo->ProductName:null) ?>">
                         </div>
@@ -135,7 +139,8 @@
 
 
                     <div class="form-group row">
-                        <label for="vat" class="col-sm-5 col-form-label"><?php echo display('vat') ?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Vat Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+                        <!-- <label for="vat" class="col-sm-5 col-form-label"><?php ##echo display('vat') ?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Vat Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label> -->
+                        <label for="vat" class="col-sm-5 col-form-label">GST <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="GST Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                         <div class="col-sm-7">
                             <input name="vat" class="form-control" type="text" placeholder="0%" id="vat"  value="<?php echo (!empty($productinfo->productvat)?$productinfo->productvat:'') ?>">
                             </div>
@@ -202,7 +207,7 @@
                     
                     </div>
                     <div class="form-group row">
-                        <label for="vat" class="col-sm-5 col-form-label"><?php echo display('cookedtime');?></label>
+                        <label for="cookedtime" class="col-sm-5 col-form-label"><?php echo display('cookedtime');?></label>
                         <div class="col-sm-7">
                             <input name="cookedtime" type="text" class="form-control timepicker3" id="cookedtime" placeholder="00:00" autocomplete="off" value="<?php echo (!empty($productinfo->cookedtime)?$productinfo->cookedtime:null) ?>" />
                             </div>
@@ -234,7 +239,7 @@
                            $field_name = 'tax'.$tx; 
                         ?>
                           <div class="form-group row">
-                        <label for="vat" class="col-sm-5 col-form-label"><?php echo $taxitem['tax_name'];?></label>
+                        <label for="<?php echo $field_name;?>" class="col-sm-5 col-form-label"><?php echo $taxitem['tax_name'];?></label>
                         <div class="col-sm-7">
                             
                             <input name="<?php echo $field_name;?>" type="text" class="form-control" id="<?php echo $field_name;?>" placeholder="<?php echo $taxitem['tax_name'];?>" autocomplete="off" value="<?php echo (!empty($productinfo->$field_name)?$productinfo->$field_name:null) ?>" />
@@ -256,11 +261,43 @@
                               </select>
                         </div>
                     </div>
-                    
+                    <?php 
+                        if(empty($productinfo->ProductsID)):
+                    ?>
+                    <div class="form-group row">
+                        <label for="regPrice" class="col-sm-5 col-form-label">Regular Price <span class="text-danger">*</span></label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="regPrice" name="regPrice" placeholder="Enter Regular Price..." required autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="takeawayPrice" class="col-sm-5 col-form-label">Takeaway Price <span class="text-danger">*</span></label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="takeawayPrice" name="takeawayPrice" placeholder="Enter Takeaway Price..." required autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="uberEatsPrice" class="col-sm-5 col-form-label">Uber Eats / Doordash Price<span class="text-danger">*</span></label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="uberEatsPrice" name="uberEatsPrice" placeholder="Enter Uber Eats / Doordash Price..." required autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="webOrderPrice" class="col-sm-5 col-form-label">Web Order Price <span class="text-danger">*</span></label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="webOrderPrice" name="webOrderPrice" placeholder="Enter Web Order Price..." required autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <span class="text-danger" id="addfooditemerr" style="display: none;">*Error Message</span>
+                    </div>
+                    <?php 
+                        endif;
+                    ?>
                    
                     <div class="form-group text-right">
                         <button type="reset" class="btn btn-primary w-md m-b-5"><?php echo display('reset')?></button>
-                        <button type="submit" class="btn btn-success w-md m-b-5"><?php echo display('save')?></button>
+                        <button type="submit" class="btn btn-success w-md m-b-5" id="addfooditemsubmit"><?php echo display('save')?></button>
                     </div>
                     </div>
                 <?php echo form_close() ?>
@@ -270,3 +307,91 @@
     </div>
 </div>
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_script.js'); ?>" type="text/javascript"></script>
+<?php 
+    if(empty($productinfo->ProductsID)):
+?>
+<script type="text/javascript">
+    $(document).on("click", "#addfooditemsubmit", (e)=>{
+    e.preventDefault();
+    // alert("Form Submission Prevented " + $("#addfooditemsubmit").closest("form"));
+    // return false;
+    const
+      $foodname = $("#foodname"),
+      $regPrice = $("#regPrice"),
+      $takeawayPrice = $("#takeawayPrice"),
+      $uberEatsPrice = $("#uberEatsPrice"),
+      $webOrderPrice = $("#webOrderPrice"),
+      $addfooditemerr = $("#addfooditemerr");
+    var
+      foodname = $foodname.val(),
+      regPrice = $regPrice.val(),
+      takeawayPrice = $takeawayPrice.val(),
+      uberEatsPrice = $uberEatsPrice.val(),
+      webOrderPrice = $webOrderPrice.val();
+    $addfooditemerr.text("");
+    $addfooditemerr.hide();
+    if (foodname == "") {
+      $addfooditemerr.text("* Food Name cannot be left blank");
+      $addfooditemerr.show();
+      $foodname.focus();
+      return false;
+    }
+    if (regPrice == "") {
+      $addfooditemerr.text("* Food regular price cannot be left blank");
+      $addfooditemerr.show();
+      $regPrice.focus();
+      return false;
+    } else {
+      if (isNaN(regPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $regPrice.focus();
+        return false;
+      }
+    }
+    if (takeawayPrice == "") {
+      $addfooditemerr.text("* Food takeaway price cannot be left blank");
+      $addfooditemerr.show();
+      $takeawayPrice.focus();
+      return false;
+    } else {
+      if (isNaN(takeawayPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $takeawayPrice.focus();
+        return false;
+      }
+    }
+    if (uberEatsPrice == "") {
+      $addfooditemerr.text("* Food uber eats price cannot be left blank");
+      $addfooditemerr.show();
+      $uberEatsPrice.focus();
+      return false;
+    }  else {
+      if (isNaN(uberEatsPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $uberEatsPrice.focus();
+        return false;
+      }
+    }
+    if (webOrderPrice == "") {
+      $addfooditemerr.text("* Food web order price cannot be left blank");
+      $addfooditemerr.show();
+      $webOrderPrice.focus();
+      return false;
+    } else {
+      if (isNaN(webOrderPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $webOrderPrice.focus();
+        return false;
+      }
+    }
+    $("#addfooditemsubmit").closest("form").submit();
+    // return false;
+  });
+</script>
+<?php 
+    endif;
+?>

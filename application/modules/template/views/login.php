@@ -20,7 +20,27 @@
     <link href="<?php echo base_url('assets/css/pe-icon-7-stroke.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url('assets/css/custom.min.css') ?>" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url('assets/css/extra.css') ?>" rel="stylesheet" type="text/css" />
-
+    <style>
+    .eye
+    {
+        font-size: 15px; padding: 7px; cursor:pointer;
+    }
+    .input-group-append
+    {
+        align-content: center; background: #F6F7FB;
+    }
+    .input-group-addon {
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: #ffffff;
+        text-align: center;
+        background-color: #504a4a;
+        border: 1px solid #504a4a;
+        border-radius: 10px;
+    }
+ </style>
 </head>
 
 <body>
@@ -28,7 +48,7 @@
     <div class="login vh100 d-flex align-items-center justify-content-center">
         <div class="login-content login-content_bg p-4">
             <div class="circle-logo text-center">
-                <img src="assets/img/adzguru-icon.png" alt="Logo" class="rounded-circle img-fluid">
+                <img src="assets/img/adzguru-icon.png" alt="Logo" class="rounded-circle img-fluid"> 
             </div>
             
             <div class="mt-3">
@@ -67,9 +87,14 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-lock" style="color: #999;"></i></span>
                         <input type="password" placeholder="<?php echo display('password') ?>" name="password" id="password" class="form-control fs-15px inpt-cuslogform" autocomplete="off">
+                    </div> -->
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fas fa-lock" style="color: #999;"></i></span>
+                        <input type="password" class="form-control" aria-label="<?php echo display('password') ?>" placeholder="<?php echo display('password') ?>" name="password" id="password" autocomplete="off" style="padding-left: 0px !important;" />
+                        <span class="input-group-addon eye" onclick="togglePassword($(this));"><i class="fa fa-eye" aria-hidden="true"></i></span>
                     </div>
                 </div>
 
@@ -277,6 +302,17 @@
         <!-- Bootstrap -->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>" type="text/javascript"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <script type="text/javascript">
+            const togglePassword = (th) => {
+                const pass_input = th.closest('.input-group').find('input'),
+                    type = pass_input.attr('type') === 'password' ? 'text' : 'password',
+                    iele = (type === 'text') ? `<i class="fa fa-eye-slash" aria-hidden="true"></i>` : `<i class="fa fa-eye" aria-hidden="true"></i>`;
+                pass_input.attr('type', type);
+                // toggle the eye / eye slash icon
+                // th.find('i').addClass('fa fa-eye-slash');
+                th.html(iele);
+            };
+        </script>
 
 </body>
 

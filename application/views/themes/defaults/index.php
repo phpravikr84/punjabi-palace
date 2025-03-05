@@ -70,7 +70,12 @@ $whatsapp_count = $WhatsApp->num_rows();
 		<script src="<?php echo base_url() . $whatsapp_url; ?>/js/floating-wpp.min.js"></script>
 
 	<?php
-	} ?>
+	}	
+	// echo "<pre>";
+	// print_r($this->session);
+	// echo "</pre>";
+	// exit;
+	?>
 	<!-- end whatsapp modules -->
 </head>
 
@@ -113,6 +118,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 									$href = base_url() . $menu->menu_slug;
 								}
 								if ($menu->menu_slug == 'myprofile') {
+									$myid = $this->session->userdata('CusUserID');
 									if (empty($myid)) {
 										$menu->menu_name = "Login";
 										$href = base_url() ."mylogin";
@@ -123,6 +129,12 @@ $whatsapp_count = $WhatsApp->num_rows();
 									$dropdownassest = 'id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
 									$dropdownaclass = 'dropdown-toggle';
 									$href = '#';
+									if($menu->menu_name == "Login"){
+										$dropdownaclass = '';
+										$href = base_url() ."mylogin";
+										$dropdown = '';
+										$dropdownassest = '';
+									}
 								}
 							?>
 								<li class="nav-item <?php echo $dropdown; ?> <?php echo $activeclass; ?>">
@@ -199,16 +211,17 @@ $whatsapp_count = $WhatsApp->num_rows();
 								<a href="<?php echo $href; ?>" <?php echo $mobile; ?>><?php echo $menu->menu_name; ?> <?php if (!empty($menu->sub)) { ?><span class="fa arrow"></span><?php } ?></a>
 								<?php if (!empty($menu->sub)) { ?>
 									<ul aria-expanded="false">
-										<?php foreach ($menu->sub as $submenu) {
-											$menurl = $submenu->menu_slug;
-											$menuname = $submenu->menu_name;
-											if ($submenu->menu_slug == 'logout') {
-												$myid = $this->session->userdata('CusUserID');
-												if (empty($myid)) {
-													$menurl = "mylogin";
-													$menuname = "Login";
+										<?php 
+											foreach ($menu->sub as $submenu) {
+												$menurl = $submenu->menu_slug;
+												$menuname = $submenu->menu_name;
+												if ($submenu->menu_slug == 'logout') {
+													$myid = $this->session->userdata('CusUserID');
+													if (empty($myid)) {
+														$menurl = "mylogin";
+														$menuname = "Login";
+													}
 												}
-											}
 										?>
 											<li><a href="<?php echo base_url() . $menurl; ?>"><?php echo $menuname; ?></a></li>
 										<?php } ?>
@@ -216,7 +229,6 @@ $whatsapp_count = $WhatsApp->num_rows();
 								<?php }  ?>
 							</li>
 						<?php }  ?>
-
 					</ul>
 				</nav>
 				<div class="overlay"></div>
@@ -231,7 +243,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 						<div class="item_caption animated_caption">
 							<h3 class="curve_title"><?php echo $slider->title ?></h3>
 							<h2><?php echo $slider->subtitle ?></h2>
-							<a href="<?php echo $slider->slink ?>" class="btn1"><?php echo display('see_more')?></a>
+							<!-- <a href="<?php echo $slider->slink ?>" class="btn1"><?php echo display('see_more')?></a> -->
 						</div>
 					</div>
 				<?php } ?>
@@ -443,3 +455,8 @@ $(function() {
 </body>
 
 </html>
+<?php 
+if (isset($_SESSION['message'])) {
+	unset($_SESSION['message']);
+}
+?>

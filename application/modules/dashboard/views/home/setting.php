@@ -116,7 +116,8 @@
                         </div>
                     </div>
                      <div class="form-group row">
-                        <label for="storevat" class="col-xs-3 col-form-label"><?php echo display('vatset') ?></label>
+                        <!-- <label for="storevat" class="col-xs-3 col-form-label"><?php ##echo display('vatset') ?></label> -->
+                        <label for="storevat" class="col-xs-3 col-form-label">GST Setting (%)</label>
                         <div class="col-xs-9">
                             <input name="storevat" type="text" class="form-control" id="storevat" placeholder="<?php echo display('vat_tax') ?>"  value="<?php echo $setting->vat ?>" >
                         </div>

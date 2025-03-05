@@ -3,6 +3,16 @@
 $activethemeinfo = $this->themeinfo;
 $acthemename = $activethemeinfo->themename;?>
  <!--Start Login Area-->
+ <style>
+    .eye
+    {
+        font-size: 22px; padding: 7px; cursor:pointer;
+    }
+    .input-group-append
+    {
+        align-content: center; background: #F6F7FB;
+    }
+ </style>
     <section class="menu_area sect_pad">
         <div class="container wow fadeIn">
            <div class="row">
@@ -49,8 +59,14 @@ $acthemename = $activethemeinfo->themename;?>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label class="control-label" for="u_pass">Password <abbr class="required" title="required">*</abbr></label>
-                                                <input type="password" id="u_pass" class="form-control" name="u_pass" required>
+                                                <label class="control-label" for="u_pass">Password <abbr class="required text-danger" title="required">*</abbr></label>
+                                                <!-- <input type="password" id="u_pass" class="form-control" name="u_pass" required> -->
+                                                <div class="input-group mb-3">
+                                                    <input type="password" id="u_pass" class="form-control" name="u_pass" required />
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text eye" id="basic-addon2" onclick="togglePassword($(this));"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
