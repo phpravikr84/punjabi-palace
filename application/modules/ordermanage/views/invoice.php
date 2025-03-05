@@ -158,7 +158,8 @@ function printDiv(divName) {
                                     </tr>
                                     <?php if(empty($taxinfos)){?>
                                     <tr>
-                                    	<td class="text-right" colspan="4"><strong><?php echo display('vat_tax')?> (<?php echo $settinginfo->vat;?>%)</strong></td>
+                                    	<!-- <td class="text-right" colspan="4"><strong><?php ##echo display('vat_tax')?> (<?php ##echo $settinginfo->vat;?>%)</strong></td> -->
+                                    	<td class="text-right" colspan="4"><strong>GST (<?php echo $settinginfo->vat;?>%)</strong></td>
                                         <td class="text-right"><strong><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $calvat; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></td>
                                     </tr>
                                    <?php }else{

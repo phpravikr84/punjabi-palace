@@ -1203,6 +1203,17 @@ class Hungry extends CI_Controller
 			redirect('menu');
 		}
 	}
+	public function services()
+	{
+		if ($this->webinfo->web_onoff == 0) {
+			redirect(base_url() . 'login');
+			exit;
+		}
+		$data['title'] = "Banquet & Catering";
+		$data['seoterm'] = "services";
+		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/services', $data, TRUE);
+		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
+	}
 	public function removetocartdetails()
 	{
 		$data['title'] = "Article du panier";
@@ -1517,7 +1528,7 @@ class Hungry extends CI_Controller
 					'CreateDate'       => $createdate,
 				);
 				$this->hungry_model->insert_data('acc_coa', $postData1);
-				$this->session->set_flashdata('message', display('save_successfully'));
+				// $this->session->set_flashdata('message', display('save_successfully'));
 				redirect('mylogin');
 			} else {
 				$this->session->set_flashdata('exception',  display('please_try_again'));
@@ -1764,7 +1775,10 @@ class Hungry extends CI_Controller
 			redirect(base_url() . 'login');
 			exit;
 		}
-
+		// echo "<pre>";
+		// print_r($_POST);
+		// echo "</pre>";
+		// exit;
 		$memail = $this->input->post('email', TRUE);
 		$emailexists = $this->db->select("*")->from('customer_info')->where('customer_email', $memail)->get()->row();
 		$islogin = $this->session->userdata('CusUserID');
@@ -2024,15 +2038,15 @@ class Hungry extends CI_Controller
 				'Content-Type: application/json'
 			);
 
-			$ch2 = curl_init();
-			curl_setopt($ch2, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-			curl_setopt($ch2, CURLOPT_POST, true);
-			curl_setopt($ch2, CURLOPT_HTTPHEADER, $headers2);
-			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
-			curl_setopt($ch2, CURLOPT_POSTFIELDS, json_encode($fields2));
-			$result2 = curl_exec($ch2);
-			curl_close($ch2);
+			// $ch2 = curl_init();
+			// curl_setopt($ch2, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+			// curl_setopt($ch2, CURLOPT_POST, true);
+			// curl_setopt($ch2, CURLOPT_HTTPHEADER, $headers2);
+			// curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+			// curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
+			// curl_setopt($ch2, CURLOPT_POSTFIELDS, json_encode($fields2));
+			// $result2 = curl_exec($ch2);
+			// curl_close($ch2);
 			/*End Notification*/
 			if ($paymentsatus == 5) {
 				redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
@@ -3256,7 +3270,7 @@ document.getElementById("paytrack").click();
 		$email = $this->input->post('email', TRUE);
 		$text = $this->input->post('comments', TRUE);
 		$phone = $this->input->post('phone', TRUE);
-		$subject = "Demande de contact";
+		$subject = "Punjabi Palace Contact Request";
 		$emailtext = '<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi ' . $fullname . ',</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Phone:' . $phone . '</p>
 						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">' . $text . '</p>';
@@ -3270,6 +3284,15 @@ document.getElementById("paytrack").click();
 			'charset'   => 'utf-8'
 		);
 
+		$data = [
+			'fullname' => $fullname,
+			'email' => $email,
+			'phone' => $phone,
+			'text' => $text,
+			'created_at' => date('Y-m-d H:i:s')
+		];
+
+		$this->db->insert('contact_data', $data);
 
 		$this->load->library('email');
 		$this->email->initialize($config);

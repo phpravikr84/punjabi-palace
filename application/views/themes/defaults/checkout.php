@@ -52,7 +52,7 @@ foreach($slpayment as $checkmethod){
         <?php }
         
         ?>
-         <?php echo form_open('hungry/placeorder','method="post" class="row"')?>
+         <?php echo form_open('hungry/placeorder','method="post" class="row"')?> 
             <div class="col-xl-8 col-lg-7">
                 <?php if (empty($this->session->userdata('CusUserID'))) { ?>
                 <div class="panel-group" id="accordion">
@@ -281,6 +281,9 @@ foreach($slpayment as $checkmethod){
                         </thead>
                         <tbody>
                             <?php $i = 0;
+                            // echo "<pre>";
+                            // print_r($cart);
+                            // echo "</pre>";
                             foreach ($cart as $item) {
                             $itemprice = $item['price'] * $item['qty'];
                             $iteminfo = $this->hungry_model->getiteminfo($item['pid']);
@@ -324,13 +327,18 @@ foreach($slpayment as $checkmethod){
                             }
                             $totalamount = $totalamount + $nittotal;
                             $subtotal = $subtotal - $discal + ($item['price'] * $item['qty']);
+                            $itemnote = $item['itemnote'];
                             $i++;
                             ?>
                             <tr class="cart_item">
                                 <td class="product-name">
                                     <?php echo $item['name'];
+                                    if (!empty($itemnote)) {
+                                        echo "<br>";
+                                        echo "<small>(<strong>Note: </strong>".$itemnote.")</small>";
+                                    }
 									echo "<br>";
-							echo $item['size'];
+							        echo $item['size'];
                                     if (!empty($item['addonsid'])) {
                                     echo "<br>";
                                     echo $item['addonname'] . ' -Qty:' . $item['addonsqty'];

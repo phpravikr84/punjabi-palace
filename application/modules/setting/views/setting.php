@@ -126,13 +126,15 @@
                         </div>
                     </div>
                      <div class="form-group row">
-                        <label for="storevat" class="col-xs-3 col-form-label"><?php echo display('vatset') ?></label>
+                        <!-- <label for="storevat" class="col-xs-3 col-form-label"><?php ##echo display('vatset') ?></label> -->
+                        <label for="storevat" class="col-xs-3 col-form-label">GST Setting (%)</label>
                         <div class="col-xs-1">
-                            <input name="storevat" type="text" class="form-control" id="storevat" placeholder="<?php echo display('vatset') ?>"  value="<?php echo $setting->vat ?>" >
+                            <input name="storevat" type="text" class="form-control" id="storevat" placeholder="GST Percentage"  value="<?php echo $setting->vat ?>" />
                         </div>
-                        <label for="vatnumber" class="col-xs-2 col-form-label"><?php echo display('tinvat') ?></label>
+                        <!-- <label for="vatnumber" class="col-xs-2 col-form-label"><?php ##echo display('tinvat') ?></label> -->
+                        <label for="vatnumber" class="col-xs-2 col-form-label">TIN OR GST NUM.</label>
                         <div class="col-xs-1">
-                            <input name="vatnumber" type="text" class="form-control" id="vatnumber" placeholder="<?php echo display('tinvat') ?>"  value="<?php echo $setting->vattinno ?>" >
+                            <input name="vatnumber" type="text" class="form-control" id="vatnumber" placeholder="TIN OR GST NUM."  value="<?php echo $setting->vattinno ?>" />
                         </div>
                         <label for="taxisinclude" class="col-xs-1 col-form-label"><?php echo display('isinclusivetax') ?></label>
                         <div class="col-xs-1">
@@ -141,7 +143,8 @@
                                         <label for="isvatinclusive"></label>
                                     </div>
                         </div>
-                         <label for="isvatnumber" class="col-xs-2 col-form-label"><?php echo display('showhidevattin') ?></label>
+                         <!-- <label for="isvatnumber" class="col-xs-2 col-form-label"><?php ##echo display('showhidevattin') ?></label> -->
+                         <label for="isvatnumber" class="col-xs-2 col-form-label">Show/Hide(GST/TIN)</label>
                         <div class="col-xs-1">
                         	<div class="checkbox checkbox-success">
                                     <input type="checkbox" name="isvatnumber" value="1" <?php if($setting->isvatnumshow==1){echo "checked";}?> id="isvatnumber">

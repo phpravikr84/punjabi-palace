@@ -35,7 +35,7 @@
                            $field_name = 'tax'.$tx; 
                         ?>
                           <div class="form-group row">
-                        <label for="vat" class="col-sm-3 col-form-label"><?php echo $taxitem['tax_name'];?></label>
+                        <label for="<?php echo $field_name;?>" class="col-sm-3 col-form-label"><?php echo $taxitem['tax_name'];?></label>
                         <div class="col-sm-9">
                             
                             <input name="<?php echo $field_name;?>" type="text" class="form-control" id="<?php echo $field_name;?>" placeholder="<?php echo $taxitem['tax_name'];?>" autocomplete="off" value="<?php echo (!empty($addonsinfo->$field_name)?$addonsinfo->$field_name:null) ?>" />

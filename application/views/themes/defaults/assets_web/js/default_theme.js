@@ -456,7 +456,7 @@ function gotocheckout() {
         return false;
     }
     if (error == 0) {
-        window.location.href = basicinfo.baseurl+'checkout';
+        window.location.href = basicinfo.baseurl+'checkout'; 
     }
 }
 
@@ -503,7 +503,7 @@ function addnotetoitem() {
         url: geturl,
         data: dataString,
         success: function(data) {
-            alert(lang.note_added);
+            // alert(lang.note_added);
             $('#reloadcart').html(data);
             $('#vieworder').modal('hide');
         }

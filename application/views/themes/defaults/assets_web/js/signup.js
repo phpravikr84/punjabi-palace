@@ -29,6 +29,16 @@
 					});
 	}
 	"use strict";
+	const togglePassword = (th) => {
+		const pass_input = th.closest('.input-group').find('input'),
+			type = pass_input.attr('type') === 'password' ? 'text' : 'password',
+			iele = (type === 'text') ? `<i class="fa fa-eye-slash" aria-hidden="true"></i>` : `<i class="fa fa-eye" aria-hidden="true"></i>`;
+		pass_input.attr('type', type);
+		// toggle the eye / eye slash icon
+		// th.find('i').addClass('fa fa-eye-slash');
+		th.html(iele);
+	};
+	"use strict";
 	function lostpassword(){
 	var email=$('#user_email2').val();
 	var errormessage = '';

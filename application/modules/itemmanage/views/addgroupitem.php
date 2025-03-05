@@ -72,7 +72,8 @@
                     </div>
                     <div class="col-lg-4">
                     <div class="form-group row">
-                        <label for="vat" class="col-sm-5 col-form-label"><?php echo display('vat') ?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Vat Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+                        <!-- <label for="vat" class="col-sm-5 col-form-label"><?php ##echo display('vat') ?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Vat Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label> -->
+                        <label for="vat" class="col-sm-5 col-form-label">GST <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="GST Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                         <div class="col-sm-7">
                             <input name="vat" class="form-control" type="text" placeholder="0%" id="vat"  value="<?php echo (!empty($productinfo->productvat)?$productinfo->productvat:'') ?>">
                             </div>
@@ -115,7 +116,7 @@
                     
                     </div>
                     <div class="form-group row">
-                        <label for="vat" class="col-sm-5 col-form-label"><?php echo display('cookedtime');?></label>
+                        <label for="cookedtime" class="col-sm-5 col-form-label"><?php echo display('cookedtime');?></label>
                         <div class="col-sm-7">
                             <input name="cookedtime" type="text" class="form-control timepicker3" id="cookedtime" placeholder="00:00" autocomplete="off" value="<?php echo (!empty($productinfo->cookedtime)?$productinfo->cookedtime:null) ?>" />
                             </div>
@@ -147,7 +148,7 @@
                            $field_name = 'tax'.$tx; 
                         ?>
                           <div class="form-group row">
-                        <label for="vat" class="col-sm-5 col-form-label"><?php echo $taxitem['tax_name'];?></label>
+                        <label for="<?php echo $field_name;?>" class="col-sm-5 col-form-label"><?php echo $taxitem['tax_name'];?></label>
                         <div class="col-sm-7">
                             
                             <input name="<?php echo $field_name;?>" type="text" class="form-control" id="<?php echo $field_name;?>" placeholder="<?php echo $taxitem['tax_name'];?>" autocomplete="off" value="<?php echo (!empty($productinfo->$field_name)?$productinfo->$field_name:null) ?>" />
