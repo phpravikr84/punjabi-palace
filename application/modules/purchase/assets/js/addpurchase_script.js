@@ -152,7 +152,7 @@ var count = 2;
         <input type="number" step="0.0001" name="product_quantity[]" tabindex="${tab2}" required id="cartoon_${count}" class="form-control text-right store_cal_${count}" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" placeholder="0.00" value="" min="0"/>
     </td>
     <td class="test">
-        <input type="number" step="0.0001" name="product_rate[]" onchange="checkproductprices(${count});" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" id="product_rate_${count}" class="form-control product_rate_${count} text-right" placeholder="0.00" value="" tabindex="${tab3}"/>
+        <input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" id="product_rate_${count}" class="form-control product_rate_${count} text-right" placeholder="0.00" value="" tabindex="${tab3}"/>
     </td>
     <td class="test">
         <input type="hidden" name="unitid[]" id="unitid_${count}" class="form-control text-right" placeholder="Unit ID" readonly/>
@@ -237,44 +237,118 @@ function bank_paymet(id){
 	}
     
     /** Check Product Prices up or down */
-    function checkproductprices(sl) {
-        var vendor_rate = $("#product_rate_"+sl).val();
-        //Check ingredient prices up or dwon from past prirce
-        var product_id = $("#product_id_"+sl).val();
-        var csrf = $('#csrfhashresarvation').val();
+    // function checkproductprices(sl) {
+    //     var vendor_rate = $("#product_rate_"+sl).val();
+    //     //Check ingredient prices up or dwon from past prirce
+    //     var product_id = $("#product_id_"+sl).val();
+    //     var csrf = $('#csrfhashresarvation').val();
         
-        if(product_id != '' || vendor_rate != '') {
-            $.ajax({
-                type: "GET",
-                url: baseurl + "purchase/showPriceDiff/" + product_id + "/" + vendor_rate,
-                data: { csrf_test_name: csrf },
-                dataType: "json",
-                cache: false
-            })
-            .done(function(response) {
-                if (response.message === 'success') {
-                    let message = "";
+    //     if(product_id != '' || vendor_rate != '') {
+    //         $.ajax({
+    //             type: "GET",
+    //             url: baseurl + "purchase/showPriceDiff/" + product_id + "/" + vendor_rate,
+    //             data: { csrf_test_name: csrf },
+    //             dataType: "json",
+    //             cache: false
+    //         })
+    //         .done(function(response) {
+    //             if (response.message === 'success') {
+    //                 let message = "";
         
-                    if (response.price_up === 1) {
-                        message = `Product price has **increased**.\n\n` +
-                                `🔺 Price Difference: ${response.price_diff}`;
-                    } else if (response.price_down === 1) {
-                        message = `Product price has **decreased**.\n\n` +
-                                `🔻 Price Difference: ${response.price_diff}`;
-                    } else {
-                        message = "No price change detected.";
-                    }
+    //                 if (response.price_up === 1) {
+    //                     message = `Product price has **increased**.\n\n` +
+    //                             `🔺 Price Difference: ${response.price_diff}`;
+    //                 } else if (response.price_down === 1) {
+    //                     message = `Product price has **decreased**.\n\n` +
+    //                             `🔻 Price Difference: ${response.price_diff}`;
+    //                 } else {
+    //                     message = "No price change detected.";
+    //                 }
         
-                    alert(message);
-                } else {
-                    alert("No previous price found or an error occurred.");
+    //                 //alert(message);
+    //                 Swal.fire({
+    //                     title: "Price Difference!",
+    //                     text: message,
+    //                     icon: "error"
+    //                   });
+    //             } else {
+    //                 //alert("No previous price found or an error occurred.");
+    //             }
+    //         })
+    //         .fail(function(jqXHR, textStatus, errorThrown) {
+    //             console.error("AJAX Error: " + textStatus, errorThrown);
+    //             alert("Failed to fetch price difference.");
+    //         });
+    //     } 
+    // }
+
+    $(document).ready(function() {
+        $("#insert_purchase").on("submit", function(event) {
+            event.preventDefault(); // Prevent default submission
+    
+            let productIds = $("select[name='product_id[]']").map(function() {
+                return $(this).val();
+            }).get();
+    
+            let productRates = $("input[name='product_rate[]']").map(function() {
+                return $(this).val();
+            }).get();
+    
+            let priceCheckPromises = [];
+    
+            // Check all product prices asynchronously
+            for (let i = 0; i < productIds.length; i++) {
+                if (productIds[i] && productRates[i]) {
+                    priceCheckPromises.push(checkproductprices(productIds[i], productRates[i]));
                 }
-            })
-            .fail(function(jqXHR, textStatus, errorThrown) {
-                console.error("AJAX Error: " + textStatus, errorThrown);
-                alert("Failed to fetch price difference.");
+            }
+    
+            Promise.all(priceCheckPromises).then((responses) => {
+                let hasPriceChange = responses.includes(true);
+    
+                if (hasPriceChange) {
+                    Swal.fire({
+                        title: "Alert!",
+                        text: "Product price has changed. Do you still want to continue?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonText: "Yes, Submit",
+                        cancelButtonText: "No, Cancel"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $("#insert_purchase").off("submit").submit(); // Submit the form
+                            window.location.href = baseurl + "purchase/purchase/create";
+                        }
+                    });
+                } else {
+                    $("#insert_purchase").off("submit").submit(); // Submit directly if no price change
+                    window.location.href = baseurl + "purchase/purchase/create";
+                }
             });
-        } 
+        });
+    });
+    
+    function checkproductprices(product_id, vendor_rate) {
+        return new Promise((resolve) => {
+            var csrf = $('#csrfhashresarvation').val();
+            
+            if (product_id && vendor_rate) {
+                $.ajax({
+                    type: "GET",
+                    url: baseurl + "purchase/showPriceDiff/" + product_id + "/" + vendor_rate,
+                    data: { csrf_test_name: csrf },
+                    dataType: "json",
+                    cache: false
+                }).done(function(response) {
+                    resolve(response.message === 'success'); // Returns true if price changed
+                }).fail(function() {
+                    resolve(false); // Default to no price change if AJAX fails
+                });
+            } else {
+                resolve(false);
+            }
+        });
     }
+    
     
 

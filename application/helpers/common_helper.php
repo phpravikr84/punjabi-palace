@@ -602,7 +602,7 @@ if (!function_exists('get_price_diff_data')) {
 
       $query = $CI->db->select('*')
                       ->from('invprice_difference_notification')
-                      ->where('purchase_id', $id)
+                      ->where('ingredient_id', $id)
                       ->get();
 
       return $query->row(); // Returns a single record (or NULL if not found)

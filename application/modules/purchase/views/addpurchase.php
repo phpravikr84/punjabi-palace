@@ -127,7 +127,7 @@
                                                 <input type="number" step="0.0001" name="product_quantity[]" id="cartoon_1" class="form-control text-right store_cal_1" onkeyup="calculate_store(1);" onchange="calculate_store(1);" placeholder="0.00" value="" min="0" tabindex="6">
                                             </td>
                                             <td class="test">
-                                                <input type="number" step="0.0001" name="product_rate[]" onchange="checkproductprices(1)" onkeyup="calculate_store(1);" onchange="calculate_store(1);" id="product_rate_1" class="form-control product_rate_1 text-right" placeholder="0.00" value="" min="0"  tabindex="7">
+                                                <input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store(1);" onchange="calculate_store(1);" id="product_rate_1" class="form-control product_rate_1 text-right" placeholder="0.00" value="" min="0"  tabindex="7">
                                             </td>
 
                                             <td class="text-right">

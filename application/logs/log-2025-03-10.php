@@ -853,3 +853,383 @@ ERROR - 2025-03-10 20:34:54 --> Severity: Warning --> file_get_contents(): php_n
 ERROR - 2025-03-10 20:34:54 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
 ERROR - 2025-03-10 20:34:54 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
 ERROR - 2025-03-10 20:34:54 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 20:46:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:46:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:46:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 20:46:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 20:46:15 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:46:15 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:46:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 20:46:15 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 20:46:22 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:46:22 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:46:22 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 20:46:22 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 20:47:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:47:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:47:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 20:47:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 20:57:07 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:57:07 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:57:07 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 20:57:07 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 20:58:44 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:58:44 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 20:58:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 20:58:44 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:03:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:03:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:03:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:03:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:03:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:03:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:05:13 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:05:13 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:05:13 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:05:13 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:05:54 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:05:54 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:05:54 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:05:54 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:06:42 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:06:42 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:06:42 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:06:42 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:06:45 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:06:45 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:06:45 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:06:45 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:06:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:06:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:06:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:06:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:07:00 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:07:00 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:07:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:07:00 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:07:03 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:07:03 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:07:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:07:03 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:09:24 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:09:24 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:09:24 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:09:24 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:12:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:12:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:12:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:12:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 21:19:10 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:19:10 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:19:10 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:19:10 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:20:59 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:20:59 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:20:59 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:21:00 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 21:48:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:48:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:48:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:48:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:48:29 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:48:29 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:48:30 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:48:30 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 21:49:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:49:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:49:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:49:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:49:10 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:49:10 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:49:11 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:49:11 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 21:52:16 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:52:16 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:52:16 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:52:16 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:52:17 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:17 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:18 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:18 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 21:52:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:52:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:52:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:52:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:52:22 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:22 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:22 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:23 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 21:52:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:52:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:52:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:52:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:52:58 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:58 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:58 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:52:58 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 21:53:02 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:53:02 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:53:02 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:53:02 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:53:03 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:53:03 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:53:04 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:53:04 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 21:53:14 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:53:14 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 21:53:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 21:53:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 12:53:15 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:53:15 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:53:15 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 12:53:16 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:02:21 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:02:21 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:02:21 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:02:21 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 13:02:23 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:02:23 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:02:23 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:02:23 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:03:37 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:03:37 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:03:37 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:03:37 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 13:03:38 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:03:38 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:03:39 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:03:39 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:04:25 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:04:25 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:04:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:04:25 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 13:04:27 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:04:27 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:04:27 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:04:28 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:04:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:04:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:04:49 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:04:49 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:04:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 13:04:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:04:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:04:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:04:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:05:11 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:11 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:05:11 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 13:05:12 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:13 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:13 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:13 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:05:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:05:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 13:05:32 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:32 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:33 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:33 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:05:45 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:45 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:45 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:05:45 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 13:05:46 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:46 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:46 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:46 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:05:50 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 13:05:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 13:05:51 --> 404 Page Not Found: /index
+ERROR - 2025-03-10 22:06:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:06:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:06:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:06:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:06:06 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:07:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:07:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:07:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:32 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-10 22:07:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:07:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:07:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:07:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:08:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:08:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:08:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:08:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:08:31 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:08:31 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:08:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:08:31 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:08:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:08:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:08:49 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:08:49 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:09:05 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:09:05 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:09:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:09:05 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:09:18 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:09:18 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:09:18 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:09:18 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:09:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:09:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:09:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:09:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:10:14 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:10:14 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:10:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:10:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
+ERROR - 2025-03-10 22:11:10 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:13 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:14 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:14 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:16 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:16 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:17 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:17 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:17 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:17 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:18 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:21 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:22 --> Severity: error --> Exception: Too few arguments to function Production::getset(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 267
+ERROR - 2025-03-10 22:11:23 --> Severity: error --> Exception: Too few arguments to function Production::updateintfrm(), 1 passed in D:\xampp\htdocs\punjabi-palace\system\core\CodeIgniter.php on line 533 and exactly 2 expected D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 226
+ERROR - 2025-03-10 22:11:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:11:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-10 22:11:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-10 22:11:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 133
