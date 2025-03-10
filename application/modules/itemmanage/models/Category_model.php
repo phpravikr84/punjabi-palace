@@ -33,11 +33,34 @@ class Category_model extends CI_Model {
 
 
 
-	public function update_cat($data = array())
+	// public function update_cat($data = array())
+	// {
+	// 	return $this->db->where('CategoryID',$data["CategoryID"])
+	// 		->update($this->table, $data);
+	// }
+
+	public function update_cat($data = array(), $subcatid=null)
 	{
-		return $this->db->where('CategoryID',$data["CategoryID"])
-			->update($this->table, $data);
+		// if (!isset($data['CategoryID']) || !isset($data['Name']) || !isset($data['CategoryIsActive'])) {
+		// 	return false; // Ensure required data exists
+		// }
+		// Fetch parent category ID
+		$categoryid = $data['CategoryID'];
+		$parent_id = $data['parentid'];
+		$category_name = $data['Name'];
+		$status = $data['CategoryIsActive'];
+
+			// Update query
+		return $this->db->where('parentid', $parent_id)
+				->where('CategoryID', $categoryid) // Ensure correct child ID
+					->update($this->table, [
+						'Name' => $category_name,
+						'CategoryIsActive' => $status,
+						'DateUpdated' => date('Y-m-d H:i:s')
+					]);
+
 	}
+
 
     public function read_category($limit = null, $start = null)
 	{
@@ -50,16 +73,100 @@ class Category_model extends CI_Model {
             return $query->result();    
         }
         return false;
+	}
+
+	public function getAllCategories()
+	{
+	   $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->order_by('CategoryID', 'desc');
+     
+        $query = $this->db->get();
+        return $query->result(); 
 	} 
+
 
 	public function findById($id = null)
 	{ 
 		return $this->db->select("*")->from($this->table)
-			->where('CategoryID',$id) 
+			->where('CategoryID',$id)
 			->get()
 			->row();
-	} 
- 
+	}
+
+	public function findByIdWithSubcat($id = null)
+	{
+		if ($id === null) {
+			return null; // Return null if no ID is provided
+		}
+
+		// Fetch parent category
+		$parent = $this->db->select("*")
+			->from($this->table)
+			->where("CategoryID", $id)
+			->get()
+			->row_array(); // Fetch as associative array
+
+		if (!$parent) {
+			return null; // Return null if no parent found
+		}
+
+		// Fetch subcategories
+		$subcategories = $this->db->select("*")
+			->from($this->table)
+			->where("parentid", $id)
+			->get()
+			->result_array(); // Fetch all as an array
+
+		// Add subcategories inside the parent array
+		$parent['sub'] = $subcategories;
+
+		// Convert array to object
+		return json_decode(json_encode($parent));
+	}
+
+	public function findByIdWithSubcatRow($id = null) 
+	{
+		if ($id === null) {
+			return null; // Return null if no ID is provided
+		}
+
+		// Fetch the subcategory using its ID
+		$subcategory = $this->db->select("*")
+			->from($this->table)
+			->where("CategoryID", $id)
+			->get()
+			->row_array(); // Fetch as associative array
+
+		if (!$subcategory) {
+			return null; // Return null if the subcategory does not exist
+		}
+
+		// Fetch the parent category using the parent ID from the subcategory
+		$parent = $this->db->select("*")
+			->from($this->table)
+			->where("CategoryID", $subcategory['parentid']) // Get parent category
+			->get()
+			->row_array();
+
+		if (!$parent) {
+			return null; // Return null if no parent is found
+		}
+
+		// Fetch all subcategories that share the same parentid
+		$subcategories = $this->db->select("*")
+			->from($this->table)
+			->where("parentid", $subcategory['parentid']) // Get all siblings
+			->get()
+			->result_array();
+
+		// Add subcategories inside the parent array
+		$parent['sub'] = $subcategories;
+
+		// Convert array to object and return
+		return json_decode(json_encode($parent));
+	}
+	
 // Department Dropdown
 	public function category_dropdown()
 	{
@@ -77,7 +184,8 @@ class Category_model extends CI_Model {
 			return false; 
 		}
 	}
- // Parent Category Dropdown
+ 	
+	// Parent Category Dropdown
 	
     public function allcategory_dropdown(){
 

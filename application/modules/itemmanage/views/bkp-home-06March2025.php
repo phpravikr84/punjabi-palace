@@ -9,8 +9,8 @@
                         <tr>
                             <th><?php echo display('serial') ?></th>
                             <th><?php echo display('image') ?></th>
-                            <th><?php echo display('parent_menu') ?></th> 
                             <th><?php echo display('category_name') ?></th>
+                            <th><?php echo display('parent_menu') ?></th> 
                             <th><?php echo display('status') ?></th>
                             <th><?php echo display('action') ?></th> 
                         </tr>
@@ -38,13 +38,12 @@
                                 <tr class="<?php echo ($sl & 1)?"odd gradeX":"even gradeC" ?>">
                                     <td><?php echo $sl; ?></td>
                                     <td><img src="<?php echo base_url(!empty($category->CategoryImage)?$category->CategoryImage:'assets/img/icons/default.jpg'); ?>" alt="Image" width="80"></td>
-                                    <td><?php if($category->parentid==0){echo "";}else{echo $parentname;} ?></td>
                                     <td><?php echo $category->Name; ?></td>
+                                    <td><?php if($category->parentid==0){echo "";}else{echo $parentname;} ?></td>
                                     <td><?php if($category->CategoryIsActive==1){echo display('active');}else{echo display('inactive');} ?></td>
                                     <td class="center">
                                     <?php if($this->permission->method('itemmanage','update')->access()): ?>
-                                        <!-- <a href="<?php //echo base_url("itemmanage/item_category/create/$category->CategoryID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>  -->
-                                        <a href="<?php echo base_url("itemmanage/item_category/create/$category->parentid") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
+                                        <a href="<?php echo base_url("itemmanage/item_category/create/$category->CategoryID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
                                          <?php endif; 
 										 if($this->permission->method('itemmanage','delete')->access()): ?>
                                         <a href="<?php echo base_url("itemmanage/item_category/delete/$category->CategoryID") ?>" onclick="return confirm('<?php echo $alerttext; ?>')" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="<?php echo display('delete')?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 

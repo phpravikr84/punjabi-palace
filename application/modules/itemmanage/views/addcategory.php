@@ -11,21 +11,20 @@
 
                 <?php echo form_hidden('id', $this->session->userdata('id')); ?>
                 <?php echo form_hidden('CategoryID', (!empty($categoryinfo->CategoryID) ? $categoryinfo->CategoryID : null)); ?>
-
                 <!-- Parent Category (Multiple Select) -->
                 <div class="form-group row border-bottom pb-2">
                     <label for="Parentcategory" class="col-sm-4 col-form-label"> <?php echo display('parent_cat'); ?> </label>
                     <div class="col-sm-8">
-                        <select name="Parentcategory[]" id="Parentcategory" class="form-control select2" multiple="multiple">
+                        <select name="Parentcategory[]" id="Parentcategory" class="form-control select2">
                             <?php foreach ($categories as $category) { ?>
                                 <option value="<?php echo $category->CategoryID; ?>" 
-                                    <?php if (!empty($categoryinfo) && in_array($category->CategoryID, explode(',', $categoryinfo->parentid))) echo "selected"; ?>>
+                                    <?php if (!empty($categoryinfo) && in_array($category->CategoryID, explode(',', $categoryinfo->CategoryID))) echo "selected"; ?>>
                                     <?php echo $category->Name; ?>
                                 </option>
                                 <?php if (!empty($category->sub)) {
                                     foreach ($category->sub as $subcat) { ?>
                                         <option value="<?php echo $subcat->CategoryID; ?>" 
-                                            <?php if (!empty($categoryinfo) && in_array($subcat->CategoryID, explode(',', $categoryinfo->parentid))) echo "selected"; ?>>
+                                            <?php if (!empty($categoryinfo) && in_array($subcat->CategoryID, explode(',', $categoryinfo->CategoryID))) echo "selected"; ?>>
                                             &nbsp;&nbsp;&nbsp;&mdash;<?php echo $subcat->Name; ?>
                                         </option>
                                 <?php }
@@ -38,40 +37,44 @@
                 <div id="categoryContainer">
            
                     <?php if(!empty($categoryinfo)) { ?>
-
-
-                            <div class="category-row row border-bottom pb-2 align-items-end">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="categoryname"><?php echo display('category_name'); ?> *</label>
-                                        <input name="categoryname[]" class="form-control category-input" type="text" 
-                                            placeholder="<?php echo display('category_name'); ?>" value="<?php echo $categoryinfo->Name; ?>" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="isoffer"><?php echo display('is_offer'); ?></label>
-                                        <div class="form-check">
-                                            <input type="checkbox" name="isoffer[]" value="1" class="form-check-input" <?php echo !empty($categoryinfo->isOffer) ? 'checked' : ''; ?>>
+                        <?php if(!empty($categoryinfo->sub)) { ?>
+                            <?php foreach($categoryinfo->sub as $sub) { ?>
+                                <div class="category-row row border-bottom pb-2 align-items-end">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="categoryname"><?php echo display('category_name'); ?> *</label>
+                                            <input name="subCategoryId[]" type="hidden" value="<?php echo $sub->CategoryID; ?>"/>
+                                            <input name="categoryname[]" class="form-control category-input" type="text" 
+                                                placeholder="<?php echo display('category_name'); ?>" value="<?php echo $sub->Name; ?>" required>
                                         </div>
                                     </div>
-                                </div>
+                                    
+                                    <!-- <div class="col-md-2" style="display:none;">
+                                        <div class="form-group">
+                                            <label for="isoffer"><?php //echo display('is_offer'); ?></label>
+                                            <div class="form-check">
+                                                <input type="checkbox" name="isoffer[]" value="1" class="form-check-input" <?php echo !empty($categoryinfo->isOffer) ? 'checked' : ''; ?>>
+                                            </div>
+                                        </div>
+                                    </div> -->
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="status"><?php echo display('status'); ?></label>
-                                        <select name="status[]" class="form-control">
-                                            <option value="1" <?php echo $categoryinfo->CategoryIsActive==1 ? 'selected' : ''; ?>><?php echo display('active'); ?></option>
-                                            <option value="0" <?php echo $categoryinfo->CategoryIsActive==0 ? 'selected' : ''; ?>><?php echo display('inactive'); ?></option>
-                                        </select>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="status"><?php echo display('status'); ?></label>
+                                            <select name="status[]" class="form-control">
+                                                <option value="1" <?php echo $sub->CategoryIsActive==1 ? 'selected' : ''; ?>><?php echo display('active'); ?></option>
+                                                <option value="0" <?php echo $sub->CategoryIsActive==0 ? 'selected' : ''; ?>><?php echo display('inactive'); ?></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2 text-left">
+                                        <button type="button" id="<?php echo !empty($sub->CategoryID) ?  $sub->CategoryID : 0; ?>" class="btn btn-danger remove-editcategory">&times;</button>
                                     </div>
                                 </div>
+                            <?php  } ?>
 
-                                <div class="col-md-2 text-left">
-                                    <button type="button" class="btn btn-danger remove-category">&times;</button>
-                                </div>
-                            </div>
+                        <?php  } ?>
  
              
                     <?php } else { ?>
@@ -85,14 +88,14 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-2">
+                            <!-- <div class="col-md-2" style="display:none;">
                                 <div class="form-group">
-                                    <label for="isoffer"><?php echo display('is_offer'); ?></label>
+                                    <label for="isoffer"><?php //echo display('is_offer'); ?></label>
                                     <div class="form-check">
                                         <input type="checkbox" name="isoffer[]" value="1" class="form-check-input">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -113,13 +116,23 @@
                    
                 </div>
 
-                <div class="form-group text-left border-bottom pb-2">
-                    <button type="button" id="addCategory" class="btn btn-info"> <?php echo display('add_category'); ?> </button>
-                </div>
+                <!-- Hide this button on Edit Category -->
+                <?php if(!empty($categoryinfo->CategoryID)) {
+                        $hideHtmlElement =  'style="display:none;"';
+                        $TextBtn = 'Update';
+                    } else {
+                        $hideHtmlElement = '';
+                        $TextBtn = 'Save';
+                    }
+                ?>
+                    <div class="form-group text-left border-bottom pb-2" <?php echo $hideHtmlElement; ?> >
+                        <button type="button" id="addCategory" class="btn btn-info"> <?php echo display('add_category'); ?> </button>
+                    </div>
+          
 
                 <div class="form-group text-right">
-                    <button type="reset" class="btn btn-primary"> <?php echo display('reset'); ?> </button>
-                    <button type="submit" id="saveButton" class="btn btn-success"> <?php echo display('save'); ?> </button>
+                    <button type="reset" class="btn btn-primary" <?php echo $hideHtmlElement; ?>> <?php echo display('reset'); ?> </button>
+                    <button type="submit" id="saveButton" class="btn btn-success"> <?php echo $TextBtn; ?> </button>
                 </div>
 
                 <?php echo form_close(); ?>
@@ -128,11 +141,11 @@
     </div>
 </div>
 <style>
-    .remove-category {
+    .remove-category, .remove-editcategory {
         margin-top: 21px !important;
     }
 </style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
 $(document).ready(function () {
     $("#addCategory").click(function () {
@@ -149,6 +162,8 @@ $(document).ready(function () {
                 $(this).remove();
             });
         }
+        var categoryid = this.id;
+        // Call Dee
     });
 
     $("#saveButton").click(function (e) {
@@ -167,11 +182,46 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
+
 });
+
+
+//Remove Edit button
+$(document).on("click", ".remove-editcategory", function () {
+    var categoryid = this.id;
+    var rowElement = $(this).closest(".category-row");
+
+    // JavaScript confirm box
+    var confirmDelete = confirm("Are you sure you want to delete this record?");
+    if (confirmDelete) {
+        // If user confirms, proceed with deletion
+        deleteAdonsInfo(categoryid, rowElement);
+    }
+});
+
+function deleteAdonsInfo(id, rowElement) {
+    var myurl = baseurl + "itemmanage/item_category/delete_category/" + id;
+    var csrf = $('#csrfhashresarvation').val();
+
+    $.ajax({
+        type: "POST",
+        url: myurl,
+        data: { id: id, csrf_test_name: csrf },
+        success: function(response) {
+            alert("Record deleted successfully!");
+            rowElement.fadeOut(300, function () {
+                $(this).remove();
+            });
+        },
+        error: function(xhr, status, error) {
+            alert("Error: Unable to delete the record. Please try again.");
+        }
+    });
+}
+
 </script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 <!-- Initialize Select2 -->
 <script>
