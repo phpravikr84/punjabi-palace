@@ -4,11 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Purchase_model extends CI_Model {
 	
 	private $table = 'purchaseitem';
+	private $price_diff_table = 'invprice_difference_notification';
  
 	public function create()
 	{
 		$saveid=$this->session->userdata('id');
 		$p_id = $this->input->post('product_id');
+	
 		$payment_type=$this->input->post('paytype',true);
 		$bankid='';
 		if(empty($this->input->post('paidamount'))){
@@ -50,6 +52,62 @@ class Purchase_model extends CI_Model {
 			$product_rate = $rate[$i];
 			$product_id = $p_id[$i];
 			$total_price = $t_price[$i];
+
+			/**
+			 * ==========================================
+			 *  Check Price Difference Notification Begin
+			 * ==========================================
+			 */
+				// Check for previous price of the ingredient
+				$last_price = $this->db->select('price')
+				->from('purchase_details')
+				->where('indredientid', $product_id)
+				->order_by('purchaseid', 'DESC')
+				->limit(1)
+				->get()
+				->row();
+
+				// Check if the last price is not empty
+				if (!empty($last_price)) {
+					$previous_price = $last_price->price;
+					$price_difference = $product_rate - $previous_price;
+					$price_diff_percentage = ($previous_price > 0) ? (($price_difference / $previous_price) * 100) : 0;
+            
+					// Check if the price difference is not zero
+					if ($last_price) {
+						$previous_price = $last_price->price;
+						$price_difference = $product_rate - $previous_price;
+						$price_diff_percentage = ($previous_price > 0) ? (($price_difference / $previous_price) * 100) : 0;
+					
+						if ($price_difference != 0) {
+							$price_up = $price_difference > 0 ? 1 : 0;
+							$price_down = $price_difference < 0 ? 1 : 0;
+					
+							$price_diff_data = array(
+								'purchase_id'          => $returnid,
+								'supplier_id'          => $this->input->post('suplierid', true),
+								'ingredient_id'        => $product_id,
+								'last_unit'            => 1, // Assuming unit is always 1
+								'last_unit_price'      => $previous_price,
+								'current_unit_price'   => $product_rate,  // Fixed incorrect key name
+								'price_difference'     => $price_difference,
+								'price_up'             => $price_up,
+								'price_down'           => $price_down,
+								'price_diff_percentage'=> $price_diff_percentage,
+								'is_seen'              => 0 // Fixed as per table default
+							);
+					
+							$this->db->insert($this->price_diff_table, $price_diff_data);
+						}
+					}					
+				}
+
+
+			 /**
+			  * =========================================
+			  *  Check Price Difference Notification End
+			  * =========================================
+			  */
 			
 			$data1 = array(
 				'purchaseid'		=>	$returnid,
@@ -64,9 +122,10 @@ class Purchase_model extends CI_Model {
 
 			if(!empty($quantity))
 			{
+				
 				/*add stock in ingredients*/
 				$this->db->set('stock_qty', 'stock_qty+'.$product_quantity, FALSE);
-				$this->db->where('id', $product_id);
+				$this->db->where('id', (int)$product_id);
 				$this->db->update('ingredients');
 				/*end add ingredients*/
 				$this->db->insert('purchase_details',$data1);
@@ -923,7 +982,7 @@ public function getinvoice($id){
         }
         return false;
 	}
-  public function returniteminfo($id){
+  	public function returniteminfo($id){
 	 	$this->db->select('purchase_return_details.*,ingredients.ingredient_name,unit_of_measurement.uom_short_code');
 		$this->db->from('purchase_return_details');
 		$this->db->join('ingredients','purchase_return_details.product_id=ingredients.id','left');
@@ -935,5 +994,24 @@ public function getinvoice($id){
 		}
 		return false;
 		
-	 }
+	}
+
+	public function findByPriceDiffId($id = null)
+	{ 
+		return $this->db->select("*")->from($this->price_diff_table)
+			->where('purchase_id',$id) 
+			->get()
+			->row();
+	}
+
+	public function findByPriceDiffByAjax($product_id = null)
+    { 
+        return $this->db->select("*")
+            ->from($this->price_diff_table)
+            ->where('ingredient_id', $product_id)
+            ->order_by('notify_id', 'desc')
+			->limit(1)
+            ->get()
+            ->row(); // Returns an object or null
+    }
 }

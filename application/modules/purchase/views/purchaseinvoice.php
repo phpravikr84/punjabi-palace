@@ -49,11 +49,38 @@
 									<tbody>
                                      <?php 
 									 //print_r($iteminfo);
+									 //print_r($purchase_notify_info);
 									 foreach($iteminfo as $item){?>
 									<tr>
 											<td><?php echo $item->ingredient_name;?></td>
                                             <td class="text-center"><?php echo $item->quantity;?> <?php echo $item->uom_short_code;?></td>
-                                            <td class="text-right"><?php echo $item->price;?></td>
+                                            <td class="text-right"><?php echo $item->price;?>
+											
+												<?php if ($purchase_notify_info->price_up != 0): ?>
+													<i class="fas fa-arrow-up arrow-icon bg-success" 
+													data-toggle="tooltip" 
+													data-html="true"
+													title="
+															<b>Last Unit Price:</b> <?= $purchase_notify_info->last_unit_price; ?><br>
+															<b>Current Unit Price:</b> <?= number_format($purchase_notify_info->current_unit_price, 2); ?><br>
+															<b>Price Difference:</b> <?= number_format($purchase_notify_info->price_difference, 2); ?><br>
+															<b>Difference Percentage:</b> <?= number_format($purchase_notify_info->price_diff_percentage, 2); ?>%">
+													</i>
+												<?php elseif ($purchase_notify_info->price_down != 0): ?>
+													<i class="fas fa-arrow-down arrow-icon bg-danger" 
+													data-toggle="tooltip" 
+													data-html="true"
+													title="
+															<b>Last Unit Price:</b> <?= number_format($purchase_notify_info->last_unit_price, 2); ?><br>
+															<b>Current Unit Price:</b> <?= number_format($purchase_notify_info->current_unit_price, 2); ?><br>
+															<b>Price Difference:</b> <?= number_format($purchase_notify_info->price_difference, 2); ?><br>
+															<b>Difference Percentage:</b> <?= number_format($purchase_notify_info->price_diff_percentage, 2); ?>%">
+													</i>
+												<?php else: ?>
+													<span></span>
+												<?php endif; ?>
+
+											</td>
                                             <td class="text-right"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $item->totalprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></td>
                                     </tr>
                                     <?php } ?>
@@ -79,3 +106,13 @@
     </div>
 
 <script src="<?php echo base_url('application/modules/purchase/assets/js/purchaseinvoice_script.js'); ?>" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip(); // Initialize Bootstrap tooltip
+    });
+</script>
+<style>
+	.tooltip-inner {
+		background-color: 	#5cb85c;
+	}
+</style>

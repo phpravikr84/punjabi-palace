@@ -595,3 +595,18 @@ function getCusineTypeName($id=1) {
     }
 }
 
+if (!function_exists('get_price_diff_data')) {
+  function get_price_diff_data($id) {
+      $CI = &get_instance(); // Get CodeIgniter instance
+      $CI->load->database(); // Load database if not already loaded
+
+      $query = $CI->db->select('*')
+                      ->from('invprice_difference_notification')
+                      ->where('purchase_id', $id)
+                      ->get();
+
+      return $query->row(); // Returns a single record (or NULL if not found)
+  }
+}
+
+

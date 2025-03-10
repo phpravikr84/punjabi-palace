@@ -30,7 +30,44 @@
                             <?php foreach ($purchaselist as $items) { ?>
                                 <tr class="<?php echo ($sl & 1)?"odd gradeX":"even gradeC" ?>">
                                     <td><?php echo $sl; ?></td>
-                                    <td><a href="<?php echo base_url("purchase/purchase/purchaseinvoice/$items->purID") ?>"><?php echo $items->invoiceid; ?></a></td>
+                                    <td><a href="<?php echo base_url("purchase/purchase/purchaseinvoice/$items->purID") ?>"><?php echo $items->invoiceid; ?></a>
+
+                                    <!-- Notification code if price up or down -->
+
+                                    <?php 
+                                                $purchase_notify_info = get_price_diff_data($items->purID);
+
+                                                if ($purchase_notify_info && isset($purchase_notify_info->price_up, $purchase_notify_info->price_down)):
+
+                                                    // Assign tooltip content to a variable to avoid duplication
+                                                    $tooltipContent = sprintf(
+                                                        '<b>Last Unit Price:</b> %s<br><b>Current Unit Price:</b> %s<br><b>Price Difference:</b> %s<br><b>Difference Percentage:</b> %s%%',
+                                                        number_format($purchase_notify_info->last_unit_price, 2),
+                                                        number_format($purchase_notify_info->current_unit_price, 2),
+                                                        number_format($purchase_notify_info->price_difference, 2),
+                                                        number_format($purchase_notify_info->price_diff_percentage, 2)
+                                                    );
+
+                                                    if ($purchase_notify_info->price_up != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
+                                                    <?php elseif ($purchase_notify_info->price_down != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
+                                                    <?php endif; ?>
+
+                                                <?php else: ?>
+                                                    <span></span> <!-- Empty placeholder -->
+                                                <?php endif; ?>
+
+
+                                    </td>
                                     <td><?php echo $items->supName; ?></td>
                                     <td><?php $originalDate = $items->purchasedate;
 									echo $newDate = date("d-M-Y", strtotime($originalDate));
@@ -44,6 +81,7 @@
 										 ?>
                                          
                                          
+
                                     </td>
                                     
                                 </tr>
@@ -57,5 +95,14 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip(); // Initialize Bootstrap tooltip
+    });
+</script>
+<style>
+	.tooltip-inner {
+		background-color: 	#5cb85c;
+	}
+</style>
      

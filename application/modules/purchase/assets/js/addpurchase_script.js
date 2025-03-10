@@ -152,7 +152,7 @@ var count = 2;
         <input type="number" step="0.0001" name="product_quantity[]" tabindex="${tab2}" required id="cartoon_${count}" class="form-control text-right store_cal_${count}" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" placeholder="0.00" value="" min="0"/>
     </td>
     <td class="test">
-        <input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" id="product_rate_${count}" class="form-control product_rate_${count} text-right" placeholder="0.00" value="" tabindex="${tab3}"/>
+        <input type="number" step="0.0001" name="product_rate[]" onchange="checkproductprices(${count});" onkeyup="calculate_store(${count});" onchange="calculate_store(${count});" id="product_rate_${count}" class="form-control product_rate_${count} text-right" placeholder="0.00" value="" tabindex="${tab3}"/>
     </td>
     <td class="test">
         <input type="hidden" name="unitid[]" id="unitid_${count}" class="form-control text-right" placeholder="Unit ID" readonly/>
@@ -197,6 +197,7 @@ var count = 2;
         });
 
         $("#grandTotal").val(gr_tot.toFixed(2,2));
+
     }
     function purchasetdeleteRow(e) {
         var t = $("#purchaseTable > tbody > tr").length;
@@ -233,4 +234,47 @@ function bank_paymet(id){
 			$("#showbank").hide();
 			$('#bankid').attr('required', false);  
 			}
-	}	
+	}
+    
+    /** Check Product Prices up or down */
+    function checkproductprices(sl) {
+        var vendor_rate = $("#product_rate_"+sl).val();
+        //Check ingredient prices up or dwon from past prirce
+        var product_id = $("#product_id_"+sl).val();
+        var csrf = $('#csrfhashresarvation').val();
+        
+        if(product_id != '' || vendor_rate != '') {
+            $.ajax({
+                type: "GET",
+                url: baseurl + "purchase/showPriceDiff/" + product_id + "/" + vendor_rate,
+                data: { csrf_test_name: csrf },
+                dataType: "json",
+                cache: false
+            })
+            .done(function(response) {
+                if (response.message === 'success') {
+                    let message = "";
+        
+                    if (response.price_up === 1) {
+                        message = `Product price has **increased**.\n\n` +
+                                `🔺 Price Difference: ${response.price_diff}`;
+                    } else if (response.price_down === 1) {
+                        message = `Product price has **decreased**.\n\n` +
+                                `🔻 Price Difference: ${response.price_diff}`;
+                    } else {
+                        message = "No price change detected.";
+                    }
+        
+                    alert(message);
+                } else {
+                    alert("No previous price found or an error occurred.");
+                }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                console.error("AJAX Error: " + textStatus, errorThrown);
+                alert("Failed to fetch price difference.");
+            });
+        } 
+    }
+    
+
