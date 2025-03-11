@@ -236,61 +236,16 @@ function bank_paymet(id){
 			}
 	}
     
-    /** Check Product Prices up or down */
-    // function checkproductprices(sl) {
-    //     var vendor_rate = $("#product_rate_"+sl).val();
-    //     //Check ingredient prices up or dwon from past prirce
-    //     var product_id = $("#product_id_"+sl).val();
-    //     var csrf = $('#csrfhashresarvation').val();
-        
-    //     if(product_id != '' || vendor_rate != '') {
-    //         $.ajax({
-    //             type: "GET",
-    //             url: baseurl + "purchase/showPriceDiff/" + product_id + "/" + vendor_rate,
-    //             data: { csrf_test_name: csrf },
-    //             dataType: "json",
-    //             cache: false
-    //         })
-    //         .done(function(response) {
-    //             if (response.message === 'success') {
-    //                 let message = "";
-        
-    //                 if (response.price_up === 1) {
-    //                     message = `Product price has **increased**.\n\n` +
-    //                             `🔺 Price Difference: ${response.price_diff}`;
-    //                 } else if (response.price_down === 1) {
-    //                     message = `Product price has **decreased**.\n\n` +
-    //                             `🔻 Price Difference: ${response.price_diff}`;
-    //                 } else {
-    //                     message = "No price change detected.";
-    //                 }
-        
-    //                 //alert(message);
-    //                 Swal.fire({
-    //                     title: "Price Difference!",
-    //                     text: message,
-    //                     icon: "error"
-    //                   });
-    //             } else {
-    //                 //alert("No previous price found or an error occurred.");
-    //             }
-    //         })
-    //         .fail(function(jqXHR, textStatus, errorThrown) {
-    //             console.error("AJAX Error: " + textStatus, errorThrown);
-    //             alert("Failed to fetch price difference.");
-    //         });
-    //     } 
-    // }
-
-    $(document).ready(function() {
-        $("#insert_purchase").on("submit", function(event) {
+    // Check product prices before submitting form
+    $(document).ready(function () {
+        $("#insert_purchase").on("submit", function (event) {
             event.preventDefault(); // Prevent default submission
     
-            let productIds = $("select[name='product_id[]']").map(function() {
+            let productIds = $("select[name='product_id[]']").map(function () {
                 return $(this).val();
             }).get();
     
-            let productRates = $("input[name='product_rate[]']").map(function() {
+            let productRates = $("input[name='product_rate[]']").map(function () {
                 return $(this).val();
             }).get();
     
@@ -316,39 +271,50 @@ function bank_paymet(id){
                         cancelButtonText: "No, Cancel"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            $("#insert_purchase").off("submit").submit(); // Submit the form
-                            window.location.href = baseurl + "purchase/purchase/create";
+                            submitForm(); // Call function to submit form
                         }
                     });
                 } else {
-                    $("#insert_purchase").off("submit").submit(); // Submit directly if no price change
-                    window.location.href = baseurl + "purchase/purchase/create";
+                    submitForm(); // Submit directly if no price change
                 }
             });
         });
+    
+        function submitForm() {
+            $.ajax({
+                type: $("#insert_purchase").attr("method"), // Use form method (POST)
+                url: $("#insert_purchase").attr("action"), // Use form action
+                data: $("#insert_purchase").serialize(), // Serialize form data
+                success: function (response) {
+                    // Redirect only if submission is successful
+                    window.location.href = baseurl + "purchase/purchase/create";
+                },
+                error: function () {
+                    Swal.fire("Error", "Something went wrong. Please try again.", "error");
+                }
+            });
+        }
+    
+        function checkproductprices(product_id, vendor_rate) {
+            return new Promise((resolve) => {
+                var csrf = $('#csrfhashresarvation').val();
+    
+                if (product_id && vendor_rate) {
+                    $.ajax({
+                        type: "GET",
+                        url: baseurl + "purchase/showPriceDiff/" + product_id + "/" + vendor_rate,
+                        data: { csrf_test_name: csrf },
+                        dataType: "json",
+                        cache: false
+                    }).done(function (response) {
+                        resolve(response.message === 'success'); // Returns true if price changed
+                    }).fail(function () {
+                        resolve(false); // Default to no price change if AJAX fails
+                    });
+                } else {
+                    resolve(false);
+                }
+            });
+        }
     });
     
-    function checkproductprices(product_id, vendor_rate) {
-        return new Promise((resolve) => {
-            var csrf = $('#csrfhashresarvation').val();
-            
-            if (product_id && vendor_rate) {
-                $.ajax({
-                    type: "GET",
-                    url: baseurl + "purchase/showPriceDiff/" + product_id + "/" + vendor_rate,
-                    data: { csrf_test_name: csrf },
-                    dataType: "json",
-                    cache: false
-                }).done(function(response) {
-                    resolve(response.message === 'success'); // Returns true if price changed
-                }).fail(function() {
-                    resolve(false); // Default to no price change if AJAX fails
-                });
-            } else {
-                resolve(false);
-            }
-        });
-    }
-    
-    
-

@@ -59,7 +59,7 @@
 												<!-- Notification code if price up or down -->
 
 												<?php 
-                                                $purchase_notify_info = get_price_diff_data($item->	indredientid);
+                                                $purchase_notify_info = get_price_diff_data($item->indredientid);
 
                                                 if ($purchase_notify_info && isset($purchase_notify_info->price_up, $purchase_notify_info->price_down)):
 

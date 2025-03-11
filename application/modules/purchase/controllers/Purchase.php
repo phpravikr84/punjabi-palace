@@ -189,7 +189,7 @@ class Purchase extends MX_Controller {
 		$data['currency']=$this->purchase_model->currencysetting($settinginfo->currency);
 		$data['purchaseinfo']   = $this->purchase_model->findById($id);
 		//Get Price Difference
-		$data['purchase_notify_info']   = $this->purchase_model->findByPriceDiffId($id);
+		//$data['purchase_notify_info']   = $this->purchase_model->findByPriceDiffId($id);
 		$supid=$data['purchaseinfo']->suplierID;
 		$data['supplierinfo']   = $this->purchase_model->suplierinfo($supid);
 		$data['iteminfo']       = $this->purchase_model->iteminfo($id);

@@ -31,6 +31,36 @@
                                 <tr class="<?php echo ($sl & 1)?"odd gradeX":"even gradeC" ?>">
                                     <td><?php echo $sl; ?></td>
                                     <td><a href="<?php echo base_url("purchase/purchase/purchaseinvoice/$items->purID") ?>"><?php echo $items->invoiceid; ?></a>
+                                    <?php 
+                                                $purchase_notify_info = get_price_diff_data_by_purchase_id($items->purID);
+
+                                                if ($purchase_notify_info && isset($purchase_notify_info->price_up, $purchase_notify_info->price_down)):
+
+                                                    // Assign tooltip content to a variable to avoid duplication
+                                                    $tooltipContent = sprintf(
+                                                        '<b>Price difference!</b>',
+                                                    );
+
+                                                    if ($purchase_notify_info->price_up != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+														style="color: red;"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
+                                                    <?php elseif ($purchase_notify_info->price_down != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+														style="color: red;"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
+                                                    <?php endif; ?>
+
+                                                <?php else: ?>
+                                                    <span></span> <!-- Empty placeholder -->
+                                                <?php endif; ?>
+
                                     </td>
                                     <td><?php echo $items->supName; ?></td>
                                     <td><?php $originalDate = $items->purchasedate;
