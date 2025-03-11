@@ -49,11 +49,51 @@
 									<tbody>
                                      <?php 
 									 //print_r($iteminfo);
+									 //print_r($purchase_notify_info);
 									 foreach($iteminfo as $item){?>
 									<tr>
 											<td><?php echo $item->ingredient_name;?></td>
                                             <td class="text-center"><?php echo $item->quantity;?> <?php echo $item->uom_short_code;?></td>
-                                            <td class="text-right"><?php echo $item->price;?></td>
+                                            <td class="text-right"><?php echo $item->price;?>
+											
+												<!-- Notification code if price up or down -->
+
+												<?php 
+                                                $purchase_notify_info = get_price_diff_data($item->indredientid);
+
+                                                if ($purchase_notify_info && isset($purchase_notify_info->price_up, $purchase_notify_info->price_down)):
+
+                                                    // Assign tooltip content to a variable to avoid duplication
+                                                    $tooltipContent = sprintf(
+                                                        '<b>Last Unit Price:</b> %s<br><b>Current Unit Price:</b> %s<br><b>Price Difference:</b> %s<br><b>Difference Percentage:</b> %s%%',
+                                                        number_format($purchase_notify_info->last_unit_price, 2),
+                                                        number_format($purchase_notify_info->current_unit_price, 2),
+                                                        number_format($purchase_notify_info->price_difference, 2),
+                                                        number_format($purchase_notify_info->price_diff_percentage, 2)
+                                                    );
+
+                                                    if ($purchase_notify_info->price_up != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+														style="color: red;"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
+                                                    <?php elseif ($purchase_notify_info->price_down != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+														style="color: red;"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
+                                                    <?php endif; ?>
+
+                                                <?php else: ?>
+                                                    <span></span> <!-- Empty placeholder -->
+                                                <?php endif; ?>
+
+
+											</td>
                                             <td class="text-right"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $item->totalprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></td>
                                     </tr>
                                     <?php } ?>
@@ -79,3 +119,13 @@
     </div>
 
 <script src="<?php echo base_url('application/modules/purchase/assets/js/purchaseinvoice_script.js'); ?>" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip(); // Initialize Bootstrap tooltip
+    });
+</script>
+<style>
+	.tooltip-inner {
+		background-color:rgb(243, 49, 15);
+	}
+</style>

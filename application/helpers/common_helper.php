@@ -595,3 +595,36 @@ function getCusineTypeName($id=1) {
     }
 }
 
+if (!function_exists('get_price_diff_data')) {
+  function get_price_diff_data($id) {
+      $CI = &get_instance(); // Get CodeIgniter instance
+      $CI->load->database(); // Load database if not already loaded
+
+      $query = $CI->db->select('*')
+                      ->from('invprice_difference_notification')
+                      ->where('ingredient_id', $id)
+                      ->order_by('notify_id', 'desc')
+                      ->limit(1)
+                      ->get();
+
+      return $query->row(); // Returns a single record (or NULL if not found)
+  }
+}
+
+if (!function_exists('get_price_diff_data_by_purchase_id')) {
+  function get_price_diff_data_by_purchase_id($id) {
+      $CI = &get_instance(); // Get CodeIgniter instance
+      $CI->load->database(); // Load database if not already loaded
+
+      $query = $CI->db->select('*')
+                      ->from('invprice_difference_notification')
+                      ->where('purchase_id', $id)
+                      ->order_by('notify_id', 'desc')
+                      ->limit(1)
+                      ->get();
+
+      return $query->row(); // Returns a single record (or NULL if not found)
+  }
+}
+
+

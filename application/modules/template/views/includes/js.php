@@ -43,6 +43,9 @@
 <script src="<?php echo base_url('assets/js/dashboard.js') ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('application/modules/template/assets/js/template.js'); ?>" type="text/javascript"></script>
 
+<!-- Select box cdn path -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Include module Script -->
 <?php
     $path = 'application/modules/';

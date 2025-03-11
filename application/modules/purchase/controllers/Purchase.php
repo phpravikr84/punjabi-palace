@@ -85,39 +85,66 @@ class Purchase extends MX_Controller {
 	   $data['page']   = "addpurchase";   
 	   echo Modules::run('template/layout', $data); 
     }
-	public function purchase_entry(){
+	// public function purchase_entry(){
 
-		$this->form_validation->set_rules('invoice_no','Invoice Number','required');
-		$this->form_validation->set_rules('purchase_date','Purchase Date'  ,'required');
-	    $saveid=$this->session->userdata('id'); 
+	// 	$this->form_validation->set_rules('invoice_no','Invoice Number','required');
+	// 	$this->form_validation->set_rules('purchase_date','Purchase Date'  ,'required');
+	//     $saveid=$this->session->userdata('id'); 
 		
 	
 
-	   if ($this->form_validation->run()) { 
-		$this->permission->method('purchase','create')->redirect();
+	//    if ($this->form_validation->run()) { 
+	// 	$this->permission->method('purchase','create')->redirect();
 
-		 $logData = array(
-		   'action_page'         => "Add Purchase",
-		   'action_done'     	 => "Insert Data", 
-		   'remarks'             => "Item Purchase Created",
-		   'user_name'           => $this->session->userdata('fullname'),
-		   'entry_date'          => date('Y-m-d H:i:s'),
-		  );
+	// 	 $logData = array(
+	// 	   'action_page'         => "Add Purchase",
+	// 	   'action_done'     	 => "Insert Data", 
+	// 	   'remarks'             => "Item Purchase Created",
+	// 	   'user_name'           => $this->session->userdata('fullname'),
+	// 	   'entry_date'          => date('Y-m-d H:i:s'),
+	// 	  );
 
 		
 
-		if ($this->purchase_model->create()) { 
-		 $this->logs_model->log_recorded($logData);
-		 $this->session->set_flashdata('message', display('save_successfully'));
-		 redirect('purchase/purchase/create');
+	// 	if ($this->purchase_model->create()) { 
+	// 	 $this->logs_model->log_recorded($logData);
+	// 	 $this->session->set_flashdata('message', display('save_successfully'));
+	// 	 redirect('purchase/purchase/create');
+	// 	} else {
+	// 	 $this->session->set_flashdata('exception',  display('please_try_again'));
+	// 	}
+	// 	redirect("purchase/purchase/create"); 
+	//   } else { 
+	//   redirect("purchase/purchase/create"); 
+	//    }   
+	// }
+	public function purchase_entry() {
+		$this->form_validation->set_rules('invoice_no', 'Invoice Number', 'required');
+		$this->form_validation->set_rules('purchase_date', 'Purchase Date', 'required');
+	
+		if ($this->form_validation->run() === FALSE) {
+			echo json_encode(["status" => "error", "message" => validation_errors()]);
+			return;
+		}
+	
+		$this->permission->method('purchase', 'create')->redirect();
+	
+		$logData = [
+			'action_page' => "Add Purchase",
+			'action_done' => "Insert Data",
+			'remarks' => "Item Purchase Created",
+			'user_name' => $this->session->userdata('fullname'),
+			'entry_date' => date('Y-m-d H:i:s'),
+		];
+	
+		if ($this->purchase_model->create()) {
+			$this->logs_model->log_recorded($logData);
+			echo json_encode(["status" => "success", "message" => "Purchase entry saved successfully"]);
 		} else {
-		 $this->session->set_flashdata('exception',  display('please_try_again'));
+			echo json_encode(["status" => "error", "message" => "Please try again"]);
 		}
-		redirect("purchase/purchase/create"); 
-	  } else { 
-	  redirect("purchase/purchase/create"); 
-	   }   
-		}
+	}
+	
 	public function banklist(){
 		$allbank=$this->db->select("*")->from('tbl_bank')->get()->result();
 		echo json_encode($allbank);
@@ -161,6 +188,8 @@ class Purchase extends MX_Controller {
 		$data['setting']=$settinginfo;
 		$data['currency']=$this->purchase_model->currencysetting($settinginfo->currency);
 		$data['purchaseinfo']   = $this->purchase_model->findById($id);
+		//Get Price Difference
+		//$data['purchase_notify_info']   = $this->purchase_model->findByPriceDiffId($id);
 		$supid=$data['purchaseinfo']->suplierID;
 		$data['supplierinfo']   = $this->purchase_model->suplierinfo($supid);
 		$data['iteminfo']       = $this->purchase_model->iteminfo($id);
@@ -381,7 +410,45 @@ class Purchase extends MX_Controller {
       $data['outstock'] =  $qreslt->result();
       echo Modules::run('template/layout', $data); 
      
-
    }
+
+   public function showPriceDiff($product_id, $vendor_rate) 
+   {
+		$this->load->model('purchase_model');
+
+		$product_id = intval($product_id);
+		$vendor_rate = floatval($vendor_rate);
+
+		// Fetch price difference info from model
+		$purchase_notify_info = $this->purchase_model->findByPriceDiffByAjax($product_id);
+
+		// Default values if no record is found
+		$past_rate = ($purchase_notify_info) ? floatval($purchase_notify_info->current_unit_price) : 0;
+		$price_up = 0;
+		$price_down = 0;
+		$price_diff = 0;
+
+		// Perform price comparison if past_rate is valid
+		if ($past_rate > 0) {
+			if ($vendor_rate > $past_rate) {
+				$price_up = 1;
+				$price_diff = $vendor_rate - $past_rate;
+			} elseif ($vendor_rate < $past_rate) {
+				$price_down = 1;
+				$price_diff = $past_rate - $vendor_rate;
+			}
+		}
+
+		// Prepare JSON response
+		header('Content-Type: application/json');
+		echo json_encode([
+			'message' => ($purchase_notify_info) ? 'success' : 'error',
+			'price_up' => $price_up,
+			'price_down' => $price_down,
+			'price_diff' => number_format($price_diff, 2)
+		]);
+		exit;
+	}
+
  
 }
