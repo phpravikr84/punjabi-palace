@@ -11,46 +11,46 @@ class Fooditem_model extends CI_Model {
 	public function groupfood_create($data = array())
 	{
 		$this->db->insert($this->table, $data);
-		$insert_id = $this->db->insert_id();
-		$item_id = $this->input->post('itemid',true);
-		$varientid = $this->input->post('varientid',true);
-		$qty = $this->input->post('qty',true);
-		$price = $this->input->post('price',true);
-		if(!empty($qty)){
-					$data2 = array(
-						'menuid'		=>	$insert_id,
-						'variantName'	=>	"Set",
-						'price'		    =>	$price,						
-						);
-					$this->db->select('menuid');
-					$this->db->from('variant');
-					$this->db->where('menuid',$insert_id);
-					$query = $this->db->get();
-					$getrow=$query->row();
-					if(empty($getrow)) {
-            			$this->db->insert('variant', $data2);
-        			}
-				}
-		for ($i=0, $n=count($item_id); $i < $n; $i++) {
-				$data1 = array(
-				'gitemid'		=>	$insert_id,
-				'items'			=>	$item_id[$i],
-				'item_qty'		=>	$qty[$i],
-				'varientid'		=>	$varientid[$i],
-				'status'		=>	1
-				);
-				if(!empty($qty)){
-					$this->db->insert('tbl_groupitems', $data1);
-				}
-			}
-			if(!empty($insert_id)){
-				return true;
-				}
-			else{
-				return false;
-				}
-			
-		
+		// $insert_id = $this->db->insert_id();
+		// $item_id = $this->input->post('itemid',true);
+		// $varientid = $this->input->post('varientid',true);
+		// $qty = $this->input->post('qty',true);
+		// $price = $this->input->post('price',true);
+		// if(!empty($qty)){
+		// 			$data2 = array(
+		// 				'menuid'		=>	$insert_id,
+		// 				'variantName'	=>	"Set",
+		// 				'price'		    =>	$price,						
+		// 				);
+		// 			$this->db->select('menuid');
+		// 			$this->db->from('variant');
+		// 			$this->db->where('menuid',$insert_id);
+		// 			$query = $this->db->get();
+		// 			$getrow=$query->row();
+		// 			if(empty($getrow)) {
+        //     			$this->db->insert('variant', $data2);
+        // 			}
+		// 		}
+		// for ($i=0, $n=count($item_id); $i < $n; $i++) {
+		// 		$data1 = array(
+		// 		'gitemid'		=>	$insert_id,
+		// 		'items'			=>	$item_id[$i],
+		// 		'item_qty'		=>	$qty[$i],
+		// 		'varientid'		=>	$varientid[$i],
+		// 		'status'		=>	1
+		// 		);
+		// 		if(!empty($qty)){
+		// 			$this->db->insert('tbl_groupitems', $data1);
+		// 		}
+		// 	}
+		// if(!empty($insert_id)){
+		// 	return true;
+		// }
+		// else{
+		// 	return false;
+		// }
+		// return $this->db->affected_rows() > 0;
+		return true;
 	}
 	public function addsupplier($data = array())
 	{
@@ -79,43 +79,45 @@ class Fooditem_model extends CI_Model {
 	public function update_groupfooditem($data = array())
 	{
 		$this->db->where('ProductsID',$data["ProductsID"])->update($this->table, $data);
-		$item_id = $this->input->post('itemid',true);
-		$varientid = $this->input->post('varientid',true);
-		$qty = $this->input->post('qty',true);
-		$price = $this->input->post('price',true);
-		if(!empty($qty)){
-					$data2 = array(
-						'menuid'		=>	$data["ProductsID"],
-						'variantName'	=>	"Set",
-						'price'		    =>	$price,						
-						);
-						$data3 = array(
-						'price'		    =>	$price					
-						);
-					$this->db->select('menuid');
-					$this->db->from('variant');
-					$this->db->where('menuid',$data["ProductsID"]);
-					$query = $this->db->get();
-					$getrow=$query->row();
-					if(empty($getrow)) {
-            			$this->db->insert('variant', $data2);
-        			}else{
-						$this->db->where('menuid',$data["ProductsID"])->where('variantName','set')->update('variant', $data3);
-						}
-				}
-		$this->db->where('gitemid',$data["ProductsID"])->delete('tbl_groupitems');
-		for ($i=0, $n=count($item_id); $i < $n; $i++) {
-				$data1 = array(
-				'gitemid'		=>	$data["ProductsID"],
-				'items'			=>	$item_id[$i],
-				'item_qty'		=>	$qty[$i],
-				'varientid'		=>	$varientid[$i],
-				'status'		=>	1
-				);
-				if(!empty($qty)){
-            			$this->db->insert('tbl_groupitems', $data1);
-        			}
-			}
+		// $item_id = $this->input->post('itemid',true);
+		// $varientid = $this->input->post('varientid',true);
+		// $qty = $this->input->post('qty',true);
+		// $price = $this->input->post('price',true);
+		// if(!empty($qty)){
+		// 	$data2 = array(
+		// 		'menuid'		=>	$data["ProductsID"],
+		// 		'variantName'	=>	"Set",
+		// 		'price'		    =>	$price,						
+		// 		);
+		// 	$data3 = array(
+		// 	'price'		    =>	$price					
+		// 	);
+		// 	$this->db->select('menuid');
+		// 	$this->db->from('variant');
+		// 	$this->db->where('menuid',$data["ProductsID"]);
+		// 	$query = $this->db->get();
+		// 	$getrow=$query->row();
+		// 	if(empty($getrow)) {
+		// 		$this->db->insert('variant', $data2);
+		// 	}else{
+		// 		$this->db->where('menuid',$data["ProductsID"])->where('variantName','set')->update('variant', $data3);
+		// 	}
+		// }
+		// $this->db->where('gitemid',$data["ProductsID"])->delete('tbl_groupitems');
+		// for ($i=0, $n=count($item_id); $i < $n; $i++) {
+		// 	$data1 = array(
+		// 	'gitemid'		=>	$data["ProductsID"],
+		// 	'items'			=>	$item_id[$i],
+		// 	'item_qty'		=>	$qty[$i],
+		// 	'varientid'		=>	$varientid[$i],
+		// 	'status'		=>	1
+		// 	);
+		// 	if(!empty($qty)){
+		// 			$this->db->insert('tbl_groupitems', $data1);
+		// 		}
+		// }
+		// return $this->db->affected_rows() > 0;
+		return true;
 	}
 
     public function read_fooditem($limit = null, $start = null)
@@ -148,6 +150,22 @@ class Fooditem_model extends CI_Model {
         $query = $this->db->get();
 		return $query->row();
 	}  
+	public function findMainModifiers($id = null)
+	{
+		$this->db->select('promotion_main_modifiers.*');
+        $this->db->from('promotion_main_modifiers');
+		$this->db->where('promotion_main_modifiers.ProductsID',$id);
+        $query = $this->db->get();
+		return $query->row();
+	}
+	public function findOtherModifiers($id = null)
+	{
+		$this->db->select('promotion_other_modifiers.*');
+        $this->db->from('promotion_other_modifiers');
+		$this->db->where('promotion_other_modifiers.ProductsID',$id);
+        $query = $this->db->get();
+		return $query->row();
+	}
  	public function allgroupitem($id = null)
 	{ 
 		$this->db->select('*');

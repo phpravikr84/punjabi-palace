@@ -18,7 +18,7 @@
                                     </label>
                                     <div class="col-sm-6">
                                         <?php 
-						if(empty($item)){$item = array('' => '--Select--');}
+						if(empty($item)){$item = array('' => '--Select--');} 
 						echo form_dropdown('foodid',$item,(!empty($item->ProductsID)?$item->ProductsID:null),'class="form-control" id="foodid"') ?>
                                     </div>
                                 </div> 

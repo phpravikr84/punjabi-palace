@@ -90,6 +90,12 @@ class Category_model extends CI_Model {
         foreach($categories as $p_cat){
 			
             $categories[$i]->sub = $this->sub_categories($p_cat->CategoryID);
+
+			$scs=0;
+			foreach ($categories[$i]->sub as $scat) {
+				$categories[$i]->sub[$scs]->sub = $this->sub_categories($scat->CategoryID);
+				$scs++;
+			}
 			
             $i++;
         }

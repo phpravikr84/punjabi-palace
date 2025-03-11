@@ -70,8 +70,8 @@ class Production extends MX_Controller {
 	   $data['item']   = $this->production_model->item_dropdown();
 	   $data['ingrdientslist']   = $this->production_model->ingrediantlist();
 	   $data['module'] = "production";
-	   $data['page']   = "addproduction";   
-	   echo Modules::run('template/layout', $data); 
+	   $data['page']   = "addproduction";
+	   echo Modules::run('template/layout', $data);
 		}
 	public function production_entry(){
 		$this->permission->method('production','create')->redirect();

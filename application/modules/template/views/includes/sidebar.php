@@ -265,7 +265,8 @@
 							break;
 
 						case 'add_group_item':
-							echo 'Add Combo Food Item';
+							// echo 'Add Combo Food Item';
+							echo 'Add Promotions';
 							break;
 						
 						case 'production_setting':
