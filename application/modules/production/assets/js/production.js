@@ -180,13 +180,13 @@ $('#add_production').prop("disabled", true);
 $('.supplier-widget').hide();
 });
 $(document).on('change','#foodid',function(){
-         //"use strict";
+         "use strict";
           var id = $(this).children("option:selected").val();
 		  var csrf = $('#csrfhashresarvation').val();
 		  var datastring="csrf_test_name="+csrf
           var url= 'getfoodfarient'+'/'+id;
 		  //Check if foodId is Bom or not Bom
-		  console.log('hi');
+		  //console.log('hi');
 		  checkFoodItem(id);
          $.ajax({
              type: "GET",
