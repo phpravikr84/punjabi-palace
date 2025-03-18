@@ -271,6 +271,161 @@ public function settinginfo()
 		}
 		return false;
 		}
+
+	
+		public function item_dropdown()
+		{
+			$data = $this->db->select("*")
+				->from('item_foods')
+				->where('is_bom', 1)
+				->get()
+				->result();
+	
+			$list[''] = 'Select ' . display('item_name');
+			if (!empty($data)) {
+				foreach ($data as $value)
+					//$list[$value->ProductsID] = $value->ProductName;
+					$list[$value->ProductsID] = $value->ProductName . ' (' . getCusineTypeName($value->cusine_type) . ')';
+				return $list;
+			} else {
+				return false;
+			}
+		}
+	
+		public function ingrediantlist()
+		{
+			$data = $this->db->select("*")->from('ingredients')->where('is_active', 1)->get()->result();
+			//echo $this->db->last_query();
+			return $data;
+		}
 		
+
+		public function read_modified_groups_addons($limit = null, $start = null)
+		{
+			$this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, 
+								GROUP_CONCAT(add_ons.add_on_name ORDER BY add_ons.add_on_id SEPARATOR ', ') as add_on_names,
+								GROUP_CONCAT(add_ons.price ORDER BY add_ons.add_on_id SEPARATOR ', ') as prices,
+								add_ons.is_active");
+			$this->db->from('modifier_groups');
+			$this->db->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left');
+			$this->db->group_by('modifier_groups.id');
+			$this->db->order_by('modifier_groups.id', 'desc');
+	
+			$query = $this->db->get();
+			if ($query->num_rows() > 0) {
+				return $query->result();
+			}
+			return false;
+		}
+
+
+
+		public function checkingredient($nitqty, $ingredientid)
+		{
+			$this->db->select('SUM(purchase_details.quantity) as totalquantity, ingredients.id, ingredients.ingredient_name');
+			$this->db->from('purchase_details');
+			$this->db->join('ingredients', 'purchase_details.indredientid = ingredients.id', 'left');
+			$this->db->where('purchase_details.indredientid', $ingredientid);
+			$query = $this->db->get();
+
+			$purchaseqty = 0;
+			if ($query->num_rows() > 0) {
+				$row = $query->row();
+				$purchaseqty = $row->totalquantity ?? 0;
+			}
+
+			// Calculate used quantity in production
+			$foodwise = $this->db->select("
+				production_details.foodid, 
+				production_details.ingredientid, 
+				production_details.qty, 
+				SUM(production.itemquantity * production_details.qty) as foodqty
+			")
+			->from('production_details')
+			->join('production', 'production.itemid = production_details.foodid', 'left')
+			->where('production_details.ingredientid', $ingredientid)
+			->group_by('production_details.foodid')
+			->get()
+			->result();
+
+			$lastqty = 0;
+			foreach ($foodwise as $gettotal) {
+				$lastqty += $gettotal->foodqty;
+			}
+
+			$restqty = $purchaseqty - $lastqty;
+
+			return ($restqty >= $nitqty) ? 1 : 0;
+		}
+	
+	//Insert in Production Details table
+	public function create_food_ingredient($ingredient)
+	{	
+		$foodid = $ingredient['foodid'];
+		$foodvarientid  = $ingredient['pvarientid'];
+		$ingredientid = $ingredient['ingredientid'];
+		$quantity	= $ingredient['qty'];
+		$unitid  = $ingredient['unitid'];
+		$unitname  = $ingredient['unit_name'];
+		$saveid = $this->session->userdata('id');
+		$newdate = date('Y-m-d');
+		$data1 = array(
+			'foodid'		    =>	$foodid,
+			'pvarientid'		=>	$foodvarientid,
+			'ingredientid'		=>	$ingredientid,
+			'qty'				=>	$quantity,
+			'unitid'			=>	$unitid,
+			'unitname'			=>	$unitname,
+			'createdby'			=>	$saveid,
+			'created_date'		=>	$newdate
+		);
+
+		$this->db->insert('production_details', $data1);
+		return $this->db->affected_rows() > 0;
+	}
+
+	public function create_food_production($production)
+	{	
+		$itemid = $production['itemid'];
+		$itemvid = $production['itemvid'];
+		$itemquantity = $production['itemquantity'];
+		$is_bom = $production['is_bom'];
+		$production_date = 	$production['production_date'];
+		$expire_date = $production['expire_date'];
+		$suplierid = 0;
+		$saveid = $this->session->userdata('id');
+		$data1 = array(
+			'itemid'				=>	$itemid,
+			'itemvid'				=>	$itemvid,
+			'itemquantity'			=>	$itemquantity,
+			'savedby'				=>	$saveid,
+			'suplierid'				=>	$suplierid,
+			'is_bom'				=>	$is_bom,
+			'saveddate'				=>	$production_date,
+			'productionexpiredate'	=>	$expire_date
+		);
+
+		$this->db->insert('production', $data1);
+		return $this->db->affected_rows() > 0;
+	}
+
+	public function create_modifiers($modifier)
+	{	
+		$menu_id = $modifier['menu_id'];
+		$add_on_id = $modifier['add_on_id'];
+
+		$data1 = array(
+			'menu_id'				=>	$menu_id,
+			'add_on_id'				=>	$add_on_id,
+			'is_active'			=>	1,
+		);
+
+		$this->db->insert('menu_add_on', $data1);
+		return $this->db->affected_rows() > 0;
+	}
+
+
+
+	
 		
 }

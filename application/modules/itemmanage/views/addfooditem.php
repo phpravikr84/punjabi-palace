@@ -186,24 +186,24 @@
 
                     </div>
                     <div id="offeractive" class="<?php if(!empty($productinfo)){if($productinfo->offerIsavailable==1){echo "";} else{ echo "showhide";}}else{echo "showhide";}?>">
-                    <div class="form-group row">
-                        <label for="offerate" class="col-sm-5 col-form-label"><?php echo display('offer_rate')?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Offer Rate Must be a number. It a Percentange Like: if 5% then put 5"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-                        <div class="col-sm-7">
-                            <input name="offerate" class="form-control" type="text"  placeholder="0" id="offerate"  value="<?php echo (!empty($productinfo->OffersRate)?$productinfo->OffersRate:'') ?>">
+                        <div class="form-group row">
+                            <label for="offerate" class="col-sm-5 col-form-label"><?php echo display('offer_rate')?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Offer Rate Must be a number. It a Percentange Like: if 5% then put 5"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+                            <div class="col-sm-7">
+                                <input name="offerate" class="form-control" type="text"  placeholder="0" id="offerate"  value="<?php echo (!empty($productinfo->OffersRate)?$productinfo->OffersRate:'') ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="offerstartdate" class="col-sm-5 col-form-label"><?php echo display('offerdate')?></label>
-                        <div class="col-sm-7">
-                            <input name="offerstartdate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerdate')?>" id="offerstartdate"  value="<?php echo (!empty($productinfo->offerstartdate)?$productinfo->offerstartdate:null) ?>">
+                        <div class="form-group row">
+                            <label for="offerstartdate" class="col-sm-5 col-form-label"><?php echo display('offerdate')?></label>
+                            <div class="col-sm-7">
+                                <input name="offerstartdate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerdate')?>" id="offerstartdate"  value="<?php echo (!empty($productinfo->offerstartdate)?$productinfo->offerstartdate:null) ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="offerendate" class="col-sm-5 col-form-label"><?php echo display('offerenddate')?></label>
-                        <div class="col-sm-7">
-                            <input name="offerendate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerenddate')?>" id="offerendate"  value="<?php echo (!empty($productinfo->offerendate)?$productinfo->offerendate:null) ?>">
+                        <div class="form-group row">
+                            <label for="offerendate" class="col-sm-5 col-form-label"><?php echo display('offerenddate')?></label>
+                            <div class="col-sm-7">
+                                <input name="offerendate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerenddate')?>" id="offerendate"  value="<?php echo (!empty($productinfo->offerendate)?$productinfo->offerendate:null) ?>">
+                            </div>
                         </div>
-                    </div>
                     
                     </div>
                     <div class="form-group row">
