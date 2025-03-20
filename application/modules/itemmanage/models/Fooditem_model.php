@@ -236,7 +236,7 @@ public function count_fooditem()
         }
         return false;
 	}
-public function settinginfo()
+	public function settinginfo()
 	{ 
 		return $this->db->select("*")->from('setting')
 			->get()
@@ -413,11 +413,19 @@ public function settinginfo()
 	{	
 		$menu_id = $modifier['menu_id'];
 		$add_on_id = $modifier['add_on_id'];
+		$min = $modifier['min'];
+		$max = $modifier['max'];
+		$isreq = $modifier['isreq'];
+		$sortyb = $modifier['sortby'];
 
 		$data1 = array(
 			'menu_id'				=>	$menu_id,
 			'add_on_id'				=>	$add_on_id,
-			'is_active'			=>	1,
+			'min'					=> $min,
+			'max'					=> $max,
+			'isreq'					=> $isreq,
+			'sortby'				=> $sortyb,
+			'is_active'				=>	1,
 		);
 
 		$this->db->insert('menu_add_on', $data1);

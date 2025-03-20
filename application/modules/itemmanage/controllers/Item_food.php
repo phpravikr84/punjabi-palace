@@ -2190,6 +2190,13 @@ class Item_food extends MX_Controller
 	
 	public function create_new($id = null)
 	{
+		// if($_POST){
+		// 	echo '<pre>';
+		// 	print_r($_POST);
+		// 	echo '</pre>';
+		// 	exit;
+		// }
+		
 		$this->permission->method('itemmanage', 'create_new')->redirect();
 		$data['title'] = display('add_food');
 
@@ -2403,19 +2410,37 @@ class Item_food extends MX_Controller
 					// END of Variant and its Production update
 					// Now insert Modifiers
 					// Check Modifier exist or not
-					if($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))){
+					if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
 						$modifiers = $this->input->post('modifiers', true);
-						foreach($modifiers as $key => $modifier){
-							$modifierArr = explode('-', $modifier);
-							$modifierId =  $modifierArr[0];
+						$minValues = $this->input->post('min', true) ?? [];
+						$maxValues = $this->input->post('max', true) ?? [];
+						$isReqValues = $this->input->post('isreq', true) ?? [];
+						$sortValues = $this->input->post('sort', true) ?? [];
+					
+						foreach ($modifiers as $key => $modifier) {
+							$minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
+							$maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : 0;
+					
+							// Ensure min is not greater than max
+							if ($minValue > $maxValue) {
+								$maxValue = $minValue; 
+							}
+					
 							$modifierData = [
-								'menu_id' => $insertedFoodId,
-								'add_on_id' => $modifierId,
+								'menu_id'   => $insertedFoodId,
+								'add_on_id' => (int)$modifier,
+								'min'       => $minValue,
+								'max'       => $maxValue,
+								'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
+								'sortby'    => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
 							];
+					
 							// Insert Modifier
 							$this->fooditem_model->create_modifiers($modifierData);
 						}
 					}
+					
+					// END of Modifier update					
 
 					$this->session->set_flashdata('message', display('save_successfully'));
 					redirect('itemmanage/item_food/create_new');

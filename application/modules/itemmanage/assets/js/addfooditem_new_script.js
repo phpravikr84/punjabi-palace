@@ -115,6 +115,14 @@ $(document).ready(function () {
 
 
 // Handle Variant on Recepie on 17th May 2025
+/**
+ * ===================================================
+ * ALL PRODUCTION JS VALIDATION CODE
+ * =======================================================
+ * 
+ */
+
+// Validate Item
 
 $(document).ready(function () {
     $("#saveEditVariant").on("click", function () {
@@ -251,7 +259,7 @@ $(document).ready(function () {
     });
 
     //Handle Quantity Change
-    $(document).on("onkeyup", ".quantityCheck", function () {
+    $(document).on("keyup", ".quantityCheck", function () {
         var rowId = $(this).data("row-id"); // Get row ID
         calprice(rowId); // Pass ingredient ID and row ID to function
     });
@@ -266,7 +274,9 @@ $(document).ready(function () {
 
 
 function calprice(rowId){
+    //alert('Row ID'+rowId);
     var ingrden = $('#product_id_'+rowId+' option:selected').data('title');
+    //alert('Ingredient Name'+ingrden);
      if (ingrden == 0 || ingrden=='') {
       $('#product_quantity_'+rowId).val('');
       alert('Please select Item!');
@@ -277,7 +287,7 @@ function calprice(rowId){
         var toatalval = $('#unit-total_'+rowId).val();
         var qty = $('#product_quantity_'+rowId).val();
         var nitcost=parseFloat(toatalval)*parseFloat(qty);
-        $('#product_price__'+rowId).val(parseFloat(nitcost).toFixed(3));
+        $('#product_price_'+rowId).val(parseFloat(nitcost).toFixed(3));
 
     }
 
@@ -328,22 +338,50 @@ function checkproduct_list(ingredientId, sl) {
         success: function (data) {
             var obj = JSON.parse(data);
             if (obj && obj.length > 0 && obj[0].uprice > 0) {
+                $('#product_quantity_' + sl).removeAttr('readonly'); // Removes the readonly attribute
                 $('#unit-total_' + sl).val(obj[0].uprice);
             } else {
                 alert('Please purchase this Item.!!!');
                 $('#unit-total_' + sl).val('');
+                $('#product_quantity_' + sl).prop('readonly', true); // Preferred way for boolean attributes
             }
         }
     });
 }
 
-
 /**
  * ===================================================
- * ALL PRODUCTION JS VALIDATION CODE
- * =======================================================
- * 
+ * MODIFIER JS VALIDATION CODE
+ * ===================================================
  */
 
-// Validate Item
+$(document).ready(function () {
+    $(".modifier-checkbox").on("change", function () {
+        let groupId = $(this).data("group-id");
+        let minInput = $("#minsel_" + groupId);
+        let maxInput = $("#maxsel_" + groupId);
+        let isReqInput = $("#isreq_" + groupId);
+        let sortInput = $("#sort_" + groupId);
+
+        if ($(this).is(":checked")) {
+            minInput.prop("disabled", false);
+            maxInput.prop("disabled", false);
+            isReqInput.prop("disabled", false);
+            sortInput.prop("disabled", false);
+        } else {
+            minInput.prop("disabled", true).val(""); // Clear value when disabled
+            maxInput.prop("disabled", true).val("");
+            isReqInput.prop("disabled", true);
+            sortInput.prop("disabled", true).val("");
+        }
+    });
+
+    // Prevent negative values dynamically when input changes
+    $(".modifierminsel, .modifiermaxsel, #sort").on("input", function () {
+        if ($(this).val() < 0) {
+            $(this).val(0);
+        }
+    });
+});
+
 

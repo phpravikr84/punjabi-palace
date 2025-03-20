@@ -39,7 +39,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Food Name</label>
-                                <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (!empty($productinfo->ProductName)?$productinfo->ProductName:null) ?>" required="">
+                                <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (!empty($productinfo->ProductName)?$productinfo->ProductName:null) ?>">
                             </div>
                         </div>
                     </div>
@@ -368,45 +368,22 @@
                             <div class="panel-body">
                                 <div class="mt-3">
                                 <?php if (!empty($addonslist)) { ?>
-                                        <table class="table table-bordered">
-                                            <thead class="table-primary">
-                                                <tr>
-                                                    <th scope="col" style="width:10%"></th>
-                                                    <th scope="col" style="width:50%">Modifier Name</th>
-                                                    <th scope="col" style="width:10%">Min</th>
-                                                    <th scope="col" style="width:10%">Max</th>
-                                                    <th scope="col" style="width:10%">Is Require</th>
-                                                    <th scope="col" style="width:10%">Sort Order</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($addonslist as $addons) { ?>
-                                                    <tr>
-                                                        <td class="text-center">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input modifier-checkbox" type="checkbox" name="modifiers[]" value="<?php echo $addons->group_id; ?>" id="modifiers_<?php echo $addons->group_id; ?>" data-group-id="<?php echo $addons->group_id; ?>">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <label for="modifiers_<?php echo $addons->group_id; ?>" class="form-label"><?php echo $addons->name; ?></label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control modifierminsel" name="min[]" id="minsel_<?php echo $addons->group_id; ?>" disabled>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control modifiermaxsel" name="max[]" id="maxsel_<?php echo $addons->group_id; ?>" disabled>
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" class="form-check-input modifierisreq" name="isreq[]" id="isreq_<?php echo $addons->group_id; ?>" disabled>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control" name="sort[]" id="sort_<?php echo $addons->group_id; ?>" disabled>
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
-                                            </tbody>
-                                        </table>
+                                <?php foreach ($addonslist as $addons) { ?>
+                                <label class="form-label fw-bold"><?php echo $addons->name; ?></label> <!-- Heading -->
+                                <select class="addons-select form-control" name="modifiers[]" multiple data-group-id="<?php echo $addons->group_id; ?>">
+                                    <option value="select-all-<?php echo $addons->group_id; ?>" class="select-all-option">
+                                        Select All
+                                    </option>
+                                    <?php 
+                                        $addonItems = explode(', ', $addons->add_on_names); 
+                                        foreach ($addonItems as $addonName) { ?>
+                                    <option value="<?php echo $addons->group_id . '-' . $addonName; ?>">
+                                        <?php echo $addonName; ?>
+                                    </option>
                                     <?php } ?>
+                                </select>
+                                <?php } ?>
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>

@@ -746,5 +746,20 @@ class Menu_addons extends MX_Controller {
 	}
 
 
- 
+	public function search_modifiers()
+	{
+		$term = $this->input->get('term');
+
+		// Fetch matching modifiers from both tables
+		$food_items = $this->addons_model->search_food_items($term);
+		$ingredients = $this->addons_model->search_ingredients($term);
+
+		// Merge results
+		$modifiers = array_merge($food_items, $ingredients);
+
+		echo json_encode($modifiers);
+	}
+
+
+
 }

@@ -323,5 +323,39 @@ public function count_menuaddons()
 			return false; 
 		}
 	}
+
+	public function get_ingredient_by_modifier($modifier_id)
+    {
+        $this->db->select('i.id as ingredient_id, i.ingredient_name');
+        $this->db->from('purchase_details pd');
+        $this->db->join('ingredients i', 'pd.indredientid = i.id', 'left');
+        $this->db->where('pd.detailsid', $modifier_id);
+        $this->db->group_by('pd.indredientid');
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+        return false;
+    }
+
+	public function search_food_items($term)
+	{
+		$this->db->select('ProductsID as id, Name as label, "food_item" as source');
+		$this->db->from('item_foods');
+		$this->db->like('Name', $term);
+		return $this->db->get()->result_array();
+	}
+
+	public function search_ingredients($term)
+	{
+		$this->db->select('ingredient_id as id, ingredient_name as label, "ingredient" as source');
+		$this->db->from('ingredients');
+		$this->db->like('ingredient_name', $term);
+		return $this->db->get()->result_array();
+	}
+
+
+
     
 }

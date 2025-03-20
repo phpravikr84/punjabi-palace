@@ -1968,3 +1968,175 @@ ERROR - 2025-03-18 22:46:27 --> Severity: Warning --> Undefined variable $produc
 ERROR - 2025-03-18 22:46:27 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
 ERROR - 2025-03-18 22:46:28 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
 ERROR - 2025-03-18 22:46:28 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 22:57:54 --> Severity: Warning --> foreach() argument must be of type array|object, bool given D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-03-18 22:57:54 --> Severity: Warning --> Undefined variable $json_product D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-03-18 22:58:33 --> Severity: Warning --> foreach() argument must be of type array|object, bool given D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-03-18 22:58:33 --> Severity: Warning --> Undefined variable $json_product D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-03-18 22:58:52 --> Severity: Warning --> foreach() argument must be of type array|object, bool given D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-03-18 22:58:52 --> Severity: Warning --> Undefined variable $json_product D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-03-18 22:59:11 --> Severity: Warning --> foreach() argument must be of type array|object, bool given D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-03-18 22:59:11 --> Severity: Warning --> Undefined variable $json_product D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-03-18 23:01:36 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2433
+ERROR - 2025-03-18 23:01:36 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2433
+ERROR - 2025-03-18 23:01:36 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2433
+ERROR - 2025-03-18 23:01:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:01:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:01:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-18 23:01:36 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:01:37 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:03:03 --> Severity: Warning --> foreach() argument must be of type array|object, bool given D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-03-18 23:03:03 --> Severity: Warning --> Undefined variable $json_product D:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Undefined variable $setting D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 21
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Attempt to read property "site_align" on null D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 21
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Undefined variable $setting D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 57
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Attempt to read property "site_align" on null D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 57
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Undefined variable $setting D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Attempt to read property "language" on null D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
+ERROR - 2025-03-18 23:03:37 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-18 23:03:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:03:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:03:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-18 23:03:59 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-18 23:04:08 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:04:08 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:04:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-18 23:04:08 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 72
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 73
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 86
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "CategoryID" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 83
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:09 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditem.php 98
+ERROR - 2025-03-18 23:04:13 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2433
+ERROR - 2025-03-18 23:04:13 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2433
+ERROR - 2025-03-18 23:04:13 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2433
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "cusine_type" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Undefined variable $productinfo D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-18 23:04:14 --> Severity: Warning --> Attempt to read property "kitchenid" on null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
