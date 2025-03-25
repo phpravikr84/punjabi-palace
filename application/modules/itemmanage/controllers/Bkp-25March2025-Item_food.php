@@ -1900,8 +1900,297 @@ class Item_food extends MX_Controller
 	 * NEW FOOD ITEM
 	 */
 		
+	// public function create_new($id = null)
+	// {
+		
+	// 	$this->permission->method('itemmanage', 'create_new')->redirect();
+	// 	$data['title'] = display('add_food');
+	// 	#-------------------------------#
+	// 	$this->form_validation->set_rules('CategoryID', display('category_name'), 'required');
+	// 	if (!empty($this->input->post('ProductsID'))) {
+	// 		$this->form_validation->set_rules('foodname', display('item_name'), 'required|max_length[100]');
+	// 	} else {
+	// 		$this->form_validation->set_rules('foodname', display('item_name'), 'required|is_unique[item_foods.ProductName]|max_length[100]');
+	// 		$this->form_validation->set_message('is_unique', 'Sorry, this %s already used!');
+	// 	}
+	// 	$this->form_validation->set_rules('status', display('status'), 'required');
+
+	// 	$savedid = $this->session->userdata('id');
+	// 	$offerstartdate = str_replace('/', '-', $this->input->post('offerstartdate', true));
+	// 	$offerendate = str_replace('/', '-', $this->input->post('offerendate', true));
+
+	// 	$isoffer = $this->input->post('isoffer', true);
+	// 	$special = $this->input->post('special', true);
+	// 	if ($isoffer == 1) {
+	// 		$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
+	// 		$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
+	// 		$convertstartdate = date('Y-m-d', strtotime($offerstartdate));
+	// 		$convertenddate = date('Y-m-d', strtotime($offerendate));
+	// 		$isoffer = $isoffer;
+	// 		$OffersRate = $this->input->post('offerate', true);
+	// 	} else {
+	// 		$convertstartdate = "0000-00-00";
+	// 		$convertenddate = "0000-00-00";
+	// 		$isoffer = 0;
+	// 		$OffersRate = 0;
+	// 	}
+	// 	if ($special == 1) {
+	// 		$special = $this->input->post('special', true);
+	// 	} else {
+	// 		$special = 0;
+	// 	}
+	// 	$myvat = $this->input->post('vat');
+	// 	if (empty($myvat)) {
+	// 		$myvat = 0;
+	// 	}
+	// 	$menutype = $this->input->post('menutype', true);
+	// 	$alltmtype = "";
+	// 	$i = 0;
+	// 	if (!empty($menutype)) {
+	// 		foreach ($menutype as $types) {
+	// 			$i++;
+	// 			$alltmtype .= $this->input->post('mytmenu_' . $types, true) . ",";
+	// 		}
+
+	// 		$alltmtype = trim($alltmtype, ',');
+	// 	}
+	// 	$uniqueStr = implode(',', array_unique(explode(',', $alltmtype)));
+	// 	#-------------------------------#
+	// 	if ($this->form_validation->run()) {
+	// 		/****************image Upload*************/
+	// 		$config['upload_path']          = 'application/modules/itemmanage/assets/images/';
+	// 		$config['allowed_types']        = 'gif|jpg|jpeg|png';
+	// 		$config['max_size']             = 100000;
+	// 		$this->load->library('upload', $config);
+	// 		if (! $this->upload->do_upload('picture')) {
+	// 			$error = array('error' => $this->upload->display_errors());
+	// 			$img = '';
+	// 			$big = '';
+	// 			$medium = '';
+	// 			$small = '';
+	// 		} else {
+	// 			if (!empty($id)) {
+	// 				$imageinfo = $this->db->select('*')->from('item_foods')->where('ProductsID', $id)->get()->row();
+	// 				unlink($imageinfo->ProductImage);
+	// 				unlink($imageinfo->bigthumb);
+	// 				unlink($imageinfo->medium_thumb);
+	// 				unlink($imageinfo->small_thumb);
+	// 			}
+
+	// 			$fdata = $this->upload->data();
+
+	// 			$image_sizes = array('big' => array(555, 370), 'medium' => array(268, 223), 'small' => array(116, 116));
+	// 			$this->load->library('image_lib');
+	// 			foreach ($image_sizes as $key => $resize) {
+	// 				$config1 = array(
+	// 					'source_image' => $fdata['full_path'],
+	// 					'new_image' => $fdata['file_path'] . $key . '/',
+	// 					'maintain_ratio' => FALSE,
+	// 					'width' => $resize[0],
+	// 					'height' => $resize[1],
+	// 					'quality' => 70,
+	// 				);
+	// 				$this->image_lib->initialize($config1);
+	// 				$this->image_lib->resize();
+	// 				$this->image_lib->clear();
+	// 			}
+	// 			$this->load->library('image_lib', $config);
+	// 			$this->image_lib->resize();
+	// 			$big = 'application/modules/itemmanage/assets/images/big/' . $fdata['file_name'];
+	// 			$medium = 'application/modules/itemmanage/assets/images/medium/' . $fdata['file_name'];
+	// 			$small = 'application/modules/itemmanage/assets/images/small/' . $fdata['file_name'];
+	// 			$img = 'application/modules/itemmanage/assets/images/' . $fdata['file_name'];
+	// 		}
+
+
+	// 		/****************end*********************/
+	// 		if (empty($this->input->post('ProductsID'))) {
+	// 			$this->permission->method('itemmanage', 'create')->redirect();
+	// 			$data['foodlist']   = (object) $postData = array(
+	// 				'ProductsID'     		=> $this->input->post('ProductsID'),
+	// 				'CategoryID'     		=> $this->input->post('CategoryID'),
+	// 				'ProductName'   			=> $this->input->post('foodname', true),
+	// 				'component'              => $this->input->post('component', true),
+	// 				'itemnotes'              => $this->input->post('itemnotes', true),
+	// 				'menutype'               => $uniqueStr,
+	// 				'descrip'                => $this->input->post('descrip', true),
+	// 				'kitchenid'              =>  $this->input->post('kitchen'),
+	// 				'cookedtime'             => $this->input->post('cookedtime', true),
+	// 				'productvat'             => $myvat,
+	// 				'OffersRate'             => $OffersRate,
+	// 				'special'       			=> $special,
+	// 				'offerIsavailable'       => $isoffer,
+	// 				'offerstartdate'         => $convertstartdate,
+	// 				'offerendate'            => $convertenddate,
+	// 				'is_customqty'           => $this->input->post('customqty', true),
+	// 				'ProductsIsActive'   	=> $this->input->post('status'),
+	// 				'ProductImage'      		=> $img,
+	// 				'bigthumb'      			=> $big,
+	// 				'medium_thumb'      		=> $medium,
+	// 				'small_thumb'      		=> $small,
+	// 				'UserIDInserted'     	=> $savedid,
+	// 				'UserIDUpdated'      	=> $savedid,
+	// 				'UserIDLocked'       	=> $savedid,
+	// 				'DateInserted'       	=> date('Y-m-d H:i:s'),
+	// 				'DateUpdated'        	=> date('Y-m-d H:i:s'),
+	// 				'DateLocked'         	=> date('Y-m-d H:i:s'),
+	// 				'cusine_type'			=> $this->input->post('cusine_type'),
+	// 				'is_bom'					=> $this->input->post('is_bom'),
+	// 			);
+	// 			$logData = array(
+	// 				'action_page'         => "Add Food",
+	// 				'action_done'     	 => "Insert Data",
+	// 				'remarks'             => "New Food Added",
+	// 				'user_name'           => $this->session->userdata('fullname', true),
+	// 				'entry_date'          => date('Y-m-d H:i:s'),
+	// 			);
+	// 			$taxsettings = $this->taxchecking();
+	// 			if (!empty($taxsettings)) {
+	// 				$tx = 0;
+	// 				$taxitems = array();
+	// 				foreach ($taxsettings as $taxitem) {
+	// 					$filedtax = 'tax' . $tx;
+	// 					$taxitems[$filedtax] = $this->input->post($filedtax, true);
+	// 					$tx++;
+	// 				}
+	// 				$postData = array_merge($postData, $taxitems);
+	// 			}
+	// 			if ($this->fooditem_model->fooditem_create($postData)) {
+	// 				$insertedFoodId = $this->db->insert_id(); // Get last inserted food item ID
+	// 				$this->logs_model->log_recorded($logData);
+	// 				$this->db->select('*');
+	// 				$this->db->from('item_foods');
+	// 				$this->db->where('ProductsIsActive', 1);
+	// 				$query = $this->db->get();
+	// 				foreach ($query->result() as $row) {
+	// 					$json_product[] = array('label' => $row->ProductName, 'value' => $row->ProductsID);
+	// 				}
+	// 				$cache_file = './assets/js/product.json';
+	// 				$productList = json_encode($json_product);
+	// 				file_put_contents($cache_file, $productList);
+	// 				// Varient add [start]
+	// 				$variantData = [
+	// 					'menuid'          => $insertedFoodId,
+	// 					'variantName'     => 'Regular',
+	// 					'price'           => $this->input->post('regPrice', true),
+	// 					'takeaway_price'  => $this->input->post('takeawayPrice', true),
+	// 					'uber_eats_price' => $this->input->post('uberEatsPrice', true),
+	// 					'web_order_price' => $this->input->post('webOrderPrice', true),
+	// 				];
+	// 				$variantLogData = [
+	// 					'action_page'         => "Varient List",
+	// 					'action_done'     	 => "Insert Data",
+	// 					'remarks'             => "New Varient Created",
+	// 					'user_name'           => $this->session->userdata('fullname'),
+	// 					'entry_date'          => date('Y-m-d H:i:s'),
+	// 				];
+
+	// 				$this->foodvarient_model->create($variantData);
+	// 				$this->logs_model->log_recorded($variantLogData);
+	// 				// Varient add [end]
+	// 				$this->session->set_flashdata('message', display('save_successfully'));
+	// 				redirect('itemmanage/item_food/create_new');
+	// 			} else {
+	// 				$this->session->set_flashdata('exception',  display('please_try_again'));
+	// 			}
+	// 			redirect("itemmanage/item_food/create_new");
+	// 		} 
+	// 		else {
+	// 			$this->permission->method('itemmanage', 'update')->redirect();
+	// 			if (empty($img)) {
+	// 				$img = $this->input->post('old_image', true);
+	// 				$big = $this->input->post('bigimage', true);
+	// 				$medium = $this->input->post('mediumimage', true);
+	// 				$small = $this->input->post('smallimage', true);
+	// 			}
+	// 			$data['category']   = (object) $postData = array(
+	// 				'ProductsID'     		=> $this->input->post('ProductsID'),
+	// 				'CategoryID'     		=> $this->input->post('CategoryID'),
+	// 				'ProductName'   			=> $this->input->post('foodname', true),
+	// 				'component'              => $this->input->post('component', true),
+	// 				'itemnotes'              => $this->input->post('itemnotes', true),
+	// 				'menutype'              => $uniqueStr,
+	// 				'descrip'                => $this->input->post('descrip', true),
+	// 				'productvat'             => $this->input->post('vat', true),
+	// 				'kitchenid'             => $this->input->post('kitchen'),
+	// 				'cookedtime'             => $this->input->post('cookedtime', true),
+	// 				'OffersRate'             => $OffersRate,
+	// 				'special'       			=> $special,
+	// 				'is_customqty'           => $this->input->post('customqty', true),
+	// 				'offerIsavailable'       => $isoffer,
+	// 				'offerstartdate'         => $convertstartdate,
+	// 				'offerendate'            => $convertenddate,
+	// 				'ProductsIsActive'   	=> $this->input->post('status', true),
+	// 				'ProductImage'      		=> $img,
+	// 				'bigthumb'      			=> $big,
+	// 				'medium_thumb'      		=> $medium,
+	// 				'small_thumb'      		=> $small,
+
+	// 				'UserIDUpdated'      => $savedid,
+	// 				'DateUpdated'        => date('Y-m-d H:i:s'),
+	// 				'cusine_type'			=> $this->input->post('cusine_type'),
+	// 				'is_bom'					=> $this->input->post('is_bom'),
+	// 			);
+	// 			$logData = array(
+	// 				'action_page'         => "Food List",
+	// 				'action_done'     	 => "Update Data",
+	// 				'remarks'             => "Food Updated",
+	// 				'user_name'           => $this->session->userdata('fullname', true),
+	// 				'entry_date'          => date('Y-m-d H:i:s'),
+	// 			);
+	// 			$taxsettings = $this->taxchecking();
+	// 			if (!empty($taxsettings)) {
+	// 				$tx = 0;
+	// 				$taxitems = array();
+	// 				foreach ($taxsettings as $taxitem) {
+	// 					$filedtax = 'tax' . $tx;
+	// 					$taxitems[$filedtax] = $this->input->post($filedtax, true);
+	// 					$tx++;
+	// 				}
+	// 				$postData = array_merge($postData, $taxitems);
+	// 			}
+
+	// 			if ($this->fooditem_model->update_fooditem($postData)) {
+	// 				$this->logs_model->log_recorded($logData);
+	// 				$this->db->select('*');
+	// 				$this->db->from('item_foods');
+	// 				$this->db->where('ProductsIsActive', 1);
+	// 				$query = $this->db->get();
+	// 				foreach ($query->result() as $row) {
+	// 					$json_product[] = array('label' => $row->ProductName, 'value' => $row->ProductsID);
+	// 				}
+	// 				$cache_file = './assets/js/product.json';
+	// 				$productList = json_encode($json_product);
+	// 				file_put_contents($cache_file, $productList);
+	// 				$this->session->set_flashdata('message', display('update_successfully'));
+	// 			} else {
+	// 				$this->session->set_flashdata('exception',  display('please_try_again'));
+	// 			}
+	// 			redirect("itemmanage/item_food/create_new/" . $postData['ProductsID']);
+	// 		}
+	// 	} else {
+	// 		$data['taxitems'] = $this->taxchecking();
+	// 		if (!empty($id)) {
+	// 			$data['title'] = display('update_fooditem');
+	// 			$data['productinfo']   = $this->fooditem_model->findById($id);
+	// 		}
+
+	// 		$data['categories']   =  $this->category_model->allcategory_dropdown();
+	// 		$data['allkitchen']   =  $this->fooditem_model->allkitchen();
+	// 		$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+	// 		$data['item']   = $this->fooditem_model->item_dropdown();
+	// 		$data['ingrdientslist']   = $this->fooditem_model->ingrediantlist();
+	// 		$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
+	// 		$data['module'] = "itemmanage";
+	// 		$data['page']   = "addfooditemnew";
+	// 		echo Modules::run('template/layout', $data);
+	// 	}
+	// }
+
+	
 	public function create_new($id = null)
 	{
+		
 		$this->permission->method('itemmanage', 'create_new')->redirect();
 		$data['title'] = display('add_food');
 
@@ -2133,8 +2422,7 @@ class Item_food extends MX_Controller
 					
 							$modifierData = [
 								'menu_id'   => $insertedFoodId,
-								//'add_on_id' => (int)$modifier,
-								'modifier_groupid' => (int)$modifier,
+								'add_on_id' => (int)$modifier,
 								'min'       => $minValue,
 								'max'       => $maxValue,
 								'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
@@ -2154,98 +2442,17 @@ class Item_food extends MX_Controller
 					$this->session->set_flashdata('exception',  display('please_try_again'));
 				}
 				redirect("itemmanage/item_food/create_new");
-			} else {
-				$this->permission->method('itemmanage', 'update')->redirect();
-				if (empty($img)) {
-					$img = $this->input->post('old_image', true);
-					$big = $this->input->post('bigimage', true);
-					$medium = $this->input->post('mediumimage', true);
-					$small = $this->input->post('smallimage', true);
-				}
-				$data['category']   = (object) $postData = array(
-					'ProductsID'     		=> $this->input->post('ProductsID'),
-					'CategoryID'     		=> $this->input->post('CategoryID'),
-					'ProductName'   			=> $this->input->post('foodname', true),
-					'component'              => $this->input->post('component', true),
-					'itemnotes'              => $this->input->post('itemnotes', true),
-					'menutype'              => $uniqueStr,
-					'descrip'                => $this->input->post('descrip', true),
-					'productvat'             => $this->input->post('vat', true),
-					'kitchenid'             => $this->input->post('kitchen'),
-					'cookedtime'             => $this->input->post('cookedtime', true),
-					'OffersRate'             => $OffersRate,
-					'special'       			=> $special,
-					'is_customqty'           => $this->input->post('customqty', true),
-					'offerIsavailable'       => $isoffer,
-					'offerstartdate'         => $convertstartdate,
-					'offerendate'            => $convertenddate,
-					'ProductsIsActive'   	=> $this->input->post('status', true),
-					'ProductImage'      		=> $img,
-					'bigthumb'      			=> $big,
-					'medium_thumb'      		=> $medium,
-					'small_thumb'      		=> $small,
-
-					'UserIDUpdated'      => $savedid,
-					'DateUpdated'        => date('Y-m-d H:i:s'),
-					'cusine_type'			=> $this->input->post('cusine_type'),
-					'is_bom'					=> $this->input->post('is_bom'),
-				);
-				$logData = array(
-					'action_page'         => "Food List",
-					'action_done'     	 => "Update Data",
-					'remarks'             => "Food Updated",
-					'user_name'           => $this->session->userdata('fullname', true),
-					'entry_date'          => date('Y-m-d H:i:s'),
-				);
-				$taxsettings = $this->taxchecking();
-				if (!empty($taxsettings)) {
-					$tx = 0;
-					$taxitems = array();
-					foreach ($taxsettings as $taxitem) {
-						$filedtax = 'tax' . $tx;
-						$taxitems[$filedtax] = $this->input->post($filedtax, true);
-						$tx++;
-					}
-					$postData = array_merge($postData, $taxitems);
-				}
-
-				if ($this->fooditem_model->update_fooditem($postData)) {
-					$this->logs_model->log_recorded($logData);
-					$this->db->select('*');
-					$this->db->from('item_foods');
-					$this->db->where('ProductsIsActive', 1);
-					$query = $this->db->get();
-					foreach ($query->result() as $row) {
-						$json_product[] = array('label' => $row->ProductName, 'value' => $row->ProductsID);
-					}
-					$cache_file = './assets/js/product.json';
-					$productList = json_encode($json_product);
-					file_put_contents($cache_file, $productList);
-					$this->session->set_flashdata('message', display('update_successfully'));
-				} else {
-					$this->session->set_flashdata('exception',  display('please_try_again'));
-				}
-				redirect("itemmanage/item_food/create_new/" . $postData['ProductsID']);
 			}
 		} else {
-			if (!empty($id)) {
-				$data['title'] = display('update_fooditem');
-				//$data['productinfo']   = $this->fooditem_model->findById($id);
-				$data['productinfo']   = $this->fooditem_model->findByFoodId($id);
-				echo '<pre>';
-				print_r($data);
-				echo '</pre>';
-			}
-
 			$data['categories']   =  $this->category_model->allcategory_dropdown();
-			$data['allkitchen']   =  $this->fooditem_model->allkitchen();
-			$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
-			$data['item']   = $this->fooditem_model->item_dropdown();
-			$data['ingrdientslist']   = $this->fooditem_model->ingrediantlist();
-			$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
-			$data['module'] = "itemmanage";
-			$data['page']   = "addfooditemnew";
-			echo Modules::run('template/layout', $data);
+				$data['allkitchen']   =  $this->fooditem_model->allkitchen();
+				$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+				$data['item']   = $this->fooditem_model->item_dropdown();
+				$data['ingrdientslist']   = $this->fooditem_model->ingrediantlist();
+				$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
+				$data['module'] = "itemmanage";
+				$data['page']   = "addfooditemnew";
+				echo Modules::run('template/layout', $data);
 		}
 	}
 

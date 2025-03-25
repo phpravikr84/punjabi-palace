@@ -242,7 +242,20 @@
 						case 'production':
 							echo 'Bill of Materials (BOM)';
 							break;
+			
+						default:
+							echo display($name);
+							break;
+					}
+				}
 				
+				// Create php function to change group Label
+				function changeGroupLabelMenu($name){
+					switch ($name) {
+						case 'manage_addons':
+							echo 'Manage Modifiers';
+							break;
+
 						default:
 							echo display($name);
 							break;
@@ -271,6 +284,18 @@
 						
 						case 'production_setting':
 							echo 'Production Details';
+							break;
+
+						case 'add_adons':
+							echo 'Add Modifiers';
+							break;
+
+						case 'addons_list':
+							echo 'Modifiers';
+							break;
+								
+						case 'assign_adons_list':
+							echo 'Modifiers Assign';
 							break;
 				
 						default:
@@ -334,7 +359,7 @@
 									foreach ($label as $url) 
 							?>
 										<li class="">
-											<a href="#"><?php echo display($groupLabel) ?>
+											<a href="#"><?php //echo display($groupLabel) ?><?php echo changeGroupLabelMenu($groupLabel); ?>
 												<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 											</a>
 											<ul class="treeview-menu"> 

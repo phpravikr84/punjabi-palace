@@ -209,4 +209,196 @@ if (!empty($addonsinfo)) {
 
 <!-- jQuery for Add/Remove Modifier Rows -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script src="<?php echo base_url('application/modules/itemmanage/assets/js/addonscreate_script.js'); ?>" type="text/javascript"></script>
+<script>
+$(document).ready(function () {
+    let rowCount = $(".modifier-row").length; // Track row count dynamically
+
+    // Initialize sortable
+    $(".modifier-container").sortable({
+        handle: ".drag-handle",
+        axis: "y",
+        containment: "parent",
+        update: function () {
+            updateSortOrder(); // Update order after sorting
+        }
+    });
+
+    // Function to update order after sorting
+    function updateSortOrder() {
+        $(".modifier-row").each(function (index) {
+            $(this).find(".sort-order").val(index + 1); // Set order starting from 1
+        });
+    }
+
+    updateSortOrder(); // Initialize sorting order on page load
+
+    /**
+     * Auto suggestion box which fetch Food Item and Ingredient 
+     */
+        var getUrl = $('#getModifierItem').val();
+        var getModifierIngredient = $('#getModifierIngredientItem').val();
+        var csrf = $('#csrfhashresarvation').val();
+        console.log('Request URL:', getUrl);
+
+        // Function to initialize autocomplete for dynamically added elements
+        function initAutocomplete(element) {
+            element.autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        type: "GET",
+                        url: getUrl,
+                        cache: false,
+                        dataType: "json",  // Ensure JSON is parsed correctly
+                        data: { term: request.term, csrf_test_name: csrf },
+                        success: function(data) {
+                            console.log("Response Data:", data); // Debugging output
+                            response(data);
+                        },
+                        error: function(xhr, status, error) {
+                            console.log("AJAX Error:", status, error, xhr.responseText);
+                        }
+                    });
+                },
+                minLength: 2, // Minimum characters before triggering search
+                select: function(event, ui) {
+                    $(this).val(ui.item.label); // Set selected value
+                    $(this).data("modifier-id", ui.item.id); // Store ID in data attribute
+                    
+                    // Find and set corresponding modifier_id input in the same row
+                    $(this).closest('.modifier-row').find('input[name="modifier_id[]"]').val(ui.item.id);
+
+                    return false; // Prevent default behavior
+                }
+            }).autocomplete("instance")._renderItem = function(ul, item) {
+                return $("<li>")
+                    .append("<div>" + item.label + "</div>")
+                    .appendTo(ul);
+            };
+        }
+
+        // Initialize autocomplete for existing elements on page load
+        initAutocomplete($(".modifierDropDown"));
+    /**
+     *  END of Auto suggestion box
+     */
+
+     /**
+      * When select modifier name if its food item then
+      */
+      $(document).on("click", ".viewModifiers", function() {
+        var parentRow = $(this).closest('.modifier-row');
+        var modifierId = parentRow.find('input[name="modifier_id[]"]').val();
+
+        if (!modifierId) {
+            alert("Please select a modifier first.");
+            return;
+        }
+
+        //alert('Select Modifier ID:  '+modifierId);
+
+        $.ajax({
+            type: "GET",
+            url: getModifierIngredient,
+            cache: false,
+            dataType: "json",  // Ensure JSON is parsed correctly
+            data: { foodid: modifierId, csrf_test_name: csrf },
+            success: function(response) {
+                if (response.status === 'success') {
+                    var tableHtml = `<table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr>
+                 
+                                <th>Recipe</th>
+                                <th>Quantity Used</th>
+                                <th>Adjusted Quantity</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+                    response.data.forEach(function(item) {
+                        var adjustedQty = (parseFloat(item.qty) * 0.6).toFixed(3); // Adjusted quantity example
+                        tableHtml += `<tr>
+                            <td> ${item.ingredient_name} - (Id: ${item.ingredientid})
+                                <input type="hidden" name="foodid[]" value="${item.foodid}"/>
+                                <input type="hidden" name="ingr[]" value="${item.ingredientid}"/>
+                                <input type="hidden" name="ingr_qty[]" value="${item.qty}"/>
+                                <input type="hidden" name="ingr_adj_qty[]" value="${adjustedQty}"/>
+                                <input type="hidden" name="ingr_unitname[]" value="${item.unitname}"/>
+                                <input type="hidden" name="ingr_unitid[]" value="${item.unitid}"/>
+                            </td>
+                            <td>${item.qty}</td>
+                            <td>${adjustedQty}</td>
+                            <td>${item.unitname}</td>
+                        </tr>`;
+                    });
+
+                    tableHtml += `</tbody></table>`;
+
+                    parentRow.after(`<div class="row ingredient-details">${tableHtml}</div>`);
+                    //parentRow.find('.drag-handle').after(`<div class="row ingredient-details">${tableHtml}</div>`);
+
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("AJAX Error:", status, error, xhr.responseText);
+            }
+        });
+    });
+
+      /**
+       * END
+       */
+    // Add new row
+    $(".add-row").click(function () {
+        rowCount++; // Increment row count
+        let newRow = $(".modifier-row:first").clone(); // Clone first row
+
+        // Update row ID
+        newRow.attr("id", "modifierRow_" + rowCount);
+
+        // Clear input values properly
+        newRow.find("input[type='text'], input[type='number']").val("");
+        newRow.find("input[type='checkbox']").prop("checked", false); // Uncheck checkboxes
+        newRow.find("select").val("1"); // Reset dropdown
+
+        // Update remove button ID and make it visible
+        newRow.find(".remove-row").attr("id", "removeBtn_" + rowCount).show();
+
+        // Append the new row
+        $(".modifier-container").append(newRow);
+        initAutocomplete(newRow.find(".modifierDropDown")); // Initialize autocomplete for new row
+
+        updateSortOrder(); // Update sorting after adding
+        checkRemoveButton(); // Check remove button visibility
+    });
+
+    // Remove row
+    $(document).on("click", ".remove-row", function () {
+        let rowId = $(this).closest(".modifier-row").attr("id"); // Get row ID
+        console.log("Removing Row ID: " + rowId);
+
+        $(this).closest(".modifier-row").remove();
+        updateSortOrder(); // Update sorting after removal
+        checkRemoveButton(); // Check remove button visibility
+    });
+
+    // Check remove button visibility (only show if more than one row exists)
+    function checkRemoveButton() {
+        if ($(".modifier-row").length > 1) {
+            $(".remove-row").show();
+        } else {
+            $(".remove-row").hide();
+        }
+    }
+
+    // Run this on page load
+    updateSortOrder();
+    checkRemoveButton();
+});
+
+
+</script>
+

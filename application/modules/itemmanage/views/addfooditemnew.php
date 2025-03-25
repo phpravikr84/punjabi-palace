@@ -108,50 +108,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="bg-gray-orphane">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <label>Selling Price</label>
-                                <input type="text" id="regPrice" name="regPrice" class="form-control" placeholder="$">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <label>Takeaway Price</label>
-                                <input type="text" id="takeawayPrice" name="takeawayPrice" class="form-control" placeholder="$">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <label>Uber Eats Price</label>
-                                <input type="text" class="form-control" id="uberEatsPrice" name="uberEatsPrice" placeholder="$">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <label>DoorDash Price</label>
-                                <input type="text" id="doorDashPrice" name="doorDashPrice" class="form-control" placeholder="$">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <label>Web Order Price</label>
-                                <input type="text" id="webOrderPrice" name="webOrderPrice" class="form-control" placeholder="$">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <label>GST (%)</label>
-                                <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-
                     <div class="checkbox checkbox-success">
                         <input type="checkbox" name="isoffer" value="1" <?php if(!empty($productinfo))if($productinfo->offerIsavailable==1){echo "checked";}?> id="isoffer">
                         <label for="isoffer">Offer Available?</label>
@@ -274,19 +230,19 @@
                                                     <?php 
                                                     if (!empty($all_subcategories)) { 
                                                         foreach ($all_subcategories as $all_subcategory) { ?>
-                                                            <option value="parent_<?php echo $all_subcategory->CategoryID; ?>" class="fw-bold">
+                                                            <option value="parent_<?php echo $all_subcategory->CategoryID; ?>" class="fw-bold" <?php if($productinfo->CategoryID==$all_subcategory->CategoryID){echo "selected";}?>>
                                                                 <?php echo $all_subcategory->Name; ?>
                                                             </option>
 
                                                             <?php if (!empty($all_subcategory->sub)) {
                                                                 foreach ($all_subcategory->sub as $child) { ?>
-                                                                    <option value="<?php echo $all_subcategory->CategoryID; ?>_<?php echo $child->CategoryID; ?>" data-parent="parent_<?php echo $all_subcategory->CategoryID; ?>">
+                                                                    <option value="<?php echo $all_subcategory->CategoryID; ?>_<?php echo $child->CategoryID; ?>" data-parent="parent_<?php echo $all_subcategory->CategoryID; ?>" <?php if($productinfo->CategoryID==$child->CategoryID){echo "selected";}?>>
                                                                         -- <?php echo $child->Name; ?>
                                                                     </option>
 
                                                                     <?php if (!empty($child->sub)) {
                                                                         foreach ($child->sub as $subChild) { ?>
-                                                                            <option value="<?php echo $child->CategoryID; ?>_<?php echo $subChild->CategoryID; ?>" data-parent="child_<?php echo $child->CategoryID; ?>">
+                                                                            <option value="<?php echo $child->CategoryID; ?>_<?php echo $subChild->CategoryID; ?>" data-parent="child_<?php echo $child->CategoryID; ?>" <?php if($productinfo->CategoryID==$subChild->CategoryID){echo "selected";}?>>
                                                                                 ---- <?php echo $subChild->Name; ?>
                                                                             </option>
                                                                         <?php }
@@ -312,6 +268,29 @@
                                 </a>
                             </h5>
                         </div>
+                        <!-- Check if in edit view -->
+                        <?php if(!empty($productinfo) && isset($productinfo->variants)  && !empty($productinfo->variants) ) { ?>
+                        <div id="collapseVariants" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingVariants">
+                            <div class="panel-body">
+                                <div id="variantContainer">
+                                    <?php foreach($productinfo->variants as $variant) { echo $variant; ?>
+                                        <div class="row variant-row mb-2">
+                                            <div class="col-md-12 mb-2"><input type="text" name="variant_name[]" class="form-control" placeholder="Variant Name" value="<?php echo $variant->variantName; ?>"></div>
+                                            <div class="col-md-2 mb-2"><input type="number" name="price[]" class="form-control" placeholder="Price" value="<?php echo $variant->price; ?>"></div>
+                                            <div class="col-md-2 mb-2"><input type="number" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price" value="<?php echo $variant->takeaway_price; ?>"></div>
+                                            <div class="col-md-2 mb-2"><input type="number" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price" value="<?php echo $variant->uber_eats_price; ?>"></div>
+                                            <div class="col-md-2 mb-2"><input type="number" name="doordash_price[]" class="form-control" placeholder="Doordash Price" value="<?php echo $variant->doordash_price; ?>"></div>
+                                            <div class="col-md-2 mb-2"><input type="number" name="weborder_price[]" class="form-control" placeholder="Weborder Price" value="<?php echo $variant->web_order_price; ?>"></div>
+                                            <div class="col-md-2 mb-2"><button type="button" class="removeRowVariant"><span class="glyphicon glyphicon-remove-circle"></span></button></div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <button type="button" id="addMore" class="btn btn-primary mt-3">Add More</button>
+                                <button type="button" id="saveEditVariant" class="btn btn-secondary mt-3">Save</button>
+                            </div>
+                        </div>
+                        <?php } else { ?>
+                        <!-- End of edit view -->
                         <div id="collapseVariants" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingVariants">
                             <div class="panel-body">
                                 <div id="variantContainer">
@@ -329,6 +308,7 @@
                                 <button type="button" id="saveEditVariant" class="btn btn-secondary mt-3">Save</button>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
                     <!-- Recipes Panel -->
                     <div class="panel panel-default" id="recipesPanel">

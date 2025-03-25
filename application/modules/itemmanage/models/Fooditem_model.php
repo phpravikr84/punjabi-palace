@@ -412,7 +412,8 @@ public function count_fooditem()
 	public function create_modifiers($modifier)
 	{	
 		$menu_id = $modifier['menu_id'];
-		$add_on_id = $modifier['add_on_id'];
+		//$add_on_id = $modifier['add_on_id'];
+		$modifier_groupid =  $modifier['modifier_groupid'];
 		$min = $modifier['min'];
 		$max = $modifier['max'];
 		$isreq = $modifier['isreq'];
@@ -421,6 +422,7 @@ public function count_fooditem()
 		$data1 = array(
 			'menu_id'				=>	$menu_id,
 			'add_on_id'				=>	$add_on_id,
+			'modifier_groupid'		=>  $modifier_groupid,
 			'min'					=> $min,
 			'max'					=> $max,
 			'isreq'					=> $isreq,
@@ -431,6 +433,54 @@ public function count_fooditem()
 		$this->db->insert('menu_add_on', $data1);
 		return $this->db->affected_rows() > 0;
 	}
+
+	/**
+	 * New Find all details on base food id
+	 */
+
+	public function findByFoodId($id = null)
+	{ 
+		// Fetch main food item details
+		$foodItem = $this->db->select("*")
+			->from($this->table)
+			->where('ProductsID', $id)
+			->get()
+			->row_array();
+		
+		if (!$foodItem) {
+			return [];
+		}
+		
+		// Fetch variants
+		$variants = $this->db->select("variantid, menuid, variantName, price, takeaway_price, uber_eats_price, doordash_price, web_order_price")
+			->from("variant")
+			->where("menuid", $id)
+			->get()
+			->result_array();
+		
+		// Fetch recipes
+		$recipes = $this->db->select("pro_detailsid, foodid, pvarientid, ingredientid, qty, unitid, unitname")
+			->from("production_details")
+			->where("foodid", $id)
+			->get()
+			->result_array();
+		
+		// Fetch modifiers with left join to modifier_groups
+		$modifiers = $this->db->select("menu_add_on.row_id, menu_add_on.menu_id, menu_add_on.add_on_id, menu_add_on.modifier_groupid, menu_add_on.min, menu_add_on.max, menu_add_on.isreq, menu_add_on.sortby, menu_add_on.is_active, modifier_groups.name")
+			->from("menu_add_on")
+			->join("modifier_groups", "menu_add_on.modifier_groupid = modifier_groups.id", "left")
+			->where("menu_add_on.menu_id", $id)
+			->get()
+			->result_array();
+		
+		// Attach related data to the main food item
+		$foodItem['variants'] = !empty($variants) ? $variants : [];
+		$foodItem['recipes'] = !empty($recipes) ? $recipes : [];
+		$foodItem['modifiers'] = !empty($modifiers) ? $modifiers : [];
+		
+		return $foodItem;
+	}
+
 
 
 
