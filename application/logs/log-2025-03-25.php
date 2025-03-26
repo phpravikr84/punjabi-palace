@@ -2451,3 +2451,247 @@ ERROR - 2025-03-25 23:01:12 --> Severity: Warning --> Attempt to read property "
 ERROR - 2025-03-25 23:01:12 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
 ERROR - 2025-03-25 23:01:12 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
 ERROR - 2025-03-25 23:01:12 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:56 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:05:56 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:05:56 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:05:56 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:05:56 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:05:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-25 23:05:56 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 86
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 91
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 112
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 115
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 182
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 183
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:05:57 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:42 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:07:42 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:07:42 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:07:42 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:07:42 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:07:42 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-25 23:07:42 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 86
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 91
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 112
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 115
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 182
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 183
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:07:43 --> Severity: Warning --> Attempt to read property "variants" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 274
+ERROR - 2025-03-25 23:08:20 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:08:20 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:08:20 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:08:20 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:08:20 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:08:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-25 23:08:20 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 86
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 91
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 112
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 115
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 182
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 183
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:08:21 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:08 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:09:08 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:09:08 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 86
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 91
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 112
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 115
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 182
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 183
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:09 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:09 --> Severity: error --> Exception: Object of class stdClass could not be converted to string D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 281
+ERROR - 2025-03-25 23:09:25 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:09:25 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:09:25 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:26 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 86
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 91
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 112
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 115
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 182
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 183
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:09:27 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:09:27 --> Severity: error --> Exception: Object of class stdClass could not be converted to string D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 276
+ERROR - 2025-03-25 23:10:26 --> Severity: Warning --> Undefined variable $config D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:10:26 --> Severity: Warning --> Trying to access array offset on value of type null D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:10:26 --> Severity: Warning --> Undefined variable $page D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2245
+ERROR - 2025-03-25 23:10:27 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:10:27 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-03-25 23:10:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-03-25 23:10:27 --> Severity: Warning --> Undefined variable $title2 D:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 21
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "cusine_type" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 22
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "kitchenid" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 32
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 86
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "is_bom" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 91
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 112
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "offerIsavailable" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 115
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 182
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "ProductsIsActive" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 183
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 239
+ERROR - 2025-03-25 23:10:28 --> Severity: Warning --> Attempt to read property "CategoryID" on array D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 233
+ERROR - 2025-03-25 23:10:28 --> Severity: error --> Exception: Object of class stdClass could not be converted to string D:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\views\addfooditemnew.php 276

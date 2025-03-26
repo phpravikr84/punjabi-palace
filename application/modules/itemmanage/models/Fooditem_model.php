@@ -447,23 +447,28 @@ public function count_fooditem()
 			->get()
 			->row_array();
 		
-		if (!$foodItem) {
-			return [];
-		}
-		
+		// if (!$foodItem) {
+		// 	return [];
+		// }
+		//Fetch Production details
+		$production =  $this->db->select("itemid, itemvid, itemquantity, saveddate, productionexpiredate")
+						->from("production")
+						->where("itemid", $id)
+						->get()
+						->result();
 		// Fetch variants
 		$variants = $this->db->select("variantid, menuid, variantName, price, takeaway_price, uber_eats_price, doordash_price, web_order_price")
 			->from("variant")
 			->where("menuid", $id)
 			->get()
-			->result_array();
+			->result();
 		
 		// Fetch recipes
 		$recipes = $this->db->select("pro_detailsid, foodid, pvarientid, ingredientid, qty, unitid, unitname")
 			->from("production_details")
 			->where("foodid", $id)
 			->get()
-			->result_array();
+			->result();
 		
 		// Fetch modifiers with left join to modifier_groups
 		$modifiers = $this->db->select("menu_add_on.row_id, menu_add_on.menu_id, menu_add_on.add_on_id, menu_add_on.modifier_groupid, menu_add_on.min, menu_add_on.max, menu_add_on.isreq, menu_add_on.sortby, menu_add_on.is_active, modifier_groups.name")
@@ -471,9 +476,10 @@ public function count_fooditem()
 			->join("modifier_groups", "menu_add_on.modifier_groupid = modifier_groups.id", "left")
 			->where("menu_add_on.menu_id", $id)
 			->get()
-			->result_array();
+			->result();
 		
 		// Attach related data to the main food item
+		$foodItem['production'] = !empty($production) ? $production : [];
 		$foodItem['variants'] = !empty($variants) ? $variants : [];
 		$foodItem['recipes'] = !empty($recipes) ? $recipes : [];
 		$foodItem['modifiers'] = !empty($modifiers) ? $modifiers : [];

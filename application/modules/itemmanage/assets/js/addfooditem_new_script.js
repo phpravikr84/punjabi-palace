@@ -384,4 +384,25 @@ $(document).ready(function () {
     });
 });
 
+/**
+ * Modified Edit form 
+ */
+$(document).ready(function(){
+    // Add new variant row
+    $("#addMoreEdit").click(function(){
+        let row = $(".variant-rowedit:first").clone(); // Clone the first row
+        row.find("input").val(""); // Clear input values
+        $("#variantContainer").append(row); // Append cloned row
+    });
+
+    // Remove variant row
+    $(document).on("click", ".removeEditRowVariant", function(){
+        if ($(".variant-rowedit").length > 1) {
+            $(this).closest(".variant-rowedit").remove();
+        } else {
+            alert("At least one row is required.");
+        }
+    });
+});
+
 

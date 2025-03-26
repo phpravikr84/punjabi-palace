@@ -1989,11 +1989,43 @@ class Item_food extends MX_Controller
 			}
 
 			// Convert multi-select fields to JSON
-			$categoryIdsRaw = $this->input->post('CategoryID', true);
-			$categoryIdsCleaned = array_map(function($id) {
-				return preg_replace('/[^0-9]/', '', $id); // Remove non-numeric characters
-			}, $categoryIdsRaw);
-			$categoryIds = json_encode($categoryIdsCleaned);
+			// $categoryIdsRaw = $this->input->post('CategoryID', true);
+			// $categoryIdsCleaned = array_map(function($id) {
+			// 	return preg_replace('/[^0-9]/', '', $id); // Remove non-numeric characters
+			// }, $categoryIdsRaw);
+			// $categoryIds = json_encode($categoryIdsCleaned);
+
+			$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
+
+			if (!is_array($categoryIdsRaw)) {
+				$categoryIdsRaw = [];
+			}
+
+			$categoryIds = [];
+
+			foreach ($categoryIdsRaw as $category) {
+				if (strpos($category, '_') !== false) {
+					// Parent and child category case
+					$parts = explode('_', $category);
+					foreach ($parts as $part) {
+						$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
+						if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
+							$categoryIds[] = $cleanedPart;
+						}
+					}
+				} else {
+					// Only parent category
+					$cleanedCategory = str_replace('parent_', '', $category);
+					if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
+						$categoryIds[] = $cleanedCategory;
+					}
+				}
+			}
+
+			// Remove duplicates and store as a comma-separated string
+			$categoryIds = implode(',', array_unique($categoryIds));
+
+
 			$savedid = $this->session->userdata('id');
 
 			// Prepare data for insertion
