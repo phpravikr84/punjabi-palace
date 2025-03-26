@@ -144,7 +144,7 @@ class Hungry_model extends CI_Model
 		$query = $this->db->query("SELECT MAX(HeadCode) as HeadCode FROM acc_coa WHERE HeadLevel='4' And HeadCode LIKE '102030%'");
 		return $query->row();
 	}
-	public function ourteam()
+	public function ourteam() 
 	{
 		$this->db->select('employee_history.emp_his_id,employee_history.employee_id,employee_history.first_name,employee_history.last_name,employee_history.picture,custom_table.custom_field,custom_table.custom_data');
 		$this->db->from('employee_history');
