@@ -15,8 +15,8 @@ if (!empty($seoterm)) {
                     </div>
                     <div class="aboutus_text mb-lg-0 mb-5">
                         <?php $story = $this->db->select('*')->from('tbl_widget')->where('widgetid', 9)->get()->row(); ?>
-                        <p class="mb-4"> <?php echo $story->widget_desc; ?></p>
-                        <a href="<?php echo $banner_story[0]->slink; ?>" class="simple_btn"><?php echo display('read_more')?></a>
+                        <p class="mb-4"> <?php echo $story->widget_desc_full; ?></p>
+                        <!-- <a href="<?php ##echo $banner_story[0]->slink; ?>" class="simple_btn"><?php ##echo display('read_more')?></a> -->
                     </div>
                 </div>
                 <div class="col-lg-7 col-xl-6">
@@ -103,7 +103,11 @@ if (!empty($seoterm)) {
                     <div class="aboutus_text">
                         <?php $ourmenu = $this->db->select('*')->from('tbl_widget')->where('widgetid', 7)->get()->row(); ?>
                         <p class="mb-4"> <?php echo $ourmenu->widget_desc; ?></p>
-                        <a href="<?php echo $banner_menu[0]->slink; ?>" class="simple_btn"><?php echo display('view_full_menu')?></a>
+                        <a href="<?php echo $banner_menu[0]->slink; ?>" class="simple_btn">
+                            <?php
+                            echo display('view_full_menu')
+                            ?>
+                        </a>
                     </div>
                 </div>
             </div>

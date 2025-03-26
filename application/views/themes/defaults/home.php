@@ -361,6 +361,12 @@ if (!empty($special)) {
                 </div>
                 <div class="col-lg-8 wow fadeIn">
                     <div class="menu_slider owl-carousel">
+                        <?php 
+                        // echo "<pre>";
+                        // print_r($special_menu);
+                        // echo "</pre>";
+                        // exit;
+                        ?>
                         <?php foreach ($special_menu as $special) { ?>
                             <div class="menu_item">
                                 <div class="menu_info">
@@ -372,7 +378,8 @@ if (!empty($special)) {
                                     <a href="#" class="simple_btn"><i class="ti-shopping-cart"></i><span><?php echo display('add_to_cart')?></span></a>
                                 </div>
                                 <div class="menu_img">
-                                    <img src="<?php echo base_url(!empty($special->small_thumb) ? $special->small_thumb : 'dummyimage/253x263.jpg'); ?>" alt="<?php echo $special->ProductName ?>">
+                                    <img src="<?php echo base_url(!empty($special->medium_thumb) ? $special->medium_thumb : 'dummyimage/268x223.jpg'); ?>" alt="<?php echo $special->ProductName ?>">
+                                    <!-- <img src="<?php echo base_url(!empty($special->small_thumb) ? $special->small_thumb : 'dummyimage/253x263.jpg'); ?>" alt="<?php echo $special->ProductName ?>"> -->
                                 </div>
                             </div>
                         <?php } ?>
