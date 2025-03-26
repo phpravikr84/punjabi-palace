@@ -191,7 +191,7 @@ class Category_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->from('item_category');
-        $this->db->where('parentid', 0);
+        //$this->db->where('parentid', 0);
         $parent = $this->db->get();
         $categories = $parent->result();
         $i=0;

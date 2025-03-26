@@ -323,5 +323,64 @@ public function count_menuaddons()
 			return false; 
 		}
 	}
+
+	public function get_ingredient_by_modifier($modifier_id)
+    {
+        $this->db->select('i.id as ingredient_id, i.ingredient_name');
+        $this->db->from('purchase_details pd');
+        $this->db->join('ingredients i', 'pd.indredientid = i.id', 'left');
+        $this->db->where('pd.detailsid', $modifier_id);
+        $this->db->group_by('pd.indredientid');
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+        return false;
+    }
+
+	public function search_food_items($term)
+	{
+
+		$this->db->select('ProductsID as id, ProductName as label');
+		$this->db->from('item_foods');
+		$this->db->like('ProductName', $term);
+		return $this->db->get()->result_array();
+		
+	}
+
+	public function search_ingredients($term)
+	{
+		$this->db->select('id as id, ingredient_name as label');
+		$this->db->from('ingredients');
+		$this->db->like('ingredient_name', $term);
+		return $this->db->get()->result_array();
+	}
+
+	/** Get Productioin Details */
+	public function get_production_details($foodid) {
+        $this->db->select('pd.foodid, pd.ingredientid, pd.qty, pd.unitid, pd.unitname, ing.ingredient_name');
+        $this->db->from('production_details pd');
+        $this->db->join('ingredients ing', 'pd.ingredientid = ing.id', 'left');
+        $this->db->where('pd.foodid', $foodid);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+	/**
+	 * Get Addons Latest Data
+	 */
+	public function get_latest_addons($foodid){
+		$this->db->select('add_on_id, modifier_set_id');
+		$this->db->from('add_ons');
+		$this->db->where('modifier_id', $foodid);
+		$this->db->order_by('add_on_id', 'DESC');
+		$this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+        return false;
+	}
     
 }

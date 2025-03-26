@@ -2442,11 +2442,23 @@ $(document).on("keypress", '#itemqty_1', function(e){
     const ps = getQueryParam('ps');
     const custid =  getQueryParam('cid');
 
+     // Set Select2 Table Id values
+     // Destroy Select2 first (to avoid conflicts)
+     if ($.fn.select2 && $('#tableid').data('select2')) {
+        $('#tableid').select2('destroy');
+    }
 
+    // Reinitialize Select2
+    $("#tableid").select2(); 
+
+    setTimeout(function () {
+        $('#tableid').val(tid).trigger('change.select2'); // Set value after a slight delay
+        console.log("Table ID Updated to:", tid);
+    }, 500);
 
 
     // Set values if available
-    if (tid !== null) $('#tableid').val(tid).trigger('change');
+    //if (tid !== null) $('#tableid').val(tid).trigger('change');
     if (tmmulti !== null) $('#table_member_multi').val(tmmulti);
     if (tmmultipr !== null) $('#table_member_multi_person').val(tmmultipr);
     if (ps !== null || ps !== 'undefined' || ps !== '') {

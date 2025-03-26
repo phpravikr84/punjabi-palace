@@ -15,6 +15,7 @@ if (!empty($addonsinfo)) {
 ?>
 <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
 <div class="row">
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd lobidrag">
@@ -28,6 +29,8 @@ if (!empty($addonsinfo)) {
 
                 <?php echo form_hidden('id', $this->session->userdata('id')); ?>
                 <?php echo form_hidden('group_id',  (!empty($group_id) ? $group_id : null)); ?>
+                <input type="hidden" name="getModifierItem" id="getModifierItem" value="<?php echo base_url('itemmanage/menu_addons/search_modifiers'); ?>"/>
+                <input type="hidden" name="getModifierIngredientItem" id="getModifierIngredientItem" value="<?php echo base_url('itemmanage/menu_addons/get_modifier_details'); ?>"/>
                 <div class="row">
                     <!-- Modifier Set Name -->
                     <div class="col-lg-12">
@@ -51,16 +54,33 @@ if (!empty($addonsinfo)) {
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Modifier *</label>
-                                    <input name="addonsname[]" class="form-control" type="text" placeholder="Modifier Name" value="<?php echo $addon->add_on_name; ?>">
+                                    <input name="addonsname[]" class="form-control modifierDropDown" type="text" placeholder="Modifier Name" value="<?php echo $addon->add_on_name; ?>">
+                                    <input type="hidden" class="modifierId" name="modifier_id[]" value="<?php echo $addon->modifier_id; ?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Price </label>
                                     <input name="addonsprice[]" class="form-control" type="text" placeholder="Price" value="<?php echo $addon->price; ?>">
                                 </div>
                                 <div class="form-group col-md-2">
+                                    <label>Min </label>
+                                    <input name="minqty[]" class="form-control" type="number" value="<?php echo $addon->minqty; ?>" placeholder="Minimum Quantity">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Max </label>
+                                    <input name="maxqty[]" class="form-control" type="number" value="<?php echo $addon->maxqty; ?>" placeholder="Maximum Quantity">
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <label>Is Complementary</label>
+                                    <input type="checkbox" name="complementary[]" class="form-check-input isComplementary" <?php echo $addon->is_comp==1 ? 'checked' : ''; ?>/>
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <button type="button" class="btn btn-success mt-4 viewModifiers" style="margin-top:20px;">View Recipe</button>
+                                </div>
+                                <div class="form-group col-md-2" style="display:none;">
                                     <label>Status</label>
                                     <select name="status[]" class="form-control">
-                                        <option value="" selected="selected">Select Option</option>
                                         <option value="1" <?php echo ($addon->is_active == 1) ? "selected" : ""; ?>>Active</option>
                                         <option value="0" <?php echo ($addon->is_active == 0) ? "selected" : ""; ?>>Inactive</option>
                                     </select>
@@ -73,32 +93,53 @@ if (!empty($addonsinfo)) {
                             </div>
                         <?php }
                         } else { ?>
-                            <div class="form-row align-items-end modifier-row">
+                            <div class="form-row align-items-end modifier-row" id="modifierRow_1">
                                 <div class="form-group col-md-1 drag-handle">
                                     <span class="fa fa-bars"></span>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Modifier *</label>
-                                    <input name="addonsname[]" class="form-control" type="text" placeholder="Modifier Name">
+                                    <input name="addonsname[]" class="form-control modifierDropDown" type="text" placeholder="Modifier Name">
+                                    <input type="hidden" class="modifierId" name="modifier_id[]" value="">
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-2">
                                     <label>Price </label>
                                     <input name="addonsprice[]" class="form-control" type="text" placeholder="Price">
                                 </div>
                                 <div class="form-group col-md-2">
+                                    <label>Min </label>
+                                    <input name="minqty[]" class="form-control" type="number" value="1" placeholder="Minimum Quantity">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label>Max </label>
+                                    <input name="maxqty[]" class="form-control" type="number" value="1" placeholder="Maximum Quantity">
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <label>Is Complementary</label>
+                                    <input type="checkbox" name="complementary[]" class="form-check-input isComplementary" />
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <button type="button" class="btn btn-success mt-4 viewModifiers" style="margin-top:20px;">View Recipe</button>
+                                </div>
+
+
+                                <div class="form-group col-md-2" style="display:none;">
                                     <label>Status</label>
                                     <select name="status[]" class="form-control">
-                                        <option value="" selected="selected">Select Option</option>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
                                 </div>
+
                                 <div class="col-md-2 text-left">
                                     <button type="button" class="btn btn-danger remove-row mt-4">&times;</button>
                                 </div>
                                 <!-- Hidden field to store order -->
                                 <input type="hidden" name="sort_order[]" class="sort-order" value="">
                             </div>
+
                         <?php } ?>
                     </div>
 
@@ -168,64 +209,4 @@ if (!empty($addonsinfo)) {
 
 <!-- jQuery for Add/Remove Modifier Rows -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script>
-$(document).ready(function () {
-    // Initialize sortable
-    $(".modifier-container").sortable({
-        handle: ".drag-handle",
-        axis: "y",
-        containment: "parent",
-        update: function () {
-            updateSortOrder(); // Update order after sorting
-        }
-    });
-
-    // Function to update order after sorting
-    function updateSortOrder() {
-        $(".modifier-row").each(function (index) {
-            $(this).find(".sort-order").val(index + 1); // Set order starting from 1
-        });
-    }
-
-    // Add new row
-    $(".add-row").click(function () {
-        let newRow = $(".modifier-row:first").clone(); // Clone first row
-        newRow.find("input").val(""); // Clear input values
-        newRow.find("select").val("1"); // Reset dropdown
-        newRow.find(".remove-row").show(); // Ensure remove button is visible
-        newRow.find(".sort-order").val(""); // Reset hidden order input
-        $(".modifier-container").append(newRow); // Append new row
-        updateSortOrder(); // Update sorting after adding
-        checkRemoveButton(); // Check remove button visibility
-    });
-
-    // Remove row
-    $(document).on("click", ".remove-row", function () {
-        $(this).closest(".modifier-row").remove();
-        updateSortOrder(); // Update sorting after removal
-        checkRemoveButton(); // Check remove button visibility
-
-        // Remove from add on record and also check that its not assign in a menu
-        var addonId =  this.id;
-        console.log('Add on Id'+addonId);
-  
-    });
-
-    // Check remove button visibility (only show if more than one row exists)
-    function checkRemoveButton() {
-        if ($(".modifier-row").length > 1) {
-            $(".remove-row").show();
-        } else {
-            $(".remove-row").hide();
-        }
-    }
-
-    // Run this on page load
-    updateSortOrder();
-    checkRemoveButton();
-
-    
-});
-
-</script>
-
+<script src="<?php echo base_url('application/modules/itemmanage/assets/js/addonscreate_script.js'); ?>" type="text/javascript"></script>

@@ -627,4 +627,54 @@ if (!function_exists('get_price_diff_data_by_purchase_id')) {
   }
 }
 
+if(!function_exists('allcategory_dropdown_by_parent_id')){
+
+  function allcategory_dropdown_by_parent_id($id){
+
+    $CI = &get_instance(); // Get CodeIgniter instance
+    $CI->load->database(); // Load database if not already loaded
+
+    $CI->db->select('*');
+    $CI->db->from('item_category');
+    $CI->db->where('parentid', $id);
+    $parent = $CI->db->get();
+    $categories = $parent->result();
+    $i=0;
+    foreach($categories as $p_cat){
+
+        $categories[$i]->sub = sub_categories_by_parent_id($p_cat->CategoryID);
+
+  $scs=0;
+  foreach ($categories[$i]->sub as $scat) {
+    $categories[$i]->sub[$scs]->sub = sub_categories_by_parent_id($scat->CategoryID);
+    $scs++;
+  }
+
+        $i++;
+    }
+    return $categories;
+  }
+}
+if(!function_exists('sub_categories_by_parent_id')){
+
+  function sub_categories_by_parent_id($id){
+
+    $CI = &get_instance(); // Get CodeIgniter instance
+    $CI->load->database(); // Load database if not already loaded
+
+    $CI->db->select('*');
+    $CI->db->from('item_category');
+    $CI->db->where('parentid', $id);
+
+    $child = $CI->db->get();
+    $categories = $child->result();
+    $i=0;
+    foreach($categories as $p_cat){
+        $categories[$i]->sub = sub_categories_by_parent_id($p_cat->CategoryID);
+        $i++;
+    }
+    return $categories;       
+  }
+}
+
 
