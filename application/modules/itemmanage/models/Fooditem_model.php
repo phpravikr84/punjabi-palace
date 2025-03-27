@@ -401,8 +401,8 @@ public function count_fooditem()
 			'savedby'				=>	$saveid,
 			'suplierid'				=>	$suplierid,
 			'is_bom'				=>	$is_bom,
-			'saveddate'				=>	$production_date,
-			'productionexpiredate'	=>	$expire_date
+			'saveddate'				=>	date('Y-m-d', strtotime($production_date)),
+			'productionexpiredate'	=>	date('Y-m-d', strtotime($expire_date))
 		);
 
 		$this->db->insert('production', $data1);
@@ -464,9 +464,10 @@ public function count_fooditem()
 			->result();
 		
 		// Fetch recipes
-		$recipes = $this->db->select("pro_detailsid, foodid, pvarientid, ingredientid, qty, unitid, unitname")
-			->from("production_details")
-			->where("foodid", $id)
+		$recipes = $this->db->select("vt.variantName, pd.pro_detailsid, pd.foodid, pd.pvarientid, pd.ingredientid, pd.qty, pd.unitid, pd.unitname")
+			->from("production_details as pd")
+			->join("variant as vt", "pd.pvarientid = vt.variantid", "left")
+			->where("pd.foodid", $id)
 			->get()
 			->result();
 		
@@ -487,6 +488,58 @@ public function count_fooditem()
 		return $foodItem;
 	}
 
+	// Update Food Ingredient
+	public function update_food_ingredient($foodid, $ingredient)
+	{   
+		$this->db->where('foodid', $foodid);
+		$data = array(
+			'pvarientid'   => $ingredient['pvarientid'],
+			'ingredientid' => $ingredient['ingredientid'],
+			'qty'          => $ingredient['qty'],
+			'unitid'       => $ingredient['unitid'],
+			'unitname'     => $ingredient['unit_name'],
+			'updatedby'    => $this->session->userdata('id'),
+			'updated_date' => date('Y-m-d')
+		);
+
+		$this->db->update('production_details', $data);
+		return $this->db->affected_rows() > 0;
+	}
+
+	// Update Food Production
+	public function update_food_production($itemid, $production)
+	{   
+		$this->db->where('itemid', $itemid);
+		$data = array(
+			'itemvid'               => $production['itemvid'],
+			'itemquantity'          => $production['itemquantity'],
+			'is_bom'                => $production['is_bom'],
+			'suplierid'             => 0,
+			'savedby'               => $this->session->userdata('id'),
+			'saveddate'             => date('Y-m-d', strtotime($production['production_date'])),
+			'productionexpiredate'  => date('Y-m-d', strtotime($production['expire_date']))
+		);
+
+		$this->db->update('production', $data);
+		return $this->db->affected_rows() > 0;
+	}
+
+	// Update Modifiers
+	public function update_modifiers($menu_id, $modifier)
+	{   
+		$this->db->where('menu_id', $menu_id);
+		$data = array(
+			'modifier_groupid'  => $modifier['modifier_groupid'],
+			'min'               => $modifier['min'],
+			'max'               => $modifier['max'],
+			'isreq'             => $modifier['isreq'],
+			'sortby'            => $modifier['sortby'],
+			'is_active'         => 1,
+		);
+
+		$this->db->update('menu_add_on', $data);
+		return $this->db->affected_rows() > 0;
+	}
 
 
 

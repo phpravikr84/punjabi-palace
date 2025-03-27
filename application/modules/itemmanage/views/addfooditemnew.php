@@ -4,10 +4,10 @@
 <div class="row">
     <?php echo form_open_multipart("itemmanage/item_food/create_new") ?>
     <?php echo form_hidden('id',$this->session->userdata('id'));?>
-    <?php echo form_hidden('ProductsID', (!empty($productinfo->ProductsID)?$productinfo->ProductsID:null)) ?>
-    <input name="bigimage" type="hidden" value="<?php echo (!empty($productinfo->bigthumb)?$productinfo->bigthumb:null) ?>" />
-    <input name="mediumimage" type="hidden" value="<?php echo (!empty($productinfo->medium_thumb)?$productinfo->medium_thumb:null) ?>" />
-    <input name="smallimage" type="hidden" value="<?php echo (!empty($productinfo->small_thumb)?$productinfo->small_thumb:null) ?>" />
+    <?php echo form_hidden('ProductsID', (!empty($productinfo['ProductsID'])?$productinfo['ProductsID']:null)) ?>
+    <input name="bigimage" type="hidden" value="<?php echo (!empty($productinfo['bigthumb'])?$productinfo['bigthumb']:null) ?>" />
+    <input name="mediumimage" type="hidden" value="<?php echo (!empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
+    <input name="smallimage" type="hidden" value="<?php echo (!empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
         <!-- First Panel - Add Form -->
         <div class="col-md-5">
             <div class="card">
@@ -292,6 +292,7 @@
                                 <?php foreach($productinfo['variants'] as $variant) { ?>
                                     <div class="row variant-rowedit mb-2">
                                         <div class="col-md-12 mb-2">
+                                            <input type="hidden" name="variant_id[]" class="form-control" value="<?php echo $variant->variantid; ?>">
                                             <input type="text" name="variant_name[]" class="form-control" placeholder="Variant Name" value="<?php echo $variant->variantName; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
@@ -318,7 +319,7 @@
                                 <?php } ?>
                                 </div>
                                 <button type="button" id="addMoreEdit" class="btn btn-primary mt-3">Add More</button>
-                                <button type="button" id="saveEditVariant" class="btn btn-secondary mt-3">Save</button>
+                                <button type="button" id="saveEditVariantUpdt" class="btn btn-secondary mt-3">Save</button>
                             </div>
                         </div>
                         <?php } else { ?>
@@ -363,44 +364,47 @@
                                 <!-- Get Edit view data begin -->
                                 <?php if(!empty($productinfo) && isset($productinfo['recipes'])  && !empty($productinfo['recipes']) ) { ?>
                                     <?php foreach($productinfo['recipes'] as $recipe) { ?>
-                                        <table class="table table-bordered table-hover" id="purchaseTable">
-                                            <thead>
+                                        <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
+                                            <h4>Recipe for - <?php echo $recipe->variantName; ?></h4>
+                                            <table class="table table-bordered table-hover" id="purchaseTable">
+                                                <thead>
+                                                        <tr>
+                                                            <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
+                                                            <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
+                                                            <th class="text-center"><?php echo display('price');?> </th>
+                                                            <th class="text-center"><?php echo 'Unit'; ?> </th>
+                                                            <th class="text-center"></th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody id="addPurchaseItem">
                                                     <tr>
-                                                        <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
-                                                        <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
-                                                        <th class="text-center"><?php echo display('price');?> </th>
-                                                        <th class="text-center"><?php echo 'Unit'; ?> </th>
-                                                        <th class="text-center"></th>
+                                                        <td class="span3 supplier">
+                                                        
+                                                    <input type="hidden" id="unit-total_1" class="" />
+                                                        <select name="product_id[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
+                                                        <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
+                                                        <?php foreach ($ingrdientslist as $ingrdients) {?>
+                                                                <option value="<?php echo $ingrdients->id;?>" data-ingredientid="<?php echo $ingrdients->id;?>" data-title="<?php echo $ingrdients->ingredient_name;?>" <?php echo $recipe->ingredientid==$ingrdients->id ? 'selected' : ''; ?>><?php echo $ingrdients->ingredient_name;?></option>
+                                                        <?php }?>
+                                                        </select>
+                                                        </td>
+                                                            <td class="text-right">
+                                                                <input type="text" name="product_quantity[]" id="cartoon_1" onkeyup='calprice(this)' class="form-control text-right store_cal_1" placeholder="0.00" value="<?php echo $recipe->qty; ?>" min="0" tabindex="6">
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <input type="text"  id="price_1" class="form-control text-right store_cal_1" placeholder="0.00" value="" min="0" tabindex="6" readonly>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <input type="hidden" name="unitid[]" id="unitid_1" class="form-control text-right store_unitid_1" value="<?php echo $recipe->unitid; ?>" tabindex="6" readonly>
+                                                                <input type="text" name="unitname[]" id="unitname_1" class="form-control text-right store_unitname_1" value="<?php echo $recipe->unitname; ?>" tabindex="6" readonly>
+                                                            </td>
+                                                            <td>
+                                                                <button  class="btn btn-danger red text-right" type="button" value="<?php echo display('delete') ?>" onclick="deleteRow(this)" tabindex="8"><?php echo display('delete') ?></button>
+                                                            </td>
                                                     </tr>
-                                            </thead>
-                                            <tbody id="addPurchaseItem">
-                                                <tr>
-                                                    <td class="span3 supplier">
-                                                    
-                                                <input type="hidden" id="unit-total_1" class="" />
-                                                    <select name="product_id[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
-                                                    <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
-                                                    <?php foreach ($ingrdientslist as $ingrdients) {?>
-                                                            <option value="<?php echo $ingrdients->id;?>" data-ingredientid="<?php echo $ingrdients->id;?>" data-title="<?php echo $ingrdients->ingredient_name;?>" <?php echo $recipe->ingredientid==$ingrdients->id ? 'selected' : ''; ?>><?php echo $ingrdients->ingredient_name;?></option>
-                                                    <?php }?>
-                                                    </select>
-                                                    </td>
-                                                        <td class="text-right">
-                                                            <input type="text" name="product_quantity[]" id="cartoon_1" onkeyup='calprice(this)' class="form-control text-right store_cal_1" placeholder="0.00" value="<?php echo $recipe->qty; ?>" min="0" tabindex="6">
-                                                        </td>
-                                                        <td class="text-right">
-                                                            <input type="text"  id="price_1" class="form-control text-right store_cal_1" placeholder="0.00" value="" min="0" tabindex="6" readonly>
-                                                        </td>
-                                                        <td class="text-right">
-                                                            <input type="hidden" name="unitid[]" id="unitid_1" class="form-control text-right store_unitid_1" value="<?php echo $recipe->unitid; ?>" tabindex="6" readonly>
-                                                            <input type="text" name="unitname[]" id="unitname_1" class="form-control text-right store_unitname_1" value="<?php echo $recipe->unitname; ?>" tabindex="6" readonly>
-                                                        </td>
-                                                        <td>
-                                                            <button  class="btn btn-danger red text-right" type="button" value="<?php echo display('delete') ?>" onclick="deleteRow(this)" tabindex="8"><?php echo display('delete') ?></button>
-                                                        </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     <?php } ?>
                                 <?php } ?>
                                 <!-- Get Edit view data end -->
@@ -444,6 +448,10 @@
                                                             }
                                                         }
                                                     ?>
+                                                            <?php
+                                                                $disableField = (!empty($selectedModifers) && in_array($addons->group_id, $selectedModifers)) ? '' : 'disabled';
+                                                            ?>
+
                                                         <tr>
                                                             <td class="text-center">
                                                                 <div class="form-check">
@@ -456,16 +464,17 @@
                                                                 <label for="modifiers_<?php echo $addons->group_id; ?>" class="form-label"><?php echo $addons->name; ?></label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control modifierminsel" name="min[]" id="minsel_<?php echo $addons->group_id; ?>" disabled>
+                                                               
+                                                                <input type="text" class="form-control modifierminsel" name="min[]" id="minsel_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control modifiermaxsel" name="max[]" id="maxsel_<?php echo $addons->group_id; ?>" disabled>
+                                                                <input type="text" class="form-control modifiermaxsel" name="max[]" id="maxsel_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
                                                             </td>
                                                             <td>
-                                                                <input type="checkbox" class="form-check-input modifierisreq" name="isreq[]" id="isreq_<?php echo $addons->group_id; ?>" disabled>
+                                                                <input type="checkbox" class="form-check-input modifierisreq" name="isreq[]" id="isreq_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control" name="sort[]" id="sort_<?php echo $addons->group_id; ?>" disabled>
+                                                                <input type="text" class="form-control" name="sort[]" id="sort_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
                                                             </td>
                                                         </tr>
                                                 <?php } ?>

@@ -26,6 +26,13 @@ class Foodvarient_model extends MX_Controller {
 			->update($this->table, $data);
 	}
 
+	public function update_varient_multi($variantId, $data = array())
+	{
+		return $this->db->where('variantid', $variantId)
+			->update($this->table, $data);
+	}
+
+
     public function read_varient($limit = null, $start = null)
 	{
 	    $this->db->select('variant.*,item_foods.ProductName, item_foods.cusine_type', 'item_foods.is_bom');
