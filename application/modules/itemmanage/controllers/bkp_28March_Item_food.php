@@ -2069,10 +2069,10 @@ class Item_food extends MX_Controller
 					'is_bom'				=> $this->input->post('is_bom'),
 				];
 
-				// echo '<pre>';
-				// print_r($_POST);
-				// echo '</pre>';
-				// exit;
+				echo '<pre>';
+				print_r($_POST);
+				echo '</pre>';
+				exit;
 
 				if ($this->fooditem_model->fooditem_create($postData)) {
 					$insertedFoodId = $this->db->insert_id();
@@ -2085,7 +2085,7 @@ class Item_food extends MX_Controller
 					}
 					file_put_contents('./assets/js/product.json', json_encode($json_product));
 					// Add Variants
-					// Check if variant exists
+					//Check Variant exist or not
 					if ($this->input->post('variant_name', true)) {
 						$variantNames = $this->input->post('variant_name', true);
 						$prices = $this->input->post('price', true);
@@ -2093,15 +2093,15 @@ class Item_food extends MX_Controller
 						$uberEatsPrices = $this->input->post('uber_eats_price', true);
 						$doordashPrices = $this->input->post('doordash_price', true);
 						$webOrderPrices = $this->input->post('weborder_price', true);
-						$recipeFor = $this->input->post('recipe_for', true);
-						
+					
 						foreach ($variantNames as $key => $variantName) {
+							// **Check if Variant Already Exists Before Insert**
 							$existingVariant = $this->db->where([
 								'menuid' => $insertedFoodId,
 								'variantName' => $variantName,
 							])->get('variant')->row();
-
-							if (!$existingVariant) {
+					
+							if (!$existingVariant) {  // **Only Insert If No Duplicate Found**
 								$variantData = [
 									'menuid' => $insertedFoodId,
 									'variantName' => $variantName,
@@ -2111,10 +2111,13 @@ class Item_food extends MX_Controller
 									'doordash_price' => $doordashPrices[$key],
 									'web_order_price' => $webOrderPrices[$key],
 								];
-
+					
+								// **Insert Variant**
 								if ($this->foodvarient_model->create($variantData)) {
 									$insertedVariantId = $this->db->insert_id();
-
+									log_message('error', "Inserted Variant ID: " . $insertedVariantId);
+					
+									// **Insert Production Data**
 									$productionData = [
 										'itemid' => $insertedFoodId,
 										'itemvid' => $insertedVariantId,
@@ -2125,38 +2128,54 @@ class Item_food extends MX_Controller
 										'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
 									];
 									$this->fooditem_model->create_food_production($productionData);
-
-									// Handle Ingredients Based on Variant
+					
+									// **Handle Ingredients If BOM is True**
 									if ($this->input->post('is_bom', true)) {
-										$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
-										$ingredientKey = "product_id_{$variantKey}";
-										$quantityKey = "product_quantity_{$variantKey}";
-										$unitIdKey = "unitid_{$variantKey}";
-										$unitNameKey = "unitname_{$variantKey}";
-
-										if ($this->input->post($ingredientKey, true)) {
-											$ingredients = $this->input->post($ingredientKey, true);
-											$quantities = $this->input->post($quantityKey, true);
-											$unitIds = $this->input->post($unitIdKey, true);
-											$unitNames = $this->input->post($unitNameKey, true);
-
-											foreach ($ingredients as $i => $ingredientId) {
-												$ingredientData = [
+										$foodIngredients = $this->input->post('product_id', true);
+										$productQuantities = $this->input->post('product_quantity', true);
+										$unitIds = $this->input->post('unitid', true);
+										$unitNames = $this->input->post('unitname', true);
+					
+										if (!empty($foodIngredients)) {
+											foreach ($foodIngredients as $i => $foodIngredient) {
+												if (!isset($productQuantities[$i], $unitIds[$i], $unitNames[$i])) {
+													log_message('error', "Missing ingredient data at index: " . $i);
+													continue;
+												}
+					
+												// **Check If Ingredient Already Exists**
+												$existingIngredient = $this->db->where([
 													'foodid' => $insertedFoodId,
 													'pvarientid' => $insertedVariantId,
-													'ingredientid' => $ingredientId,
-													'qty' => $quantities[$i],
-													'unitid' => $unitIds[$i],
-													'unitname' => $unitNames[$i],
-												];
-												$this->db->insert('production_details', $ingredientData);
+												])->get('production_details')->row();
+					
+												if (!$existingIngredient) {
+													$ingredientData = [
+														'foodid' => $insertedFoodId,
+														'pvarientid' => $insertedVariantId,
+														'ingredientid' => $foodIngredient,
+														'qty' => $productQuantities[$i],
+														'unitid' => $unitIds[$i],
+														'unit_name' => $unitNames[$i],
+														'created_by' => $savedid,
+													];
+													$this->fooditem_model->create_food_ingredient($ingredientData);
+												} else {
+													log_message('error', "Duplicate Ingredient Found: " . json_encode($ingredientData));
+												}
 											}
 										}
 									}
+								} else {
+									log_message('error', "Variant Insert Failed for Food ID: " . $insertedFoodId);
 								}
+							} else {
+								log_message('error', "Duplicate Variant Skipped: " . json_encode($variantName));
 							}
 						}
 					}
+					
+					
 					// END of Variant and its Production update
 					// Now insert Modifiers
 					// Check Modifier exist or not
@@ -2287,12 +2306,6 @@ class Item_food extends MX_Controller
 					}
 					$postData = array_merge($postData, $taxitems);
 				}
-
-				echo '<pre>';
-				print_r($_POST);
-				echo '</pre>';
-				exit;
-
 
 				if ($this->fooditem_model->update_fooditem($postData)) {
 

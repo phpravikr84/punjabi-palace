@@ -362,63 +362,49 @@
                                 <input name="url" type="hidden" id="url" value="<?php echo base_url('production/production/productionitem'); ?>" />
                                 <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url('production/production/getUomDetails'); ?>" />
                                 <!-- Get Edit view data begin -->
-                                <?php 
-                                // Group recipes by variantName
-                                $groupedRecipes = [];
-                                if (!empty($productinfo) && isset($productinfo['recipes']) && !empty($productinfo['recipes'])) {
-                                    foreach ($productinfo['recipes'] as $recipe) {
-                                        $groupedRecipes[$recipe->variantName][] = $recipe;
-                                    }
-                                }
-                                ?>
-
-                                <!-- Get Edit view data begin -->
-                                <?php if (!empty($groupedRecipes)) { ?>
-                                    <?php foreach ($groupedRecipes as $variantName => $recipes) { ?>
+                                <?php if(!empty($productinfo) && isset($productinfo['recipes'])  && !empty($productinfo['recipes']) ) { ?>
+                                    <?php foreach($productinfo['recipes'] as $recipe) { ?>
                                         <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
-                                            <h4>Recipe for - <?php echo $variantName; ?></h4>
-                                            <input type="hidden" name="recipe_for[]" value="<?php echo $variantName; ?>"/>
+                                            <h4>Recipe for - <?php echo $recipe->variantName; ?></h4>
+                                            <input type="hidden" name="recipe_for[]" value="<?php echo $recipe->variantName; ?>"/>
                                             <table class="table table-bordered table-hover" id="purchaseTable">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
-                                                        <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
-                                                        <th class="text-center"><?php echo display('price');?> </th>
-                                                        <th class="text-center"><?php echo 'Unit'; ?> </th>
-                                                        <th class="text-center"></th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
+                                                            <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
+                                                            <th class="text-center"><?php echo display('price');?> </th>
+                                                            <th class="text-center"><?php echo 'Unit'; ?> </th>
+                                                            <th class="text-center"></th>
+                                                        </tr>
                                                 </thead>
                                                 <tbody id="addPurchaseItem">
-                                                    <?php foreach ($recipes as $recipe) { ?>
-                                                        <tr>
-                                                            <td class="span3 supplier">
-                                                                <input type="hidden" id="unit-total_1" class="" />
-                                                                <select name="product_id_<?php echo $variantName; ?>[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
-                                                                    <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
-                                                                    <?php foreach ($ingrdientslist as $ingredient) { ?>
-                                                                        <option value="<?php echo $ingredient->id;?>" data-ingredientid="<?php echo $ingredient->id;?>" data-title="<?php echo $ingredient->ingredient_name;?>" <?php echo ($recipe->ingredientid == $ingredient->id) ? 'selected' : ''; ?>>
-                                                                            <?php echo $ingredient->ingredient_name;?>
-                                                                        </option>
-                                                                    <?php } ?>
-                                                                </select>
+                                                    <tr>
+                                                        <td class="span3 supplier">
+                                                        
+                                                    <input type="hidden" id="unit-total_1" class="" />
+                                                        <select name="product_id_<?php echo $recipe->variantName; ?>[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
+                                                        <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
+                                                        <?php foreach ($ingrdientslist as $ingrdients) {?>
+                                                                <option value="<?php echo $ingrdients->id;?>" data-ingredientid="<?php echo $ingrdients->id;?>" data-title="<?php echo $ingrdients->ingredient_name;?>" <?php echo $recipe->ingredientid==$ingrdients->id ? 'selected' : ''; ?>><?php echo $ingrdients->ingredient_name;?></option>
+                                                        <?php }?>
+                                                        </select>
+                                                        </td>
+                                                            <td class="text-right">
+                                                                <input type="text" name="product_quantity_<?php echo $recipe->variantName; ?>[]" id="cartoon_1" onkeyup='calprice(this)' class="form-control text-right store_cal_1" placeholder="0.00" value="<?php echo $recipe->qty; ?>" min="0" tabindex="6">
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="qty_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
+                                                                <input type="text"  id="price_1" class="form-control text-right store_cal_1" placeholder="0.00" value="" min="0" tabindex="6" readonly>
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="price_<?php echo $variantName; ?>[]" class="form-control text-right">
+                                                                <input type="hidden" name="unitid_<?php echo $recipe->variantName; ?>[]" id="unitid_1" class="form-control text-right store_unitid_1" value="<?php echo $recipe->unitid; ?>" tabindex="6" readonly>
+                                                                <input type="text" name="unitname_<?php echo $recipe->variantName; ?>[]" id="unitname_1" class="form-control text-right store_unitname_1" value="<?php echo $recipe->unitname; ?>" tabindex="6" readonly>
                                                             </td>
-                                                            <td class="text-right">
-                                                                <input type="text" name="unit_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
+                                                            <td>
+                                                                <button  class="btn btn-danger red text-right" type="button" value="<?php echo display('delete') ?>" onclick="deleteRow(this)" tabindex="8"><?php echo display('delete') ?></button>
                                                             </td>
-                                                            <td class="text-center">
-                                                                <button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)"><i class="fa fa-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
+                                                    </tr>
                                                 </tbody>
                                             </table>
-                                            
                                         </div>
                                     <?php } ?>
                                 <?php } ?>

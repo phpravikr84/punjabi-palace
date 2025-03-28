@@ -166,18 +166,18 @@ $(document).ready(function () {
                                             <tbody id="addPurchaseItem_${variantId}">
                                                 <tr id="row_${variantId}_1">
                                                     <td>
-                                                        <select name="product_id_${variantId}[]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
+                                                        <select name="product_id[]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
                                                             ${options}
                                                         </select>
                                                     </td>
-                                                    <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                    <td><input type="text" name="product_quantity[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
                                                     <td class="text-right">
-                                                        <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
+                                                        <input type="text" name="product_price[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
                                                     </td>
                                                     <td class="text-right">
                                                         <input type="hidden" id="unit-total_${variantId}_1" class="" />
-                                                        <input type="hidden" name="unitid_${variantId}[]" id="unitid_${variantId}_1" class="form-control text-right">
-                                                        <input type="text" name="unitname_${variantId}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
+                                                        <input type="hidden" name="unitid[]" id="unitid_${variantId}_1" class="form-control text-right">
+                                                        <input type="text" name="unitname[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
                                                     </td>
                                                     <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
                                                 </tr>
@@ -224,18 +224,18 @@ $(document).ready(function () {
                     var newRow = `
                         <tr id="row_${rowId}">
                             <td>
-                                <select name="product_id_${variantId}[]" id="product_id_${rowId}" class="postform resizeselect form-control ingredient-select" data-row-id="${rowId}">
+                                <select name="product_id[]" id="product_id_${rowId}" class="postform resizeselect form-control ingredient-select" data-row-id="${rowId}">
                                     ${options}
                                 </select>
                             </td>
-                            <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck" data-row-id="${rowId}"></td>
+                            <td><input type="text" name="product_quantity[]" id="product_quantity_${rowId}" class="form-control quantityCheck" data-row-id="${rowId}"></td>
                             <td class="text-right">
-                                  <input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right" placeholder="0.00" readonly>
+                                  <input type="text" name="product_price[]" id="product_price_${rowId}" class="form-control text-right" placeholder="0.00" readonly>
                             </td>
                             <td class="text-right">
                                 <input type="hidden" id="unit-total_${rowId}" class="" />
-                                <input type="hidden" name="unitid_${variantId}[]" id="unitid_${rowId}" class="form-control text-right">
-                                <input type="text" name="unitname_${variantId}[]" id="unitname_${rowId}" class="form-control text-right" readonly>
+                                <input type="hidden" name="unitid[]" id="unitid_${rowId}" class="form-control text-right">
+                                <input type="text" name="unitname[]" id="unitname_${rowId}" class="form-control text-right" readonly>
                             </td>
                             <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
                         </tr>
@@ -517,18 +517,18 @@ $(document).ready(function(){
                                                     <tbody id="addPurchaseItem_${variantId}">
                                                         <tr id="row_${variantId}_1">
                                                             <td>
-                                                                <select name="product_id_[${variantId}][]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
+                                                                <select name="product_id[]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
                                                                     ${options}
                                                                 </select>
                                                             </td>
-                                                            <td><input type="text" name="product_quantity_[${variantId}][]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                            <td><input type="text" name="product_quantity[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_price[${variantId}][]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
+                                                                <input type="text" name="product_price[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
                                                             </td>
                                                             <td class="text-right">
                                                                 <input type="hidden" id="unit-total_${variantId}_1" />
-                                                                <input type="hidden" name="unitid_[${variantId}][]" id="unitid_${variantId}_1" class="form-control text-right">
-                                                                <input type="text" name="unitname_[${variantId}][]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
+                                                                <input type="hidden" name="unitid[]" id="unitid_${variantId}_1" class="form-control text-right">
+                                                                <input type="text" name="unitname[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
                                                             </td>
                                                             <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
                                                         </tr>
