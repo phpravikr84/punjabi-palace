@@ -2288,11 +2288,6 @@ class Item_food extends MX_Controller
 					$postData = array_merge($postData, $taxitems);
 				}
 
-				echo '<pre>';
-				print_r($_POST);
-				echo '</pre>';
-				exit;
-
 
 				if ($this->fooditem_model->update_fooditem($postData)) {
 
@@ -2394,9 +2389,6 @@ class Item_food extends MX_Controller
 				$data['title'] = display('update_fooditem');
 				//$data['productinfo']   = $this->fooditem_model->findById($id);
 				$data['productinfo']   = $this->fooditem_model->findByFoodId($id);
-				echo '<pre>';
-				print_r($data);
-				echo '</pre>';
 			}
 
 			$data['categories']   =  $this->category_model->allcategory_dropdown();
