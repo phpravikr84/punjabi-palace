@@ -401,8 +401,8 @@ public function count_fooditem()
 			'savedby'				=>	$saveid,
 			'suplierid'				=>	$suplierid,
 			'is_bom'				=>	$is_bom,
-			'saveddate'				=>	$production_date,
-			'productionexpiredate'	=>	$expire_date
+			'saveddate'				=>	date('Y-m-d', strtotime($production_date)),
+			'productionexpiredate'	=>	date('Y-m-d', strtotime($expire_date))
 		);
 
 		$this->db->insert('production', $data1);
@@ -447,23 +447,29 @@ public function count_fooditem()
 			->get()
 			->row_array();
 		
-		if (!$foodItem) {
-			return [];
-		}
-		
+		// if (!$foodItem) {
+		// 	return [];
+		// }
+		//Fetch Production details
+		$production =  $this->db->select("itemid, itemvid, itemquantity, saveddate, productionexpiredate")
+						->from("production")
+						->where("itemid", $id)
+						->get()
+						->result();
 		// Fetch variants
 		$variants = $this->db->select("variantid, menuid, variantName, price, takeaway_price, uber_eats_price, doordash_price, web_order_price")
 			->from("variant")
 			->where("menuid", $id)
 			->get()
-			->result_array();
+			->result();
 		
 		// Fetch recipes
-		$recipes = $this->db->select("pro_detailsid, foodid, pvarientid, ingredientid, qty, unitid, unitname")
-			->from("production_details")
-			->where("foodid", $id)
+		$recipes = $this->db->select("vt.variantName, pd.pro_detailsid, pd.foodid, pd.pvarientid, pd.ingredientid, pd.qty, pd.unitid, pd.unitname")
+			->from("production_details as pd")
+			->join("variant as vt", "pd.pvarientid = vt.variantid", "left")
+			->where("pd.foodid", $id)
 			->get()
-			->result_array();
+			->result();
 		
 		// Fetch modifiers with left join to modifier_groups
 		$modifiers = $this->db->select("menu_add_on.row_id, menu_add_on.menu_id, menu_add_on.add_on_id, menu_add_on.modifier_groupid, menu_add_on.min, menu_add_on.max, menu_add_on.isreq, menu_add_on.sortby, menu_add_on.is_active, modifier_groups.name")
@@ -471,9 +477,10 @@ public function count_fooditem()
 			->join("modifier_groups", "menu_add_on.modifier_groupid = modifier_groups.id", "left")
 			->where("menu_add_on.menu_id", $id)
 			->get()
-			->result_array();
+			->result();
 		
 		// Attach related data to the main food item
+		$foodItem['production'] = !empty($production) ? $production : [];
 		$foodItem['variants'] = !empty($variants) ? $variants : [];
 		$foodItem['recipes'] = !empty($recipes) ? $recipes : [];
 		$foodItem['modifiers'] = !empty($modifiers) ? $modifiers : [];
@@ -481,6 +488,58 @@ public function count_fooditem()
 		return $foodItem;
 	}
 
+	// Update Food Ingredient
+	public function update_food_ingredient($foodid, $ingredient)
+	{   
+		$this->db->where('foodid', $foodid);
+		$data = array(
+			'pvarientid'   => $ingredient['pvarientid'],
+			'ingredientid' => $ingredient['ingredientid'],
+			'qty'          => $ingredient['qty'],
+			'unitid'       => $ingredient['unitid'],
+			'unitname'     => $ingredient['unit_name'],
+			'updatedby'    => $this->session->userdata('id'),
+			'updated_date' => date('Y-m-d')
+		);
+
+		$this->db->update('production_details', $data);
+		return $this->db->affected_rows() > 0;
+	}
+
+	// Update Food Production
+	public function update_food_production($itemid, $production)
+	{   
+		$this->db->where('itemid', $itemid);
+		$data = array(
+			'itemvid'               => $production['itemvid'],
+			'itemquantity'          => $production['itemquantity'],
+			'is_bom'                => $production['is_bom'],
+			'suplierid'             => 0,
+			'savedby'               => $this->session->userdata('id'),
+			'saveddate'             => date('Y-m-d', strtotime($production['production_date'])),
+			'productionexpiredate'  => date('Y-m-d', strtotime($production['expire_date']))
+		);
+
+		$this->db->update('production', $data);
+		return $this->db->affected_rows() > 0;
+	}
+
+	// Update Modifiers
+	public function update_modifiers($menu_id, $modifier)
+	{   
+		$this->db->where('menu_id', $menu_id);
+		$data = array(
+			'modifier_groupid'  => $modifier['modifier_groupid'],
+			'min'               => $modifier['min'],
+			'max'               => $modifier['max'],
+			'isreq'             => $modifier['isreq'],
+			'sortby'            => $modifier['sortby'],
+			'is_active'         => 1,
+		);
+
+		$this->db->update('menu_add_on', $data);
+		return $this->db->affected_rows() > 0;
+	}
 
 
 

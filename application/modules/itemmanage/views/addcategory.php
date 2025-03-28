@@ -16,6 +16,7 @@
                     <label for="Parentcategory" class="col-sm-4 col-form-label"> <?php echo display('parent_cat'); ?> </label>
                     <div class="col-sm-8">
                         <select name="Parentcategory[]" id="Parentcategory" class="form-control select2">
+                            <option value="">Select</option>
                             <?php foreach ($categories as $category) { ?>
                                 <option value="<?php echo $category->CategoryID; ?>" 
                                     <?php if (!empty($categoryinfo) && in_array($category->CategoryID, explode(',', $categoryinfo->CategoryID))) echo "selected"; ?>>

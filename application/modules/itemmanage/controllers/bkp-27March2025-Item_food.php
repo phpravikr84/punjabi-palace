@@ -1907,7 +1907,7 @@ class Item_food extends MX_Controller
 		$data['title'] = display('add_food');
 
 		// Validation Rules
-		//$this->form_validation->set_rules('CategoryID[]', display('category_name'), 'required');
+		$this->form_validation->set_rules('CategoryID[]', display('category_name'), 'required');
 
 		if (!empty($this->input->post('ProductsID'))) {
 			$this->form_validation->set_rules('foodname', display('item_name'), 'required|max_length[100]');
@@ -1916,7 +1916,7 @@ class Item_food extends MX_Controller
 			$this->form_validation->set_message('is_unique', 'Sorry, this %s already used!');
 		}
 
-		//$this->form_validation->set_rules('status', display('status'), 'required');
+		$this->form_validation->set_rules('status', display('status'), 'required');
 
 		// Handle offer dates
 		$offerstartdate = str_replace('/', '-', $this->input->post('offerstartdate', true));
@@ -1953,122 +1953,117 @@ class Item_food extends MX_Controller
 			// Image Upload
 			$img = $big = $medium = $small = '';
 
-			/****************image Upload*************/
-			$config['upload_path']          = 'application/modules/itemmanage/assets/images/';
-			$config['allowed_types']        = 'gif|jpg|jpeg|png';
-			$config['max_size']             = 100000;
-			$this->load->library('upload', $config);
-			if (! $this->upload->do_upload('picture')) {
-				$error = array('error' => $this->upload->display_errors());
-				$img = '';
-				$big = '';
-				$medium = '';
-				$small = '';
-			} else {
-				if (!empty($id)) {
-					$imageinfo = $this->db->select('*')->from('item_foods')->where('ProductsID', $id)->get()->row();
-					unlink($imageinfo->ProductImage);
-					unlink($imageinfo->bigthumb);
-					unlink($imageinfo->medium_thumb);
-					unlink($imageinfo->small_thumb);
-				}
+			if (!empty($_FILES['picture']['name'])) {
+				$config['upload_path'] = 'application/modules/itemmanage/assets/images/';
+				$config['allowed_types'] = 'gif|jpg|jpeg|png';
+				$config['max_size'] = 100000;
+				$this->load->library('upload', $config);
 
-				$fdata = $this->upload->data();
+				if ($this->upload->do_upload('picture')) {
+					$fdata = $this->upload->data();
+					$img = 'application/modules/itemmanage/assets/images/' . $fdata['file_name'];
+					$big = 'application/modules/itemmanage/assets/images/big/' . $fdata['file_name'];
+					$medium = 'application/modules/itemmanage/assets/images/medium/' . $fdata['file_name'];
+					$small = 'application/modules/itemmanage/assets/images/small/' . $fdata['file_name'];
 
-				$image_sizes = array('big' => array(555, 370), 'medium' => array(268, 223), 'small' => array(116, 116));
-				$this->load->library('image_lib');
-				foreach ($image_sizes as $key => $resize) {
-					$config1 = array(
-						'source_image' => $fdata['full_path'],
-						'new_image' => $fdata['file_path'] . $key . '/',
-						'maintain_ratio' => FALSE,
-						'width' => $resize[0],
-						'height' => $resize[1],
-						'quality' => 70,
-					);
-					$this->image_lib->initialize($config1);
-					$this->image_lib->resize();
-					$this->image_lib->clear();
-				}
-				$this->load->library('image_lib', $config);
-				$this->image_lib->resize();
-				$big = 'application/modules/itemmanage/assets/images/big/' . $fdata['file_name'];
-				$medium = 'application/modules/itemmanage/assets/images/medium/' . $fdata['file_name'];
-				$small = 'application/modules/itemmanage/assets/images/small/' . $fdata['file_name'];
-				$img = 'application/modules/itemmanage/assets/images/' . $fdata['file_name'];
-			}
-
-			/****************end*********************/
-
-			if (empty($this->input->post('ProductsID'))) {
-				$this->permission->method('itemmanage', 'create')->redirect();
-				
-				$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
-
-				if (!is_array($categoryIdsRaw)) {
-					$categoryIdsRaw = [];
-				}
-
-				$categoryIds = [];
-
-				foreach ($categoryIdsRaw as $category) {
-					if (strpos($category, '_') !== false) {
-						// Parent and child category case
-						$parts = explode('_', $category);
-						foreach ($parts as $part) {
-							$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
-							if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
-								$categoryIds[] = $cleanedPart;
-							}
-						}
-					} else {
-						// Only parent category
-						$cleanedCategory = str_replace('parent_', '', $category);
-						if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
-							$categoryIds[] = $cleanedCategory;
-						}
+					// Resize images
+					$this->load->library('image_lib');
+					$image_sizes = [
+						'big' => [555, 370], 
+						'medium' => [268, 223], 
+						'small' => [116, 116]
+					];
+					foreach ($image_sizes as $key => $resize) {
+						$config1 = [
+							'source_image' => $fdata['full_path'],
+							'new_image' => $fdata['file_path'] . $key . '/',
+							'maintain_ratio' => FALSE,
+							'width' => $resize[0],
+							'height' => $resize[1],
+							'quality' => 70,
+						];
+						$this->image_lib->initialize($config1);
+						$this->image_lib->resize();
+						$this->image_lib->clear();
 					}
 				}
+			}
 
-				// Remove duplicates and store as a comma-separated string
-				$categoryIds = implode(',', array_unique($categoryIds));
+			// Convert multi-select fields to JSON
+			// $categoryIdsRaw = $this->input->post('CategoryID', true);
+			// $categoryIdsCleaned = array_map(function($id) {
+			// 	return preg_replace('/[^0-9]/', '', $id); // Remove non-numeric characters
+			// }, $categoryIdsRaw);
+			// $categoryIds = json_encode($categoryIdsCleaned);
+
+			$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
+
+			if (!is_array($categoryIdsRaw)) {
+				$categoryIdsRaw = [];
+			}
+
+			$categoryIds = [];
+
+			foreach ($categoryIdsRaw as $category) {
+				if (strpos($category, '_') !== false) {
+					// Parent and child category case
+					$parts = explode('_', $category);
+					foreach ($parts as $part) {
+						$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
+						if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
+							$categoryIds[] = $cleanedPart;
+						}
+					}
+				} else {
+					// Only parent category
+					$cleanedCategory = str_replace('parent_', '', $category);
+					if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
+						$categoryIds[] = $cleanedCategory;
+					}
+				}
+			}
+
+			// Remove duplicates and store as a comma-separated string
+			$categoryIds = implode(',', array_unique($categoryIds));
 
 
-				$savedid = $this->session->userdata('id');
+			$savedid = $this->session->userdata('id');
 
-				// Prepare data for insertion
-				$postData = [
-					'ProductsID' => $this->input->post('ProductsID'),
-					'CategoryID' => $categoryIds,
-					'ProductName' => $this->input->post('foodname', true),
-					'component' => $this->input->post('component', true),
-					'menutype'               => $uniqueStr,
-					'itemnotes' => $this->input->post('itemnotes', true),
-					'descrip' => $this->input->post('descrip', true),
-					'kitchenid' =>  $this->input->post('kitchen'),
-					'cookedtime' => $this->input->post('cookedtime', true),
-					'productvat'             => $myvat,
-					'OffersRate'             => $OffersRate,
-					'special'       			=> $special,
-					'offerIsavailable'       => $isoffer,
-					'offerstartdate'         => $convertstartdate,
-					'offerendate'            => $convertenddate,
-					//'is_customqty'           => $this->input->post('customqty', true),
-					'ProductsIsActive'   	=> $this->input->post('status'),
-					'ProductImage'      	=> $img,
-					'bigthumb'      		=> $big,
-					'medium_thumb'      	=> $medium,
-					'small_thumb'      		=> $small,
-					'UserIDInserted'     	=> $savedid,
-					'UserIDUpdated'      	=> $savedid,
-					'UserIDLocked'       	=> $savedid,
-					'DateInserted'       	=> date('Y-m-d H:i:s'),
-					'DateUpdated'        	=> date('Y-m-d H:i:s'),
-					'DateLocked'         	=> date('Y-m-d H:i:s'),
-					'cusine_type'			=> $this->input->post('cusine_type'),
-					'is_bom'				=> $this->input->post('is_bom'),
-				];
+			// Prepare data for insertion
+			$postData = [
+				'ProductsID' => $this->input->post('ProductsID'),
+				'CategoryID' => $categoryIds,
+				'ProductName' => $this->input->post('foodname', true),
+				'component' => $this->input->post('component', true),
+				'menutype'               => $uniqueStr,
+				'itemnotes' => $this->input->post('itemnotes', true),
+				'descrip' => $this->input->post('descrip', true),
+				'kitchenid' =>  $this->input->post('kitchen'),
+				'cookedtime' => $this->input->post('cookedtime', true),
+				'productvat'             => $myvat,
+				'OffersRate'             => $OffersRate,
+				'special'       			=> $special,
+				'offerIsavailable'       => $isoffer,
+				'offerstartdate'         => $convertstartdate,
+				'offerendate'            => $convertenddate,
+				//'is_customqty'           => $this->input->post('customqty', true),
+				'ProductsIsActive'   	=> $this->input->post('status'),
+				'ProductImage'      	=> $img,
+				'bigthumb'      		=> $big,
+				'medium_thumb'      	=> $medium,
+				'small_thumb'      		=> $small,
+				'UserIDInserted'     	=> $savedid,
+				'UserIDUpdated'      	=> $savedid,
+				'UserIDLocked'       	=> $savedid,
+				'DateInserted'       	=> date('Y-m-d H:i:s'),
+				'DateUpdated'        	=> date('Y-m-d H:i:s'),
+				'DateLocked'         	=> date('Y-m-d H:i:s'),
+				'cusine_type'			=> $this->input->post('cusine_type'),
+				'is_bom'				=> $this->input->post('is_bom'),
+			];
 
+			// Insert or Update Logic
+			if (empty($id)) {
 				if ($this->fooditem_model->fooditem_create($postData)) {
 					$insertedFoodId = $this->db->insert_id();
 					
@@ -2185,13 +2180,16 @@ class Item_food extends MX_Controller
 							// Insert Modifier
 							$this->fooditem_model->create_modifiers($modifierData);
 						}
-					} 
+					}
 					
 					// END of Modifier update					
 
 					$this->session->set_flashdata('message', display('save_successfully'));
 					redirect('itemmanage/item_food/create_new');
+				} else {
+					$this->session->set_flashdata('exception',  display('please_try_again'));
 				}
+				redirect("itemmanage/item_food/create_new");
 			} else {
 				$this->permission->method('itemmanage', 'update')->redirect();
 				if (empty($img)) {
@@ -2200,71 +2198,34 @@ class Item_food extends MX_Controller
 					$medium = $this->input->post('mediumimage', true);
 					$small = $this->input->post('smallimage', true);
 				}
-				//Update Category
-				$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
-
-				if (!is_array($categoryIdsRaw)) {
-					$categoryIdsRaw = [];
-				}
-
-				$categoryIds = [];
-
-				foreach ($categoryIdsRaw as $category) {
-					if (strpos($category, '_') !== false) {
-						// Parent and child category case
-						$parts = explode('_', $category);
-						foreach ($parts as $part) {
-							$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
-							if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
-								$categoryIds[] = $cleanedPart;
-							}
-						}
-					} else {
-						// Only parent category
-						$cleanedCategory = str_replace('parent_', '', $category);
-						if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
-							$categoryIds[] = $cleanedCategory;
-						}
-					}
-				}
-
-				// Remove duplicates and store as a comma-separated string
-				$categoryIds = implode(',', array_unique($categoryIds));
-
-				//Update Food Item Id
-				$updatedId = $this->input->post('ProductsID');
-
-				$postData = [
-					'ProductsID' => $this->input->post('ProductsID'),
-					'CategoryID' => $categoryIds,
-					'ProductName' => $this->input->post('foodname', true),
-					'component' => $this->input->post('component', true),
-					'menutype'               => $uniqueStr,
-					'itemnotes' => $this->input->post('itemnotes', true),
-					'descrip' => $this->input->post('descrip', true),
-					'kitchenid' =>  $this->input->post('kitchen'),
-					'cookedtime' => $this->input->post('cookedtime', true),
-					'productvat'             => $myvat,
+				$data['category']   = (object) $postData = array(
+					'ProductsID'     		=> $this->input->post('ProductsID'),
+					'CategoryID'     		=> $this->input->post('CategoryID'),
+					'ProductName'   			=> $this->input->post('foodname', true),
+					'component'              => $this->input->post('component', true),
+					'itemnotes'              => $this->input->post('itemnotes', true),
+					'menutype'              => $uniqueStr,
+					'descrip'                => $this->input->post('descrip', true),
+					'productvat'             => $this->input->post('vat', true),
+					'kitchenid'             => $this->input->post('kitchen'),
+					'cookedtime'             => $this->input->post('cookedtime', true),
 					'OffersRate'             => $OffersRate,
 					'special'       			=> $special,
+					'is_customqty'           => $this->input->post('customqty', true),
 					'offerIsavailable'       => $isoffer,
 					'offerstartdate'         => $convertstartdate,
 					'offerendate'            => $convertenddate,
-					//'is_customqty'           => $this->input->post('customqty', true),
-					'ProductsIsActive'   	=> $this->input->post('status'),
-					'ProductImage'      	=> $img,
-					'bigthumb'      		=> $big,
-					'medium_thumb'      	=> $medium,
+					'ProductsIsActive'   	=> $this->input->post('status', true),
+					'ProductImage'      		=> $img,
+					'bigthumb'      			=> $big,
+					'medium_thumb'      		=> $medium,
 					'small_thumb'      		=> $small,
-					'UserIDInserted'     	=> $savedid,
-					'UserIDUpdated'      	=> $savedid,
-					'UserIDLocked'       	=> $savedid,
-					'DateInserted'       	=> date('Y-m-d H:i:s'),
-					'DateUpdated'        	=> date('Y-m-d H:i:s'),
-					'DateLocked'         	=> date('Y-m-d H:i:s'),
+
+					'UserIDUpdated'      => $savedid,
+					'DateUpdated'        => date('Y-m-d H:i:s'),
 					'cusine_type'			=> $this->input->post('cusine_type'),
-					'is_bom'				=> $this->input->post('is_bom'),
-				];
+					'is_bom'					=> $this->input->post('is_bom'),
+				);
 				$logData = array(
 					'action_page'         => "Food List",
 					'action_done'     	 => "Update Data",
@@ -2285,78 +2246,6 @@ class Item_food extends MX_Controller
 				}
 
 				if ($this->fooditem_model->update_fooditem($postData)) {
-
-		
-
-					//Add and Update Variants
-					if ($this->input->post('variant_name', true)) {
-						$variantNames = $this->input->post('variant_name', true);
-						$prices = $this->input->post('price', true);
-						$takeawayPrices = $this->input->post('takeaway_price', true);
-						$uberEatsPrices = $this->input->post('uber_eats_price', true);
-						$doordashPrices = $this->input->post('doordash_price', true);
-						$webOrderPrices = $this->input->post('weborder_price', true);
-						$variantIds = $this->input->post('variant_id', true);
-					
-						foreach ($variantNames as $key => $variantName) {
-							if (!empty($variantName)) { // Ensure variantName is not empty
-								$variantData = [
-									'menuid' => $updatedId,
-									'variantName' => $variantName,
-									'price' => isset($prices[$key]) ? $prices[$key] : 0,
-									'takeaway_price' => isset($takeawayPrices[$key]) ? $takeawayPrices[$key] : 0,
-									'uber_eats_price' => isset($uberEatsPrices[$key]) ? $uberEatsPrices[$key] : 0,
-									'doordash_price' => isset($doordashPrices[$key]) ? $doordashPrices[$key] : 0,
-									'web_order_price' => isset($webOrderPrices[$key]) ? $webOrderPrices[$key] : 0,
-								];
-					
-								if (empty($variantIds[$key])) {
-									// Insert New Variant
-									if ($this->foodvarient_model->create($variantData)) {
-										$insertedVariantId = $this->db->insert_id();
-
-										// Insert in Product Details
-										// Check is bom true
-										if($this->input->post('is_bom', true)){
-											// Check Food Ingredients array
-											$foodIngredients = $this->input->post('product_id', true);
-											if($foodIngredients){
-												foreach($foodIngredients as $key => $foodIngredient){
-													$ingredientData = [
-														'foodid' => $updatedId,
-														'pvarientid' => $insertedVariantId,
-														'ingredientid' => $foodIngredient,
-														'qty' => $this->input->post('product_quantity', true)[$key],
-														'unitid' => $this->input->post('unitid', true)[$key],
-														'unit_name' => $this->input->post('unitname', true)[$key],
-														'created_by' => $savedid,
-													];
-													// Insert Ingredient
-													$this->fooditem_model->create_food_ingredient($ingredientData);
-												}
-											}
-										}
-					
-										// Log New Variant
-										$variantLogData = [
-											'action_page' => "Create New",
-											'action_done' => "Insert Data",
-											'remarks' => "New Variant Created",
-											'user_name' => $this->session->userdata('fullname'),
-											'entry_date' => date('Y-m-d H:i:s'),
-										];
-										$this->logs_model->log_recorded($variantLogData);
-									}
-								} else {
-									// Update Existing Variant
-									$this->foodvarient_model->update_varient_multi($variantIds[$key], $variantData);
-								}
-							}
-						}
-					}
-					
-					
-			
 					$this->logs_model->log_recorded($logData);
 					$this->db->select('*');
 					$this->db->from('item_foods');
@@ -2368,8 +2257,6 @@ class Item_food extends MX_Controller
 					$cache_file = './assets/js/product.json';
 					$productList = json_encode($json_product);
 					file_put_contents($cache_file, $productList);
-
-
 					$this->session->set_flashdata('message', display('update_successfully'));
 				} else {
 					$this->session->set_flashdata('exception',  display('please_try_again'));
@@ -2377,10 +2264,7 @@ class Item_food extends MX_Controller
 				redirect("itemmanage/item_food/create_new/" . $postData['ProductsID']);
 			}
 		} else {
-		
-			$data['taxitems'] = $this->taxchecking();
 			if (!empty($id)) {
-			
 				$data['title'] = display('update_fooditem');
 				//$data['productinfo']   = $this->fooditem_model->findById($id);
 				$data['productinfo']   = $this->fooditem_model->findByFoodId($id);
@@ -2396,8 +2280,6 @@ class Item_food extends MX_Controller
 			$data['page']   = "addfooditemnew";
 			echo Modules::run('template/layout', $data);
 		}
-
-
 	}
 
 	public function ingredientlistdropdowns()
