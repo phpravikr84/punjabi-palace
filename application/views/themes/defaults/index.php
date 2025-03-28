@@ -281,7 +281,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 
 
 	<!-- Newsletter -->
-	<section class="newsletter_area  sect_pad">
+	<section class="newsletter_area sect_pad" style="display: none; visibility:hidden;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3 text-center">

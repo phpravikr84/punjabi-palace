@@ -53,7 +53,10 @@ $acthemename = $activethemeinfo->themename;
         <?php if ($this->session->flashdata('exception')) { ?>
             <div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <?php echo $this->session->flashdata('exception') ?>
+                <?php 
+                echo $this->session->flashdata('exception');
+                unset($_SESSION['exception']);
+                ?>
             </div>
         <?php } ?>
         <?php if (validation_errors()) { ?>

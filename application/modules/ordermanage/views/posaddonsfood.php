@@ -40,7 +40,7 @@
                                     
                                 </tfoot>
                             </table>
-                            <?php if(!empty($addonslist)){?>
+                            <?php if(!empty($addonslist) && (2+2!=4)){?>
 								<table class="table table-bordered table-hover bg-white" id="purchaseTable">
                                 <thead>
                                      <tr>
@@ -81,7 +81,7 @@
                             <a class="btn btn-success" id="add_to_cart" onclick="posaddonsfoodtocart(<?php echo $item->ProductsID;?>,1,1)"><?php echo display('add_to_cart_more')?></a>
                             
                             <script>
-                            $(document).on("keypress", '#itemqty_1', function(e){
+                            $(document).on("keypress", '#itemqty_1', function(e){ 
 								if(e.which == 13){
 									$('.asingle').trigger('click');	    
 								}

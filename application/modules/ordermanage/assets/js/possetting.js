@@ -229,6 +229,7 @@
 
   //Product search button js
   $('body').on('click', '.select_product', function(e) {
+    
       e.preventDefault();
 
       var panel = $(this);
@@ -279,7 +280,10 @@
               url: myurl,
               data: dataString,
               success: function(data) {
+                  console.log("addfoodlist data: " + data);
                   $('#addfoodlist').html(data);
+                  $('#sideMfContainer').html($("#modifierContent").html());
+                //   $("#modifierContent").show();
                   var total = $('#grtotal').val();
                   var totalitem = $('#totalitem').val();
                   $('#item-number').text(totalitem);
@@ -288,7 +292,7 @@
                   $('#vat').val(tax);
                   var discount = $('#tdiscount').val();
                   var tgtotal = $('#tgtotal').val();
-                  $('#calvat').text(tax);
+                  $('#calvat').text(tax); 
                   $('#invoice_discount').val(discount);
                   var sc = $('#sc').val();
                   $('#service_charge').val(sc);
@@ -336,7 +340,7 @@
           });
       }
   });
-  $(document).ready(function() {
+  $(document).ready(function() { 
       "use strict";
       $("#nonthirdparty").show();
       $("#thirdparty").hide();
@@ -2276,6 +2280,8 @@ $(document).on("keypress", '#itemqty_1', function(e){
                   };
                   toastr.success("Note Added Successfully", 'Success');
                   $('#addfoodlist').html(data);
+                  $('#sideMfContainer').html($("#modifierContent").html());
+                //   $('#sideMfContainer').html($("#modifierContent").html());
                   $('#vieworder').modal('hide');
               }, 100);
 

@@ -495,21 +495,19 @@
     $("#addfooditemsubmit").closest("form").submit();
     // return false;
   });
+document.getElementById("isoffer").addEventListener("change", function () {
+    document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
+});
 </script>
-<script>
-                    document.getElementById("isoffer").addEventListener("change", function () {
-                        document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
-                    });
-                    </script>
-                    <style>
-                    .form-group {
-                    margin-bottom: 12px;
-                    }
-                    .bg-gray-orphane {
-                    background-color: #f3f3f3;
-                    padding:10px;
-                    }
-                    </style>
+<style>
+    .form-group {
+    margin-bottom: 12px;
+    }
+    .bg-gray-orphane {
+    background-color: #f3f3f3;
+    padding:10px;
+    }
+</style>
 <?php 
     endif;
 ?>
