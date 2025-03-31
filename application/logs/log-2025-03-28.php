@@ -847,3 +847,16 @@ ERROR - 2025-03-28 21:42:48 --> Severity: Warning --> Attempt to read property "
 ERROR - 2025-03-28 21:42:51 --> Severity: Warning --> Undefined variable $subtotal C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\poscartlist.php 267
 ERROR - 2025-03-28 21:42:51 --> Severity: Warning --> Undefined variable $pdiscount C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\poscartlist.php 272
 ERROR - 2025-03-28 21:42:51 --> Severity: Warning --> Undefined variable $pdiscount C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\poscartlist.php 273
+ERROR - 2025-03-28 22:43:36 --> Severity: Warning --> Undefined variable $subtotal C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\poscartlist.php 267
+ERROR - 2025-03-28 22:43:36 --> Severity: Warning --> Undefined variable $pdiscount C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\poscartlist.php 272
+ERROR - 2025-03-28 22:43:36 --> Severity: Warning --> Undefined variable $pdiscount C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\poscartlist.php 273
+ERROR - 2025-03-28 22:43:40 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 9
+ERROR - 2025-03-28 22:43:40 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 9
+ERROR - 2025-03-28 22:43:40 --> Severity: Warning --> Undefined variable $subcat C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 774
+ERROR - 2025-03-28 22:43:40 --> Severity: Warning --> Attempt to read property "CategoryID" on null C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\views\posorder.php 774
+ERROR - 2025-03-28 13:43:42 --> 404 Page Not Found: /index
+ERROR - 2025-03-28 13:43:42 --> 404 Page Not Found: /index
+ERROR - 2025-03-28 13:43:43 --> 404 Page Not Found: /index
+ERROR - 2025-03-28 13:43:45 --> 404 Page Not Found: /index
+ERROR - 2025-03-28 13:43:45 --> 404 Page Not Found: /index
+ERROR - 2025-03-28 22:43:47 --> Severity: Warning --> Attempt to read property "person_capicity" on null C:\xampp\htdocs\punjabi-palace\application\modules\ordermanage\controllers\Order.php 5084

@@ -283,6 +283,7 @@
                   console.log("addfoodlist data: " + data);
                   $('#addfoodlist').html(data);
                   $('#sideMfContainer').html($("#modifierContent").html());
+                  openNav();
                 //   $("#modifierContent").show();
                   var total = $('#grtotal').val();
                   var totalitem = $('#totalitem').val();
@@ -340,6 +341,28 @@
           });
       }
   });
+  function itemModifiers(pid) {
+    if (pid == "" || pid == 0) {
+        alert("No Item Found !");
+        return false;
+    }
+    var csrf = $('#csrfhashresarvation').val(),
+        geturl = $("#modifierurl").val(),
+        myurl = geturl,
+        dataString = "pid=" + pid + '&csrf_test_name=' + csrf;
+    $.ajax({
+        type: "POST",
+        url: myurl,
+        data: dataString,
+        success: function(data) {
+            console.log("Modifier data: " + data);
+            // $('#addfoodlist').html(data);
+            $('#sideMfContainer').html($("#modifierContent_hist").html());
+            openNav();
+          //   $("#modifierContent").show();
+        }
+    });
+  }
   $(document).ready(function() { 
       "use strict";
       $("#nonthirdparty").show();

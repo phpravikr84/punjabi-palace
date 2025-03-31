@@ -205,7 +205,7 @@ if ($cart = $this->cart->contents()) { ?>
                                       <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
                                       <?php if (count($modifiers)>0): ?>
                                       <br />
-                                      <a class="" onclick="itemModifiers(<?=(int)$item['rowid'];?>)" title="Click to Choose Modifiers">
+                                      <a class="" onclick="itemModifiers(<?=$item['pid'];?>)" title="Click to Choose Modifiers">
                                         <small class="modCheck">Modifiers</small>
                                       </a>
                                       <?php endif; ?>

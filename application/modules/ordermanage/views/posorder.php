@@ -741,6 +741,7 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="carturl" value="<?php echo base_url("ordermanage/order/posaddtocart") ?>" />
                 <input name="url" type="hidden" id="cartupdateturl" value="<?php echo base_url("ordermanage/order/poscartupdate") ?>" />
                 <input name="url" type="hidden" id="addonexsurl" value="<?php echo base_url("ordermanage/order/posaddonsmenu") ?>" />
+                <input name="url" type="hidden" id="modifierurl" value="<?php echo base_url("ordermanage/order/posaddmodifier") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
                 <div class="row">
@@ -1235,9 +1236,6 @@ foreach ($scan1 as $file) {
 }
 //$this->load->view('include/pos_script');
 ?>
-<script src="<?php echo base_url('ordermanage/order/possettingjs') ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('ordermanage/order/quickorderjs') ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('application/modules/ordermanage/assets/js/possetting.js'); ?>" type="text/javascript"></script>
 <script>
 function openNav() {
   document.getElementById("mySidebar").style.width = "50%";
@@ -1254,3 +1252,6 @@ function closeNav() {
   // document.getElementById("main").style.marginLeft= "0";
 }
 </script>
+<script src="<?php echo base_url('ordermanage/order/possettingjs') ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('ordermanage/order/quickorderjs') ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('application/modules/ordermanage/assets/js/possetting.js'); ?>" type="text/javascript"></script>

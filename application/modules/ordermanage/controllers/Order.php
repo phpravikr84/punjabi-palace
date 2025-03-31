@@ -852,8 +852,30 @@ class Order extends MX_Controller
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
+		$data['pid'] = $id;
 		$data['page']   = "posaddonsfood";
 		$this->load->view('ordermanage/posaddonsfood', $data);
+	}
+	public function posaddmodifier()
+	{
+		$id = $this->input->post('pid');
+		$data['totalvarient'] = $this->input->post('totalvarient', true);
+		$data['customqty'] = $this->input->post('customqty', true);
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		$data['taxinfos'] = $this->taxchecking();
+		$data['module'] = "ordermanage";
+		$data['page']   = "posaddmodifier";
+		//Fetching modifier groups information from the database
+		$this->db->select('modifier_groups.*,menu_add_on.*');
+		$this->db->from('modifier_groups');
+		$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+		$this->db->where('menu_add_on.menu_id', $id);
+		$this->db->where('menu_add_on.is_active', 1);
+		$query = $this->db->get();
+		$modifiers = $query->result();
+		$this->load->view('ordermanage/posaddmodifier', $data);
 	}
 
 	public function cartclear()
