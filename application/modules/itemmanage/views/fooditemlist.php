@@ -41,7 +41,7 @@
                                         <a href="<?php echo base_url("itemmanage/item_food/addgroupfood/$fooditems->ProductsID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Update"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
                                         <?php 
 									}else{?>
-                                    <a href="<?php echo base_url("itemmanage/item_food/create/$fooditems->ProductsID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
+                                    <a href="<?php echo base_url("itemmanage/item_food/create_new/$fooditems->ProductsID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
 									<?php }endif; 
 										 if($this->permission->method('itemmanage','delete')->access()): ?>
                                         <a href="<?php echo base_url("itemmanage/item_food/delete/$fooditems->ProductsID") ?>" onclick="return confirm('<?php echo display("are_you_sure") ?>')" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="<?php echo display('delete')?> "><i class="fa fa-trash-o" aria-hidden="true"></i></a>  

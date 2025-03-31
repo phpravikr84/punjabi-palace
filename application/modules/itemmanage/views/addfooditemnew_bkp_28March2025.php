@@ -4,10 +4,10 @@
 <div class="row">
     <?php echo form_open_multipart("itemmanage/item_food/create_new") ?>
     <?php echo form_hidden('id',$this->session->userdata('id'));?>
-    <?php echo form_hidden('ProductsID', (isset($productinfo) && !empty($productinfo['ProductsID'])?$productinfo['ProductsID']:null)) ?>
-    <input name="bigimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['bigthumb'])?$productinfo['bigthumb']:null) ?>" />
-    <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
-    <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
+    <?php echo form_hidden('ProductsID', (!empty($productinfo['ProductsID'])?$productinfo['ProductsID']:null)) ?>
+    <input name="bigimage" type="hidden" value="<?php echo (!empty($productinfo['bigthumb'])?$productinfo['bigthumb']:null) ?>" />
+    <input name="mediumimage" type="hidden" value="<?php echo (!empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
+    <input name="smallimage" type="hidden" value="<?php echo (!empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
         <!-- First Panel - Add Form -->
         <div class="col-md-5">
             <div class="card">
@@ -18,8 +18,8 @@
                             <div class="form-group">
                                 <label>Cusine Type</label>
                                 <select name="cusine_type" class="form-control" required="">
-                                    <option value="1" <?php if(isset($productinfo) && $productinfo['cusine_type']==1){echo "selected";}?>><?php echo 'Restaurant' ?></option> 
-                                    <option value="2" <?php if(isset($productinfo) && $productinfo['cusine_type']==2){echo "selected";}?>><?php echo 'Banquet' ?></option>
+                                    <option value="1" <?php if($productinfo['cusine_type']==1){echo "selected";}?>><?php echo 'Restaurant' ?></option> 
+                                    <option value="2" <?php if($productinfo['cusine_type']==2){echo "selected";}?>><?php echo 'Banquet' ?></option>
                                 </select>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                 <select name="kitchen" class="form-control" required="">
                                     <option value="" selected="selected"><?php echo display('kitchen_name') ?></option> 
                                     <?php foreach($allkitchen as $kitchen){?>
-                                    <option value="<?php echo $kitchen->kitchenid;?>" class='bolden' <?php if(isset($productinfo) && $productinfo['kitchenid']==$kitchen->kitchenid){echo "selected";}?>><strong><?php echo $kitchen->kitchen_name;?></strong></option>
+                                    <option value="<?php echo $kitchen->kitchenid;?>" class='bolden' <?php if($productinfo['kitchenid']==$kitchen->kitchenid){echo "selected";}?>><strong><?php echo $kitchen->kitchen_name;?></strong></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -39,25 +39,25 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Food Name</label>
-                                <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (isset($productinfo) && !empty($productinfo['ProductName'])?$productinfo['ProductName']:null) ?>" required="">
+                                <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (!empty($productinfo['ProductName'])?$productinfo['ProductName']:null) ?>" required="">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <input name="descrip" class="form-control" type="text" placeholder="<?php echo display('Description') ?>" id="descrip"  value="<?php echo (isset($productinfo) && !empty($productinfo['descrip'])?$productinfo['descrip']:null) ?>">
+                        <input name="descrip" class="form-control" type="text" placeholder="<?php echo display('Description') ?>" id="descrip"  value="<?php echo (!empty($productinfo['descrip'])?$productinfo['descrip']:null) ?>">
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Short Description</label>
-                                <input name="itemnotes" class="form-control" type="text" placeholder="<?php echo 'Short Description'; ?>" id="itemnotes"  value="<?php echo (isset($productinfo) && !empty($productinfo['itemnotes'])?$productinfo['itemnotes']:null) ?>">
+                                <input name="itemnotes" class="form-control" type="text" placeholder="<?php echo 'Short Description'; ?>" id="itemnotes"  value="<?php echo (!empty($productinfo['itemnotes'])?$productinfo['itemnotes']:null) ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Components</label>
-                                <input name="component" class="form-control" data-role="tagsinput" type="text" placeholder="<?php echo display('component') ?>" id="category_subtitle"  value="<?php echo (isset($productinfo) && !empty($productinfo['component'])?$productinfo['component']:null) ?>">
+                                <input name="component" class="form-control" data-role="tagsinput" type="text" placeholder="<?php echo display('component') ?>" id="category_subtitle"  value="<?php echo (!empty($productinfo['component'])?$productinfo['component']:null) ?>">
                             </div>
                         </div>
                     </div>
@@ -66,9 +66,9 @@
                             <div class="form-group">
                                 <label>Image</label>
                                 <input type="file" accept="image/*" name="picture" onchange="loadFile(event)"><a class="cattooltipsimg" data-toggle="tooltip" data-placement="top" title="Use only .jpg,.jpeg,.gif and .png Images"><i class="fa fa-question-circle" aria-hidden="true"></i></a> 
-                                <small id="fileHelp" class="text-muted"><img src="<?php echo base_url(isset($productinfo) && !empty($productinfo['ProductImage'])?$productinfo['ProductImage']:'assets/img/icons/default.jpg'); ?>" id="output"  class="img-thumbnail add_cat_img_item"/>
+                                <small id="fileHelp" class="text-muted"><img src="<?php echo base_url(!empty($productinfo['ProductImage'])?$productinfo['ProductImage']:'assets/img/icons/default.jpg'); ?>" id="output"  class="img-thumbnail add_cat_img_item"/>
                                 </small><input name="big" type="hidden" value="" id="bigurl" />
-                                <input type="hidden" name="old_image" value="<?php echo (isset($productinfo) && !empty($productinfo['ProductImage'])?$productinfo['ProductImage']:null) ?>">
+                                <input type="hidden" name="old_image" value="<?php echo (!empty($productinfo['ProductImage'])?$productinfo['ProductImage']:null) ?>">
                             </div>
                         </div>
                     </div>
@@ -114,10 +114,10 @@
                         </div>
                     </div>
                     <div class="checkbox checkbox-success">
-                        <input type="checkbox" name="isoffer" value="1" <?php if(isset($productinfo) && !empty($productinfo))if($productinfo['offerIsavailable']==1){echo "checked";}?> id="isoffer">
+                        <input type="checkbox" name="isoffer" value="1" <?php if(!empty($productinfo))if($productinfo['offerIsavailable']==1){echo "checked";}?> id="isoffer">
                         <label for="isoffer">Offer Available?</label>
                     </div>
-                    <div id="offeractive" class="<?php if(isset($productinfo) && !empty($productinfo)){if($productinfo['offerIsavailable']==1){echo "";} else{ echo "showhide";}}else{echo "showhide";}?>">
+                    <div id="offeractive" class="<?php if(!empty($productinfo)){if($productinfo['offerIsavailable']==1){echo "";} else{ echo "showhide";}}else{echo "showhide";}?>">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -147,7 +147,7 @@
                             <label for="menutype" class="col-sm-5 col-form-label"><?php echo display('menu_type');?></label>
                             <div class="col-sm-7">
                                 <?php 
-                                $searcharray=explode(',',(isset($productinfo) && !empty($productinfo['menutype'])?$productinfo['menutype']:null));
+                                $searcharray=explode(',',(!empty($productinfo['menutype'])?$productinfo['menutype']:null));
                                 $m=0;
                                 foreach($todaymenu as $tmenu){
                                     $m++;
@@ -155,7 +155,7 @@
                                     ?>
                             <div class="col-sm-5">
                                 <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="menutype[]" value="<?php echo $tmenu->menutypeid;?>" <?php if(isset($productinfo) && !empty($productinfo))if($searcharray[$key]==$tmenu->menutypeid){echo "checked";}?> id="<?php echo $m;?>">
+                                    <input type="checkbox" name="menutype[]" value="<?php echo $tmenu->menutypeid;?>" <?php if(!empty($productinfo))if($searcharray[$key]==$tmenu->menutypeid){echo "checked";}?> id="<?php echo $m;?>">
                                     <label for="<?php echo $m;?>"><?php echo $tmenu->menutype;?></label>
                                     <input name="mytmenu_<?php echo $tmenu->menutypeid;?>" type="hidden" value="<?php echo $tmenu->menutypeid;?>" />
                                 </div>
@@ -184,8 +184,8 @@
                         <label>Status</label>
                         <select name="status"  class="form-control">
                             <option value=""  selected="selected"><?php echo display('select_option');?></option>
-                            <option value="1" <?php  if(isset($productinfo) && !empty($productinfo)){if($productinfo['ProductsIsActive']==1){echo "Selected";}} else{echo "Selected";} ?>><?php echo display('active')?></option>
-                            <option value="0" <?php  if(isset($productinfo) && !empty($productinfo)){if($productinfo['ProductsIsActive']==0){echo "Selected";}} ?>><?php echo display('inactive')?></option>
+                            <option value="1" <?php  if(!empty($productinfo)){if($productinfo['ProductsIsActive']==1){echo "Selected";}} else{echo "Selected";} ?>><?php echo display('active')?></option>
+                            <option value="0" <?php  if(!empty($productinfo)){if($productinfo['ProductsIsActive']==0){echo "Selected";}} ?>><?php echo display('inactive')?></option>
                         </select>
                     </div>
 
@@ -234,13 +234,8 @@
                                 <div class="mt-3">
                                     <?php if (!empty($categories)) { ?>
                                         <?php 
-                                            if(isset($productinfo)) {
-                                                // Convert CategoryID string to an array
-                                                $selectedCategories = explode(',', $productinfo['CategoryID']);
-                                            } else {
-                                                $selectedCategories = [];
-                                            }
-
+                                            // Convert CategoryID string to an array
+                                            $selectedCategories = explode(',', $productinfo['CategoryID']);
                                         ?>
                                         <?php foreach ($categories as $category) { ?>
                                             <?php if ($category->parentid == 0) { ?>
@@ -367,63 +362,49 @@
                                 <input name="url" type="hidden" id="url" value="<?php echo base_url('production/production/productionitem'); ?>" />
                                 <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url('production/production/getUomDetails'); ?>" />
                                 <!-- Get Edit view data begin -->
-                                <?php 
-                                // Group recipes by variantName
-                                $groupedRecipes = [];
-                                if (!empty($productinfo) && isset($productinfo['recipes']) && !empty($productinfo['recipes'])) {
-                                    foreach ($productinfo['recipes'] as $recipe) {
-                                        $groupedRecipes[$recipe->variantName][] = $recipe;
-                                    }
-                                }
-                                ?>
-
-                                <!-- Get Edit view data begin -->
-                                <?php if (!empty($groupedRecipes)) { ?>
-                                    <?php foreach ($groupedRecipes as $variantName => $recipes) { ?>
+                                <?php if(!empty($productinfo) && isset($productinfo['recipes'])  && !empty($productinfo['recipes']) ) { ?>
+                                    <?php foreach($productinfo['recipes'] as $recipe) { ?>
                                         <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
-                                            <h4>Recipe for - <?php echo $variantName; ?></h4>
-                                            <input type="hidden" name="recipe_for[]" value="<?php echo $variantName; ?>"/>
+                                            <h4>Recipe for - <?php echo $recipe->variantName; ?></h4>
+                                            <input type="hidden" name="recipe_for[]" value="<?php echo $recipe->variantName; ?>"/>
                                             <table class="table table-bordered table-hover" id="purchaseTable">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
-                                                        <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
-                                                        <th class="text-center"><?php echo display('price');?> </th>
-                                                        <th class="text-center"><?php echo 'Unit'; ?> </th>
-                                                        <th class="text-center"></th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
+                                                            <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
+                                                            <th class="text-center"><?php echo display('price');?> </th>
+                                                            <th class="text-center"><?php echo 'Unit'; ?> </th>
+                                                            <th class="text-center"></th>
+                                                        </tr>
                                                 </thead>
                                                 <tbody id="addPurchaseItem">
-                                                    <?php foreach ($recipes as $recipe) { ?>
-                                                        <tr>
-                                                            <td class="span3 supplier">
-                                                                <input type="hidden" id="unit-total_1" class="" />
-                                                                <select name="product_id_<?php echo $variantName; ?>[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
-                                                                    <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
-                                                                    <?php foreach ($ingrdientslist as $ingredient) { ?>
-                                                                        <option value="<?php echo $ingredient->id;?>" data-ingredientid="<?php echo $ingredient->id;?>" data-title="<?php echo $ingredient->ingredient_name;?>" <?php echo ($recipe->ingredientid == $ingredient->id) ? 'selected' : ''; ?>>
-                                                                            <?php echo $ingredient->ingredient_name;?>
-                                                                        </option>
-                                                                    <?php } ?>
-                                                                </select>
+                                                    <tr>
+                                                        <td class="span3 supplier">
+                                                        
+                                                    <input type="hidden" id="unit-total_1" class="" />
+                                                        <select name="product_id_<?php echo $recipe->variantName; ?>[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
+                                                        <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
+                                                        <?php foreach ($ingrdientslist as $ingrdients) {?>
+                                                                <option value="<?php echo $ingrdients->id;?>" data-ingredientid="<?php echo $ingrdients->id;?>" data-title="<?php echo $ingrdients->ingredient_name;?>" <?php echo $recipe->ingredientid==$ingrdients->id ? 'selected' : ''; ?>><?php echo $ingrdients->ingredient_name;?></option>
+                                                        <?php }?>
+                                                        </select>
+                                                        </td>
+                                                            <td class="text-right">
+                                                                <input type="text" name="product_quantity_<?php echo $recipe->variantName; ?>[]" id="cartoon_1" onkeyup='calprice(this)' class="form-control text-right store_cal_1" placeholder="0.00" value="<?php echo $recipe->qty; ?>" min="0" tabindex="6">
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="qty_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
+                                                                <input type="text"  id="price_1" class="form-control text-right store_cal_1" placeholder="0.00" value="" min="0" tabindex="6" readonly>
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="price_<?php echo $variantName; ?>[]" class="form-control text-right">
+                                                                <input type="hidden" name="unitid_<?php echo $recipe->variantName; ?>[]" id="unitid_1" class="form-control text-right store_unitid_1" value="<?php echo $recipe->unitid; ?>" tabindex="6" readonly>
+                                                                <input type="text" name="unitname_<?php echo $recipe->variantName; ?>[]" id="unitname_1" class="form-control text-right store_unitname_1" value="<?php echo $recipe->unitname; ?>" tabindex="6" readonly>
                                                             </td>
-                                                            <td class="text-right">
-                                                                <input type="text" name="unit_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
+                                                            <td>
+                                                                <button  class="btn btn-danger red text-right" type="button" value="<?php echo display('delete') ?>" onclick="deleteRow(this)" tabindex="8"><?php echo display('delete') ?></button>
                                                             </td>
-                                                            <td class="text-center">
-                                                                <button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)"><i class="fa fa-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
+                                                    </tr>
                                                 </tbody>
                                             </table>
-                                            
                                         </div>
                                     <?php } ?>
                                 <?php } ?>
@@ -609,19 +590,21 @@
     $("#addfooditemsubmit").closest("form").submit();
     // return false;
   });
-document.getElementById("isoffer").addEventListener("change", function () {
-    document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
-});
 </script>
-<style>
-    .form-group {
-    margin-bottom: 12px;
-    }
-    .bg-gray-orphane {
-    background-color: #f3f3f3;
-    padding:10px;
-    }
-</style>
+<script>
+                    document.getElementById("isoffer").addEventListener("change", function () {
+                        document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
+                    });
+                    </script>
+                    <style>
+                    .form-group {
+                    margin-bottom: 12px;
+                    }
+                    .bg-gray-orphane {
+                    background-color: #f3f3f3;
+                    padding:10px;
+                    }
+                    </style>
 <?php 
     endif;
 ?>
