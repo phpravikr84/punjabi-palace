@@ -89,7 +89,7 @@
 						"category_list" => array("controller" => "item_category","method" => "index","permission" => "read")
 						),  
 				"manage_food" => array(
-						"add_food" => array("controller" => "item_food","method" => "create","permission" => "create"), 
+						"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
 						"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
 						"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
 						"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
