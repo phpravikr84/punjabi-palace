@@ -517,18 +517,18 @@ $(document).ready(function(){
                                                     <tbody id="addPurchaseItem_${variantId}">
                                                         <tr id="row_${variantId}_1">
                                                             <td>
-                                                                <select name="product_id_[${variantId}][]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
+                                                                <select name="product_id_${variantName}[]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
                                                                     ${options}
                                                                 </select>
                                                             </td>
-                                                            <td><input type="text" name="product_quantity_[${variantId}][]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                            <td><input type="text" name="product_quantity_${variantName}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_price[${variantId}][]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
+                                                                <input type="text" name="product_price_${variantName}[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
                                                             </td>
                                                             <td class="text-right">
                                                                 <input type="hidden" id="unit-total_${variantId}_1" />
-                                                                <input type="hidden" name="unitid_[${variantId}][]" id="unitid_${variantId}_1" class="form-control text-right">
-                                                                <input type="text" name="unitname_[${variantId}][]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
+                                                                <input type="hidden" name="unitid_${variantName}[]" id="unitid_${variantId}_1" class="form-control text-right">
+                                                                <input type="text" name="unitname_${variantName}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
                                                             </td>
                                                             <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
                                                         </tr>
@@ -562,14 +562,68 @@ $(document).ready(function(){
         $("#variantContainer").append(row); // Append cloned row
     });
 
-    // Remove variant row
-    $(document).on("click", ".removeEditRowVariant", function(){
-        if ($(".variant-rowedit").length > 1) {
-            $(this).closest(".variant-rowedit").remove();
-        } else {
-            alert("At least one row is required.");
-        }
-    });
+    
+    
 });
+
+
+ // Remove variant row
+ $(document).on("click", ".removeEditRowVariant", function(){
+    var variantid = $(this).data("variantid");
+    var menuid = $(this).data("menuid");
+    var row = $(this).closest(".variant-rowedit");
+    var deleteUrl =  $('#get_deletemodifier').val();
+    var csrf = $('#csrfhashresarvation').val();
+    // Show confirmation dialog
+    if (confirm("Are you sure you want to delete this variant and its recipes?")) {
+        $.ajax({
+            url: deleteUrl,  // Adjust this based on your controller route
+            type: "POST",
+            data: {csrf_test_name: csrf, variantid: variantid, menuid: menuid},
+            dataType: "json",
+            success: function(response) {
+                if (response.status == "success") {
+                    alert("Variant & its recipes deleted successfully!");
+                    row.remove();
+                } else {
+                    alert("Failed to delete variant & its recipes. Please try again.");
+                }
+            },
+            error: function() {
+                alert("An error occurred while deleting the variant and its recipes.");
+            }
+        });
+    }
+});
+
+//Remove Recipe
+$(document).on("click", ".removeEditRecipeBtn", function() {
+    var ingredientid = $(this).data("ingredientid");
+    var foodid = $(this).data("menuid");
+    var variantid =  $(this).data("variantid");
+    var delRecipeUrl =  $('#get_delrecipe').val();
+    var csrf = $('#csrfhashresarvation').val();
+
+    if (confirm("Are you sure you want to delete this recipe ingredient?")) {
+        $.ajax({
+            url: delRecipeUrl,
+            type: "POST",
+            data: { csrf_test_name: csrf, ingredientid: ingredientid, foodid: foodid, variantid :  variantid },
+            dataType: "json",
+            success: function(response) {
+                if (response.success) {
+                    alert("Recipe deleted successfully!");
+                    location.reload(); // Reload to update UI
+                } else {
+                    alert("Error deleting recipe. Please try again.");
+                }
+            },
+            error: function() {
+                alert("Something went wrong. Please check your connection.");
+            }
+        });
+    }
+});
+
 
 

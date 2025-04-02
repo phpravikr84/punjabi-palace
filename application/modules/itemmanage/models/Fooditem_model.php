@@ -366,7 +366,8 @@ public function count_fooditem()
 		$ingredientid = $ingredient['ingredientid'];
 		$quantity	= $ingredient['qty'];
 		$unitid  = $ingredient['unitid'];
-		$unitname  = $ingredient['unit_name'];
+		$unitname  = $ingredient['unitname'];
+		$recipe_price =  $ingredient['recipe_price'];
 		$saveid = $this->session->userdata('id');
 		$newdate = date('Y-m-d');
 		$data1 = array(
@@ -376,6 +377,7 @@ public function count_fooditem()
 			'qty'				=>	$quantity,
 			'unitid'			=>	$unitid,
 			'unitname'			=>	$unitname,
+			'recipe_price'		=> $recipe_price,
 			'createdby'			=>	$saveid,
 			'created_date'		=>	$newdate
 		);
@@ -421,7 +423,7 @@ public function count_fooditem()
 
 		$data1 = array(
 			'menu_id'				=>	$menu_id,
-			'add_on_id'				=>	$add_on_id,
+			//'add_on_id'				=>	$add_on_id,
 			'modifier_groupid'		=>  $modifier_groupid,
 			'min'					=> $min,
 			'max'					=> $max,
@@ -524,6 +526,20 @@ public function count_fooditem()
 		return $this->db->affected_rows() > 0;
 	}
 
+	// Update Food Production
+	public function update_food_production_unit($itemid, $production)
+	{  
+		$this->db->where('itemid', $itemid);
+		$data = array(
+			'itemvid'               => $production['itemvid'],
+			'itemquantity'          => $production['itemquantity'],
+			'savedby'               => $this->session->userdata('id'),
+		);
+
+		$this->db->update('production', $data);
+		return $this->db->affected_rows() > 0;
+	}
+
 	// Update Modifiers
 	public function update_modifiers($menu_id, $modifier)
 	{   
@@ -541,8 +557,162 @@ public function count_fooditem()
 		return $this->db->affected_rows() > 0;
 	}
 
+	 // Check if a modifier exists for the given menu_id and modifier_groupid
+	 public function modifier_exists($menu_id, $modifier_groupid) {
+        $this->db->select('row_id');
+        $this->db->from('menu_add_on');
+        $this->db->where('menu_id', $menu_id);
+        $this->db->where('modifier_groupid', $modifier_groupid);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->row()->row_id; // Return row_id if found
+        }
+        return false; // Return false if not found
+    }
 
+    // Update an existing modifier
+    public function update_modifier_new($row_id, $data) {
+        $this->db->where('row_id', $row_id);
+        return $this->db->update('menu_add_on', $data);
+    }
 
+    // Insert a new modifier
+    public function insert_modifier_new($data) {
+        return $this->db->insert('menu_add_on', $data);
+    }
+
+	public function get_modifiers_by_menu_id($menu_id) {
+		$this->db->select('modifier_groupid');
+		$this->db->from('menu_add_on'); // Replace with your table name
+		$this->db->where('menu_id', $menu_id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 	
-		
+	public function delete_modifier($menu_id, $modifier_groupid) {
+		$this->db->where('menu_id', $menu_id);
+		$this->db->where('modifier_groupid', $modifier_groupid);
+		$this->db->delete('menu_add_on');
+		return $this->db->affected_rows() > 0;
+	}
+
+	public function delete_variant($variantid, $menuid)
+    {
+        $this->db->where("variantid", $variantid);
+        $this->db->where("menuid", $menuid);
+        return $this->db->delete("variant");
+    }
+
+	public function delete_variant_and_recipes($variantid, $menuid)
+    {
+        // Start a transaction to ensure data integrity
+        $this->db->trans_start();
+
+        // Delete from `production_details`
+        $this->db->where("pvarientid", $variantid);
+		$this->db->where("foodid", $variantid);
+        $this->db->delete("production_details");
+
+        // Delete from `production`
+        $this->db->where("itemvid", $variantid);
+        $this->db->where("itemid", $menuid);
+        $this->db->delete("production");
+
+        // Delete from `variant`
+        $this->db->where("variantid", $variantid);
+        $this->db->where("menuid", $menuid);
+        $this->db->delete("variant");
+
+        // Complete transaction
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+
+    }
+	
+	/**
+	 * Delete Recipe Ingredient
+	 */
+	public function delete_recipe_ingredient($ingredientid, $foodid, $variantid)
+	{
+		 // Delete the record from production_details
+		 $this->db->where("ingredientid", $ingredientid);
+		 $this->db->where("foodid", $foodid);
+		 $this->db->where("pvarientid", $variantid);
+		 $this->db->delete("production_details");
+	 
+		 // Check if any more records exist for this foodid and variantid
+		 $this->db->where("foodid", $foodid);
+		 $this->db->where("pvarientid", $variantid);
+		 $query = $this->db->get("production_details");
+	 
+		 if ($query->num_rows() == 0) { 
+			 // No more records in production_details, so delete from production
+			 $this->db->where("itemid", $foodid);
+			 $this->db->where("itemvid", $variantid);
+			 $this->db->delete("production");
+	 
+			 // Also delete from variant table
+			 $this->db->where("menuid", $foodid);
+			 $this->db->where("variantid", $variantid);
+			 $this->db->delete("variant");
+		 }
+	 
+		 return true;
+	}
+
+	public function get_production_details($foodid, $pvarientid, $ingredientid)
+	{
+		return $this->db->where([
+			'foodid' => $foodid,
+			'pvarientid' => $pvarientid,
+			'ingredientid' => $ingredientid
+		])->get('production_details')->row();
+	}
+
+	// Insert new ingredient entry
+	public function create_food_ingredient_updt($ingredient)
+	{
+		$ingredient['created_date'] = date('Y-m-d');
+		$this->db->insert('production_details', $ingredient);
+
+		if ($this->db->affected_rows() > 0) {
+			return $this->db->insert_id(); // Return inserted ID
+		}
+		return false; // Return false if insert fails
+	}
+
+	// Update existing ingredient entry
+	public function update_food_ingredient_updt($pro_detailsid, $ingredient) {
+		$this->db->where('pro_detailsid', $pro_detailsid)
+				 ->update('production_details', $ingredient);
+	
+		// Log the query for debugging
+		log_message('error', 'Update Query: ' . $this->db->last_query());
+	
+		return $this->db->affected_rows() > 0;
+	}
+	
+
+	//Get Production Details
+	public function get_production_details_byingredients($foodid, $pvarientid, $ingredientid)
+	{
+		return $this->db->where([
+			'foodid' => $foodid,
+			'pvarientid' => $pvarientid,
+			'ingredientid' => $ingredientid
+		])->limit(1)->get('production_details')->row();
+	}
+	// public function get_production_details_byingredients($updatedId, $variantId, $foodIngredient) {
+	// 	return $this->db->select('pro_detailsid')  // Select only the unique identifier
+	// 					->where('foodid', $updatedId)
+	// 					->where('pvarientid', $variantId)
+	// 					->where('ingredientid', $foodIngredient)
+	// 					->group_by('pro_detailsid')  // Group by the unique identifier
+	// 					->get('production_details')
+	// 					->row();  // Get the first result
+	// }
+	
+
 }
