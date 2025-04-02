@@ -2237,7 +2237,6 @@ class Item_food extends MX_Controller
 
 				//Update Food Item Id
 				$updatedId = $this->input->post('ProductsID');
-				$savedid = $this->session->userdata('id');
 
 				$postData = [
 					'ProductsID' => $this->input->post('ProductsID'),
@@ -2292,13 +2291,7 @@ class Item_food extends MX_Controller
 
 
 				if ($this->fooditem_model->update_fooditem($postData)) {
-
-					// echo '<pre>';
-					// print_r($_POST);
-					// echo '</pre>';
-					// exit;
-
-					// Add and Update Variants
+					//Add and Update Variants
 					if ($this->input->post('variant_name', true)) {
 						$variantNames = $this->input->post('variant_name', true);
 						$prices = $this->input->post('price', true);
@@ -2307,75 +2300,47 @@ class Item_food extends MX_Controller
 						$doordashPrices = $this->input->post('doordash_price', true);
 						$webOrderPrices = $this->input->post('weborder_price', true);
 						$variantIds = $this->input->post('variant_id', true);
-
+					
 						foreach ($variantNames as $key => $variantName) {
-							if (!empty($variantName)) { // Ensure variant name is not empty
+							if (!empty($variantName)) { // Ensure variantName is not empty
 								$variantData = [
 									'menuid' => $updatedId,
 									'variantName' => $variantName,
-									'price' => $prices[$key] ?? 0,
-									'takeaway_price' => $takeawayPrices[$key] ?? 0,
-									'uber_eats_price' => $uberEatsPrices[$key] ?? 0,
-									'doordash_price' => $doordashPrices[$key] ?? 0,
-									'web_order_price' => $webOrderPrices[$key] ?? 0,
+									'price' => isset($prices[$key]) ? $prices[$key] : 0,
+									'takeaway_price' => isset($takeawayPrices[$key]) ? $takeawayPrices[$key] : 0,
+									'uber_eats_price' => isset($uberEatsPrices[$key]) ? $uberEatsPrices[$key] : 0,
+									'doordash_price' => isset($doordashPrices[$key]) ? $doordashPrices[$key] : 0,
+									'web_order_price' => isset($webOrderPrices[$key]) ? $webOrderPrices[$key] : 0,
 								];
-
-								// echo '<pre>';
-								// print_r($_POST);
-								// echo '</pre>';
-								// exit;
-
+					
 								if (empty($variantIds[$key])) {
 									// Insert New Variant
 									if ($this->foodvarient_model->create($variantData)) {
 										$insertedVariantId = $this->db->insert_id();
-										
-										// Insert & UPdate in Production Details if BOM is enabled
-										if ($this->input->post('is_bom', true)) {
-										
-											$recipeForArray = $this->input->post('recipe_for', true); // Get recipe variants
 
-											foreach ($recipeForArray as $recipeFor) {
-												$foodIngredients = $this->input->post("product_id_$recipeFor", true);
-												$qtyList = $this->input->post("product_quantity_$recipeFor", true);
-												$priceList = $this->input->post("product_price_$recipeFor", true);
-												$unitIdList = $this->input->post("unitid_$recipeFor", true);
-												$unitNameList = $this->input->post("unitname_$recipeFor", true);
-
-												if ($foodIngredients) {
-													
-													foreach ($foodIngredients as $index => $foodIngredient) {
-														if (!empty($foodIngredient)) {
-															$existingRecord = $this->fooditem_model->get_production_details_byingredients($updatedId, $insertedVariantId, $foodIngredient);
-
-															$ingredientData = [
-																'foodid' => $updatedId,
-																'pvarientid' => $insertedVariantId,
-																'ingredientid' => $foodIngredient,
-																'qty' => $qtyList[$index] ?? 0,
-																'unitid' => $unitIdList[$index] ?? null,
-																'unitname' => $unitNameList[$index] ?? null,
-																'recipe_price' => $priceList[$index] ?? 0,
-																'createdby' => $this->session->userdata('id'),
-															];
-
-															if ($existingRecord) {
-																// Update existing ingredient entry if any data has changed
-																// if ($this->hasChanges($existingRecord, $ingredientData)) {
-																// 	$this->fooditem_model->update_food_ingredient_updt($existingRecord->pro_detailsid, $ingredientData);
-																// }
-															} else {
-																// Insert new ingredient entry
-																$this->fooditem_model->create_food_ingredient_updt($ingredientData);
-															}
-														}
-													}
+										// Insert in Product Details
+										// Check is bom true
+										if($this->input->post('is_bom', true)){
+											// Check Food Ingredients array
+											$foodIngredients = $this->input->post('product_id', true);
+											if($foodIngredients){
+												foreach($foodIngredients as $key => $foodIngredient){
+													$ingredientData = [
+														'foodid' => $updatedId,
+														'pvarientid' => $insertedVariantId,
+														'ingredientid' => $foodIngredient,
+														'qty' => $this->input->post('product_quantity', true)[$key],
+														'unitid' => $this->input->post('unitid', true)[$key],
+														'unit_name' => $this->input->post('unitname', true)[$key],
+														'recipe_price' =>  $this->input->post('price', true)[$key],
+														'created_by' => $savedid,
+													];
+													// Insert Ingredient
+													$this->fooditem_model->create_food_ingredient($ingredientData);
 												}
 											}
 										}
-										//END PRODUCTION DETAILS
-
-
+					
 										// Log New Variant
 										$variantLogData = [
 											'action_page' => "Create New",
@@ -2390,72 +2355,21 @@ class Item_food extends MX_Controller
 									// Update Existing Variant
 									$this->foodvarient_model->update_varient_multi($variantIds[$key], $variantData);
 
-									// Insert & Update in Production Details if BOM is enabled
-									if ($this->input->post('is_bom', true)) {
-
-										$recipeForArray = $this->input->post('recipe_for', true); // Get recipe variants
-
-										foreach ($recipeForArray as $recipeFor) {
-											$foodIngredients = $this->input->post("product_id_$recipeFor", true);
-											$qtyList = $this->input->post("product_quantity_$recipeFor", true);
-											$priceList = $this->input->post("product_price_$recipeFor", true);
-											$unitIdList = $this->input->post("unitid_$recipeFor", true);
-											$unitNameList = $this->input->post("unitname_$recipeFor", true);
-
-											if ($foodIngredients) {
-
-												foreach ($foodIngredients as $index => $foodIngredient) {
-													if (!empty($foodIngredient)) {
-
-														// Get existing record, grouped by pro_detailsid
-														$existingRecord = $this->fooditem_model->get_production_details_byingredients($updatedId, $variantIds[$key], $foodIngredient);
-
-														$ingredientData = [
-															'foodid' => $updatedId,
-															'pvarientid' => $variantIds[$key],
-															'ingredientid' => $foodIngredient,
-															'qty' => $qtyList[$index] ?? 0,
-															'unitid' => $unitIdList[$index] ?? null,
-															'unitname' => $unitNameList[$index] ?? null,
-															'recipe_price' => $priceList[$index] ?? 0,
-															'createdby' => $this->session->userdata('id'),
-														];
-
-														// If an existing record is found, update it
-														if ($existingRecord) {
-															log_message('error', 'Existing Record: ' . json_encode($existingRecord));
-															// Update the ingredient entry
-															$this->fooditem_model->update_food_ingredient_updt($existingRecord->pro_detailsid, $ingredientData);
-															//$this->fooditem_model->update_food_ingredient_updt($existingRecord, $updatedId, $variantIds[$key], $ingredientData);
-														} else {
-															// If no existing record, insert new ingredient entry
-															//log_message('error', '============== ');
-															//log_message('error', 'New Data: ' . json_encode($ingredientData));
-															//$this->fooditem_model->create_food_ingredient_updt($ingredientData);
-														}
-													}
-												}
-											}
-										}
-									}
-									// END PRODUCTION DETAILS
-
-
-									// Update Production Quantity
-									if ($this->input->post('unit', true)) {
-										$productionData = [
-											'itemvid' => $variantIds[$key],
-											'itemquantity' => $this->input->post('unit', true),
-											'suplierid' => 0,
-											'savedby' => $this->session->userdata('id'),
-										];
-										$this->fooditem_model->update_food_production_unit($updatedId, $productionData);
+									//Update Production
+									if($this->input->post('unit', true)){
+										$data = array(
+											'itemvid'               => $variantIds[$key],
+											'itemquantity'          => $this->input->post('unit', true),
+											'suplierid'             => 0,
+											'savedby'               => $this->session->userdata('id'),
+										);
+										//Update Production item qty
+										$this->fooditem_model->update_food_production_unit($updatedId, $data);
 									}
 								}
 							}
 						}
 					}
-					
 					
 					// Update Modifiers
 					// Fetch existing modifiers from the database
@@ -2656,15 +2570,7 @@ class Item_food extends MX_Controller
 		}
 	}
 
-	// Helper function to check if data has changed
-	private function hasChanges($existingRecord, $newData) {
-		return (
-			$existingRecord->qty != $newData['qty'] ||
-			$existingRecord->unitid != $newData['unitid'] ||
-			$existingRecord->unitname != $newData['unitname'] ||
-			$existingRecord->recipe_price != $newData['recipe_price']
-		);
-	}
+
 	 /**
 	  * ========================Food Item===========================
 	  */

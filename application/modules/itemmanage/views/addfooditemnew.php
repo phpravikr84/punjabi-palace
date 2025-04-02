@@ -76,8 +76,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Unit</label>
-                                <?php if((isset($productinfo) && isset($productinfo['production']))){ ?>
-                                    <input name="unit" class="form-control" type="number" placeholder="Unit" id="production_unit" value="<?php $productinfo['production'][0]->itemquantity; ?>">
+                                <?php if((isset($productinfo) && !empty($productinfo))){ ?>
+                                    <?php if(isset($productinfo['production']) && !empty($productinfo['production'])) {  ?>
+                                        <input name="unit" class="form-control" type="number" placeholder="Unit" id="production_unit" value="<?php echo $productinfo['production'][0]->itemquantity; ?>">
+                                    <?php } else {?>
+                                        <input name="unit" class="form-control" type="number" placeholder="Unit" id="production_unit" value="1">
+                                    <?php  } ?>
+                                    
                               <?php  } else { ?>
                                 <input name="unit" class="form-control" type="number" placeholder="Unit" id="production_unit" value="1">
                                 <?php  } ?>
@@ -108,7 +113,7 @@
                                 <label class="form-check-label" for="veg">Vegetarian</label>
                             </div>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="food_type" value="2" id="non-veg" <?php echo (isset($productinfo) && $productinfo['food_type'] == 0) ? 'checked' : ''; ?>>
+                                <input type="radio" class="form-check-input" name="food_type" value="0" id="non-veg" <?php echo (isset($productinfo) && $productinfo['food_type'] == 0) ? 'checked' : ''; ?>>
                                 <label class="form-check-label" for="non-veg">Non-Vegetarian</label>
                             </div>
                         </div>
@@ -316,7 +321,8 @@
                                             <input type="number" name="weborder_price[]" class="form-control" placeholder="Weborder Price" value="<?php echo $variant->web_order_price; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
-                                            <button type="button" class="removeEditRowVariant">
+                                        <input type="hidden" id="get_deletemodifier" value="<?php echo base_url('/itemmanage/item_food/delete_variant'); ?>" />
+                                            <button type="button" data-variantid="<?php echo $variant->variantid; ?>" data-menuid="<?php echo $productinfo['ProductsID']; ?>" class="removeEditRowVariant">
                                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                             </button>
                                         </div>
@@ -397,8 +403,10 @@
                                                     <?php foreach ($recipes as $recipe) { ?>
                                                         <tr>
                                                             <td class="span3 supplier">
+                                                                <input type="hidden" name="variant_id_<?php echo $variantName; ?>[]" value="<?php echo $recipe->pvarientid;?>" >
+                                                                <input type="hidden" name="menu_id_<?php echo $variantName; ?>[]" value="<?php echo $productinfo['ProductsID'];?>" >
                                                                 <input type="hidden" id="unit-total_1" class="" />
-                                                                <select name="product_id_<?php echo $variantName; ?>[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
+                                                                <select name="product_id_<?php echo $variantName; ?>[]" id="product_id_<?php echo $variantName; ?>" class="postform resizeselect form-control">
                                                                     <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
                                                                     <?php foreach ($ingrdientslist as $ingredient) { ?>
                                                                         <option value="<?php echo $ingredient->id;?>" data-ingredientid="<?php echo $ingredient->id;?>" data-title="<?php echo $ingredient->ingredient_name;?>" <?php echo ($recipe->ingredientid == $ingredient->id) ? 'selected' : ''; ?>>
@@ -408,16 +416,19 @@
                                                                 </select>
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="qty_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
+                                                                <input type="text" name="product_quantity_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="price_<?php echo $variantName; ?>[]" class="form-control text-right">
+                                                                <input type="text" name="product_price_<?php echo $variantName; ?>[]" class="form-control text-right">
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="unit_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
+                                                                <!-- <input type="hidden" id="unit-total_<?php echo $variantName; ?>_1" value="6"> -->
+                                                                <input type="hidden" name="unitid_<?php echo $variantName; ?>[]" id="unitid_<?php echo $variantName; ?>_1" class="form-control text-right" value="<?php echo $recipe->unitid; ?>">
+                                                                <input type="text" name="unitname_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
                                                             </td>
                                                             <td class="text-center">
-                                                                <button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)"><i class="fa fa-trash"></i></button>
+                                                            <input name="url" type="hidden" id="get_delrecipe" value="<?php echo base_url('itemmanage/item_food/delete_recipe_ingredient'); ?>" />
+                                                                <button type="button" class="btn btn-danger btn-sm removeEditRecipeBtn" data-ingredientid="<?php echo $recipe->ingredientid; ?>" data-variantid="<?php echo $recipe->pvarientid; ?>" data-menuid="<?php echo $productinfo['ProductsID']; ?>"><i class="fa fa-trash"></i></button>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
@@ -461,42 +472,59 @@
                                             <tbody>
                                                 <?php foreach ($addonslist as $addons) { ?>
                                                     <?php 
-                                                        $selectedModifers = []; // Initialize before checking
+                                                        $selectedModifers = []; 
+                                                        $modifierData = null; // Store modifier data if exists
+
                                                         if (!empty($productinfo) && isset($productinfo['modifiers']) && !empty($productinfo['modifiers'])) {
                                                             foreach ($productinfo['modifiers'] as $modifier) {
-                                                                $selectedModifers[] = $modifier->modifier_groupid; // Append instead of overwrite
+                                                                if ($modifier->modifier_groupid == $addons->group_id) {
+                                                                    $modifierData = $modifier; // Assign existing modifier data
+                                                                }
+                                                                $selectedModifers[] = $modifier->modifier_groupid;
                                                             }
                                                         }
-                                                    ?>
-                                                            <?php
-                                                                $disableField = (!empty($selectedModifers) && in_array($addons->group_id, $selectedModifers)) ? '' : 'disabled';
-                                                            ?>
 
-                                                        <tr>
-                                                            <td class="text-center">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input modifier-checkbox" type="checkbox" name="modifiers[]" value="<?php echo $addons->group_id; ?>" id="modifiers_<?php echo $addons->group_id; ?>" data-group-id="<?php echo $addons->group_id; ?>"
-                                                                        <?php echo (!empty($selectedModifers) && in_array($addons->group_id, $selectedModifers)) ? 'checked' : ''; ?>
-                                                                    >
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <label for="modifiers_<?php echo $addons->group_id; ?>" class="form-label"><?php echo $addons->name; ?></label>
-                                                            </td>
-                                                            <td>
-                                                               
-                                                                <input type="text" class="form-control modifierminsel" name="min[]" id="minsel_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control modifiermaxsel" name="max[]" id="maxsel_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
-                                                            </td>
-                                                            <td>
-                                                                <input type="checkbox" class="form-check-input modifierisreq" name="isreq[]" id="isreq_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control" name="sort[]" id="sort_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
-                                                            </td>
-                                                        </tr>
+                                                        $disableField = !empty($modifierData) ? '' : 'disabled';
+                                                    ?>
+
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input modifier-checkbox" type="checkbox" 
+                                                                    name="modifiers[]" value="<?php echo $addons->group_id; ?>" 
+                                                                    id="modifiers_<?php echo $addons->group_id; ?>" 
+                                                                    data-group-id="<?php echo $addons->group_id; ?>"
+                                                                    <?php echo !empty($modifierData) ? 'checked' : ''; ?>
+                                                                >
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <label for="modifiers_<?php echo $addons->group_id; ?>" class="form-label">
+                                                                <?php echo $addons->name; ?>
+                                                            </label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control modifierminsel" name="min[]" 
+                                                                value="<?php echo !empty($modifierData) ? $modifierData->min : ''; ?>" 
+                                                                id="minsel_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control modifiermaxsel" name="max[]" 
+                                                                value="<?php echo !empty($modifierData) ? $modifierData->max : ''; ?>" 
+                                                                id="maxsel_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="form-check-input modifierisreq" 
+                                                                name="isreq[]" id="isreq_<?php echo $addons->group_id; ?>" 
+                                                                <?php echo (!empty($modifierData) && $modifierData->isreq == 1) ? 'checked' : ''; ?> 
+                                                                <?php echo $disableField; ?>>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control" name="sort[]" 
+                                                                value="<?php echo !empty($modifierData) ? $modifierData->sortby : ''; ?>" 
+                                                                id="sort_<?php echo $addons->group_id; ?>" <?php echo $disableField; ?>>
+                                                        </td>
+                                                    </tr>
                                                 <?php } ?>
                                             </tbody>
                                         </table>
@@ -612,6 +640,11 @@
 document.getElementById("isoffer").addEventListener("change", function () {
     document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
 });
+</script>
+<script>
+   
+
+
 </script>
 <style>
     .form-group {

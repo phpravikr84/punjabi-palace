@@ -2361,9 +2361,9 @@ class Item_food extends MX_Controller
 
 															if ($existingRecord) {
 																// Update existing ingredient entry if any data has changed
-																// if ($this->hasChanges($existingRecord, $ingredientData)) {
-																// 	$this->fooditem_model->update_food_ingredient_updt($existingRecord->pro_detailsid, $ingredientData);
-																// }
+																if ($this->hasChanges($existingRecord, $ingredientData)) {
+																	$this->fooditem_model->update_food_ingredient_updt($existingRecord->pro_detailsid, $ingredientData);
+																}
 															} else {
 																// Insert new ingredient entry
 																$this->fooditem_model->create_food_ingredient_updt($ingredientData);
@@ -2426,11 +2426,10 @@ class Item_food extends MX_Controller
 															log_message('error', 'Existing Record: ' . json_encode($existingRecord));
 															// Update the ingredient entry
 															$this->fooditem_model->update_food_ingredient_updt($existingRecord->pro_detailsid, $ingredientData);
-															//$this->fooditem_model->update_food_ingredient_updt($existingRecord, $updatedId, $variantIds[$key], $ingredientData);
 														} else {
 															// If no existing record, insert new ingredient entry
-															//log_message('error', '============== ');
-															//log_message('error', 'New Data: ' . json_encode($ingredientData));
+															log_message('error', '============== ');
+															log_message('error', 'New Data: ' . json_encode($ingredientData));
 															//$this->fooditem_model->create_food_ingredient_updt($ingredientData);
 														}
 													}
