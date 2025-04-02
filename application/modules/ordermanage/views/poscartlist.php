@@ -90,7 +90,7 @@ if ($cart = $this->cart->contents()) { ?>
       ?> 
       <div class="row">
         <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;">
-          <button class="btn btn-success">Apply</button>
+          <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>);">Apply</button>
         </div>
       </div>     
       </div>
@@ -120,6 +120,19 @@ if ($cart = $this->cart->contents()) { ?>
         $iteminfo = $this->ordermodel->getiteminfo($item['pid']);
 
         $itemprice = $item['price'] * $item['qty'];
+        //Fetching add-on prices
+        $this->db->select('SUM(add_ons.price) AS mod_total_price');
+        $this->db->from('add_ons');
+        $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+        $this->db->where('cart_selected_modifiers.menu_id',$item['pid']);
+        $this->db->where('cart_selected_modifiers.is_active', 1);
+        $q = $this->db->get();
+        $modTotalPrice = $q->row();
+        // echo "mod_total_price: ".$modTotalPrice->mod_total_price;
+        // if ($modTotalPrice->mod_total_price > 0) {
+        //   $itemprice+=$modTotalPrice->mod_total_price;
+        // }
+        $itemprice+=$modTotalPrice->mod_total_price;
         $mypdiscountprice = 0;
         if (!empty($taxinfos)) {
           $tx = 0;
@@ -203,12 +216,41 @@ if ($cart = $this->cart->contents()) { ?>
                                       }
                                       ?>
                                       <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
-                                      <?php if (count($modifiers)>0): ?>
+                                      <?php 
+                                      //Fetching modifier groups information from the database
+                                      $this->db->select('modifier_groups.*,menu_add_on.*');
+                                      $this->db->from('modifier_groups');
+                                      $this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+                                      $this->db->where('menu_add_on.menu_id', $item['pid']);
+                                      $this->db->where('menu_add_on.is_active', 1);
+                                      $query = $this->db->get();
+                                      $modifiers = $query->result();
+                                      $this->db->select('add_ons.add_on_name, add_ons.price');
+                                      $this->db->from('add_ons');
+                                      $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+                                      $this->db->where('cart_selected_modifiers.menu_id',$pid);
+                                      $this->db->where('cart_selected_modifiers.is_active', 1);
+                                      $q1 = $this->db->get();
+                                      $selectedModsForCart = $q1->result();
+                                      if (count($modifiers)>0): ?>
                                       <br />
-                                      <a class="" onclick="itemModifiers(<?=$item['pid'];?>)" title="Click to Choose Modifiers">
-                                        <small class="modCheck">Modifiers</small>
+                                      <a class="" onclick="itemModifiers(<?=$item['pid'];?>,'<?=$item['rowid'];?>')" title="Click to Choose Modifiers">
+                                        <!-- <small class="modCheck" id="cartModToggle_<?=$item['pid'];?>">Choose Modifiers <?php if($modTotalPrice->mod_total_price > 0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$modTotalPrice->mod_total_price;?>) <?php endif; ?></small> -->
+                                        <small class="modCheck" id="cartModToggle_<?=$item['pid'];?>">Choose Modifiers</small>
+                                        <?php
+                                        if (count($selectedModsForCart)>0):
+                                          foreach ($selectedModsForCart as $smk => $smv):
+                                        ?>
+                                            <br />
+                                          <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+                                        <?php 
+                                          endforeach;
+                                        endif;
+                                        ?>
                                       </a>
-                                      <?php endif; ?>
+                                      <?php 
+                                      endif; 
+                                      ?>
                                       </th>
           <td>
             <?php echo $item['size']; ?>
@@ -265,6 +307,7 @@ if (!empty($this->cart->contents())) {
 $multiplletaxvalue = htmlentities(serialize($multiplletax));
 ?>
 <input name="subtotal" id="subtotal" type="hidden" value="<?php echo $subtotal; ?>" />
+<input name="settingVatValue" id="settingVatValue" type="hidden" value="<?php echo $settinginfo->vat; ?>" />
 <input name="totalitem" id="totalitem" type="hidden" value="<?php echo $totalitem; ?>" />
 <input name="multiplletaxvalue" id="multiplletaxvalue" type="hidden" value="<?php echo $multiplletaxvalue; ?>" />
 <input name="tvat" type="hidden" value="<?php echo $calvat; ?>" id="tvat" />

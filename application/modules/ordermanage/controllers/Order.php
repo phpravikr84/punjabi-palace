@@ -698,7 +698,7 @@ class Order extends MX_Controller
 
 				if (!empty($adonsarray)) {
 					$aids = $addonsid;
-					$aqty = trim($finaladdonsqty, ',');;
+					$aqty = trim($finaladdonsqty, ',');
 					$aname = $adonsname;
 					$aprice = $adonsunitprice;
 					$atprice = $finaladdonspr;
@@ -859,6 +859,7 @@ class Order extends MX_Controller
 	public function posaddmodifier()
 	{
 		$id = $this->input->post('pid');
+		$tr_row_id = $this->input->post('tr_row_id');
 		$data['totalvarient'] = $this->input->post('totalvarient', true);
 		$data['customqty'] = $this->input->post('customqty', true);
 		$settinginfo = $this->order_model->settinginfo();
@@ -875,7 +876,67 @@ class Order extends MX_Controller
 		$this->db->where('menu_add_on.is_active', 1);
 		$query = $this->db->get();
 		$modifiers = $query->result();
+		$data['modifiers']   = $modifiers;
+		//Fetching selected modifiers information from the database
+		$this->db->select('cart_selected_modifiers.*');
+		$this->db->from('cart_selected_modifiers');
+		$this->db->where('cart_selected_modifiers.menu_id',$id);
+		$this->db->where('cart_selected_modifiers.is_active',1);
+		$q2 = $this->db->get();
+		$selectedMods = $q2->result();
+		$data['pid']   = $id;
+		$data['tr_row_id']   = $tr_row_id;
+		$data['selectedMods']   = $selectedMods;
 		$this->load->view('ordermanage/posaddmodifier', $data);
+	}
+
+	public function cartmodifiersave()
+	{
+		$pid = $this->input->post('pid');
+		$tr_row_id = $this->input->post('tr_row_id');
+		$mods = json_decode($_POST['mods'], true);
+		$modTotalPrice=0.00;
+		if (count($mods)>0) {
+			$this-> db-> where('menu_id', $mods[0]['pid']);
+    		$this-> db-> delete('cart_selected_modifiers');
+			foreach ($mods as $mi => $mv) {
+				$data = [
+					'menu_id' => $mv['pid'],
+					'add_on_id' => $mv['mid'],
+					'modifier_groupid' => $mv['mgid'],
+					'tr_row_id' => $tr_row_id,
+					'is_active' => 1,
+					'created_at' => date("Y-m-d H:i:s")
+				];
+				$this->db->insert('cart_selected_modifiers',$data);
+				//Fetching add-on prices
+				$this->db->select('SUM(add_ons.price) AS mod_total_price');
+				$this->db->from('add_ons');
+				$this->db->where('add_ons.add_on_id',$mv['mid']);
+				$q = $this->db->get();
+				$modTotalPriceRes = $q->row();
+				$modTotalPrice+= $modTotalPriceRes->mod_total_price;
+				// echo "<pre>";
+				// print_r($modTotalPrice);
+				// echo "modTotalPrice: ".$modTotalPrice->mod_total_price;
+				// echo "</pre>";
+				// exit;
+			}
+		}
+		$d['pid'] = $pid;
+		$d['mods'] = $mods;
+		$d['modTotalPrice'] = $modTotalPrice;
+		$settinginfo = $this->order_model->settinginfo();
+		$d['settinginfo'] = $settinginfo;
+		$d['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		$d['taxinfos'] = $this->taxchecking();
+		$d['module'] = "ordermanage";
+		$d['page']   = "posmodifiersave";
+		$this->load->view('ordermanage/posmodifiersave', $d);
+		// echo "<pre>";
+		// print_r($d);
+		// echo "</pre>";
+		// exit;
 	}
 
 	public function cartclear()
@@ -897,6 +958,8 @@ class Order extends MX_Controller
 			'qty'     => 0
 		);
 		$this->cart->update($data);
+		$this-> db-> where('tr_row_id', $rowid);
+		$this-> db-> delete('cart_selected_modifiers');
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -920,7 +983,7 @@ class Order extends MX_Controller
 				$this->permission->method('ordermanage', 'create')->redirect();
 				$logData = array(
 					'action_page'         => display('add_new_order'),
-					'action_done'     	 => "Insert Data",
+					'action_done'     	  => "Insert Data",
 					'remarks'             => "Item New Order Created",
 					'user_name'           => $this->session->userdata('fullname'),
 					'entry_date'          => date('Y-m-d H:i:s'),
@@ -974,6 +1037,33 @@ class Order extends MX_Controller
 					$this->session->set_flashdata('message', display('save_successfully'));
 					$customer = $this->order_model->customerinfo($customerid);
 
+					//Inserting Modifiers from the cart
+					// if ($cart = $this->cart->contents()) {
+					// 	if (count($cart)>0) {
+					// 		foreach ($cart as $ck => $cv) {
+					// 			$this->db->select('cart_selected_modifiers.*');
+					// 			$this->db->from('cart_selected_modifiers');
+					// 			$this->db->where('cart_selected_modifiers.tr_row_id',$cv['rowid']);
+					// 			$q=$this->db->get();
+					// 			$res1=$q->result();
+					// 			if (count($res1)>0) {
+					// 				foreach ($res1 as $cmk => $cmv) {
+					// 					$d1=[
+					// 						'menu_id' => $cmv['menu_id'],
+					// 						'add_on_id' => $cmv['add_on_id'],
+					// 						'modifier_groupid' => $cmv['modifier_groupid'],
+					// 						'order_id' => $orderid,
+					// 						'is_active' => 1,
+					// 						'created_at' => date('Y-m-d H:i:s')
+					// 					];
+					// 					$this->db->insert('ordered_menu_item_modifiers',$d1);
+					// 				}
+					// 			}
+					// 			$this-> db-> where('tr_row_id', $cv['rowid']);
+					// 			$this-> db-> delete('cart_selected_modifiers');
+					// 		}
+					// 	}
+					// }
 					$this->cart->destroy();
 
 					if ($paymentsatus == 5) {
@@ -1330,7 +1420,32 @@ class Order extends MX_Controller
 							$this->order_model->insert_data('tbl_customerpoint', $pointstable2);
 						}
 					}
-
+					if ($cart = $this->cart->contents()) {
+						if (count($cart)>0) {
+							foreach ($cart as $ck => $cv) {
+								$this->db->select('cart_selected_modifiers.*');
+								$this->db->from('cart_selected_modifiers');
+								$this->db->where('cart_selected_modifiers.tr_row_id',$cv['rowid']);
+								$q=$this->db->get();
+								$res1=$q->result();
+								if (count($res1)>0) {
+									foreach ($res1 as $cmk => $cmv) {
+										$d1=[
+											'menu_id' => $cmv->menu_id,
+											'add_on_id' => $cmv->add_on_id,
+											'modifier_groupid' => $cmv->modifier_groupid,
+											'order_id' => $orderid,
+											'is_active' => 1,
+											'created_at' => date('Y-m-d H:i:s')
+										];
+										$this->db->insert('ordered_menu_item_modifiers',$d1);
+									}
+								}
+								$this-> db-> where('tr_row_id', $cv['rowid']);
+								$this-> db-> delete('cart_selected_modifiers');
+							}
+						}
+					}
 					$this->cart->destroy();
 					if ($paymentsatus == 5) {
 						redirect('ordermanage/order/paymentgateway/' . $orderid . '/' . $paymentsatus);

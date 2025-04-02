@@ -352,7 +352,7 @@ function addtocartitem2(pid, id, type) {
 
 function removecart(rid) {
     var geturl = basicinfo.baseurl+'hungry/removetocart';
-    var dataString = "rowid=" + rid+'&csrf_test_name='+basicinfo.csrftokeng;
+    var dataString = "rowid=" + rid+'&csrf_test_name='+basicinfo.csrftokeng; 
     $.ajax({
         type: "POST",
         url: geturl,

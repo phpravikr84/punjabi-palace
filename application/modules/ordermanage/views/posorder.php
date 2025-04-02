@@ -1,8 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/modules/ordermanage/assets/css/posordernew.css'); ?>">
 <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/postop.js'); ?>" type="text/javascript"></script>
 <?php
@@ -466,9 +465,9 @@ foreach ($scan as $file) {
   <div class="card">
     <div class="card-header">Choose Modifiers</div>
     <div class="card-body" id="sideMfContainer">
-        <h6>Some Content</h6>
+      <h6>Some Content</h6>
     </div>
-</div>
+  </div>
 </div>
 <input name="csrfres" id="csrfresarvation" type="hidden" value="<?php echo $this->security->get_csrf_token_name(); ?>" />
 <input name="csrfhash" id="csrfhashresarvation" type="hidden" value="<?php echo $this->security->get_csrf_hash(); ?>" />
@@ -482,8 +481,8 @@ foreach ($scan as $file) {
             <a href="javascript:void(0);" class="maindashboard" onclick="openNav()">☰ Modifiers</a>
           </li>
           <li><a href="<?php echo base_url() ?>dashboard/home" class="maindashboard"><svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.44618 16.1752C7.44618 16.6294 7.82502 16.9976 8.29233 16.9976C8.75963 16.9976 9.13848 16.6294 9.13848 16.1752H7.44618ZM8.29233 13.7286L7.4468 13.6971C7.44639 13.7077 7.44618 13.7181 7.44618 13.7286H8.29233ZM11 11.2832L10.9702 12.1051C10.9901 12.1057 11.0099 12.1057 11.0298 12.1051L11 11.2832ZM13.7077 13.7286H14.5538C14.5538 13.7181 14.5536 13.7077 14.5533 13.6971L13.7077 13.7286ZM12.8615 16.1752C12.8615 16.6294 13.2404 16.9976 13.7077 16.9976C14.175 16.9976 14.5538 16.6294 14.5538 16.1752H12.8615ZM8.29233 15.3527C7.82502 15.3527 7.44618 15.7209 7.44618 16.1752C7.44618 16.6294 7.82502 16.9976 8.29233 16.9976V15.3527ZM13.7077 16.9976C14.175 16.9976 14.5538 16.6294 14.5538 16.1752C14.5538 15.7209 14.175 15.3527 13.7077 15.3527V16.9976ZM8.29233 16.9976C8.75963 16.9976 9.13848 16.6294 9.13848 16.1752C9.13848 15.7209 8.75963 15.3527 8.29233 15.3527V16.9976ZM7.61541 16.1752V15.3527C7.60548 15.3527 7.59556 15.3528 7.58563 15.3531L7.61541 16.1752ZM3.55391 12.5059H2.70776C2.70776 12.5162 2.70796 12.5266 2.70837 12.537L3.55391 12.5059ZM4.40005 5.15196C4.40005 4.69774 4.02122 4.3295 3.55391 4.3295C3.0866 4.3295 2.70776 4.69774 2.70776 5.15196H4.40005ZM0.371038 6.25785C-0.0156291 6.5129 -0.116321 7.02436 0.14612 7.40027C0.408573 7.77608 0.934775 7.8739 1.32143 7.61883L0.371038 6.25785ZM4.0291 5.83248C4.41577 5.57737 4.51646 5.0659 4.25402 4.69007C3.99157 4.31424 3.46536 4.21636 3.07871 4.47146L4.0291 5.83248ZM3.07871 4.47146C2.69203 4.72653 2.59135 5.23798 2.85377 5.61383C3.1162 5.98968 3.64243 6.08755 4.0291 5.83248L3.07871 4.47146ZM9.43858 1.26995L8.97951 0.579053C8.9741 0.582453 8.96868 0.585907 8.96338 0.589427L9.43858 1.26995ZM12.5614 1.26995L13.0366 0.589427C13.0313 0.585907 13.0259 0.582453 13.0205 0.579053L12.5614 1.26995ZM17.9709 5.8325C18.3576 6.08757 18.8838 5.98968 19.1463 5.61383C19.4087 5.23798 19.3079 4.72651 18.9213 4.47144L17.9709 5.8325ZM13.7077 15.3527C13.2404 15.3527 12.8615 15.7209 12.8615 16.1752C12.8615 16.6294 13.2404 16.9976 13.7077 16.9976V15.3527ZM14.3846 16.1752L14.4144 15.3531C14.4044 15.3528 14.3945 15.3527 14.3846 15.3527V16.1752ZM18.4461 12.5059L19.2917 12.537C19.292 12.5266 19.2922 12.5162 19.2922 12.5059H18.4461ZM19.2922 5.15196C19.2922 4.69774 18.9134 4.3295 18.4461 4.3295C17.9788 4.3295 17.6 4.69774 17.6 5.15196H19.2922ZM20.6788 7.61784C21.0655 7.87292 21.5917 7.77488 21.854 7.39896C22.1163 7.02304 22.0155 6.51158 21.6287 6.25662L20.6788 7.61784ZM18.9213 4.47144C18.5345 4.21644 18.0082 4.31436 17.7458 4.69027C17.4835 5.06618 17.5842 5.57751 17.9709 5.8325L18.9213 4.47144ZM9.13848 16.1752V13.7286H7.44618V16.1752H9.13848ZM9.13791 13.76C9.17514 12.8118 9.99467 12.0716 10.9702 12.1051L11.0298 10.4611C9.12212 10.3959 7.51966 11.8431 7.4468 13.6971L9.13791 13.76ZM11.0298 12.1051C12.0053 12.0716 12.8249 12.8118 12.8621 13.76L14.5533 13.6971C14.4804 11.8431 12.8779 10.3959 10.9702 10.4611L11.0298 12.1051ZM12.8615 13.7286V16.1752H14.5538V13.7286H12.8615ZM8.29233 16.9976H13.7077V15.3527H8.29233V16.9976ZM8.29233 15.3527H7.61541V16.9976H8.29233V15.3527ZM7.58563 15.3531C5.88889 15.4113 4.46377 14.1237 4.39944 12.4747L2.70837 12.537C2.80803 15.0921 5.01618 17.0871 7.6452 16.9971L7.58563 15.3531ZM4.40005 12.5059V5.15196H2.70776V12.5059H4.40005ZM1.32143 7.61883L4.0291 5.83248L3.07871 4.47146L0.371038 6.25785L1.32143 7.61883ZM4.0291 5.83248L9.91377 1.95049L8.96338 0.589427L3.07871 4.47146L4.0291 5.83248ZM9.89764 1.96085C10.5687 1.53961 11.4313 1.53961 12.1024 1.96085L13.0205 0.579053C11.7906 -0.193018 10.2094 -0.193018 8.97951 0.579053L9.89764 1.96085ZM12.0862 1.95049L17.9709 5.8325L18.9213 4.47144L13.0366 0.589427L12.0862 1.95049ZM13.7077 16.9976H14.3846V15.3527H13.7077V16.9976ZM14.3548 16.9971C16.9838 17.0871 19.1919 15.0921 19.2917 12.537L17.6005 12.4747C17.5362 14.1237 16.1111 15.4113 14.4144 15.3531L14.3548 16.9971ZM19.2922 12.5059V5.15196H17.6V12.5059H19.2922ZM21.6287 6.25662L18.9213 4.47144L17.9709 5.8325L20.6788 7.61784L21.6287 6.25662Z" ></path>
-                            </svg>Home</a></li>
+                <path d="M7.44618 16.1752C7.44618 16.6294 7.82502 16.9976 8.29233 16.9976C8.75963 16.9976 9.13848 16.6294 9.13848 16.1752H7.44618ZM8.29233 13.7286L7.4468 13.6971C7.44639 13.7077 7.44618 13.7181 7.44618 13.7286H8.29233ZM11 11.2832L10.9702 12.1051C10.9901 12.1057 11.0099 12.1057 11.0298 12.1051L11 11.2832ZM13.7077 13.7286H14.5538C14.5538 13.7181 14.5536 13.7077 14.5533 13.6971L13.7077 13.7286ZM12.8615 16.1752C12.8615 16.6294 13.2404 16.9976 13.7077 16.9976C14.175 16.9976 14.5538 16.6294 14.5538 16.1752H12.8615ZM8.29233 15.3527C7.82502 15.3527 7.44618 15.7209 7.44618 16.1752C7.44618 16.6294 7.82502 16.9976 8.29233 16.9976V15.3527ZM13.7077 16.9976C14.175 16.9976 14.5538 16.6294 14.5538 16.1752C14.5538 15.7209 14.175 15.3527 13.7077 15.3527V16.9976ZM8.29233 16.9976C8.75963 16.9976 9.13848 16.6294 9.13848 16.1752C9.13848 15.7209 8.75963 15.3527 8.29233 15.3527V16.9976ZM7.61541 16.1752V15.3527C7.60548 15.3527 7.59556 15.3528 7.58563 15.3531L7.61541 16.1752ZM3.55391 12.5059H2.70776C2.70776 12.5162 2.70796 12.5266 2.70837 12.537L3.55391 12.5059ZM4.40005 5.15196C4.40005 4.69774 4.02122 4.3295 3.55391 4.3295C3.0866 4.3295 2.70776 4.69774 2.70776 5.15196H4.40005ZM0.371038 6.25785C-0.0156291 6.5129 -0.116321 7.02436 0.14612 7.40027C0.408573 7.77608 0.934775 7.8739 1.32143 7.61883L0.371038 6.25785ZM4.0291 5.83248C4.41577 5.57737 4.51646 5.0659 4.25402 4.69007C3.99157 4.31424 3.46536 4.21636 3.07871 4.47146L4.0291 5.83248ZM3.07871 4.47146C2.69203 4.72653 2.59135 5.23798 2.85377 5.61383C3.1162 5.98968 3.64243 6.08755 4.0291 5.83248L3.07871 4.47146ZM9.43858 1.26995L8.97951 0.579053C8.9741 0.582453 8.96868 0.585907 8.96338 0.589427L9.43858 1.26995ZM12.5614 1.26995L13.0366 0.589427C13.0313 0.585907 13.0259 0.582453 13.0205 0.579053L12.5614 1.26995ZM17.9709 5.8325C18.3576 6.08757 18.8838 5.98968 19.1463 5.61383C19.4087 5.23798 19.3079 4.72651 18.9213 4.47144L17.9709 5.8325ZM13.7077 15.3527C13.2404 15.3527 12.8615 15.7209 12.8615 16.1752C12.8615 16.6294 13.2404 16.9976 13.7077 16.9976V15.3527ZM14.3846 16.1752L14.4144 15.3531C14.4044 15.3528 14.3945 15.3527 14.3846 15.3527V16.1752ZM18.4461 12.5059L19.2917 12.537C19.292 12.5266 19.2922 12.5162 19.2922 12.5059H18.4461ZM19.2922 5.15196C19.2922 4.69774 18.9134 4.3295 18.4461 4.3295C17.9788 4.3295 17.6 4.69774 17.6 5.15196H19.2922ZM20.6788 7.61784C21.0655 7.87292 21.5917 7.77488 21.854 7.39896C22.1163 7.02304 22.0155 6.51158 21.6287 6.25662L20.6788 7.61784ZM18.9213 4.47144C18.5345 4.21644 18.0082 4.31436 17.7458 4.69027C17.4835 5.06618 17.5842 5.57751 17.9709 5.8325L18.9213 4.47144ZM9.13848 16.1752V13.7286H7.44618V16.1752H9.13848ZM9.13791 13.76C9.17514 12.8118 9.99467 12.0716 10.9702 12.1051L11.0298 10.4611C9.12212 10.3959 7.51966 11.8431 7.4468 13.6971L9.13791 13.76ZM11.0298 12.1051C12.0053 12.0716 12.8249 12.8118 12.8621 13.76L14.5533 13.6971C14.4804 11.8431 12.8779 10.3959 10.9702 10.4611L11.0298 12.1051ZM12.8615 13.7286V16.1752H14.5538V13.7286H12.8615ZM8.29233 16.9976H13.7077V15.3527H8.29233V16.9976ZM8.29233 15.3527H7.61541V16.9976H8.29233V15.3527ZM7.58563 15.3531C5.88889 15.4113 4.46377 14.1237 4.39944 12.4747L2.70837 12.537C2.80803 15.0921 5.01618 17.0871 7.6452 16.9971L7.58563 15.3531ZM4.40005 12.5059V5.15196H2.70776V12.5059H4.40005ZM1.32143 7.61883L4.0291 5.83248L3.07871 4.47146L0.371038 6.25785L1.32143 7.61883ZM4.0291 5.83248L9.91377 1.95049L8.96338 0.589427L3.07871 4.47146L4.0291 5.83248ZM9.89764 1.96085C10.5687 1.53961 11.4313 1.53961 12.1024 1.96085L13.0205 0.579053C11.7906 -0.193018 10.2094 -0.193018 8.97951 0.579053L9.89764 1.96085ZM12.0862 1.95049L17.9709 5.8325L18.9213 4.47144L13.0366 0.589427L12.0862 1.95049ZM13.7077 16.9976H14.3846V15.3527H13.7077V16.9976ZM14.3548 16.9971C16.9838 17.0871 19.1919 15.0921 19.2917 12.537L17.6005 12.4747C17.5362 14.1237 16.1111 15.4113 14.4144 15.3531L14.3548 16.9971ZM19.2922 12.5059V5.15196H17.6V12.5059H19.2922ZM21.6287 6.25662L18.9213 4.47144L17.9709 5.8325L20.6788 7.61784L21.6287 6.25662Z"></path>
+              </svg>Home</a></li>
           <li class="active"> <a href="#home" role="tab" data-toggle="tab" title="<?php echo display('nw_order') ?>" id="fhome" autofocus class="home newtab" onclick="giveselecttab(this)"><i class="fa fa-plus smallview"></i> <span class="responsiveview"><?php echo display('nw_order'); ?></span> </a></li>
           <li><a href="#profile" role="tab" data-toggle="tab" class="ongord newtab" id="ongoingorder" onclick="giveselecttab(this)"><i class="fa fa-hourglass-start smallview"></i> <span class="responsiveview"><?php echo display('ongoingorder'); ?></span> </a> </li>
           <li><a href="#kitchen" role="tab" data-toggle="tab" class="kstatus newtab" id="kitchenorder" onclick="giveselecttab(this)"><i class="fa fa-coffee smallview"></i> <span class="responsiveview"><?php echo display('kitchen_status'); ?></span> </a> </li>
@@ -742,6 +741,7 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="cartupdateturl" value="<?php echo base_url("ordermanage/order/poscartupdate") ?>" />
                 <input name="url" type="hidden" id="addonexsurl" value="<?php echo base_url("ordermanage/order/posaddonsmenu") ?>" />
                 <input name="url" type="hidden" id="modifierurl" value="<?php echo base_url("ordermanage/order/posaddmodifier") ?>" />
+                <input name="url" type="hidden" id="cartmodifiersaveurl" value="<?php echo base_url("ordermanage/order/cartmodifiersave") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
                 <div class="row">
@@ -785,9 +785,9 @@ foreach ($scan as $file) {
                                   <div class="listcatnew cat-nav pos-category" onclick="getslcategory(<?php echo $category->CategoryID; ?>)"><?php echo $category->Name; ?></div>
                               <?php  }
                               } ?>
-                            <!-- Banquet Menu URL [start] -->
-                            <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory()">Banquet</div>
-                            <!-- Banquet Menu URL [end] -->
+                              <!-- Banquet Menu URL [start] -->
+                              <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory()">Banquet</div>
+                              <!-- Banquet Menu URL [end] -->
                             </div>
                           </div>
                         </div>
@@ -855,7 +855,7 @@ foreach ($scan as $file) {
                               <div class="d-flex">
                                 <?php $cusid = 1;
                                 echo form_dropdown('customer_name', $customerlist, (!empty($cusid) ? $cusid : null), 'class="postform resizeselect form-control" id="customer_name" required') ?>
-                                <button type="button" class="btn btn-primary ml-l" aria-hidden="true" data-toggle="modal"  data-bs-toggle="tooltip" data-bs-placement="top" id="add_cust" data-target="#client-info"><i class="ti-plus"></i></button>
+                                <button type="button" class="btn btn-primary ml-l" aria-hidden="true" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" id="add_cust" data-target="#client-info"><i class="ti-plus"></i></button>
                               </div>
                             </div>
                             <div class="col-md-6 form-group">
@@ -874,18 +874,19 @@ foreach ($scan as $file) {
                                 <?php
                                 if ($possetting->tablemaping == 1) {
                                 ?>
-                                  <div class="col-md-2 form-group pl-0" id="tblsecp"  data-tip="Persons">
+                                  <div class="col-md-2 form-group pl-0" id="tblsecp" data-tip="Persons">
                                     <label for="store_id" class="wpr_100 person"> <span class="color-red">&nbsp;&nbsp;</span></label>
-                                    <!-- <input name="" type="button" class="btn btn-primary  form-control" onclick="showTablemodal()" id="table_person" value="<?php //echo display('person'); ?>"> -->
-                                    <button type="button" 
-                                      class="btn btn-primary d-flex justify-content-center align-items-center" 
+                                    <!-- <input name="" type="button" class="btn btn-primary  form-control" onclick="showTablemodal()" id="table_person" value="<?php //echo display('person'); 
+                                                                                                                                                                ?>"> -->
+                                    <button type="button"
+                                      class="btn btn-primary d-flex justify-content-center align-items-center"
                                       onclick="showTablemodal()"
-                                      data-bs-toggle="tooltip" 
-                                      data-bs-placement="top" 
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
                                       id="table_person">
                                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                                          <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
-                                          <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"></path>
+                                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+                                        <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"></path>
                                       </svg>
                                     </button>
 
@@ -945,7 +946,16 @@ foreach ($scan as $file) {
                                 $pdiscount = 0;
                                 $multiplletax = array();
                                 $this->load->model('ordermanage/order_model', 'ordermodel');
-                                if ($cart = $this->cart->contents()) { ?>
+                                if ($cart = $this->cart->contents()) {
+                                  // foreach ($cart as $ck => $cv) {
+                                  //   echo "Row ID: ".$cv['rowid'];
+                                  // }
+                                  // echo "<pre>";
+                                  // print_r($cart);
+                                  // echo "</pre><br>";
+                                  // echo "Cart Count: ". count($cart);
+                                  // exit;
+                                ?>
                                   <table class="table table-bordered wpr_100" border="1" id="addinvoice">
                                     <thead>
                                       <tr>
@@ -963,9 +973,23 @@ foreach ($scan as $file) {
                                       $subtotal = 0;
                                       $ptdiscount = 0;
                                       $pvat = 0;
+                                      $addOnTotal = 0;
                                       foreach ($cart as $item) {
                                         $iteminfo = $this->ordermodel->getiteminfo($item['pid']);
                                         $itemprice = $item['price'] * $item['qty'];
+                                        //Fetching add-on prices
+                                        $this->db->select('SUM(add_ons.price) AS mod_total_price');
+                                        $this->db->from('add_ons');
+                                        $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+                                        $this->db->where('cart_selected_modifiers.menu_id', $item['pid']);
+                                        $this->db->where('cart_selected_modifiers.is_active', 1);
+                                        $q = $this->db->get();
+                                        $modTotalPrice = $q->row();
+                                        // echo "mod_total_price: ".$modTotalPrice->mod_total_price;
+                                        // if ($modTotalPrice->mod_total_price > 0) {
+                                        //   $itemprice+=$modTotalPrice->mod_total_price;
+                                        // }
+                                        $itemprice += $modTotalPrice->mod_total_price;
                                         $mypdiscountprice = 0;
                                         if (!empty($taxinfos)) {
                                           $tx = 0;
@@ -1007,45 +1031,84 @@ foreach ($scan as $file) {
                                           $itemprice = $itemprice;
                                         }
                                         $totalamount = $totalamount + $nittotal;
-                                        $subtotal = $subtotal + $nittotal + $item['price'] * $item['qty'];
+                                        $subtotal = $subtotal + $nittotal + $itemprice;
                                         $i++;
                                       ?>
                                         <tr id="<?php echo $i; ?>">
-                                          <th id="product_name_MFU4E"><?php echo  $item['name'];
-                                                                      if (!empty($item['addonsid'])) {
-                                                                        echo "<br>";
-                                                                        echo $item['addonname'];
-                                                                        if (!empty($taxinfos)) {
+                                          <th id="product_name_MFU4E">
+                                            <?php echo  $item['name'];
+                                            if (!empty($item['addonsid'])) {
+                                              echo "<br>";
+                                              echo $item['addonname'];
+                                              if (!empty($taxinfos)) {
 
-                                                                          $addonsarray = explode(',', $item['addonsid']);
-                                                                          $addonsqtyarray = explode(',', $item['addonsqty']);
-                                                                          $getaddonsdatas = $this->db->select('*')->from('add_ons')->where_in('add_on_id', $addonsarray)->get()->result_array();
-                                                                          $addn = 0;
-                                                                          foreach ($getaddonsdatas as $getaddonsdata) {
-                                                                            $tax = 0;
+                                                $addonsarray = explode(',', $item['addonsid']);
+                                                $addonsqtyarray = explode(',', $item['addonsqty']);
+                                                $getaddonsdatas = $this->db->select('*')->from('add_ons')->where_in('add_on_id', $addonsarray)->get()->result_array();
+                                                $addn = 0;
+                                                foreach ($getaddonsdatas as $getaddonsdata) {
+                                                  $tax = 0;
 
-                                                                            foreach ($taxinfos as $taxainfo) {
+                                                  foreach ($taxinfos as $taxainfo) {
 
-                                                                              $fildaname = 'tax' . $tax;
+                                                    $fildaname = 'tax' . $tax;
 
-                                                                              if (!empty($getaddonsdata[$fildaname])) {
+                                                    if (!empty($getaddonsdata[$fildaname])) {
 
-                                                                                $avatcalc = ($getaddonsdata['price'] * $addonsqtyarray[$addn]) * $getaddonsdata[$fildaname] / 100;
-                                                                                $multiplletax[$fildaname] = $multiplletax[$fildaname] + $avatcalc;
-                                                                              } else {
-                                                                                $avatcalc = ($getaddonsdata['price'] * $addonsqtyarray[$addn]) * $taxainfo['default_value'] / 100;
-                                                                                $multiplletax[$fildaname] = $multiplletax[$fildaname] + $avatcalc;
-                                                                              }
+                                                      $avatcalc = ($getaddonsdata['price'] * $addonsqtyarray[$addn]) * $getaddonsdata[$fildaname] / 100;
+                                                      $multiplletax[$fildaname] = $multiplletax[$fildaname] + $avatcalc;
+                                                    } else {
+                                                      $avatcalc = ($getaddonsdata['price'] * $addonsqtyarray[$addn]) * $taxainfo['default_value'] / 100;
+                                                      $multiplletax[$fildaname] = $multiplletax[$fildaname] + $avatcalc;
+                                                    }
 
-                                                                              $pvat = $pvat + $avatcalc;
+                                                    $pvat = $pvat + $avatcalc;
 
-                                                                              $tax++;
-                                                                            }
-                                                                            $addn++;
-                                                                          }
-                                                                        }
-                                                                      }
-                                                                      ?><a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a></th>
+                                                    $tax++;
+                                                  }
+                                                  $addn++;
+                                                }
+                                              }
+                                            }
+                                            //Fetching modifier groups information from the database
+                                            $this->db->select('modifier_groups.*,menu_add_on.*');
+                                            $this->db->from('modifier_groups');
+                                            $this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+                                            $this->db->where('menu_add_on.menu_id', $item['pid']);
+                                            $this->db->where('menu_add_on.is_active', 1);
+                                            $query = $this->db->get();
+                                            $modifiers = $query->result();
+                                            // echo "<pre>";
+                                            // print_r($modifiers);
+                                            // echo "</pre><br />";
+                                            // echo "Query: ".$this->db->last_query();
+                                            ?>
+                                            <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+                                            <?php if (count($modifiers) > 0): ?>
+                                              <br />
+                                              <a class="" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
+                                                <!-- <small class="modCheck" id="cartModToggle_<?= $item['pid']; ?>">Choose Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small> -->
+                                                <small class="modCheck" id="cartModToggle_<?= $item['pid']; ?>">Choose Modifiers</small>
+                                                <?php
+                                                $this->db->select('add_ons.add_on_name, add_ons.price');
+                                                $this->db->from('add_ons');
+                                                $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+                                                $this->db->where('cart_selected_modifiers.menu_id', $item['pid']);
+                                                $this->db->where('cart_selected_modifiers.is_active', 1);
+                                                $q1 = $this->db->get();
+                                                $selectedModsForCart = $q1->result();
+                                                if (count($selectedModsForCart) > 0):
+                                                  foreach ($selectedModsForCart as $smk => $smv):
+                                                ?>
+                                                    <br />
+                                                    <small class="modCheck" style="font-style: italic;font-weight: 400;"><?= $smv->add_on_name; ?> (<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $smv->price; ?>)</small>
+                                                <?php
+                                                  endforeach;
+                                                endif;
+                                                ?>
+                                              </a>
+                                            <?php endif; ?>
+                                          </th>
                                           <td><?php echo $item['size']; ?></td>
                                           <td width=""><?php if ($currency->position == 1) {
                                                           echo $currency->curr_icon;
@@ -1156,7 +1219,7 @@ foreach ($scan as $file) {
                                           echo "(%)";
                                         } ?>
                                         :</label>
-                                      <div class="col-sm-4 p-0"> 
+                                      <div class="col-sm-4 p-0">
                                         <input type="text" id="service_charge" onkeyup="calculatetotal();" class="form-control text-right mb-5" value="<?php echo $servicecharge; ?>" name="service_charge" placeholder="0.00" />
                                       </div>
                                     </td>
@@ -1224,7 +1287,7 @@ foreach ($scan as $file) {
     <div class="modal-footer"> </div>
   </div>
 </div>
-<?php 
+<?php
 $scan1 = scandir('application/modules/');
 $getdisc = "";
 foreach ($scan1 as $file) {
@@ -1237,20 +1300,24 @@ foreach ($scan1 as $file) {
 //$this->load->view('include/pos_script');
 ?>
 <script>
-function openNav() {
-  document.getElementById("mySidebar").style.width = "50%";
-  $("#mySidebar").find(".closebtn").css({position:"relative"});
-  setTimeout(() => {
-    $("#mySidebar").find(".closebtn").css({position:"absolute"});
-    $("#mySidebar").find(".closebtn").addClass("animate__animated animate__fadeInLeft");
-  }, 100);
-  // document.getElementById("main").style.marginLeft = "100%";
-}
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "100%";
+    $("#mySidebar").find(".closebtn").css({
+      position: "relative"
+    });
+    setTimeout(() => {
+      $("#mySidebar").find(".closebtn").css({
+        position: "absolute"
+      });
+      $("#mySidebar").find(".closebtn").addClass("animate__animated animate__fadeInLeft");
+    }, 100);
+    // document.getElementById("main").style.marginLeft = "100%";
+  }
 
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  // document.getElementById("main").style.marginLeft= "0";
-}
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    // document.getElementById("main").style.marginLeft= "0";
+  }
 </script>
 <script src="<?php echo base_url('ordermanage/order/possettingjs') ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('ordermanage/order/quickorderjs') ?>" type="text/javascript"></script>
