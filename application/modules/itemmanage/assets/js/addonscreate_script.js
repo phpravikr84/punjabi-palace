@@ -75,7 +75,7 @@ $(document).ready(function () {
                             if (response.status === 'success' && response.data.length > 0) {
                                 var $formhtml = '<div class="hidden-fields-container">';
                                 response.data.forEach(function (item) {
-                                    var adjustedQty = item.qty * 1.2; // Example adjustment logic
+                                    var adjustedQty = item.qty * 0.6; // Example adjustment logic
                                     $formhtml += `
                                         <input type="hidden" name="foodid[]" value="${item.foodid}"/>
                                         <input type="hidden" name="ingr[]" value="${item.ingredientid}"/>
