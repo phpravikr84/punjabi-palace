@@ -2001,6 +2001,7 @@ class Item_food extends MX_Controller
 			/****************end*********************/
 
 			if (empty($this->input->post('ProductsID'))) {
+				// new
 				$this->permission->method('itemmanage', 'create')->redirect();
 				
 				$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
@@ -2087,6 +2088,7 @@ class Item_food extends MX_Controller
 					// Add Variants
 					// Check if variant exists
 					if ($this->input->post('variant_name', true)) {
+						//varient insert [start]
 						$variantNames = $this->input->post('variant_name', true);
 						$prices = $this->input->post('price', true);
 						$takeawayPrices = $this->input->post('takeaway_price', true);
@@ -2197,6 +2199,7 @@ class Item_food extends MX_Controller
 					redirect('itemmanage/item_food/create_new');
 				}
 			} else {
+				//edit
 				$this->permission->method('itemmanage', 'update')->redirect();
 				if (empty($img)) {
 					$img = $this->input->post('old_image', true);

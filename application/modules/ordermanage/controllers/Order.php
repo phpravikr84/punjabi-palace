@@ -912,7 +912,7 @@ class Order extends MX_Controller
 				// echo "</pre><br />";
 				// echo "modifier_id: ".$modIngrdId->add_on_name;
 				// exit();
-				if ($modIngrdId->modifier_id == 0) {
+				if ($modIngrdId->modifier_id == 0 && $modIngrdId->is_food_item == 1) {
 					// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have any ingredients!!!');
 					// redirect("ordermanage/order/pos_invoice");
 					// exit;
@@ -921,6 +921,7 @@ class Order extends MX_Controller
 					exit;
 				} else {
 					if($modIngrdId->is_food_item == 2){
+						//ingredients
 						$this->db->select('stock_qty');
 						$this->db->from('ingredients');
 						$this->db->where('id', $modIngrdId->modifier_id);
