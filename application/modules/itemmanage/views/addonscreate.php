@@ -204,6 +204,9 @@ if (!empty($addonsinfo)) {
         border-top: 1px solid #e5e5e5;
         padding-top: 15px;
     }
+    .closeBtnIng{
+        cursor: pointer;
+    }
     
 </style>
 
