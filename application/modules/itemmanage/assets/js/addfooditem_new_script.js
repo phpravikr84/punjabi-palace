@@ -204,7 +204,7 @@ $(document).ready(function () {
     // Add new row dynamically
     $(document).on("click", ".add-item", function () {
         var variantId = $(this).data("variant"); // Get the correct variant ID
-        alert('hi'+variantId);
+      
         var myurl = baseurl + 'itemmanage/item_food/ingredientlistdropdowns';
         var csrf = $('#csrfhashresarvation').val();
         var rowCount = $("#addPurchaseItem_" + variantId + " tr").length + 1; // Count rows to maintain sequential numbering
