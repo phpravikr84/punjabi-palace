@@ -2390,6 +2390,10 @@ class Item_food extends MX_Controller
 								} else {
 									// Update Existing Variant
 									$this->foodvarient_model->update_varient_multi($variantIds[$key], $variantData);
+									// echo '<pre>';
+									// print_r($_POST);
+									// echo '</pre>';
+									// exit;
 
 									// Insert & Update in Production Details if BOM is enabled
 									if ($this->input->post('is_bom', true)) {
@@ -2432,6 +2436,8 @@ class Item_food extends MX_Controller
 																$this->fooditem_model->update_food_ingredient_updt($existingRecord[$index]->pro_detailsid, $ingredientData);
 															} else {
 																// Insert only if ingredient does not exist for this variant
+																//Insert new Ingredient;
+																log_message('error', 'Add Ingredient in update: ' . json_encode($ingredientData));
 																$this->fooditem_model->create_food_ingredient_updt($ingredientData);
 															}
 														}

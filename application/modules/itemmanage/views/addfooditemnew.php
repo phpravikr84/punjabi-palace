@@ -407,7 +407,7 @@
                                                         <th class="text-center"></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="addPurchaseItem">
+                                                <tbody id="addPurchaseItem_<?php echo $variantNm; ?>">
                                                     <?php foreach ($recipes as $recipe) { ?>
                                                         <tr>
                                                             <td class="span3 supplier">
@@ -440,14 +440,9 @@
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
-                                                    <tr>
-                                                        <td>
-                                                            <button type="button" class="btn btn-success add-item" data-variant="<?php echo $variantNm; ?>">Add More Item</button>
-                                                        </td>
-                                                    </tr>
                                                 </tbody>
                                             </table>
-                                            
+                                            <button type="button" class="btn btn-success add-item" data-variant="<?php echo $variantNm; ?>">Add More Item</button>
                                         </div>
                                     <?php } ?>
                                 <?php } ?>

@@ -179,7 +179,7 @@ $(document).ready(function () {
                                                         <input type="hidden" name="unitid_${variantId}[]" id="unitid_${variantId}_1" class="form-control text-right">
                                                         <input type="text" name="unitname_${variantId}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
                                                     </td>
-                                                    <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
+                                                    <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -238,7 +238,7 @@ $(document).ready(function () {
                                 <input type="hidden" name="unitid_${variantId}[]" id="unitid_${rowId}" class="form-control text-right">
                                 <input type="text" name="unitname_${variantId}[]" id="unitname_${rowId}" class="form-control text-right" readonly>
                             </td>
-                            <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
+                            <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
                         </tr>
                     `;
 
@@ -308,6 +308,15 @@ function calprice(rowId){
     else{
         var toatalval = $('#unit-total_'+rowId).val();
         var qty = $('#product_quantity_'+rowId).val();
+        var totalval = parseFloat(toatalval);
+        if (isNaN(totalval) || totalval <= 0) {
+            totalval = 0;
+        }
+
+        var qty = parseFloat(qty);
+        if (isNaN(qty) || qty <= 0) {
+            qty = 0;
+        }
         var nitcost=parseFloat(toatalval)*parseFloat(qty);
         $('#product_price_'+rowId).val(parseFloat(nitcost).toFixed(3));
 
@@ -473,7 +482,7 @@ $(document).ready(function(){
                                                                 <input type="hidden" name="unitid_${variantId}[]" id="unitid_${variantId}_1" class="form-control text-right">
                                                                 <input type="text" name="unitname_${variantId}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
                                                             </td>
-                                                            <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
+                                                            <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
