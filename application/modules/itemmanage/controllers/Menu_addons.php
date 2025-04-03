@@ -627,8 +627,8 @@ class Menu_addons extends MX_Controller {
         //     return;
         // }
 
-        //$data = $this->addons_model->get_production_details($foodid);
-		$data =  $this->addons_model->get_ingredient_details($foodid);
+        $data = $this->addons_model->get_production_details($foodid);
+		//$data =  $this->addons_model->get_ingredient_details($foodid);
         if (!empty($data)) {
             echo json_encode(['status' => 'success', 'data' => $data]);
         } else {
