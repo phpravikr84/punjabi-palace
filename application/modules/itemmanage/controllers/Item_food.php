@@ -2413,11 +2413,11 @@ class Item_food extends MX_Controller
 													foreach ($foodIngredients as $index => $foodIngredient) {
 														if (!empty($foodIngredient)) {
 															// Check if ingredient exists for this variant
-															$existingRecord = $this->fooditem_model->get_production_details_byvariants($updatedId, $insertedVariantId);
+															$existingRecord = $this->fooditem_model->get_production_details_byvariantsnew($updatedId, $variantIds[$key]);
 
 															$ingredientData = [
 																'foodid' => $updatedId,
-																'pvarientid' => $insertedVariantId,
+																'pvarientid' => $variantIds[$key],
 																'ingredientid' => $foodIngredient,
 																'qty' => $qtyList[$index] ?? 0,
 																'unitid' => $unitIdList[$index] ?? null,
@@ -2426,14 +2426,14 @@ class Item_food extends MX_Controller
 																'createdby' => $this->session->userdata('id'),
 															];
 
-															log_message('error', 'Updating Ingredient: ' . json_encode($ingredientData));
-																$this->fooditem_model->update_food_ingredient_updt($updatedId, $insertedVariantId, $ingredientData);
-
-															// if ($existingRecord) {
-															// 	//Update Ingredient
-															// 	log_message('error', 'Updating Ingredient: ' . json_encode($ingredientData));
-															// 	$this->fooditem_model->update_food_ingredient_updt($updatedId, $insertedVariantId, $ingredientData);
-															// }
+															if ($existingRecord) {
+																//Update Ingredient
+																log_message('error', 'Updating Ingredient: ' . json_encode($ingredientData));
+																$this->fooditem_model->update_food_ingredient_updt($existingRecord[$index]->pro_detailsid, $ingredientData);
+															} else {
+																// Insert only if ingredient does not exist for this variant
+																$this->fooditem_model->create_food_ingredient_updt($ingredientData);
+															}
 														}
 													}
 												}

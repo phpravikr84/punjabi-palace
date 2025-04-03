@@ -394,15 +394,15 @@
                                         <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                             <h4>Recipe for - <?php echo $variantName; ?></h4>
                                             <!-- Variant Id -->
-                                             <?php $variantId = strtolower(str_replace(' ', '_', $variantName)); ?>
+                                             <?php $variantNm = strtolower(str_replace(' ', '_', $variantName)); ?>
                                             <!-- Variant ID End -->
-                                            <input type="hidden" name="recipe_for[]" value="<?php echo $variantId; ?>"/>
-                                            <table class="table table-bordered table-hover" id="purchaseTable">
+                                            <input type="hidden" name="recipe_for[]" value="<?php echo $variantNm; ?>"/>
+                                            <table class="table table-bordered table-hover" id="recipeTable_<?php echo $variantNm; ?>">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center" width="20%"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
+                                                        <th class="text-center" width="200"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
                                                         <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
-                                                        <th class="text-center"><?php echo display('price');?> </th>
+                                                        <th class="text-center" style="display:none;"><?php echo display('price');?> </th>
                                                         <th class="text-center"><?php echo 'Unit'; ?> </th>
                                                         <th class="text-center"></th>
                                                     </tr>
@@ -411,10 +411,10 @@
                                                     <?php foreach ($recipes as $recipe) { ?>
                                                         <tr>
                                                             <td class="span3 supplier">
-                                                                <input type="hidden" name="variant_id_<?php echo $variantId; ?>[]" value="<?php echo $recipe->pvarientid;?>" >
-                                                                <input type="hidden" name="menu_id_<?php echo $variantId; ?>[]" value="<?php echo $productinfo['ProductsID'];?>" >
+                                                                <input type="hidden" name="variant_id_<?php echo $variantNm; ?>[]" value="<?php echo $recipe->pvarientid;?>" >
+                                                                <input type="hidden" name="menu_id_<?php echo $variantNm; ?>[]" value="<?php echo $productinfo['ProductsID'];?>" >
                                                                 <input type="hidden" id="unit-total_1" class="" />
-                                                                <select name="product_id_<?php echo $variantId; ?>[]" id="product_id_<?php echo $variantName; ?>" class="postform resizeselect form-control ingredient-selecteditview">
+                                                                <select name="product_id_<?php echo $variantNm; ?>[]" id="product_id_<?php echo $variantName; ?>" class="postform resizeselect form-control ingredient-selecteditview">
                                                                     <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
                                                                     <?php foreach ($ingrdientslist as $ingredient) { ?>
                                                                         <option value="<?php echo $ingredient->id;?>" data-ingredientid="<?php echo $ingredient->id;?>" data-title="<?php echo $ingredient->ingredient_name;?>" <?php echo ($recipe->ingredientid == $ingredient->id) ? 'selected' : ''; ?>>
@@ -424,15 +424,15 @@
                                                                 </select>
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_quantity_<?php echo $variantId; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
+                                                                <input type="text" name="product_quantity_<?php echo $variantNm;; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
+                                                            </td>
+                                                            <td class="text-right" style="display:none;">
+                                                                <input type="hidden" name="product_price_<?php echo $variantNm; ?>[]" class="form-control text-right">
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_price_<?php echo $variantId; ?>[]" class="form-control text-right">
-                                                            </td>
-                                                            <td class="text-right">
-                                                                <!-- <input type="hidden" id="unit-total_<?php echo $variantId; ?>_1" value="6"> -->
-                                                                <input type="hidden" name="unitid_<?php echo $variantId; ?>[]" id="unitid_<?php echo $variantName; ?>_1" class="form-control text-right" value="<?php echo $recipe->unitid; ?>">
-                                                                <input type="text" name="unitname_<?php echo $variantId; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
+                                                                <!-- <input type="hidden" id="unit-total_<?php echo $variantNm; ?>_1" value="6"> -->
+                                                                <input type="hidden" name="unitid_<?php echo $variantNm; ?>[]" id="unitid_<?php echo $variantName; ?>_1" class="form-control text-right" value="<?php echo $recipe->unitid; ?>">
+                                                                <input type="text" name="unitname_<?php echo $variantNm; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
                                                             </td>
                                                             <td class="text-center">
                                                             <input name="url" type="hidden" id="get_delrecipe" value="<?php echo base_url('itemmanage/item_food/delete_recipe_ingredient'); ?>" />
@@ -440,6 +440,11 @@
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
+                                                    <tr>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success add-item" data-variant="<?php echo $variantNm; ?>">Add More Item</button>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                             

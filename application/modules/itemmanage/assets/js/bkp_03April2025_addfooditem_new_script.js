@@ -204,7 +204,6 @@ $(document).ready(function () {
     // Add new row dynamically
     $(document).on("click", ".add-item", function () {
         var variantId = $(this).data("variant"); // Get the correct variant ID
-        alert('hi'+variantId);
         var myurl = baseurl + 'itemmanage/item_food/ingredientlistdropdowns';
         var csrf = $('#csrfhashresarvation').val();
         var rowCount = $("#addPurchaseItem_" + variantId + " tr").length + 1; // Count rows to maintain sequential numbering
@@ -410,6 +409,84 @@ $(document).ready(function () {
  * Modified Edit form When Edit Item
  */
 $(document).ready(function(){
+
+    // $("#saveEditVariantUpdt").on("click", function () {
+    //     $("#variantContainer .variant-rowedit").each(function () {
+    //         var variantName = $(this).find('input[name="variant_name[]"]').val().trim();
+    
+    //         if (variantName !== "") {
+    //             var variantId = variantName.replace(/\s+/g, '_').toLowerCase(); // Create a unique ID
+    
+    //             // Check if the recipe table for this variant already exists
+    //             if ($("#recipeTable_" + variantId).length === 0) {
+    //                 var myurl = baseurl + 'itemmanage/item_food/ingredientlistdropdowns';
+    //                 var csrf = $('#csrfhashresarvation').val();
+    
+    //                 $.ajax({
+    //                     type: "GET",
+    //                     url: myurl,
+    //                     data: { csrf_test_name: csrf },
+    //                     dataType: "json",
+    //                     success: function (response) {
+    //                         if (response.status === "success") {
+    //                             var options = '<option value="">Select Ingredients</option>';
+    //                             $.each(response.data, function (key, ingredient) {
+    //                                 options += `<option value="${ingredient.id}" data-title="${ingredient.ingredient_name}">${ingredient.ingredient_name}</option>`;
+    //                             });
+    
+    //                             var recipeTable = `
+    //                                 <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
+    //                                     <h4>Recipe for - ${variantName}</h4>
+    //                                     <table class="table table-bordered" id="recipeTable_${variantId}">
+    //                                         <thead>
+    //                                             <tr>
+    //                                                 <th>Item Information</th>
+    //                                                 <th>Qty</th>
+    //                                                 <th>Price</th>
+    //                                                 <th>Unit</th>
+    //                                                 <th>Action</th>
+    //                                             </tr>
+    //                                         </thead>
+    //                                         <tbody id="addPurchaseItem_${variantId}">
+    //                                             <tr id="row_${variantId}_1">
+    //                                                 <td>
+    //                                                     <select name="product_id[]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
+    //                                                         ${options}
+    //                                                     </select>
+    //                                                 </td>
+    //                                                 <td><input type="text" name="product_quantity[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+    //                                                 <td class="text-right">
+    //                                                     <input type="text" name="product_price[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
+    //                                                 </td>
+    //                                                 <td class="text-right">
+    //                                                     <input type="hidden" id="unit-total_${variantId}_1" class="" />
+    //                                                     <input type="hidden" name="unitid[]" id="unitid_${variantId}_1" class="form-control text-right">
+    //                                                     <input type="text" name="unitname[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
+    //                                                 </td>
+    //                                                 <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
+    //                                             </tr>
+    //                                         </tbody>
+    //                                     </table>
+    //                                     <button type="button" class="btn btn-success add-item" data-variant="${variantId}">Add More Item</button>
+    //                                 </div>
+    //                             `;
+
+    //                             $("#recipeContainer").after(recipeTable);
+    //                         } else {
+    //                             alert("Failed to fetch ingredients.");
+    //                         }
+    //                     },
+    //                     error: function () {
+    //                         alert("Error fetching ingredients.");
+    //                     }
+    //                 });
+    //             }
+    //         }
+    //     });
+    // });
+
+
+
 
     $(document).ready(function () {
         $("#saveEditVariantUpdt").on("click", function () {
