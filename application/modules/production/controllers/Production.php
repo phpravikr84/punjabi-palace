@@ -315,7 +315,7 @@ class Production extends MX_Controller {
 	   $data['page']   = "addproduction";   
 	   echo Modules::run('template/layout', $data); 
     }
-	public function ingredientcheck(){
+	public function ingredientcheck(){ 
 		$foodid=$this->input->post('foodid');
 		$vid=$this->input->post('vid');
 		$qty=$this->input->post('qty',true);

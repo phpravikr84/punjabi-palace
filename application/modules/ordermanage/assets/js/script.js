@@ -449,6 +449,11 @@ function posaddonsfoodtocart(pid, id, more = null) {
   var myurl = geturl;
   var mysound = baseurl + "assets/";
   var audio = ["beep-08b.mp3"];
+  let varientHtml = `
+  <input name="selProdSid_${pid}" id="selProdSid_${pid}" type="hidden" value="${sizeid}" />
+  <input name="selProdQty_${pid}" id="selProdQty_${pid}" type="hidden" value="${checkqty}" />
+  `;
+  $("#addinvoice").append(varientHtml);
   new Audio(mysound + audio[0]).play();
   if (typeof updateid == "undefined") {
     /*check production*/

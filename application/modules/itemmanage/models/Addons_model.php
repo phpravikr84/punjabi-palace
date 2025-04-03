@@ -358,7 +358,7 @@ public function count_menuaddons()
 	}
 
 	/** Get Productioin Details */
-	public function get_production_details($foodid) {
+	public function get_production_details($foodid) { 
         $this->db->select('pd.foodid, pd.ingredientid, pd.qty, pd.unitid, pd.unitname, ing.ingredient_name');
         $this->db->from('production_details pd');
         $this->db->join('ingredients ing', 'pd.ingredientid = ing.id', 'left');

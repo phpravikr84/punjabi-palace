@@ -897,9 +897,80 @@ class Order extends MX_Controller
 		$mods = json_decode($_POST['mods'], true);
 		$modTotalPrice=0.00;
 		if (count($mods)>0) {
-			$this-> db-> where('menu_id', $mods[0]['pid']);
-    		$this-> db-> delete('cart_selected_modifiers');
+			// $this-> db-> where('menu_id', $mods[0]['pid']);
+    		// $this-> db-> delete('cart_selected_modifiers');
 			foreach ($mods as $mi => $mv) {
+				//checking modifier stock [start]
+				$this->db->select('add_ons.modifier_id, add_ons.is_food_item, add_ons.add_on_name');
+				$this->db->from('add_ons');
+				$this->db->where('add_ons.add_on_id', $mv['mid']);
+		
+				$query = $this->db->get();
+				$modIngrdId = $query->row();
+				// echo "<pre>";
+				// print_r($modIngrdId);
+				// echo "</pre><br />";
+				// echo "modifier_id: ".$modIngrdId->add_on_name;
+				// exit();
+				if ($modIngrdId->modifier_id == 0) {
+					// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have any ingredients!!!');
+					// redirect("ordermanage/order/pos_invoice");
+					// exit;
+					$msg = 'The modifier doesn\'t have any ingredients!!!';
+					echo 420;
+					exit;
+				} else {
+					if($modIngrdId->is_food_item == 2){
+						$this->db->select('stock_qty');
+						$this->db->from('ingredients');
+						$this->db->where('id', $modIngrdId->modifier_id);
+
+						$q1 = $this->db->get();
+						$ingredQty = $q1->row();
+						if ($ingredQty->stock_qty < 0) {
+							// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient ingredients!!!');
+							// redirect("ordermanage/order/pos_invoice");
+							// exit;
+							$msg = 'The modifier doesn\'t have sufficient ingredients!!!';
+							echo 421;
+							exit;
+						}
+					} else {
+						if($modIngrdId->is_food_item == 1){
+							$this->db->select('ing.stock_qty, adding.modifier_ingr_adj_qty');
+							$this->db->from('ingredients ing');
+							$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'INNER');
+							$this->db->where('adding.modifier_foodid', $modIngrdId->modifier_id);
+
+							$q2 = $this->db->get();
+							$ingredStockQty = $q2->result();
+							if (count($ingredStockQty)>0) {
+								foreach ($ingredStockQty as $igsk => $igsv) {
+									if ($igsv->stock_qty < $igsv->modifier_ingr_adj_qty) {
+										// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient stock!!!');
+										// redirect("ordermanage/order/pos_invoice");
+										// exit;
+										$msg = 'The modifier doesn\'t have sufficient stock!!!';
+										echo 422;
+										exit;
+									}
+								}
+							} else {
+								// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' can\'t be added!!!');
+								// redirect("ordermanage/order/pos_invoice");
+								// exit;
+								$msg = 'The modifier can\'t be added!!!';
+								echo 423;
+								exit;
+							}
+						}
+					}
+				}
+				//checking modifier stock [end]
+				if ($mi==0) {
+					$this-> db-> where('menu_id', $mods[0]['pid']);
+    				$this-> db-> delete('cart_selected_modifiers');
+				}
 				$data = [
 					'menu_id' => $mv['pid'],
 					'add_on_id' => $mv['mid'],
@@ -959,6 +1030,7 @@ class Order extends MX_Controller
 		);
 		$this->cart->update($data);
 		$this-> db-> where('tr_row_id', $rowid);
+		$this-> db-> where('DATE(created_at)', date("Y-m-d"));
 		$this-> db-> delete('cart_selected_modifiers');
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
@@ -1420,6 +1492,7 @@ class Order extends MX_Controller
 							$this->order_model->insert_data('tbl_customerpoint', $pointstable2);
 						}
 					}
+					//Modifiers records are being added [start]
 					if ($cart = $this->cart->contents()) {
 						if (count($cart)>0) {
 							foreach ($cart as $ck => $cv) {
@@ -1439,6 +1512,64 @@ class Order extends MX_Controller
 											'created_at' => date('Y-m-d H:i:s')
 										];
 										$this->db->insert('ordered_menu_item_modifiers',$d1);
+										//Modifiers stock adjustment [start]
+										$this->db->select('add_ons.modifier_id, add_ons.is_food_item, add_ons.add_on_name');
+										$this->db->from('add_ons');
+										$this->db->where('add_ons.add_on_id', $cmv->add_on_id);
+								
+										$query = $this->db->get();
+										$modIngrdId = $query->row();
+										if($modIngrdId->is_food_item == 2){
+											// $this->db->select('stock_qty');
+											// $this->db->from('ingredients');
+											// $this->db->where('id', $modIngrdId->modifier_id);
+											$this->db->select('ing.stock_qty, adding.modifier_ingr_adj_qty');
+											$this->db->from('ingredients ing');
+											$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'INNER');
+											$this->db->where('adding.modifier_ingr_id', $modIngrdId->modifier_id);
+
+											$q1 = $this->db->get();
+											$ingredQty = $q1->row();
+											$prev_qty = $ingredQty->stock_qty;
+											$updated_qty = ($ingredQty->stock_qty - $ingredQty->modifier_ingr_adj_qty);
+											$upData = [
+												'stock_qty' => $updated_qty
+											];
+											$this->db->where('id',$modIngrdId->modifier_id)
+												->update('ingredients',$upData);
+										} else {
+											if($modIngrdId->is_food_item == 1){
+												$this->db->select('ing.id, ing.stock_qty, adding.modifier_ingr_adj_qty');
+												$this->db->from('ingredients ing');
+												$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'INNER');
+												$this->db->where('adding.modifier_foodid', $modIngrdId->modifier_id);
+
+												$q2 = $this->db->get();
+												$ingredStockQty = $q2->result();
+												if (count($ingredStockQty)>0) {
+													foreach ($ingredStockQty as $igsk => $igsv) {
+														// if ($igsv->stock_qty < $igsv->modifier_ingr_adj_qty) {
+														// 	$this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient stock!!!');
+														// 	redirect("ordermanage/order/pos_invoice");
+														// 	exit;
+														// }
+														$prev_qty = $igsv->stock_qty;
+														$updated_qty = ($igsv->stock_qty - $igsv->modifier_ingr_adj_qty);
+														$upData = [
+															'stock_qty' => $updated_qty
+														];
+														$this->db->where('id',$igsv->id)
+															->update('ingredients',$upData);
+													}
+												} 
+												else {
+													$this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' can\'t be added!!!');
+													redirect("ordermanage/order/pos_invoice");
+													exit;
+												}
+											}
+										}
+										//Modifiers stock adjustment [end]
 									}
 								}
 								$this-> db-> where('tr_row_id', $cv['rowid']);
@@ -1446,6 +1577,7 @@ class Order extends MX_Controller
 							}
 						}
 					}
+					//Modifiers records are being added [end]
 					$this->cart->destroy();
 					if ($paymentsatus == 5) {
 						redirect('ordermanage/order/paymentgateway/' . $orderid . '/' . $paymentsatus);

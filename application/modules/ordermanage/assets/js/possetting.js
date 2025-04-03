@@ -341,6 +341,35 @@
           });
       }
   });
+//   function checkproduction(foodid, vid, servingqty) {
+//     var myurl = $("#production_url").val();
+//     var csrf = $("#csrfhashresarvation").val();
+//     var dataString =
+//       "foodid=" +
+//       foodid +
+//       "&vid=" +
+//       vid +
+//       "&qty=" +
+//       servingqty +
+//       "&csrf_test_name=" +
+//       csrf;
+  
+//     var check = true;
+//     $.ajax({
+//       type: "POST",
+//       url: myurl,
+//       async: false,
+//       global: false,
+//       data: dataString,
+//       success: function (data) {
+//         if (data != 1) {
+//           alert(data);
+//           check = false;
+//         }
+//       },
+//     });
+//     return check;
+//   }
   function itemModifiers(pid,tr_row_id) {
     if (pid == "" || pid == 0) {
         alert("No Item Found !");
@@ -388,6 +417,22 @@ function ApplyModifierSelect(pid=0,tr_row_id) {
         data: dataString,
         success: function(data) {
             console.log("Modifier save data: " + data);
+            if (data == 420) {
+                alert("The modifier doesn't have any ingredients!!!");
+                return false;
+            }
+            if (data == 421) {
+                alert("The modifier doesn't have sufficient ingredients!!!");
+                return false;
+            }
+            if (data == 422) {
+                alert("The modifier doesn't have sufficient stock!!!");
+                return false;
+            }
+            if (data == 423) {
+                alert("The modifier can't be added!!!");
+                return false;
+            }
             $("#addfoodlist").append(data);
             closeNav();
             var modTotalPrice = $('#modTotalPrice_'+pid).val();

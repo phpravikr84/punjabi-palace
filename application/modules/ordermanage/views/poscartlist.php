@@ -118,7 +118,9 @@ if ($cart = $this->cart->contents()) { ?>
       $pdiscount = 0;
       foreach ($cart as $item) {
         $iteminfo = $this->ordermodel->getiteminfo($item['pid']);
-
+        // echo "<pre>";
+        // print_r($iteminfo);
+        // echo "</pre>";
         $itemprice = $item['price'] * $item['qty'];
         //Fetching add-on prices
         $this->db->select('SUM(add_ons.price) AS mod_total_price');

@@ -599,7 +599,7 @@ class Production_model extends CI_Model
 					if (empty($productiondetails)) {
 						$isavailable = false;
 						return 'Please set Ingredients!!first!!!' . $groupitem->items;
-						break;
+						break; 
 					} else {
 						foreach ($productiondetails as $productiondetail) {
 							$r_stock = $productiondetail->qty * ($foodqty * $groupitem->item_qty);
