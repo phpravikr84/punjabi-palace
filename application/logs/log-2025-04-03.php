@@ -256,3 +256,105 @@ ERROR - 2025-04-03 20:19:30 --> Severity: Warning --> file_get_contents(): php_n
 ERROR - 2025-04-03 20:19:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
 ERROR - 2025-04-03 20:19:30 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
 ERROR - 2025-04-03 20:19:30 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 20:25:37 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2566
+ERROR - 2025-04-03 20:25:37 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2566
+ERROR - 2025-04-03 20:25:37 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\Item_food.php 2566
+ERROR - 2025-04-03 20:25:37 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:25:37 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:25:37 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 20:25:37 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 20:55:58 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:55:58 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:55:58 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:55:59 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:55:59 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:55:59 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 20:55:59 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 20:56:14 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:56:14 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:56:14 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:56:15 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:56:15 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:56:15 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 20:56:15 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 12:56:26 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:56:26 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:56:26 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:56:26 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 20:57:43 --> Severity: Warning --> foreach() argument must be of type array|object, bool given C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-04-03 20:57:43 --> Severity: Warning --> Undefined variable $json_product C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-04-03 20:57:50 --> Severity: Warning --> foreach() argument must be of type array|object, bool given C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-04-03 20:57:50 --> Severity: Warning --> Undefined variable $json_product C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-04-03 20:58:35 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:58:35 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:58:35 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:58:36 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:58:36 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:58:36 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 20:58:36 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 12:58:38 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:38 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:40 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:40 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 20:58:47 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:58:47 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:58:47 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 20:58:47 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 12:58:48 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:48 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:50 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:50 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 20:58:52 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:58:52 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:58:52 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:58:53 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:58:53 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:58:53 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 20:58:53 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 12:58:54 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:54 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:57 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:58:57 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 20:59:30 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:59:30 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:59:30 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 20:59:30 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:59:30 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 20:59:30 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 20:59:30 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 12:59:32 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:59:32 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:59:34 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 12:59:34 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 21:00:30 --> Severity: Warning --> foreach() argument must be of type array|object, bool given C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-04-03 21:00:30 --> Severity: Warning --> Undefined variable $json_product C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-04-03 21:00:34 --> Severity: Warning --> foreach() argument must be of type array|object, bool given C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-04-03 21:00:34 --> Severity: Warning --> Undefined variable $json_product C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-04-03 21:00:52 --> Severity: Warning --> foreach() argument must be of type array|object, bool given C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-04-03 21:00:52 --> Severity: Warning --> Undefined variable $json_product C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-04-03 21:01:07 --> Severity: Warning --> foreach() argument must be of type array|object, bool given C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-04-03 21:01:07 --> Severity: Warning --> Undefined variable $json_product C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-04-03 21:01:11 --> Severity: Warning --> foreach() argument must be of type array|object, bool given C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 206
+ERROR - 2025-04-03 21:01:11 --> Severity: Warning --> Undefined variable $json_product C:\xampp\htdocs\punjabi-palace\application\modules\production\controllers\Production.php 209
+ERROR - 2025-04-03 21:01:39 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 21:01:39 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 21:01:39 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 21:01:40 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 21:01:40 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 21:01:40 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 21:01:40 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 13:01:42 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 13:01:42 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 13:01:44 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 13:01:44 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 21:02:23 --> Severity: Warning --> Undefined variable $config C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 21:02:23 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 21:02:23 --> Severity: Warning --> Undefined variable $page C:\xampp\htdocs\punjabi-palace\application\modules\itemmanage\controllers\item_food.php 2647
+ERROR - 2025-04-03 21:02:23 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 21:02:23 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 21:02:23 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 21:02:23 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 13:02:25 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 13:02:25 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 13:02:27 --> 404 Page Not Found: /index
+ERROR - 2025-04-03 13:02:27 --> 404 Page Not Found: /index
