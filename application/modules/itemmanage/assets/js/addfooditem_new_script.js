@@ -259,6 +259,26 @@ $(document).ready(function () {
         checkproduct_list(ingredientId, rowId); // Pass ingredient ID and row ID to function
     });
 
+    //Handle onchange event dynamically for ingredient Selection Edit View
+    function checkproduct_list_editview(ingredientId, sl) {
+        var geturl = $("#url").val();
+    
+        if (ingredientId == 0 || ingredientId == '') {
+            alert('Please select Ingredient !');
+            $('#product_id_' + sl).val("").trigger('change');
+            return false;
+        }
+    
+        var product_id = $('#product_id_' + sl).val();
+        var product_name = $('#product_id_' + sl + ' option:selected').data('title');
+    }
+    $(document).on("change", ".ingredient-selecteditview", function () {
+        var ingredientId = $(this).val(); // Get selected ingredient ID
+        var rowId = $(this).data("row-id"); // Get row ID
+        checkproduct_list_editview(ingredientId, rowId); // Pass ingredient ID and row ID to function
+    });
+
+
     //Handle Quantity Change
     $(document).on("keyup", ".quantityCheck", function () {
         var rowId = $(this).data("row-id"); // Get row ID
@@ -503,7 +523,7 @@ $(document).ready(function(){
                                         var recipeTable = `
                                             <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                                 <h4>Recipe for - ${variantName}</h4>
-                                                <input type="hidden" name="recipe_for[]" value="${variantName}"/>
+                                                <input type="hidden" name="recipe_for[]" value="${variantId}"/>
                                                 <table class="table table-bordered" id="recipeTable_${variantId}">
                                                     <thead>
                                                         <tr>
@@ -517,18 +537,18 @@ $(document).ready(function(){
                                                     <tbody id="addPurchaseItem_${variantId}">
                                                         <tr id="row_${variantId}_1">
                                                             <td>
-                                                                <select name="product_id_${variantName}[]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
+                                                                <select name="product_id_${variantId}[]" id="product_id_${variantId}_1" class="postform resizeselect form-control ingredient-select" data-row-id="${variantId}_1">
                                                                     ${options}
                                                                 </select>
                                                             </td>
-                                                            <td><input type="text" name="product_quantity_${variantName}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                            <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_price_${variantName}[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
+                                                                <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
                                                             </td>
                                                             <td class="text-right">
                                                                 <input type="hidden" id="unit-total_${variantId}_1" />
-                                                                <input type="hidden" name="unitid_${variantName}[]" id="unitid_${variantId}_1" class="form-control text-right">
-                                                                <input type="text" name="unitname_${variantName}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
+                                                                <input type="hidden" name="unitid_${variantId}[]" id="unitid_${variantId}_1" class="form-control text-right">
+                                                                <input type="text" name="unitname_${variantId}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
                                                             </td>
                                                             <td><button class="btn btn-danger remove-item" type="button">Delete</button></td>
                                                         </tr>

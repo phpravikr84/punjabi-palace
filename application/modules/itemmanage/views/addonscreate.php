@@ -59,7 +59,7 @@ if (!empty($addonsinfo)) {
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Price </label>
-                                    <input name="addonsprice[]" class="form-control" type="text" placeholder="Price" value="<?php echo $addon->price; ?>">
+                                    <input name="addonsprice[]" class="form-control" type="text" placeholder="Price" value="<?php echo $addon->price; ?>" <?php echo $addon->is_comp==1 ? 'disabled' : ''; ?>>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label>Min </label>
@@ -167,7 +167,7 @@ if (!empty($addonsinfo)) {
                     <div class="col-lg-12">
                         <div class="form-group text-right mt-3">
                             <button type="reset" class="btn btn-primary"><?php echo display('reset'); ?></button>
-                            <button type="submit" class="btn btn-success"><?php echo display('Add'); ?></button>
+                            <button type="submit" class="btn btn-success"><?php echo isset($group_id) && !empty($group_id) ? 'Update' : display('Add'); ?></button>
                         </div>
                     </div>
                 </div>

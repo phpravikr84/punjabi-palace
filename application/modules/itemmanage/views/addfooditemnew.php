@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label>Kitchen Name</label>
                                 <select name="kitchen" class="form-control" required="">
-                                    <option value="" selected="selected"><?php echo display('kitchen_name') ?></option> 
+                                    <!-- <option value="" selected="selected"><?php echo display('kitchen_name') ?></option>  -->
                                     <?php foreach($allkitchen as $kitchen){?>
                                     <option value="<?php echo $kitchen->kitchenid;?>" class='bolden' <?php if(isset($productinfo) && $productinfo['kitchenid']==$kitchen->kitchenid){echo "selected";}?>><strong><?php echo $kitchen->kitchen_name;?></strong></option>
                                     <?php } ?>
@@ -306,19 +306,24 @@
                                             <input type="text" name="variant_name[]" class="form-control" placeholder="Variant Name" value="<?php echo $variant->variantName; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
-                                            <input type="number" name="price[]" class="form-control" placeholder="Price" value="<?php echo $variant->price; ?>">
+                                            <small>Price</small>
+                                            <input type="text" name="price[]" class="form-control" placeholder="Price" value="<?php echo $variant->price; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
-                                            <input type="number" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price" value="<?php echo $variant->takeaway_price; ?>">
+                                            <small>Takeaway</small>
+                                            <input type="text" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price" value="<?php echo $variant->takeaway_price; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
-                                            <input type="number" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price" value="<?php echo $variant->uber_eats_price; ?>">
+                                            <small>Ubereats</small>
+                                            <input type="text" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price" value="<?php echo $variant->uber_eats_price; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
-                                            <input type="number" name="doordash_price[]" class="form-control" placeholder="Doordash Price" value="<?php echo $variant->doordash_price; ?>">
+                                            <small>Doordash</small>
+                                            <input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price" value="<?php echo $variant->doordash_price; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
-                                            <input type="number" name="weborder_price[]" class="form-control" placeholder="Weborder Price" value="<?php echo $variant->web_order_price; ?>">
+                                            <small>Weborder</small>
+                                            <input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price" value="<?php echo $variant->web_order_price; ?>">
                                         </div>
                                         <div class="col-md-2 mb-2">
                                         <input type="hidden" id="get_deletemodifier" value="<?php echo base_url('/itemmanage/item_food/delete_variant'); ?>" />
@@ -340,12 +345,12 @@
                                 <div id="variantContainer">
                                     <div class="row variant-row mb-2">
                                         <div class="col-md-12 mb-2"><input type="text" name="variant_name[]" class="form-control" placeholder="Variant Name" value="Regular"></div>
-                                        <div class="col-md-2 mb-2"><input type="number" name="price[]" class="form-control" placeholder="Price"></div>
-                                        <div class="col-md-2 mb-2"><input type="number" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price"></div>
-                                        <div class="col-md-2 mb-2"><input type="number" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price"></div>
-                                        <div class="col-md-2 mb-2"><input type="number" name="doordash_price[]" class="form-control" placeholder="Doordash Price"></div>
-                                        <div class="col-md-2 mb-2"><input type="number" name="weborder_price[]" class="form-control" placeholder="Weborder Price"></div>
-                                        <div class="col-md-2 mb-2"><button type="button" class="removeRowVariant"><span class="glyphicon glyphicon-remove-circle"></span></button></div>
+                                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control" placeholder="Price"></div>
+                                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price"></div>
+                                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price"></div>
+                                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price"></div>
+                                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price"></div>
+                                        <div class="col-md-2 mb-2"><small>Weborder</small><button type="button" class="removeRowVariant"><span class="glyphicon glyphicon-remove-circle"></span></button></div>
                                     </div>
                                 </div>
                                 <button type="button" id="addMore" class="btn btn-primary mt-3">Add More</button>
@@ -388,7 +393,10 @@
                                     <?php foreach ($groupedRecipes as $variantName => $recipes) { ?>
                                         <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                             <h4>Recipe for - <?php echo $variantName; ?></h4>
-                                            <input type="hidden" name="recipe_for[]" value="<?php echo $variantName; ?>"/>
+                                            <!-- Variant Id -->
+                                             <?php $variantId = strtolower(str_replace(' ', '_', $variantName)); ?>
+                                            <!-- Variant ID End -->
+                                            <input type="hidden" name="recipe_for[]" value="<?php echo $variantId; ?>"/>
                                             <table class="table table-bordered table-hover" id="purchaseTable">
                                                 <thead>
                                                     <tr>
@@ -403,10 +411,10 @@
                                                     <?php foreach ($recipes as $recipe) { ?>
                                                         <tr>
                                                             <td class="span3 supplier">
-                                                                <input type="hidden" name="variant_id_<?php echo $variantName; ?>[]" value="<?php echo $recipe->pvarientid;?>" >
-                                                                <input type="hidden" name="menu_id_<?php echo $variantName; ?>[]" value="<?php echo $productinfo['ProductsID'];?>" >
+                                                                <input type="hidden" name="variant_id_<?php echo $variantId; ?>[]" value="<?php echo $recipe->pvarientid;?>" >
+                                                                <input type="hidden" name="menu_id_<?php echo $variantId; ?>[]" value="<?php echo $productinfo['ProductsID'];?>" >
                                                                 <input type="hidden" id="unit-total_1" class="" />
-                                                                <select name="product_id_<?php echo $variantName; ?>[]" id="product_id_<?php echo $variantName; ?>" class="postform resizeselect form-control">
+                                                                <select name="product_id_<?php echo $variantId; ?>[]" id="product_id_<?php echo $variantName; ?>" class="postform resizeselect form-control ingredient-selecteditview">
                                                                     <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
                                                                     <?php foreach ($ingrdientslist as $ingredient) { ?>
                                                                         <option value="<?php echo $ingredient->id;?>" data-ingredientid="<?php echo $ingredient->id;?>" data-title="<?php echo $ingredient->ingredient_name;?>" <?php echo ($recipe->ingredientid == $ingredient->id) ? 'selected' : ''; ?>>
@@ -416,15 +424,15 @@
                                                                 </select>
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_quantity_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
+                                                                <input type="text" name="product_quantity_<?php echo $variantId; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_price_<?php echo $variantName; ?>[]" class="form-control text-right">
+                                                                <input type="text" name="product_price_<?php echo $variantId; ?>[]" class="form-control text-right">
                                                             </td>
                                                             <td class="text-right">
-                                                                <!-- <input type="hidden" id="unit-total_<?php echo $variantName; ?>_1" value="6"> -->
-                                                                <input type="hidden" name="unitid_<?php echo $variantName; ?>[]" id="unitid_<?php echo $variantName; ?>_1" class="form-control text-right" value="<?php echo $recipe->unitid; ?>">
-                                                                <input type="text" name="unitname_<?php echo $variantName; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
+                                                                <!-- <input type="hidden" id="unit-total_<?php echo $variantId; ?>_1" value="6"> -->
+                                                                <input type="hidden" name="unitid_<?php echo $variantId; ?>[]" id="unitid_<?php echo $variantName; ?>_1" class="form-control text-right" value="<?php echo $recipe->unitid; ?>">
+                                                                <input type="text" name="unitname_<?php echo $variantId; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
                                                             </td>
                                                             <td class="text-center">
                                                             <input name="url" type="hidden" id="get_delrecipe" value="<?php echo base_url('itemmanage/item_food/delete_recipe_ingredient'); ?>" />
@@ -653,6 +661,9 @@ document.getElementById("isoffer").addEventListener("change", function () {
     .bg-gray-orphane {
     background-color: #f3f3f3;
     padding:10px;
+    }
+    .removeEditRowVariant {
+    margin-top: 24px;
     }
 </style>
 <?php 
