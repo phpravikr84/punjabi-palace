@@ -181,3 +181,23 @@ ERROR - 2025-04-03 17:44:36 --> Severity: Warning --> Undefined variable $title2
 ERROR - 2025-04-03 17:44:36 --> Severity: Warning --> Undefined variable $setting C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
 ERROR - 2025-04-03 17:44:36 --> Severity: Warning --> Attempt to read property "language" on null C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
 ERROR - 2025-04-03 17:44:36 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 17:54:48 --> Severity: Warning --> Undefined variable $setting C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 21
+ERROR - 2025-04-03 17:54:48 --> Severity: Warning --> Attempt to read property "site_align" on null C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 21
+ERROR - 2025-04-03 17:54:48 --> Severity: Warning --> Undefined variable $setting C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 57
+ERROR - 2025-04-03 17:54:48 --> Severity: Warning --> Attempt to read property "site_align" on null C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 57
+ERROR - 2025-04-03 17:54:49 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 17:54:49 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 17:54:49 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 17:54:49 --> Severity: Warning --> Undefined variable $setting C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
+ERROR - 2025-04-03 17:54:49 --> Severity: Warning --> Attempt to read property "language" on null C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
+ERROR - 2025-04-03 17:54:49 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
+ERROR - 2025-04-03 17:55:16 --> Severity: Warning --> Undefined variable $setting C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 21
+ERROR - 2025-04-03 17:55:16 --> Severity: Warning --> Attempt to read property "site_align" on null C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 21
+ERROR - 2025-04-03 17:55:16 --> Severity: Warning --> Undefined variable $setting C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 57
+ERROR - 2025-04-03 17:55:16 --> Severity: Warning --> Attempt to read property "site_align" on null C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\head.php 57
+ERROR - 2025-04-03 17:55:17 --> Severity: Warning --> file_get_contents(): php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 17:55:17 --> Severity: Warning --> file_get_contents(https://update.adzguru.co/punjabi_palace/autoupdate/update_info): Failed to open stream: php_network_getaddresses: getaddrinfo for update.adzguru.co failed: No such host is known.  C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 19
+ERROR - 2025-04-03 17:55:17 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 69
+ERROR - 2025-04-03 17:55:17 --> Severity: Warning --> Undefined variable $setting C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
+ERROR - 2025-04-03 17:55:17 --> Severity: Warning --> Attempt to read property "language" on null C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 107
+ERROR - 2025-04-03 17:55:17 --> Severity: Warning --> Undefined variable $title2 C:\xampp\htdocs\punjabi-palace\application\modules\template\views\includes\header.php 131
