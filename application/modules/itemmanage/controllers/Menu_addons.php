@@ -132,6 +132,7 @@ class Menu_addons extends MX_Controller {
 							'maxqty'          => isset($maxqty[$key]) ? intval($maxqty[$key]) : 0,
 							'is_comp'         => isset($complementary[$key]) && $complementary[$key] == 'on' ? 1 : 0,
 							'modifier_id'     => isset($modifierId[$key]) ? intval($modifierId[$key]) : 0,
+							'is_food_item'	  => isset($modifierId[$key]) ?  $this->addons_model->check_id_existence(intval($modifierId[$key])) : 0,
 							'is_active'       => isset($status[$key]) ? intval($status[$key]) : 1
 						];
 
@@ -626,13 +627,27 @@ class Menu_addons extends MX_Controller {
         //     return;
         // }
 
-        $data = $this->addons_model->get_production_details($foodid);
+        //$data = $this->addons_model->get_production_details($foodid);
+		$data =  $this->addons_model->get_ingredient_details($foodid);
         if (!empty($data)) {
             echo json_encode(['status' => 'success', 'data' => $data]);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'No ingredients found for this modifier.']);
         }
     }
+
+
+	public function getingredientitem(){
+		$csrf_token=$this->security->get_csrf_hash();
+		$product_name 	= $this->input->post('product_name',true);
+		$product_info 	= $this->addons_model->finditem($product_name);
+	
+		$list[''] = '';
+		foreach ($product_info as $value) {
+			$json_product[] = array('label'=>$value['ingredient_name'],'value'=>$value['id'],'uprice'=>$value['utotalprice']/$value['uquantity']);
+		} 
+		echo json_encode($json_product);
+	}
 
 
 

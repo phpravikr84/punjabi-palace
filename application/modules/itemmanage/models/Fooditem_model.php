@@ -685,6 +685,7 @@ public function count_fooditem()
 
 	// Update existing ingredient entry
 	public function update_food_ingredient_updt($pro_detailsid, $ingredient) {
+		log_message('error', 'prodetailid : ' . $pro_detailsid);
 		$this->db->where('pro_detailsid', $pro_detailsid)
 				 ->update('production_details', $ingredient);
 	
@@ -693,6 +694,36 @@ public function count_fooditem()
 	
 		return $this->db->affected_rows() > 0;
 	}
+
+	// public function update_food_ingredient_updt($foodid, $pvarientid, $ingredients)
+	// {
+	// 	$saveid = $this->session->userdata('id');
+	// 	$newdate = date('Y-m-d');
+
+	// 	// Delete all existing ingredients for the given food variant
+	// 	$this->db->where('foodid', $foodid)->where('pvarientid', $pvarientid)->delete('production_details');
+
+	// 	// Prepare batch insert data
+	// 	$insertData = [];
+	// 	foreach ($ingredients as $ingredient) {
+	// 		if (!empty($ingredient['ingredientid']) && !empty($ingredient['qty'])) {
+	// 			$insertData[] = [
+	// 				'foodid'        => $foodid,
+	// 				'pvarientid'    => $pvarientid,
+	// 				'ingredientid'  => $ingredient['ingredientid'],
+	// 				'qty'           => $ingredient['qty'],
+	// 				'createdby'     => $saveid,
+	// 				'created_date'  => $newdate
+	// 			];
+	// 		}
+	// 	}
+
+	// 	// Insert all new ingredients in a single query for better performance
+	// 	if (!empty($insertData)) {
+	// 		$this->db->insert_batch('production_details', $insertData);
+	// 	}
+	// }
+
 	
 
 	//Get Production Details
@@ -704,6 +735,30 @@ public function count_fooditem()
 			'ingredientid' => $ingredientid
 		])->limit(1)->get('production_details')->row();
 	}
+
+	public function get_production_details_byvariants($foodid, $pvarientid)
+	{
+		// Log the query for debugging
+		log_message('error', 'Update varientid: ' . $pvarientid);
+		log_message('error', 'Update foodid: ' . $foodid);
+		
+		return $this->db->where([
+			'foodid' => $foodid,
+			'pvarientid' => $pvarientid,
+		])->get('production_details')->row();
+	}
+	public function get_production_details_byvariantsnew($foodid, $pvarientid)
+	{
+		// Log the query for debugging
+		log_message('error', 'Update varientid: ' . $pvarientid);
+		log_message('error', 'Update foodid: ' . $foodid);
+		
+		return $this->db->where([
+			'foodid' => $foodid,
+			'pvarientid' => $pvarientid,
+		])->get('production_details')->result();
+	}
+	
 	// public function get_production_details_byingredients($updatedId, $variantId, $foodIngredient) {
 	// 	return $this->db->select('pro_detailsid')  // Select only the unique identifier
 	// 					->where('foodid', $updatedId)

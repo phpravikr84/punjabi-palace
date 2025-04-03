@@ -382,5 +382,40 @@ public function count_menuaddons()
         }
         return false;
 	}
+
+	/** Get Ingredients Details */
+	public function get_ingredient_details($ingd_id) {
+		$this->db->select('id as ingredientid, ingredient_name');
+		$this->db->from('ingredients');
+		$this->db->where('id', $ingd_id);
+
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	/** 
+	 * Check existance of ID
+	 */
+	public function check_id_existence($id) {
+        if (empty($id)) {
+            return 0;
+        }
+
+        // Check in item_foods table
+        $this->db->where('ProductsID', $id);
+        $query = $this->db->get('item_foods');
+        if ($query->num_rows() > 0) {
+            return 1;
+        }
+
+        // Check in ingredients table
+        $this->db->where('id', $id);
+        $query = $this->db->get('ingredients');
+        if ($query->num_rows() > 0) {
+            return 2;
+        }
+
+        return 0; // Not found in either table
+    }
     
 }

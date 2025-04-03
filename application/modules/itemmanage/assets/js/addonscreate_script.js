@@ -233,3 +233,19 @@ $(document).on("mouseleave", ".viewModifiers", function() {
     updateSortOrder();
     checkRemoveButton();
 });
+
+//Disable when click isComplementary button it will disable input box its realted price field
+$(document).ready(function () {
+    $(document).on("click", ".isComplementary", function () {
+        let row = $(this).closest(".modifier-row"); // Get the parent row dynamically
+        let priceInput = row.find("input[name='addonsprice[]']"); // Find the related price input field
+
+        if ($(this).is(":checked")) {
+            priceInput.prop("disabled", true).val(""); // Disable and clear the price field
+        } else {
+            priceInput.prop("disabled", false); // Enable the price field
+        }
+    });
+});
+
+

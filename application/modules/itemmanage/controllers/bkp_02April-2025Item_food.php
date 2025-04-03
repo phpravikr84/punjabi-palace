@@ -2320,12 +2320,12 @@ class Item_food extends MX_Controller
 									'web_order_price' => $webOrderPrices[$key] ?? 0,
 								];
 
-								// echo '<pre>';
-								// print_r($_POST);
-								// echo '</pre>';
-								// exit;
+								echo '<pre>';
+								print_r($_POST);
+								echo '</pre>';
+								exit;
 
-								if (empty($variantIds[$key]) || $variantIds[$key]==0) {
+								if (empty($variantIds[$key])) {
 									// Insert New Variant
 									if ($this->foodvarient_model->create($variantData)) {
 										$insertedVariantId = $this->db->insert_id();
@@ -2336,39 +2336,45 @@ class Item_food extends MX_Controller
 											$recipeForArray = $this->input->post('recipe_for', true); // Get recipe variants
 
 											foreach ($recipeForArray as $recipeFor) {
-												// Only process ingredients for the current variant
-												$rpFor = strtolower(str_replace(' ', '_', trim($recipeFor)));
-												$vtName = strtolower(str_replace(' ', '_', trim($variantName)));
+												$foodIngredients = $this->input->post("product_id_$recipeFor", true);
+												$qtyList = $this->input->post("product_quantity_$recipeFor", true);
+												$priceList = $this->input->post("product_price_$recipeFor", true);
+												$unitIdList = $this->input->post("unitid_$recipeFor", true);
+												$unitNameList = $this->input->post("unitname_$recipeFor", true);
 
-        										if ($rpFor == $vtName) {
-													$foodIngredients = $this->input->post("product_id_$recipeFor", true);
-													$qtyList = $this->input->post("product_quantity_$recipeFor", true);
-													$priceList = $this->input->post("product_price_$recipeFor", true);
-													$unitIdList = $this->input->post("unitid_$recipeFor", true);
-													$unitNameList = $this->input->post("unitname_$recipeFor", true);
+												if ($foodIngredients) {
+													
+													foreach ($foodIngredients as $index => $foodIngredient) {
+														if (!empty($foodIngredient)) {
+															$existingRecord = $this->fooditem_model->get_production_details_byingredients($updatedId, $insertedVariantId, $foodIngredient);
 
-													if ($foodIngredients) {
-														foreach ($foodIngredients as $index => $foodIngredient) {
-															if (!empty($foodIngredient)) {
-																// Check if ingredient exists for this variant
-																$existingRecord = $this->fooditem_model->get_production_details_byingredients($updatedId, $insertedVariantId, $foodIngredient);
+															$ingredientData = [
+																'foodid' => $updatedId,
+																'pvarientid' => $insertedVariantId,
+																'ingredientid' => $foodIngredient,
+																'qty' => $qtyList[$index] ?? 0,
+																'unitid' => $unitIdList[$index] ?? null,
+																'unitname' => $unitNameList[$index] ?? null,
+																'recipe_price' => $priceList[$index] ?? 0,
+																'createdby' => $this->session->userdata('id'),
+															];
 
-																$ingredientData = [
-																	'foodid' => $updatedId,
-																	'pvarientid' => $insertedVariantId,
-																	'ingredientid' => $foodIngredient,
-																	'qty' => $qtyList[$index] ?? 0,
-																	'unitid' => $unitIdList[$index] ?? null,
-																	'unitname' => $unitNameList[$index] ?? null,
-																	'recipe_price' => $priceList[$index] ?? 0,
-																	'createdby' => $this->session->userdata('id'),
-																];
-
-																if (!$existingRecord) {
-																	// Insert only if ingredient does not exist for this variant
-																	$this->fooditem_model->create_food_ingredient_updt($ingredientData);
-																}
+															// if ($existingRecord) {
+															// 	//Update existing ingredient entry if any data has changed
+															// 	if ($this->hasChanges($existingRecord, $ingredientData)) {
+															// 		$this->fooditem_model->update_food_ingredient_updt($existingRecord->pro_detailsid, $ingredientData);
+															// 	}
+															// } else {
+															// 	// Insert new ingredient entry
+															// 	$this->fooditem_model->create_food_ingredient_updt($ingredientData);
+															// }
+															
+															if (!$existingRecord) {
+																// Insert new ingredient entry
+																$this->fooditem_model->create_food_ingredient_updt($ingredientData);
 															}
+
+															
 														}
 													}
 												}
@@ -2397,43 +2403,42 @@ class Item_food extends MX_Controller
 										$recipeForArray = $this->input->post('recipe_for', true); // Get recipe variants
 
 										foreach ($recipeForArray as $recipeFor) {
+											$foodIngredients = $this->input->post("product_id_$recipeFor", true);
+											$qtyList = $this->input->post("product_quantity_$recipeFor", true);
+											$priceList = $this->input->post("product_price_$recipeFor", true);
+											$unitIdList = $this->input->post("unitid_$recipeFor", true);
+											$unitNameList = $this->input->post("unitname_$recipeFor", true);
 
-											// Only process ingredients for the current variant
-											$rpFor = strtolower(str_replace(' ', '_', trim($recipeFor)));
-											$vtName = strtolower(str_replace(' ', '_', trim($variantName)));
+											if ($foodIngredients) {
 
-											if ($rpFor == $vtName) {
-												$foodIngredients = $this->input->post("product_id_$recipeFor", true);
-												$qtyList = $this->input->post("product_quantity_$recipeFor", true);
-												$priceList = $this->input->post("product_price_$recipeFor", true);
-												$unitIdList = $this->input->post("unitid_$recipeFor", true);
-												$unitNameList = $this->input->post("unitname_$recipeFor", true);
+												foreach ($foodIngredients as $index => $foodIngredient) {
+													if (!empty($foodIngredient)) {
 
-												if ($foodIngredients) {
-													foreach ($foodIngredients as $index => $foodIngredient) {
-														if (!empty($foodIngredient)) {
-															// Check if ingredient exists for this variant
-															$existingRecord = $this->fooditem_model->get_production_details_byvariantsnew($updatedId, $variantIds[$key]);
+														// Get existing record, grouped by pro_detailsid
+														$existingRecord = $this->fooditem_model->get_production_details_byingredients($updatedId, $variantIds[$key], $foodIngredient);
 
-															$ingredientData = [
-																'foodid' => $updatedId,
-																'pvarientid' => $variantIds[$key],
-																'ingredientid' => $foodIngredient,
-																'qty' => $qtyList[$index] ?? 0,
-																'unitid' => $unitIdList[$index] ?? null,
-																'unitname' => $unitNameList[$index] ?? null,
-																'recipe_price' => $priceList[$index] ?? 0,
-																'createdby' => $this->session->userdata('id'),
-															];
+														$ingredientData = [
+															'foodid' => $updatedId,
+															'pvarientid' => $variantIds[$key],
+															'ingredientid' => $foodIngredient,
+															'qty' => $qtyList[$index] ?? 0,
+															'unitid' => $unitIdList[$index] ?? null,
+															'unitname' => $unitNameList[$index] ?? null,
+															'recipe_price' => $priceList[$index] ?? 0,
+															'createdby' => $this->session->userdata('id'),
+														];
 
-															if ($existingRecord) {
-																//Update Ingredient
-																log_message('error', 'Updating Ingredient: ' . json_encode($ingredientData));
-																$this->fooditem_model->update_food_ingredient_updt($existingRecord[$index]->pro_detailsid, $ingredientData);
-															} else {
-																// Insert only if ingredient does not exist for this variant
-																$this->fooditem_model->create_food_ingredient_updt($ingredientData);
-															}
+														// If an existing record is found, update it
+														if ($existingRecord) {
+															log_message('error', 'Existing Record: ' . json_encode($existingRecord));
+															// Update the ingredient entry
+															$this->fooditem_model->update_food_ingredient_updt($existingRecord->pro_detailsid, $ingredientData);
+															//$this->fooditem_model->update_food_ingredient_updt($existingRecord, $updatedId, $variantIds[$key], $ingredientData);
+														} else {
+															// If no existing record, insert new ingredient entry
+															//log_message('error', '============== ');
+															//log_message('error', 'New Data: ' . json_encode($ingredientData));
+															//$this->fooditem_model->create_food_ingredient_updt($ingredientData);
 														}
 													}
 												}
