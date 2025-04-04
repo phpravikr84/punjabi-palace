@@ -768,6 +768,19 @@ public function count_fooditem()
 	// 					->get('production_details')
 	// 					->row();  // Get the first result
 	// }
-	
+
+    /**
+     * Get all food units (where is_foodunit = 1)
+     * @return array
+     */
+    public function get_food_units() {
+        $this->db->select('id, uom_name, uom_short_code');
+        $this->db->from('unit_of_measurement');
+        $this->db->where('is_foodunit', 1);
+        $this->db->where('is_active', 1); // Fetch only active units
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
 
 }

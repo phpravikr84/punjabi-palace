@@ -73,9 +73,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label>Unit</label>
+                                <label>Size</label>
                                 <?php if((isset($productinfo) && !empty($productinfo))){ ?>
                                     <?php if(isset($productinfo['production']) && !empty($productinfo['production'])) {  ?>
                                         <input name="unit" class="form-control" type="number" placeholder="Unit" id="production_unit" value="<?php echo $productinfo['production'][0]->itemquantity; ?>">
@@ -89,7 +89,30 @@
                                 
                             </div>
                         </div>
-                        <div class="col-md-6 d-flex align-items-center">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Unit</label>
+                                    <?php if(isset($units) && !empty($units)) { ?>
+                                    <div class="form-group">
+                                        <select class="form-control" id="uomid" name="uomid">
+                                            <?php foreach($units as $unit) { ?>
+                                                <option value="<?php echo $unit->id; ?>" 
+                                                    <?php if(isset($productinfo) && !empty($productinfo)) { 
+                                                        if($productinfo['uomid'] == $unit->id) { echo "selected"; }
+                                                    } ?>> 
+                                                    <?php echo $unit->uom_name; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="alert alert-warning" role="alert">
+                                        No units available.
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="col-md-5 d-flex align-items-center">
                             <div class="form-check" style="margin-top:30px;">
                                 <div class="checkbox checkbox-success">
                                     <!-- Hidden field to ensure unchecked state passes 0 -->
@@ -106,7 +129,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Menu Type</label>
+                        <label>Food Type</label>
                         <div class="d-flex">
                             <div class="form-check me-3" style="margin-right:10px;">
                                 <input type="radio" class="form-check-input" name="food_type" value="1" id="veg"  <?php echo (isset($productinfo) && $productinfo['food_type'] == 1) ? 'checked' : ''; ?>>
