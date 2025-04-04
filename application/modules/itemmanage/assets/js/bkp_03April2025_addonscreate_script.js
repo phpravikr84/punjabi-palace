@@ -121,7 +121,7 @@ $(document).ready(function () {
      /**
       * When select modifier name if its food item then
       */
-    $(document).on("click", ".viewModifiers", function() {
+    $(document).on("mouseenter", ".viewModifiers", function() {
         var parentRow = $(this).closest('.modifier-row');
         var modifierId = parentRow.find('input[name="modifier_id[]"]').val();
 
@@ -142,7 +142,6 @@ $(document).ready(function () {
             success: function(response) {
                 if (response.status === 'success') {
                     var tableHtml = `<div class="ingredient-details" style="position: absolute; right:12px; background: white; border: 1px solid #ccc; padding: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); z-index: 100;">
-                          <span class="closeBtnIng" style="cursor: pointer; float: right; font-weight: bold;">X</span>
                         <table class="table table-bordered table-striped">
                             <thead class="table-primary">
                                 <tr>
@@ -179,12 +178,8 @@ $(document).ready(function () {
     });
 
 // Remove tooltip when mouse leaves
-// $(document).on("mouseleave", ".viewModifiers", function() {
-//     $(this).siblings('.ingredient-details').remove();
-// });
-// Close button functionality
-$(document).on("click", ".closeBtnIng", function() {
-    $(this).closest('.ingredient-details').remove();
+$(document).on("mouseleave", ".viewModifiers", function() {
+    $(this).siblings('.ingredient-details').remove();
 });
 
 
