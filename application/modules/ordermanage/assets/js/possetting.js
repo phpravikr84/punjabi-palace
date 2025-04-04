@@ -2644,6 +2644,3 @@ $(document).on("keypress", '#itemqty_1', function(e){
         $("#customer_name").select2().val(custid).trigger('change');
     }
 });
-
- 
- 

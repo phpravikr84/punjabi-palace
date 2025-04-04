@@ -463,7 +463,10 @@ foreach ($scan as $file) {
 <div id="mySidebar" class="sidebar animate__animated animate__fadeInLeft">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <div class="card">
-    <div class="card-header">Choose Modifiers</div>
+    <div class="card-header">
+      Choose Modifiers
+    </div>
+    <small class="modifier-sec-sub-heading">Choose the add-on items want to serve with the main food item</small>
     <div class="card-body" id="sideMfContainer">
       <h6>Some Content</h6>
     </div>
@@ -1322,6 +1325,21 @@ foreach ($scan1 as $file) {
     document.getElementById("mySidebar").style.width = "0";
     // document.getElementById("main").style.marginLeft= "0";
   }
+  // $(document).on('click', '#sideMfContainer .panel-heading a.accordion-plus-toggle', function () {
+  //   console.log("Accordion Clicked, and collapsed: "+((!$(this).hasClass('collapsed')) ? "False" : "True"));
+  //   $('.modifier-set-sub-heading').toggle($(this).hasClass('collapsed'));
+  // });
+  $(document).on('click', '.panel-heading a.accordion-plus-toggle', function () {
+    let subHeading = $(this).find('.modifier-set-sub-heading'); // Get the sub-heading inside the clicked <a>
+
+    if (!$(this).hasClass('collapsed')) {
+        subHeading.hide();
+    } else {
+        subHeading.show();
+    }
+    console.log("Accordion Clicked, and collapsed: "+((!$(this).hasClass('collapsed')) ? "False" : "True"));
+  });
+
 </script>
 <script src="<?php echo base_url('ordermanage/order/possettingjs') ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('ordermanage/order/quickorderjs') ?>" type="text/javascript"></script>

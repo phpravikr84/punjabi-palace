@@ -39,13 +39,13 @@ if ($cart = $this->cart->contents()) { ?>
               <div class="panel-body">
                   <div class="mt-3">
                       <table class="table table-bordered">
-                          <thead class="table-primary">
+                          <!-- <thead class="table-primary">
                               <tr>
                                   <th scope="col" style="width:10%">Select</th>
                                   <th scope="col" style="width:50%">Modifier Item</th>
                                   <th scope="col" style="width:50%">Price</th>
                               </tr>
-                          </thead>
+                          </thead> -->
                           <tbody>
                               <?php 
                               //Fetching modifier item information from the database
@@ -63,16 +63,16 @@ if ($cart = $this->cart->contents()) { ?>
                                 foreach ($modifier_items as $mik => $miv):
                               ?>
                               <tr>
-                                  <td class="text-center">
+                                  <td style="width: 85%;">
+                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->add_on_name;?></label>
+                                  </td>
+                                  <td style="width: 10%;text-align: end;">
+                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->price;?></label>
+                                  </td>
+                                  <td style="width: 5%;" class="text-center">
                                       <div class="form-check">
                                           <input class="form-check-input modifier-checkbox" type="checkbox" name="modifier_items[]" value="<?=$miv->add_on_id;?>" id="modifier_item_<?=$miv->add_on_id;?>" data-group-id="<?=$mv->add_on_id;?>" autocomplete="off">
                                       </div>
-                                  </td>
-                                  <td>
-                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->add_on_name;?></label>
-                                  </td>
-                                  <td>
-                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->price;?></label>
                                   </td>
                               </tr>
                               <?php 

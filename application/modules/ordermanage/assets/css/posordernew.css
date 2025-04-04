@@ -490,7 +490,8 @@ a.accordion-plus-toggle:hover
 	font-family: FontAwesome;
 	content: "\f078";
 	float: right;
-	color: silver;
+	/* color: silver; */
+	color: #737373;
 }
 
 .panel-heading .accordion-arrow-toggle.collapsed:before {
@@ -507,12 +508,33 @@ a.accordion-plus-toggle:hover
     font-weight: bold;
     font-size: 25px;
     font-family: inherit;
+    justify-content: start;
+    font-family: cursive;
+}
+#mySidebar .card
+{
+    padding: 50px 90px 50px 90px;
 }
 #mySidebar .card .card-body
 {
-    padding: 0px 15px 0px 15px;
+    padding: 20px 15px 20px 15px;
+    border-radius: 20px;
+    background: #ededed54;
+    box-shadow: 0px 0px 3px 1px #cdcdcdc4;
+    margin-top: 15px;
 }
-
+#mySidebar .card .card-header,
+small.modifier-sec-sub-heading
+{
+    padding: 0px 0px 0px 15px;
+}
+#mySidebar .card small.modifier-set-sub-heading
+{
+    display: none;
+}
+#mySidebar .card .panel-default>.panel-heading {
+    background-color: #ebebeb !important;
+}
 .sidebar {
     height: 100% !important;
     width: 0;
@@ -521,17 +543,19 @@ a.accordion-plus-toggle:hover
     top: 0;
     left: 0;
     /* background-color: #111; */
-    background-color: #c2e6c7;
+    /* background-color: #c2e6c7; */
+    background-color: #ffffff;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    /* padding-top: 60px; */
   }
   
   .sidebar a {
     padding: 0;
     text-decoration: none;
     font-size: 18px;
-    color: #818181;
+    /* color: #818181; */
+    color: #313131;
     display: block;
     transition: 0.3s;
   }
@@ -590,6 +614,9 @@ a.accordion-plus-toggle:hover
     .pos-newform {
         max-width: 100%;
         padding: 15px;
+    }
+    #mySidebar .card {
+        padding: 50px 20px 50px 20px;
     }
 }
 
