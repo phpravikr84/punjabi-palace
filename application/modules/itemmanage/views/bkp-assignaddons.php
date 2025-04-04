@@ -25,7 +25,7 @@
                         <div class="form-group row">
                         <label for="addonsid" class="col-sm-4 col-form-label"><?php echo display('addons_name') ?>*</label>
                         <div class="col-sm-8 customesl">
-                        <?php
+                        <?php 
 						if(empty($addonsmenulist)){$addonsmenulist = array('' => '--Select--');}
 						echo form_dropdown('addonsid',$addonsdropdown,(!empty($addonsinfo->add_on_id)?$addonsinfo->add_on_id:null),'class="form-control"') ?>
                         </div>
@@ -84,53 +84,49 @@
 <div class="row">
     <!--  table area -->
     <div class="col-sm-12">
+
         <div class="panel panel-default thumbnail"> 
+
             <div class="panel-body">
                 <table width="100%" class="datatable2 table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             <th><?php echo display('Sl') ?></th>
-                            <th><?php echo 'Modifier Set'; ?></th>
-                            <th><?php echo 'Menu Names'; ?></th>
+                            <th><?php echo 'Modifier Item'; ?></th>
+                            <th><?php echo 'Menu Name'; ?></th>
                             <th><?php echo display('action') ?></th> 
+                           
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                        if (!empty($addonsmenulistgroups)) { 
-                            $sl = $pagenum + 1;
-                            $groupedData = [];
-
-                            // Group products by modifier_name
-                            foreach ($addonsmenulistgroups as $item) {
-                                $groupedData[$item->modifier_name]['group_id'] = $item->group_id;
-                                $groupedData[$item->modifier_name]['products'][] = $item->ProductName;
-                            }
-
-                            foreach ($groupedData as $modifier_name => $data) { ?>
-                                <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC"; ?>">
+						if (!empty($addonsmenulist2)) { ?>
+                            <?php $sl = $pagenum+1; ?>
+                            <?php foreach ($addonsmenulist2 as $addonsmenu) { ?>
+                                <tr class="<?php echo ($sl & 1)?"odd gradeX":"even gradeC" ?>">
                                     <td><?php echo $sl; ?></td>
-                                    <td><?php echo $modifier_name; ?></td>
-                                    <td><?php echo implode(', ', array_unique($data['products'])); ?></td>
-                                    <td class="center">
-                                        <?php if ($this->permission->method('itemmanage', 'update')->access()): ?>
-                                            <a onclick="adonseditinfo('<?php echo $data['group_id']; ?>')" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
-                                        <?php endif; 
-                                        if ($this->permission->method('itemmanage', 'delete')->access()): ?>
-                                            <a href="<?php echo base_url("itemmanage/menu_addons/assignaddonsdelete/".$data['group_id']) ?>" onclick="return confirm('<?php echo display("are_you_sure") ?>')" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="<?php echo display('delete'); ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
-                                        <?php endif; ?>
+                                    <td><?php echo $addonsmenu->add_on_name; ?></td>
+                                    <td><?php echo $addonsmenu->ProductName; ?></td>
+                                   <td class="center">
+                                    <?php if($this->permission->method('itemmanage','update')->access()): ?>
+
+                                        <a onclick="adonseditinfo('<?php echo $addonsmenu->row_id; ?>')" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
+                                         <?php endif; 
+										 if($this->permission->method('itemmanage','delete')->access()): ?>
+                                        <a href="<?php echo base_url("itemmanage/menu_addons/assignaddonsdelete/$addonsmenu->row_id") ?>" onclick="return confirm('<?php echo display("are_you_sure") ?>')" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="<?php echo display('delete')?> "><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+                                         <?php endif; ?>
                                     </td>
+                                    
                                 </tr>
                                 <?php $sl++; ?>
-                            <?php } 
-                        } ?> 
+                            <?php } ?> 
+                        <?php } ?> 
                     </tbody>
-                </table>  
-                <div class="text-right"><?php echo @$links ?></div>
+                </table>  <!-- /.table-responsive -->
+                <div class="text-right"><?php echo @$links?></div>
             </div>
         </div>
     </div>
-
 </div>
 
      

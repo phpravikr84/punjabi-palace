@@ -11,10 +11,26 @@ class Addons_model extends CI_Model {
 	{
 		return $this->db->insert($this->table, $data);
 	}
+
 	public function menuaddons_create($data = array())
 	{
-		return $this->db->insert($this->table2, $data);
+		$checkExist = $this->db->where('menu_id', $data["menu_id"])
+			->where('modifier_groupid', $data["modifier_groupid"])
+			->from($this->table2)
+			->count_all_results();
+
+		if ($checkExist > 0) {
+			// Update existing record
+			$this->db->where('menu_id', $data["menu_id"])
+				->where('modifier_groupid', $data["modifier_groupid"])
+				->update($this->table2, $data);
+			return true; 
+		} else {
+			// Insert new record
+			return $this->db->insert($this->table2, $data);
+		}
 	}
+
 
 	public function addons_delete($id = null)
 	{
@@ -417,5 +433,86 @@ public function count_menuaddons()
 
         return 0; // Not found in either table
     }
-    
+
+	public function getModifierGroupsById($id = null)
+	{ 
+		return $this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection")
+			->from('modifier_groups')
+			->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left')
+			->where('modifier_groups.id', $id)
+			->order_by('sort_order', 'asc')
+			->get()
+			->row();  // Use result() instead of row()
+	}
+
+	/**
+	 * Get Alll Modifier Groups with Menu Items
+	 */
+	public function read_allmodifieritemgroups($limit = null, $start = null)
+	{ 
+		$this->db->select("
+			modifier_groups.id as group_id, 
+			modifier_groups.name as modifier_name, 
+			item_foods.ProductsID, 
+			item_foods.ProductName
+		");
+		$this->db->from('menu_add_on');
+		$this->db->join('modifier_groups', 'menu_add_on.modifier_groupid = modifier_groups.id', 'inner'); // Change 'left' to 'inner' to exclude nulls
+		$this->db->join('item_foods', 'menu_add_on.menu_id = item_foods.ProductsID', 'inner'); // Ensure only assigned foods are fetched
+		$this->db->where('modifier_groups.id IS NOT NULL'); // Explicitly filter out NULLs
+		$this->db->order_by('modifier_groups.id', 'asc');
+		
+		$query = $this->db->get();
+		
+		if ($query->num_rows() > 0) {
+			return $query->result();    
+		}
+		return false;
+	}
+	
+	public function get_addon_by_id($id) {
+		$this->db->select("
+			modifier_groups.id as group_id, 
+			modifier_groups.name as modifier_name, 
+			item_foods.ProductsID, 
+			item_foods.ProductName
+		");
+		$this->db->from('menu_add_on');
+		$this->db->join('modifier_groups', 'menu_add_on.modifier_groupid = modifier_groups.id', 'inner'); 
+		$this->db->join('item_foods', 'FIND_IN_SET(item_foods.ProductsID, menu_add_on.menu_id) > 0', 'inner'); 
+		$this->db->where('modifier_groups.id', $id); 
+		$this->db->group_by('item_foods.ProductsID');  // Group by Product ID to avoid duplicates
+		$this->db->order_by('item_foods.ProductsID', 'asc');
+	
+		$query = $this->db->get();
+		
+		return ($query->num_rows() > 0) ? $query->result() : false;
+	}
+	
+	
+	
+
+	public function read_fooditem($limit = null, $start = null)
+	{
+	    $this->db->select('item_foods.ProductsID as menu_id,item_foods.ProductName as menu_name');
+        $this->db->from('item_foods');
+		$this->db->join('item_category','item_foods.CategoryID = item_category.CategoryID','left');
+        $this->db->order_by('ProductsID', 'desc');
+   
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) { 
+            return $query->result();    
+        }
+        return false;
+	}
+
+	/**
+	 * Delete
+	 */
+	public function delete_by_group_id($group_id) {
+		$this->db->where('modifier_groupid', $group_id);
+		return $this->db->delete('menu_add_on');
+	}	
+
+
 }
