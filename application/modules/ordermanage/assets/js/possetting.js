@@ -433,17 +433,27 @@ function ApplyModifierSelect(pid=0,tr_row_id) {
                 alert("The modifier can't be added!!!");
                 return false;
             }
+            if ($("#selectedModsDetails_"+pid)) {
+                $("#selectedModsDetails_"+pid).remove();
+                $('#grtotal_'+pid).remove();
+                $('#totalitem_'+pid).remove();
+                $('#tvat_'+pid).remove();
+                $('#tdiscount_'+pid).remove();
+                $('#tgtotal_'+pid).remove();
+                $('#sc_'+pid).remove();
+            }
             $("#addfoodlist").append(data);
             closeNav();
             var modTotalPrice = $('#modTotalPrice_'+pid).val();
             var togText = $("#modToggleText_"+pid).val();
             // $("#cartModToggle_"+pid).html(`Modifiers ${togText}`);
-            $("#cartModToggle_"+pid).html(`Choose Modifiers`);
-            $("#cartModToggle_"+pid).closest('a').append($("#selectedModsDetails_"+pid).html());
+            // $("#cartModToggle_"+pid).html(`Choose Modifiers`);
+            let selectedNewModsHtml = $("#selectedModsDetails_"+pid).html();
+            console.log("selectedNewModsHtml: "+selectedNewModsHtml);
+            $("#cartModToggle_"+pid).html(selectedNewModsHtml);
             // var oldIndvPrice = $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(1).html();
             var oldIndvPrice = $("#subtotal").val();
-            $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(parseFloat(oldIndvPrice)+parseFloat(modTotalPrice)));
-            
+            // $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(parseFloat(oldIndvPrice)+parseFloat(modTotalPrice)));
             // var total = $('#grtotal').val();
             // var totalitem = $('#totalitem').val();
             // // $('#item-number').text(totalitem);
@@ -479,14 +489,20 @@ function ApplyModifierSelect(pid=0,tr_row_id) {
             $('#invoice_discount').val(discount);
             var sc = $('#sc_'+pid).val();
             $('#service_charge').val(sc);
-            if(basicinfo.isvatinclusive==1){
-            $('#caltotal').text(tgtotal-tax);
-            }else{
+            // if(basicinfo.isvatinclusive==1){
+            // $('#caltotal').text(tgtotal-tax);
+            // }else{
+            // $('#caltotal').text(tgtotal);
+            // }
             $('#caltotal').text(tgtotal);
-            }
             $('#grandtotal').val(tgtotal);
             $('#orggrandTotal').val(tgtotal);
             $('#orginattotal').val(tgtotal);
+
+            // console.log("oldIndvPrice: "+oldIndvPrice);
+            console.log("Subtotal: "+parseFloat(total));
+            console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
+            $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
         }
     });
 }
