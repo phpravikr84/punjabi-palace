@@ -7,14 +7,10 @@
 
                 <!-- Modifier Items -->
                 <div class="form-group row">
-                    <label for="addonsid" class="col-sm-4 col-form-label"><?php echo 'Modifier Items'; ?>*</label>
+                    <label for="addonsid" class="col-sm-4 col-form-label"><?php echo 'Modifier Set Name'; ?>*</label>
                     <div class="col-sm-8 customesl">
-                        <?php 
-                        if (empty($addonsmenulist)) {
-                            $addonsmenulist = array('' => '--Select--');
-                        }
-                        echo form_dropdown('addonsid[]', $addonsdropdown, (!empty($addonsinfo->add_on_id) ? explode(',', $addonsinfo->add_on_id) : null), 'class="form-control select2-multiple" multiple="multiple"'); 
-                        ?>
+                        <label class="col-form-label"><?php echo $modifiergroup->name; ?></label>
+                        <input type="hidden" name="group_id" value="<?php echo $modifiergroup->group_id; ?>">
                     </div>
                 </div>
 

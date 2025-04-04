@@ -348,9 +348,9 @@
                                         <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control" placeholder="Price"></div>
                                         <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price"></div>
                                         <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price"></div>
-                                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price"></div>
-                                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price"></div>
-                                        <div class="col-md-2 mb-2"><small>Weborder</small><button type="button" class="removeRowVariant"><span class="glyphicon glyphicon-remove-circle"></span></button></div>
+                                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price"></div>
+                                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price"></div>
+                                        <div class="col-md-2 mb-2"><button type="button" class="removeRowVariant"><span class="glyphicon glyphicon-remove-circle"></span></button></div>
                                     </div>
                                 </div>
                                 <button type="button" id="addMore" class="btn btn-primary mt-3">Add More</button>

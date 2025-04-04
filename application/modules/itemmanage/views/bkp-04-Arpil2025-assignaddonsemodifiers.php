@@ -3,52 +3,46 @@
         <div class="panel">
             <div class="panel-body">
                 <?php echo form_open('itemmanage/menu_addons/assignaddonscreatemultiple'); ?>
-                
-                <input type="hidden" name="row_id" value="<?php echo !empty($addonsinfo[0]->group_id) ? $addonsinfo[0]->group_id : ''; ?>">
-                
+                <?php echo form_hidden('row_id', (!empty($addonsinfo->row_id) ? $addonsinfo->row_id : null)); ?>
+
+                <!-- Modifier Items -->
                 <div class="form-group row">
-                    <div class="col-sm-8">
-                        <input type="hidden" class="form-control" name="group_id" value="<?php echo !empty($addonsinfo[0]->group_id) ? $addonsinfo[0]->group_id : ''; ?>" readonly>
-                    </div>
-                </div>
-                
-                <div class="form-group row">
-                    <label for="modifier_name" class="col-sm-4 col-form-label">Modifier Name</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" name="modifier_name" value="<?php echo !empty($addonsinfo[0]->modifier_name) ? $addonsinfo[0]->modifier_name : ''; ?>" readonly>
-                    </div>
-                </div>
-                
-                <div class="form-group row">
-                    <label for="menuid" class="col-sm-4 col-form-label">Item Name</label>
-                    <div class="col-sm-8">
+                    <label for="addonsid" class="col-sm-4 col-form-label"><?php echo 'Modifier Items'; ?>*</label>
+                    <div class="col-sm-8 customesl">
                         <?php 
-                        $selectedMenus = array_column($addonsinfo, 'ProductsID'); // Extract ProductsID from addonsinfo
-                        $menuOptions = [];
-                        
-                        foreach ($menudropdown as $menu) {
-                            $menuOptions[$menu->menu_id] = $menu->menu_name;
+                        if (empty($addonsmenulist)) {
+                            $addonsmenulist = array('' => '--Select--');
                         }
-                        
-                        echo form_dropdown(
-                            'menuid[]', 
-                            $menuOptions, 
-                            $selectedMenus, 
-                            'class="form-control select2-multiple" multiple="multiple"'
-                        ); 
+                        echo form_dropdown('addonsid[]', $addonsdropdown, (!empty($addonsinfo->add_on_id) ? explode(',', $addonsinfo->add_on_id) : null), 'class="form-control select2-multiple" multiple="multiple"'); 
                         ?>
                     </div>
                 </div>
-                
+
+                <!-- Menu Name -->
+                <div class="form-group row">
+                    <label for="menuid" class="col-sm-4 col-form-label"><?php echo 'Menu Name'; ?>*</label>
+                    <div class="col-sm-8 customesl">
+                        <?php 
+                        if (empty($addonsmenulist)) {
+                            $addonsmenulist = array('' => '--Select--');
+                        }
+                        echo form_dropdown('menuid[]', $menudropdown, (!empty($addonsinfo->menu_id) ? explode(',', $addonsinfo->menu_id) : null), 'class="form-control select2-multiple" multiple="multiple"'); 
+                        ?>
+                    </div>
+                </div>  
+
                 <div class="form-group text-right">
-                    <button type="submit" class="btn btn-success w-md m-b-5">Update</button>
+                    <button type="submit" class="btn btn-success w-md m-b-5"><?php echo display('update'); ?></button>
                 </div>
-                
+
                 <?php echo form_close(); ?>
             </div>  
         </div>
     </div>
 </div>
+
+<!-- jQuery and Select2 -->
+
 
 <!-- Initialize Select2 -->
 <script>
@@ -57,8 +51,9 @@
             placeholder: "Select options",
             allowClear: true,
             closeOnSelect: false,
-            allowHtml: true,
-            tags: true
+			allowHtml: true,
+			allowClear: true,
+			tags: true // создает новые опции на 
         });
     });
 </script>

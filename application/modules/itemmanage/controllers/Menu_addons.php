@@ -304,6 +304,7 @@ class Menu_addons extends MX_Controller {
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $data["addonsmenulist"] = $this->addons_model->read_menuaddons($config["per_page"], $page);
 		$data["addonsmenulist2"] = $this->addons_model->read_menuaddons($config["per_page"], $page);
+		$data["addonsmenulistgroups"] = $this->addons_model->read_allmodifieritemgroups($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 		$data['pagenum']=$page;
 		if(!empty($id)) {
@@ -394,8 +395,10 @@ class Menu_addons extends MX_Controller {
 	  
 		$this->permission->method('itemmanage','update')->redirect();
 		$data['title'] = display('assign_adons_list');
-		$data['addonsinfo']   = $this->addons_model->findBymenuaddons($id);
-		$data['menudropdown']   =  $this->addons_model->menu_dropdown();
+		//$data['addonsinfo']   = $this->addons_model->findBymenuaddons($id);
+		//$data['menudropdown']   =  $this->addons_model->menu_dropdown();
+		$data['addonsinfo'] = $this->addons_model->get_addon_by_id($id);
+        $data['menudropdown'] = $this->addons_model->read_fooditem(); // Fetch all menu items
 		$data['addonsdropdown']   =  $this->addons_model->addons_dropdown();
         $data['module'] = "itemmanage";  
         $data['page']   = "assignaddonsedit";
@@ -413,7 +416,8 @@ class Menu_addons extends MX_Controller {
 	   'user_name'           => $this->session->userdata('fullname'),
 	   'entry_date'          => date('Y-m-d H:i:s'),
 	  ];
-		if ($this->addons_model->menuaddons_delete($addons)) {
+	  	if ($this->addons_model->delete_by_group_id($addons)) {
+		//if ($this->addons_model->menuaddons_delete($addons)) {
 			$this->logs_model->log_recorded($logData);
 			#set success message
 			$this->session->set_flashdata('message',display('delete_successfully'));
@@ -505,6 +509,7 @@ class Menu_addons extends MX_Controller {
 		$data['menudropdown']   =  $this->addons_model->menu_dropdown_modifiers();
 		//$data['addonsdropdown']   =  $this->addons_model->addons_dropdown();
 		$data['addonsdropdown']   =  $this->addons_model->addons_dropdown_modifiers($id);
+		$data['modifiergroup'] = $this->addons_model->getModifierGroupsById($id);
         $data['module'] = "itemmanage";  
         $data['page']   = "assignaddonsemodifiers";
 		$this->load->view('itemmanage/assignaddonsemodifiers', $data);   
@@ -517,12 +522,13 @@ class Menu_addons extends MX_Controller {
 		$data['title'] = display('assign_adons');
 
 		// Validate multiple select fields correctly
-		$this->form_validation->set_rules('addonsid[]', display('addonsname'), 'required');
+		//$this->form_validation->set_rules('addonsid[]', display('addonsname'), 'required');
 		$this->form_validation->set_rules('menuid[]', display('item_name'), 'required');
 
 		$savedid = $this->session->userdata('id');
 		
-		$addonsIds = $this->input->post('addonsid', true);
+		//$addonsIds = $this->input->post('addonsid', true);
+		$group_id = $this->input->post('group_id', true);
 		$menuIds = $this->input->post('menuid', true);
 
 		if ($this->form_validation->run()) {
@@ -531,15 +537,14 @@ class Menu_addons extends MX_Controller {
 
 				// Loop through addons and menu IDs to insert multiple records
 				foreach ($menuIds as $menuId) {
-					foreach ($addonsIds as $addonId) {
 						$postData = [
-							'add_on_id' => $addonId,
+							//'add_on_id' => $addonId,
+							'modifier_groupid' => $group_id,
 							'menu_id'   => $menuId,
 							'is_active' => 1,
 						];
 
 						$this->addons_model->menuaddons_create($postData);
-					}
 				}
 
 				// Logging the action
@@ -555,24 +560,22 @@ class Menu_addons extends MX_Controller {
 				$this->session->set_flashdata('message', display('save_successfully'));
 				redirect('itemmanage/menu_addons/assignaddons');
 			} else {
+
 				$this->permission->method('itemmanage', 'update')->redirect();
 
 				// Delete existing records for selected menu items before inserting new ones
-				foreach ($menuIds as $menuId) {
-					$this->addons_model->delete_by_menu_id($menuId); // You need to create this function
-				}
+				$this->addons_model->delete_by_group_id($group_id); 
 
 				// Insert new records
 				foreach ($menuIds as $menuId) {
-					foreach ($addonsIds as $addonId) {
 						$postData = [
-							'add_on_id' => $addonId,
+							//'add_on_id' => $addonId,
+							'modifier_groupid' => $group_id,
 							'menu_id'   => $menuId,
 							'is_active' => 1,
 						];
 
 						$this->addons_model->menuaddons_create($postData);
-					}
 				}
 
 				// Logging update action
