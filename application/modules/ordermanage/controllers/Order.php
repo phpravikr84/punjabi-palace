@@ -800,6 +800,7 @@ class Order extends MX_Controller
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
 		$cartID = $this->input->post('CartID');
+		$pid = $this->input->post('pid');
 		$productqty = $this->input->post('qty', true);
 		$Udstatus = $this->input->post('Udstatus', true);
 		if (($Udstatus == "del") && ($productqty > 0)) {
@@ -820,6 +821,15 @@ class Order extends MX_Controller
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
 		$data['taxinfos'] = $this->taxchecking();
+		//Fetching modifier groups information from the database
+		$this->db->select('modifier_groups.*,menu_add_on.*');
+		$this->db->from('modifier_groups');
+		$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+		$this->db->where('menu_add_on.menu_id', $pid);
+		$this->db->where('menu_add_on.is_active', 1);
+		$query = $this->db->get();
+		$modifiers = $query->result();
+		$data['modifiers'] = $modifiers;
 		$data['module'] = "ordermanage";
 		$data['page']   = "poscartlist";
 		$this->load->view('ordermanage/poscartlist', $data);

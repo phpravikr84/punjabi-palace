@@ -236,9 +236,9 @@ if ($cart = $this->cart->contents()) { ?>
                                       $selectedModsForCart = $q1->result();
                                       if (count($modifiers)>0): ?>
                                       <br />
-                                      <a class="" onclick="itemModifiers(<?=$item['pid'];?>,'<?=$item['rowid'];?>')" title="Click to Choose Modifiers">
+                                      <a class="" id="cartModToggle_<?=$item['pid'];?>" onclick="itemModifiers(<?=$item['pid'];?>,'<?=$item['rowid'];?>')" title="Click to Choose Modifiers">
                                         <!-- <small class="modCheck" id="cartModToggle_<?=$item['pid'];?>">Choose Modifiers <?php if($modTotalPrice->mod_total_price > 0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$modTotalPrice->mod_total_price;?>) <?php endif; ?></small> -->
-                                        <small class="modCheck" id="cartModToggle_<?=$item['pid'];?>">Choose Modifiers</small>
+                                        
                                         <?php
                                         if (count($selectedModsForCart)>0):
                                           foreach ($selectedModsForCart as $smk => $smv):
@@ -247,6 +247,10 @@ if ($cart = $this->cart->contents()) { ?>
                                           <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
                                         <?php 
                                           endforeach;
+                                        else:
+                                        ?>
+                                        <small class="modCheck">Choose Modifiers</small>
+                                        <?php
                                         endif;
                                         ?>
                                       </a>

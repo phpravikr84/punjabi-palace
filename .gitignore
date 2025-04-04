@@ -1,10 +1,9 @@
-/application/cache/*
-/application/logs/*
-/application/config/database.php
-/system/*
-/assets/data/*
-/assets/data/outgoing/backup.sql
-/punjabi-palace/assets/js/product.json
+application/cache/*
+application/logs/*
+application/config/database.php
+system/*
+assets/data/*
 assets/data/outgoing/backup.sql
+assets/js/product.json
 assets/data/outgoing/*
 # /assets

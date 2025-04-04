@@ -1086,9 +1086,9 @@ foreach ($scan as $file) {
                                             <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
                                             <?php if (count($modifiers) > 0): ?>
                                               <br />
-                                              <a class="" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
+                                              <a class="" id="cartModToggle_<?=$item['pid'];?>" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
                                                 <!-- <small class="modCheck" id="cartModToggle_<?= $item['pid']; ?>">Choose Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small> -->
-                                                <small class="modCheck" id="cartModToggle_<?= $item['pid']; ?>">Choose Modifiers</small>
+                                                
                                                 <?php
                                                 $this->db->select('add_ons.add_on_name, add_ons.price');
                                                 $this->db->from('add_ons');
@@ -1104,6 +1104,10 @@ foreach ($scan as $file) {
                                                     <small class="modCheck" style="font-style: italic;font-weight: 400;"><?= $smv->add_on_name; ?> (<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $smv->price; ?>)</small>
                                                 <?php
                                                   endforeach;
+                                                else:
+                                                ?>
+                                                <small class="modCheck">Choose Modifiers</small>
+                                                <?php  
                                                 endif;
                                                 ?>
                                               </a>
