@@ -63,7 +63,7 @@
 
                                                 if ($purchase_notify_info && isset($purchase_notify_info->price_up, $purchase_notify_info->price_down)):
 
-                                                    // Prepare content (safe for HTML)
+                                                    // Assign tooltip content to a variable to avoid duplication
                                                     $tooltipContent = sprintf(
                                                         '<b>Last Unit Price:</b> %s<br><b>Current Unit Price:</b> %s<br><b>Price Difference:</b> %s<br><b>Difference Percentage:</b> %s%%',
                                                         number_format($purchase_notify_info->last_unit_price, 2),
@@ -72,18 +72,20 @@
                                                         number_format($purchase_notify_info->price_diff_percentage, 2)
                                                     );
 
-                                                    $uniqueId = 'tooltip_' . uniqid();
-
-                                                    if ($purchase_notify_info->price_up != 0 || $purchase_notify_info->price_down != 0): ?>
-                                                        <span class="price-info-wrapper" style="position: relative;">
-                                                            <i class="fas fa-exclamation-triangle show-info-icon" 
-                                                            style="color: red; cursor: pointer;"
-                                                            data-target="#<?= $uniqueId ?>"></i>
-
-                                                            <div class="custom-tooltip-content" id="<?= $uniqueId ?>" style="display: none; position: absolute; z-index: 999; background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 5px; width: 250px; top: 20px; left: -10px; font-size: 13px;">
-                                                                <?= $tooltipContent ?>
-                                                            </div>
-                                                        </span>
+                                                    if ($purchase_notify_info->price_up != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+														style="color: red;"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
+                                                    <?php elseif ($purchase_notify_info->price_down != 0): ?>
+                                                        <i class="fas fa-exclamation-triangle" 
+                                                        data-toggle="tooltip" 
+                                                        data-html="true"
+														style="color: red;"
+                                                        title="<?= htmlspecialchars($tooltipContent, ENT_QUOTES, 'UTF-8'); ?>">
+                                                        </i>
                                                     <?php endif; ?>
 
                                                 <?php else: ?>
@@ -118,25 +120,9 @@
 
 <script src="<?php echo base_url('application/modules/purchase/assets/js/purchaseinvoice_script.js'); ?>" type="text/javascript"></script>
 <script>
-    // $(document).ready(function () {
-    //     $('[data-toggle="tooltip"]').tooltip(); // Initialize Bootstrap tooltip
-    // });
-
-        $(document).ready(function () {
-            $('.show-info-icon').on('click', function (e) {
-                e.stopPropagation(); // Prevent event bubbling
-                const targetId = $(this).data('target');
-                $('.custom-tooltip-content').not(targetId).hide(); // Hide others
-                $(targetId).toggle(); // Toggle current
-            });
-
-            // Hide on clicking anywhere else
-            $(document).on('click', function () {
-                $('.custom-tooltip-content').hide();
-            });
-        });
-
-
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip(); // Initialize Bootstrap tooltip
+    });
 </script>
 <style>
 	.tooltip-inner {
