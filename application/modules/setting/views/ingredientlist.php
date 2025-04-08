@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="form-group purchase_price_div">
                                             <label><?php echo 'Purchase Price'; ?> *</label>
-                                            <input name="purchase_price" id="purchase_price" class="form-control" type="text" placeholder="Purchase Price" value="">
+                                            <input name="purchase_price" id="purchase_price" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="">
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo 'Cost Per Unit'; ?> *</label>
@@ -74,7 +74,7 @@
                                             <?php
                                             $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
                                             if (empty($categories)) { $categories = array('' => '--Select--'); }
-                                            echo form_dropdown('consumption_unit', $unitdropdown, (!empty($intinfo->id) ? $intinfo->id : null), 'class="form-control consumtion_unit"');
+                                            echo form_dropdown('consumption_unit', $unitdropdown, (!empty($intinfo->id) ? $intinfo->id : null), 'class="form-control consumtion_unit" id="consumtion_unit"');
                                             ?>
                                         </div>
                                         <div class="form-group">

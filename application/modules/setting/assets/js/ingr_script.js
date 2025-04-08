@@ -31,12 +31,19 @@ $(document).ready(function () {
             minLength: 2,
             select: function (event, ui) {
                 console.log("Selected:", ui.item.label, ui.item.id);
+                //For add Form
                 $('#ingredient_name').val(ui.item.label); // fill input
                 $('#ingredient_id').val(ui.item.id);     // set hidden id
                 $('#purchase_price').val(ui.item.purchase_price); // set purchase price
                 $('#purchase_price').attr('readonly', true); // make readonly
                 //Calculate the cost per unit price based on the conversion ratio
                 $('#unitid').val(ui.item.uom_id).trigger('change');
+
+                //For Edit Form
+                $('#ingredient_name_edit').val(ui.item.label); // fill input
+                $('#ingredient_id_edit').val(ui.item.id);     // set hidden id
+                $('#purchase_price_edit').val(ui.item.purchase_price); // set purchase price
+                $('#purchase_price_edit').attr('readonly', true); // make readonly
                 submitBtn.prop('disabled', false); // enable submit
                 return false; // prevent default behaviour
             },
@@ -92,12 +99,23 @@ $(document).ready(function () {
 
     //Calculate the cost per unit price based on the conversion ratio
     function calculateCostPerUnit() {
+
+        //Add Form fields
         var purchaseUnit = $('#purchase_unit').val();
-        var consumptionUnit = $('.consumtion_unit').val();
+        var consumptionUnit = $('#consumtion_unit').val();
         var convtRatio = parseFloat($('#convt_ratio').val());
         var purchasePrice = parseFloat($('#purchase_price').val());
 
+        //Edit Form Fields
+        var purchaseUnitEdit = $('#purchase_unit_edit').val();
+        var consumptionUnitEdit = $('#consumtion_unit_edit').val();
+        var convtRatioEdit = parseFloat($('#convt_ratio_edit').val());
+        var purchasePriceEdit = parseFloat($('#purchase_price_edit').val());
+
+       
+        //Check if the form is in add mode
         if (consumptionUnit) {
+            console.log('Purchase Unit: ' + purchaseUnit + ', Consumption Unit: ' + consumptionUnit + ', Conversion Ratio: ' + convtRatio + ', Purchase Price: ' + purchasePrice);
             if (!purchasePrice || isNaN(purchasePrice) || purchasePrice === 0) {
                 alert('Please put purchase price');
                 $('#purchase_price').focus();
@@ -115,12 +133,35 @@ $(document).ready(function () {
             //alert('Cost per unit: ' + costPerUnit.toFixed(2));
             $('#cost_perunit').val(costPerUnit.toFixed(2));
         }
+        //Check if the form is in the edit mode
+        if (consumptionUnitEdit) {
+            console.log('Purchase Unit: ' + purchaseUnitEdit + ', Consumption Unit: ' + consumptionUnitEdit + ', Conversion Ratio: ' + convtRatioEdit + ', Purchase Price: ' + purchasePriceEdit);
+        
+            if (!purchasePriceEdit || isNaN(purchasePriceEdit) || purchasePriceEdit === 0) {
+                alert('Please put purchase price');
+                $('#purchase_price').focus();
+                $('#cost_perunit_edit').val('');
+                return;
+            }
+
+            if (!convtRatioEdit || isNaN(convtRatioEdit) || convtRatioEdit === 0) {
+                alert('Invalid conversion ratio');
+                $('#cost_perunit_edit').val('');
+                return;
+            }
+
+            var costPerUnitEdit = purchasePriceEdit / convtRatioEdit;
+            //alert('Cost per unit: ' + costPerUnit.toFixed(2));
+            $('#cost_perunit_edit').val(costPerUnitEdit.toFixed(2));
+        }
     }
 
     $('.consumtion_unit').on('change', function () {
         calculateCostPerUnit();
     });
-    $("#purchase_price").on('change', function(){
+    $(".purchase_price").on('change', function(){
+        calculateCostPerUnit();
+    }).on('mouseout', function(){
         calculateCostPerUnit();
     });
 });
@@ -135,5 +176,10 @@ $(document).ready(function () {
         setTimeout(function () {
             $('.select2').val(null).trigger('change');
         }, 0);
+    });
+    // Listen for the modal's 'hidden.bs.modal' event
+    $('#edit').on('hidden.bs.modal', function () {
+        // Refresh the window when the modal is fully hidden
+        window.location.reload();
     });
 });

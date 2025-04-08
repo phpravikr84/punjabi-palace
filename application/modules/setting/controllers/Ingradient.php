@@ -190,6 +190,7 @@ class Ingradient extends MX_Controller {
 				];
 
 				if ($this->ingradient_model->unit_ingredient($postData)) {
+					$ingredient_id = $this->db->insert_id();
 					$this->logs_model->log_recorded($logData);
 					$this->_update_cache();
 					//Check if opening balance and opening date is in post
@@ -199,11 +200,8 @@ class Ingradient extends MX_Controller {
 					if (!empty($opening_balance) && !empty($opening_date)) {
 						$openstockData = array(
 							'ingredient_name'    => $this->input->post('ingredient_name', true),
+							'ingredient_id'       => $ingredient_id,
 							'purchase_price'     => $this->input->post('purchase_price', true),
-							'cost_perunit'       => $this->input->post('cost_perunit', true),
-							'purchase_unit'      => $this->input->post('unitid', true),
-							'consumption_unit'   => $this->input->post('consumption_unit', true),
-							'convt_ratio'        => $this->input->post('convt_ratio', true),
 							'opening_balance'    => $this->input->post('opening_balance', true),
 							'opening_date'       => date('Y-m-d', strtotime($this->input->post('opening_date', true))), // fixed typo & brackets
 							'is_active'          => 1

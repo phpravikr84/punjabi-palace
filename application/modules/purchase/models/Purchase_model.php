@@ -129,6 +129,44 @@ class Purchase_model extends CI_Model {
 				$this->db->update('ingredients');
 				/*end add ingredients*/
 				$this->db->insert('purchase_details',$data1);
+
+				/**
+				 * Need to update the stock purchase price, and cost per unit
+				 * on base of conversation ratio
+				 * Get the purchase price from the ingredients table
+				 * */
+				 // Fetch current ingredient data
+				 $this->db->where('id', (int)$product_id);
+				 $query = $this->db->get('ingredients');
+				 $ingredient = $query->row();
+
+				 if (!$ingredient) {
+					return FALSE; // Ingredient not found
+				}
+		
+				// Get current purchase_price
+				$current_purchase_price = $ingredient->purchase_price;
+		
+				// Logic for purchase_price
+				if (is_null($current_purchase_price) || $current_purchase_price < $product_rate || $current_purchase_price > $product_rate) {
+					$new_purchase_price = $product_rate;
+				} else {
+					$new_purchase_price = $current_purchase_price; // Keep existing if it matches
+				}
+		
+				// Calculate cost_perunit (ensure convt_ratio is valid)
+				$convt_ratio = isset($ingredient->convt_ratio) && $ingredient->convt_ratio > 0 ? $ingredient->convt_ratio : 1;
+				$new_cost_perunit = $product_rate / $convt_ratio;
+		
+				// Prepare update using set()
+				$this->db->set('purchase_price', $new_purchase_price);
+				$this->db->set('cost_perunit', $new_cost_perunit);
+				// Where clause
+				$this->db->where('id', (int)$product_id);
+
+				// Execute update
+				$this->db->update('ingredients');
+
 			}
 		}
 		
@@ -399,6 +437,44 @@ class Purchase_model extends CI_Model {
 					$this->db->where('purchaseid', $id);
 					$this->db->where('indredientid', $product_id);
 					$this->db->update('purchase_details', $dataupdate);
+
+					/**
+					 * Need to update the stock purchase price, and cost per unit
+					 * on base of conversation ratio
+					 * Get the purchase price from the ingredients table
+					 * */
+					// Fetch current ingredient data
+					$this->db->where('id', (int)$product_id);
+					$query = $this->db->get('ingredients');
+					$ingredient = $query->row();
+
+					if (!$ingredient) {
+						return FALSE; // Ingredient not found
+					}
+			
+					// Get current purchase_price
+					$current_purchase_price = $ingredient->purchase_price;
+			
+					// Logic for purchase_price
+					if (is_null($current_purchase_price) || $current_purchase_price < $product_rate || $current_purchase_price > $product_rate) {
+						$new_purchase_price = $product_rate;
+					} else {
+						$new_purchase_price = $current_purchase_price; // Keep existing if it matches
+					}
+			
+					// Calculate cost_perunit (ensure convt_ratio is valid)
+					$convt_ratio = isset($ingredient->convt_ratio) && $ingredient->convt_ratio > 0 ? $ingredient->convt_ratio : 1;
+					$new_cost_perunit = $product_rate / $convt_ratio;
+			
+					// Prepare update using set()
+					$this->db->set('purchase_price', $new_purchase_price);
+					$this->db->set('cost_perunit', $new_cost_perunit);
+					// Where clause
+					$this->db->where('id', (int)$product_id);
+
+					// Execute update
+					$this->db->update('ingredients');
+
 				}
 			}
 			else{
@@ -415,6 +491,45 @@ class Purchase_model extends CI_Model {
 				{
 					
 					$this->db->insert('purchase_details',$data1);
+
+					/**
+					 * Need to update the stock purchase price, and cost per unit
+					 * on base of conversation ratio
+					 * Get the purchase price from the ingredients table
+					 * */
+					// Fetch current ingredient data
+					$this->db->where('id', (int)$product_id);
+					$query = $this->db->get('ingredients');
+					$ingredient = $query->row();
+
+					if (!$ingredient) {
+						return FALSE; // Ingredient not found
+					}
+			
+					// Get current purchase_price
+					$current_purchase_price = $ingredient->purchase_price;
+			
+					// Logic for purchase_price
+					if (is_null($current_purchase_price) || $current_purchase_price < $product_rate || $current_purchase_price > $product_rate) {
+						$new_purchase_price = $product_rate;
+					} else {
+						$new_purchase_price = $current_purchase_price; // Keep existing if it matches
+					}
+			
+					// Calculate cost_perunit (ensure convt_ratio is valid)
+					$convt_ratio = isset($ingredient->convt_ratio) && $ingredient->convt_ratio > 0 ? $ingredient->convt_ratio : 1;
+					$new_cost_perunit = $product_rate / $convt_ratio;
+			
+					// Prepare update using set()
+					$this->db->set('purchase_price', $new_purchase_price);
+					$this->db->set('cost_perunit', $new_cost_perunit);
+					// Where clause
+					$this->db->where('id', (int)$product_id);
+
+					// Execute update
+					$this->db->update('ingredients');
+
+
 				}
 			}
 		}

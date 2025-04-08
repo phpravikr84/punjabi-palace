@@ -13,18 +13,18 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label><?php echo display('ingredient_name'); ?> *</label>
-                                <input type="text" name="ingredient_name" id="ingredient_name" class="form-control ingredientDropDown" placeholder="<?php echo display('ingredient_name'); ?>" autocomplete="off" value="<?php echo (!empty($intinfo->ingredient_name) ? $intinfo->ingredient_name : '') ?>">
-                                <input type="hidden" name="ingredient_id" id="ingredient_id" value="<?php echo (!empty($intinfo->id) ? $intinfo->id : '') ?>" />
+                                <input type="text" name="ingredient_name" id="ingredient_name_edit" class="form-control ingredientDropDown" placeholder="<?php echo display('ingredient_name'); ?>" autocomplete="off" value="<?php echo (!empty($intinfo->ingredient_name) ? $intinfo->ingredient_name : '') ?>">
+                                <input type="hidden" name="ingredient_id" id="ingredient_id_edit" value="<?php echo (!empty($intinfo->id) ? $intinfo->id : '') ?>" />
                             </div>
 
                             <div class="form-group">
                                 <label><?php echo 'Purchase Price'; ?> *</label>
-                                <input name="purchase_price" id="purchase_price" class="form-control" type="text" placeholder="Purchase Price" value="<?php echo (!empty($intinfo->purchase_price) ? $intinfo->purchase_price : '') ?>">
+                                <input name="purchase_price" id="purchase_price_edit" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="<?php echo (!empty($intinfo->purchase_price) ? $intinfo->purchase_price : '') ?>">
                             </div>
 
                             <div class="form-group">
                                 <label><?php echo 'Cost Per Unit'; ?> *</label>
-                                <input name="cost_perunit" id="cost_perunit" class="form-control" type="text" placeholder="Cost Per Unit" value="<?php echo (!empty($intinfo->cost_perunit) ? $intinfo->cost_perunit : '') ?>">
+                                <input name="cost_perunit" id="cost_perunit_edit" class="form-control" type="text" placeholder="Cost Per Unit" value="<?php echo (!empty($intinfo->cost_perunit) ? $intinfo->cost_perunit : '') ?>">
                             </div>
 
                             <div class="form-group">
@@ -38,20 +38,20 @@
                             <div class="form-group">
                                 <label><?php echo 'Purchase Unit'; ?> *</label>
                                 <?php 
-                                echo form_dropdown('unitid', $unitdropdown, (!empty($intinfo->uom_id) ? $intinfo->uom_id : null), 'class="form-control" id="purchase_unit"');
+                                echo form_dropdown('unitid', $unitdropdown, (!empty($intinfo->uom_id) ? $intinfo->uom_id : null), 'class="form-control" id="purchase_unit_edit"');
                                 ?>
                             </div>
 
                             <div class="form-group">
                                 <label><?php echo 'Consumption Unit'; ?> *</label>
                                 <?php 
-                                echo form_dropdown('consumption_unit', $unitdropdown, (!empty($intinfo->consumption_unit) ? $intinfo->consumption_unit : null), 'class="form-control consumtion_unit"');
+                                echo form_dropdown('consumption_unit', $unitdropdown, (!empty($intinfo->consumption_unit) ? $intinfo->consumption_unit : null), 'class="form-control consumtion_unit" id="consumtion_unit_edit"');
                                 ?>
                             </div>
 
                             <div class="form-group">
                                 <label><?php echo 'Conversation Ratio'; ?> *</label>
-                                <select name="convt_ratio" class="form-control" id="convt_ratio">
+                                <select name="convt_ratio" class="form-control" id="convt_ratio_edit">
                                     <option value="1000" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '1000') ? 'selected' : ''; ?>>1000</option>
                                     <option value="100" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '100') ? 'selected' : ''; ?>>100</option>
                                     <option value="10" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '10') ? 'selected' : ''; ?>>10</option>
