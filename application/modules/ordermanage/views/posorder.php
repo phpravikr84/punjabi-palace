@@ -463,12 +463,23 @@ foreach ($scan as $file) {
 <div id="mySidebar" class="sidebar animate__animated animate__fadeInLeft">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <div class="card">
-    <div class="card-header">
-      Choose Modifiers
-    </div>
-    <small class="modifier-sec-sub-heading">Choose the add-on items want to serve with the main food item</small>
-    <div class="card-body" id="sideMfContainer">
-      <h6>Some Content</h6>
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="card-header">
+          Choose Variants
+        </div>
+        <small class="modifier-sec-sub-heading">Choose the variant of the food item</small>
+        <div class="card-body" id="sideVarContainer">
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="card-header">
+          Choose Modifiers
+        </div>
+        <small class="modifier-sec-sub-heading">Choose the add-on items want to serve with the main food item</small>
+        <div class="card-body" id="sideMfContainer">
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1104,7 +1115,7 @@ foreach ($scan as $file) {
                                                   foreach ($selectedModsForCart as $smk => $smv):
                                                 ?>
                                                     <br />
-                                                    <small class="modCheck" style="font-style: italic;font-weight: 400;"><?= $smv->add_on_name; ?> (<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $smv->price; ?>)</small>
+                                                    <small class="modCheck" style="font-style: italic;font-weight: 400;"><?= $smv->add_on_name; ?> <?php if($smv->price>0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $smv->price; ?>)<?php endif; ?></small>
                                                 <?php
                                                   endforeach;
                                                 else:
@@ -1306,6 +1317,13 @@ foreach ($scan1 as $file) {
 }
 //$this->load->view('include/pos_script');
 ?>
+<script>
+  Pace.options.ajax = {
+    trackMethods: ['POST', 'GET'],
+    trackWebSockets: false,
+    ignoreURLs: []
+  };
+</script>
 <script>
   function openNav() {
     document.getElementById("mySidebar").style.width = "100%";

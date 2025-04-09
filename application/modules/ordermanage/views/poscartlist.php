@@ -130,6 +130,9 @@ if ($cart = $this->cart->contents()) { ?>
         $this->db->where('cart_selected_modifiers.is_active', 1);
         $q = $this->db->get();
         $modTotalPrice = $q->row();
+        // echo "<pre>";
+        // print_r($modTotalPrice);
+        // echo "</pre><br />";
         // echo "mod_total_price: ".$modTotalPrice->mod_total_price;
         // if ($modTotalPrice->mod_total_price > 0) {
         //   $itemprice+=$modTotalPrice->mod_total_price;
@@ -244,7 +247,7 @@ if ($cart = $this->cart->contents()) { ?>
                                           foreach ($selectedModsForCart as $smk => $smv):
                                         ?>
                                             <br />
-                                          <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+                                          <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> <?php if($smv->price>0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                         <?php 
                                           endforeach;
                                         else:

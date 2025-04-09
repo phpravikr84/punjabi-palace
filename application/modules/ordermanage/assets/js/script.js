@@ -608,6 +608,7 @@ function posaddonsfoodtocart(pid, id, more = null) {
       }
     },
   });
+  return true;
 }
 function deletecart(id, orderid, pid, vid, qty) {
   var geturl = $("#delurl").val();

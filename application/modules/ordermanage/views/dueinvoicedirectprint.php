@@ -407,6 +407,9 @@ body
 					  $total=$orderinfo->totalamount;
 					  $pdiscount=0;
 					foreach ($iteminfo as $item){
+            // echo "<pre>";
+            // print_r($item);
+            // echo "</pre>";
 						$i++;
 						if($item->price>0){
 											$itemprice= $item->price*$item->menuqty;
@@ -462,6 +465,28 @@ body
             </div>
           </div>
           <?php 
+          if(count($orderedMods)>0){
+            foreach ($orderedMods as $mk => $mv) {
+              if ($mv->menu_id == $item->menu_id) {
+                // echo "<pre>";
+                // print_r($mv);
+                // echo "</pre>";
+          ?>
+          <div class="row-data">
+            <div class="item-info">
+              <h5 class="item-title">-<?php echo $mv->add_on_name;?></h5>
+              <p class="item-number"><?php echo $mv->price;?> x 1</p>
+            </div>
+            <h5>
+              <?php if($currency->position==1){echo $currency->curr_icon;}?>
+              <?php echo $mv->price*1;?>
+              <?php if($currency->position==2){echo $currency->curr_icon;}?>
+            </h5>
+          </div>
+          <?php
+              }
+            }
+          }
 			if(!empty($item->add_on_id)){
 				$y=0;
 					foreach($addons as $addonsid){

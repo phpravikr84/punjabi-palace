@@ -231,7 +231,6 @@
   $('body').on('click', '.select_product', function(e) {
     
       e.preventDefault();
-
       var panel = $(this);
       var pid = panel.find('.panel-body input[name=select_product_id]').val();
       var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
@@ -245,6 +244,11 @@
       var price = panel.find('.panel-body input[name=select_product_price]').val();
       var hasaddons = panel.find('.panel-body input[name=select_addons]').val();
       var csrf = $('#csrfhashresarvation').val();
+      
+      Pace.restart();
+      console.log("hasaddons: " + hasaddons);
+      console.log("totalvarient: " + totalvarient);
+      console.log("customqty: " + customqty);
       if (hasaddons == 0 && totalvarient == 1 && customqty == 0) {
           /*check production*/
           var productionsetting = $('#production_setting').val();
@@ -305,6 +309,9 @@
                   $('#grandtotal').val(tgtotal);
                   $('#orggrandTotal').val(tgtotal);
                   $('#orginattotal').val(tgtotal);
+                  if (isNaN($('#caltotal').text())) {
+                    $('#caltotal').text(parseFloat(0));
+                  }
               }
           });
       } else {
@@ -316,9 +323,16 @@
               url: geturl,
               data: dataString,
               success: function(data) {
+                $("#modifierContent_1").remove();
+                $("#posSelectPurchaseTable").remove();
                   $('.addonsinfo').html(data);
-				  
-                  $('#edit').modal('show');
+
+                  $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
+                  $('#sideMfContainer').html($("#modifierContent_1").html());
+                  $("#posSelectPurchaseTable").remove();
+                  $("#modifierContent_1").remove();
+				  openNav();
+                //   $('#edit').modal('show');
 				  
 				  //$('#edit').find('.close').focus();
                   var totalitem = $('.totalitem').val();
@@ -337,6 +351,9 @@
                   $('#grandtotal').val(tgtotal);
                   $('#orggrandTotal').val(tgtotal);
                   $('#orginattotal').val(tgtotal); 
+                  if (isNaN($('#caltotal').text())) {
+                    $('#caltotal').text(parseFloat(0));
+                  }
               }
           });
       }
@@ -407,6 +424,11 @@ function ApplyModifierSelect(pid=0,tr_row_id) {
     var mods = JSON.stringify(selectedValues);
     console.log("Modifier Selected Values: " + mods);
     //sending to the controller to check validations and save to the database
+    if(!posaddonsfoodtocart(pid,1))
+    {
+        alert("Error adding this item to the cart!");
+        return false;
+    }
     var csrf = $('#csrfhashresarvation').val(),
         geturl = $("#cartmodifiersaveurl").val(),
         myurl = geturl,
