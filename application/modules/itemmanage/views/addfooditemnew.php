@@ -398,8 +398,8 @@
                             <div class="panel-body">
                                 <!-- <h3>Recipes</h3> -->
                                 <input type="hidden" name="foodCheckBomorNotBomUrl" id="foodCheckBomorNotBomUrl" value="<?php echo base_url('production/production/check_food_item_without_bom'); ?>"/>
-                                <input name="url" type="hidden" id="url" value="<?php echo base_url('production/production/productionitem'); ?>" />
-                                <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url('production/production/getUomDetails'); ?>" />
+                                <input name="url" type="hidden" id="url" value="<?php echo base_url('itemmanage/item_food/getingredientitem'); ?>" />
+                                <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url('production/production/getUomDetailsNew'); ?>" />
                                 <!-- Get Edit view data begin -->
                                 <?php 
                                 // Group recipes by variantName
@@ -419,19 +419,22 @@
                                             <!-- Variant Id -->
                                              <?php $variantNm = strtolower(str_replace(' ', '_', $variantName)); ?>
                                             <!-- Variant ID End -->
+                                            <small>Recipe Cost Price</small>
+                                            <input type="text" class="form-control" id="recipe_costprice_<?php echo $variantNm; ?>" name="recipe_costprice_<?php echo $variantNm; ?>[]"/>
                                             <input type="hidden" name="recipe_for[]" value="<?php echo $variantNm; ?>"/>
                                             <table class="table table-bordered table-hover" id="recipeTable_<?php echo $variantNm; ?>">
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center" width="200"><?php echo display('item_information') ?><i class="text-danger">*</i></th> 
                                                         <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
-                                                        <th class="text-center" style="display:none;"><?php echo display('price');?> </th>
+                                                        <th class="text-center"><?php echo display('price');?> </th>
                                                         <th class="text-center"><?php echo 'Unit'; ?> </th>
                                                         <th class="text-center"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="addPurchaseItem_<?php echo $variantNm; ?>">
-                                                    <?php foreach ($recipes as $recipe) { ?>
+                                                    <?php $i = 1;
+                                                    foreach ($recipes as $key=>$recipe) { ?>
                                                         <tr>
                                                             <td class="span3 supplier">
                                                                 <input type="hidden" name="variant_id_<?php echo $variantNm; ?>[]" value="<?php echo $recipe->pvarientid;?>" >
@@ -447,22 +450,32 @@
                                                                 </select>
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_quantity_<?php echo $variantNm;; ?>[]" class="form-control text-right" value="<?php echo $recipe->qty; ?>">
-                                                            </td>
-                                                            <td class="text-right" style="display:none;">
-                                                                <input type="hidden" name="product_price_<?php echo $variantNm; ?>[]" class="form-control text-right">
+                                                                <input type="text" name="product_quantity_<?php echo $variantNm; ?>[]" id="product_quantity_<?php echo $variantNm;; ?>_<?php echo $i; ?>" data-row-id="<?php echo $variantNm; ?>_<?php echo $i; ?>" class="form-control text-right quantityCheck" value="<?php echo $recipe->qty; ?>">
                                                             </td>
                                                             <td class="text-right">
-                                                                <!-- <input type="hidden" id="unit-total_<?php echo $variantNm; ?>_1" value="6"> -->
-                                                                <input type="hidden" name="unitid_<?php echo $variantNm; ?>[]" id="unitid_<?php echo $variantName; ?>_1" class="form-control text-right" value="<?php echo $recipe->unitid; ?>">
-                                                                <input type="text" name="unitname_<?php echo $variantNm; ?>[]" class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
+                                                                <input type="text" name="product_price_<?php echo $variantNm; ?>[]" id="product_price_<?php echo $variantNm; ?>_<?php echo $i; ?>" class="form-control text-right product_price_<?php echo $variantNm; ?>" value="<?php echo $recipe->recipe_price; ?>" readonly>
+                                                            </td>
+                                                            <td class="text-right">
+                                                            <?php
+                                                                $recipe_ingr = get_ingredient_by_id($recipe->ingredientid);
+
+                                                                $unit_price = 0.000; // default value
+                                                                if ($recipe_ingr && isset($recipe_ingr->purchase_price, $recipe_ingr->convt_ratio) && $recipe_ingr->convt_ratio != 0) {
+                                                                    $unit_price = number_format($recipe_ingr->purchase_price / $recipe_ingr->convt_ratio, 3, '.', '');
+                                                                }
+                                                                ?>
+
+                                                                <input type="hidden" id="unit-total_<?php echo $variantNm; ?>_<?php echo $i; ?>" value="<?php echo $unit_price; ?>">
+
+                                                                <input type="hidden" name="unitid_<?php echo $variantNm; ?>[]" id="unitid_<?php echo $variantNm; ?>_<?php echo $i; ?>" class="form-control text-right" value="<?php echo $recipe->unitid; ?>">
+                                                                <input type="text" name="unitname_<?php echo $variantNm; ?>[]" id="unitname_<?php echo $variantNm; ?>_<?php echo $i; ?>"class="form-control text-right" value="<?php echo $recipe->unitname; ?>" readonly>
                                                             </td>
                                                             <td class="text-center">
                                                             <input name="url" type="hidden" id="get_delrecipe" value="<?php echo base_url('itemmanage/item_food/delete_recipe_ingredient'); ?>" />
                                                                 <button type="button" class="btn btn-danger btn-sm removeEditRecipeBtn" data-ingredientid="<?php echo $recipe->ingredientid; ?>" data-variantid="<?php echo $recipe->pvarientid; ?>" data-menuid="<?php echo $productinfo['ProductsID']; ?>"><i class="fa fa-trash"></i></button>
                                                             </td>
                                                         </tr>
-                                                    <?php } ?>
+                                                    <?php $i++; } ?>
                                                 </tbody>
                                             </table>
                                             <button type="button" class="btn btn-success add-item" data-variant="<?php echo $variantNm; ?>">Add More Item</button>

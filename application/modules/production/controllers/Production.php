@@ -346,6 +346,30 @@ class Production extends MX_Controller {
 		$units = $this->db->get()->result();
 		echo json_encode($units);
 	}
+	/** Get UOM details by Ingredient Id */
+	public function getUomDetailsNew($ingredient_id)
+	{
+		$this->db->select('
+			uom_purchase.*, ingredients.uom_id, ingredients.consumption_unit,
+			uom_purchase.uom_short_code AS purchase_unitname, 
+			uom_consumption.uom_short_code AS consumtion_unitname
+		');
+		$this->db->from('ingredients');
+		
+		// Join for purchase unit
+		$this->db->join('unit_of_measurement AS uom_purchase', 'uom_purchase.id = ingredients.uom_id', 'left');
+		
+		// Join for consumption unit
+		$this->db->join('unit_of_measurement AS uom_consumption', 'uom_consumption.id = ingredients.consumption_unit', 'left');
+		
+		$this->db->where('ingredients.is_active', 1);
+		$this->db->where('ingredients.id', $ingredient_id);
+
+		$units = $this->db->get()->result();
+		echo json_encode($units);
+		exit;
+	}
+
 
 	/** Get Production Detail */
 	public function productionDetails(){

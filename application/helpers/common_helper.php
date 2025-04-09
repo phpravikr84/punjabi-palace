@@ -677,4 +677,19 @@ if(!function_exists('sub_categories_by_parent_id')){
   }
 }
 
+if (!function_exists('get_ingredient_by_id')) {
+  function get_ingredient_by_id($id) {
+      $CI =& get_instance(); // Get CI instance
+      $CI->load->database(); // Load the database library
+
+      $query = $CI->db->get_where('ingredients', ['id' => $id, 'is_active' => 1]);
+
+      if ($query->num_rows() > 0) {
+          return $query->row(); // returns as object
+      } else {
+          return null; // or return false; based on your preference
+      }
+  }
+}
+
 
