@@ -65,93 +65,198 @@ class Ingradient extends MX_Controller {
     }
 	
 	
-    public function create($id = null)
-    {
-	  $this->permission->method('setting','create')->redirect();
-	  $data['title'] = display('add_ingredient');
-	  #-------------------------------#
-		$this->form_validation->set_rules('ingredientname',display('ingredient_name'),'required|max_length[50]');
-		$this->form_validation->set_rules('unitid',display('unit_name')  ,'required');
-		$this->form_validation->set_rules('status', display('status')  ,'required');
+    // public function create($id = null)
+    // {
+	//   $this->permission->method('setting','create')->redirect();
+	//   $data['title'] = display('add_ingredient');
+	//   #-------------------------------#
+	// 	$this->form_validation->set_rules('ingredientname',display('ingredient_name'),'required|max_length[50]');
+	// 	$this->form_validation->set_rules('unitid',display('unit_name')  ,'required');
+	// 	$this->form_validation->set_rules('status', display('status')  ,'required');
 	   
-	  $data['intinfo']="";
-	  $data['units']   = (Object) $postData = [
-	   'id'     => $this->input->post('id'),
-	   'ingredient_name' 	 => $this->input->post('ingredientname',true),
-	   'uom_id' 	 		 => $this->input->post('unitid',true),
-	   'min_stock'       => $this->input->post('min_stock',true),
-	   'is_active' 	 	     => $this->input->post('status',true),
-	  ];
-	  if ($this->form_validation->run()) { 
-	   if (empty($this->input->post('id'))) {
-		$this->permission->method('setting','create')->redirect();
+	//   $data['intinfo']="";
+	//   $data['units']   = (Object) $postData = [
+	//    'id'     => $this->input->post('id'),
+	//    'ingredient_name' 	 => $this->input->post('ingredientname',true),
+	//    'uom_id' 	 		 => $this->input->post('unitid',true),
+	//    'min_stock'       => $this->input->post('min_stock',true),
+	//    'is_active' 	 	     => $this->input->post('status',true),
+	//   ];
+	//   if ($this->form_validation->run()) { 
+	//    if (empty($this->input->post('id'))) {
+	// 	$this->permission->method('setting','create')->redirect();
 		
-	 $logData = [
-	   'action_page'         => "Ingredient List",
-	   'action_done'     	 => "Insert Data", 
-	   'remarks'             => "New Ingredient Created",
-	   'user_name'           => $this->session->userdata('fullname'),
-	   'entry_date'          => date('Y-m-d H:i:s'),
-	  ];
-		if ($this->ingradient_model->unit_ingredient($postData)) { 
-		 $this->logs_model->log_recorded($logData);
-		    $this->db->select('*');
-			$this->db->from('ingredients');
-			$this->db->where('is_active',1);
-			$query = $this->db->get();
-			foreach ($query->result() as $row) {
-				$json_product[] = array('label'=>$row->ingredient_name,'value'=>$row->id);
-			}
-			$cache_file = './assets/js/indredient.json';
-			$productList = json_encode($json_product);
-			file_put_contents($cache_file,$productList);
-		 $this->session->set_flashdata('message', display('save_successfully'));
-		 redirect('setting/ingradient/index');
-		} else {
-		 $this->session->set_flashdata('exception',  display('please_try_again'));
-		}
-		redirect("setting/ingradient/index"); 
+	//  $logData = [
+	//    'action_page'         => "Ingredient List",
+	//    'action_done'     	 => "Insert Data", 
+	//    'remarks'             => "New Ingredient Created",
+	//    'user_name'           => $this->session->userdata('fullname'),
+	//    'entry_date'          => date('Y-m-d H:i:s'),
+	//   ];
+	// 	if ($this->ingradient_model->unit_ingredient($postData)) { 
+	// 	 $this->logs_model->log_recorded($logData);
+	// 	    $this->db->select('*');
+	// 		$this->db->from('ingredients');
+	// 		$this->db->where('is_active',1);
+	// 		$query = $this->db->get();
+	// 		foreach ($query->result() as $row) {
+	// 			$json_product[] = array('label'=>$row->ingredient_name,'value'=>$row->id);
+	// 		}
+	// 		$cache_file = './assets/js/indredient.json';
+	// 		$productList = json_encode($json_product);
+	// 		file_put_contents($cache_file,$productList);
+	// 	 $this->session->set_flashdata('message', display('save_successfully'));
+	// 	 redirect('setting/ingradient/index');
+	// 	} else {
+	// 	 $this->session->set_flashdata('exception',  display('please_try_again'));
+	// 	}
+	// 	redirect("setting/ingradient/index"); 
 	
-	   } else {
-		$this->permission->method('setting','update')->redirect();
-	  $logData = [
-	   'action_page'         => "Ingredient List",
-	   'action_done'     	 => "Update Data", 
-	   'remarks'             => "Ingredient Updated",
-	   'user_name'           => $this->session->userdata('fullname'),
-	   'entry_date'          => date('Y-m-d H:i:s'),
-	  ];
+	//    } else {
+	// 	$this->permission->method('setting','update')->redirect();
+	//   $logData = [
+	//    'action_page'         => "Ingredient List",
+	//    'action_done'     	 => "Update Data", 
+	//    'remarks'             => "Ingredient Updated",
+	//    'user_name'           => $this->session->userdata('fullname'),
+	//    'entry_date'          => date('Y-m-d H:i:s'),
+	//   ];
 
-		if ($this->ingradient_model->update_ingredient($postData)) { 
-		 $this->logs_model->log_recorded($logData);
-		 $this->db->select('*');
-			$this->db->from('ingredients');
-			$this->db->where('is_active',1);
-			$query = $this->db->get();
-			foreach ($query->result() as $row) {
-				$json_product[] = array('label'=>$row->ingredient_name,'value'=>$row->id);
-			}
-			$cache_file = './assets/js/indredient.json';
-			$productList = json_encode($json_product);
-			file_put_contents($cache_file,$productList);
-		 $this->session->set_flashdata('message', display('update_successfully'));
-		} else {
-		$this->session->set_flashdata('exception',  display('please_try_again'));
-		}
-		redirect("setting/ingradient/index");  
-	   }
-	  } else { 
-	   if(!empty($id)) {
-		$data['title'] = display('update_ingredient');
-		$data['intinfo']   = $this->ingradient_model->findById($id);
-	   }
+	// 	if ($this->ingradient_model->update_ingredient($postData)) { 
+	// 	 $this->logs_model->log_recorded($logData);
+	// 	 $this->db->select('*');
+	// 		$this->db->from('ingredients');
+	// 		$this->db->where('is_active',1);
+	// 		$query = $this->db->get();
+	// 		foreach ($query->result() as $row) {
+	// 			$json_product[] = array('label'=>$row->ingredient_name,'value'=>$row->id);
+	// 		}
+	// 		$cache_file = './assets/js/indredient.json';
+	// 		$productList = json_encode($json_product);
+	// 		file_put_contents($cache_file,$productList);
+	// 	 $this->session->set_flashdata('message', display('update_successfully'));
+	// 	} else {
+	// 	$this->session->set_flashdata('exception',  display('please_try_again'));
+	// 	}
+	// 	redirect("setting/ingradient/index");  
+	//    }
+	//   } else { 
+	//    if(!empty($id)) {
+	// 	$data['title'] = display('update_ingredient');
+	// 	$data['intinfo']   = $this->ingradient_model->findById($id);
+	//    }
 	   
-	   $data['module'] = "setting";
-	   $data['page']   = "ingredientlist";   
-	   echo Modules::run('template/layout', $data); 
-	   }   
+	//    $data['module'] = "setting";
+	//    $data['page']   = "ingredientlist";   
+	//    echo Modules::run('template/layout', $data); 
+	//    }   
  
-    }
+    // }
+
+	public function create($id = null)
+	{
+		$this->permission->method('setting', ($id ? 'update' : 'create'))->redirect();
+
+		$data['title'] = $id ? display('update_ingredient') : display('add_ingredient');
+
+		$this->form_validation->set_rules('ingredient_name', display('ingredient_name'), 'required|max_length[50]');
+		$this->form_validation->set_rules('unitid', 'Purchase Unit', 'required');
+		$this->form_validation->set_rules('consumption_unit', 'Consumption Unit', 'required');
+		$this->form_validation->set_rules('is_active', display('is_active'), 'required');
+
+		$postData = [
+			'id'                => $this->input->post('id'),
+			'ingredient_name'   => $this->input->post('ingredient_name', true),
+			'purchase_price'    => $this->input->post('purchase_price', true),
+			'cost_perunit'      => $this->input->post('cost_perunit', true),
+			'min_stock'         => $this->input->post('min_stock', true),
+			'uom_id'     		=> $this->input->post('unitid', true),
+			'consumption_unit'  => $this->input->post('consumption_unit', true),
+			'convt_ratio'       => $this->input->post('convt_ratio', true),
+			'is_active'         => $this->input->post('is_active', true),
+		];
+
+		$data['intinfo'] = "";
+		$data['units'] = (object) $postData;
+
+		if ($this->form_validation->run()) {
+			if (empty($postData['id'])) {
+				$logData = [
+					'action_page' => "Ingredient List",
+					'action_done' => "Insert Data",
+					'remarks'     => "New Ingredient Created",
+					'user_name'   => $this->session->userdata('fullname'),
+					'entry_date'  => date('Y-m-d H:i:s'),
+				];
+
+				if ($this->ingradient_model->unit_ingredient($postData)) {
+					$ingredient_id = $this->db->insert_id();
+					$this->logs_model->log_recorded($logData);
+					$this->_update_cache();
+					//Check if opening balance and opening date is in post
+					$opening_balance = $this->input->post('opening_balance', true);
+					$opening_date = $this->input->post('opening_date', true);
+
+					if (!empty($opening_balance) && !empty($opening_date)) {
+						$openstockData = array(
+							'ingredient_name'    => $this->input->post('ingredient_name', true),
+							'ingredient_id'       => $ingredient_id,
+							'purchase_price'     => $this->input->post('purchase_price', true),
+							'opening_balance'    => $this->input->post('opening_balance', true),
+							'opening_date'       => date('Y-m-d', strtotime($this->input->post('opening_date', true))), // fixed typo & brackets
+							'is_active'          => 1
+						);
+						
+						$this->ingradient_model->ingredient_opening_stock($openstockData);
+						
+					}
+
+					
+
+					$this->session->set_flashdata('message', display('save_successfully'));
+				} else {
+					$this->session->set_flashdata('exception', display('please_try_again'));
+				}
+			} else {
+				$logData = [
+					'action_page' => "Ingredient List",
+					'action_done' => "Update Data",
+					'remarks'     => "Ingredient Updated",
+					'user_name'   => $this->session->userdata('fullname'),
+					'entry_date'  => date('Y-m-d H:i:s'),
+				];
+
+				if ($this->ingradient_model->update_ingredient($postData)) {
+					$this->logs_model->log_recorded($logData);
+					$this->_update_cache();
+					$this->session->set_flashdata('message', display('update_successfully'));
+				} else {
+					$this->session->set_flashdata('exception', display('please_try_again'));
+				}
+			}
+			redirect("setting/ingradient/index");
+		} else {
+			if (!empty($id)) {
+				$data['intinfo'] = $this->ingradient_model->findById($id);
+			}
+
+			$data['module'] = "setting";
+			$data['page'] = "ingredientlist";
+			echo Modules::run('template/layout', $data);
+		}
+	}
+
+	private function _update_cache()
+	{
+		$this->db->select('*')->from('ingredients')->where('is_active', 1);
+		$query = $this->db->get();
+		$json_product = [];
+		foreach ($query->result() as $row) {
+			$json_product[] = ['label' => $row->ingredient_name, 'value' => $row->id];
+		}
+		file_put_contents('./assets/js/indredient.json', json_encode($json_product));
+	}
+
    public function updateintfrm($id){
 	  
 		$this->permission->method('units','update')->redirect();
@@ -195,5 +300,42 @@ class Ingradient extends MX_Controller {
 		}
 		redirect('setting/ingradient/index');
     }
+
+	/**
+	 * Search Ingredient
+	 */
+	public function search_ingredient()
+	{
+		$term = $this->input->get('term', true);
+
+		if (!$term) {
+			echo json_encode([]);
+			exit;
+		}
+
+		$data = $this->ingradient_model->get_ingredient_frm_purchase($term);
+
+		header('Content-Type: application/json');
+		echo json_encode($data, JSON_UNESCAPED_UNICODE);
+		exit;
+	}
+
+	// check_ingredient_exists
+	public function check_ingredient_exist()
+	{
+		$term = $this->input->get('term', true);
+
+		if (!$term) {
+			echo json_encode([]);
+			exit;
+		}
+
+		$data = $this->ingradient_model->check_ingredient_exists($term);
+
+		header('Content-Type: application/json');
+		echo json_encode($data, JSON_UNESCAPED_UNICODE);
+		exit;
+	}
+
  
 }

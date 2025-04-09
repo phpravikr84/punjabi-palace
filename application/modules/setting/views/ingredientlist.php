@@ -14,68 +14,119 @@
             </div>
             <div class="modal-body">
            
-<div class="row">
-        <div class="col-sm-12 col-md-12">
-            <div class="panel">
-               
-                <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <?php echo form_open('setting/ingradient/create'); ?>
+                                <?php echo form_hidden('id', (!empty($intinfo->id) ? $intinfo->id : null)); ?>
+                                <input type="hidden" name="getIngrItem" id="getIngrItem" value="<?php echo base_url('setting/ingradient/search_ingredient'); ?>"/>
+                                <input type="hidden" name="chkIngredient" id="chkIngredient" value="<?php echo base_url('setting/ingradient/check_ingredient_exist'); ?>"/>
+                                <div class="row">
+                                    <!-- Left Column -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><?php echo display('ingredient_name'); ?> *</label>
+                                            <input type="text" name="ingredient_name" id="ingredient_name" class="form-control ingredientDropDown" placeholder="<?php echo display('ingredient_name'); ?>" autocomplete="off" value="">
+                                            <input type="hidden" name="ingredient_id" id="ingredient_id" value="" />
+                                        </div>
+                                        <div class="form-group purchase_price_div">
+                                            <label><?php echo 'Purchase Price'; ?> *</label>
+                                            <input name="purchase_price" id="purchase_price" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?php echo 'Cost Per Unit'; ?> *</label>
+                                            <input name="cost_perunit" id="cost_perunit" class="form-control" type="text" placeholder="Cost Per Unit" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?php echo display('stock_limit'); ?> *</label>
+                                            <input name="min_stock" class="form-control" type="text" placeholder="<?php echo display('stock_limit'); ?>" value="">
+                                        </div>
+                                        <div class="form-group open_balance_div">
+                                            <label><?php echo display('opening_balance'); ?> *</label>
+                                            <input 
+                                                name="opening_balance" 
+                                                class="form-control" 
+                                                type="number" 
+                                                placeholder="<?php echo display('opening_balance'); ?>" 
+                                                value=""
+                                                step="0.01"
+                                                min="0"
+                                                required
+                                            >
+                                        </div>
 
-                    <?php echo  form_open('setting/ingradient/create') ?>
-                    <?php echo form_hidden('id', (!empty($intinfo->id)?$intinfo->id:null)) ?>
-                        <div class="form-group row">
-                        <label for="lastname" class="col-sm-4 col-form-label"><?php echo display('unit_name') ?>*</label>
-                        <div class="col-sm-8 customesl">
-                        <?php 
-						if(empty($categories)){$categories = array('' => '--Select--');}
-						echo form_dropdown('unitid',$unitdropdown,(!empty($intinfo->id)?$intinfo->id:null),'class="form-control"') ?>
+                                    </div>
+
+                                    <!-- Right Column -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><?php echo 'Purchase Unit'; ?> *</label>
+                                            <?php
+                                            $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
+                                            if (empty($categories)) { $categories = array('' => '--Select--'); }
+                                            echo form_dropdown('unitid', $unitdropdown, (!empty($intinfo->id) ? $intinfo->id : null), 'class="form-control" id="unitid"');
+                                            ?>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label><?php echo 'Consumption Unit'; ?> *</label>
+                                            <?php
+                                            $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
+                                            if (empty($categories)) { $categories = array('' => '--Select--'); }
+                                            echo form_dropdown('consumption_unit', $unitdropdown, (!empty($intinfo->id) ? $intinfo->id : null), 'class="form-control consumtion_unit" id="consumtion_unit"');
+                                            ?>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?php echo 'Conversation Ratio'; ?> *</label>
+                                            <select name="convt_ratio" class="form-control" id="convt_ratio">
+                                                <option value="1000">1000</option>
+                                                <option value="100">100</option>
+                                                <option value="10">10</option>
+                                                <option value="1">1</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?php echo display('status'); ?> *</label>
+                                            <select name="is_active" class="form-control">
+                                                <!-- <option value="" selected="selected"><?php //echo display('select_option'); ?></option> -->
+                                                <option value="1" selected="selected"><?php echo display('active'); ?></option>
+                                                <option value="0"><?php echo display('inactive'); ?></option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group open_balance_date_div">
+                                            <label><?php echo 'Opening Balance Date'; ?> *</label>
+                                            <input 
+                                                name="opening_date" 
+                                                class="form-control" 
+                                                type="date" 
+                                                value="<?php echo date('Y-m-d'); ?>" 
+                                                required
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Button Alignment -->
+                                <div class="form-group text-right">
+                                    <button type="reset" class="btn btn-primary"><?php echo display('reset'); ?></button>
+                                    <button type="submit" class="btn btn-success"><?php echo display('Ad'); ?></button>
+                                </div>
+                                <?php echo form_close(); ?>
+                            </div>  
                         </div>
                     </div>
-                        <div class="form-group row">
-                            <label for="unit_name" class="col-sm-4 col-form-label"><?php echo display('ingredient_name') ?> *</label>
-                            <div class="col-sm-8">
-                                <input name="ingredientname" class="form-control" type="text" placeholder="<?php echo display('ingredient_name') ?>" id="unitname" value="">
-                            </div>
-                        </div>
-                         <div class="form-group row">
-                            <label for="min_stock" class="col-sm-4 col-form-label"><?php echo display('stock_limit') ?> *</label>
-                            <div class="col-sm-8">
-                                <input name="min_stock" class="form-control" type="text" placeholder="<?php echo display('stock_limit') ?>" id="unitname" value="">
-                            </div>
-                        </div>
-						<div class="form-group row">
-                        <label for="lastname" class="col-sm-4 col-form-label"><?php echo display('status');?>*</label>
-                        <div class="col-sm-8 customesl">
-                            <select name="status" class="form-control">
-                                <option value=""  selected="selected"><?php echo display('select_option');?></option>
-                                <option value="1"><?php echo display('active')?></option>
-                                <option value="0"><?php echo display('inactive')?></option>
-                              </select>
-                        </div>
-                    </div>
-  
-                        <div class="form-group text-right">
-                            <button type="reset" class="btn btn-primary w-md m-b-5"><?php echo display('reset') ?></button>
-                            <button type="submit" class="btn btn-success w-md m-b-5"><?php echo display('Ad') ?></button>
-                        </div>
-                    <?php echo form_close() ?>
-
-                </div>  
+                </div>
+            
             </div>
         </div>
-    </div>
-             
-    
-   
-    </div>
-     
-            </div>
-            <div class="modal-footer">
-
-            </div>
-
+        <div class="modal-footer">
+                
         </div>
 
     </div>
+</div>
 
 <div id="edit" class="modal fade" role="dialog">
     <div class="modal-dialog modal-md">
@@ -142,4 +193,17 @@
     </div>
 </div>
 
-     
+   
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="<?php echo base_url('application/modules/setting/assets/js/ingr_script.js'); ?>" type="text/javascript"></script>
+<style>
+.ui-autocomplete {
+    z-index: 99999 !important;
+    position: absolute !important;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    }
+</style>
