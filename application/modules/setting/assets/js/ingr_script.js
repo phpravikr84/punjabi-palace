@@ -105,12 +105,14 @@ $(document).ready(function () {
         var consumptionUnit = $('#consumtion_unit').val();
         var convtRatio = parseFloat($('#convt_ratio').val());
         var purchasePrice = parseFloat($('#purchase_price').val());
+        var packSize = parseFloat($("#pack_size").val());
 
         //Edit Form Fields
         var purchaseUnitEdit = $('#purchase_unit_edit').val();
         var consumptionUnitEdit = $('#consumtion_unit_edit').val();
         var convtRatioEdit = parseFloat($('#convt_ratio_edit').val());
         var purchasePriceEdit = parseFloat($('#purchase_price_edit').val());
+        var packSizeEdit = parseFloat($("#edit_pack_size").val());
 
        
         //Check if the form is in add mode
@@ -129,9 +131,9 @@ $(document).ready(function () {
                 return;
             }
 
-            var costPerUnit = purchasePrice / convtRatio;
+            var costPerUnit = (purchasePrice / packSize) / convtRatio;
             //alert('Cost per unit: ' + costPerUnit.toFixed(2));
-            $('#cost_perunit').val(costPerUnit.toFixed(2));
+            $('#cost_perunit').val(costPerUnit.toFixed(3));
         }
         //Check if the form is in the edit mode
         if (consumptionUnitEdit) {
@@ -150,9 +152,9 @@ $(document).ready(function () {
                 return;
             }
 
-            var costPerUnitEdit = purchasePriceEdit / convtRatioEdit;
+            var costPerUnitEdit = (purchasePriceEdit / packSizeEdit) / convtRatioEdit;
             //alert('Cost per unit: ' + costPerUnit.toFixed(2));
-            $('#cost_perunit_edit').val(costPerUnitEdit.toFixed(2));
+            $('#cost_perunit_edit').val(costPerUnitEdit.toFixed(3));
         }
     }
 
@@ -162,6 +164,12 @@ $(document).ready(function () {
     $(".purchase_price").on('change', function(){
         calculateCostPerUnit();
     }).on('mouseout', function(){
+        calculateCostPerUnit();
+    });
+    $('.pack_size').on('change', function () {
+        calculateCostPerUnit();
+    });
+    $('.edit_pack_size').on('change', function () {
         calculateCostPerUnit();
     });
 });

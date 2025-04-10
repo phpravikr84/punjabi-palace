@@ -127,8 +127,17 @@ class Ingradient_model extends CI_Model {
 	{
 		return $this->db->insert($this->table2, $data);
 	}
+	/**
+	 * Get Brands
+	 */
 
-
-
+	 public function get_all_brands() {
+        $this->db->select('id, brand_name');
+        $this->db->from('brands');
+        $this->db->where('status', 1); // Only active brands
+        $this->db->order_by('brand_name', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
     
 }

@@ -23,6 +23,30 @@
                                 <input type="hidden" name="getIngrItem" id="getIngrItem" value="<?php echo base_url('setting/ingradient/search_ingredient'); ?>"/>
                                 <input type="hidden" name="chkIngredient" id="chkIngredient" value="<?php echo base_url('setting/ingradient/check_ingredient_exist'); ?>"/>
                                 <div class="row">
+                                <!-- Brands -- Added--> 
+                                <div class="col-md-12">
+                                    <div class="form-group row align-items-center">
+                                        <label for="brand_id" class="col-sm-2 col-form-label text-right"><?php echo 'Brand'; ?> </label>
+                                        <div class="col-sm-10">
+                                            <?php
+                                                $brand_options = array('' => display('select_brand'));
+                                                if (!empty($brands)) {
+                                                    foreach ($brands as $brand) {
+                                                        $brand_options[$brand->id] = $brand->brand_name;
+                                                    }
+                                                }
+
+                                                echo form_dropdown(
+                                                    'brand_id',
+                                                    $brand_options,
+                                                    null, // no selection for create form
+                                                    'class="form-control" id="brand_id"'
+                                                );
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Brands -- Added--> 
                                     <!-- Left Column -->
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -30,12 +54,18 @@
                                             <input type="text" name="ingredient_name" id="ingredient_name" class="form-control ingredientDropDown" placeholder="<?php echo display('ingredient_name'); ?>" autocomplete="off" value="">
                                             <input type="hidden" name="ingredient_id" id="ingredient_id" value="" />
                                         </div>
+                                        <div class="form-group">
+                                            <label><?php echo 'Pack Size'; ?> *</label>
+                                            <input name="pack_size" id="pack_size" class="form-control pack_size"
+                                            type="number" placeholder="Pack Size" value=""
+                                            min="0.000001" step="any" oninput="validity.valid||(value='');">
+                                        </div>
                                         <div class="form-group purchase_price_div">
-                                            <label><?php echo 'Purchase Price'; ?> *</label>
+                                            <label><?php echo 'Price Per Purchase Unit'; ?> *</label>
                                             <input name="purchase_price" id="purchase_price" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="">
                                         </div>
                                         <div class="form-group">
-                                            <label><?php echo 'Cost Per Unit'; ?> *</label>
+                                            <label><?php echo 'Cost Per Consumption Unit'; ?> *</label>
                                             <input name="cost_perunit" id="cost_perunit" class="form-control" type="text" placeholder="Cost Per Unit" value="">
                                         </div>
                                         <div class="form-group">
@@ -70,6 +100,14 @@
                                             $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
                                             if (empty($categories)) { $categories = array('' => '--Select--'); }
                                             echo form_dropdown('unitid', $unitdropdown, (!empty($intinfo->id) ? $intinfo->id : null), 'class="form-control" id="unitid"');
+                                            ?>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?php echo 'Pack Unit'; ?> *</label>
+                                            <?php
+                                            $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
+                                            if (empty($categories)) { $categories = array('' => '--Select--'); }
+                                            echo form_dropdown('pack_unit', $unitdropdown, (!empty($intinfo->id) ? $intinfo->id : null), 'class="form-control pack_unit" id="pack_unit"');
                                             ?>
                                         </div>
 

@@ -58,7 +58,10 @@ class Ingradient extends MX_Controller {
 	    $data['unitdropdown']   =  $this->unit_model->ingredient_dropdown();
         #
         #pagination ends
-        #   
+        #
+		//Add brands list
+		$data['brands'] = $this->ingradient_model->get_all_brands();
+
         $data['module'] = "setting";
         $data['page']   = "ingredientlist";   
         echo Modules::run('template/layout', $data); 
@@ -174,10 +177,14 @@ class Ingradient extends MX_Controller {
 			'consumption_unit'  => $this->input->post('consumption_unit', true),
 			'convt_ratio'       => $this->input->post('convt_ratio', true),
 			'is_active'         => $this->input->post('is_active', true),
+			'brand_id'        => $this->input->post('brand_id', true),
+			'pack_unit'         => $this->input->post('pack_unit', true),
+			'pack_size'			=> $this->input->post('pack_size', true),
 		];
 
 		$data['intinfo'] = "";
 		$data['units'] = (object) $postData;
+
 
 		if ($this->form_validation->run()) {
 			if (empty($postData['id'])) {
@@ -208,6 +215,17 @@ class Ingradient extends MX_Controller {
 						);
 						
 						$this->ingradient_model->ingredient_opening_stock($openstockData);
+
+						//Update also stock in ingredients table as opening balance
+						/**
+						 * Formula: pack_size * convt_ratio = opening balance
+						 */
+						$opening_balance = round(($this->input->post('pack_size', true) * $this->input->post('convt_ratio', true)), 2);
+						//Update stock in ingredients table
+						$this->ingradient_model->update_ingredient(array(
+							'id' => $ingredient_id,
+							'stock_qty' => $this->input->post('opening_balance', true),
+						));
 						
 					}
 
@@ -239,6 +257,8 @@ class Ingradient extends MX_Controller {
 			if (!empty($id)) {
 				$data['intinfo'] = $this->ingradient_model->findById($id);
 			}
+					//Add brands list
+			$data['brands'] = $this->ingradient_model->get_all_brands();
 
 			$data['module'] = "setting";
 			$data['page'] = "ingredientlist";
@@ -263,6 +283,8 @@ class Ingradient extends MX_Controller {
 		$data['title'] = display('update_ingredient');
 		$data['intinfo']   = $this->ingradient_model->findById($id);
 		$data['unitdropdown']   =  $this->unit_model->ingredient_dropdown();
+		//Add brands list
+		$data['brands'] = $this->ingradient_model->get_all_brands();
         $data['module'] = "setting";  
         $data['page']   = "ingredientedit";
 		$this->load->view('setting/ingredientedit', $data);   
