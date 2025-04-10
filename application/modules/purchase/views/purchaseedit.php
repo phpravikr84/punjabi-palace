@@ -125,11 +125,27 @@
                                         </td>
 
                                        <td class="wt">
-                                                <input type="text" id="available_quantity_<?php echo $i;?>" class="form-control text-right stock_ctn_<?php echo $i;?>" placeholder="0.00" value="<?php echo $item->stock_qty;?>" readonly="">
+                                            <!--
+                                                Convert the fetch Product Quanity on base of Purchase Conversion Unit
+                                                -->
+                                                <?php
+                                                    $ingredient = get_ingredient_by_id($item->indredientid);  // Fetches ingredient details
+                                                    $conversion_ratio = $ingredient->convt_ratio;              // Gets the conversion ratio
+                                                    $convertedStockQty = round($item->stock_qty / $conversion_ratio, 3); // Converts and rounds to 3 decimal places
+                                                ?>
+                                                <input type="text" id="available_quantity_<?php echo $i;?>" class="form-control text-right stock_ctn_<?php echo $i;?>" placeholder="0.00" value="<?php echo $convertedStockQty;?>" readonly="">
                                             </td>
                                         
                                             <td class="text-right">
-                                                <input type="number" step="0.0001" name="product_quantity[]" id="cartoon_<?php echo $i;?>" class="form-control text-right store_cal_1" onkeyup="calculate_store(<?php echo $i;?>);" onchange="calculate_store(<?php echo $i;?>);" placeholder="0.00" value="<?php echo $item->quantity;?>" min="0" tabindex="6">
+                                                <!--
+                                                Convert the fetch Product Quanity on base of Purchase Conversion Unit
+                                                -->
+                                                <?php
+                                                    $ingredient = get_ingredient_by_id($item->indredientid);  // Fetches ingredient details
+                                                    $conversion_ratio = $ingredient->convt_ratio;              // Gets the conversion ratio
+                                                    $convertedItemQty = round($item->quantity / $conversion_ratio, 3); // Converts and rounds to 3 decimal places
+                                                ?>
+                                                <input type="number" step="0.0001" name="product_quantity[]" id="cartoon_<?php echo $i;?>" class="form-control text-right store_cal_1" onkeyup="calculate_store(<?php echo $i;?>);" onchange="calculate_store(<?php echo $i;?>);" placeholder="0.00" value="<?php echo $convertedItemQty;?>" min="0" tabindex="6">
                                             </td>
                                             <td class="test">
                                                 <input type="number" step="0.0001" name="product_rate[]" onkeyup="calculate_store(<?php echo $i;?>);" onchange="calculate_store(<?php echo $i;?>);" id="product_rate_<?php echo $i;?>" class="form-control product_rate_<?php echo $i;?> text-right" placeholder="0.00" value="<?php echo $item->price;?>" min="0" tabindex="7">

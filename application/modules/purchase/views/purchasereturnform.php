@@ -36,7 +36,15 @@
 
                                         </td>
                                         <td>
-                                            <input type="text" name="recv_qty[]" class="form-control text-right " id="orderqty_<?php echo $sl;?>" value="<?php echo $return->stock_qty; ?>" readonly="" />
+                                            <!--
+                                                Convert the fetch Product Quanity on base of Purchase Conversion Unit
+                                                -->
+                                                <?php
+                                                    $ingredient = get_ingredient_by_id($return->indredientid);  // Fetches ingredient details
+                                                    $conversion_ratio = $ingredient->convt_ratio;              // Gets the conversion ratio
+                                                    $convertedStockReturnQty = round($return->stock_qty / $conversion_ratio, 3); // Converts and rounds to 3 decimal places
+                                                ?>
+                                            <input type="text" name="recv_qty[]" class="form-control text-right " id="orderqty_<?php echo $sl;?>" value="<?php echo $convertedStockReturnQty; ?>" readonly="" />
                                       </td>
                                       <td>
                                            <input type="text" name="total_qntt[]"  id="quantity_<?php echo $sl;?>" class="form-control text-right store_cal_<?php echo $sl;?>" onkeyup="calculate_store(<?php echo $sl;?>),checkqty(<?php echo $sl;?>);" onchange="calculate_store(<?php echo $sl;?>);" placeholder="0" value="" min="0" tabindex="8"/>

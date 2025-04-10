@@ -39,11 +39,15 @@
                                             <input name="cost_perunit" id="cost_perunit" class="form-control" type="text" placeholder="Cost Per Unit" value="">
                                         </div>
                                         <div class="form-group">
-                                            <label><?php echo display('stock_limit'); ?> *</label>
+                                            <label><?php echo display('stock_limit'); ?> *<br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
+                                            Consumption unit stock limit.
+                                </em>)</label>
                                             <input name="min_stock" class="form-control" type="text" placeholder="<?php echo display('stock_limit'); ?>" value="">
                                         </div>
                                         <div class="form-group open_balance_div">
-                                            <label><?php echo display('opening_balance'); ?> *</label>
+                                            <label><?php echo display('opening_balance'); ?> *<br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
+                                            Consumption unit stock limit.
+                                </em>)</label>
                                             <input 
                                                 name="opening_balance" 
                                                 class="form-control" 
@@ -61,7 +65,7 @@
                                     <!-- Right Column -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label><?php echo 'Purchase Unit'; ?> *</label>
+                                            <label><?php echo 'Purchase Unit'; ?></label>
                                             <?php
                                             $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
                                             if (empty($categories)) { $categories = array('' => '--Select--'); }

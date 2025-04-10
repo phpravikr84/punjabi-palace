@@ -28,7 +28,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label><?php echo display('stock_limit'); ?> *</label>
+                                <label><?php echo display('stock_limit'); ?> *<br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
+                                Consumption unit stock limit.
+                                </em>)</label>
                                 <input name="min_stock" class="form-control" type="text" placeholder="<?php echo display('stock_limit'); ?>" value="<?php echo (!empty($intinfo->min_stock) ? $intinfo->min_stock : '') ?>">
                             </div>
                         </div>

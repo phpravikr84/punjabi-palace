@@ -8,6 +8,8 @@ class Purchase_model extends CI_Model {
  
 	public function create()
 	{
+		//Call the helper function 
+		$this->load->helper('common_helper'); // Load the helper file
 		$saveid=$this->session->userdata('id');
 		$p_id = $this->input->post('product_id');
 	
@@ -48,7 +50,16 @@ class Purchase_model extends CI_Model {
 		$t_price = $this->input->post('total_price',true);
 		
 		for ($i=0, $n=count($p_id); $i < $n; $i++) {
-			$product_quantity = $quantity[$i];
+			/**
+			 * New Code implemented for save quanitity on base of conversion ratio
+			 * Logic implement on 10th April 2025
+			 */
+				$ingredient =  get_ingredient_by_id($p_id[$i]);
+				$conversion_ratio = $ingredient->convt_ratio;
+			/**
+			 * =================================
+			 */
+			$product_quantity = round($quantity[$i] * $conversion_ratio, 3); // Multiply by conversion ratio
 			$product_rate = $rate[$i];
 			$product_id = $p_id[$i];
 			$total_price = $t_price[$i];
@@ -402,7 +413,17 @@ class Purchase_model extends CI_Model {
 		$t_price = $this->input->post('total_price',true);
 		
 		for ($i=0, $n=count($p_id); $i < $n; $i++){
-			$product_quantity = $quantity[$i];
+			/**
+			 * New Code implemented for save quanitity on base of conversion ratio
+			 * Logic implement on 10th April 2025
+			 */
+			$ingredient =  get_ingredient_by_id($p_id[$i]);
+			$conversion_ratio = $ingredient->convt_ratio;
+			/**
+			 * =================================
+			 */
+			$product_quantity = round($quantity[$i] * $conversion_ratio, 3); // Multiply by conversion ratio
+			//$product_quantity = $quantity[$i];
 			$product_rate = $rate[$i];
 			$product_id = $p_id[$i];
 			$total_price = $t_price[$i];
@@ -979,7 +1000,18 @@ public function getinvoice($id){
 				$p_discount = $this->input->post('discount');
 		
 				for ($i=0, $n=count($p_id); $i <= $n; $i++) {
-					$product_quantity = $quantity[$i];
+
+					/**
+					 * New Code implemented for save quanitity on base of conversion ratio
+					 * Logic implement on 10th April 2025
+					 */
+					$ingredient =  get_ingredient_by_id($p_id[$i]);
+					$conversion_ratio = $ingredient->convt_ratio;
+					/**
+					 * =================================
+					 */
+					$product_quantity = round($quantity[$i] * $conversion_ratio, 3); // Multiply by conversion ratio
+					//$product_quantity = $quantity[$i];
 					$product_rate = $rate[$i];
 					$product_id = $p_id[$i];
 					$removeprice=$pq[$i];
@@ -1098,7 +1130,7 @@ public function getinvoice($id){
         return false;
 	}
   	public function returniteminfo($id){
-	 	$this->db->select('purchase_return_details.*,ingredients.ingredient_name,unit_of_measurement.uom_short_code');
+	 	$this->db->select('purchase_return_details.*,ingredients.id as indredientid,ingredients.ingredient_name,unit_of_measurement.uom_short_code');
 		$this->db->from('purchase_return_details');
 		$this->db->join('ingredients','purchase_return_details.product_id=ingredients.id','left');
 		$this->db->join('unit_of_measurement','unit_of_measurement.id = ingredients.uom_id','inner');
