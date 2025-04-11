@@ -466,7 +466,13 @@ public function count_fooditem()
 			->result();
 		
 		// Fetch recipes
-		$recipes = $this->db->select("vt.variantName, pd.pro_detailsid, pd.foodid, pd.pvarientid, pd.ingredientid, pd.qty, pd.unitid, pd.unitname")
+		// $recipes = $this->db->select("vt.variantName, pd.pro_detailsid, pd.foodid, pd.pvarientid, pd.ingredientid, pd.qty, pd.unitid, pd.unitname")
+		// 	->from("production_details as pd")
+		// 	->join("variant as vt", "pd.pvarientid = vt.variantid", "left")
+		// 	->where("pd.foodid", $id)
+		// 	->get()
+		// 	->result();
+		$recipes = $this->db->select("vt.variantName, pd.pro_detailsid, pd.foodid, pd.pvarientid, pd.ingredientid, pd.qty, pd.unitid, pd.unitname, pd.recipe_price")
 			->from("production_details as pd")
 			->join("variant as vt", "pd.pvarientid = vt.variantid", "left")
 			->where("pd.foodid", $id)
@@ -782,5 +788,24 @@ public function count_fooditem()
         
         return $query->result();
     }
+
+	public function finditem($product_id)
+	{
+		$this->db->select('
+			ingredients.*,
+			ROUND(ingredients.purchase_price / ingredients.convt_ratio, 2) AS cost_perunit_price
+		');
+		$this->db->from('ingredients');
+		$this->db->where('ingredients.is_active', 1);
+		$this->db->where('ingredients.id', $product_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->row_array(); // Return single row as array
+		}
+		return false;
+	}
+
+
 
 }

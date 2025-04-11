@@ -152,13 +152,15 @@ $(document).ready(function () {
                                 var recipeTable = `
                                     <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                         <h4>Recipe for - ${variantName}</h4>
+                                        <small>Recipe Cost Price</small>
+                                        <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
                                         <input type="hidden" name="recipe_for[]" value="${variantName}"/>
                                         <table class="table table-bordered" id="recipeTable_${variantId}">
                                             <thead>
                                                 <tr>
                                                     <th width="200">Item Information</th>
                                                     <th>Qty</th>
-                                                    <th style="display:none;">Price</th>
+                                                    <th>Price</th>
                                                     <th>Unit</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -171,8 +173,8 @@ $(document).ready(function () {
                                                         </select>
                                                     </td>
                                                     <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
-                                                    <td class="text-right" style="display:none;">
-                                                        <input type="hidden" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
+                                                    <td class="text-right">
+                                                        <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00" readonly>
                                                     </td>
                                                     <td class="text-right">
                                                         <input type="hidden" id="unit-total_${variantId}_1" class="" />
@@ -230,8 +232,8 @@ $(document).ready(function () {
                                 </select>
                             </td>
                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck" data-row-id="${rowId}"></td>
-                            <td class="text-right" style="display:none;">
-                                  <input type="hidden" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right" placeholder="0.00" readonly>
+                            <td class="text-right">
+                                  <input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00" readonly>
                             </td>
                             <td class="text-right">
                                 <input type="hidden" id="unit-total_${rowId}" class="" />
@@ -302,6 +304,11 @@ function calprice(rowId){
      if (ingrden == 0 || ingrden=='') {
       $('#product_quantity_'+rowId).val('');
       alert('Please select Item!');
+      $('#product_price_' + rowId).attr("value", '');
+
+
+      //Add Recipe Cost Price to 0
+      $('#recipe_costprice_'+rowId).val(0);
 
       return false;
     }
@@ -319,6 +326,21 @@ function calprice(rowId){
         }
         var nitcost=parseFloat(toatalval)*parseFloat(qty);
         $('#product_price_'+rowId).val(parseFloat(nitcost).toFixed(3));
+        $('#product_price_' + rowId).attr("value", parseFloat(nitcost).toFixed(3));
+
+        // Sum all product_price fields for the current variant
+        var recipe_costprice = 0;
+        // Get the variant Name from Row Id
+        var variantId =  rowId.replace(/[0-9_]/g, '').trim().toLowerCase();
+        console.log('.product_price_' + variantId);
+        $('.product_price_' + variantId).each(function () {
+            recipe_costprice += parseFloat($(this).val());
+        });
+ 
+         // Update total recipe cost input for the current variant
+         console.log('Recipe Cost Price:', recipe_costprice);
+         $('#recipe_costprice_' + variantId).val(recipe_costprice.toFixed(3));
+         $('#recipe_costprice_' + variantId).attr("value", recipe_costprice.toFixed(3));
 
     }
 
@@ -345,10 +367,11 @@ function checkproduct_list(ingredientId, sl) {
         cache: false,
         success: function (response) {
             var uomData = JSON.parse(response);
+            console.log('uomdata' +JSON.stringify(uomData));
 
             if (uomData && uomData.length > 0) {
-                $('#unitid_' + sl).val(product_id); // Set UOM ID
-                $('#unitname_' + sl).val(uomData[0].uom_short_code); // Set UOM Name
+                $('#unitid_' + sl).val(uomData[0].consumption_unit); // Set UOM ID of conusmption unit
+                $('#unitname_' + sl).val(uomData[0].consumtion_unitname); // Set UOM Name of consumption unit
             } else {
                 alert('No UOM available for the selected product.');
                 $('#unitid_' + sl).val('');
@@ -361,20 +384,23 @@ function checkproduct_list(ingredientId, sl) {
     });
 
     var csrf = $('#csrfhashresarvation').val();
+    console.log('product_id' +product_id);
     $.ajax({
         type: "POST",
         url: geturl,
-        data: { product_name: product_name, csrf_test_name: csrf },
+        data: { product_id: product_id, csrf_test_name: csrf },
         cache: false,
         success: function (data) {
+            console.log('raw data:', data);
             var obj = JSON.parse(data);
-            if (obj && obj.length > 0 && obj[0].uprice > 0) {
-                $('#product_quantity_' + sl).removeAttr('readonly'); // Removes the readonly attribute
-                $('#unit-total_' + sl).val(obj[0].uprice);
+            console.log('parsed:', obj);
+    
+            if (obj && obj.length > 0 && obj[0].cost_perunit_price > 0) {
+                //$('#product_quantity_' + sl).removeAttr('readonly');
+                $('#unit-total_' + sl).val(obj[0].cost_perunit_price);
             } else {
-                alert('Please purchase this Item.!!!');
                 $('#unit-total_' + sl).val('');
-                $('#product_quantity_' + sl).prop('readonly', true); // Preferred way for boolean attributes
+                //$('#product_quantity_' + sl).prop('readonly', true);
             }
         }
     });
@@ -455,13 +481,15 @@ $(document).ready(function(){
                                         var recipeTable = `
                                             <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                                 <h4>Recipe for - ${variantName}</h4>
+                                                  <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+                                                    <input type="hidden" name="recipe_for[]" value="${variantName}"/>
                                                 <input type="hidden" name="recipe_for[]" value="${variantId}"/>
                                                 <table class="table table-bordered" id="recipeTable_${variantId}">
                                                     <thead>
                                                         <tr>
                                                             <th width="200">Item Information</th>
                                                             <th>Qty</th>
-                                                            <th style="display:none;">Price</th>
+                                                            <th>Price</th>
                                                             <th>Unit</th>
                                                             <th>Action</th>
                                                         </tr>
@@ -473,12 +501,12 @@ $(document).ready(function(){
                                                                     ${options}
                                                                 </select>
                                                             </td>
-                                                            <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
-                                                            <td class="text-right" style="display:none;">
-                                                                <input type="hidden" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right" placeholder="0.00" readonly>
+                                                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                            <td class="text-right">
+                                                                <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00" readonly>
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="hidden" id="unit-total_${variantId}_1" />
+                                                                <input type="hidden" id="unit-total_${variantId}_1" class="" />
                                                                 <input type="hidden" name="unitid_${variantId}[]" id="unitid_${variantId}_1" class="form-control text-right">
                                                                 <input type="text" name="unitname_${variantId}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
                                                             </td>
@@ -576,6 +604,35 @@ $(document).on("click", ".removeEditRecipeBtn", function() {
         });
     }
 });
+
+/**
+ *  ===================================================\
+ * LOADING Calculatinng Sum of price of all ingredients
+ * ===================================================
+ */
+$(document).ready(function () {
+
+    function updateRecipeCostPrice(variantId) {
+        var recipe_costprice = 0;
+        $('input[name="product_price_' + variantId + '[]"]').each(function () {
+            var price = parseFloat($(this).val()) || 0;
+            recipe_costprice += price;
+        });
+        var $recipeInput = $('#recipe_costprice_' + variantId);
+        $recipeInput.val(recipe_costprice.toFixed(3));
+        $recipeInput.attr('value', recipe_costprice.toFixed(3));
+        console.log('Variant: ' + variantId + ', Recipe Cost Price: ' + recipe_costprice.toFixed(3));
+    }
+
+    // Loop through each variant dynamically
+    $('input[name="recipe_for[]"]').each(function () {
+        var variantId = $(this).val(); // e.g., "regular", "medium"
+        updateRecipeCostPrice(variantId);
+    });
+
+});
+
+
 
 
 

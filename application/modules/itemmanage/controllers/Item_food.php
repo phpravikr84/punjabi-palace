@@ -2137,12 +2137,14 @@ class Item_food extends MX_Controller
 										$quantityKey = "product_quantity_{$variantKey}";
 										$unitIdKey = "unitid_{$variantKey}";
 										$unitNameKey = "unitname_{$variantKey}";
+										$recipePriceKey = "product_price_{$variantKey}";
 
 										if ($this->input->post($ingredientKey, true)) {
 											$ingredients = $this->input->post($ingredientKey, true);
 											$quantities = $this->input->post($quantityKey, true);
 											$unitIds = $this->input->post($unitIdKey, true);
 											$unitNames = $this->input->post($unitNameKey, true);
+											$recipePrices = $this->input->post($recipePriceKey, true);
 
 											foreach ($ingredients as $i => $ingredientId) {
 												$ingredientData = [
@@ -2152,6 +2154,9 @@ class Item_food extends MX_Controller
 													'qty' => $quantities[$i],
 													'unitid' => $unitIds[$i],
 													'unitname' => $unitNames[$i],
+													'recipe_price' => $recipePrices[$i],
+													'createdby' => $this->session->userdata('id'),
+													'created_date' => date('Y-m-d'),
 												];
 												$this->db->insert('production_details', $ingredientData);
 											}
@@ -2355,12 +2360,14 @@ class Item_food extends MX_Controller
 										$quantityKey = "product_quantity_{$variantKey}";
 										$unitIdKey = "unitid_{$variantKey}";
 										$unitNameKey = "unitname_{$variantKey}";
+										$recipePriceKey = "product_price_{$variantKey}";
 
 										if ($this->input->post($ingredientKey, true)) {
 											$ingredients = $this->input->post($ingredientKey, true);
 											$quantities = $this->input->post($quantityKey, true);
 											$unitIds = $this->input->post($unitIdKey, true);
 											$unitNames = $this->input->post($unitNameKey, true);
+											$recipePrices = $this->input->post($recipePriceKey, true);
 
 											foreach ($ingredients as $i => $ingredientId) {
 												$ingredientData = [
@@ -2370,6 +2377,9 @@ class Item_food extends MX_Controller
 													'qty' => $quantities[$i],
 													'unitid' => $unitIds[$i],
 													'unitname' => $unitNames[$i],
+													'recipe_price' => $recipePrices[$i],
+													'createdby' => $this->session->userdata('id'),
+													'created_date' => date('Y-m-d'),
 												];
 												$this->db->insert('production_details', $ingredientData);
 											}
@@ -2591,6 +2601,22 @@ class Item_food extends MX_Controller
 			$existingRecord->recipe_price != $newData['recipe_price']
 		);
 	}
+
+	public function getingredientitem() {
+		$csrf_token = $this->security->get_csrf_hash();
+		$product_id = $this->input->post('product_id', true);
+		$product_info = $this->fooditem_model->finditem($product_id);
+	
+		if ($product_info) {
+			// Wrap in array for jQuery parsing
+			echo json_encode([$product_info]); 
+		} else {
+			echo json_encode([]); // Return empty array if not found
+		}
+	
+		exit; // Stop execution here
+	}
+	
 
 	
 	

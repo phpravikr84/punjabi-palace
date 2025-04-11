@@ -9,6 +9,31 @@
                     <input type="hidden" name="chkIngredient" id="chkIngredient" value="<?php echo base_url('setting/ingradient/check_ingredient_exist'); ?>"/>
 
                     <div class="row">
+                        <!-- Brands -- Added--> 
+                        <div class="col-md-12">
+                            <div class="form-group row align-items-center">
+                                <label for="brand_id" class="col-sm-2 col-form-label text-right"><?php echo 'Brand'; ?> </label>
+                                <div class="col-sm-10">
+                                    <?php
+                                        $brand_options = array('' => display('select_brand'));
+                                        if (!empty($brands)) {
+                                            foreach ($brands as $brand) {
+                                                $brand_options[$brand->id] = $brand->brand_name;
+                                            }
+                                        }
+
+                                        echo form_dropdown(
+                                            'brand_id',
+                                            $brand_options,
+                                            (!empty($intinfo->brand_id) ? $intinfo->brand_id : null),
+                                            'class="form-control" id="brand_id"'
+                                        );
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Brands -- Added-->
+
                         <!-- Left Column -->
                         <div class="col-md-6">
                             <div class="form-group">
@@ -16,7 +41,12 @@
                                 <input type="text" name="ingredient_name" id="ingredient_name_edit" class="form-control ingredientDropDown" placeholder="<?php echo display('ingredient_name'); ?>" autocomplete="off" value="<?php echo (!empty($intinfo->ingredient_name) ? $intinfo->ingredient_name : '') ?>">
                                 <input type="hidden" name="ingredient_id" id="ingredient_id_edit" value="<?php echo (!empty($intinfo->id) ? $intinfo->id : '') ?>" />
                             </div>
-
+                            <div class="form-group">
+                                <label><?php echo 'Pack Size'; ?> *</label>
+                                <input name="pack_size" id="edit_pack_size" class="form-control pack_size"
+                                type="number" placeholder="Pack Size" value="<?php echo (!empty($intinfo->pack_size) ? $intinfo->pack_size : 1) ?>"
+                                min="0.000001" step="any" oninput="validity.valid||(value='');">
+                            </div>
                             <div class="form-group">
                                 <label><?php echo 'Purchase Price'; ?> *</label>
                                 <input name="purchase_price" id="purchase_price_edit" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="<?php echo (!empty($intinfo->purchase_price) ? $intinfo->purchase_price : '') ?>">
@@ -28,7 +58,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label><?php echo display('stock_limit'); ?> *</label>
+                                <label><?php echo display('stock_limit'); ?> *<br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
+                                Consumption unit stock limit.
+                                </em>)</label>
                                 <input name="min_stock" class="form-control" type="text" placeholder="<?php echo display('stock_limit'); ?>" value="<?php echo (!empty($intinfo->min_stock) ? $intinfo->min_stock : '') ?>">
                             </div>
                         </div>
@@ -41,7 +73,14 @@
                                 echo form_dropdown('unitid', $unitdropdown, (!empty($intinfo->uom_id) ? $intinfo->uom_id : null), 'class="form-control" id="purchase_unit_edit"');
                                 ?>
                             </div>
-
+                            <div class="form-group">
+                                <label><?php echo 'Pack Unit'; ?> *</label>
+                                <?php
+                                $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
+                                if (empty($categories)) { $categories = array('' => '--Select--'); }
+                                echo form_dropdown('pack_unit', $unitdropdown, (!empty($intinfo->pack_unit) ? $intinfo->pack_unit : null), 'class="form-control pack_unit" id="pack_unit"');
+                                ?>
+                            </div>
                             <div class="form-group">
                                 <label><?php echo 'Consumption Unit'; ?> *</label>
                                 <?php 
