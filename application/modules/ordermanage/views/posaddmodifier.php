@@ -5,8 +5,24 @@
 //   echo "modifiers count: ". count($modifiers);
 //   echo "<br>modifiers type: ". var_dump($modifiers);
 //   exit();
+$size="";
+if ($cart = $this->cart->contents()){
+    foreach ($cart as $ck => $cv) {
+        $size = $cv['size'];
+    }
+}
 if (count($modifiers) > 0):
 ?>
+<div id="posAddmodSizeInfo">
+    <div class="row">
+        <div class="col-md-6">
+            Selected Size: 
+        </div>
+        <div class="col-md-6">
+            <?=$size;?>
+        </div>
+    </div>
+</div>
     <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
         <?php
         //   echo "<pre>";
@@ -55,6 +71,10 @@ if (count($modifiers) > 0):
                                     $this->db->order_by('sort_order', "ASC");
                                     $miq = $this->db->get();
                                     $modifier_items = $miq->result();
+                                    // echo "<pre>";
+                                    // print_r($selectedMods);
+                                    // echo "</pre><br>";
+                                    // echo "selectedMods count: ". count($selectedMods);
                                     if (count($modifier_items) > 0):
                                         // echo "<pre>";
                                         // print_r($modifier_items);
@@ -100,7 +120,7 @@ if (count($modifiers) > 0):
         ?>
         <div class="row">
             <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
-                <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?= $pid; ?>,'<?= $tr_row_id; ?>');">Apply</button>
+                <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?= $pid; ?>,'<?= $tr_row_id; ?>',1);">Apply</button>
             </div>
         </div>
     </div>

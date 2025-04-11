@@ -19,6 +19,14 @@
         $pdiscount = 0;
         $discount = 0;
         $multiplletax = array();
+        //Fetching modifiers info
+        $this->db->select('a.add_on_name, a.price, om.menu_id');
+        $this->db->from('add_ons a');
+        $this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+        $this->db->where('om.order_id',$id);
+        $q1=$this->db->get();
+        $orderedMods=$q1->result();
+        // $data['orderedMods']=$orderedMods;
         foreach ($iteminfo as $item) {
           $i++;
           if ($item->isgroup == 1) {

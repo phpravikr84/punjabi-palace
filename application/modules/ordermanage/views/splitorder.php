@@ -42,7 +42,8 @@
                                                  }
                                                    
 												    ?>
-                                                    <tr onclick='addintosuborder("<?php echo $item->row_id;?>","<?php echo $item->order_id;?>",this)' data-url="<?php echo base_url().$module.'/order/showsuborderdetails/';?>">
+                                                    <span class="splitNotice">Please Click below to split items</span>
+                                                    <tr class="splitOrderTr" onclick='addintosuborder("<?php echo $item->row_id;?>","<?php echo $item->order_id;?>",this)' data-url="<?php echo base_url().$module.'/order/showsuborderdetails/';?>">
                                                         <td><?php echo $item->ProductName; ?></td>
                                                         <td><?php echo $qty;?></td>
                                                     </tr>

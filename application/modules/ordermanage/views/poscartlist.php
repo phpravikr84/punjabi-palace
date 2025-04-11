@@ -5,6 +5,7 @@ $discount = 0;
 $itemtotal = 0;
 $pvat = 0;
 $multiplletax = array();
+$tr_row_id="";
 $this->load->model('ordermanage/order_model',  'ordermodel');
 // echo "<pre>";
 // print_r($modifiers);
@@ -90,7 +91,7 @@ if ($cart = $this->cart->contents()) { ?>
       ?> 
       <div class="row">
         <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;">
-          <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>);">Apply</button>
+          <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>,'',0);">Apply</button>
         </div>
       </div>     
       </div>
@@ -117,6 +118,9 @@ if ($cart = $this->cart->contents()) { ?>
       $discount = 0;
       $pdiscount = 0;
       foreach ($cart as $item) {
+        ?>
+        <input name="tr_row_id_<?=$item['pid']?>" id="tr_row_id_<?=$item['pid']?>" type="hidden" value="<?php echo $item['rowid']; ?>" />
+        <?php
         $iteminfo = $this->ordermodel->getiteminfo($item['pid']);
         // echo "<pre>";
         // print_r($iteminfo);

@@ -923,6 +923,17 @@ class Order extends MX_Controller
 		$tr_row_id = $this->input->post('tr_row_id');
 		$mods = json_decode($_POST['mods'], true);
 		$modTotalPrice=0.00;
+		$trid="";
+		if ($cart = $this->cart->contents()){
+			foreach ($cart as $ck => $cv) {
+				$trid = $ck;
+			}
+			// echo "<pre>";
+			// print_r($cart);
+			// echo "</pre><br>";
+			// echo "rowid: ". $trid;
+			// exit;
+		}
 		if (count($mods)>0) {
 			// $this-> db-> where('menu_id', $mods[0]['pid']);
     		// $this-> db-> delete('cart_selected_modifiers');
@@ -955,7 +966,11 @@ class Order extends MX_Controller
 
 						$q1 = $this->db->get();
 						$ingredQty = $q1->row();
-						if ($ingredQty->stock_qty < 0) {
+						// echo "<pre>";
+						// print_r($ingredQty);
+						// echo "</pre><br>";
+						// echo "ingredQty: ".$ingredQty->stock_qty;
+						if ($ingredQty->stock_qty < 0 || $ingredQty->stock_qty == 0) {
 							// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient ingredients!!!');
 							// redirect("ordermanage/order/pos_invoice");
 							// exit;
@@ -1002,7 +1017,7 @@ class Order extends MX_Controller
 					'menu_id' => $mv['pid'],
 					'add_on_id' => $mv['mid'],
 					'modifier_groupid' => $mv['mgid'],
-					'tr_row_id' => $tr_row_id,
+					'tr_row_id' => $trid,
 					'is_active' => 1,
 					'created_at' => date("Y-m-d H:i:s")
 				];
@@ -1553,13 +1568,15 @@ class Order extends MX_Controller
 											// $this->db->where('id', $modIngrdId->modifier_id);
 											$this->db->select('ing.stock_qty, adding.modifier_ingr_adj_qty');
 											$this->db->from('ingredients ing');
-											$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'INNER');
+											$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'LEFT');
 											$this->db->where('adding.modifier_ingr_id', $modIngrdId->modifier_id);
 
 											$q1 = $this->db->get();
 											$ingredQty = $q1->row();
 											$prev_qty = $ingredQty->stock_qty;
+											// $deduc_qty = $prev_qty * 0.6;
 											$updated_qty = ($prev_qty - $ingredQty->modifier_ingr_adj_qty);
+											// $updated_qty = ($prev_qty - $deduc_qty);
 											$upData = [
 												'stock_qty' => $updated_qty
 											];
@@ -3931,7 +3948,15 @@ class Order extends MX_Controller
 		$data['module'] = "ordermanage";
 		$data['page']   = "posinvoice";
 
-
+		//Fetching modifiers info
+		$this->db->select('a.add_on_name, a.price, om.menu_id');
+		$this->db->from('add_ons a');
+		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.order_id',$id);
+		$q1=$this->db->get();
+		$orderedMods=$q1->result();
+		$data['orderedMods']=$orderedMods;
+		
 		echo $view = $this->load->view('postoken', $data, true);
 		//return $view;
 
@@ -4006,6 +4031,15 @@ class Order extends MX_Controller
 
 		$data['module'] = "ordermanage";
 		$data['page']   = "posinvoice";
+
+		//Fetching modifiers info
+		$this->db->select('a.add_on_name, a.price, om.menu_id');
+		$this->db->from('add_ons a');
+		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.order_id',$id);
+		$q1=$this->db->get();
+		$orderedMods=$q1->result();
+		$data['orderedMods']=$orderedMods;
 
 		$view = $this->load->view('postoken', $data);
 		echo $view;

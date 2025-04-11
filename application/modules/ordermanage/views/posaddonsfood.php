@@ -1,4 +1,26 @@
 <div id="posSelectPurchaseTable">
+<?php 
+// echo "<pre>";
+// print_r($item);
+// echo "</pre><br />";
+$tr_row_id="";
+if ($cart = $this->cart->contents()) 
+{
+    foreach ($cart as $citem) 
+    {
+        if ($citem['pid']==$item->ProductsID) {
+            $tr_row_id=$citem['rowid'];
+        }
+    }
+}
+$this->db->select('cart_selected_modifiers.*');
+$this->db->from('cart_selected_modifiers');
+$this->db->where('cart_selected_modifiers.menu_id',$pid);
+$this->db->where('cart_selected_modifiers.is_active',1);
+$q2 = $this->db->get();
+$selectedMods = $q2->result();
+// echo "tr_row_id: ".$tr_row_id;
+?>
 <table class="table table-bordered table-hover bg-white" id="purchaseTable">
     <thead>
         <tr>
@@ -103,6 +125,16 @@
                                 // echo "</pre>";
                                 // exit;
                                 foreach ($modifier_items as $mik => $miv):
+                                    $checked = "";
+                                    if (count($selectedMods) > 0) {
+                                        foreach ($selectedMods as $smk => $smv) {
+                                            if ($mv->modifier_groupid == $smv->modifier_groupid) {
+                                                if ($miv->add_on_id == $smv->add_on_id) {
+                                                    $checked = "checked";
+                                                }
+                                            }
+                                        }
+                                    }
                               ?>
                               <tr>
                                   <td style="width: 85%;">
@@ -113,7 +145,7 @@
                                   </td>
                                   <td style="width: 5%;" class="text-center">
                                       <div class="form-check">
-                                          <input class="form-check-input modifier-checkbox" type="checkbox" name="modifier_items[]" value="<?=$miv->add_on_id;?>" id="modifier_item_<?=$miv->add_on_id;?>" data-group-id="<?=$mv->add_on_id;?>" autocomplete="off">
+                                          <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="modifier_items[]" value="<?=$miv->add_on_id;?>" id="modifier_item_<?=$miv->add_on_id;?>" data-group-id="<?=$mv->modifier_groupid;?>" autocomplete="off">
                                       </div>
                                   </td>
                               </tr>
@@ -130,11 +162,16 @@
       <?php
         endforeach;
       ?> 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;">
-          <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>);">Apply</button>
+          <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?php ##$pid;?>);">Apply</button>
         </div>
-      </div>     
+      </div> -->
+        <div class="row">
+            <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
+                <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>);">Apply</button>
+            </div>
+        </div>
       </div>
       <?php
       endif;

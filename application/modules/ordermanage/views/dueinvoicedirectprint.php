@@ -465,6 +465,9 @@ body
             </div>
           </div>
           <?php 
+          // echo "<pre>";
+          // print_r($orderedMods);
+          // echo "</pre>";
           if(count($orderedMods)>0){
             foreach ($orderedMods as $mk => $mv) {
               if ($mv->menu_id == $item->menu_id) {
