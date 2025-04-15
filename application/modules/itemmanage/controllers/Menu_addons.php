@@ -79,6 +79,10 @@ class Menu_addons extends MX_Controller {
 		if ($this->form_validation->run() === true) {
 
 			$arrangedData = $this->arrangeModifierData($this->input->post());
+			// echo '<pre>'; 
+			// print_r($arrangedData);
+			// echo '</pre>';
+			// exit;
 			$groupid = $this->input->post('group_id', true);
 
 			$modifierData = [
@@ -219,6 +223,42 @@ class Menu_addons extends MX_Controller {
 					$this->db->insert('add_on_ingr_dtls', $ingrData);
 				}
 			}
+
+			// Process Standalone Flavours
+			if (!empty($arrangedData['flavours'])) {
+				foreach ($arrangedData['flavours'] as $flavour) {
+
+					// Check if add-on exists
+					$this->db->where([
+						'modifier_set_id' => $modifier_set_id,
+						'modifier_id'     => $flavour['modifier_id'],
+					]);
+					$exists = $this->db->get('add_ons')->row();
+
+					$addonData = [
+						'modifier_set_id' => $modifier_set_id,
+						'add_on_name'     => $this->db->escape_str($flavour['addon_name']),
+						'price'           => isset($flavour['addonsprice']) ? $flavour['addonsprice'] : 0,
+						'minqty'          => isset($flavour['min_qty']) ? intval($flavour['min_qty']) : 0,
+						'maxqty'          => isset($flavour['max_qty']) ? intval($flavour['max_qty']) : 0,
+						'is_comp'         => isset($flavour['complementary']) && $flavour['complementary'] == 'on' ? 1 : 0,
+						'modifier_id'     => $flavour['modifier_id'],
+						'is_food_item'    => $this->addons_model->check_id_existence($flavour['modifier_id']),
+						'is_active'       => 1,
+					];
+
+					if ($exists) {
+						// Update if exists
+						$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
+						$addonid = $exists->id;
+					} else {
+						// Insert if new
+						$this->db->insert('add_ons', $addonData);
+						$addonid = $this->db->insert_id();
+					}
+				}
+			}
+
 
 			$this->db->trans_complete();
 
