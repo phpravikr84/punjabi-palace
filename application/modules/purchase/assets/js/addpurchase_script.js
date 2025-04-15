@@ -90,10 +90,12 @@ function product_list(sl) {
 				if (uomData && uomData.length > 0) {
 					// Assuming the API returns an array of unit objects
 					$('#unitid_' + sl).val(product_id);  // Set UOM ID
+                    $('#product_rate_' + sl).val(uomData[0].purchase_price);  // Set Rate
 					$('#unitname_' + sl).val(uomData[0].uom_short_code);  // Set UOM Name
 				} else {
 					alert('No UOM available for the selected product.');
 					$('#unitid_' + sl).val('');
+                    $('#product_rate_' + sl).val('');  // Set Rate
 					$('#unitname_' + sl).val('');
 				}
 			},
@@ -121,6 +123,8 @@ var count = 2;
 
     function addmore(divName){
 		var credit = $('#cntra').html();
+        //Get vat percentage
+        var vat = $('#vatper').val();
         if (count == limits)  {
             alert("You have reached the limit of adding " + count + " inputs");
         }
@@ -158,6 +162,9 @@ var count = 2;
         <input type="hidden" name="unitid[]" id="unitid_${count}" class="form-control text-right" placeholder="Unit ID" readonly/>
         <input type="text" name="unitname[]" id="unitname_${count}" class="form-control text-right" placeholder="Unit Name" readonly/>
     </td>
+    <td class="test">
+        <input type="number" step="0.0001" name="product_gst[]"  id="product_gst_${count}" class="form-control product_gst_${count} text-right" placeholder="0.00" value="${vat}" min="0"  tabindex="7">
+    </td>
     <td class="text-right">
         <input class="form-control total_price text-right total_price_${count}" type="text" name="total_price[]" id="total_price_${count}" value="0.00" readonly="readonly" />
     </td>
@@ -188,7 +195,14 @@ var count = 2;
         var vendor_rate = $("#product_rate_"+sl).val();
 
         var total_price     = item_ctn_qty * vendor_rate;
-        $("#total_price_"+sl).val(total_price.toFixed(2));
+         //New code added on 10April 2025
+         var gst = parseFloat($("#product_gst_" + sl).val()) || 0;
+         console.log('GST'+gst);
+         var gst_amount = (total_price * gst) / 100;
+         var total_price_inc_gst = parseFloat(total_price) + parseFloat(gst_amount);
+         $("#total_price_" + sl).val(total_price_inc_gst.toFixed(2));
+
+        //$("#total_price_"+sl).val(total_price.toFixed(2));
 
        
         //Total Price

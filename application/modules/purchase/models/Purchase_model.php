@@ -54,12 +54,7 @@ class Purchase_model extends CI_Model {
 			 * New Code implemented for save quanitity on base of conversion ratio
 			 * Logic implement on 10th April 2025
 			 */
-				$ingredient =  get_ingredient_by_id($p_id[$i]);
-				$conversion_ratio = $ingredient->convt_ratio;
-			/**
-			 * =================================
-			 */
-			$product_quantity = round($quantity[$i] * $conversion_ratio, 3); // Multiply by conversion ratio
+			$product_quantity = get_quantity_consumption_unit($p_id[$i], $quantity[$i]); // Multiply by conversion ratio
 			$product_rate = $rate[$i];
 			$product_id = $p_id[$i];
 			$total_price = $t_price[$i];
@@ -167,7 +162,9 @@ class Purchase_model extends CI_Model {
 		
 				// Calculate cost_perunit (ensure convt_ratio is valid)
 				$convt_ratio = isset($ingredient->convt_ratio) && $ingredient->convt_ratio > 0 ? $ingredient->convt_ratio : 1;
-				$new_cost_perunit = $product_rate / $convt_ratio;
+				// Calculate packed unit based on pack size and conversion ratio
+				$packedUnit = $ingredient->pack_size * $ingredient->convt_ratio;
+				$new_cost_perunit = $product_rate / $packedUnit;
 		
 				// Prepare update using set()
 				$this->db->set('purchase_price', $new_purchase_price);
@@ -416,13 +413,8 @@ class Purchase_model extends CI_Model {
 			/**
 			 * New Code implemented for save quanitity on base of conversion ratio
 			 * Logic implement on 10th April 2025
-			 */
-			$ingredient =  get_ingredient_by_id($p_id[$i]);
-			$conversion_ratio = $ingredient->convt_ratio;
-			/**
-			 * =================================
-			 */
-			$product_quantity = round($quantity[$i] * $conversion_ratio, 3); // Multiply by conversion ratio
+			 */		
+			$product_quantity = get_quantity_consumption_unit($p_id[$i], $quantity[$i]); // Multiply by conversion ratio
 			//$product_quantity = $quantity[$i];
 			$product_rate = $rate[$i];
 			$product_id = $p_id[$i];
@@ -485,7 +477,9 @@ class Purchase_model extends CI_Model {
 			
 					// Calculate cost_perunit (ensure convt_ratio is valid)
 					$convt_ratio = isset($ingredient->convt_ratio) && $ingredient->convt_ratio > 0 ? $ingredient->convt_ratio : 1;
-					$new_cost_perunit = $product_rate / $convt_ratio;
+					// Calculate packed unit based on pack size and conversion ratio
+					$packedUnitNew = $ingredient->pack_size * $ingredient->convt_ratio;
+					$new_cost_perunit = $product_rate / $packedUnitNew;
 			
 					// Prepare update using set()
 					$this->db->set('purchase_price', $new_purchase_price);
@@ -539,7 +533,9 @@ class Purchase_model extends CI_Model {
 			
 					// Calculate cost_perunit (ensure convt_ratio is valid)
 					$convt_ratio = isset($ingredient->convt_ratio) && $ingredient->convt_ratio > 0 ? $ingredient->convt_ratio : 1;
-					$new_cost_perunit = $product_rate / $convt_ratio;
+					// Calculate packed unit based on pack size and conversion ratio
+					$packedUnitNw = $ingredient->pack_size * $ingredient->convt_ratio;
+					$new_cost_perunit = $product_rate / $packedUnitNw;
 			
 					// Prepare update using set()
 					$this->db->set('purchase_price', $new_purchase_price);
@@ -833,18 +829,22 @@ class Purchase_model extends CI_Model {
 		return false;
 		}
 	public function get_total_product($product_id){
+		//Call the helper function 
+		$this->load->helper('common_helper'); // Load the helper file
+
 		$this->db->select('*');
 		$this->db->from('ingredients');
 		$this->db->where('id', $product_id);
 		$query = $this->db->get()->row();
 		$available_quantity = $query->stock_qty;
+		//Get the conversion data
+		$available_quantity = get_quantity_purchase_unit($product_id, $query->stock_qty);
 		$data2 = array(
 			'total_purchase'  => $available_quantity
 			);
-		
 
 		return $data2;
-		}
+	}
  public function iteminfo($id){
 	 	$this->db->select('purchase_details.*,ingredients.ingredient_name,ingredients.stock_qty,unit_of_measurement.uom_short_code');
 		$this->db->from('purchase_details');
@@ -1003,14 +1003,9 @@ public function getinvoice($id){
 
 					/**
 					 * New Code implemented for save quanitity on base of conversion ratio
-					 * Logic implement on 10th April 2025
+					 * Logic implement on 11th April 2025
 					 */
-					$ingredient =  get_ingredient_by_id($p_id[$i]);
-					$conversion_ratio = $ingredient->convt_ratio;
-					/**
-					 * =================================
-					 */
-					$product_quantity = round($quantity[$i] * $conversion_ratio, 3); // Multiply by conversion ratio
+					$product_quantity = get_quantity_consumption_unit($p_id[$i], $quantity[$i]); // Multiply by conversion ratio
 					//$product_quantity = $quantity[$i];
 					$product_rate = $rate[$i];
 					$product_id = $p_id[$i];
@@ -1160,5 +1155,18 @@ public function getinvoice($id){
 			->limit(1)
             ->get()
             ->row(); // Returns an object or null
+    }
+
+	// Fetch VAT setting
+    public function get_vat() {
+        $this->db->select('vat');
+        $this->db->from('setting');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->row()->vat;
+        }
+        return 0.00;
     }
 }

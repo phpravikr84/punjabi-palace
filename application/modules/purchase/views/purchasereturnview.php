@@ -46,9 +46,7 @@
                                         Convert the fetch Product Quanity on base of Purchase Conversion Unit
                                         -->
                                         <?php
-                                            $ingredient = get_ingredient_by_id($details->indredientid);  // Fetches ingredient details
-                                            $conversion_ratio = $ingredient->convt_ratio;              // Gets the conversion ratio
-                                            $convertedDtlsQty = round($details->qty / $conversion_ratio, 3); // Converts and rounds to 3 decimal places
+                                            $convertedDtlsQty = get_quantity_purchase_unit($details->indredientid, $details->qty);
                                         ?>
                                         <td><?php echo $convertedDtlsQty." ".$details->uom_short_code; ?></td>
                                         <td> <?php echo $details->product_rate;?> </td>

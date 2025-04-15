@@ -9,6 +9,7 @@
                     </fieldset>
                     <?php echo form_open_multipart('purchase/purchase/purchase_entry',array('class' => 'form-vertical', 'id' => 'insert_purchase','name' => 'insert_purchase'))?>
                     <input name="url" type="hidden" id="url" value="<?php echo base_url("purchase/purchase/purchaseitem") ?>" />
+                    <input name="vatper" type="hidden" id="vatper" value="<?php echo $vat; ?>" />
 
                     <div class="row">
                              <div class="col-sm-7">
@@ -102,6 +103,7 @@
                                             <th class="text-center"><?php echo display('qty') ?> <i class="text-danger">*</i></th>
                                             <th class="text-center"><?php echo display('s_rate') ?><i class="text-danger">*</i></th>
                                             <th class="text-center"><?php echo 'Unit' ?><i class="text-danger">*</i></th>
+                                            <th class="text-center"><?php echo 'GST %' ?></th>
                                             <th class="text-center"><?php echo display('total') ?></th>
                                             <th class="text-center"></th>
                                         </tr>
@@ -131,11 +133,14 @@
                                             </td>
 
                                             <td class="text-right">
-                                                <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url("production/production/getUomDetails") ?>" />
+                                                <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url("production/production/getUomDetailsNew") ?>" />
                                                 <input type="hidden" name="unitid[]" id="unitid_1" class="form-control text-right store_unitid_1" tabindex="6" readonly>
                                                 <input type="text" name="unitname[]" id="unitname_1" class="form-control text-right store_unitname_1" tabindex="6" placeholder="Unit Name" readonly>
                                             </td>
                                            
+                                            <td class="test">
+                                                <input type="number" step="0.0001" name="product_gst[]"  id="product_gst_1" class="form-control product_gst_1 text-right" placeholder="0.00" value="<?php echo $vat; ?>" min="0"  tabindex="7">
+                                            </td>
 
                                             <td class="text-right">
                                                 <input class="form-control total_price text-right" type="text" name="total_price[]" id="total_price_1" value="0.00" readonly="readonly">
@@ -150,13 +155,13 @@
                                         <td colspan="3">
                                             <input type="button" id="add_invoice_item" class="btn btn-success" name="add-invoice-item" onclick="addmore('addPurchaseItem');" value="<?php echo display('add_more') ?> <?php echo display('item') ?>" tabindex="9">
                                         </td>
-                                        <td  colspan="2" class="text-right"><b><?php echo display('grand') ?> <?php echo display('total') ?>:</b></td>
+                                        <td  colspan="3" class="text-right"><b><?php echo display('grand') ?> <?php echo display('total') ?>:</b></td>
                                         <td class="text-right">
                                             <input type="text" id="grandTotal" class="text-right form-control" name="grand_total_price" value="0.00" readonly="readonly">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5"  class="text-right"><b><?php echo display('paid') ?> <?php echo display('amount') ?>:</b></td>
+                                        <td colspan="6"  class="text-right"><b><?php echo display('paid') ?> <?php echo display('amount') ?>:</b></td>
                                         <td class="text-right">
                                             <input type="text" id="paidamount" class="text-right form-control" name="paidamount" placeholder="0.00">
                                         </td>

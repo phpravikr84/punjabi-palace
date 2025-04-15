@@ -131,9 +131,10 @@ $(document).ready(function () {
                 return;
             }
 
-            var costPerUnit = (purchasePrice / packSize) / convtRatio;
+            var totalPack = packSize * convtRatio;
+            var costPerUnit = purchasePrice / totalPack;
             //alert('Cost per unit: ' + costPerUnit.toFixed(2));
-            $('#cost_perunit').val(costPerUnit.toFixed(3));
+            $('#cost_perunit').val(costPerUnit.toFixed(4));
         }
         //Check if the form is in the edit mode
         if (consumptionUnitEdit) {
@@ -152,9 +153,11 @@ $(document).ready(function () {
                 return;
             }
 
-            var costPerUnitEdit = (purchasePriceEdit / packSizeEdit) / convtRatioEdit;
+            //alert(purchasePriceEdit + ' ' + packSizeEdit + ' ' + convtRatioEdit);
+            var totalPackSizeEdit = packSizeEdit * convtRatioEdit;
+            var costPerUnitEdit = purchasePriceEdit / totalPackSizeEdit;
             //alert('Cost per unit: ' + costPerUnit.toFixed(2));
-            $('#cost_perunit_edit').val(costPerUnitEdit.toFixed(3));
+            $('#cost_perunit_edit').val(costPerUnitEdit.toFixed(4));
         }
     }
 

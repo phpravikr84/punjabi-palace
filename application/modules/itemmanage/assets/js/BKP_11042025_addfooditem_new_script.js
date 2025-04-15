@@ -174,7 +174,7 @@ $(document).ready(function () {
                                                     </td>
                                                     <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
                                                     <td class="text-right">
-                                                        <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
+                                                        <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00" readonly>
                                                     </td>
                                                     <td class="text-right">
                                                         <input type="hidden" id="unit-total_${variantId}_1" class="" />
@@ -233,7 +233,7 @@ $(document).ready(function () {
                             </td>
                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck" data-row-id="${rowId}"></td>
                             <td class="text-right">
-                                  <input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00">
+                                  <input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00" readonly>
                             </td>
                             <td class="text-right">
                                 <input type="hidden" id="unit-total_${rowId}" class="" />
@@ -274,8 +274,6 @@ $(document).ready(function () {
     
         var product_id = $('#product_id_' + sl).val();
         var product_name = $('#product_id_' + sl + ' option:selected').data('title');
-
-        
     }
     $(document).on("change", ".ingredient-selecteditview", function () {
         var ingredientId = $(this).val(); // Get selected ingredient ID
@@ -398,9 +396,8 @@ function checkproduct_list(ingredientId, sl) {
             console.log('parsed:', obj);
     
             if (obj && obj.length > 0 && obj[0].cost_perunit_price > 0) {
-                //$('#product_quantity_' + sl).removeAttr('readonly'); cost_perunit
-                //$('#unit-total_' + sl).val(obj[0].cost_perunit_price);
-                $('#unit-total_' + sl).val(obj[0].cost_perunit);
+                //$('#product_quantity_' + sl).removeAttr('readonly');
+                $('#unit-total_' + sl).val(obj[0].cost_perunit_price);
             } else {
                 $('#unit-total_' + sl).val('');
                 //$('#product_quantity_' + sl).prop('readonly', true);
@@ -506,7 +503,7 @@ $(document).ready(function(){
                                                             </td>
                                                              <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
+                                                                <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00" readonly>
                                                             </td>
                                                             <td class="text-right">
                                                                 <input type="hidden" id="unit-total_${variantId}_1" class="" />

@@ -64,189 +64,131 @@ class Menu_addons extends MX_Controller {
 	public function create($id = null)
 	{
 		$this->permission->method('itemmanage', 'create')->redirect();
-
 		$data['title'] = empty($id) ? 'Add Modifiers' : 'Update Modifiers';
 
 		if (!empty($id)) {
 			$data['group_id'] = $id;
 		}
 
-		// Validation Rules
+		// Set validation rules
 		$this->form_validation->set_rules('modifiersetname', 'Modifier Set Name', 'required|max_length[100]');
 		$this->form_validation->set_rules('addonsname[]', 'Modifier Name', 'required');
 		$this->form_validation->set_rules('status[]', 'Status', 'required|in_list[0,1]');
 
 		if ($this->form_validation->run() === true) {
+			$savedid = $this->session->userdata('id');
+			$groupid = $this->input->post('group_id');
 
-			$arrangedData = $this->arrangeModifierData($this->input->post());
-			$groupid = $this->input->post('group_id', true);
-
+			// Modifier Group Data
 			$modifierData = [
 				'name'          => $this->db->escape_str($this->input->post('modifiersetname', true)),
 				'description'   => $this->db->escape_str($this->input->post('description', true)),
 				'is_required'   => $this->input->post('modifier_setting') ? 1 : 0,
 				'min_selection' => $this->input->post('modifier_setting') ? 1 : 0,
-				'updated_at'    => date('Y-m-d H:i:s'),
+				'updated_at'    => date('Y-m-d H:i:s')
 			];
 
-			$this->db->trans_start();
+			$this->db->trans_start(); // Start Transaction
 
-			// Insert or Update Modifier Set
 			if (empty($groupid)) {
 				$modifierData['created_at'] = date('Y-m-d H:i:s');
 				$this->db->insert('modifier_groups', $modifierData);
 				$modifier_set_id = $this->db->insert_id();
 				$action = "created";
 			} else {
-				$this->db->where('id', $groupid)->update('modifier_groups', $modifierData);
+				$this->db->where('id', $groupid);
+				$this->db->update('modifier_groups', $modifierData);
 				$modifier_set_id = $groupid;
 				$action = "updated";
 			}
 
-			// Delete add-ons that were removed during edit
-			if (!empty($groupid)) {
-				$existingAddonIDs = array_column($arrangedData['food_menu'], 'modifier_id');
+			// Process Add-ons
+			$addonsname = $this->input->post('addonsname', true);
+			$addonsprice = $this->input->post('addonsprice', true);
+			$minqty = $this->input->post('minqty', true);
+			$maxqty = $this->input->post('maxqty', true);
+			$complementary = $this->input->post('complementary', true);
+			$modifierId = $this->input->post('modifier_id', true);
+			$status = $this->input->post('status', true);
+			$addon_ids = $this->input->post('addon_ids', true);
+			$foodIds = $this->input->post('foodid', true);
+
+			if (!empty($groupid) && !empty($addon_ids)) {
 				$this->db->where('modifier_set_id', $groupid);
-				if (!empty($existingAddonIDs)) {
-					$this->db->where_not_in('modifier_id', $existingAddonIDs);
+				if (!empty($addon_ids)) {
+					$this->db->where_not_in('add_on_id', $addon_ids);
 				}
 				$this->db->delete('add_ons');
 			}
 
-			// Process Add-ons
-			foreach ($arrangedData['food_menu'] as $addon) {
+			if (!empty($addonsname)) {
+				foreach ($addonsname as $key => $name) {
+					if (!empty($name)) {
+						$addonData = [
+							'modifier_set_id' => $modifier_set_id,
+							'add_on_name'     => $this->db->escape_str($name),
+							'price'           => isset($addonsprice[$key]) ? floatval($addonsprice[$key]) : 0.00,
+							'minqty'          => isset($minqty[$key]) ? intval($minqty[$key]) : 0,
+							'maxqty'          => isset($maxqty[$key]) ? intval($maxqty[$key]) : 0,
+							'is_comp'         => isset($complementary[$key]) && $complementary[$key] == 'on' ? 1 : 0,
+							'modifier_id'     => isset($modifierId[$key]) ? intval($modifierId[$key]) : 0,
+							'is_food_item'	  => isset($modifierId[$key]) ?  $this->addons_model->check_id_existence(intval($modifierId[$key])) : 0,
+							'is_active'       => isset($status[$key]) ? intval($status[$key]) : 1
+						];
 
-				// Check if add-on already exists
-				$this->db->where([
-					'modifier_set_id' => $modifier_set_id,
-					'modifier_id'     => $addon['modifier_id'],
-				]);
-				$exists = $this->db->get('add_ons')->row();
-
-				$addonData = [
-					'modifier_set_id' => $modifier_set_id,
-					'add_on_name'     => $this->db->escape_str($addon['addon_name']),
-					'price'           => isset($addon['addonsprice']) ? $addon['addonsprice'] : 0,
-					'minqty'          => isset($addon['min_qty']) ? intval($addon['min_qty']) : 0,
-					'maxqty'          => isset($addon['max_qty']) ? intval($addon['max_qty']) : 0,
-					'is_comp'         => isset($addon['complementary']) ? 1 : 0,
-					'modifier_id'     => $addon['modifier_id'],
-					'is_food_item'    => $this->addons_model->check_id_existence($addon['modifier_id']),
-					'is_active'       => $addon['status'],
-				];
-
-				if ($exists) {
-					// Update existing add-on
-					$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
-					$addonid = $exists->id;
-				} else {
-					// Insert new add-on
-					$this->db->insert('add_ons', $addonData);
-					$addonid = $this->db->insert_id();
+						if (!empty($addon_ids[$key])) {
+							$this->db->where('add_on_id', $addon_ids[$key]);
+							$this->db->update('add_ons', $addonData);
+						} else {
+							$this->db->insert('add_ons', $addonData);
+						}
+					}
 				}
+			}
 
-				// Clean old ingredients
-				$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
-
-				// Insert ingredients if present
-				if (!empty($addon['ingredients'])) {
-					foreach ($addon['ingredients'] as $ingredient) {
+			// Insert ingredient details
+			if (!empty($foodIds) && is_array($foodIds)) {
+				foreach ($foodIds as $k => $foodId) {
+					if (!empty($foodId) && !empty($this->input->post('ingr', true)[$k])) {
+						$addons = $this->addons_model->get_latest_addons($foodId);
 						$ingrData = [
-							'add_on_id'             => $addonid,
-							'modifier_set_id'       => $modifier_set_id,
-							'modifier_foodid'       => $ingredient['food_id'],
-							'modifier_ingr_id'      => $ingredient['ingredient_id'],
-							'modifier_ingr_qty'     => $ingredient['quantity'],
-							'modifier_ingr_adj_qty' => $ingredient['adjusted_qty'],
-							'modifier_ingr_unitname'=> $ingredient['unit_name'],
-							'modifier_ingr_unitid'  => $ingredient['unit_id'],
+							'add_on_id'             => isset($addons[0]->add_on_id) ? $addons[0]->add_on_id : 0,
+							'modifier_set_id'       => isset($addons[0]->modifier_set_id) ? $addons[0]->modifier_set_id : 0,
+							'modifier_foodid'       => $foodId,
+							'modifier_ingr_id'      => $this->input->post('ingr', true)[$k],
+							'modifier_ingr_qty'     => $this->input->post('ingr_qty', true)[$k],
+							'modifier_ingr_adj_qty' => $this->input->post('ingr_adj_qty', true)[$k],
+							'modifier_ingr_unitname'=> $this->input->post('ingr_unitname', true)[$k],
+							'modifier_ingr_unitid'  => $this->input->post('ingr_unitid', true)[$k],
 							'created_at'            => date('Y-m-d H:i:s'),
-							'updated_at'            => date('Y-m-d H:i:s'),
+							'updated_at'            => date('Y-m-d H:i:s')
 						];
 						$this->db->insert('add_on_ingr_dtls', $ingrData);
 					}
 				}
 			}
 
-			// Process Standalone Ingredients
-			if (!empty($arrangedData['ingredients'])) {
-				foreach ($arrangedData['ingredients'] as $ingredient) {
-
-					// Check if add-on exists
-					$this->db->where([
-						'modifier_set_id' => $modifier_set_id,
-						'modifier_id'     => $ingredient['modifier_id'],
-					]);
-					$exists = $this->db->get('add_ons')->row();
-
-					$addonData = [
-						'modifier_set_id' => $modifier_set_id,
-						'add_on_name'     => $this->db->escape_str($ingredient['addon_name']),
-						'price'           => isset($ingredient['addonsprice']) ? $ingredient['addonsprice'] : 0,
-						'minqty'          => isset($ingredient['min_qty']) ? intval($ingredient['min_qty']) : 0,
-						'maxqty'          => isset($ingredient['max_qty']) ? intval($ingredient['max_qty']) : 0,
-						'is_comp'         => isset($ingredient['complementary']) && $ingredient['complementary'] == 'on' ? 1 : 0,
-						'modifier_id'     => $ingredient['modifier_id'],
-						'is_food_item'    => $this->addons_model->check_id_existence($ingredient['modifier_id']),
-						'is_active'       => 1,
-					];
-
-					if ($exists) {
-						// Update if exists
-						$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
-						$addonid = $exists->id;
-					} else {
-						// Insert if new
-						$this->db->insert('add_ons', $addonData);
-						$addonid = $this->db->insert_id();
-					}
-
-					// Clean existing ingredients for this add-on
-					$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
-
-					// Insert new ingredient details
-					$ingrData = [
-						'add_on_id'             => $addonid,
-						'modifier_set_id'       => $modifier_set_id,
-						'modifier_ingr_id'      => $ingredient['modifier_id'],  // depends on schema
-						'modifier_ingr_qty'     => $ingredient['consumption'],
-						'modifier_ingr_adj_qty' => $ingredient['consumption'],
-						'modifier_ingr_unitname'=> $ingredient['unit'],
-						'modifier_ingr_unitid'  => $ingredient['unit_id'],
-						'created_at'            => date('Y-m-d H:i:s'),
-						'updated_at'            => date('Y-m-d H:i:s'),
-					];
-					$this->db->insert('add_on_ingr_dtls', $ingrData);
-				}
-			}
-
 			$this->db->trans_complete();
 
-			if ($this->db->trans_status() === FALSE) {
-				$this->session->set_flashdata('exception', 'Something went wrong, please try again.');
+			if ($this->db->trans_status() === false) {
+				$this->session->set_flashdata('error', "Error while saving modifier set!");
 			} else {
-				$this->session->set_flashdata('message', "Modifier Set {$action} successfully.");
+				$this->session->set_flashdata('message', "Modifier set {$action} successfully!");
 			}
 
 			redirect('itemmanage/menu_addons');
-
 		} else {
-			// Validation failed or first page load
 			if (!empty($id)) {
 				$data['title'] = 'Update Modifiers';
 				$modifiedGroups = $this->addons_model->findModifierGroupsById($id);
 				$data['addonsinfo'] = $this->singleObjectArray($modifiedGroups);
 			}
+
 			$data['module'] = "itemmanage";
-			$data['page'] = "addonscreate";
+			$data['page']   = "addonscreate";
 			$this->load->view('template/layout', $data);
 		}
 	}
-
-
-
-
-
 	
     public function delete($addons = null)
     {
@@ -711,103 +653,6 @@ class Menu_addons extends MX_Controller {
 	}
 
 
-	//Arrange Array
-	function arrangeModifierData(array $postData) {
-		$result = [
-			'id' => $postData['id'] ?? null,
-			'group_id' => $postData['group_id'] ?? null,
-			'getModifierItem' => $postData['getModifierItem'] ?? null,
-			'getModifierIngredientItem' => $postData['getModifierIngredientItem'] ?? null,
-			'modifiersetname' => $postData['modifiersetname'] ?? null,
-			'addon_ids' => $postData['addon_ids'] ?? null,
-			'food_menu' => [],
-			'ingredients' => [],
-			'flavours' => []
-		];
-	
-		if (!empty($postData['modifier_id']) && is_array($postData['modifier_id'])) {
-	
-			foreach ($postData['modifier_id'] as $index => $modifierId) {
-	
-				$addonId = $postData['addon_ids'][$index] ?? '';
-				$addonName = $postData['addonsname'][$index] ?? '';
-	
-				// Only process if addon_name and modifier_id have values.
-				if (!empty($addonName) && !empty($modifierId)) {
-	
-					// Check if this modifier_id is linked to food or ingredient.
-					$type = $this->addons_model->check_id_existence($modifierId);  // 1 = FoodItem, 2 = Ingredient
-	
-					if ($type == 1) {
-	
-						// It's a food item — build ingredients inside if present.
-						$ingredients = [];
-						$foodKey = 'foodid_' . $modifierId;
-	
-						if (isset($postData[$foodKey]) && is_array($postData[$foodKey])) {
-							foreach ($postData[$foodKey] as $i => $foodItem) {
-								$ingredients[] = [
-									'food_id' => $foodItem ?? null,
-									'ingredient_id' => $postData['ingr_' . $modifierId][$i] ?? null,
-									'quantity' => $postData['ingr_qty_' . $modifierId][$i] ?? null,
-									'adjusted_qty' => $postData['ingr_adj_qty_' . $modifierId][$i] ?? null,
-									'unit_name' => $postData['ingr_unitname_' . $modifierId][$i] ?? null,
-									'unit_id' => $postData['ingr_unitid_' . $modifierId][$i] ?? null,
-								];
-							}
-						}
-	
-						$result['food_menu'][] = [
-							'modifier_id' => $modifierId,
-							'addon_name' => $addonName,
-							'min_qty' => $postData['minqty'][$index] ?? '',
-							'max_qty' => $postData['maxqty'][$index] ?? '',
-							'status' => $postData['status'][$index] ?? '',
-							'sort_order' => $postData['sort_order'][$index] ?? '',
-							'ingredients' => $ingredients
-						];
-	
-					} elseif ($type == 2) {
-	
-						// It's an ingredient.
-						$result['ingredients'][] = [
-							'modifier_id' => $modifierId,
-							'addon_name' => $addonName,
-							'consumption' => $postData['consumptiom'][$index] ?? '',
-							'stock' => $postData['consumtion_ingrstock'][$index] ?? '',
-							'unit_id' => $postData['consumption_unitid'][$index] ?? '',
-							'unit' => $postData['consumption_unit'][$index] ?? '',
-							'status' => $postData['status'][$index] ?? '',
-							'sort_order' => $postData['sort_order'][$index] ?? ''
-						];
-	
-					} else {
-	
-						// Not food, not ingredient = treat as flavours.
-						$result['flavours'][] = [
-							'modifier_id' => $modifierId,
-							'addon_name' => $addonName,
-							'status' => $postData['status'][$index] ?? '',
-							'sort_order' => $postData['sort_order'][$index] ?? ''
-						];
-	
-					}
-	
-				} elseif (empty($addonId) && !empty($addonName)) {
-	
-					// New record with no existing addon_id but valid addon_name — treat as new flavour.
-					$result['flavours'][] = [
-						'modifier_id' => $modifierId,
-						'addon_name' => $addonName,
-						'status' => $postData['status'][$index] ?? '',
-						'sort_order' => $postData['sort_order'][$index] ?? ''
-					];
-				}
-			}
-		}
-	
-		return $result;
-	}
-		
+
 
 }

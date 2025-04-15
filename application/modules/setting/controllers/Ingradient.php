@@ -205,26 +205,24 @@ class Ingradient extends MX_Controller {
 					$opening_date = $this->input->post('opening_date', true);
 
 					if (!empty($opening_balance) && !empty($opening_date)) {
+						//Update also stock in ingredients table as opening balance
+						$opening_balance = get_quantity_consumption_unit($ingredient_id, $this->input->post('opening_balance', true));
 						$openstockData = array(
 							'ingredient_name'    => $this->input->post('ingredient_name', true),
 							'ingredient_id'       => $ingredient_id,
 							'purchase_price'     => $this->input->post('purchase_price', true),
-							'opening_balance'    => $this->input->post('opening_balance', true),
+							//'opening_balance'    => $this->input->post('opening_balance', true),
+							'opening_balance'    => $opening_balance,
 							'opening_date'       => date('Y-m-d', strtotime($this->input->post('opening_date', true))), // fixed typo & brackets
 							'is_active'          => 1
 						);
 						
 						$this->ingradient_model->ingredient_opening_stock($openstockData);
 
-						//Update also stock in ingredients table as opening balance
-						/**
-						 * Formula: pack_size * convt_ratio = opening balance
-						 */
-						$opening_balance = round(($this->input->post('pack_size', true) * $this->input->post('convt_ratio', true)), 2);
 						//Update stock in ingredients table
 						$this->ingradient_model->update_ingredient(array(
 							'id' => $ingredient_id,
-							'stock_qty' => $this->input->post('opening_balance', true),
+							'stock_qty' => $opening_balance,
 						));
 						
 					}
