@@ -102,6 +102,25 @@ function printDiv(divName) {
                                         <td class="text-right"><strong><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></td>
                                      </tr>
                                     <?php 
+									if(count($orderedMods)>0){
+										foreach ($orderedMods as $mk => $mv) {
+										  if ($mv->menu_id == $item->menu_id) {
+											// echo "<pre>";
+											// print_r($mv);
+											// echo "</pre>";
+									  ?>
+									  <tr>
+										<td colspan="2">
+										<?php echo $mv->add_on_name;?>
+										</td>
+										<td class="text-right"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $mv->price;?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </td>
+										<td class="text-right"><?php echo 1;?></td>
+										<td class="text-right"><strong><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $mv->price*$addonsqty[$y];?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></td>
+									</tr>
+									  <?php
+										  }
+										}
+									  }
 									if(!empty($item->add_on_id)){
 										$y=0;
 											foreach($addons as $addonsid){

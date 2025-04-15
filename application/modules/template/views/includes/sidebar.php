@@ -62,7 +62,7 @@
 					"supplier_manage" => array("controller" => "supplierlist","method"     => "index","permission" => "read"), 
 					"supplier_ledger" => array("controller" => "supplierlist","method" => "supplier_ledger_report","permission" => "read"),
 					"stock_out_ingredients" => array("controller" => "purchase","method" => "stock_out_ingredients","permission" => "read"),
-				); 
+				);
 				$HmvcMenu2["report"] = array(
 					"icon" => "<i class='fa fa-line-chart' aria-hidden='true'></i>", 
 					"purchase_report" => array("controller" => "reports","method"  => "index","permission" => "read"), 

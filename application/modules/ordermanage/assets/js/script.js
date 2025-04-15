@@ -571,6 +571,7 @@ function posaddonsfoodtocart(pid, id, more = null) {
       "&csrf_test_name=" +
       csrf;
   }
+  $("#tr_row_id_"+pid).remove();
   $.ajax({
     type: "POST",
     url: myurl,
@@ -581,6 +582,8 @@ function posaddonsfoodtocart(pid, id, more = null) {
       } else {
         $("#updatefoodlist").html(data);
       }
+      console.log("Add to cart data: " + data);
+      console.log("Add to cart row id: " + $("#tr_row_id_"+pid).val());
 	  $('#sideMfContainer').html($("#modifierContent").html());
 	//   $("#modifierContent").show();
       var total = $("#grtotal").val();
@@ -608,6 +611,7 @@ function posaddonsfoodtocart(pid, id, more = null) {
       }
     },
   });
+  return true;
 }
 function deletecart(id, orderid, pid, vid, qty) {
   var geturl = $("#delurl").val();

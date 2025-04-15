@@ -535,6 +535,18 @@ small.modifier-sec-sub-heading
 #mySidebar .card .panel-default>.panel-heading {
     background-color: #ebebeb !important;
 }
+#mySidebar .card .row .col-md-6
+{
+    padding: 15px;
+}
+#mySidebar .card .row .col-md-6:nth-child(2)
+{
+    border-left: solid 1px #e7e7e7;
+}
+.splitOrderTr{
+    background: #f7f9fa;
+    box-shadow: 0px 0px 1px 2px #ededed;
+}
 .sidebar {
     height: 100% !important;
     width: 0;

@@ -231,7 +231,6 @@
   $('body').on('click', '.select_product', function(e) {
     
       e.preventDefault();
-
       var panel = $(this);
       var pid = panel.find('.panel-body input[name=select_product_id]').val();
       var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
@@ -245,6 +244,11 @@
       var price = panel.find('.panel-body input[name=select_product_price]').val();
       var hasaddons = panel.find('.panel-body input[name=select_addons]').val();
       var csrf = $('#csrfhashresarvation').val();
+      
+      Pace.restart();
+      console.log("hasaddons: " + hasaddons);
+      console.log("totalvarient: " + totalvarient);
+      console.log("customqty: " + customqty);
       if (hasaddons == 0 && totalvarient == 1 && customqty == 0) {
           /*check production*/
           var productionsetting = $('#production_setting').val();
@@ -305,6 +309,9 @@
                   $('#grandtotal').val(tgtotal);
                   $('#orggrandTotal').val(tgtotal);
                   $('#orginattotal').val(tgtotal);
+                  if (isNaN($('#caltotal').text())) {
+                    $('#caltotal').text(parseFloat(0));
+                  }
               }
           });
       } else {
@@ -316,9 +323,16 @@
               url: geturl,
               data: dataString,
               success: function(data) {
+                $("#modifierContent_1").remove();
+                $("#posSelectPurchaseTable").remove();
                   $('.addonsinfo').html(data);
-				  
-                  $('#edit').modal('show');
+
+                  $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
+                  $('#sideMfContainer').html($("#modifierContent_1").html());
+                  $("#posSelectPurchaseTable").remove();
+                  $("#modifierContent_1").remove();
+				  openNav();
+                //   $('#edit').modal('show');
 				  
 				  //$('#edit').find('.close').focus();
                   var totalitem = $('.totalitem').val();
@@ -337,6 +351,9 @@
                   $('#grandtotal').val(tgtotal);
                   $('#orggrandTotal').val(tgtotal);
                   $('#orginattotal').val(tgtotal); 
+                  if (isNaN($('#caltotal').text())) {
+                    $('#caltotal').text(parseFloat(0));
+                  }
               }
           });
       }
@@ -379,6 +396,7 @@
         geturl = $("#modifierurl").val(),
         myurl = geturl,
         dataString = "pid=" + pid + '&tr_row_id=' + tr_row_id + '&csrf_test_name=' + csrf;
+    $("#posAddmodSizeInfo").remove();
     $.ajax({
         type: "POST",
         url: myurl,
@@ -387,6 +405,7 @@
             console.log("Modifier data: " + data);
             // $('#addfoodlist').html(data);
             $("#mySidebar").find('#sideMfContainer').html(data);
+            $('#sideVarContainer').html($("#posAddmodSizeInfo").html());
             // $("#modifierChoosebtnDiv").html(`
             //     <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
             //     `);
@@ -395,7 +414,7 @@
         }
     });
   }
-function ApplyModifierSelect(pid=0,tr_row_id) {
+function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
     let selectedValues = [];
 
     $("input[name='modifier_items[]']:checked").each(function () {
@@ -407,104 +426,118 @@ function ApplyModifierSelect(pid=0,tr_row_id) {
     var mods = JSON.stringify(selectedValues);
     console.log("Modifier Selected Values: " + mods);
     //sending to the controller to check validations and save to the database
-    var csrf = $('#csrfhashresarvation').val(),
-        geturl = $("#cartmodifiersaveurl").val(),
-        myurl = geturl,
-        dataString = "pid=" + pid + '&tr_row_id=' + tr_row_id + '&mods=' + mods + '&csrf_test_name=' + csrf;
-    $.ajax({
-        type: "POST",
-        url: myurl,
-        data: dataString,
-        success: function(data) {
-            console.log("Modifier save data: " + data);
-            if (data == 420) {
-                alert("The modifier doesn't have any ingredients!!!");
-                return false;
-            }
-            if (data == 421) {
-                alert("The modifier doesn't have sufficient ingredients!!!");
-                return false;
-            }
-            if (data == 422) {
-                alert("The modifier doesn't have sufficient stock!!!");
-                return false;
-            }
-            if (data == 423) {
-                alert("The modifier can't be added!!!");
-                return false;
-            }
-            if ($("#selectedModsDetails_"+pid)) {
-                $("#selectedModsDetails_"+pid).remove();
-                $('#grtotal_'+pid).remove();
-                $('#totalitem_'+pid).remove();
-                $('#tvat_'+pid).remove();
-                $('#tdiscount_'+pid).remove();
-                $('#tgtotal_'+pid).remove();
-                $('#sc_'+pid).remove();
-            }
-            $("#addfoodlist").append(data);
-            closeNav();
-            var modTotalPrice = $('#modTotalPrice_'+pid).val();
-            var togText = $("#modToggleText_"+pid).val();
-            // $("#cartModToggle_"+pid).html(`Modifiers ${togText}`);
-            // $("#cartModToggle_"+pid).html(`Choose Modifiers`);
-            let selectedNewModsHtml = $("#selectedModsDetails_"+pid).html();
-            console.log("selectedNewModsHtml: "+selectedNewModsHtml);
-            $("#cartModToggle_"+pid).html(selectedNewModsHtml);
-            // var oldIndvPrice = $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(1).html();
-            var oldIndvPrice = $("#subtotal").val();
-            // $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(parseFloat(oldIndvPrice)+parseFloat(modTotalPrice)));
-            // var total = $('#grtotal').val();
-            // var totalitem = $('#totalitem').val();
-            // // $('#item-number').text(totalitem);
-            // // $('#getitemp').val(totalitem);
-            // var tax = $('#tvat').val();
-            // // $('#vat').val(tax);
-            // var discount = $('#tdiscount').val();
-            // var tgtotal = $('#tgtotal').val();
-            // // $('#calvat').text(tax); 
-            // // $('#invoice_discount').val(discount);
-            // var sc = $('#sc').val();
-            // // $('#service_charge').val(sc);
-
-            // var calvat = (total - discount) * $("#settingVatValue").val() / 100;
-            // if(basicinfo.isvatinclusive==1){
-            //     $('#caltotal').text((tgtotal+parseFloat(modTotalPrice))-tax);
-            // }else{
-            //     $('#caltotal').text(tgtotal+parseFloat(modTotalPrice));
-            // }
-            // $('#grandtotal').val(tgtotal+parseFloat(modTotalPrice));
-            // $('#orggrandTotal').val(tgtotal+parseFloat(modTotalPrice));
-            // $('#orginattotal').val(tgtotal+parseFloat(modTotalPrice));
-
-            var total = $('#grtotal_'+pid).val();
-            var totalitem = $('#totalitem_'+pid).val();
-            $('#item-number').text(totalitem);
-            $('#getitemp').val(totalitem);
-            var tax = $('#tvat_'+pid).val();
-            $('#vat').val(tax);
-            var discount = $('#tdiscount_'+pid).val();
-            var tgtotal = $('#tgtotal_'+pid).val();
-            $('#calvat').text(tax);
-            $('#invoice_discount').val(discount);
-            var sc = $('#sc_'+pid).val();
-            $('#service_charge').val(sc);
-            // if(basicinfo.isvatinclusive==1){
-            // $('#caltotal').text(tgtotal-tax);
-            // }else{
-            // $('#caltotal').text(tgtotal);
-            // }
-            $('#caltotal').text(tgtotal);
-            $('#grandtotal').val(tgtotal);
-            $('#orggrandTotal').val(tgtotal);
-            $('#orginattotal').val(tgtotal);
-
-            // console.log("oldIndvPrice: "+oldIndvPrice);
-            console.log("Subtotal: "+parseFloat(total));
-            console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
-            $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
+    if (skipAddToCart==0) {
+        if(!posaddonsfoodtocart(pid,1))
+        {
+            alert("Error adding this item to the cart!");
+            return false;
         }
-    });
+    }
+    $(".page-loader-wrapper").show();
+    setTimeout(() => {
+        var trrowid = $("#tr_row_id_"+pid).val();
+        console.log("cart save row id: " + $("#tr_row_id_"+pid).val());
+        var csrf = $('#csrfhashresarvation').val(),
+            geturl = $("#cartmodifiersaveurl").val(),
+            myurl = geturl,
+            dataString = "pid=" + pid + '&tr_row_id=' + trrowid + '&mods=' + mods + '&csrf_test_name=' + csrf;
+        $.ajax({
+            type: "POST",
+            url: myurl,
+            data: dataString,
+            success: function(data) {
+                $(".page-loader-wrapper").hide();
+                console.log("Modifier save data: " + data);
+                if (data == 420) {
+                    alert("The modifier doesn't have any ingredients!!!");
+                    return false;
+                }
+                if (data == 421) {
+                    alert("The modifier doesn't have sufficient ingredients!!!");
+                    return false;
+                }
+                if (data == 422) {
+                    alert("The modifier doesn't have sufficient stock!!!");
+                    return false;
+                }
+                if (data == 423) {
+                    alert("The modifier can't be added!!!");
+                    return false;
+                }
+                if ($("#selectedModsDetails_"+pid)) {
+                    $("#selectedModsDetails_"+pid).remove();
+                    $('#grtotal_'+pid).remove();
+                    $('#totalitem_'+pid).remove();
+                    $('#tvat_'+pid).remove();
+                    $('#tdiscount_'+pid).remove();
+                    $('#tgtotal_'+pid).remove();
+                    $('#sc_'+pid).remove();
+                }
+                $("#addfoodlist").append(data);
+                closeNav();
+                var modTotalPrice = $('#modTotalPrice_'+pid).val();
+                var togText = $("#modToggleText_"+pid).val();
+                // $("#cartModToggle_"+pid).html(`Modifiers ${togText}`);
+                // $("#cartModToggle_"+pid).html(`Choose Modifiers`);
+                let selectedNewModsHtml = $("#selectedModsDetails_"+pid).html();
+                console.log("selectedNewModsHtml: "+selectedNewModsHtml);
+                $("#cartModToggle_"+pid).html(selectedNewModsHtml);
+                // var oldIndvPrice = $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(1).html();
+                var oldIndvPrice = $("#subtotal").val();
+                // $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(parseFloat(oldIndvPrice)+parseFloat(modTotalPrice)));
+                // var total = $('#grtotal').val();
+                // var totalitem = $('#totalitem').val();
+                // // $('#item-number').text(totalitem);
+                // // $('#getitemp').val(totalitem);
+                // var tax = $('#tvat').val();
+                // // $('#vat').val(tax);
+                // var discount = $('#tdiscount').val();
+                // var tgtotal = $('#tgtotal').val();
+                // // $('#calvat').text(tax); 
+                // // $('#invoice_discount').val(discount);
+                // var sc = $('#sc').val();
+                // // $('#service_charge').val(sc);
+
+                // var calvat = (total - discount) * $("#settingVatValue").val() / 100;
+                // if(basicinfo.isvatinclusive==1){
+                //     $('#caltotal').text((tgtotal+parseFloat(modTotalPrice))-tax);
+                // }else{
+                //     $('#caltotal').text(tgtotal+parseFloat(modTotalPrice));
+                // }
+                // $('#grandtotal').val(tgtotal+parseFloat(modTotalPrice));
+                // $('#orggrandTotal').val(tgtotal+parseFloat(modTotalPrice));
+                // $('#orginattotal').val(tgtotal+parseFloat(modTotalPrice));
+
+                var total = $('#grtotal_'+pid).val();
+                var totalitem = $('#totalitem_'+pid).val();
+                $('#item-number').text(totalitem);
+                $('#getitemp').val(totalitem);
+                var tax = $('#tvat_'+pid).val();
+                $('#vat').val(tax);
+                var discount = $('#tdiscount_'+pid).val();
+                var tgtotal = $('#tgtotal_'+pid).val();
+                $('#calvat').text(tax);
+                $('#invoice_discount').val(discount);
+                var sc = $('#sc_'+pid).val();
+                $('#service_charge').val(sc);
+                // if(basicinfo.isvatinclusive==1){
+                // $('#caltotal').text(tgtotal-tax);
+                // }else{
+                // $('#caltotal').text(tgtotal);
+                // }
+                $('#caltotal').text(tgtotal);
+                $('#grandtotal').val(tgtotal);
+                $('#orggrandTotal').val(tgtotal);
+                $('#orginattotal').val(tgtotal);
+
+                // console.log("oldIndvPrice: "+oldIndvPrice);
+                console.log("Subtotal: "+parseFloat(total));
+                console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
+                $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
+                $(".page-loader-wrapper").hide();
+            }
+        });
+    }, 2000);
 }
 
   $(document).ready(function() {
@@ -2254,6 +2287,16 @@ $(document).on("keypress", '#itemqty_1', function(e){
       } else {
           getAjaxModal(url, callback);
       }
+      setTimeout(() => {
+        var presentvalue = $(".splitOrderTr").find("td:eq(1)").text();
+        if ($("#CurrSplitFoodQty")) {
+          $("#CurrSplitFoodQty").remove();
+        }
+        var foodqtyhtml = `<input type="hidden" id="CurrSplitFoodQty" value="${presentvalue}" />`;
+        $("#table-ajaxview").find(".modal-content").find(".modal-body").append(foodqtyhtml);
+        console.log("presentvalue: " + presentvalue);
+      }, 2000);
+
   }
 
   function showsuborder(element) {
@@ -2262,6 +2305,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
       var orderid = $(element).attr('data-value');
       var csrf = $('#csrfhashresarvation').val();
       var datavalue = 'orderid=' + orderid;
+      $(".splitOrderTr").find("td:eq(1)").text($("#CurrSplitFoodQty").val());
       getAjaxView(url, "show-sub-order", false, datavalue, 'post');
 
   }
@@ -2312,7 +2356,6 @@ $(document).on("keypress", '#itemqty_1', function(e){
           var nowvalue = parseInt(presentvalue) - 1;
           $(element).find("td:eq(1)").text(nowvalue);
       }
-
 
   }
 

@@ -5,6 +5,7 @@ $discount = 0;
 $itemtotal = 0;
 $pvat = 0;
 $multiplletax = array();
+$tr_row_id="";
 $this->load->model('ordermanage/order_model',  'ordermodel');
 // echo "<pre>";
 // print_r($modifiers);
@@ -90,7 +91,7 @@ if ($cart = $this->cart->contents()) { ?>
       ?> 
       <div class="row">
         <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;">
-          <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>);">Apply</button>
+          <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>,'',0);">Apply</button>
         </div>
       </div>     
       </div>
@@ -117,6 +118,9 @@ if ($cart = $this->cart->contents()) { ?>
       $discount = 0;
       $pdiscount = 0;
       foreach ($cart as $item) {
+        ?>
+        <input name="tr_row_id_<?=$item['pid']?>" id="tr_row_id_<?=$item['pid']?>" type="hidden" value="<?php echo $item['rowid']; ?>" />
+        <?php
         $iteminfo = $this->ordermodel->getiteminfo($item['pid']);
         // echo "<pre>";
         // print_r($iteminfo);
@@ -130,6 +134,9 @@ if ($cart = $this->cart->contents()) { ?>
         $this->db->where('cart_selected_modifiers.is_active', 1);
         $q = $this->db->get();
         $modTotalPrice = $q->row();
+        // echo "<pre>";
+        // print_r($modTotalPrice);
+        // echo "</pre><br />";
         // echo "mod_total_price: ".$modTotalPrice->mod_total_price;
         // if ($modTotalPrice->mod_total_price > 0) {
         //   $itemprice+=$modTotalPrice->mod_total_price;
@@ -244,7 +251,7 @@ if ($cart = $this->cart->contents()) { ?>
                                           foreach ($selectedModsForCart as $smk => $smv):
                                         ?>
                                             <br />
-                                          <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+                                          <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> <?php if($smv->price>0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                         <?php 
                                           endforeach;
                                         else:

@@ -463,12 +463,23 @@ foreach ($scan as $file) {
 <div id="mySidebar" class="sidebar animate__animated animate__fadeInLeft">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <div class="card">
-    <div class="card-header">
-      Choose Modifiers
-    </div>
-    <small class="modifier-sec-sub-heading">Choose the add-on items want to serve with the main food item</small>
-    <div class="card-body" id="sideMfContainer">
-      <h6>Some Content</h6>
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="card-header">
+          Choose Variants
+        </div>
+        <small class="modifier-sec-sub-heading">Choose the variant of the food item</small>
+        <div class="card-body" id="sideVarContainer">
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="card-header">
+          Choose Modifiers
+        </div>
+        <small class="modifier-sec-sub-heading">Choose the add-on items want to serve with the main food item</small>
+        <div class="card-body" id="sideMfContainer">
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -480,9 +491,9 @@ foreach ($scan as $file) {
       <div class="tabsection"> <span class="display-none"><?php echo $settinginfo->language; ?></span>
         <ul class="nav nav-tabs" role="tablist">
           <!-- <li><button class="openbtn" onclick="openNav()">☰ Open Sidebar</button></li> -->
-          <li>
+          <!-- <li>
             <a href="javascript:void(0);" class="maindashboard" onclick="openNav()">☰ Modifiers</a>
-          </li>
+          </li> -->
           <li><a href="<?php echo base_url() ?>dashboard/home" class="maindashboard"><svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.44618 16.1752C7.44618 16.6294 7.82502 16.9976 8.29233 16.9976C8.75963 16.9976 9.13848 16.6294 9.13848 16.1752H7.44618ZM8.29233 13.7286L7.4468 13.6971C7.44639 13.7077 7.44618 13.7181 7.44618 13.7286H8.29233ZM11 11.2832L10.9702 12.1051C10.9901 12.1057 11.0099 12.1057 11.0298 12.1051L11 11.2832ZM13.7077 13.7286H14.5538C14.5538 13.7181 14.5536 13.7077 14.5533 13.6971L13.7077 13.7286ZM12.8615 16.1752C12.8615 16.6294 13.2404 16.9976 13.7077 16.9976C14.175 16.9976 14.5538 16.6294 14.5538 16.1752H12.8615ZM8.29233 15.3527C7.82502 15.3527 7.44618 15.7209 7.44618 16.1752C7.44618 16.6294 7.82502 16.9976 8.29233 16.9976V15.3527ZM13.7077 16.9976C14.175 16.9976 14.5538 16.6294 14.5538 16.1752C14.5538 15.7209 14.175 15.3527 13.7077 15.3527V16.9976ZM8.29233 16.9976C8.75963 16.9976 9.13848 16.6294 9.13848 16.1752C9.13848 15.7209 8.75963 15.3527 8.29233 15.3527V16.9976ZM7.61541 16.1752V15.3527C7.60548 15.3527 7.59556 15.3528 7.58563 15.3531L7.61541 16.1752ZM3.55391 12.5059H2.70776C2.70776 12.5162 2.70796 12.5266 2.70837 12.537L3.55391 12.5059ZM4.40005 5.15196C4.40005 4.69774 4.02122 4.3295 3.55391 4.3295C3.0866 4.3295 2.70776 4.69774 2.70776 5.15196H4.40005ZM0.371038 6.25785C-0.0156291 6.5129 -0.116321 7.02436 0.14612 7.40027C0.408573 7.77608 0.934775 7.8739 1.32143 7.61883L0.371038 6.25785ZM4.0291 5.83248C4.41577 5.57737 4.51646 5.0659 4.25402 4.69007C3.99157 4.31424 3.46536 4.21636 3.07871 4.47146L4.0291 5.83248ZM3.07871 4.47146C2.69203 4.72653 2.59135 5.23798 2.85377 5.61383C3.1162 5.98968 3.64243 6.08755 4.0291 5.83248L3.07871 4.47146ZM9.43858 1.26995L8.97951 0.579053C8.9741 0.582453 8.96868 0.585907 8.96338 0.589427L9.43858 1.26995ZM12.5614 1.26995L13.0366 0.589427C13.0313 0.585907 13.0259 0.582453 13.0205 0.579053L12.5614 1.26995ZM17.9709 5.8325C18.3576 6.08757 18.8838 5.98968 19.1463 5.61383C19.4087 5.23798 19.3079 4.72651 18.9213 4.47144L17.9709 5.8325ZM13.7077 15.3527C13.2404 15.3527 12.8615 15.7209 12.8615 16.1752C12.8615 16.6294 13.2404 16.9976 13.7077 16.9976V15.3527ZM14.3846 16.1752L14.4144 15.3531C14.4044 15.3528 14.3945 15.3527 14.3846 15.3527V16.1752ZM18.4461 12.5059L19.2917 12.537C19.292 12.5266 19.2922 12.5162 19.2922 12.5059H18.4461ZM19.2922 5.15196C19.2922 4.69774 18.9134 4.3295 18.4461 4.3295C17.9788 4.3295 17.6 4.69774 17.6 5.15196H19.2922ZM20.6788 7.61784C21.0655 7.87292 21.5917 7.77488 21.854 7.39896C22.1163 7.02304 22.0155 6.51158 21.6287 6.25662L20.6788 7.61784ZM18.9213 4.47144C18.5345 4.21644 18.0082 4.31436 17.7458 4.69027C17.4835 5.06618 17.5842 5.57751 17.9709 5.8325L18.9213 4.47144ZM9.13848 16.1752V13.7286H7.44618V16.1752H9.13848ZM9.13791 13.76C9.17514 12.8118 9.99467 12.0716 10.9702 12.1051L11.0298 10.4611C9.12212 10.3959 7.51966 11.8431 7.4468 13.6971L9.13791 13.76ZM11.0298 12.1051C12.0053 12.0716 12.8249 12.8118 12.8621 13.76L14.5533 13.6971C14.4804 11.8431 12.8779 10.3959 10.9702 10.4611L11.0298 12.1051ZM12.8615 13.7286V16.1752H14.5538V13.7286H12.8615ZM8.29233 16.9976H13.7077V15.3527H8.29233V16.9976ZM8.29233 15.3527H7.61541V16.9976H8.29233V15.3527ZM7.58563 15.3531C5.88889 15.4113 4.46377 14.1237 4.39944 12.4747L2.70837 12.537C2.80803 15.0921 5.01618 17.0871 7.6452 16.9971L7.58563 15.3531ZM4.40005 12.5059V5.15196H2.70776V12.5059H4.40005ZM1.32143 7.61883L4.0291 5.83248L3.07871 4.47146L0.371038 6.25785L1.32143 7.61883ZM4.0291 5.83248L9.91377 1.95049L8.96338 0.589427L3.07871 4.47146L4.0291 5.83248ZM9.89764 1.96085C10.5687 1.53961 11.4313 1.53961 12.1024 1.96085L13.0205 0.579053C11.7906 -0.193018 10.2094 -0.193018 8.97951 0.579053L9.89764 1.96085ZM12.0862 1.95049L17.9709 5.8325L18.9213 4.47144L13.0366 0.589427L12.0862 1.95049ZM13.7077 16.9976H14.3846V15.3527H13.7077V16.9976ZM14.3548 16.9971C16.9838 17.0871 19.1919 15.0921 19.2917 12.537L17.6005 12.4747C17.5362 14.1237 16.1111 15.4113 14.4144 15.3531L14.3548 16.9971ZM19.2922 12.5059V5.15196H17.6V12.5059H19.2922ZM21.6287 6.25662L18.9213 4.47144L17.9709 5.8325L20.6788 7.61784L21.6287 6.25662Z"></path>
               </svg>Home</a></li>
@@ -832,10 +843,20 @@ foreach ($scan as $file) {
                                       <input type="hidden" name="select_addons" class="select_addons" value="<?php echo $getadons; ?>">
                                     </div>
                                     <div class="text-center">
+                                      <?php 
+                                      // echo "<pre>";
+                                      // print_r($item);
+                                      // echo "</pre>";
+                                      ?>
                                       <h5><?php echo $item->ProductName; ?> (<?php echo $item->variantName; ?>)
-                                        <?php if (!empty($item->itemnotes)) {
-                                          echo " -" . $item->itemnotes;
-                                        } ?>
+                                        <?php 
+                                        if (!empty($item->itemnotes)) {
+                                          echo " - " . $item->itemnotes;
+                                        } 
+                                        if (!empty($item->price)) {
+                                          echo "<br /> <strong style='padding-bottom:15px;'>" .(($currency->position == 1) ? $currency->curr_icon : '').$item->price."</strong>";
+                                        } 
+                                        ?>
                                       </h5>
                                     </div>
                                   </div>
@@ -1104,7 +1125,7 @@ foreach ($scan as $file) {
                                                   foreach ($selectedModsForCart as $smk => $smv):
                                                 ?>
                                                     <br />
-                                                    <small class="modCheck" style="font-style: italic;font-weight: 400;"><?= $smv->add_on_name; ?> (<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $smv->price; ?>)</small>
+                                                    <small class="modCheck" style="font-style: italic;font-weight: 400;"><?= $smv->add_on_name; ?> <?php if($smv->price>0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $smv->price; ?>)<?php endif; ?></small>
                                                 <?php
                                                   endforeach;
                                                 else:
@@ -1306,6 +1327,13 @@ foreach ($scan1 as $file) {
 }
 //$this->load->view('include/pos_script');
 ?>
+<script>
+  Pace.options.ajax = {
+    trackMethods: ['POST', 'GET'],
+    trackWebSockets: false,
+    ignoreURLs: []
+  };
+</script>
 <script>
   function openNav() {
     document.getElementById("mySidebar").style.width = "100%";
