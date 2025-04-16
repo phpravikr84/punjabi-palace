@@ -1563,6 +1563,8 @@ class Order extends MX_Controller
 										$query = $this->db->get();
 										$modIngrdId = $query->row();
 										if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 2){
+											// Ingredients
+											
 											// $this->db->select('stock_qty');
 											// $this->db->from('ingredients');
 											// $this->db->where('id', $modIngrdId->modifier_id);
@@ -1584,6 +1586,7 @@ class Order extends MX_Controller
 												->update('ingredients',$upData);
 										} else {
 											if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 1){
+												//Food Item
 												$this->db->select('ing.id, ing.stock_qty, adding.modifier_ingr_adj_qty');
 												$this->db->from('ingredients ing');
 												$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'INNER');
@@ -1670,7 +1673,7 @@ class Order extends MX_Controller
 				$data['categorylist']   = $this->order_model->category_dropdown();
 				$data['curtomertype']   = $this->order_model->ctype_dropdown();
 				$data['waiterlist']     = $this->order_model->waiter_dropdown();
-				$data['tablelist']     = $this->order_model->table_dropdown();
+				$data['tablelist']      = $this->order_model->table_dropdown();
 				$data['customerlist']   = $this->order_model->customer_dropdown();
 				$settinginfo = $this->order_model->settinginfo();
 				$data['settinginfo'] = $settinginfo;
