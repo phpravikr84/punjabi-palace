@@ -365,13 +365,22 @@ public function count_menuaddons()
 		
 	}
 
+	// public function search_ingredients($term)
+	// {
+	// 	$this->db->select('id as id, ingredient_name as label');
+	// 	$this->db->from('ingredients');
+	// 	$this->db->like('ingredient_name', $term);
+	// 	return $this->db->get()->result_array();
+	// }
 	public function search_ingredients($term)
 	{
-		$this->db->select('id as id, ingredient_name as label');
+		$this->db->select('ingredients.id as id, ingredients.ingredient_name as label, ingredients.stock_qty as ingr_stock, ingredients.consumption_unit as unit_id, unit_of_measurement.uom_short_code');
 		$this->db->from('ingredients');
-		$this->db->like('ingredient_name', $term);
+		$this->db->join('unit_of_measurement', 'unit_of_measurement.id = ingredients.consumption_unit', 'left');
+		$this->db->like('ingredients.ingredient_name', $term);
 		return $this->db->get()->result_array();
 	}
+
 
 	/** Get Productioin Details */
 	public function get_production_details($foodid) { 

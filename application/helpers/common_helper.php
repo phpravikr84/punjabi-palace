@@ -693,3 +693,205 @@ if (!function_exists('get_ingredient_by_id')) {
 }
 
 
+if (!function_exists('get_quantity_consumption_unit')) {
+    /**
+     * Formula 1: Get quantity in consumption unit
+     * Formula: (pack_size * convt_ratio) * purchase quantity
+     */
+    function get_quantity_consumption_unit($ingredient_id, $purchase_quantity)
+    {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        $CI->db->select('pack_size, convt_ratio');
+        $CI->db->from('ingredients');
+        $CI->db->where('id', $ingredient_id);
+        $ingredient = $CI->db->get()->row();
+
+        if (!$ingredient) return 0.00;
+
+        $result = ($ingredient->pack_size * $ingredient->convt_ratio) * $purchase_quantity;
+        return number_format($result, 2, '.', '');
+    }
+}
+
+if (!function_exists('get_quantity_purchase_unit')) {
+    /**
+     * Formula 2: Get quantity in purchase unit
+     * Formula: quantity / (pack_size * convt_ratio)
+     */
+    function get_quantity_purchase_unit($ingredient_id, $quantity)
+    {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        $CI->db->select('pack_size, convt_ratio');
+        $CI->db->from('ingredients');
+        $CI->db->where('id', $ingredient_id);
+        $ingredient = $CI->db->get()->row();
+
+        if (!$ingredient || ($ingredient->pack_size * $ingredient->convt_ratio) == 0) return 0.00;
+
+        $result = $quantity / ($ingredient->pack_size * $ingredient->convt_ratio);
+        return number_format($result, 4, '.', '');
+    }
+}
+
+if (!function_exists('get_ingredient_total_cost')) {
+    /**
+     * Formula 3: Get total cost
+     * Formula: ingredient_quantity * cost_perunit
+     */
+    function get_ingredient_total_cost($ingredient_id, $ingredient_quantity)
+    {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        $CI->db->select('cost_perunit');
+        $CI->db->from('ingredients');
+        $CI->db->where('id', $ingredient_id);
+        $ingredient = $CI->db->get()->row();
+
+        if (!$ingredient) return 0.000;
+
+        $result = $ingredient_quantity * $ingredient->cost_perunit;
+        return number_format($result, 3, '.', '');
+    }
+}
+
+if (!function_exists('get_ingredient_unit')) {
+    function get_ingredient_unit($ingredient_id)
+    {
+        // Get the CodeIgniter instance
+        $CI =& get_instance();
+
+        // Ensure the database library is loaded
+        $CI->load->database();
+
+        // Build the query
+        $CI->db->select('ingredients.*, unit_of_measurement.uom_name');
+        $CI->db->from('ingredients');
+        $CI->db->join('unit_of_measurement', 'ingredients.uom_id = unit_of_measurement.id', 'left');
+        $CI->db->where('ingredients.id', $ingredient_id);
+        $CI->db->order_by('ingredients.id', 'desc');
+
+        // Execute the query
+        $query = $CI->db->get();
+
+        // Return the result
+        if ($query->num_rows() > 0) {
+            return $query->row(); // Returns a single object
+        }
+        return false;
+    }
+}
+
+if (!function_exists('get_add_on_ingredient_details')) {
+    /**
+     * Retrieve add-on ingredient details based on add_on_id and ingredient_id.
+     *
+     * @param int $add_on_id
+     * @param int $ingredient_id
+     * @return object|bool Returns the detail object if found, otherwise false.
+     */
+    function get_add_on_ingredient_details($add_on_id, $ingredient_id)
+    {
+        // Get the CodeIgniter instance
+        $CI =& get_instance();
+
+        // Ensure the database library is loaded
+        $CI->load->database();
+
+        // Build the query
+        $CI->db->select('*');
+        $CI->db->from('add_on_ingr_dtls');
+        $CI->db->where('add_on_id', $add_on_id);
+        $CI->db->where('modifier_ingr_id', $ingredient_id);
+        $query = $CI->db->get();
+
+        // Return the result
+        if ($query->num_rows() > 0) {
+            return $query->row(); // Returns a single object
+        }
+        return false;
+    }
+}
+
+
+if (!function_exists('check_add_on_ingredient_details_exists')) {
+  /**
+   * Retrieve add-on ingredient details based on add_on_id, modifier group id and ingredient_id.
+   *
+   * @param int $add_on_id
+   * @param int $modifier_group_id
+   * @param int $ingredient_id
+   * @return object|bool Returns the detail object if found, otherwise false.
+   */
+  function check_add_on_ingredient_details_exists($add_on_id, $group_id, $ingredient_id)
+  {
+      // Get the CodeIgniter instance
+      $CI =& get_instance();
+
+      // Ensure the database library is loaded
+      $CI->load->database();
+
+      // Build the query
+      $CI->db->select('*');
+      $CI->db->from('add_on_ingr_dtls');
+      $CI->db->where('add_on_id', $add_on_id);
+      $CI->db->where('modifier_set_id', $group_id);
+      $CI->db->where('modifier_ingr_id', $ingredient_id);
+      $query = $CI->db->get();
+
+      // Print the last executed SQL query for debugging
+      //echo $CI->db->last_query();
+      //exit;
+      // Return the result
+      if ($query->num_rows() > 0) {
+          return $query->row(); // Returns a single object
+      }
+      return false;
+  }
+}
+
+
+if (!function_exists('check_add_on_foodingredient_details_exists')) {
+  /**
+   * Retrieve add-on ingredient details based on add_on_id, modifier group id and ingredient_id.
+   *
+   * @param int $add_on_id
+   * @param int $modifier_group_id
+   * @param int $foodid
+   * @param int $ingredient_id
+   * @return object|bool Returns the detail object if found, otherwise false.
+   */
+  function check_add_on_food_details_exists($add_on_id, $group_id, $foodid)
+  {
+      // Get the CodeIgniter instance
+      $CI =& get_instance();
+
+      // Ensure the database library is loaded
+      $CI->load->database();
+
+      // Build the query
+      $CI->db->select('*');
+      $CI->db->from('add_on_ingr_dtls');
+      $CI->db->where('add_on_id', $add_on_id);
+      $CI->db->where('modifier_set_id', $group_id);
+      $CI->db->where('modifier_foodid', $foodid);
+      $query = $CI->db->get();
+
+      // Print the last executed SQL query for debugging
+      // echo $CI->db->last_query();
+      // exit;
+      // Return the result
+      if ($query->num_rows() > 0) {
+          return $query->row(); // Returns a single object
+      }
+      return false;
+  }
+}
+
+
+
+

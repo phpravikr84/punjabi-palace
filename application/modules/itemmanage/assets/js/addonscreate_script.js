@@ -49,6 +49,7 @@ $(document).ready(function () {
             },
             minLength: 2, // Minimum characters before triggering search
             select: function (event, ui) {
+                console.log("Selected Item:", ui.item); // Debugging output
                 $(this).val(ui.item.label); // Set selected value
                 var $row = $(this).closest('.modifier-row'); // Find the closest modifier-row
                 var $modifierInput = $row.find('input[name="modifier_id[]"]');
@@ -56,6 +57,18 @@ $(document).ready(function () {
 
                 // Update the hidden modifier_id input
                 $modifierInput.val(ui.item.id);
+
+                //Get Consumtion Unit and Consumption
+                var $modifierConsumptionUnitId = $row.find('input[name="consumption_unitid[]"]');
+                var prevModifierConsumptionUnitId = $modifierConsumptionUnitId.val(); // Store previous consumption unit ID
+                var $modifierConsumptionUnit = $row.find('input[name="consumption_unit[]"]');
+                var prevModifierConsumptionUnit = $modifierConsumptionUnit.val(); // Store previous consumption unit
+                $modifierConsumptionUnitId.val(ui.item.unit_id); // Set new consumption unit ID
+                $modifierConsumptionUnit.val(ui.item.uom_short_code); // Set new consumption unit
+                //Ingredient current Stock
+                $modifierCurrentStock = $row.find('input[name="consumtion_ingrstock[]"]');
+                $modifierCurrentStock.val(ui.item.ingr_stock); // Set new consumption unit
+
 
                 // Remove previously added hidden fields if the modifier_id changes
                 if (prevModifierId && prevModifierId !== ui.item.id) {
@@ -77,12 +90,12 @@ $(document).ready(function () {
                                 response.data.forEach(function (item) {
                                     var adjustedQty = item.qty * 0.6; // Example adjustment logic
                                     $formhtml += `
-                                        <input type="hidden" name="foodid[]" value="${item.foodid}"/>
-                                        <input type="hidden" name="ingr[]" value="${item.ingredientid}"/>
-                                        <input type="hidden" name="ingr_qty[]" value="${item.qty}"/>
-                                        <input type="hidden" name="ingr_adj_qty[]" value="${adjustedQty}"/>
-                                        <input type="hidden" name="ingr_unitname[]" value="${item.unitname}"/>
-                                        <input type="hidden" name="ingr_unitid[]" value="${item.unitid}"/>
+                                        <input type="hidden" name="foodid_${item.foodid}[]" value="${item.foodid}"/>
+                                        <input type="hidden" name="ingr_${item.foodid}[]" value="${item.ingredientid}"/>
+                                        <input type="hidden" name="ingr_qty_${item.foodid}[]" value="${item.qty}"/>
+                                        <input type="hidden" name="ingr_adj_qty_${item.foodid}[]" value="${adjustedQty}"/>
+                                        <input type="hidden" name="ingr_unitname_${item.foodid}[]" value="${item.unitname}"/>
+                                        <input type="hidden" name="ingr_unitid_${item.foodid}[]" value="${item.unitid}"/>
                                     `;
                                 });
                                 $formhtml += '</div>';
@@ -91,9 +104,15 @@ $(document).ready(function () {
                                 $row.after($formhtml);
                                  //Disable button in case of error
                                  $row.find('.viewModifiers').removeAttr('disabled');
+                                 //Hide all consumption unit and consumption
+                                 $row.find('.consumptionunitbox').hide();
+                                 $row.find('.consumptionbox').hide();
                             } else {
                                 //Disable button in case of error
                                 $row.find('.viewModifiers').attr('disabled', true);
+                                   //Hide all consumption unit and consumption
+                                   $row.find('.consumptionunitbox').show();
+                                   $row.find('.consumptionbox').show();
                             }
                         },
                         error: function (xhr, status, error) {

@@ -453,15 +453,15 @@
                                                                 <input type="text" name="product_quantity_<?php echo $variantNm; ?>[]" id="product_quantity_<?php echo $variantNm;; ?>_<?php echo $i; ?>" data-row-id="<?php echo $variantNm; ?>_<?php echo $i; ?>" class="form-control text-right quantityCheck" value="<?php echo $recipe->qty; ?>">
                                                             </td>
                                                             <td class="text-right">
-                                                                <input type="text" name="product_price_<?php echo $variantNm; ?>[]" id="product_price_<?php echo $variantNm; ?>_<?php echo $i; ?>" class="form-control text-right product_price_<?php echo $variantNm; ?>" value="<?php echo $recipe->recipe_price; ?>" readonly>
+                                                                <input type="text" name="product_price_<?php echo $variantNm; ?>[]" id="product_price_<?php echo $variantNm; ?>_<?php echo $i; ?>" class="form-control text-right product_price_<?php echo $variantNm; ?>" value="<?php echo $recipe->recipe_price; ?>">
                                                             </td>
                                                             <td class="text-right">
                                                             <?php
-                                                                $recipe_ingr = get_ingredient_by_id($recipe->ingredientid);
+                                                                $recipe_ingr = get_ingredient_unit($recipe->ingredientid);
 
                                                                 $unit_price = 0.000; // default value
                                                                 if ($recipe_ingr && isset($recipe_ingr->purchase_price, $recipe_ingr->convt_ratio) && $recipe_ingr->convt_ratio != 0) {
-                                                                    $unit_price = number_format($recipe_ingr->purchase_price / $recipe_ingr->convt_ratio, 3, '.', '');
+                                                                    $unit_price = $recipe_ingr->cost_perunit;
                                                                 }
                                                                 ?>
 

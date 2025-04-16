@@ -69,6 +69,24 @@ if (!empty($addonsinfo)) {
                                     <label>Max </label>
                                     <input name="maxqty[]" class="form-control" type="number" value="<?php echo $addon->maxqty; ?>" placeholder="Maximum Quantity">
                                 </div>
+                            <?php 
+                                    $ingr_add_on_dtls = get_add_on_ingredient_details($addon->add_on_id, $addon->modifier_id); // Call the function to get ingredient details
+                                    if(!empty($addon->modifier_id)){ ?>
+
+                                        <div class="form-group col-md-2 consumptionbox">
+                                            <label>Consumption</label>
+                                            <input type="text" name="consumptiom[]" class="form-control consumption" value="<?php echo $ingr_add_on_dtls->modifier_ingr_adj_qty; ?>" />
+                                            <input type="hidden" name="consumtion_ingrstock[]" class="form-control consumtion_ingrstock" value="<?php echo $ingr_add_on_dtls->modifier_ingr_qty; ?>" />
+                                        </div>
+                                        <div class="form-group col-md-2 consumptionunitbox">
+                                            <label>Unit</label>
+                                            <input type="hidden" name="consumption_unitid[]" class="form-control consumptionunitid" value="<?php echo $ingr_add_on_dtls->modifier_ingr_unitid; ?>"  />
+                                            <input type="text" name="consumption_unit[]" class="form-control consumptionunit" value="<?php echo $ingr_add_on_dtls->modifier_ingr_unitname; ?>"  readonly/>
+                                        </div>
+
+                            <?php }
+                            ?>
+         
 
                                 <div class="form-group col-md-2">
                                     <label>Is Complementary</label>
@@ -113,6 +131,17 @@ if (!empty($addonsinfo)) {
                                 <div class="form-group col-md-2">
                                     <label>Max </label>
                                     <input name="maxqty[]" class="form-control" type="number" value="1" placeholder="Maximum Quantity">
+                                </div>
+
+                                <div class="form-group col-md-2 consumptionbox" style="display:none;">
+                                    <label>Consumption</label>
+                                    <input type="text" name="consumptiom[]" class="form-control consumption" />
+                                    <input type="hidden" name="consumtion_ingrstock[]" class="form-control consumtion_ingrstock" />
+                                </div>
+                                <div class="form-group col-md-2 consumptionunitbox" style="display:none;">
+                                    <label>Unit</label>
+                                    <input type="hidden" name="consumption_unitid[]" class="form-control consumptionunitid" />
+                                    <input type="text" name="consumption_unit[]" class="form-control consumptionunit" readonly/>
                                 </div>
 
                                 <div class="form-group col-md-2">

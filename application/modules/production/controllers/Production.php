@@ -351,6 +351,7 @@ class Production extends MX_Controller {
 	{
 		$this->db->select('
 			uom_purchase.*, ingredients.uom_id, ingredients.consumption_unit,
+			ingredients.purchase_price, ingredients.cost_perunit, ingredients.pack_size,
 			uom_purchase.uom_short_code AS purchase_unitname, 
 			uom_consumption.uom_short_code AS consumtion_unitname
 		');
