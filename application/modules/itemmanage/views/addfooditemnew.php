@@ -252,7 +252,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingCategories">
                             <h5 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories" class="accordion-plus-toggle">
+                                <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories" class="accordion-plus-toggle"> -->
+                                <a role="button" data-toggle="collapse" href="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories" class="accordion-plus-toggle">
                                 Categories
                                 </a>
                             </h5>
@@ -312,7 +313,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingVariants">
                             <h5 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseVariants" aria-expanded="false" aria-controls="collapseVariants" class="accordion-plus-toggle">
+                                <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseVariants" aria-expanded="false" aria-controls="collapseVariants" class="accordion-plus-toggle">
+                                Variants
+                                </a> -->
+                                <a role="button" data-toggle="collapse" href="#collapseVariants" aria-expanded="false" aria-controls="collapseVariants" class="accordion-plus-toggle">
                                 Variants
                                 </a>
                             </h5>
@@ -330,23 +334,23 @@
                                         </div>
                                         <div class="col-md-2 mb-2">
                                             <small>Price</small>
-                                            <input type="text" name="price[]" class="form-control" placeholder="Price" value="<?php echo $variant->price; ?>">
+                                            <input type="text" name="price[]" class="form-control" placeholder="Price" value="<?php echo $variant->price; ?>"><br/><span class="price-comparison"></span>
                                         </div>
                                         <div class="col-md-2 mb-2">
                                             <small>Takeaway</small>
-                                            <input type="text" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price" value="<?php echo $variant->takeaway_price; ?>">
+                                            <input type="text" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price" value="<?php echo $variant->takeaway_price; ?>"><br/><span class="price-comparison"></span>
                                         </div>
                                         <div class="col-md-2 mb-2">
                                             <small>Ubereats</small>
-                                            <input type="text" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price" value="<?php echo $variant->uber_eats_price; ?>">
+                                            <input type="text" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price" value="<?php echo $variant->uber_eats_price; ?>"><br/><span class="price-comparison"></span>
                                         </div>
                                         <div class="col-md-2 mb-2">
                                             <small>Doordash</small>
-                                            <input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price" value="<?php echo $variant->doordash_price; ?>">
+                                            <input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price" value="<?php echo $variant->doordash_price; ?>"><br/><span class="price-comparison"></span>
                                         </div>
                                         <div class="col-md-2 mb-2">
                                             <small>Weborder</small>
-                                            <input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price" value="<?php echo $variant->web_order_price; ?>">
+                                            <input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price" value="<?php echo $variant->web_order_price; ?>"><br/><span class="price-comparison"></span>
                                         </div>
                                         <div class="col-md-2 mb-2">
                                         <input type="hidden" id="get_deletemodifier" value="<?php echo base_url('/itemmanage/item_food/delete_variant'); ?>" />
@@ -367,12 +371,12 @@
                             <div class="panel-body">
                                 <div id="variantContainer">
                                     <div class="row variant-row mb-2">
-                                        <div class="col-md-12 mb-2"><input type="text" name="variant_name[]" class="form-control" placeholder="Variant Name" value="Regular"></div>
-                                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control" placeholder="Price"></div>
-                                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price"></div>
-                                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price"></div>
-                                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price"></div>
-                                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price"></div>
+                                        <div class="col-md-12 mb-2"><input type="text" name="variant_name[]" class="form-control" placeholder="Variant Name" ></div>
+                                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control" placeholder="Price"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control" placeholder="Takeaway Price"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control" placeholder="Uber Eats Price"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control" placeholder="Doordash Price"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control" placeholder="Weborder Price"><br/><span class="price-comparison"></span></div>
                                         <div class="col-md-2 mb-2"><button type="button" class="removeRowVariant"><span class="glyphicon glyphicon-remove-circle"></span></button></div>
                                     </div>
                                 </div>
@@ -386,11 +390,16 @@
                     <div class="panel panel-default" id="recipesPanel">
                         <div class="panel-heading" role="tab" id="headingRecipes">
                             <h5 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseRecipes" aria-expanded="false" aria-controls="collapseRecipes" class="accordion-plus-toggle"> 
+                                <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseRecipes" aria-expanded="false" aria-controls="collapseRecipes" class="accordion-plus-toggle"> 
                                     Recipes <em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
                                     *Note: Please save variants before adding recipes if recipe mode is enabled!
                                 </em>
 
+                                </a> -->
+                                <a role="button" data-toggle="collapse" href="#collapseRecipes" aria-expanded="false" aria-controls="collapseRecipes" class="accordion-plus-toggle"> 
+                                        Recipes <em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
+                                        *Note: Please save variants before adding recipes if recipe mode is enabled!
+                                    </em>
                                 </a>
                             </h5>
                         </div>
@@ -493,7 +502,10 @@
                     <div class="panel panel-default" id="modifiersPanel">
                         <div class="panel-heading" role="tab" id="headingModifiers">
                             <h5 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers" aria-expanded="false" aria-controls="collapseModifiers" class="accordion-plus-toggle">
+                                <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers" aria-expanded="false" aria-controls="collapseModifiers" class="accordion-plus-toggle">
+                                    Modifiers
+                                </a> -->
+                                <a role="button" data-toggle="collapse" href="#collapseModifiers" aria-expanded="false" aria-controls="collapseModifiers" class="accordion-plus-toggle">
                                     Modifiers
                                 </a>
                             </h5>
@@ -701,6 +713,14 @@ document.getElementById("isoffer").addEventListener("change", function () {
     .removeEditRowVariant {
     margin-top: 24px;
     }
+    span.price-comparison {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    position: absolute;
+    bottom: -10px;
+}
 </style>
 <?php 
     endif;
