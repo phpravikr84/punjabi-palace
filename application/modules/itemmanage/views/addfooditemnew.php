@@ -237,8 +237,9 @@
                         <?php } ?>
                     </div>
 
-
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
