@@ -77,10 +77,10 @@ $(document).ready(function () {
                             }
             
                             // In both cases (exist or not), clear values
-                            //$('#ingredient_id').val('');
-                            //$('#purchase_price').val('');
-                            //$('#purchase_price').removeAttr('readonly');
-                            //$('#unitid').val('').trigger('change');
+                            $('#ingredient_id').val('');
+                            $('#purchase_price').val('');
+                            $('#purchase_price').removeAttr('readonly');
+                            $('#unitid').val('').trigger('change');
                             open_balance_div.show(); // Show open balance div by default
                             open_balance_date_div.show(); // Show open balance date div by default
                         },

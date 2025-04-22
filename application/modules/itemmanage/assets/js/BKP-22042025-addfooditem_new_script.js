@@ -76,11 +76,7 @@ $(document).ready(function() {
             return;
         }
 
-         // Try to find .variant-rowedit first, then fallback to .variant-row
-        let $row = $input.closest('.variant-rowedit');
-        if ($row.length === 0) {
-            $row = $input.closest('.variant-row');
-        }
+        let $row = $input.closest('.variant-rowedit');  // correct class
         let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
     
         if (variantName === '') {

@@ -9,47 +9,10 @@
 
 $(document).ready(function(){
     $("#addMore").click(function(){
-        let lastRow = $(".variant-row").last();
-        let variantInput = lastRow.find("input[name='variant_name[]']");
-        let variantValue = $.trim(variantInput.val()).toLowerCase();
-    
-        if(variantValue === "" || variantValue === "0" || variantValue === null){
-            alert("Variant Name cannot be empty, null, or 0!");
-            variantInput.focus();
-            return false;
-        }
-    
-        let newRow = lastRow.clone();
-        newRow.find("input").val(""); // Clear values
-        newRow.find(".price-comparison").html(''); //Clear price comparison message
-        newRow.find("input").removeAttr("id"); // Remove old IDs
-    
-        $("#variantContainer").append(newRow);
+        let row = $(".variant-row:first").clone();
+        row.find("input").val(""); 
+        $("#variantContainer").append(row);
     });
-
-    //Add new logic for variant row
-    $(document).on('blur', "input[name='variant_name[]']", function(){
-        let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
-        if(variantName !== ""){
-            $(this).attr("id", variantName);
-            $(this).closest(".variant-row").find("input[name='price[]']").attr("id", variantName + "_price");
-            $(this).closest(".variant-row").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
-            $(this).closest(".variant-row").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
-            $(this).closest(".variant-row").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
-            $(this).closest(".variant-row").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
-        }
-    });
-
-    
-    // Remove Row Logic
-    $(document).on("click", ".removeRowVariant", function(){
-        if($(".variant-row").length > 1){
-            $(this).closest(".variant-row").remove();
-        } else {
-            alert("At least one row is required.");
-        }
-    });
-    
     
     $(document).on("click", ".removeRowVariant", function(){
         if($(".variant-row").length > 1){
@@ -59,79 +22,6 @@ $(document).ready(function(){
         }
     });
 });
-//for Add / Edit view Price Calculation
-
-$(document).ready(function() {
-
-    // First attach the event handler
-    $(document).on('input', "input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']", function() {
-
-        let $input = $(this);
-        console.log('Input ID: ' + $input.attr('id'));  // use console instead of alert for better debugging
-
-        let price = parseFloat($input.val());
-    
-        if (isNaN(price)) {
-            $input.next('br').next('.price-comparison').html('');
-            return;
-        }
-
-         // Try to find .variant-rowedit first, then fallback to .variant-row
-        let $row = $input.closest('.variant-rowedit');
-        if ($row.length === 0) {
-            $row = $input.closest('.variant-row');
-        }
-        let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
-    
-        if (variantName === '') {
-            $input.next('br').next('.price-comparison').html('<small style="color:red;">Enter Variant Name first!</small>');
-            return;
-        }
-    
-        console.log('Variant Name:', variantName);
-
-        let recipeSelector = "#recipe_costprice_" + variantName;
-        let recipeInput = $(recipeSelector);
-
-        console.log('Looking for recipe input with selector:', recipeSelector);
-        console.log('Number of matching inputs:', recipeInput.length);
-
-        if (recipeInput.length === 0) {
-            console.error('No recipe cost price input found for variant:', variantName);
-            $input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost input not found!</small>');
-            return;
-        }
-
-        let recipeCost = parseFloat(recipeInput.val());
-        console.log('Recipe Cost Value:', JSON.stringify(recipeInput));
-
-        if (isNaN(recipeCost)) {
-            $input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost not available!</small>');
-            return;
-        }
-
-    
-        let diff = price - recipeCost;
-        let percentage = ((Math.abs(diff) / recipeCost) * 100).toFixed(2);
-    
-        let message = '';
-        if (diff > 0) {
-            message = '<small class="text-success"><i class="fa fa-long-arrow-up" aria-hidden="true"></i> $' + diff.toFixed(2) + ' (' + percentage + '%)</small>';
-        } else if (diff < 0) {
-            message = '<small class="text-danger"><i class="fa fa-long-arrow-down" aria-hidden="true"></i> $' + Math.abs(diff).toFixed(2) + ' (' + percentage + '%)</small>';
-        } else {
-            message = '<small class="text-primary"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Equal Cost</small>';
-        }
-    
-        $input.next('br').next('.price-comparison').html(message);
-    });
-
-    // Then trigger 'input' on all fields after handler is attached
-    $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
-
-});
-
-
 
 $(document).ready(function() {
     $(".addons-select").each(function() {
@@ -454,9 +344,6 @@ function calprice(rowId){
          $('#recipe_costprice_' + variantId).val(recipe_costprice.toFixed(3));
          $('#recipe_costprice_' + variantId).attr("value", recipe_costprice.toFixed(3));
 
-        // Trigger input on all price fields for this variant to refresh profit display
-        $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
-
     }
 
 }
@@ -510,7 +397,7 @@ function checkproduct_list(ingredientId, sl) {
             var obj = JSON.parse(data);
             console.log('parsed:', obj);
     
-            if (obj && obj.length > 0 && obj[0].cost_perunit > 0) {
+            if (obj && obj.length > 0 && obj[0].cost_perunit_price > 0) {
                 //$('#product_quantity_' + sl).removeAttr('readonly'); cost_perunit
                 //$('#unit-total_' + sl).val(obj[0].cost_perunit_price);
                 $('#unit-total_' + sl).val(obj[0].cost_perunit);
@@ -652,18 +539,10 @@ $(document).ready(function(){
     
     
     // Add new variant row
-    // $("#addMoreEdit").click(function(){
-    //     let row = $(".variant-rowedit:first").clone(); // Clone the first row
-    //     row.find("input").val(""); // Clear input values
-    //     $("#variantContainer").append(row); // Append cloned row
-    // });
-
-    $("#addMoreEdit").click(function() {
-        let row = $(".variant-rowedit:first").clone(); // Clone the first variant row
-        row.find("input").val(""); // Clear all input values
-        row.find(".price-comparison").html(''); // Clear any profit/loss messages if present
-        row.find("input").removeAttr("id"); // Remove any existing IDs
-        $("#variantContainer").append(row); // Append the cleared clone to the container
+    $("#addMoreEdit").click(function(){
+        let row = $(".variant-rowedit:first").clone(); // Clone the first row
+        row.find("input").val(""); // Clear input values
+        $("#variantContainer").append(row); // Append cloned row
     });
 
     
@@ -756,25 +635,6 @@ $(document).ready(function () {
 
 });
 
-// Add new logic for Variant row on Blur an On load
-function assignVariantIds() {
-    $("input[name='variant_name[]']").each(function(){
-        let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
-        if(variantName !== ""){
-            $(this).attr("id", variantName);
-            $(this).closest(".variant-rowedit").find("input[name='price[]']").attr("id", variantName + "_price");
-            $(this).closest(".variant-rowedit").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
-            $(this).closest(".variant-rowedit").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
-            $(this).closest(".variant-rowedit").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
-            $(this).closest(".variant-rowedit").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
-        }
-    });
-}
-
-// On page load: assign IDs for any prefilled variant names
-$(document).ready(function(){
-    assignVariantIds();  // <-- run once
-});
 
 
 

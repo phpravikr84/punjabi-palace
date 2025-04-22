@@ -85,9 +85,9 @@
                                      <?php foreach($allproduct as $stockinfo){?>
 									<tr>
 											<td><?php echo $stockinfo['ProductName'];?></td>
-                                            <td><?php echo $stockinfo['In_Qnty'];?></td>
+                                            <td><?php echo $stockinfo['In_Qnty'] .' (' . $stockinfo['In_Qnty_unit'] .')';?></td>
                                             <td><?php echo $stockinfo['Out_Qnty'];?></td>
-                                            <td><?php echo $stockinfo['Stock'];?></td>
+                                            <td><?php echo $stockinfo['Stock'] .' (' . $stockinfo['Stock_unit'] .')';?></td>
                                     </tr>
                                     <?php } ?>
 									</tbody>

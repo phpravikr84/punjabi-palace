@@ -59,28 +59,24 @@ $(document).ready(function(){
         }
     });
 });
-//for Add / Edit view Price Calculation
 
 $(document).ready(function() {
-
-    // First attach the event handler
+    //On page load calculate Profit Percentage on Recipe Cost Price
+    $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
+    
+    //Calculate Profit Percentage on Recipe Cost Price
     $(document).on('input', "input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']", function() {
 
         let $input = $(this);
-        console.log('Input ID: ' + $input.attr('id'));  // use console instead of alert for better debugging
-
+        alert('Input ID: ' + $input.attr('id'));
         let price = parseFloat($input.val());
     
         if (isNaN(price)) {
             $input.next('br').next('.price-comparison').html('');
             return;
         }
-
-         // Try to find .variant-rowedit first, then fallback to .variant-row
-        let $row = $input.closest('.variant-rowedit');
-        if ($row.length === 0) {
-            $row = $input.closest('.variant-row');
-        }
+    
+        let $row = $input.closest('.variant-row');
         let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
     
         if (variantName === '') {
@@ -88,28 +84,14 @@ $(document).ready(function() {
             return;
         }
     
-        console.log('Variant Name:', variantName);
-
-        let recipeSelector = "#recipe_costprice_" + variantName;
-        let recipeInput = $(recipeSelector);
-
-        console.log('Looking for recipe input with selector:', recipeSelector);
-        console.log('Number of matching inputs:', recipeInput.length);
-
-        if (recipeInput.length === 0) {
-            console.error('No recipe cost price input found for variant:', variantName);
-            $input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost input not found!</small>');
-            return;
-        }
-
+        // Find the matching recipe cost price by id
+        let recipeInput = $("#recipe_costprice_" + variantName);
         let recipeCost = parseFloat(recipeInput.val());
-        console.log('Recipe Cost Value:', JSON.stringify(recipeInput));
-
+    
         if (isNaN(recipeCost)) {
             $input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost not available!</small>');
             return;
         }
-
     
         let diff = price - recipeCost;
         let percentage = ((Math.abs(diff) / recipeCost) * 100).toFixed(2);
@@ -124,13 +106,8 @@ $(document).ready(function() {
         }
     
         $input.next('br').next('.price-comparison').html(message);
-    });
-
-    // Then trigger 'input' on all fields after handler is attached
-    $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
-
+    });    
 });
-
 
 
 $(document).ready(function() {
@@ -510,7 +487,7 @@ function checkproduct_list(ingredientId, sl) {
             var obj = JSON.parse(data);
             console.log('parsed:', obj);
     
-            if (obj && obj.length > 0 && obj[0].cost_perunit > 0) {
+            if (obj && obj.length > 0 && obj[0].cost_perunit_price > 0) {
                 //$('#product_quantity_' + sl).removeAttr('readonly'); cost_perunit
                 //$('#unit-total_' + sl).val(obj[0].cost_perunit_price);
                 $('#unit-total_' + sl).val(obj[0].cost_perunit);

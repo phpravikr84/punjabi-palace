@@ -77,12 +77,26 @@ class Report_model extends CI_Model
 	}
 	public function allingredient()
 	{
-		$this->db->select("a.*,SUM(a.quantity) as totalqty, b.id,b.ingredient_name,b.stock_qty,c.uom_short_code");
-		$this->db->from('purchase_details a');
-		$this->db->join('ingredients b', 'b.id = a.indredientid', 'left');
-		$this->db->join('unit_of_measurement c', 'c.id = b.uom_id', 'inner');
-		$this->db->group_by('a.indredientid');
-		$this->db->order_by('a.purchasedate', 'desc');
+		//load common helper
+		$this->load->helper('common_helper');
+
+		// $this->db->select("a.*,SUM(a.quantity) as totalqty, d.opening_balance as open_stock, b.id,b.ingredient_name,b.stock_qty,c.uom_short_code");
+		// $this->db->from('purchase_details a');
+		// $this->db->join('ingredients b', 'b.id = a.indredientid', 'left');
+		// //New code added
+		// $this->db->join('ingredients_opening_stock d', 'b.id = d.ingredient_id', 'left');
+		// $this->db->join('unit_of_measurement c', 'c.id = b.consumption_unit', 'inner');
+		// $this->db->group_by('a.indredientid');
+		// $this->db->order_by('a.purchasedate', 'desc');
+
+		$this->db->select("b.*, SUM(a.quantity) as totalqty, d.opening_balance as open_stock, b.id, b.ingredient_name, b.stock_qty, c.uom_short_code");
+		$this->db->from('ingredients b');
+		$this->db->join('purchase_details a', 'b.id = a.indredientid', 'left');
+		$this->db->join('ingredients_opening_stock d', 'b.id = d.ingredient_id', 'left');
+		$this->db->join('unit_of_measurement c', 'c.id = b.consumption_unit', 'inner');
+		$this->db->group_by('b.id');
+		$this->db->order_by('MAX(a.purchasedate)', 'DESC');  // using MAX because of group_by
+
 		$query = $this->db->get();
 		$producreport = $query->result();
 		$myarray = array();
@@ -95,10 +109,16 @@ class Report_model extends CI_Model
 			} else {
 				$saleqty = $inqty;
 			}
+			$myArray[$i]['ingredient_id'] = $result->id;
 			$myArray[$i]['ProductName'] = $result->ingredient_name;
-			$myArray[$i]['In_Qnty'] = $result->totalqty . ' ' . $result->uom_short_code;
-			$myArray[$i]['Out_Qnty'] = $result->totalqty - $result->stock_qty . ' ' . $result->uom_short_code;
+			$myArray[$i]['In_Qnty'] = $result->totalqty + $result->open_stock . ' ' . $result->uom_short_code;
+			$myArray[$i]['Out_Qnty'] = ($result->totalqty + $result->open_stock) - $result->stock_qty . ' ' . $result->uom_short_code;
 			$myArray[$i]['Stock'] = $result->stock_qty . ' ' . $result->uom_short_code;
+
+			$myArray[$i]['In_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, $result->totalqty + $result->open_stock)) . ' Unit';
+			$myArray[$i]['Out_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, ($result->totalqty + $result->open_stock) - $result->stock_qty)) . ' Unit';
+			$myArray[$i]['Stock_unit'] = round(get_quantity_purchase_unit($result->id, $result->stock_qty)) . ' Unit';
+
 		}
 		return $myArray;
 	}
