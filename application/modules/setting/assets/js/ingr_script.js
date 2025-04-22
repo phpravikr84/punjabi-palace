@@ -161,21 +161,42 @@ $(document).ready(function () {
         }
     }
 
-    $('.consumtion_unit').on('change', function () {
+       // Initialize Select2
+   
+       // Bind change event AFTER initialization
+       $('#consumtion_unit').on('change', function () {
+           calculateCostPerUnit();
+       });
+       $('#pack_size').on('change', function () {
+           calculateCostPerUnit();
+       });
+       $('#convt_ratio').on('change', function () {
+           calculateCostPerUnit();
+       });
+        $("#purchase_price").on('change', function(){
+            calculateCostPerUnit();
+        }).on('mouseout', function(){
+            calculateCostPerUnit();
+        });
+    //For Edit
+    $('.edit_pack_size').on('change', function () {
         calculateCostPerUnit();
     });
-    $(".purchase_price").on('change', function(){
+    $('#consumtion_unit_edit').on('change', function () {
+        calculateCostPerUnit();
+    });
+    $('#convt_ratio_edit').on('change', function () {
+        calculateCostPerUnit();
+    });
+    $("#purchase_price_edit").on('change', function(){
         calculateCostPerUnit();
     }).on('mouseout', function(){
         calculateCostPerUnit();
     });
-    $('.pack_size').on('change', function () {
-        calculateCostPerUnit();
-    });
-    $('.edit_pack_size').on('change', function () {
-        calculateCostPerUnit();
-    });
+        
 });
+
+
 
 
 // Initialize select2
