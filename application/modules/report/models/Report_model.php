@@ -245,7 +245,6 @@ class Report_model extends CI_Model
 		$this->db->where($dateRange, NULL, FALSE);
 		$this->db->order_by('a.order_date', 'desc');
 		$query = $this->db->get();
-
 		return $query->result();
 	}
 	public function settinginfo()
@@ -685,6 +684,7 @@ class Report_model extends CI_Model
 		$this->db->group_by('a.waiter_id');
 
 		$query = $this->db->get();
+
 		return $query->result();
 	}
 

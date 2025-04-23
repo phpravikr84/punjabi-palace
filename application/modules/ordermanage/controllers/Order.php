@@ -3741,6 +3741,15 @@ class Order extends MX_Controller
 		$data['storeinfo']      = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
 
+		//Fetching modifiers info on 23042025
+		$this->db->select('a.add_on_name, a.price, om.menu_id');
+		$this->db->from('add_ons a');
+		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.order_id',$orderid);
+		$q1=$this->db->get();
+		$orderedMods=$q1->result();
+		$data['orderedMods']=$orderedMods;
+
 		$data['module'] = "ordermanage";
 		$data['page']   = "details";
 		echo Modules::run('template/layout', $data);

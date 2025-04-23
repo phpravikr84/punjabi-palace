@@ -201,7 +201,7 @@ $(document).ready(function () {
             $("#saveEditVariant").show();
             $('#recipesPanel').show();
         } else {
-            $("#addMore").hide();
+            //$("#addMore").hide();
             $("#saveEditVariant").hide();
             $('#recipesPanel').hide();
 
@@ -210,7 +210,7 @@ $(document).ready(function () {
             $(".variant-recipe").remove();
 
             // Keep only the first row in #variantContainer
-            $("#variantContainer .variant-row:gt(0)").remove(); // Removes all but the first variant row
+            //$("#variantContainer .variant-row:gt(0)").remove(); // Removes all but the first variant row
         }
     }
 
