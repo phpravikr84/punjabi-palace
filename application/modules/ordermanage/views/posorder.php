@@ -1363,11 +1363,11 @@ foreach ($scan1 as $file) {
     if (!$(this).hasClass('collapsed')) {
         subHeading.hide();
     } else {
+        $(".modifier-set-sub-heading").hide();
         subHeading.show();
     }
     console.log("Accordion Clicked, and collapsed: "+((!$(this).hasClass('collapsed')) ? "False" : "True"));
   });
-
 </script>
 <script src="<?php echo base_url('ordermanage/order/possettingjs') ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('ordermanage/order/quickorderjs') ?>" type="text/javascript"></script>
