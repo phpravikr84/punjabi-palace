@@ -1089,4 +1089,20 @@ class Hungry_model extends CI_Model
 		$cquery = $this->db->get();
 		$customerd = $cquery->row();
 	}
+
+	/**
+	 * Get slot list on base of date
+	 */
+	public function get_slots_by_day($dayName)
+	{
+		$this->db->select('s.start_time, s.end_time');
+		$this->db->from('slots s');
+		$this->db->join('days d', 's.day_id = d.day_id');
+		$this->db->where('d.day_name', $dayName);
+		$this->db->where('s.is_active', 1);
+		$query = $this->db->get();
+
+		return $query->result_array();
+	}
+
 }

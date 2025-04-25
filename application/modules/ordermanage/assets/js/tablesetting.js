@@ -565,4 +565,4 @@ function fetchOrdersOrExpiredReservations() {
 }
 
 // Main function to refresh every 5 seconds
-setInterval(fetchOrdersOrExpiredReservations, 5000);
+//setInterval(fetchOrdersOrExpiredReservations, 5000);

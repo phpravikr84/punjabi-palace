@@ -35,8 +35,9 @@ function submitreserve(){
 			 success: function(data) {
 				var err = data;
 					if(err=='404'){
-						alert("Failed: Your Email Already Exits!!! Please Try to Login or Use Another Email Address!!!");
-						window.location.href= basicinfo.baseurl+'mylogin';
+						// alert("Failed: Your Email Already Exits!!! Please Try to Login or Use Another Email Address!!!");
+						// window.location.href= basicinfo.baseurl+'mylogin';
+							$("#reservesubmit").submit();
 						}						   
 					else{
 						 $("#reservesubmit").submit();
