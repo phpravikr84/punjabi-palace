@@ -89,80 +89,58 @@
                                 
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                    <label class="col-form-label">Weightage</label>
-                                        <input name="weightage" class="form-control" type="text" 
-                                            placeholder="<?php echo display('weightage') ?>" id="weightage"  
-                                            value="<?php echo (isset($productinfo) && !empty($productinfo['weightage']) ? $productinfo['weightage'] : null) ?>">
+                                <label>Unit</label>
+                                    <?php if(isset($units) && !empty($units)) { ?>
+                                    <div class="form-group">
+                                        <select class="form-control" id="uomid" name="uomid">
+                                            <?php foreach($units as $unit) { ?>
+                                                <option value="<?php echo $unit->id; ?>" 
+                                                    <?php if(isset($productinfo) && !empty($productinfo)) { 
+                                                        if($productinfo['uomid'] == $unit->id) { echo "selected"; }
+                                                    } ?>> 
+                                                    <?php echo $unit->uom_name; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <?php if(isset($units) && !empty($units)) { ?>
-                                            <label class="col-form-label">Unit</label>
-                                            <select class="form-control" id="uomid" name="uomid">
-                                                <?php foreach($units as $unit) { ?>
-                                                    <option value="<?php echo $unit->id; ?>" 
-                                                        <?php if(isset($productinfo) && !empty($productinfo)) { 
-                                                            if($productinfo['uomid'] == $unit->id) { echo "selected"; }
-                                                        } ?>> 
-                                                        <?php echo $unit->uom_name; ?>
-                                                    </option>
-                                                <?php } ?>
-                                            </select>
-                                        <?php } else { ?>
-                                            <div class="alert alert-warning mt-2" role="alert">
-                                                No units available.
-                                            </div>
-                                        <?php } ?>
+                                <?php } else { ?>
+                                    <div class="alert alert-warning" role="alert">
+                                        No units available.
                                     </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
-                    </div>
-                    <!-- Highlighted Recipe Mode Section -->
-                    <div class="form-group bg-light p-3 rounded mb-3">
-                        <label class="form-label fw-bold ">Mode</label>
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <div class="form-check form-switch">
-                                    <input type="hidden" name="is_bom" value="0">
-                                    <input class="form-check-input" type="checkbox" name="is_bom_check" id="is_bom_check"
-                                        <?php echo (isset($productinfo) && $productinfo['is_bom'] == 1) ? 'checked' : ''; ?>>
-                                    <label class="form-check-label fw-bold" for="is_bom_check">
-                                     Enable Recipe Mode
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="col-md-5 d-flex align-items-center">
+                            <div class="form-check" style="margin-top:30px;">
+                                <div class="checkbox checkbox-success">
+                                    <!-- Hidden field to ensure unchecked state passes 0 -->
+                                    <input type="hidden" name="is_bom"  <?php echo (isset($productinfo) && $productinfo['is_bom'] == 0) ? 'checked' : ''; ?>>
 
-                            <div class="col-md-6 d-flex align-items-center">
-                                <label for="special" class="form-label me-2">Special Item?</label>
-                                <div class="form-check form-check-inline mr-2" style="margin-left:5px;">
-                                    <input type="checkbox" name="special" value="1"
-                                        <?php if(!empty($productinfo) && $productinfo['special']==1){echo "checked";} ?>
-                                        id="special" class="form-check-input">
+                                    <!-- Checkbox to capture value 1 when checked -->
+                                    <input type="checkbox" name="is_bom_check" 
+                                    id="is_bom_check"
+                                    <?php echo (isset($productinfo) && $productinfo['is_bom'] == 1) ? 'checked' : ''; ?>>
+                                    
+                                    <label for="is_bom_check">Recipe Mode</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Highlighted Food Type Section -->
-                    <div class="form-group bg-light p-3 rounded mb-3">
-                        <label class="form-label fw-bold">Food Type</label>
-                        <div class="d-flex gap-4">
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" name="food_type" value="1" id="veg"
-                                    <?php echo (isset($productinfo) && $productinfo['food_type'] == 1) ? 'checked' : ''; ?>>
-                                <label class="form-check-label" for="veg">🥗 Vegetarian</label> &nbsp;
+                    <div class="form-group">
+                        <label>Food Type</label>
+                        <div class="d-flex">
+                            <div class="form-check me-3" style="margin-right:10px;">
+                                <input type="radio" class="form-check-input" name="food_type" value="1" id="veg"  <?php echo (isset($productinfo) && $productinfo['food_type'] == 1) ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="veg">Vegetarian</label>
                             </div>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="food_type" value="0" id="non-veg"
-                                    <?php echo (isset($productinfo) && $productinfo['food_type'] == 0) ? 'checked' : ''; ?>>
-                                <label class="form-check-label" for="non-veg">🍗 Non-Vegetarian</label>
+                                <input type="radio" class="form-check-input" name="food_type" value="0" id="non-veg" <?php echo (isset($productinfo) && $productinfo['food_type'] == 0) ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="non-veg">Non-Vegetarian</label>
                             </div>
                         </div>
                     </div>
-
                     <div class="checkbox checkbox-success">
                         <input type="checkbox" name="isoffer" value="1" <?php if(isset($productinfo) && !empty($productinfo))if($productinfo['offerIsavailable']==1){echo "checked";}?> id="isoffer">
                         <label for="isoffer">Offer Available?</label>
