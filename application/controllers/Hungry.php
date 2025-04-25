@@ -868,12 +868,17 @@ class Hungry extends CI_Controller
 		$id = $this->input->post('id');
 		$cuslomer = $this->session->userdata('CusUserID');
 		$startdate = $this->input->post('sltime');
+		$times = explode('-', $this->input->post('sltime'));
+		$starttime = trim($times[0]);
+        $endtime = trim($times[1]);
 		$endate = date("H:i:s", strtotime($startdate) + (60 * 30));
 		$data['tableinfo'] = $this->hungry_model->read('*', 'rest_table', array('tableid' => $id));
 		$data['tableno'] = $this->input->post('id');
 		$data['newdate'] = $this->input->post('sdate');
-		$data['gettime'] = $this->input->post('sltime');
-		$data['endtime'] = $endate;
+		// $data['gettime'] = $this->input->post('sltime');
+		// $data['endtime'] = $endate;
+		$data['gettime'] = $starttime;
+		$data['endtime'] = $endtime;
 		$data['nopeople'] = $this->input->post('people');
 		$data['contactno'] = $this->input->post('contactno');
 		if (!empty($cuslomer)) {
@@ -882,6 +887,11 @@ class Hungry extends CI_Controller
 			$data['customerinfo'] = '';
 		}
 		$data['formdtable'] = $this->hungry_model->checktable($id);
+
+		// echo '<pre>';
+		// print_r($data);
+		// echo '</pre>';
+		// exit;
 
 		$this->load->view('themes/' . $this->themeinfo->themename . '/reservationfrm', $data);
 	}
@@ -961,7 +971,7 @@ class Hungry extends CI_Controller
 				'totime' 	 		 => $this->input->post('bookendtime', true),
 				'reserveday' 	 	 => $newdate,
 				'customer_notes'      => $this->input->post('message', true),
-				'status' 	 	     => 1,
+				'status' 	 	     => 2,
 			);
 
 			if ($this->hungry_model->bookedtable($postData)) {
@@ -4295,4 +4305,25 @@ document.getElementById("paytrack").click();
                 return false;
             }*/
 	}
+
+	public function slotsavailablity()
+	{
+		$date = $this->input->get('date');
+
+		if ($date) {
+			$dayName = date('l', strtotime($date)); // e.g., 'Thursday'
+			
+			$slots = $this->hungry_model->get_slots_by_day($dayName);
+
+			if (!empty($slots)) {
+				echo json_encode(['success' => true, 'slots' => $slots]);
+			} else {
+				echo json_encode(['success' => false, 'slots' => []]);
+			}
+		} else {
+			echo json_encode(['success' => false, 'message' => 'No date provided']);
+		}
+	}
+
+
 }

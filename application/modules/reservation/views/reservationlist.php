@@ -129,7 +129,7 @@
                             <th><?php echo display('Sl') ?></th>
                             <th><?php echo display('customer_name');?></th>
                             <th><?php echo display('tabltno');?></th>
-                            <th><?php echo display('no_of_people');?></th>
+                            <th><?php echo 'No of People';?></th>
                             <th><?php echo display('s_time'); ?></th>
                              <th><?php echo display('e_time'); ?></th>
                             <th><?php echo display('date'); ?></th>

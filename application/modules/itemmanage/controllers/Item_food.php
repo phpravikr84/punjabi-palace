@@ -2069,6 +2069,7 @@ class Item_food extends MX_Controller
 					'cusine_type'			=> $this->input->post('cusine_type'),
 					'is_bom'				=> $this->input->post('is_bom'),
 					'food_type'				=> $this->input->post('food_type', true),
+					'weightage'				=> $this->input->post('weightage', true),
 					'uomid'					=> $this->input->post('uomid', true),
 				];
 
@@ -2280,6 +2281,7 @@ class Item_food extends MX_Controller
 					'cusine_type'			=> $this->input->post('cusine_type'),
 					'is_bom'				=> $this->input->post('is_bom'),
 					'food_type'				=> $this->input->post('food_type', true),
+					'weightage'				=> $this->input->post('weightage', true),
 					'uomid'					=> $this->input->post('uomid', true),
 				];
 				$logData = array(
