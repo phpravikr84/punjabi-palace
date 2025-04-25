@@ -73,6 +73,8 @@ $selectedMods = $q2->result();
 </table>
 </div>
 <div class="div" id="modifierContent_1" style="display: none;">
+    <input type="hidden" name="currModCount" id="currModCount" value="<?=$modQty;?>">
+    <input type="hidden" name="modVarItemNameCont" id="modVarItemNameCont" value="<?=$item->ProductName;?>">
       <?php 
       if (count($modifiers)>0):
       ?>

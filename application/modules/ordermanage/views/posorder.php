@@ -464,6 +464,9 @@ foreach ($scan as $file) {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <div class="card">
     <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12" id="modVarItemName" style="padding-bottom:15px;display:none;"></div>
+    </div>
+    <div class="row">
       <div class="col-md-6 col-lg-6 col-sm-12">
         <div class="card-header">
           Choose Variants
@@ -476,7 +479,7 @@ foreach ($scan as $file) {
         <div class="card-header">
           Choose Modifiers
         </div>
-        <small class="modifier-sec-sub-heading">Choose the add-on items want to serve with the main food item</small>
+        <small class="modifier-sec-sub-heading" id="modSubHeading">Choose the add-on items want to serve with the main food item</small>
         <div class="card-body" id="sideMfContainer">
         </div>
       </div>

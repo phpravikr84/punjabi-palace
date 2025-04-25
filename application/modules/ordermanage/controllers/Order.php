@@ -879,8 +879,10 @@ class Order extends MX_Controller
 		$this->db->where('menu_add_on.is_active', 1);
 		$query = $this->db->get();
 		$modifiers = $query->result();
-		$data['modifiers']   = $modifiers;
-		$data['page']   = "posaddonsfood";
+		$modQty = $query->num_rows();
+		$data['modifiers'] = $modifiers;
+		$data['modQty'] = $modQty;
+		$data['page'] = "posaddonsfood";
 		$this->load->view('ordermanage/posaddonsfood', $data);
 	}
 	public function posaddmodifier()

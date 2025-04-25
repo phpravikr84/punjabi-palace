@@ -539,7 +539,7 @@ small.modifier-sec-sub-heading
 {
     padding: 15px;
 }
-#mySidebar .card .row .col-md-6:nth-child(2)
+#mySidebar .card .row:nth-child(2) .col-md-6:nth-child(2)
 {
     border-left: solid 1px #e7e7e7;
 }
