@@ -64,6 +64,81 @@ class Reservation extends MX_Controller {
         echo Modules::run('template/layout', $data); 
     }
 	
+	public function reservation_weekly_calendar($id = null)
+    {
+        
+		$this->permission->method('reservation','read')->redirect();
+        $data['title']    = display('reservation'); 
+        #-------------------------------#       
+        #
+        #pagination starts
+        #
+        $config["base_url"] = base_url('reservation/reservation/index');
+        $config["total_rows"]  = $this->reservation_model->count_reservation();
+        $config["per_page"]    = 25;
+        $config["uri_segment"] = 4;
+        $config["last_link"] = "Last"; 
+        $config["first_link"] = "First"; 
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';  
+        $config['full_tag_open'] = "<ul class='pagination col-xs pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tag_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+        /* ends of bootstrap */
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $data["reserve"] = $this->reservation_model->read_reservation($config["per_page"], $page);
+        $data["links"] = $this->pagination->create_links();
+		$data['pagenum']=$page;
+		if(!empty($id)) {
+		$data['title'] = display('update');
+		$data['intinfo']   = $this->reservation_model->findById($id);
+	   }
+	   $data['tablelist']     = $this->reservation_model->table_dropdown();
+	   $data['customerlist']   = $this->reservation_model->customer_dropdown();
+        #
+        #pagination ends
+        #   
+        $data['module'] = "reservation";
+        $data['page']   = "reservationweeklylist";   
+        echo Modules::run('template/layout', $data); 
+    }
+
+	public function load_slots_by_day()
+	{
+		$day_id = $this->input->get('day_id');
+		$slots = $this->reservation_model->get_slots_with_reservation($day_id);
+		echo json_encode($slots);
+	}
+
+	public function get_customer_detail()
+	{
+		$reservation_id = $this->input->get('reservation_id');
+		$customer = $this->reservation_model->get_customer_by_reservation($reservation_id);
+
+		if ($customer) {
+			echo "<ul class='list-group'>
+					<li class='list-group-item'><b>Name:</b> {$customer->customer_name}</li>
+					<li class='list-group-item'><b>No of People:</b> {$customer->person_capicity}</li>
+					<li class='list-group-item'><b>Contact:</b> {$customer->customer_phone}</li>
+				</ul>";
+		} else {
+			echo "<div class='alert alert-warning'>No Customer Details Found.</div>";
+		}
+	}
+
+
 	public function tablebooking(){
 		$this->permission->method('reservation','read')->redirect();
 		$data['title'] = display('take_reservation');

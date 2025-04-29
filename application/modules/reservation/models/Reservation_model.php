@@ -268,5 +268,61 @@ public function count_reservation()
 	public function updatesetting($data = array())
 	{
 		return $this->db->where('id',$data["id"])->update('setting', $data);
-	} 
+	}
+
+	public function get_slots_with_reservation($day_id)
+    {
+        // Build the query using CodeIgniter's Query Builder
+        $this->db->select('
+            s.slot_id,
+            d.day_name,
+            s.start_time,
+            s.end_time,
+            s.is_active,
+            r.reserveday,
+            CASE 
+                WHEN r.status = 2 THEN 2
+                ELSE 1
+            END AS status,
+			CASE 
+				WHEN r.status = 2 THEN r.tableid
+				ELSE 0
+			END AS table_no,
+			CASE
+				WHEN r.status = 2 THEN r.reserveid
+				ELSE 0
+			END AS reservation_id,
+			r.person_capicity,
+			r.formtime,
+			r.totime
+        ', false);  // Disable escaping the query here for CASE statement
+        
+        $this->db->from('slots s');
+        $this->db->join('days d', 'd.day_id = s.day_id', 'inner');
+        $this->db->join('tblreservation r', 
+            'r.reserveday = DATE_ADD(CURDATE(), INTERVAL (s.day_id - WEEKDAY(CURDATE()) - 1) DAY) 
+            AND r.formtime = s.start_time 
+            AND r.totime = s.end_time 
+            AND r.status = 2', 
+            'left'
+        );
+        $this->db->where('s.day_id', $day_id);
+        $this->db->order_by('s.start_time', 'ASC');
+
+        // Get the results
+        $query = $this->db->get();
+
+        // Return the results as an array of objects
+        return $query->result();
+    }
+
+	public function get_customer_by_reservation($reservation_id)
+	{
+		$this->db->select('c.customer_name, r.person_capicity, c.customer_phone');
+		$this->db->from('tblreservation r');
+		$this->db->join('customer_info c', 'c.customer_id = r.cid');
+		$this->db->where('r.reserveid', $reservation_id);
+		return $this->db->get()->row();
+	}
+
 }

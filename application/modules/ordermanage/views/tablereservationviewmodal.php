@@ -62,7 +62,7 @@
                                                     </td>
                                                     <td>
                                                         <?php if($reservation->status == 2) { ?>
-                                                            <a href="<?php echo site_url('ordermanage/order/pos_invoice?ps=' . $reservation->person_capicity . '&tid=' . $reservation->tablename . '&cid=' . $reservation->cid . '&tmmulti=0&tmmultipr=0'); ?>" 
+                                                            <a href="<?php echo site_url('ordermanage/order/pos_invoice?ps=' . $reservation->person_capicity . '&tid=' . $reservation->tablename . '&cid=' . $reservation->cid . '&tmmulti=0&tmmultipr=0&reserveid='.$reservation->reserveid); ?>" 
                                                             class="btn btn-success btn-md">
                                                             Order
                                                             </a>

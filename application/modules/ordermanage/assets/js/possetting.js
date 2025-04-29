@@ -1035,6 +1035,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
       var cookedtime = $("#cookedtime").val();
       var multiplletaxvalue = $('#multiplletaxvalue').val();
       var csrf = $('#csrfhashresarvation').val();
+      var reserveid = $('#reserveid').val();
       var errormessage = '';
       if (customer_name == '') {
           errormessage = errormessage + '<span>Please Select Customer Name.</span>';
@@ -1100,7 +1101,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
           order_date = encodeURIComponent(order_date);
           customernote = encodeURIComponent(customernote);
           var errormessage = '<span style="color:#060;">Signup Completed Successfully.</span>';
-          var dataString = 'customer_name=' + customer_name + '&ctypeid=' + ctypeid + '&waiter=' + waiter + '&tableid=' + tableid + '&card_type=' + cardtype + '&isonline=' + isonline + '&order_date=' + order_date + '&grandtotal=' + grandtotal + '&customernote=' + customernote + '&invoice_discount=' + invoice_discount + '&service_charge=' + service_charge + '&vat=' + vat + '&subtotal=' + orggrandTotal + '&assigncard_terminal=&assignbank=&assignlastdigit=&delivercom=' + isdelivary + '&thirdpartyinvoice=' + thirdinvoiceid + '&cookedtime=' + cookedtime + '&tablemember=' + table_member + '&table_member_multi=' + table_member_multi + '&table_member_multi_person=' + table_member_multi_person + '&multiplletaxvalue=' + multiplletaxvalue + '&csrf_test_name=' + csrf;
+          var dataString = 'customer_name=' + customer_name + '&ctypeid=' + ctypeid + '&waiter=' + waiter + '&tableid=' + tableid + '&card_type=' + cardtype + '&isonline=' + isonline + '&order_date=' + order_date + '&grandtotal=' + grandtotal + '&customernote=' + customernote + '&invoice_discount=' + invoice_discount + '&service_charge=' + service_charge + '&vat=' + vat + '&subtotal=' + orggrandTotal + '&assigncard_terminal=&assignbank=&assignlastdigit=&delivercom=' + isdelivary + '&thirdpartyinvoice=' + thirdinvoiceid + '&cookedtime=' + cookedtime + '&tablemember=' + table_member + '&table_member_multi=' + table_member_multi + '&table_member_multi_person=' + table_member_multi_person + '&multiplletaxvalue=' + multiplletaxvalue + '&csrf_test_name=' + csrf +'&reserveid=' + reserveid;
           $.ajax({
               type: "POST",
               url: basicinfo.baseurl + "ordermanage/order/pos_order",

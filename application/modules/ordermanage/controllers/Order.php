@@ -1630,6 +1630,8 @@ class Order extends MX_Controller
 					}
 					//Modifiers records are being added [end]
 					$this->cart->destroy();
+					$this->db->where('reserveid', $this->input->post('reserveid', true));
+					$this->db->update('tblreservation', array('status' => 3));
 					if ($paymentsatus == 5) {
 						redirect('ordermanage/order/paymentgateway/' . $orderid . '/' . $paymentsatus);
 					} else if ($paymentsatus == 3) {

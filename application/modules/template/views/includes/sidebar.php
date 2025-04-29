@@ -145,6 +145,7 @@
 						"list_of_bank" => array("controller" => "bank_list",     "method"     => "index","permission" => "read"), 
 						"bank_transaction" => array( "controller" => "bank_list","method"     => "bank_transaction","permission" => "read")
 					),
+					"slots" => array("controller" => "slots", "method"     => "index","permission" => "read"),    
 					"language" => array("controller" => "language","method"     => "index","permission" => "read"),    
 					"application_setting" => array("controller" => "setting","method" => "index","permission" => "read"), 
 					"server_setting" => array("controller" => "serversetting","method"  => "index","permission" => "read"),
@@ -297,6 +298,10 @@
 						case 'assign_adons_list':
 							echo 'Modifiers Assign';
 							break;
+
+						case 'slots':
+								echo 'Weekly Time Slots';
+								break;
 				
 						default:
 							echo display($name);
