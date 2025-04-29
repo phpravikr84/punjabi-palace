@@ -325,13 +325,29 @@
               success: function(data) {
                 $("#modifierContent_1").remove();
                 $("#posSelectPurchaseTable").remove();
-                  $('.addonsinfo').html(data);
+                $('.addonsinfo').html(data);
 
-                  $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
-                  $('#sideMfContainer').html($("#modifierContent_1").html());
-                  $("#posSelectPurchaseTable").remove();
-                  $("#modifierContent_1").remove();
-				  openNav();
+                $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
+                $('#sideMfContainer').html($("#modifierContent_1").html());
+                $("#posSelectPurchaseTable").remove();
+                $("#modifierContent_1").remove();
+                var modVarItemNameCont = $("#modVarItemNameCont").val();
+                // $("#modVarItemName").html(`<p class="text-left" style="padding:0px 25px;">Item Name: <strong>${modVarItemNameCont}</strong></p>`);
+                // $("#modVarItemName").show();
+                var currModCount = $("#currModCount").val();
+                if (currModCount == 0) {
+                    var noModHtml = `
+                    <div class="row">
+                        <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
+                            <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
+                        </div>
+                    </div>
+                    `;
+                    $('#sideVarContainer').append(noModHtml);
+                    $('#sideMfContainer').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
+                    // $('#modSubHeading').html(`No Modifiers Found For this Item`);
+                }
+                openNav();
                 //   $('#edit').modal('show');
 				  
 				  //$('#edit').find('.close').focus();
