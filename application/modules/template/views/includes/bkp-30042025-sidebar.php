@@ -52,46 +52,6 @@
 					"unavailable_day" => array("controller" => "reservation","method" => "unavailablelist","permission" => "read"), 
 					"reservasetting" => array("controller" => "reservation","method" => "setting","permission" => "read"),   
 				);
-				$HmvcMenu2["ingradient"] = array(
-					"icon" => "<i class='fa fa-cube' aria-hidden='true'></i>",
-					"unit_list" => array("controller" => "unitmeasurement","method"  => "index","permission" => "read"), 
-					"ingradient_list" => array("controller" => "ingradient","method"  => "index","permission" => "read") 
-				);
-				$HmvcMenu2["itemmanage"] = array(
-					"icon"           => "<i class='fa fa-cube' aria-hidden='true'></i>", 
-					"manage_category" => array(
-						"add_category" => array("controller" => "item_category","method"=> "create","permission" => "create"), 
-						"category_list" => array("controller" => "item_category","method" => "index","permission" => "read")
-						),  
-				"manage_food" => array(
-						"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
-						"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
-						//"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
-						"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
-						"food_availablity" => array("controller" => "item_food","method"     => "availablelist","permission" => "read"),
-						"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read")
-						),
-				"manage_addons" => array(
-						"add_adons" => array("controller" => "menu_addons","method"     => "create","permission" => "create"), 
-						"addons_list" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
-						"assign_adons_list" => array("controller" => "menu_addons","method"     => "assignaddons","permission" => "read")   
-						)
-				);
-
-				$HmvcMenu2["promotions"] = array(
-					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
-					"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
-				);
-						
-				// $HmvcMenu2["production"] = array( 
-				// 	"icon"           => "<i class='fa fa-product-hunt' aria-hidden='true'></i>", 
-				// 	"set_productionunit" => array("controller" => "production","method"     => "productionunit","permission" => "create"),
-				// 	"production_set_list" => array("controller" => "production","method"     => "index","permission" => "read"),
-				// 	"production_add" => array("controller" => "production","method"     => "create","permission" => "create"),
-				// 	"production_setting" => array("controller" => "productiondetails","method"     => "productionDetails","permission" => "read"),
-				// 	//"production_setting" => array("controller" => "production","method" => "possetting","permission" => "create")
-				// 	);
-
 				$HmvcMenu2["purchase"] = array(
 					"icon"=> "<i class='fa fa-shopping-cart' aria-hidden='true'></i>", 
 
@@ -122,7 +82,34 @@
 					"commission" => array("controller" => "reports","method"=> "payroll_commission","permission" => "read"), 
 					"sale_by_table" => array("controller" => "reports","method"=> "table_sale","permission" => "read")
 				);
-		
+				$HmvcMenu2["itemmanage"] = array(
+					"icon"           => "<i class='fa fa-cube' aria-hidden='true'></i>", 
+					"manage_category" => array(
+						"add_category" => array("controller" => "item_category","method"=> "create","permission" => "create"), 
+						"category_list" => array("controller" => "item_category","method" => "index","permission" => "read")
+						),  
+				"manage_food" => array(
+						"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
+						"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
+						"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
+						"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
+						"food_availablity" => array("controller" => "item_food","method"     => "availablelist","permission" => "read"),
+						"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read")
+						),
+				"manage_addons" => array(
+						"add_adons" => array("controller" => "menu_addons","method"     => "create","permission" => "create"), 
+						"addons_list" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
+						"assign_adons_list" => array("controller" => "menu_addons","method"     => "assignaddons","permission" => "read")   
+						)
+				);
+				$HmvcMenu2["production"] = array( 
+					"icon"           => "<i class='fa fa-product-hunt' aria-hidden='true'></i>", 
+					"set_productionunit" => array("controller" => "production","method"     => "productionunit","permission" => "create"),
+					"production_set_list" => array("controller" => "production","method"     => "index","permission" => "read"),
+					"production_add" => array("controller" => "production","method"     => "create","permission" => "create"),
+					"production_setting" => array("controller" => "productiondetails","method"     => "productionDetails","permission" => "read"),
+					//"production_setting" => array("controller" => "production","method" => "possetting","permission" => "create")
+					);
 				$HmvcMenu2["setting"] = array(
 					"icon"           => "<i class='fa fa-gear' aria-hidden='true'></i>", 
 					"payment_setting" => array(
@@ -195,92 +182,66 @@
 						"balance_sheet" => array("controller" => "accounts","method" => "balance_sheet","permission" => "read")  
 						), 
 				);
-				// $HmvcMenu2["hrm"] = array(
-				// 	"icon"           => "<i class='fa fa-users'></i>", 
-				// 	"ehrm" => array(
-				// 	"position" => array("controller" => "Employees","method" => "create_position","permission" => "create"), 
-				// 	"add_employee" => array("controller" => "Employees","method" => "viewEmhistory","permission" => "create"), 
-				// 	"manage_employee" => array("controller" => "Employees","method" => "manageemployee","permission" => "read"), 
+				$HmvcMenu2["hrm"] = array(
+					"icon"           => "<i class='fa fa-users'></i>", 
+					"ehrm" => array(
+					"position" => array("controller" => "Employees","method" => "create_position","permission" => "create"), 
+					"add_employee" => array("controller" => "Employees","method" => "viewEmhistory","permission" => "create"), 
+					"manage_employee" => array("controller" => "Employees","method" => "manageemployee","permission" => "read"), 
 						
-				// 	"emp_sal_payment" => array("controller" => "Employees","method" => "emp_payment_view","permission" => "view") 
-				// ),
-				// 	"attendance" => array( 
-				// 		'atn_form'    => array("controller" => "Home","method" => "index","permission" => "read"), 
-				// 		'atn_report'  => array("controller" => "Home","method"     => "attenlist","permission" => "read") 
-				// 		),
-				// 	"expense" => array(
-				// 		'add_expense_item'=> array("controller" => "Cexpense","method"=> "add_expense_item","permission" => "read"), 
-				// 		'manage_expense_item'=> array("controller" => "Cexpense","method"=> "manage_expense_item","permission" => "read"), 
-				// 		'add_expense'=> array("controller" => "Cexpense","method"=> "add_expense","permission" => "read"), 
-				// 		'manage_expense'=> array("controller" => "Cexpense","method"=> "manage_expense","permission" => "read"),
-				// 		'expense_statement'=> array("controller" => "Cexpense","method"=> "expense_statement_form","permission" => "read")
-				// 		),
-				// 	"award" => array(
-				// 		"new_award" => array("controller" => "Award_controller","method" => "create_award","permission" => "create"),
-				// 	),
-				// 	"circularprocess" => array(
-				// 		'add_canbasic_info'  => array("controller" => "Candidate","method" => "caninfo_create","permission" => "create"), 
-				// 		'can_basicinfo_list' => array("controller" => "Candidate","method" => "candidateinfo_view","permission" => "read"),
-				// 		"candidate_shortlist" => array("controller" => "Candidate_select","method" => "create_shortlist","permission" => "create"), 
-				// 	"candidate_interview" => array("controller" => "Candidate_select","method"=> "create_interview","permission" => "create"),     
-				// 	"candidate_selection" => array("controller" => "Candidate_select","method"=> "create_selection","permission" => "create")
-				// 	),
-				// 	"department" => array(
-				// 		"department" => array("controller" => "Department_controller","method" => "create_dept","permission" => "create"), 
-				// 		"add_division" => array("controller" => "Division_controller","method" => "division_form","permission" => "create"), 
-				// 		"division_list" => array("controller" => "Division_controller","method"=> "index","permission" => "read") 
-				// ),  
+					"emp_sal_payment" => array("controller" => "Employees","method" => "emp_payment_view","permission" => "view") 
+				),
+					"attendance" => array( 
+						'atn_form'    => array("controller" => "Home","method" => "index","permission" => "read"), 
+						'atn_report'  => array("controller" => "Home","method"     => "attenlist","permission" => "read") 
+						),
+					"expense" => array(
+						'add_expense_item'=> array("controller" => "Cexpense","method"=> "add_expense_item","permission" => "read"), 
+						'manage_expense_item'=> array("controller" => "Cexpense","method"=> "manage_expense_item","permission" => "read"), 
+						'add_expense'=> array("controller" => "Cexpense","method"=> "add_expense","permission" => "read"), 
+						'manage_expense'=> array("controller" => "Cexpense","method"=> "manage_expense","permission" => "read"),
+						'expense_statement'=> array("controller" => "Cexpense","method"=> "expense_statement_form","permission" => "read")
+						),
+					"award" => array(
+						"new_award" => array("controller" => "Award_controller","method" => "create_award","permission" => "create"),
+					),
+					"circularprocess" => array(
+						'add_canbasic_info'  => array("controller" => "Candidate","method" => "caninfo_create","permission" => "create"), 
+						'can_basicinfo_list' => array("controller" => "Candidate","method" => "candidateinfo_view","permission" => "read"),
+						"candidate_shortlist" => array("controller" => "Candidate_select","method" => "create_shortlist","permission" => "create"), 
+					"candidate_interview" => array("controller" => "Candidate_select","method"=> "create_interview","permission" => "create"),     
+					"candidate_selection" => array("controller" => "Candidate_select","method"=> "create_selection","permission" => "create")
+					),
+					"department" => array(
+						"department" => array("controller" => "Department_controller","method" => "create_dept","permission" => "create"), 
+						"add_division" => array("controller" => "Division_controller","method" => "division_form","permission" => "create"), 
+						"division_list" => array("controller" => "Division_controller","method"=> "index","permission" => "read") 
+				),  
 				
-				// "leave" => array(
-				// 	"weekly_holiday" => array("controller" => "Leave","method" => "create_weekleave","permission" => "read"), 
-				// 	"holiday" => array("controller" => "Leave","method" => "holiday_view", "permission" => "read"), 
-				// 	"add_leave_type" => array("controller" => "Leave","method" => "add_leave_type","permission" => "read"),
-				// 	"leave_application" => array("controller" => "Leave","method" => "others_leave","permission" => "read")
-				// ),
-				// "loan" => array(
-				// 	"loan_grand" => array("controller" => "Loan","method" => "create_grandloan","permission" => "read"), 
-				// 	"loan_installment" => array("controller" => "Loan","method"=> "create_installment","permission" => "read"), 
-				// 	"loan_report" => array("controller" => "Loan","method" => "loan_report","permission" => "read") 
-				// ),
-				// "payroll" => array(
-				// 	"salary_type_setup" => array("controller" => "Payroll","method" => "create_salary_setup","permission" => "read"), 
-				// 	"salary_setup" => array("controller" => "Payroll","method" => "create_s_setup","permission" => "create"), 
-				// 	"salary_generate" => array("controller" => "Payroll","method"=> "create_salary_generate","permission" => "create")			    
-				// ),
+				"leave" => array(
+					"weekly_holiday" => array("controller" => "Leave","method" => "create_weekleave","permission" => "read"), 
+					"holiday" => array("controller" => "Leave","method" => "holiday_view", "permission" => "read"), 
+					"add_leave_type" => array("controller" => "Leave","method" => "add_leave_type","permission" => "read"),
+					"leave_application" => array("controller" => "Leave","method" => "others_leave","permission" => "read")
+				),
+				"loan" => array(
+					"loan_grand" => array("controller" => "Loan","method" => "create_grandloan","permission" => "read"), 
+					"loan_installment" => array("controller" => "Loan","method"=> "create_installment","permission" => "read"), 
+					"loan_report" => array("controller" => "Loan","method" => "loan_report","permission" => "read") 
+				),
+				"payroll" => array(
+					"salary_type_setup" => array("controller" => "Payroll","method" => "create_salary_setup","permission" => "read"), 
+					"salary_setup" => array("controller" => "Payroll","method" => "create_s_setup","permission" => "create"), 
+					"salary_generate" => array("controller" => "Payroll","method"=> "create_salary_generate","permission" => "create")			    
+				),
 				
-				// );
+				);
 
-				// Create php function to change Module Path customization
-				function changeModuleName($moduleName){
-					switch($moduleName) {
-						case 'ingradient':
-							return 'setting';
-							break;
-						case 'promotions':
-							return 'itemmanage';
-						break;
-						default:
-							return $moduleName;
-							break;
-					}
-				}
 				// Create php function to change label parent customization
 				function changeLabelMenu($name) {
 					switch ($name) {
-						case 'itemmanage':
-							echo 'Items';
-							break;
 						case 'production':
-							echo 'Recipes';
-							break;
-						case 'purchase':
-							echo 'Inventory';
-							break;
-						case 'ingradient':
-							echo 'Ingredients';
-							break;
-						case 'promotions':
-							echo 'Promotions';
+							echo 'Bill of Materials (BOM)';
 							break;
 			
 						default:
@@ -350,14 +311,14 @@
 				
 				if(isset($HmvcMenu2) && $HmvcMenu2!=null && sizeof($HmvcMenu2) > 0)
 				foreach ($HmvcMenu2 as $moduleName => $moduleData) {
+				
 					// check module permission 
 					if (file_exists(APPPATH.'modules/'.$moduleName.'/assets/data/env'))
 					if ($this->permission->module($moduleName)->access()) {
-					$this->permission->module($moduleName)->access();
 			
+					$this->permission->module($moduleName)->access();
 				?>
 						<li class="treeview ">
-							
 							
 							<a href="javascript:void(0)">
 								<?php echo (($moduleData['icon']!=null)?$moduleData['icon']:null) ?> <span><?php echo display(changeLabelMenu($moduleName)) ?></span>
@@ -365,13 +326,10 @@
 									<i class="fa fa-angle-left pull-right"></i>
 								</span>
 							</a> 
-							
 
 							<ul class="treeview-menu">  
 								<?php foreach ($moduleData as $groupLabel => $label) {?>
 									<?php   
-									// echo  'Group Label: '. $groupLabel;
-									
 		
 									if ($groupLabel!='icon') 
 
@@ -383,7 +341,7 @@
 											$furl=base_url($label['controller']."/".$label['method']);
 											}
 										else{
-											$furl=base_url(changeModuleName($moduleName)."/".$label['controller']."/".$label['method']);
+											$furl=base_url($moduleName."/".$label['controller']."/".$label['method']);
 											}
 											
 									?> 
@@ -472,8 +430,8 @@
 					</ul>
 				</li>
 				
-				<!-- <li class="treeview"><a href="<?php echo base_url('addon/module/index') ?>"><i class="fa fa-adn"></i><span><?php echo display('moduless')?></span> </a></li>
-				<li class="treeview"><a href="<?php echo base_url('addon/theme/index') ?>"><i class="fa fa-adn"></i><span><?php echo display('themes')?></span> </a></li> -->
+				<li class="treeview"><a href="<?php echo base_url('addon/module/index') ?>"><i class="fa fa-adn"></i><span><?php echo display('moduless')?></span> </a></li>
+				<li class="treeview"><a href="<?php echo base_url('addon/theme/index') ?>"><i class="fa fa-adn"></i><span><?php echo display('themes')?></span> </a></li>
 				<li class="treeview <?php echo (($this->uri->segment(2)=="role" ||$this->uri->segment(2)=="module_permission")?"active":null) ?>">
 					<a href="#">
 
@@ -517,13 +475,13 @@
 						<li><a href="<?php echo base_url('dashboard/web_setting/subscribeList') ?>"><?php echo display('subscribelist')?></a></li> 
 					</ul>
 				</li>
-				<!-- <li class="treeview <?php echo (($this->uri->segment(2)=="autoupdate")?"active":null) ?>">
+				<li class="treeview <?php echo (($this->uri->segment(2)=="autoupdate")?"active":null) ?>">
 				<a href="<?php echo base_url('dashboard/autoupdate') ?>"><i class="ti-reload"></i> <span><?php echo display('autoupdate')?></span></a>
-				</li> -->
+				</li>
 				<?php } ?>
 				<!-- ends of admin area -->
 
-				<!-- <li class="treeview <?php echo (($this->uri->segment(2)=="message")?"active":null) ?>">
+				<li class="treeview <?php echo (($this->uri->segment(2)=="message")?"active":null) ?>">
 					<a href="#">
 						<i class="ti-comments"></i><span><?php echo display('message')?></span>
 						<span class="pull-right-container">
@@ -535,7 +493,7 @@
 						<li><a href="<?php echo base_url('dashboard/message/index') ?>"><?php echo display('inbox')?></a></li>
 						<li><a href="<?php echo base_url('dashboard/message/sent') ?>"><?php echo display('sent')?></a></li> 
 					</ul>
-				</li>        -->
+				</li>       
 			</ul>
 		</div>
 	</div>
