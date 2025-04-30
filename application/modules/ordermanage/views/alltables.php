@@ -40,6 +40,8 @@
                 } else {
                     $countReserved = 0;
                 }
+
+                echo 'Count Reserved: '.$countReserved.'<br>';
             ?>
 
             <div class="col-md-4">

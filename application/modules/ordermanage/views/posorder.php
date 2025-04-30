@@ -1267,6 +1267,16 @@ foreach ($scan as $file) {
                                 <input type="button" id="add_payment2" class="btn btn-primary btn-large cusbtn" onclick="quickorder()" name="add-payment" value="<?php echo display('quickorder') ?>">
                                 <input type="button" id="add_payment" class="btn btn-success btn-large cusbtn" onclick="placeorder()" name="add-payment" value="<?php echo display('placeorder') ?>">
 
+                                <?php
+                                $table_id   = ($this->input->get('tid') && $this->input->get('tid') != '0') ? $this->input->get('tid') : '';
+                                $customer_id = ($this->input->get('cid') && $this->input->get('cid') != '0') ? $this->input->get('cid') : '';
+                                $reserve_id  = ($this->input->get('reserveid') && $this->input->get('reserveid') != '0') ? $this->input->get('reserveid') : '';
+                                ?>
+
+                                <!-- Hidden fields -->
+                                <input type="hidden" name="table_id" id="table_id" value="<?= htmlspecialchars($table_id) ?>">
+                                <input type="hidden" name="customer_id" id="customer_id" value="<?= htmlspecialchars($customer_id) ?>">
+                                <input type="hidden" name="reserveid" id="reserveid" value="<?= htmlspecialchars($reserve_id) ?>">
 
                                 <input type="hidden" id="production_setting" value="<?php echo $possetting->productionsetting; ?>">
                                 <input type="hidden" id="production_url" value="<?php echo base_url("production/production/ingredientcheck") ?>">

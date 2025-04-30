@@ -3,7 +3,9 @@
 <a class="btn btn-primary btn-md" href="<?php echo base_url("reservation/reservation/tablebooking") ?>"><i class="fa fa-plus-circle" aria-hidden="true"></i>
 <?php echo display('take_reservation')?></a>
 <?php endif; ?>
-
+<a href="<?= site_url('reservation/reservation/reservation_weekly_calendar'); ?>" class="btn btn-primary btn-md">
+                Weekly Calendar
+            </a>
 </div>
 <div id="add0" class="modal fade" role="dialog">
     <div class="modal-dialog modal-md">
@@ -11,6 +13,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <strong><?php echo display('take_reservation');?></strong>
+               
             </div>
             <div class="modal-body">
            
