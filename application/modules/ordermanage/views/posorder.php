@@ -506,7 +506,7 @@ foreach ($scan as $file) {
           <?php if ($qrapp == 1) { ?>
             <li class="seelist2"> <a href="#qrorder" role="tab" data-toggle="tab" id="todayqrorder" class="home newtab" onclick="giveselecttab(this)"><i class="fa fa-qrcode smallview"></i> <span class="responsiveview"><?php echo display('qr-order'); ?></span> </a> <a href="" class="notif2"><span class="label label-danger count2">0</span></a> </li>
           <?php } ?>
-          <li class="seelist"> <a href="#settings" role="tab" data-toggle="tab" class="comorder newtab" id="todayonlieorder" onclick="giveselecttab(this)"><i class="fa fa-shopping-bag smallview"></i> <span class="responsiveview"><?php echo display('onlineord'); ?></span> </a> <!--<a href="" class="notif"><span class="label label-danger count">0</span></a> --></li>
+          <li class="seelist"> <a href="#settings" role="tab" data-toggle="tab" class="comorder newtab" id="todayonlieorder" onclick="giveselecttab(this)"><i class="fa fa-shopping-bag smallview"></i> <span class="responsiveview"><?php echo display('onlineord'); ?></span> </a> <a href="" class="notif"><span class="label label-danger count">0</span></a></li>
           <li> <a href="#messages" role="tab" data-toggle="tab" class="torder newtab" id="todayorder" onclick="giveselecttab(this)"><i class="fa fa-first-order smallview"></i> <span class="responsiveview"><?php echo display('tdayorder'); ?></span> </a> </li>
 
           <li class="mobiletag"><a href="javascript:;" class="btn" onclick="closeopenresister()" role="button"><i class="fa fa-window-close fa-lg"></i></a></li>

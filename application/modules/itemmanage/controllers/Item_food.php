@@ -2497,7 +2497,7 @@ class Item_food extends MX_Controller
 			$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
 			$data['module'] = "itemmanage";
 			$data['page']   = "addfooditemnew";
-			echo Modules::run('template/layout', $data);
+			echo Modules::run('template/layout', $data); 
 		}
 
 

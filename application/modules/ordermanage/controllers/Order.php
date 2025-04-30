@@ -919,7 +919,7 @@ class Order extends MX_Controller
 		// old item list
 		$data['item']   	  = $this->order_model->findPromoById($id);
 		$data['mainFoodsList']   = $this->order_model->findMainFoodsPromo($id);
-		$data['varientlist']   = $this->order_model->findByvmenuId($id);
+		$data['mainCats']   = $this->order_model->findMainCats($id);
 		//have to write different food list for promo food
 
 
@@ -929,22 +929,24 @@ class Order extends MX_Controller
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
 		$data['pid'] = $id;
+
 		//Fetching modifier groups information from the database
 		$this->db->select('modifier_groups.*,menu_add_on.*');
 		$this->db->from('modifier_groups');
-		$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
-		$this->db->where('menu_add_on.menu_id', $id);
-		$this->db->where('menu_add_on.is_active', 1);
+		$this->db->join('promotion_other_modifiers AS pom', 'modifier_groups.id=pom.modifier_set_id', 'INNER');
+		$this->db->where('pom.promotion_id', $id);
+		$this->db->where('modifier_groups.id', 'pom.modifier_set_id');
 		$query = $this->db->get();
 		$modifiers = $query->result();
 		$modQty = $query->num_rows();
 		$data['modifiers'] = $modifiers;
 		$data['modQty'] = $modQty;
+
 		// old view
-		$data['page'] = "posaddonsfood";
+		$data['page'] = "posaddpromofood";
 		// have to write different view for promo food
 
-		$this->load->view('ordermanage/posaddonsfood', $data);
+		$this->load->view('ordermanage/posaddpromofood', $data);
 	}
 	public function posaddmodifier()
 	{

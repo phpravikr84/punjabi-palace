@@ -52,6 +52,12 @@
 					"unavailable_day" => array("controller" => "reservation","method" => "unavailablelist","permission" => "read"), 
 					"reservasetting" => array("controller" => "reservation","method" => "setting","permission" => "read"),   
 				);
+				$HmvcMenu2["ingredmanage"] = array(
+					"icon" => "<i class='fa fa-tags' aria-hidden='true'></i>", 
+					"unit_list" => array("controller" => "unitmeasurement","method"  => "index","permission" => "read"), 
+					"ingradient_list" => array("controller" => "ingradient","method"  => "index","permission" => "read"),
+				);
+
 				$HmvcMenu2["purchase"] = array(
 					"icon"=> "<i class='fa fa-shopping-cart' aria-hidden='true'></i>", 
 
@@ -242,6 +248,9 @@
 					switch ($name) {
 						case 'production':
 							echo 'Bill of Materials (BOM)';
+							break;
+						case 'ingredmanage':
+							echo 'Ingredient Management';
 							break;
 			
 						default:

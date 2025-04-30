@@ -2,6 +2,9 @@
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_new_script.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
 <div class="row">
+    <!-- <pre>
+        <?php ##print_r($productinfo); ?>
+    </pre> -->
     <?php echo form_open_multipart("itemmanage/item_food/create_new") ?>
     <?php echo form_hidden('id',$this->session->userdata('id'));?>
     <?php echo form_hidden('ProductsID', (isset($productinfo) && !empty($productinfo['ProductsID'])?$productinfo['ProductsID']:null)) ?>
@@ -18,7 +21,7 @@
                             <div class="form-group">
                                 <label>Cusine Type</label>
                                 <select name="cusine_type" class="form-control" required="">
-                                    <option value="1" <?php if(isset($productinfo) && $productinfo['cusine_type']==1){echo "selected";}?>><?php echo 'Restaurant' ?></option> 
+                                    <option value="1" <?=((isset($productinfo) && $productinfo['cusine_type']==1)?"selected":'')?>><?php echo 'Restaurant' ?></option>
                                     <option value="2" <?php if(isset($productinfo) && $productinfo['cusine_type']==2){echo "selected";}?>><?php echo 'Banquet' ?></option>
                                 </select>
                             </div>

@@ -766,12 +766,23 @@ class Order_model extends CI_Model
 	{
 		$this->db->select('item_foods.*, pmm.category_id');
 		$this->db->from('item_foods');
-		$this->db->join('promotion_main_modifiers AS pmm', 'item_foods.CategoryID=pmm.category_id', 'INNER');
+		$this->db->join('promotion_main_modifiers AS pmm', 'item_foods.ProductsID=pmm.promotion_id', 'INNER');
 		$this->db->where('item_foods.CategoryID', 'pmm.category_id');
 		$this->db->where('pmm.promotion_id', $id);
 		$query = $this->db->get();
-		$mainFoodlistPromo = $query->row();
+		$mainFoodlistPromo = $query->result();
 		return $mainFoodlistPromo;
+	}
+	public function findMainCats($id = null)
+	{
+		$this->db->select('pmm.id, pmm.category_id, pmm.category_max_qty, pmm.category_weight_percent, pmm.total_weight_percent, pmm.total_no_of_item, ic.item_category.Name AS category_name');
+		$this->db->from('promotion_main_modifiers AS pmm');
+		$this->db->join('item_category AS ic', 'ic.CategoryID = pmm.category_id', 'left');
+		$this->db->where('ic.CategoryID','pmm.category_id');
+		$this->db->where('pmm.promotion_id', $id);
+		$query = $this->db->get();
+		$promoMainCats = $query->result();
+		return $promoMainCats;
 	}
 
 
