@@ -402,6 +402,31 @@ class Order extends MX_Controller
 			echo 420;
 		}
 	}
+	public function getPromoDealsItemlist()
+	{
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$data['title'] = display('supplier_edit');
+		// $prod=$this->input->post('product_name',true);
+		$isuptade = $this->input->post('isuptade', true);
+		// $catid=$this->input->post('category_id');
+		$getproduct = $this->order_model->allfoodPromo();
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		if (!empty($getproduct)) {
+			$data['itemlist'] = $getproduct;
+			$data['module'] = "ordermanage";
+			if ($isuptade == 1) {
+				$data['page']   = "getfoodlistup";
+				$this->load->view('ordermanage/getfoodlistup', $data);
+			} else {
+				$data['page']   = "getfoodlist";
+				$this->load->view('ordermanage/getfoodlist', $data);
+			}
+		} else {
+			echo 420;
+		}
+	}
 	public function getitemlistdroup()
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
@@ -883,6 +908,42 @@ class Order extends MX_Controller
 		$data['modifiers'] = $modifiers;
 		$data['modQty'] = $modQty;
 		$data['page'] = "posaddonsfood";
+		$this->load->view('ordermanage/posaddonsfood', $data);
+	}
+	public function GetPromoFoodsForCart()
+	{
+		$id = $this->input->post('pid');
+		// $sid = $this->input->post('sid');
+		$data['totalvarient'] = $this->input->post('totalvarient', true);
+		$data['customqty'] = $this->input->post('customqty', true);
+		// old item list
+		$data['item']   	  = $this->order_model->findPromoById($id);
+		$data['mainFoodsList']   = $this->order_model->findMainFoodsPromo($id);
+		$data['varientlist']   = $this->order_model->findByvmenuId($id);
+		//have to write different food list for promo food
+
+
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		$data['taxinfos'] = $this->taxchecking();
+		$data['module'] = "ordermanage";
+		$data['pid'] = $id;
+		//Fetching modifier groups information from the database
+		$this->db->select('modifier_groups.*,menu_add_on.*');
+		$this->db->from('modifier_groups');
+		$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+		$this->db->where('menu_add_on.menu_id', $id);
+		$this->db->where('menu_add_on.is_active', 1);
+		$query = $this->db->get();
+		$modifiers = $query->result();
+		$modQty = $query->num_rows();
+		$data['modifiers'] = $modifiers;
+		$data['modQty'] = $modQty;
+		// old view
+		$data['page'] = "posaddonsfood";
+		// have to write different view for promo food
+
 		$this->load->view('ordermanage/posaddonsfood', $data);
 	}
 	public function posaddmodifier()

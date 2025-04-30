@@ -1429,6 +1429,10 @@ class Item_food extends MX_Controller
 					}
 					$postData = array_merge($postData, $taxitems);
 				}
+				// echo "<pre>";
+				// print_r($postData);
+				// echo "</pre>";
+				// exit;
 				if ($this->fooditem_model->groupfood_create($postData)) {
 					$insertedFoodId = $this->db->insert_id(); // Get last inserted food item ID
 					$mainModArr=$otherModArr=[];

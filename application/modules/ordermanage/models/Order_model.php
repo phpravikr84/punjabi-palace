@@ -166,6 +166,61 @@ class Order_model extends CI_Model
 		}
 		return $output;
 	}
+	public function allfoodPromo()
+	{
+		$this->db->select('*');
+		$this->db->from('item_foods');
+		$this->db->where('ProductsIsActive', 1);
+		$this->db->where('isgroup', 1);
+		$this->db->where('cusine_type', 1);
+		$query = $this->db->get();
+		$itemlist = $query->result();
+		$output = array();
+		if (!empty($itemlist)) {
+			$k = 0;
+			foreach ($itemlist as $items) {
+				$varientinfo = $this->db->select("variant.*,count(menuid) as totalvarient")->from('variant')->where('menuid', $items->ProductsID)->get()->row();
+				$promoMainModsinfo = $this->db->select("category_id, category_max_qty AS main_cat_max_qty, category_weight_percent AS main_cat_weight, total_weight_percent AS main_total_weight, total_no_of_item AS main_total_item")->from('promotion_main_modifiers')->where('promotion_id', $items->ProductsID)->get()->result();
+				$promoOtherModsinfo = $this->db->select("modifier_set_id AS other_mod_set_id, id")->from('promotion_other_modifiers')->where('promotion_id', $items->ProductsID)->get()->result();
+				if (!empty($varientinfo)) {
+					$output[$k]['variantid'] = $varientinfo->variantid;
+					$output[$k]['totalvarient'] = $varientinfo->totalvarient;
+					$output[$k]['variantName'] = $varientinfo->variantName;
+					$output[$k]['price'] = $varientinfo->price;
+				} else {
+					$output[$k]['variantid'] = '';
+					$output[$k]['totalvarient'] = 0;
+					$output[$k]['variantName'] = '';
+					$output[$k]['price'] = '';
+				}
+				$output[$k]['ProductsID'] = $items->ProductsID;
+				$output[$k]['CategoryID'] = $items->CategoryID;
+				$output[$k]['ProductName'] = $items->ProductName;
+				$output[$k]['ProductImage'] = $items->ProductImage;
+				$output[$k]['bigthumb'] = $items->bigthumb;
+				$output[$k]['medium_thumb'] = $items->medium_thumb;
+				$output[$k]['small_thumb'] = $items->small_thumb;
+				$output[$k]['component'] = $items->component;
+				$output[$k]['descrip'] = $items->descrip;
+				$output[$k]['itemnotes'] = $items->itemnotes;
+				$output[$k]['menutype'] = $items->menutype;
+				$output[$k]['productvat'] = $items->productvat;
+				$output[$k]['special'] = $items->special;
+				$output[$k]['OffersRate'] = $items->OffersRate;
+				$output[$k]['offerIsavailable'] = $items->offerIsavailable;
+				$output[$k]['offerstartdate'] = $items->offerstartdate;
+				$output[$k]['offerendate'] = $items->offerendate;
+				$output[$k]['Position'] = $items->Position;
+				$output[$k]['kitchenid'] = $items->kitchenid;
+				$output[$k]['isgroup'] = $items->isgroup;
+				$output[$k]['is_customqty'] = $items->is_customqty;
+				$output[$k]['cookedtime'] = $items->cookedtime;
+				$output[$k]['ProductsIsActive'] = $items->ProductsIsActive;
+				$k++;
+			}
+		}
+		return $output;
+	}
 	public function headcode()
 	{
 		$query = $this->db->query("SELECT MAX(HeadCode) as HeadCode FROM acc_coa WHERE HeadLevel='4' And HeadCode LIKE '102030%'");
@@ -697,6 +752,26 @@ class Order_model extends CI_Model
 		$query = $this->db->get();
 		$itemlist = $query->row();
 		return $itemlist;
+	}
+	public function findPromoById($id = null)
+	{
+		$this->db->select('item_foods.*');
+		$this->db->from('item_foods');
+		$this->db->where('ProductsID', $id);
+		$query = $this->db->get();
+		$itemlist = $query->row();
+		return $itemlist;
+	}
+	public function findMainFoodsPromo($id = null)
+	{
+		$this->db->select('item_foods.*, pmm.category_id');
+		$this->db->from('item_foods');
+		$this->db->join('promotion_main_modifiers AS pmm', 'item_foods.CategoryID=pmm.category_id', 'INNER');
+		$this->db->where('item_foods.CategoryID', 'pmm.category_id');
+		$this->db->where('pmm.promotion_id', $id);
+		$query = $this->db->get();
+		$mainFoodlistPromo = $query->row();
+		return $mainFoodlistPromo;
 	}
 
 
