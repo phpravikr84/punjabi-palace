@@ -202,250 +202,81 @@ class Item_category extends MX_Controller {
  
     // }
 
-	// public function create($id = null)
-	// {
-	// 	$this->permission->method('itemmanage', 'create')->redirect();
-	// 	//Get Update Category Id
-	
-	// 	$data['title'] = !empty($id) ? display('update_category') : display('add_category');
-
-	// 	$this->load->library('form_validation');
-	// 	$this->load->library('fileupload');
-
-	// 	$savedid = $this->session->userdata('id');
-
-	
-
-	// 	// Category input validation
-	// 	$categoryNames = $this->input->post('categoryname', true);
-	// 	$subcategoryIds = $this->input->post('subCategoryId', true) ?? [];
-		
-	// 	if (!empty($categoryNames)) {
-	// 		foreach ($categoryNames as $key => $categoryName) {
-	// 			$this->form_validation->set_rules(
-	// 				"categoryname[$key]",
-	// 				display('category_name'),
-	// 				"required|max_length[100]"
-	// 			);
-	// 		}
-	// 	}
-
-	// 	$this->form_validation->set_rules('status[]', display('status'), 'required');
-
-	// 	if ($this->form_validation->run()) {
-	// 		echo '<pre>';
-	// 		print_r($this->input->post());
-	// 		echo '</pre>';
-	// 		exit;
-	// 		$parentCategories = $this->input->post('Parentcategory', true) ?? [];
-	// 		$statuses = $this->input->post('status', true);
-	// 		$isOffers = $this->input->post('offer', true) ?? [];
-	// 		$offerpercentage = $this->input->post('offerpercentage', true) ?? [];
-	// 		$offerstartdate = $this->input->post('offerstartdate', true) ?? [];
-	// 		$offerendate = $this->input->post('offerendate', true) ?? [];
-	// 		// Upload category image or use existing one
-	// 		$img = $this->fileupload->do_upload('./application/modules/itemmanage/assets/images/', 'picture');
-	// 		if (empty($img)) {
-	// 			$img = $this->input->post('old_image', true);
-	// 		}
-
-	// 		// Handle multiple categories
-	// 		$insertedCategories = [];
-
-	// 		//Combine arr
-	// 		foreach ($categoryNames as $index => $categoryName) {
-				
-	// 			$parentId = !empty($parentCategories) ? implode(',', (array) $parentCategories) : 0;
-	// 			$isOffer = $isOffers[$index];
-	// 			$offerpercentage = isset($offerpercentage[$index]) ? $offerpercentage[$index] : 0;
-	// 			$offerStartDate = $isOffer ? date('Y-m-d', strtotime($this->input->post("offerstartdate[$index]", true))) : "0000-00-00";
-	// 			$offerEndDate = $isOffer ? date('Y-m-d', strtotime($this->input->post("offerendate[$index]", true))) : "0000-00-00";
-
-				
-				
-	// 			if ($this->input->post('CategoryID', true)) {
-
-	// 				$postData = [
-	// 					'CategoryID' => !empty($subcategoryIds[$index]) ? $subcategoryIds[$index] : null,
-	// 					'Name' => $categoryName,
-	// 					'parentid' => $this->input->post('CategoryID', true) ?? 0,
-	// 					'CategoryIsActive' => $statuses[$index],
-	// 					'isoffer'     		=> $isoffer,
-	// 					'offerpercentage' => $offerpercentage,
-	// 					'offerstartdate'     => $convertstartdate, 
-	// 					'offerendate'        => $convertenddate,
-	// 					'DateInserted' => date('Y-m-d H:i:s'),
-	// 					'DateUpdated' => date('Y-m-d H:i:s'),
-	// 					'DateLocked' => date('Y-m-d H:i:s'),
-	// 				];
-	
-	// 				// Update existing category
-	// 				$parentCatId = $this->input->post('CategoryID', true);
-	// 				// echo '<pre>';
-	// 				// print_r($postData);
-	// 				// echo '</pre>';
-	// 				// exit;
-					
-					
-	// 				//$subcatId = !empty($subcategoryIds[$index]) ? $subcategoryIds[$index] : null;
-
-	// 				if ($this->category_model->update_cat($postData)) {
-	// 					$this->logCategoryAction("Update Data", "Category Updated");
-	// 					$this->update_category_cache();
-	// 					$this->session->set_flashdata('message', display('update_successfully'));
-	// 				} else {
-	// 					$this->session->set_flashdata('exception', display('please_try_again'));
-	// 				}
-					
-	// 			} else {
-	// 				$postData = [
-	// 					'CategoryID' => $this->input->post('CategoryID', true) ?? null,
-	// 					'Name' => $categoryName,
-	// 					'parentid' => $parentId ?? 0,
-	// 					'CategoryIsActive' => $statuses[$index],
-	// 					'isoffer' => $isOffer,
-	// 					'offerpercentage' => $offerpercentage,
-	// 					'offerstartdate' => $offerStartDate,
-	// 					'offerendate' => $offerEndDate,
-	// 					'CategoryImage' => $img,
-	// 					'UserIDInserted' => $savedid,
-	// 					'UserIDUpdated' => $savedid,
-	// 					'UserIDLocked' => $savedid,
-	// 					'DateInserted' => date('Y-m-d H:i:s'),
-	// 					'DateUpdated' => date('Y-m-d H:i:s'),
-	// 					'DateLocked' => date('Y-m-d H:i:s'),
-	// 				];	
-	// 				// Insert new category
-	// 				if ($this->category_model->cat_create($postData)) {
-	// 					$insertedCategories[] = $postData;
-	// 				}
-	// 			}
-	// 		}
-
-	// 		// Log and redirect for insert
-	// 		if (!empty($insertedCategories)) {
-	// 			$this->logCategoryAction("Insert Data", "Multiple categories created");
-	// 			$this->update_category_cache();
-	// 			$this->session->set_flashdata('message', display('save_successfully'));
-	// 		} else {
-	// 			$this->session->set_flashdata('exception', display('please_try_again'));
-	// 		}
-
-	// 		if ($this->input->post('CategoryID', true)) {
-	// 			redirect("itemmanage/item_category/create/$parentCatId");
-	// 		} else {
-	// 			redirect('itemmanage/item_category/create');
-	// 		}
-			
-
-	// 	} else {
-	// 		if (!empty($id)) {
-	// 			$data['categoryinfo'] = $this->category_model->findByIdWithSubcat($id);
-	// 			//$data['categoryinfo'] = $this->category_model->findByIdWithSubcatRow($id);
-	// 		}
-	// 		$data['categories'] = $this->category_model->allcategory_dropdown();
-	// 		$data['module'] = "itemmanage";
-	// 		$data['page'] = "addcategory";
-	// 		echo Modules::run('template/layout', $data);
-	// 	}
-	// }
-
 	public function create($id = null)
 	{
 		$this->permission->method('itemmanage', 'create')->redirect();
-
+		//Get Update Category Id
+	
 		$data['title'] = !empty($id) ? display('update_category') : display('add_category');
 
-		$this->load->library(['form_validation', 'fileupload']);
+		$this->load->library('form_validation');
+		$this->load->library('fileupload');
+
 		$savedid = $this->session->userdata('id');
 
+	
+
+		// Category input validation
 		$categoryNames = $this->input->post('categoryname', true);
 		$subcategoryIds = $this->input->post('subCategoryId', true) ?? [];
-		$statuses = $this->input->post('status', true);
-		$parentCategories = $this->input->post('Parentcategory', true) ?? [];
-		$isOffers = $this->input->post('offer', true) ?? [];
-		$offerPercentages = $this->input->post('offerpercentage', true) ?? [];
-		$offerStartDates = $this->input->post('offerstartdate', true) ?? [];
-		$offerEndDates = $this->input->post('offerendate', true) ?? [];
-
-		// Validation
+		
 		if (!empty($categoryNames)) {
 			foreach ($categoryNames as $key => $categoryName) {
-				$this->form_validation->set_rules("categoryname[$key]", display('category_name'), "required|max_length[100]");
+				$this->form_validation->set_rules(
+					"categoryname[$key]",
+					display('category_name'),
+					"required|max_length[100]"
+				);
 			}
 		}
 
 		$this->form_validation->set_rules('status[]', display('status'), 'required');
 
 		if ($this->form_validation->run()) {
-			// echo '<pre>';
-			// print_r($this->input->post()); 
-			// echo '</pre>';
-			// exit;
+			$parentCategories = $this->input->post('Parentcategory', true) ?? [];
+			$statuses = $this->input->post('status', true);
+			$isOffers = $this->input->post('isoffer', true) ?? [];
+
+			// Upload category image or use existing one
 			$img = $this->fileupload->do_upload('./application/modules/itemmanage/assets/images/', 'picture');
 			if (empty($img)) {
 				$img = $this->input->post('old_image', true);
 			}
 
-			//Check if parent id is set 0 then only update parent category
-			if ($this->input->post('CategoryID', true) && $this->input->post('parentid', true) == 0) {
-				$isOffer = !empty($isOffers[0]) ? 1 : 0;
-				$offerPercentage = $offerPercentages[0] ?? 0;
-				$offerStartDate = $isOffer && !empty($offerStartDates[0]) ? date('Y-m-d', strtotime($offerStartDates[0])) : "0000-00-00";
-				$offerEndDate = $isOffer && !empty($offerEndDates[0]) ? date('Y-m-d', strtotime($offerEndDates[0])) : "0000-00-00";
-
-				// Update existing category
-				$categoryID = $this->input->post('CategoryID', true);
-
-				if ($categoryID) {
-					// Update case
-					$postData = [
-						'CategoryID'       => $categoryID,
-						'Name'             => $categoryNames[0],
-						'CategoryIsActive' => $statuses[0],
-						'isoffer'          => $isOffer,
-						'offerpercentage'  => $offerPercentage,
-						'offerstartdate'   => $offerStartDate,
-						'offerendate'      => $offerEndDate,
-						'DateUpdated'      => date('Y-m-d H:i:s'),
-						'DateLocked'       => date('Y-m-d H:i:s'),
-					];
-
-					if ($this->category_model->update_cat($postData)) {
-						$this->logCategoryAction("Update Data", "Category Updated");
-						$this->update_category_cache();
-						$this->session->set_flashdata('message', display('update_successfully'));
-					} else {
-						$this->session->set_flashdata('exception', display('please_try_again'));
-					}
-				}
-
-			} 
-
+			// Handle multiple categories
 			$insertedCategories = [];
 
+			//Combine arr
 			foreach ($categoryNames as $index => $categoryName) {
-				$isOffer = !empty($isOffers[$index]) ? 1 : 0;
-				$offerPercentage = $offerPercentages[$index] ?? 0;
-				$offerStartDate = $isOffer && !empty($offerStartDates[$index]) ? date('Y-m-d', strtotime($offerStartDates[$index])) : "0000-00-00";
-				$offerEndDate = $isOffer && !empty($offerEndDates[$index]) ? date('Y-m-d', strtotime($offerEndDates[$index])) : "0000-00-00";
+				
+				$parentId = !empty($parentCategories) ? implode(',', (array) $parentCategories) : 0;
+				$isOffer = isset($isOffers[$index]) ? 1 : 0;
+				$offerStartDate = $isOffer ? date('Y-m-d', strtotime($this->input->post("offerstartdate[$index]", true))) : "0000-00-00";
+				$offerEndDate = $isOffer ? date('Y-m-d', strtotime($this->input->post("offerendate[$index]", true))) : "0000-00-00";
 
-				$categoryID = $this->input->post('CategoryID', true);
+				
+				
+				if ($this->input->post('CategoryID', true)) {
 
-				if ($categoryID) {
-					// Update case
 					$postData = [
-						'CategoryID'       => $subcategoryIds[$index] ?? null,
-						'Name'             => $categoryName,
-						'parentid'         => $categoryID,
+						'CategoryID' => !empty($subcategoryIds[$index]) ? $subcategoryIds[$index] : null,
+						'Name' => $categoryName,
+						'parentid' => $this->input->post('CategoryID', true) ?? 0,
 						'CategoryIsActive' => $statuses[$index],
-						'isoffer'          => $isOffer,
-						'offerpercentage'  => $offerPercentage,
-						'offerstartdate'   => $offerStartDate,
-						'offerendate'      => $offerEndDate,
-						'DateUpdated'      => date('Y-m-d H:i:s'),
-						'DateLocked'       => date('Y-m-d H:i:s'),
+						'DateInserted' => date('Y-m-d H:i:s'),
+						'DateUpdated' => date('Y-m-d H:i:s'),
+						'DateLocked' => date('Y-m-d H:i:s'),
 					];
+	
+					// Update existing category
+					$parentCatId = $this->input->post('CategoryID', true);
+					// echo '<pre>';
+					// print_r($postData);
+					// echo '</pre>';
+					// exit;
+					
+					
+					//$subcatId = !empty($subcategoryIds[$index]) ? $subcategoryIds[$index] : null;
 
 					if ($this->category_model->update_cat($postData)) {
 						$this->logCategoryAction("Update Data", "Category Updated");
@@ -454,55 +285,58 @@ class Item_category extends MX_Controller {
 					} else {
 						$this->session->set_flashdata('exception', display('please_try_again'));
 					}
+					
 				} else {
-					// Insert case
 					$postData = [
-						'Name'             => $categoryName,
-						'parentid'         => !empty($parentCategories) ? implode(',', (array) $parentCategories) : 0,
+						'CategoryID' => $this->input->post('CategoryID', true) ?? null,
+						'Name' => $categoryName,
+						'parentid' => $parentId ?? 0,
 						'CategoryIsActive' => $statuses[$index],
-						'isoffer'          => $isOffer,
-						'offerpercentage'  => $offerPercentage,
-						'offerstartdate'   => $offerStartDate,
-						'offerendate'      => $offerEndDate,
-						'CategoryImage'    => $img,
-						'UserIDInserted'   => $savedid,
-						'UserIDUpdated'    => $savedid,
-						'UserIDLocked'     => $savedid,
-						'DateInserted'     => date('Y-m-d H:i:s'),
-						'DateUpdated'      => date('Y-m-d H:i:s'),
-						'DateLocked'       => date('Y-m-d H:i:s'),
-					];
-
+						'isoffer' => $isOffer,
+						'offerstartdate' => $offerStartDate,
+						'offerendate' => $offerEndDate,
+						'CategoryImage' => $img,
+						'UserIDInserted' => $savedid,
+						'UserIDUpdated' => $savedid,
+						'UserIDLocked' => $savedid,
+						'DateInserted' => date('Y-m-d H:i:s'),
+						'DateUpdated' => date('Y-m-d H:i:s'),
+						'DateLocked' => date('Y-m-d H:i:s'),
+					];	
+					// Insert new category
 					if ($this->category_model->cat_create($postData)) {
 						$insertedCategories[] = $postData;
 					}
 				}
 			}
 
-			// Redirect after insert
+			// Log and redirect for insert
 			if (!empty($insertedCategories)) {
 				$this->logCategoryAction("Insert Data", "Multiple categories created");
 				$this->update_category_cache();
 				$this->session->set_flashdata('message', display('save_successfully'));
+			} else {
+				$this->session->set_flashdata('exception', display('please_try_again'));
 			}
 
-			// Redirect based on whether it's update or insert
-			$redirectId = $this->input->post('CategoryID', true) ?? '';
-			redirect("itemmanage/item_category/create/" . $redirectId);
+			if ($this->input->post('CategoryID', true)) {
+				redirect("itemmanage/item_category/create/$parentCatId");
+			} else {
+				redirect('itemmanage/item_category/create');
+			}
+			
+
 		} else {
-			// Load edit form data if $id is present
 			if (!empty($id)) {
 				$data['categoryinfo'] = $this->category_model->findByIdWithSubcat($id);
+				//$data['categoryinfo'] = $this->category_model->findByIdWithSubcatRow($id);
 			}
-
 			$data['categories'] = $this->category_model->allcategory_dropdown();
 			$data['module'] = "itemmanage";
 			$data['page'] = "addcategory";
-
 			echo Modules::run('template/layout', $data);
 		}
 	}
-
 
 	/**
 	 * Logs category actions
@@ -570,7 +404,6 @@ class Item_category extends MX_Controller {
 				'parentid' => $category->parentid,
 				'Position' => $category->Position,
 				'ParentCategoryIsActive' => $category->CategoryIsActive,
-				'offerpercentageparent' => $category->offerpercentage,
 				'offerstartdateparent' => $category->offerstartdate,
 				'offerendateparent' => $category->offerendate,
 				'isofferparent' => $category->isoffer,
@@ -587,7 +420,6 @@ class Item_category extends MX_Controller {
 					'parentid' => $category->parentid,
 					'CategoryIsActive' => $category->CategoryIsActive,
 					'isoffer' => $category->isoffer,
-					'offerpercentage' => $category->offerpercentage,
 					'offerstartdate' => $category->offerstartdate,
 					'offerendate' => $category->offerendate,
 				];
