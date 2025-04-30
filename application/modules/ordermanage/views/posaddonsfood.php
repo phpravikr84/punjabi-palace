@@ -20,6 +20,11 @@ $this->db->where('cart_selected_modifiers.is_active',1);
 $q2 = $this->db->get();
 $selectedMods = $q2->result();
 // echo "tr_row_id: ".$tr_row_id;
+// echo "<pre>";
+// print_r($item);
+// echo "</pre>";
+// echo $item->ProductName;
+// exit();
 ?>
 <table class="table table-bordered table-hover bg-white" id="purchaseTable">
     <thead>

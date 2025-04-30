@@ -203,6 +203,28 @@
           }
       });
   }
+  function getPromotionalDeals() {
+      var product_name = $('#product_name').val();
+      var csrf = $('#csrfhashresarvation').val();
+      var category_id = 0;
+      var myurl = $('#posPromoDealurl').val();
+      $.ajax({
+          type: "post",
+          async: false,
+          url: myurl,
+          data: { isuptade: 0, csrf_test_name: csrf },
+          success: function(data) {
+              if (data == '420') {
+                  $("#product_search").html('Product not found !');
+              } else {
+                  $("#product_search").html(data);
+              }
+          },
+          error: function() {
+              alert(lang.req_failed);
+          }
+      });
+  }
   //Product search button js
   $('body').on('click', '#search_button', function() {
       var product_name = $('#product_name').val();
@@ -374,6 +396,62 @@
           });
       }
   });
+function selectGroupItem() {
+    e.preventDefault();
+    var panel = $(this);
+    var pid = panel.find('.panel-body input[name=select_product_id]').val();
+    var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
+    var totalvarient = panel.find('.panel-body input[name=select_totalvarient]').val();
+    var customqty = panel.find('.panel-body input[name=select_iscustomeqty]').val();
+    var isgroup = panel.find('.panel-body input[name=select_product_isgroup]').val();
+    var catid = panel.find('.panel-body input[name=select_product_cat]').val();
+    var itemname = panel.find('.panel-body input[name=select_product_name]').val();
+    var varientname = panel.find('.panel-body input[name=select_varient_name]').val();
+    var qty = 1;
+    var price = panel.find('.panel-body input[name=select_product_price]').val();
+    var hasaddons = panel.find('.panel-body input[name=select_addons]').val();
+    var csrf = $('#csrfhashresarvation').val();
+    
+    Pace.restart();
+
+    var dataString = "pid=" + pid + '&itemname=' + itemname + '&isgroup=' + isgroup + '&csrf_test_name=' + csrf;
+    var myurl = $('#GetPromoFoodsForCart').val();
+    $.ajax({
+        type: "POST",
+        url: myurl,
+        data: dataString,
+        success: function(data) {
+            console.log("addfoodlist data: " + data);
+            $('#addfoodlist').html(data);
+            $('#sideMfContainer').html($("#modifierContent").html());
+        //   openNav();
+        //   $("#modifierContent").show();
+            var total = $('#grtotal').val();
+            var totalitem = $('#totalitem').val();
+            $('#item-number').text(totalitem);
+            $('#getitemp').val(totalitem);
+            var tax = $('#tvat').val();
+            $('#vat').val(tax);
+            var discount = $('#tdiscount').val();
+            var tgtotal = $('#tgtotal').val();
+            $('#calvat').text(tax);
+            $('#invoice_discount').val(discount);
+            var sc = $('#sc').val();
+            $('#service_charge').val(sc);
+            if(basicinfo.isvatinclusive==1){
+            $('#caltotal').text(tgtotal-tax);
+            }else{
+            $('#caltotal').text(tgtotal);
+            }
+            $('#grandtotal').val(tgtotal);
+            $('#orggrandTotal').val(tgtotal);
+            $('#orginattotal').val(tgtotal);
+            if (isNaN($('#caltotal').text())) {
+            $('#caltotal').text(parseFloat(0));
+            }
+        }
+    });
+}
 //   function checkproduction(foodid, vid, servingqty) {
 //     var myurl = $("#production_url").val();
 //     var csrf = $("#csrfhashresarvation").val();

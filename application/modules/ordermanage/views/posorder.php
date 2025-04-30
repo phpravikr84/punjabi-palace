@@ -752,6 +752,8 @@ foreach ($scan as $file) {
               <div class="panel">
                 <input name="url" type="hidden" id="posurl" value="<?php echo base_url("ordermanage/order/getitemlist") ?>" />
                 <input name="url" type="hidden" id="posBanqurl" value="<?php echo base_url("ordermanage/order/getBanqitemlist") ?>" />
+                <input name="url" type="hidden" id="posPromoDealurl" value="<?php echo base_url("ordermanage/order/getPromoDealsItemlist") ?>" />
+                <input name="url" type="hidden" id="GetPromoFoodsForCart" value="<?php echo base_url("ordermanage/order/getPromoFoodsForCart") ?>" />
                 <input name="url" type="hidden" id="productdata" value="<?php echo base_url("ordermanage/order/getitemdata") ?>" />
                 <input name="url" type="hidden" id="url" value="<?php echo base_url("ordermanage/order/itemlistselect") ?>" />
                 <input name="url" type="hidden" id="carturl" value="<?php echo base_url("ordermanage/order/posaddtocart") ?>" />
@@ -805,6 +807,9 @@ foreach ($scan as $file) {
                               <!-- Banquet Menu URL [start] -->
                               <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory()">Banquet</div>
                               <!-- Banquet Menu URL [end] -->
+                              <!-- Promotional Menu URL [start] -->
+                              <div class="listcatnew cat-nav pos-category" onclick="getPromotionalDeals()">Deals</div>
+                              <!-- Promotional Menu URL [end] -->
                             </div>
                           </div>
                         </div>
