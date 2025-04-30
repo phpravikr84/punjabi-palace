@@ -47,6 +47,9 @@
 
     <div class="login vh100 d-flex align-items-center justify-content-center">
         <div class="login-content login-content_bg p-4">
+            <div class="circle-logo text-center">
+                <img src="assets/img/adzguru-icon.png" alt="Logo" class="rounded-circle img-fluid"> 
+            </div>
             
             <div class="mt-3">
                 <?php if ($this->session->flashdata('message')) { ?>
@@ -119,12 +122,16 @@
     
     <footer class="footer bg-white py-2 shadow-sm">
         <div class="container">
-
+            <div class="row">
+            <div class="col-md-12 text-right text-light">
+                Powered by ❤️ Adzguru (PNG) Limited
+            </div>
+            </div>
         </div>
     </footer>
     <style>
     body {
-    background: url('assets/img/pp_loginbg.webp') no-repeat center;
+    background: url('assets/img/login-bgnew.jpg') no-repeat center;
     background-size: cover;
     min-height: 100vh;
     display: flex;
@@ -217,8 +224,8 @@
 }
 
 .btn-login {
-    background-color: #efe6d7 !important;
-    color: #000 !important;
+    background-color: #D4A333 !important;
+    color: white !important;
     text-transform: uppercase;
     width: 100%; /* Center and make button full width */
     max-width: 250px;
@@ -230,7 +237,7 @@
 .vh100 {
     height: 100vh;
     position: absolute;
-    right:6%;
+    right:18%;
 }
 
 .input-group-text {
