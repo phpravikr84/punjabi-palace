@@ -15,6 +15,7 @@
                 <div class="form-group row border-bottom pb-2">
                     <label for="Parentcategory" class="col-sm-4 col-form-label"> <?php echo display('parent_cat'); ?> </label>
                     <div class="col-sm-8">
+                        <?php //echo '<pre>'; print_r($categoryinfo); echo '</pre>'; ?>
                         <select name="Parentcategory[]" id="Parentcategory" class="form-control select2">
                             <option value="">Select</option>
                             <?php foreach ($categories as $category) { ?>
@@ -34,84 +35,221 @@
                         </select>
                     </div>
                 </div>
+                <!-- Parent Category Offer End-->
+                <?php if(isset($categoryinfo->sub) && empty($categoryinfo->sub)) { ?>
+                    <input name="categoryname[]" class="form-control category-input" type="hidden" 
+                                                placeholder="<?php echo display('category_name'); ?>" 
+                                                value="<?php echo $categoryinfo->Name; ?>" required>
+                    <input type="hidden" name="parentid" value="<?php echo $categoryinfo->parentid; ?>">
+                    <div class="row mb-5">
+                        <div class="col-sm-4">
+                            <label for="isoffer"><?php echo display('is_offer'); ?></label>
+                            <input class="form-check-input" type="checkbox" name="isoffer[]" id="isoffer_1" value="1"
+                                <?php if (!empty($categoryinfo) && $categoryinfo->isoffer == 1) echo 'checked'; ?>>
+                            <input type="hidden" name="offer[]" value="<?php echo $categoryinfo->isoffer; ?>" id="offer_1">
+                        </div>
+
+                        <?php
+                        $offerActiveClass = 'd-none';
+                        if (!empty($categoryinfo) && $categoryinfo->isoffer == 1) {
+                            $offerActiveClass = '';
+                        }
+                        ?>
+
+                        <div class="col-sm-8 <?php echo $offerActiveClass; ?>" id="offeractive">
+                            <div class="row g-2">
+                                <div class="col-md-4">
+                                    <label for="offerpercentage"><?php echo 'Percentage (%)'; ?></label>
+                                    <input name="offerpercentage[]" class="form-control" type="text"
+                                        placeholder="<?php echo 'Offer Percentage'; ?>" id="offerpercentage"
+                                        value="<?php echo !empty($categoryinfo->offerpercentage) ? $categoryinfo->offerpercentage : ''; ?>">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="offerstartdate"><?php echo display('offerdate'); ?></label>
+                                    <input name="offerstartdate[]" class="form-control datepicker" type="text"
+                                        placeholder="<?php echo display('offerdate'); ?>" id="offerstartdate_1"
+                                        value="<?php echo !empty($categoryinfo->offerstartdate) ? $categoryinfo->offerstartdate : ''; ?>">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="offerendate"><?php echo display('offerenddate'); ?></label>
+                                    <input name="offerendate[]" class="form-control datepicker" type="text"
+                                        placeholder="<?php echo display('offerenddate'); ?>" id="offerendate_1"
+                                        value="<?php echo !empty($categoryinfo->offerendate) ? $categoryinfo->offerendate : ''; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Status -->
+                        <div class="col-md-12" style="display: none;">
+                            <div class="form-group">
+                                <label for="status"><?php echo display('status'); ?></label>
+                                <select name="status[]" class="form-control-100">
+                                    <option value="1" <?php echo $categoryinfo->CategoryIsActive==1 ? 'selected' : ''; ?>><?php echo display('active'); ?></option>
+                                    <option value="0" <?php echo $categoryinfo->CategoryIsActive==0 ? 'selected' : ''; ?>><?php echo display('inactive'); ?></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <?php } ?>
+                <!-- Parent Category Offer End -->
+
                 <!-- Dynamic Category Fields -->
                 <div id="categoryContainer">
            
                     <?php if(!empty($categoryinfo)) { ?>
-                        <?php if(!empty($categoryinfo->sub)) { ?>
+                        <?php if(!empty($categoryinfo->sub)) { $i=1; ?>
                             <?php foreach($categoryinfo->sub as $sub) { ?>
-                                <div class="category-row row border-bottom pb-2 align-items-end">
-                                    <div class="col-md-4">
+                                <div class="category-row row border-bottom pb-2 align-items-end gx-2">
+                                    <!-- Category Name -->
+                                    <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
                                             <label for="categoryname"><?php echo display('category_name'); ?> *</label>
                                             <input name="subCategoryId[]" type="hidden" value="<?php echo $sub->CategoryID; ?>"/>
                                             <input name="categoryname[]" class="form-control category-input" type="text" 
-                                                placeholder="<?php echo display('category_name'); ?>" value="<?php echo $sub->Name; ?>" required>
+                                                placeholder="<?php echo display('category_name'); ?>" 
+                                                value="<?php echo $sub->Name; ?>" required>
                                         </div>
                                     </div>
-                                    
-                                    <!-- <div class="col-md-2" style="display:none;">
-                                        <div class="form-group">
-                                            <label for="isoffer"><?php //echo display('is_offer'); ?></label>
-                                            <div class="form-check">
-                                                <input type="checkbox" name="isoffer[]" value="1" class="form-check-input" <?php echo !empty($categoryinfo->isOffer) ? 'checked' : ''; ?>>
+
+                                    <!-- Is Offer Checkbox -->
+                                    <div class="col-lg-1 col-md-6">
+                                        <div class="form-group d-flex align-items-center">
+                                            <label class="me-2 mb-0" for="isoffer"><?php echo display('is_offer'); ?></label>
+                                            <input class="form-check-input" type="checkbox" name="isoffer[]" id="isoffer_<?php echo $i; ?>" value="1"
+                                                <?php if (!empty($sub) && $sub->isoffer == 1) echo 'checked'; ?>>
+
+                                                <?php if (!empty($sub) && $sub->isoffer == 1){ ?>
+                                                        <input type="hidden" name="offer[]" value="1" id="offer_<?php echo $i; ?>"> 
+                                                    <?php } else { ?>
+                                                        <input type="hidden" name="offer[]" value="0" id="offer_<?php echo $i; ?>"> 
+                                                   <?php  }
+                                                ?>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Offer Dates Section -->
+                                    <div class="col-lg-5 col-md-12" id="offeractive_<?php echo $i; ?>"
+                                        style="<?php if (!empty($sub)) {
+                                                    echo ($sub->isoffer == 1) ? '' : 'display: none;';
+                                                } else {
+                                                    echo 'display: none;';
+                                                } ?>">
+                                        <div class="row gx-2">
+                                            <div class="col-md-4">
+                                                <label for="offerpercentage"><?php echo 'Percentage (%)'; ?></label>
+                                                <input name="offerpercentage[]" class="form-control" type="text"
+                                                    placeholder="<?php echo 'Offer Percentage'; ?>" id="offerpercentage"
+                                                    value="<?php echo !empty($sub->offerpercentage) ? $sub->offerpercentage : ''; ?>">
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label for="offerstartdate"><?php echo display('offerdate'); ?></label>
+                                                <input name="offerstartdate[]" class="form-control datepicker" type="text"
+                                                    placeholder="<?php echo display('offerdate'); ?>" id="offerstartdate_1"
+                                                    value="<?php echo !empty($sub->offerstartdate) ? $sub->offerstartdate : ''; ?>">
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label for="offerendate"><?php echo display('offerenddate'); ?></label>
+                                                <input name="offerendate[]" class="form-control datepicker" type="text"
+                                                    placeholder="<?php echo display('offerenddate'); ?>" id="offerendate_1"
+                                                    value="<?php echo !empty($sub->offerendate) ? $sub->offerendate : ''; ?>">
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
 
-                                    <div class="col-md-4">
+                                    <!-- Status -->
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="status"><?php echo display('status'); ?></label>
-                                            <select name="status[]" class="form-control">
+                                            <select name="status[]" class="form-control-100">
                                                 <option value="1" <?php echo $sub->CategoryIsActive==1 ? 'selected' : ''; ?>><?php echo display('active'); ?></option>
                                                 <option value="0" <?php echo $sub->CategoryIsActive==0 ? 'selected' : ''; ?>><?php echo display('inactive'); ?></option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-2 text-left">
-                                        <button type="button" id="<?php echo !empty($sub->CategoryID) ?  $sub->CategoryID : 0; ?>" class="btn btn-danger remove-editcategory">&times;</button>
+                                    <!-- Remove Button -->
+                                    <div class="col-md-1">
+                                        <button type="button" id="<?php echo !empty($sub->CategoryID) ? $sub->CategoryID : 0; ?>" 
+                                            class="btn btn-danger remove-editcategory w-100">&times;</button>
                                     </div>
                                 </div>
-                            <?php  } ?>
+
+                            <?php  $i++; } ?>
 
                         <?php  } ?>
  
              
                     <?php } else { ?>
 
-                        <div class="category-row row border-bottom pb-2 align-items-end">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="categoryname"><?php echo display('category_name'); ?> *</label>
-                                    <input name="categoryname[]" class="form-control category-input" type="text" 
-                                        placeholder="<?php echo display('category_name'); ?>" required>
+                        <div class="category-row row g-2 align-items-end mb-5">
+                            <!-- Category Name -->
+                            <div class="col-lg-3 col-md-6">
+                                <label for="categoryname"><?php echo display('category_name'); ?> *</label>
+                                <input name="categoryname[]" class="form-control category-input" type="text" 
+                                    placeholder="<?php echo display('category_name'); ?>" required>
+                            </div>
+
+                            <!-- Is Offer Checkbox -->
+                            <div class="col-lg-1 col-md-6">
+                                <div class="form-check row">
+                                    <label class="form-check-label col-lg-6 col-md-4" for="isoffer"><?php echo display('is_offer'); ?></label>
+                                    <input class="form-check-input col-lg-6 col-md-8" type="checkbox" name="isoffer[]" id="isoffer_1" value="1"
+                                        <?php if (!empty($categoryinfo) && $categoryinfo->isoffer == 1) echo 'checked'; ?> 
+                                        id="isoffer">
+                                        <input type="hidden" name="offer[]" value="0" id="offer_1"> 
                                 </div>
                             </div>
-                            
-                            <!-- <div class="col-md-2" style="display:none;">
-                                <div class="form-group">
-                                    <label for="isoffer"><?php //echo display('is_offer'); ?></label>
-                                    <div class="form-check">
-                                        <input type="checkbox" name="isoffer[]" value="1" class="form-check-input">
+
+                            <!-- Offer Dates Section -->
+                            <div class="col-lg-5 col-md-12" id="offeractive_1"
+                                class="<?php if (!empty($categoryinfo)) {
+                                    echo ($categoryinfo->isoffer == 1) ? '' : 'd-none';
+                                } else {
+                                    echo 'd-none';
+                                } ?>">
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <label for="offerpercentage"><?php echo 'Percentage (%)'; ?></label>
+                                        <input name="offerpercentage[]" class="form-control" type="text"
+                                            placeholder="<?php echo 'Offer Percentage'; ?>" id="offerpercentage"
+                                            value="<?php echo !empty($categoryinfo->offerpercentage) ? $categoryinfo->offerpercentage : ''; ?>">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="offerstartdate"><?php echo display('offerdate'); ?></label>
+                                        <input name="offerstartdate[]" class="form-control datepicker" type="text"
+                                            placeholder="<?php echo display('offerdate'); ?>" id="offerstartdate_1"
+                                            value="<?php echo !empty($categoryinfo->offerstartdate) ? $categoryinfo->offerstartdate : ''; ?>">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="offerendate"><?php echo display('offerenddate'); ?></label>
+                                        <input name="offerendate[]" class="form-control datepicker" type="text"
+                                            placeholder="<?php echo display('offerenddate'); ?>" id="offerendate_1"
+                                            value="<?php echo !empty($categoryinfo->offerendate) ? $categoryinfo->offerendate : ''; ?>">
                                     </div>
                                 </div>
-                            </div> -->
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="status"><?php echo display('status'); ?></label>
-                                    <select name="status[]" class="form-control">
-                                        <option value="1" selected><?php echo display('active'); ?></option>
-                                        <option value="0"><?php echo display('inactive'); ?></option>
-                                    </select>
-                                </div>
                             </div>
 
-                            <div class="col-md-2 text-left">
-                                <button type="button" class="btn btn-danger remove-category">&times;</button>
+                            <!-- Status -->
+                            <div class="col-lg-2 col-md-6">
+                                <label for="status"><?php echo display('status'); ?></label>
+                                <select name="status[]" class="form-control-100">
+                                    <option value="1" selected><?php echo display('active'); ?></option>
+                                    <option value="0"><?php echo display('inactive'); ?></option>
+                                </select>
+                            </div>
+
+                            <!-- Remove Button -->
+                            <div class="col-lg-1 col-md-6">
+                                <button type="button" class="btn btn-danger mt-4 remove-category">&times;</button>
                             </div>
                         </div>
+
 
                     <?php  } ?>
                    
@@ -149,12 +287,46 @@
 
 <script>
 $(document).ready(function () {
+    let categoryIndex = 1; // Counter for unique IDs
     $("#addCategory").click(function () {
         var newRow = $(".category-row:first").clone();
         newRow.hide().appendTo("#categoryContainer").fadeIn(300);
         newRow.find("input[type='text']").val("");
         newRow.find("input[type='checkbox']").prop("checked", false);
         newRow.find("select").val("1");
+        // Update IDs for checkbox and offer section
+        categoryIndex++;
+        newRow.find("[id^='isoffer']").each(function () {
+            const newId = 'isoffer_' + categoryIndex;
+            $(this).attr('id', newId);
+        });
+
+        // Update checkbox and offeractive IDs
+        newRow.find("[id^='offer']").each(function () {
+            const newId = 'offer_' + categoryIndex;
+            $(this).attr('id', newId);
+        });
+
+        newRow.find("[id^='offeractive']").each(function () {
+            const newId = 'offeractive_' + categoryIndex;
+            $(this).attr('id', newId).hide();
+        });
+
+        // Update and reinitialize date fields
+        newRow.find("[id^='offerstartdate']").each(function () {
+            const newId = 'offerstartdate_' + categoryIndex;
+            $(this).attr('id', newId);
+        });
+
+        newRow.find("[id^='offerendate']").each(function () {
+            const newId = 'offerendate_' + categoryIndex;
+            $(this).attr('id', newId);
+        });
+
+        newRow.find(".datepicker").removeClass("hasDatepicker").datepicker({
+            dateFormat: 'dd-mm-yy' // or your format
+        });
+
     });
 
     $(document).on("click", ".remove-category", function () {
@@ -311,4 +483,18 @@ function deleteAdonsInfo(id, rowElement) {
 .select-icon  .select2-search--dropdown {
 	display: none;
 }
+.form-control-100 {
+    display: block;
+    width: 100px;
+    padding: 0.375rem 0.75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
 </style>

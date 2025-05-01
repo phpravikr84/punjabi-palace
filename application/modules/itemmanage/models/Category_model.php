@@ -39,27 +39,51 @@ class Category_model extends CI_Model {
 	// 		->update($this->table, $data);
 	// }
 
-	public function update_cat($data = array(), $subcatid=null)
+	// public function update_cat($data = array(), $subcatid=null)
+	// {
+	// 	// if (!isset($data['CategoryID']) || !isset($data['Name']) || !isset($data['CategoryIsActive'])) {
+	// 	// 	return false; // Ensure required data exists
+	// 	// }
+	// 	// Fetch parent category ID
+	// 	$categoryid = $data['CategoryID'];
+	// 	$parent_id = $data['parentid'];
+	// 	$category_name = $data['Name'];
+	// 	$status = $data['CategoryIsActive'];
+	// 	$isoffer = $data['isoffer'];
+	// 	$offerpercentage = $data['offerpercentage'];
+	// 	$offerstartdate = $data['offerstartdate'];
+	// 	$offerendate = $data['offerendate'];
+
+	// 		// Update query
+	// 	return $this->db->where('parentid', $parent_id)
+	// 			->where('CategoryID', $categoryid) // Ensure correct child ID
+	// 				->update($this->table, [
+	// 					'Name' => $category_name,
+	// 					'CategoryIsActive' => $status,
+	// 					'isoffer' => $isoffer,
+	// 					'offerpercentage' => $offerpercentage,
+	// 					'offerstartdate' => $offerstartdate,
+	// 					'offerendate' => $offerendate,
+	// 					'DateUpdated' => date('Y-m-d H:i:s')
+	// 				]);
+
+	// }
+	public function update_cat($data = [])
 	{
-		// if (!isset($data['CategoryID']) || !isset($data['Name']) || !isset($data['CategoryIsActive'])) {
-		// 	return false; // Ensure required data exists
-		// }
-		// Fetch parent category ID
-		$categoryid = $data['CategoryID'];
-		$parent_id = $data['parentid'];
-		$category_name = $data['Name'];
-		$status = $data['CategoryIsActive'];
+		if (empty($data['CategoryID'])) return false;
 
-			// Update query
-		return $this->db->where('parentid', $parent_id)
-				->where('CategoryID', $categoryid) // Ensure correct child ID
-					->update($this->table, [
-						'Name' => $category_name,
-						'CategoryIsActive' => $status,
-						'DateUpdated' => date('Y-m-d H:i:s')
-					]);
-
+		return $this->db->where('CategoryID', $data['CategoryID'])
+			->update($this->table, [
+				'Name' => $data['Name'],
+				'CategoryIsActive' => $data['CategoryIsActive'],
+				'isoffer' => $data['isoffer'],
+				'offerpercentage' => $data['offerpercentage'],
+				'offerstartdate' => $data['offerstartdate'],
+				'offerendate' => $data['offerendate'],
+				'DateUpdated' => date('Y-m-d H:i:s'),
+			]);
 	}
+
 
 
     public function read_category($limit = null, $start = null)

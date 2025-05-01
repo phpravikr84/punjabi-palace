@@ -1,35 +1,14 @@
 //all js 
 $(document).ready(function(){
 	  "use strict";
-	//   $('#offeractive').hide();
-    //     $('#isoffer').click(function(){
-    //         if($(this).prop("checked") == true){
-    //            $("#offeractive").show();
-    //         }
-    //         else if($(this).prop("checked") == false){
-    //             $("#offeractive").hide();
-    //         }
-    //     });
-		// Function to toggle offer section visibility
-		function toggleOfferSection(checkbox) {
-			const id = $(checkbox).attr('id').split('_')[1];
-			const offerDiv = $('#offeractive_' + id);
-			const offerInput = $('#offer_' + id);
-			if ($(checkbox).prop("checked")) {
-				offerInput.val('1');
-				offerDiv.show();
-			} else {
-				offerInput.val('0');
-				offerDiv.hide();
-			}
-		}
-
-		// Delegate the click event to dynamically added checkboxes
-		$(document).on('click', "[id^='isoffer_']", function () {
-			toggleOfferSection(this);
-		});
-		 // Initial checkbox toggle (for the first one)
-		 toggleOfferSection($('#isoffer_1'));
+        $('#isoffer').click(function(){
+            if($(this).prop("checked") == true){
+               $("#offeractive").show();
+            }
+            else if($(this).prop("checked") == false){
+                $("#offeractive").hide();
+            }
+        });
     });
 
 "use strict";

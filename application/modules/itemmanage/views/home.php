@@ -44,7 +44,11 @@
                                     <td class="center">
                                     <?php if($this->permission->method('itemmanage','update')->access()): ?>
                                         <!-- <a href="<?php //echo base_url("itemmanage/item_category/create/$category->CategoryID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>  -->
-                                        <a href="<?php echo base_url("itemmanage/item_category/create/$category->parentid") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
+                                         <?php if($category->parentid != 0) { ?>
+                                            <a href="<?php echo base_url("itemmanage/item_category/create/$category->parentid") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
+                                        <?php } else { ?>
+                                            <a href="<?php echo base_url("itemmanage/item_category/create/$category->CategoryID") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <?php } ?>
                                          <?php endif; 
 										 if($this->permission->method('itemmanage','delete')->access()): ?>
                                         <a href="<?php echo base_url("itemmanage/item_category/delete/$category->CategoryID") ?>" onclick="return confirm('<?php echo $alerttext; ?>')" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="<?php echo display('delete')?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
