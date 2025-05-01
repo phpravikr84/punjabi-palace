@@ -148,7 +148,16 @@ class Fooditem_model extends CI_Model {
 		$this->db->join('variant','variant.menuid = item_foods.ProductsID','left');
 		$this->db->where('item_foods.ProductsID',$id);
         $query = $this->db->get();
-		return $query->row();
+		$foodItem = $query->row_array();
+		// Fetch modifiers with left join to modifier_groups
+		$modifiers = $this->db->select("menu_add_on.row_id, menu_add_on.menu_id, menu_add_on.add_on_id, menu_add_on.modifier_groupid, menu_add_on.min, menu_add_on.max, menu_add_on.isreq, menu_add_on.sortby, menu_add_on.is_active, modifier_groups.name")
+			->from("menu_add_on")
+			->join("modifier_groups", "menu_add_on.modifier_groupid = modifier_groups.id", "left")
+			->where("menu_add_on.menu_id", $id)
+			->get()
+			->result();
+		$foodItem['modifiers'] = !empty($modifiers) ? $modifiers : [];
+		return $foodItem;
 	}  
 	public function findMainModifiers($id = null)
 	{

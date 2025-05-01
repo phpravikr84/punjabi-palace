@@ -1277,7 +1277,7 @@ class Item_food extends MX_Controller
 	public function addgroupfood($id = null)
 	{
 		$this->permission->method('itemmanage', 'create')->redirect();
-		$data['title'] = "Add/Edit Promotions";
+		$data['title'] = "Add/Edit Promotional Deals";
 		#-------------------------------#
 		// echo "<pre>";
 		// print_r($_POST);
@@ -1351,9 +1351,7 @@ class Item_food extends MX_Controller
 					unlink($imageinfo->medium_thumb);
 					unlink($imageinfo->small_thumb);
 				}
-
 				$fdata = $this->upload->data();
-
 				$image_sizes = array('big' => array(555, 370), 'medium' => array(268, 223), 'small' => array(116, 116));
 				$this->load->library('image_lib');
 				foreach ($image_sizes as $key => $resize) {
@@ -1376,8 +1374,6 @@ class Item_food extends MX_Controller
 				$small = 'application/modules/itemmanage/assets/images/small/' . $fdata['file_name'];
 				$img = 'application/modules/itemmanage/assets/images/' . $fdata['file_name'];
 			}
-
-
 			/****************end*********************/
 			if (empty($this->input->post('ProductsID'))) {
 				// New item insert to the database
@@ -1429,22 +1425,11 @@ class Item_food extends MX_Controller
 					}
 					$postData = array_merge($postData, $taxitems);
 				}
-				// echo "<pre>";
-				// print_r($postData);
-				// echo "</pre>";
-				// exit;
 				if ($this->fooditem_model->groupfood_create($postData)) {
 					$insertedFoodId = $this->db->insert_id(); // Get last inserted food item ID
 					$mainModArr=$otherModArr=[];
 					if (isset($_POST['mainModID']) && count($_POST['mainModID'])>0) {
 						for ($i=0; $i < (count($_POST['mainModID'])); $i++) {
-							// $mainModArr['promotion_id'] = $insertedFoodId;
-							// $mainModArr['category_id'] = $_POST['mainModID'][$i];
-							// $mainModArr['category_max_qty'] = (isset($_POST['max_quantity'][$i])) ? ($_POST['max_quantity'][$i]==""?0:$_POST['max_quantity'][$i]) : 0;
-							// $mainModArr['category_weight_percent'] = (isset($_POST['weight_percent'][$i])) ? ($_POST['weight_percent'][$i]==""?0:$_POST['weight_percent'][$i]) : 0;
-							// $mainModArr['total_weight_percent'] = (($_POST['addhoc_weight_percent'] == "") ? 0 : $_POST['addhoc_weight_percent']);
-							// $mainModArr['total_no_of_item'] = (($_POST['addhoc_max_item'] == "") ? 0 : $_POST['addhoc_max_item']);
-							// $mainModArr['created_at'] = date("Y-m-d H:i:s");
 
 							$mainModArr['promotion_id'] = $insertedFoodId;
 							$mainModArr['category_id'] = $_POST['mainModID'][$i];
@@ -1455,17 +1440,47 @@ class Item_food extends MX_Controller
 							$mainModArr['created_at'] = date("Y-m-d H:i:s");
 							$this->db->insert('promotion_main_modifiers', $mainModArr);
 						}
-						// echo "<pre>";
-						// print_r($_POST);
-						// echo "</pre>";
-						// exit;
 					}
-					if (isset($_POST['otherModID']) && count($_POST['otherModID'])>0) {
-						for ($i=0; $i < (count($_POST['otherModID'])); $i++) {
-							$otherModArr['promotion_id'] = $insertedFoodId;
-							$otherModArr['modifier_set_id'] = $_POST['otherModID'][$i];
-							$otherModArr['created_at'] = date("Y-m-d H:i:s");
-							$this->db->insert('promotion_other_modifiers', $otherModArr);
+					//old code for other modifiers
+					// if (isset($_POST['otherModID']) && count($_POST['otherModID'])>0) {
+					// 	for ($i=0; $i < (count($_POST['otherModID'])); $i++) {
+					// 		$otherModArr['promotion_id'] = $insertedFoodId;
+					// 		$otherModArr['modifier_set_id'] = $_POST['otherModID'][$i];
+					// 		$otherModArr['created_at'] = date("Y-m-d H:i:s");
+					// 		$this->db->insert('promotion_other_modifiers', $otherModArr);
+					// 	}
+					// }
+					
+					// New code for inserting other modifiers
+					// Check Modifier exist or not
+					if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
+						$modifiers = $this->input->post('modifiers', true);
+						$minValues = $this->input->post('min', true) ?? [];
+						$maxValues = $this->input->post('max', true) ?? [];
+						$isReqValues = $this->input->post('isreq', true) ?? [];
+						$sortValues = $this->input->post('sort', true) ?? [];
+					
+						foreach ($modifiers as $key => $modifier) {
+							$minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
+							$maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : 0;
+					
+							// Ensure min is not greater than max
+							if ($minValue > $maxValue) {
+								$maxValue = $minValue;
+							}
+					
+							$modifierData = [
+								'menu_id'   => $insertedFoodId,
+								//'add_on_id' => (int)$modifier,
+								'modifier_groupid' => (int)$modifier,
+								'min'       => $minValue,
+								'max'       => $maxValue,
+								'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
+								'sortby'    => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
+							];
+					
+							// Insert Modifier
+							$this->fooditem_model->create_modifiers($modifierData);
 						}
 					}
 					$this->session->set_flashdata('message', display('save_successfully'));
@@ -1555,22 +1570,49 @@ class Item_food extends MX_Controller
 							$mainModArr['total_weight_percent'] = (($_POST['addhoc_weight_percent'] == "") ? 0 : $_POST['addhoc_weight_percent']);
 							$mainModArr['total_no_of_item'] = (($_POST['addhoc_max_item'] == "") ? 0 : $_POST['addhoc_max_item']);
 							$mainModArr['created_at'] = date("Y-m-d H:i:s");
-							// $mainModArr['promotion_id'] = $_POST["ProductsID"];
-							// $mainModArr['category_id'] = $_POST['mainModID'][$i];
-							// $mainModArr['category_max_qty'] = isset($_POST['max_quantity'][$i]) && $_POST['max_quantity'][$i] !== "" ? $_POST['max_quantity'][$i] : 0;
-							// $mainModArr['category_weight_percent'] = isset($_POST['weight_percent'][$i]) && $_POST['weight_percent'][$i] !== "" ? $_POST['weight_percent'][$i] : 0;
-							// $mainModArr['total_weight_percent'] = isset($_POST['addhoc_weight_percent']) && $_POST['addhoc_weight_percent'] !== "" ? $_POST['addhoc_weight_percent'] : 0;
-							// $mainModArr['total_no_of_item'] = isset($_POST['addhoc_max_item']) && $_POST['addhoc_max_item'] !== "" ? $_POST['addhoc_max_item'] : 0;
-							// $mainModArr['created_at'] = date("Y-m-d H:i:s");
 							$this->db->insert('promotion_main_modifiers', $mainModArr);
 						}
 					}
-					if (isset($_POST['otherModID']) && count($_POST['otherModID'])>0) {
-						for ($i=0; $i < (count($_POST['otherModID'])); $i++) {
-							$otherModArr['promotion_id'] = $_POST["ProductsID"];
-							$otherModArr['modifier_set_id'] = $_POST['otherModID'][$i];
-							$otherModArr['created_at'] = date("Y-m-d H:i:s");
-							$this->db->insert('promotion_other_modifiers', $otherModArr);
+					// if (isset($_POST['otherModID']) && count($_POST['otherModID'])>0) {
+					// 	for ($i=0; $i < (count($_POST['otherModID'])); $i++) {
+					// 		$otherModArr['promotion_id'] = $_POST["ProductsID"];
+					// 		$otherModArr['modifier_set_id'] = $_POST['otherModID'][$i];
+					// 		$otherModArr['created_at'] = date("Y-m-d H:i:s");
+					// 		$this->db->insert('promotion_other_modifiers', $otherModArr);
+					// 	}
+					// }
+					// New code for updating other modifiers
+					//Remove old modifiers
+					$this->db->where('menu_id', $_POST["ProductsID"])->delete('promotion_other_modifiers');
+					// Check Modifier exist or not
+					if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
+						$modifiers = $this->input->post('modifiers', true);
+						$minValues = $this->input->post('min', true) ?? [];
+						$maxValues = $this->input->post('max', true) ?? [];
+						$isReqValues = $this->input->post('isreq', true) ?? [];
+						$sortValues = $this->input->post('sort', true) ?? [];
+					
+						foreach ($modifiers as $key => $modifier) {
+							$minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
+							$maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : 0;
+					
+							// Ensure min is not greater than max
+							if ($minValue > $maxValue) {
+								$maxValue = $minValue;
+							}
+					
+							$modifierData = [
+								'menu_id'   => $insertedFoodId,
+								//'add_on_id' => (int)$modifier,
+								'modifier_groupid' => (int)$modifier,
+								'min'       => $minValue,
+								'max'       => $maxValue,
+								'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
+								'sortby'    => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
+							];
+					
+							// Insert Modifier
+							$this->fooditem_model->create_modifiers($modifierData);
 						}
 					}
 					//end modifier update
@@ -1616,6 +1658,7 @@ class Item_food extends MX_Controller
 			$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
 			$data['module'] = "itemmanage";
 			$data['page']   = "addgroupitem";
+			$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
 			echo Modules::run('template/layout', $data);
 		}
 	}
@@ -2203,9 +2246,10 @@ class Item_food extends MX_Controller
 							// Insert Modifier
 							$this->fooditem_model->create_modifiers($modifierData);
 						}
-					} 
+					}
 					
-					// END of Modifier update					
+					// END of Modifier Insertion [Updated by Jsaha]
+					
 
 					$this->session->set_flashdata('message', display('save_successfully'));
 					redirect('itemmanage/item_food/create_new');

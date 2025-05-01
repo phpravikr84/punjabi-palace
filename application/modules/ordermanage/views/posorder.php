@@ -761,8 +761,10 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="addonexsurl" value="<?php echo base_url("ordermanage/order/posaddonsmenu") ?>" />
                 <input name="url" type="hidden" id="modifierurl" value="<?php echo base_url("ordermanage/order/posaddmodifier") ?>" />
                 <input name="url" type="hidden" id="cartmodifiersaveurl" value="<?php echo base_url("ordermanage/order/cartmodifiersave") ?>" />
+                <input name="url" type="hidden" id="cartPromoFoodModifierSaveUrl" value="<?php echo base_url("ordermanage/order/cartPromoFoodModifierSave") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
+                <input name="foods_or_mods" type="hidden" id="foods_or_mods" value="2" />
                 <div class="row">
                   <div class="col-md-7">
                     <div class="row">
@@ -770,7 +772,7 @@ foreach ($scan as $file) {
                         <form class="navbar-search" method="get" action="<?php echo base_url("ordermanage/order/pos_invoice") ?>">
                           <label class="sr-only screen-reader-text" for="search"><?php echo display('search') ?>:</label>
                           <div class="input-group">
-                            <select id="product_name" class="form-control dont-select-me  search-field" dir="ltr" name="s">
+                            <select id="product_name" class="form-control dont-select-me search-field" dir="ltr" name="s">
                             </select>
                           </div>
                         </form>

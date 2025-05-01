@@ -627,7 +627,6 @@
     <option value="" data-title=""><?php echo display('select');?> <?php echo display('ingredients');?></option>
 <?php foreach ($ingrdientslist as $ingrdients) {?><option value="<?php echo $ingrdients->id;?>" data-title="<?php echo $ingrdients->ingredient_name;?>"><?php echo $ingrdients->ingredient_name;?></option><?php }?>
 </div>
-
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_script.js'); ?>" type="text/javascript"></script>
 <?php 
     if(empty($productinfo->ProductsID)):
@@ -722,11 +721,6 @@
 document.getElementById("isoffer").addEventListener("change", function () {
     document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
 });
-</script>
-<script>
-   
-
-
 </script>
 <style>
     .form-group {

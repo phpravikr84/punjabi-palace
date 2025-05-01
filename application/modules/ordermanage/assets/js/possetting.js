@@ -396,9 +396,9 @@
           });
       }
   });
-function selectGroupItem() {
-    e.preventDefault();
-    var panel = $(this);
+function selectGroupItem(th) {
+    // e.preventDefault();
+    var panel = th;
     var pid = panel.find('.panel-body input[name=select_product_id]').val();
     var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
     var totalvarient = panel.find('.panel-body input[name=select_totalvarient]').val();
@@ -414,38 +414,62 @@ function selectGroupItem() {
     
     Pace.restart();
 
-    var dataString = "pid=" + pid + '&itemname=' + itemname + '&isgroup=' + isgroup + '&csrf_test_name=' + csrf;
+    var dataString = "pid=" + pid + "&sid=" + sizeid + '&itemname=' + itemname + '&isgroup=' + isgroup + '&csrf_test_name=' + csrf;
     var myurl = $('#GetPromoFoodsForCart').val();
     $.ajax({
         type: "POST",
         url: myurl,
         data: dataString,
         success: function(data) {
-            console.log("addfoodlist data: " + data);
-            $('#addfoodlist').html(data);
-            $('#sideMfContainer').html($("#modifierContent").html());
-        //   openNav();
-        //   $("#modifierContent").show();
-            var total = $('#grtotal').val();
-            var totalitem = $('#totalitem').val();
-            $('#item-number').text(totalitem);
-            $('#getitemp').val(totalitem);
+            $("#modifierContent_1").remove();
+            $("#posSelectPurchaseTable").remove();
+            $("#promomainfoodlist").remove();
+            $('.addonsinfo').html(data);
+
+            $('#sideVarContainer').html($("#promomainfoodlist").html());
+            $('#sideMfContainer').html($("#modifierContent_1").html());
+            $('#sideVarContainer').append($("#posSelectPurchaseTable").html());
+            $("#promomainfoodlist").remove();
+            $("#posSelectPurchaseTable").remove();
+            $("#modifierContent_1").remove();
+            $("#sideVarContainer").parent('.col-md-6').find('.card-header').html('Choose Main Foods');
+            $("#sideVarContainer").parent('.col-md-6').find('.modifier-sec-sub-heading').html('Choose the main food items of the Deal Menu');
+            var modVarItemNameCont = $("#modVarItemNameCont").val();
+            // $("#modVarItemName").html(`<p class="text-left" style="padding:0px 25px;">Item Name: <strong>${modVarItemNameCont}</strong></p>`);
+            // $("#modVarItemName").show();
+            var currModCount = $("#currModCount").val();
+            if (currModCount == 0) {
+                var noModHtml = `
+                <div class="row">
+                    <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
+                        <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
+                    </div>
+                </div>
+                `;
+                $('#sideVarContainer').append(noModHtml);
+                $('#sideMfContainer').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
+                // $('#modSubHeading').html(`No Modifiers Found For this Item`);
+            }
+            openNav();
+            //   $('#edit').modal('show');
+                
+            //$('#edit').find('.close').focus();
+            var totalitem = $('.totalitem').val();
             var tax = $('#tvat').val();
-            $('#vat').val(tax);
             var discount = $('#tdiscount').val();
             var tgtotal = $('#tgtotal').val();
+            $('#vat').val(tax);
             $('#calvat').text(tax);
+            $('#getitemp').val(totalitem);
             $('#invoice_discount').val(discount);
-            var sc = $('#sc').val();
-            $('#service_charge').val(sc);
             if(basicinfo.isvatinclusive==1){
-            $('#caltotal').text(tgtotal-tax);
+            $('#caltotal').text(tgtotal-tax);  
             }else{
             $('#caltotal').text(tgtotal);
             }
             $('#grandtotal').val(tgtotal);
             $('#orggrandTotal').val(tgtotal);
-            $('#orginattotal').val(tgtotal);
+            $('#orginattotal').val(tgtotal); 
             if (isNaN($('#caltotal').text())) {
             $('#caltotal').text(parseFloat(0));
             }
@@ -481,7 +505,8 @@ function selectGroupItem() {
 //     });
 //     return check;
 //   }
-  function itemModifiers(pid,tr_row_id) {
+function itemModifiers(pid,tr_row_id) {
+    // var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
     if (pid == "" || pid == 0) {
         alert("No Item Found !");
         return false;
@@ -504,10 +529,10 @@ function selectGroupItem() {
             //     <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
             //     `);
             openNav();
-          //   $("#modifierContent").show();
+            //   $("#modifierContent").show();
         }
     });
-  }
+}
 function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
     let selectedValues = [];
 
@@ -571,36 +596,10 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
                 closeNav();
                 var modTotalPrice = $('#modTotalPrice_'+pid).val();
                 var togText = $("#modToggleText_"+pid).val();
-                // $("#cartModToggle_"+pid).html(`Modifiers ${togText}`);
-                // $("#cartModToggle_"+pid).html(`Choose Modifiers`);
                 let selectedNewModsHtml = $("#selectedModsDetails_"+pid).html();
                 console.log("selectedNewModsHtml: "+selectedNewModsHtml);
                 $("#cartModToggle_"+pid).html(selectedNewModsHtml);
-                // var oldIndvPrice = $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(1).html();
                 var oldIndvPrice = $("#subtotal").val();
-                // $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(parseFloat(oldIndvPrice)+parseFloat(modTotalPrice)));
-                // var total = $('#grtotal').val();
-                // var totalitem = $('#totalitem').val();
-                // // $('#item-number').text(totalitem);
-                // // $('#getitemp').val(totalitem);
-                // var tax = $('#tvat').val();
-                // // $('#vat').val(tax);
-                // var discount = $('#tdiscount').val();
-                // var tgtotal = $('#tgtotal').val();
-                // // $('#calvat').text(tax); 
-                // // $('#invoice_discount').val(discount);
-                // var sc = $('#sc').val();
-                // // $('#service_charge').val(sc);
-
-                // var calvat = (total - discount) * $("#settingVatValue").val() / 100;
-                // if(basicinfo.isvatinclusive==1){
-                //     $('#caltotal').text((tgtotal+parseFloat(modTotalPrice))-tax);
-                // }else{
-                //     $('#caltotal').text(tgtotal+parseFloat(modTotalPrice));
-                // }
-                // $('#grandtotal').val(tgtotal+parseFloat(modTotalPrice));
-                // $('#orggrandTotal').val(tgtotal+parseFloat(modTotalPrice));
-                // $('#orginattotal').val(tgtotal+parseFloat(modTotalPrice));
 
                 var total = $('#grtotal_'+pid).val();
                 var totalitem = $('#totalitem_'+pid).val();
@@ -614,11 +613,6 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
                 $('#invoice_discount').val(discount);
                 var sc = $('#sc_'+pid).val();
                 $('#service_charge').val(sc);
-                // if(basicinfo.isvatinclusive==1){
-                // $('#caltotal').text(tgtotal-tax);
-                // }else{
-                // $('#caltotal').text(tgtotal);
-                // }
                 $('#caltotal').text(tgtotal);
                 $('#grandtotal').val(tgtotal);
                 $('#orggrandTotal').val(tgtotal);
@@ -627,6 +621,113 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
                 // console.log("oldIndvPrice: "+oldIndvPrice);
                 console.log("Subtotal: "+parseFloat(total));
                 console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
+                
+                $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
+                $(".page-loader-wrapper").hide();
+            }
+        });
+    }, 2000);
+}
+function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
+    let selectedValues = [];
+    let selectedFoods = [];
+
+    $("input[name='modifier_items[]']:checked").each(function () {
+        let value = $(this).val();
+        let groupId = $(this).attr("data-group-id");
+        selectedValues.push({ mid: value, mgid: groupId, pid: pid });
+    });
+    $("input[name='promo_main_food_items[]']:checked").each(function () {
+        let value = $(this).val();
+        let groupId = $(this).attr("data-group-id");
+        selectedFoods.push({ mid: value, mgid: groupId, pid: pid });
+    });
+
+    var mods = JSON.stringify(selectedValues),
+        foods = JSON.stringify(selectedFoods);
+    console.log("Promo Selected Modifiers: " + mods);
+    console.log("Promo Selected Foods: " + foods);
+    //sending to the controller to check validations and save to the database
+    if (skipAddToCart==0) {
+        //old add to cart function
+        if(!posPromofoodtocart(pid,1))
+        {
+            alert("Error adding this item to the cart!");
+            return false;
+        }
+        // have to write new add to cart function for promo food
+        //...
+    }
+    $(".page-loader-wrapper").show();
+    setTimeout(() => {
+        var trrowid = $("#tr_row_id_"+pid).val();
+        console.log("cart save row id: " + $("#tr_row_id_"+pid).val());
+        var csrf = $('#csrfhashresarvation').val(),
+            geturl = $("#cartPromoFoodModifierSaveUrl").val(),
+            myurl = geturl,
+            dataString = "pid=" + pid + '&tr_row_id=' + trrowid + '&mods=' + mods + '&foods=' + foods + '&csrf_test_name=' + csrf;
+        $.ajax({
+            type: "POST",
+            url: myurl,
+            data: dataString,
+            success: function(data) {
+                $(".page-loader-wrapper").hide();
+                console.log("Modifier save data: " + data);
+                if (data == 420) {
+                    alert("The modifier doesn't have any ingredients!!!");
+                    return false;
+                }
+                if (data == 421) {
+                    alert("The modifier doesn't have sufficient ingredients!!!");
+                    return false;
+                }
+                if (data == 422) {
+                    alert("The modifier doesn't have sufficient stock!!!");
+                    return false;
+                }
+                if (data == 423) {
+                    alert("The modifier can't be added!!!");
+                    return false;
+                }
+                if ($("#selectedModsDetails_"+pid)) {
+                    $("#selectedModsDetails_"+pid).remove();
+                    $('#grtotal_'+pid).remove();
+                    $('#totalitem_'+pid).remove();
+                    $('#tvat_'+pid).remove();
+                    $('#tdiscount_'+pid).remove();
+                    $('#tgtotal_'+pid).remove();
+                    $('#sc_'+pid).remove();
+                }
+                $("#addfoodlist").append(data);
+                closeNav();
+                var modTotalPrice = $('#modTotalPrice_'+pid).val();
+                var togText = $("#modToggleText_"+pid).val();
+                let selectedNewModsHtml = $("#selectedModsDetails_"+pid).html();
+                console.log("selectedNewModsHtml: "+selectedNewModsHtml);
+                $("#cartModToggle_"+pid).html(selectedNewModsHtml);
+                var oldIndvPrice = $("#subtotal").val();
+
+                var total = $('#grtotal_'+pid).val();
+                var totalitem = $('#totalitem_'+pid).val();
+                $('#item-number').text(totalitem);
+                $('#getitemp').val(totalitem);
+                var tax = $('#tvat_'+pid).val();
+                $('#vat').val(tax);
+                var discount = $('#tdiscount_'+pid).val();
+                var tgtotal = $('#tgtotal_'+pid).val();
+                $('#calvat').text(tax);
+                $('#invoice_discount').val(discount);
+                var sc = $('#sc_'+pid).val();
+                $('#service_charge').val(sc);
+                $('#caltotal').text(tgtotal);
+                $('#grandtotal').val(tgtotal);
+                $('#orggrandTotal').val(tgtotal);
+                $('#orginattotal').val(tgtotal);
+
+                // console.log("oldIndvPrice: "+oldIndvPrice);
+                console.log("Subtotal: "+parseFloat(total));
+                console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
+
                 $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
                 $(".page-loader-wrapper").hide();
             }

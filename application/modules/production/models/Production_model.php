@@ -657,7 +657,7 @@ class Production_model extends CI_Model
 	}
 	public function checkingredientstockOrder($foodid, $vid, $foodqty)
 	{
-		$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID, b.ProductName");
+		$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID, b.ProductName, b.isgroup");
 		$this->db->from('production a');
 		$this->db->join('item_foods b','b.ProductsID = a.itemid','left');
 		$this->db->where('b.ProductsID', $foodid);
@@ -693,6 +693,11 @@ class Production_model extends CI_Model
 		// echo "out_Qnty: ".$out_Qnty."<br />";
 		// echo "stock: ".$stock;
 		// exit;
+
+		if ((count($result->isgroup)==0) || $result->isgroup == 1) {
+			return 1;
+			exit;
+		}
 
 		if ($stock <= 0) {
 			return 'Insufficient Stock !!!';

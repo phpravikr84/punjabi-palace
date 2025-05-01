@@ -68,7 +68,7 @@ if ($cart = $this->cart->contents()) { ?>
                                       <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->add_on_name;?></label>
                                   </td>
                                   <td style="width: 10%;text-align: end;">
-                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->price;?></label>
+                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=(($currency->position == 1) ? $currency->curr_icon : '').$miv->price;?></label>
                                   </td>
                                   <td style="width: 5%;" class="text-center">
                                       <div class="form-check">

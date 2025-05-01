@@ -66,7 +66,7 @@ $selectedMods = $q2->result();
             </td>
             <td>
                 <input name="itemprice" type="hidden" value="<?php echo $item->price; ?>" id="itemprice_<?php echo "1"; ?>" />
-                <span id="vprice"><?php echo $item->price; ?></span>
+                <span id="vprice"><?php echo (($currency->position == 1) ? $currency->curr_icon : '').$item->price; ?></span>
             </td>
 
         </tr>
@@ -77,6 +77,7 @@ $selectedMods = $q2->result();
     </tfoot>
 </table>
 </div>
+
 <div class="div" id="modifierContent_1" style="display: none;">
     <input type="hidden" name="currModCount" id="currModCount" value="<?=$modQty;?>">
     <input type="hidden" name="modVarItemNameCont" id="modVarItemNameCont" value="<?=$item->ProductName;?>">

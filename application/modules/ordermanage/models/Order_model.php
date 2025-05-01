@@ -175,6 +175,8 @@ class Order_model extends CI_Model
 		$this->db->where('cusine_type', 1);
 		$query = $this->db->get();
 		$itemlist = $query->result();
+		//last query
+		// echo $this->db->last_query();
 		$output = array();
 		if (!empty($itemlist)) {
 			$k = 0;
@@ -764,10 +766,10 @@ class Order_model extends CI_Model
 	}
 	public function findMainFoodsPromo($id = null)
 	{
-		$this->db->select('item_foods.*, pmm.category_id');
-		$this->db->from('item_foods');
-		$this->db->join('promotion_main_modifiers AS pmm', 'item_foods.ProductsID=pmm.promotion_id', 'INNER');
-		$this->db->where('item_foods.CategoryID', 'pmm.category_id');
+		$this->db->select('f.*, c.Name AS category_name, pmm.category_id');
+		$this->db->from('item_foods AS f');
+		$this->db->join('item_category AS c', 'c.CategoryID=f.CategoryID', 'INNER');
+		$this->db->join('promotion_main_modifiers AS pmm', 'c.CategoryID=pmm.category_id', 'INNER');
 		$this->db->where('pmm.promotion_id', $id);
 		$query = $this->db->get();
 		$mainFoodlistPromo = $query->result();
@@ -775,13 +777,17 @@ class Order_model extends CI_Model
 	}
 	public function findMainCats($id = null)
 	{
-		$this->db->select('pmm.id, pmm.category_id, pmm.category_max_qty, pmm.category_weight_percent, pmm.total_weight_percent, pmm.total_no_of_item, ic.item_category.Name AS category_name');
+		$this->db->select('pmm.id, pmm.category_id, pmm.category_max_qty, pmm.category_weight_percent, pmm.total_weight_percent, pmm.total_no_of_item, ic.Name AS category_name');
 		$this->db->from('promotion_main_modifiers AS pmm');
-		$this->db->join('item_category AS ic', 'ic.CategoryID = pmm.category_id', 'left');
-		$this->db->where('ic.CategoryID','pmm.category_id');
+		$this->db->join('item_category AS ic', 'ic.CategoryID = pmm.category_id', 'INNER');
 		$this->db->where('pmm.promotion_id', $id);
 		$query = $this->db->get();
 		$promoMainCats = $query->result();
+		// echo "<pre>";
+		// print_r($promoMainCats);
+		// echo "</pre><br />";
+		// echo "promoMainCats query: ".$this->db->last_query();
+		// exit();
 		return $promoMainCats;
 	}
 

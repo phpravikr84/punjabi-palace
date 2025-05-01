@@ -1,12 +1,6 @@
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_new_script.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
 <?php
-$productArr = (isset($productinfo)) ? $productinfo :[];
-$productinfo = (object) $productinfo;
-// echo "<pre>";
-// print_r($productinfo);
-// echo "<br>name: " . $productinfo->ProductName;
-// echo "</pre>";
 function renderCategoryOptions($categories, $selectedID = null, $level = 0)
 {
     foreach ($categories as $category) {
@@ -193,8 +187,19 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                             <label for="lastname" class="col-sm-5 col-form-label"><?php echo display('status'); ?></label>
                             <div class="col-sm-7">
                                 <select name="status" class="form-control">
-                                    <option value="1" <?=(count($productArr)>0) ? ($productinfo->ProductsIsActive == 1 ? "selected" : "") : "";?>><?=display('active');?></option>
-                                    <option value="0" <?=(count($productArr)>0) ? ($productinfo->ProductsIsActive == 0 ? "selected" : "") : "";?>><?=display('inactive');?></option>
+                                    <option value="" selected="selected"><?php echo display('select_option'); ?></option>
+                                    <option value="1" <?php if (!empty($productinfo)) {
+                                                            if ($productinfo->ProductsIsActive == 1) {
+                                                                echo "Selected";
+                                                            }
+                                                        } else {
+                                                            echo "Selected";
+                                                        } ?>><?php echo display('active') ?></option>
+                                    <option value="0" <?php if (!empty($productinfo)) {
+                                                            if ($productinfo->ProductsIsActive == 0) {
+                                                                echo "Selected";
+                                                            }
+                                                        } ?>><?php echo display('inactive') ?></option>
                                 </select>
                             </div>
                         </div>
@@ -266,6 +271,10 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                     </div>
                                 </div>
                                 <?php
+                                // echo "data: ".$mainModinfo[0]->total_weight_percent."<br>";
+                                // echo "<pre>";
+                                // print_r($otherModinfo);
+                                // echo "</pre>";
                                 ?>
                                 <div class="form-group row">
                                     <label for="addhoc_weight_percent" class="col-sm-4 col-form-label">Total Weightage (%)</label>
@@ -302,6 +311,10 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                             </tr>
                                         </thead>
                                         <?php
+                                        // echo "<pre>";
+                                        // print_r($categories);
+                                        // echo "</pre>";
+                                        // exit;
                                         ?>
                                         <tbody id="addPurchaseItem">
                                             <input type="hidden" name="mainModifiersIds" id="mainModifiersIds" value="" />
@@ -311,6 +324,51 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                                 <tr>
                                                     <td class="span3 supplier">
                                                         <input type="hidden" id="unit-total_1" class="" />
+                                                        <!-- <select name="product_id[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
+                                            <option value="" data-title=""><?php ##echo display('select');
+                                                                            ?> <?php ##echo display('ingredients');
+                                                                                                                ?></option>
+                                            <?php ##foreach ($ingrdientslist as $ingrdients) {
+                                            ?>
+                                                <option value="<?php ##echo $ingrdients->id;
+                                                                ?>" data-ingredientid="<?php ##echo $ingrdients->id;
+                                                                                                                    ?>" data-title="<?php ##echo $ingrdients->ingredient_name;
+                                                                                                                                                                ?>"><?php ##echo $ingrdients->ingredient_name;
+                                                                                                                                                                                                                ?></option>
+                                            <?php ## }
+                                            ?>
+                                            </select> -->
+                                                        <!-- <select name="mainModID[]" id="mainModID_1" class="form-control dont-select-me" required="">
+                                            <?php
+                                                ##foreach($categories as $caregory){
+                                            ?>
+                                            <option value="<?php ##echo $caregory->CategoryID;
+                                                            ?>" class='bolden' <?php ##if($productinfo->CategoryID==$caregory->CategoryID){echo "selected";}
+                                                                                                                    ?>><strong><?php ##echo $caregory->Name;
+                                                                                                                                                                                                            ?></strong></option>
+                                            <?php
+                                                ##if(!empty($caregory->sub)){
+                                                ##foreach($caregory->sub as $subcat){
+                                            ?>
+                                                <option value="<?php ##echo $subcat->CategoryID;
+                                                                ?>" disabled data-parentID="<?php ##echo $caregory->CategoryID;
+                                                                                                                            ?>" <?php ##if($productinfo->CategoryID==$subcat->CategoryID){echo "selected";}
+                                                                                                                                                                    ?>>&nbsp;&nbsp;&nbsp;&mdash;<?php ##echo $subcat->Name;
+                                                                                                                                                                                                                                                                            ?></option>
+                                            <?php
+                                                // if(!empty($caregory->sub->sub)){
+                                                //     foreach($caregory->sub->sub as $ssubcat){
+                                                //         echo $ssubcat->Name;
+                                            ?>
+                                                    <option value="<?php ##echo $ssubcat->CategoryID;
+                                                                    ?>" disabled data-parentID="<?php ##echo $caregory->CategoryID;
+                                                                                                                                    ?>" <?php ##if($productinfo->CategoryID==$ssubcat->CategoryID){echo "selected";}
+                                                                                                                                                                        ?>>&nbsp;&nbsp;&nbsp;&mdash;<?php ##echo $ssubcat->Name;
+                                                                                                                                                                                                                                                                                ?></option>
+                                            <?php ##} } } } } 
+                                            ?>
+                                            
+                                            </select> -->
                                                         <select name="mainModID[]" id="mainModID_1" class="form-control dont-select-me" required="">
                                                             <?php renderCategoryOptions($categories, $productinfo->category_id); ?>
                                                         </select>
@@ -321,6 +379,11 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                                     <td class="text-right">
                                                         <input type="text" name="weight_percent[]" id="weight_percent_1" class="form-control text-right weight_percent_1 rdb" placeholder="0%" value="" min="0" tabindex="6" readonly style="cursor: not-allowed;" />
                                                     </td>
+                                                    <td>
+                                                        <!-- <button class="btn btn-danger red text-right" type="button" value="<?php ##echo display('delete') 
+                                                                                                                                ?>" onclick="deleteRow(this)" tabindex="8"><?php ##echo display('delete') 
+                                                                                                                                                                                                            ?></button> -->
+                                                    </td>
                                                 </tr>
                                                 <?php
                                             else:
@@ -329,6 +392,49 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                                     <tr>
                                                         <td class="span3 supplier">
                                                             <input type="hidden" id="unit-total_<?= $mmk + 1 ?>" class="" />
+                                                            <!-- <select name="product_id[]" id="product_id_1" class="postform resizeselect form-control" onchange="product_list(1)">
+                                            <option value="" data-title=""><?php ##echo display('select');
+                                                                            ?> <?php ##echo display('ingredients');
+                                                                                                                ?></option>
+                                            <?php ##foreach ($ingrdientslist as $ingrdients) {
+                                            ?>
+                                                <option value="<?php ##echo $ingrdients->id;
+                                                                ?>" data-ingredientid="<?php ##echo $ingrdients->id;
+                                                                                                                    ?>" data-title="<?php ##echo $ingrdients->ingredient_name;
+                                                                                                                                                                ?>"><?php ##echo $ingrdients->ingredient_name;
+                                                                                                                                                                                                                ?></option>
+                                            <?php ## }
+                                            ?>
+                                            </select> -->
+                                                            <!-- <select name="mainModID[]" id="mainModID_1" class="form-control dont-select-me" required="">
+                                            <?php
+                                                    foreach ($categories as $caregory) {
+                                            ?>
+                                            <option value="<?php echo $caregory->CategoryID; ?>" class='bolden' <?php if ($productinfo->CategoryID == $caregory->CategoryID) {
+                                                                                                                    echo "selected";
+                                                                                                                } ?>><strong><?php echo $caregory->Name; ?></strong></option>
+                                            <?php
+                                                        if (!empty($caregory->sub)) {
+                                                            foreach ($caregory->sub as $subcat) {
+                                            ?>
+                                                <option value="<?php echo $subcat->CategoryID; ?>" disabled data-parentID="<?php echo $caregory->CategoryID; ?>" <?php if ($productinfo->CategoryID == $subcat->CategoryID) {
+                                                                                                                                                                    echo "selected";
+                                                                                                                                                                } ?>>&nbsp;&nbsp;&nbsp;&mdash;<?php echo $subcat->Name; ?></option>
+                                            <?php
+                                                                if (!empty($caregory->sub->sub)) {
+                                                                    foreach ($caregory->sub->sub as $ssubcat) {
+                                                                        echo $ssubcat->Name;
+                                            ?>
+                                                    <option value="<?php echo $ssubcat->CategoryID; ?>" disabled data-parentID="<?php echo $caregory->CategoryID; ?>" <?php if ($productinfo->CategoryID == $ssubcat->CategoryID) {
+                                                                                                                                                                        echo "selected";
+                                                                                                                                                                    } ?>>&nbsp;&nbsp;&nbsp;&mdash;<?php echo $ssubcat->Name; ?></option>
+                                            <?php }
+                                                                }
+                                                            }
+                                                        }
+                                                    } ?>
+                                            
+                                            </select> -->
                                                             <select name="mainModID[]" id="mainModID_<?= $mmk + 1 ?>" class="form-control dont-select-me" required="">
                                                                 <?php renderCategoryOptions($categories, $mmv->category_id); ?>
                                                             </select>
@@ -363,6 +469,56 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6">
+                        <div class="panel panel-bd">
+                            <div class="panel-heading" style="background-color: #eeeeee;">
+                                <div class="panel-title box-header itemmanage_box_header">
+                                    <h4 style="font-weight: bold;"><?php echo 'Other Modifiers'; ?></h4>
+                                    <!-- <div class="col-md-2">
+                                        <input type="text" name="item_list" class="form-control" placeholder="Search" id="item_list"  />
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group row">
+                                    <label for="otherModID" class="col-sm-4 col-form-label">Select Other Modifiers</label>
+                                    <div class="col-sm-8">
+                                        <select name="otherModID[]" id="otherModID" class="form-control" required multiple>
+                                            <?php
+                                            if (!empty($productinfo->ProductsID)):
+                                                foreach ($modifiers as $mv):
+                                                    $othMSelect = ""; // Default empty
+
+                                                    // Check if the current modifier exists in $otherModinfo
+                                                    foreach ($otherModinfo as $omv) {
+                                                        if ($omv->modifier_set_id == $mv->id) {
+                                                            $othMSelect = "selected"; // Mark as selected
+                                                            break; // No need to check further, break the loop
+                                                        }
+                                                    }
+                                            ?>
+                                                    <option value="<?php echo $mv->id; ?>" <?= $othMSelect; ?> class='bolden'><strong><?php echo $mv->name; ?></strong></option>
+                                                <?php
+                                                endforeach;
+                                            else:
+                                                foreach ($modifiers as $mv):
+                                                ?>
+                                                    <option value="<?php echo $mv->id; ?>" class='bolden'><strong><?php echo $mv->name; ?></strong></option>
+                                            <?php
+                                                endforeach;
+                                            endif;
+                                            ?>
+                                        </select>
+                                        <input type="hidden" name="otherModifiersIds" id="otherModifiersIds" value="" />
+                                    </div>
+                                </div>
+                                <?php
+                                // $a = $this->db->select('*')->from('modifier_groups')->get()->result();
+                                // echo "<pre>";
+                                // print_r($a);
+                                // echo "</pre>";
+                                ?>
+                            </div>
+                        </div>
                         <!-- Modifiers Panel -->
                     <div class="panel panel-default" id="modifiersPanel">
                         <div class="panel-heading" role="tab" id="headingModifiers">
@@ -370,12 +526,12 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                 <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers" aria-expanded="false" aria-controls="collapseModifiers" class="accordion-plus-toggle">
                                     Modifiers
                                 </a> -->
-                                <a role="button" data-toggle="collapse" href="#collapseModifiers" aria-expanded="true" aria-controls="collapseModifiers" class="accordion-plus-toggle">
+                                <a role="button" data-toggle="collapse" href="#collapseModifiers" aria-expanded="false" aria-controls="collapseModifiers" class="accordion-plus-toggle">
                                     Modifiers
                                 </a>
                             </h5>
                         </div>
-                        <div id="collapseModifiers" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingModifiers" aria-expanded="true">
+                        <div id="collapseModifiers" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingModifiers">
                             <div class="panel-body">
                                 <div class="mt-3">
                                 <?php if (!empty($addonslist)) { ?>
@@ -396,8 +552,8 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                                         $selectedModifers = []; 
                                                         $modifierData = null; // Store modifier data if exists
 
-                                                        if (!empty($productArr) && isset($productArr['modifiers']) && !empty($productArr['modifiers'])) {
-                                                            foreach ($productArr['modifiers'] as $modifier) {
+                                                        if (!empty($productinfo) && isset($productinfo['modifiers']) && !empty($productinfo['modifiers'])) {
+                                                            foreach ($productinfo['modifiers'] as $modifier) {
                                                                 if ($modifier->modifier_groupid == $addons->group_id) {
                                                                     $modifierData = $modifier; // Assign existing modifier data
                                                                 }
@@ -510,20 +666,20 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
         //     $("#mainModifiersIds").val(JSON.stringify(mainModIds));
         //     console.log("mainModIds: " + $("#mainModifiersIds").val());
         // });
-        // $("#otherModID").change(function() {
-        //     let otherModIds = [];
+        $("#otherModID").change(function() {
+            let otherModIds = [];
 
-        //     $("#otherModID option:selected").each(function() {
-        //         let value = $(this).val();
-        //         otherModIds.push({
-        //             id: value
-        //         });
-        //     });
+            $("#otherModID option:selected").each(function() {
+                let value = $(this).val();
+                otherModIds.push({
+                    id: value
+                });
+            });
 
-        //     // console.log(otherModIds);
-        //     $("#otherModifiersIds").val(JSON.stringify(otherModIds));
-        //     console.log("otherModIds: " + $("#otherModifiersIds").val());
-        // });
+            // console.log(otherModIds);
+            $("#otherModifiersIds").val(JSON.stringify(otherModIds));
+            console.log("otherModIds: " + $("#otherModifiersIds").val());
+        });
         $("#categeorywise").change(() => {
             if ($("#categeorywise").prop('checked')) {
                 $("#categeorywise").prop('checked', true);
@@ -570,7 +726,7 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                 $addhoc_weight_percent = $('#addhoc_weight_percent'),
                 $addhoc_max_item = $('#addhoc_max_item'),
                 $mainModID = $('select[name="mainModID[]"]'),
-                // $otherModID = $('select[name="otherModID[]"]'),
+                $otherModID = $('select[name="otherModID[]"]'),
                 $promoErr = $('#promoErr');
             var
                 foodname = $foodname.val(),
@@ -581,7 +737,7 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                 // mainModID = $mainModID.val(),
                 // otherModID = $otherModID.val();
                 totalMainMod = $mainModID.length;
-            // totalOtherMod = $('select[name="otherModID[]"] option:selected').length;
+            totalOtherMod = $('select[name="otherModID[]"] option:selected').length;
             $promoErr.text("");
             $promoErr.hide();
             if (foodname == "") {
@@ -643,12 +799,12 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                     }
                 }
             }
-            // if (totalOtherMod < 1) {
-            //     $otherModID.focus();
-            //     $promoErr.text("Add 1 other modifiers for setting Promotion items !");
-            //     $promoErr.show();
-            //     return false;
-            // }
+            if (totalOtherMod < 1) {
+                $otherModID.focus();
+                $promoErr.text("Add 1 other modifiers for setting Promotion items !");
+                $promoErr.show();
+                return false;
+            }
             $promoErr.removeClass("text-danger");
             $promoErr.addClass("text-success");
             $promoErr.text("All Ok !");

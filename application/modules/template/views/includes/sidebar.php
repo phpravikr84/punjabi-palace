@@ -146,10 +146,10 @@
 						"kitchen_assign" => array("controller" => "kitchensetting","method"  => "assignkitchen","permission" => "read"),
 						"kit_dashoard_setting" => array("controller" => "kitchensetting","method"  => "kitchen_dashboardsetting","permission" => "read"),
 					), 
-					"manage_unitmeasurement" => array(
-						"unit_list" => array("controller" => "unitmeasurement","method"  => "index","permission" => "read"), 
-						"ingradient_list" => array("controller" => "ingradient","method"  => "index","permission" => "read") 
-					),  
+					// "manage_unitmeasurement" => array(
+					// 	"unit_list" => array("controller" => "unitmeasurement","method"  => "index","permission" => "read"), 
+					// 	"ingradient_list" => array("controller" => "ingradient","method"  => "index","permission" => "read") 
+					// ),  
 					"sms_setting" => array(
 						"sms_configuration" => array("controller" => "smsetting","method" => "sms_configuration","permission" => "read"), 
 						"sms_temp" => array("controller" => "smsetting","method"  => "sms_template","permission" => "read")

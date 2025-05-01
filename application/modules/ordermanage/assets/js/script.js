@@ -613,6 +613,202 @@ function posaddonsfoodtocart(pid, id, more = null) {
   });
   return true;
 }
+function posPromofoodtocart(pid, id, more = null) {
+  var addons = [];
+  var adonsqty = [];
+  var allprice = 0;
+  var adonsprice = [];
+  var adonsname = [];
+  var csrf = $("#csrfhashresarvation").val();
+  $('input[name="addons"]:checked').each(function () {
+    var adnsid = $(this).val();
+    var adsqty = $("#addonqty_" + adnsid).val();
+    adonsqty.push(adsqty);
+    addons.push($(this).val());
+
+    allprice += parseFloat($(this).attr("role")) * parseInt(adsqty);
+    adonsprice.push($(this).attr("role"));
+    adonsname.push($(this).attr("title"));
+  });
+  var geturl = $("#carturl").val();
+  var catid = $("#catid").val();
+  var totalvarient = $("#totalvarient").val();
+  var customqty = $("#customqty").val();
+  var itemname = $("#itemname_" + id).val();
+  var sizeid = $("#sizeid_" + id).val();
+  var varientname = $("#size_" + id).val();
+  var qty = $("#itemqty_" + id).val();
+  var price = $("#itemprice_" + id).val();
+  var isgroup = $("#isgroup").val();
+  var updateid = $("#uidupdateid").val();
+  var myurl = geturl;
+  var mysound = baseurl + "assets/";
+  var audio = ["beep-08b.mp3"];
+  let varientHtml = `
+  <input name="selProdSid_${pid}" id="selProdSid_${pid}" type="hidden" value="${sizeid}" />
+  <input name="selProdQty_${pid}" id="selProdQty_${pid}" type="hidden" value="${checkqty}" />
+  `;
+  $("#addinvoice").append(varientHtml);
+  new Audio(mysound + audio[0]).play();
+  if (typeof updateid == "undefined") {
+    /*check production*/
+    var productionsetting = $("#production_setting").val();
+    if (productionsetting == 1) {
+      var isselected = $("#productionsetting-" + pid + "-" + sizeid).length;
+
+      if (isselected == 1) {
+        var checkqty =
+          parseInt($("#productionsetting-" + pid + "-" + sizeid).text()) + qty;
+      } else {
+        var checkqty = qty;
+      }
+      
+      // The stock checking function is commented out for promotions
+      // var checkvalue = checkproduction(pid, sizeid, checkqty);
+
+      // if (checkvalue == false) {
+      //   return false;
+      // }
+    }
+    /*end checking*/
+    var geturl = $("#carturl").val();
+    var myurl = geturl;
+    var dataString =
+      "pid=" +
+      pid +
+      "&itemname=" +
+      itemname +
+      "&varientname=" +
+      varientname +
+      "&qty=" +
+      qty +
+      "&price=" +
+      price +
+      "&catid=" +
+      catid +
+      "&sizeid=" +
+      sizeid +
+      "&addonsid=" +
+      addons +
+      "&allprice=" +
+      allprice +
+      "&adonsunitprice=" +
+      adonsprice +
+      "&adonsqty=" +
+      adonsqty +
+      "&adonsname=" +
+      adonsname +
+      "&isgroup=" +
+      isgroup +
+      "&totalvarient=" +
+      totalvarient +
+      "&customqty=" +
+      customqty +
+      "&csrf_test_name=" +
+      csrf;
+  } else {
+    /*check production*/
+    // var productionsetting = $("#production_setting").val();
+    // if (productionsetting == 1) {
+    //   var isselected = $(
+    //     "#productionsetting-update-" + pid + "-" + sizeid
+    //   ).length;
+
+    //   if (isselected == 1) {
+    //     var checkqty =
+    //       parseInt(
+    //         $("#productionsetting-update-" + pid + "-" + sizeid).text()
+    //       ) + qty;
+    //   } else {
+    //     var checkqty = qty;
+    //   }
+
+    //   var checkvalue = checkproduction(pid, sizeid, checkqty);
+    //   if (checkvalue == false) {
+    //     return false;
+    //   }
+    // }
+    /*end checking*/
+    var geturl = $("#updatecarturl").val();
+    var myurl = geturl;
+    var dataString =
+      "pid=" +
+      pid +
+      "&itemname=" +
+      itemname +
+      "&varientname=" +
+      varientname +
+      "&qty=" +
+      qty +
+      "&price=" +
+      price +
+      "&catid=" +
+      catid +
+      "&sizeid=" +
+      sizeid +
+      "&addonsid=" +
+      addons +
+      "&allprice=" +
+      allprice +
+      "&adonsunitprice=" +
+      adonsprice +
+      "&adonsqty=" +
+      adonsqty +
+      "&adonsname=" +
+      adonsname +
+      "&orderid=" +
+      updateid +
+      "&isgroup=" +
+      isgroup +
+      "&totalvarient=" +
+      totalvarient +
+      "&customqty=" +
+      customqty +
+      "&csrf_test_name=" +
+      csrf;
+  }
+  $("#tr_row_id_"+pid).remove();
+  $.ajax({
+    type: "POST",
+    url: myurl,
+    data: dataString,
+    success: function (data) {
+      if (typeof updateid == "undefined") {
+        $("#addfoodlist").html(data);
+      } else {
+        $("#updatefoodlist").html(data);
+      }
+      console.log("Add to cart data: " + data);
+      console.log("Add to cart row id: " + $("#tr_row_id_"+pid).val());
+	  // $('#sideMfContainer').html($("#modifierContent").html());
+	//   $("#modifierContent").show();
+      var total = $("#grtotal").val();
+      var totalitem = $("#totalitem").val();
+      $("#item-number").text(totalitem);
+
+      var tax = $("#tvat").val();
+      var discount = $("#tdiscount").val();
+      var tgtotal = $("#tgtotal").val();
+      $("#calvat").text(tax);
+      $("#vat").val(tax);
+      $("#invoice_discount").val(discount);
+      var sc = $("#sc").val();
+      $("#service_charge").val(sc);
+      if (basicinfo.isvatinclusive == 1) {
+        $("#caltotal").text(tgtotal - tax);
+      } else {
+        $("#caltotal").text(tgtotal);
+      }
+      $("#grandtotal").val(tgtotal);
+      $("#orggrandTotal").val(tgtotal);
+      $("#orginattotal").val(tgtotal);
+      if (more != 1) {
+        $("#edit").modal("hide");
+      }
+    },
+  });
+  return true;
+}
 function deletecart(id, orderid, pid, vid, qty) {
   var geturl = $("#delurl").val();
   var csrf = $("#csrfhashresarvation").val();
