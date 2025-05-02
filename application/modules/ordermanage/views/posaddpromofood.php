@@ -227,7 +227,7 @@ $selectedMods = $q2->result();
                                   </td>
                                   <td style="width: 5%;" class="text-center">
                                       <div class="form-check">
-                                          <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="promo_main_food_items[]" value="<?=$miv->id;?>" id="promo_main_food_items_<?=$miv->id;?>" data-group-id="<?=$mcv->category_id;?>" autocomplete="off">
+                                          <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="promo_main_food_items[]" value="<?=$miv->id;?>" id="promo_main_food_items_<?=$miv->id;?>" data-group-id="<?=$mcv->category_id;?>" data-variantid="<?=$miv->variantid;?>" autocomplete="off">
                                       </div>
                                   </td>
                               </tr>

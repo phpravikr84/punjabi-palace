@@ -1,8 +1,8 @@
 <?php
 //   echo "<pre>";
-//   print_r($modifiers);
+//   print_r($mainCats);
 //   echo "</pre><br>";
-//   echo "modifiers count: ". count($modifiers);
+//   echo "mainCats count: ". count($mainCats);
 //   echo "<br>modifiers type: ". var_dump($modifiers);
 //   exit();
 $size="";
@@ -11,9 +11,104 @@ if ($cart = $this->cart->contents()){
         $size = $cv['size'];
     }
 }
-if (count($modifiers) > 0):
+if (count($mainCats) > 0):
+    // echo "<pre>";
+    // print_r($selectedFoodsForCart);
+    // echo "</pre><br>";
+    // echo "mainCats count: ". count($selectedFoodsForCart);
 ?>
-<div id="posAddmodSizeInfo">
+<div id="posAddmodSizeInfo" style="display:none;">
+<?php if(count($mainCats) > 0): ?>
+    <div id="promomainfoodlist">
+    <?php 
+        if (count($mainCats)>0):
+        ?>
+        <div class="panel-group" id="foodAccordion2" role="tablist" aria-multiselectable="false">
+        <?php
+            foreach ($mainCats as $mck => $mcv):
+        ?>
+        <div class="panel panel-default" id="PromoMainFoodCatPanel_<?=$mcv->id;?>">
+            <div class="panel-heading" role="tab" id="headingFoodCats_<?=$mcv->id;?>">
+                <h5 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#foodAccordion2" href="#collapsePromoMainFoods_<?=$mcv->id;?>" aria-expanded="<?=(($mck==0)?'true':'false')?>" aria-controls="collapsePromoMainFoods" class="accordion-plus-toggle <?=(($mck==0)?'':'collapsed')?>">
+                        <?=$mcv->category_name;?>
+                        <br />
+                        <small class="modifier-set-sub-heading" <?php if($mck==0): ?>style="display:block !important;"<?php endif; ?>>Select the main food items for the deal</small>
+                    </a>
+                </h5>
+            </div>
+            <div id="collapsePromoMainFoods_<?=$mcv->id;?>" class="panel-collapse collapse <?=(($mck==0)?'in':'')?>" role="tabpanel" aria-labelledby="headingFoodCats_<?=$mcv->id;?>" aria-expanded="<?=(($mck==0)?'true':'false')?>" style="">
+                <div class="panel-body">
+                    <div class="mt-3">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <?php 
+                                //Fetching Food item information from the database
+                                $this->db->select('item_foods.ProductsID as id,item_foods.ProductName as text,variant.variantid,variant.variantName,variant.price');
+                                $this->db->from('item_foods');
+                                $this->db->join('variant', 'item_foods.ProductsID=variant.menuid', 'left');
+                                $this->db->where('item_foods.CategoryID', $mcv->category_id);
+                                $this->db->where('item_foods.ProductsIsActive', 1);
+                                $pmf = $this->db->get();
+                                $pm_flist = $pmf->result();
+
+                                $this->db->select('item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, cart_selected_modifiers.variant_id, cart_selected_modifiers.modifier_groupid');
+                                $this->db->from('item_foods');
+                                $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=item_foods.ProductsID');
+                                $this->db->where('cart_selected_modifiers.menu_id',$pid);
+                                $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
+                                $this->db->where('cart_selected_modifiers.is_active', 1);
+                                $q2 = $this->db->get();
+                                $selectedFoodsForCart = $q2->result();
+                                // echo "<pre>";
+                                // print_r($selectedFoodsForCart);
+                                // echo "</pre><br>";
+
+                                if(count($pm_flist)>0):
+                                    foreach ($pm_flist as $mik => $miv):
+                                        $checked = "";
+                                        if (count($selectedFoodsForCart) > 0) {
+                                            foreach ($selectedFoodsForCart as $smk => $smv) {
+                                                if ($mcv->category_id == $smv->modifier_groupid) {
+                                                    if (($miv->id == $smv->selected_id) && ($miv->variantid == $smv->variant_id)) {
+                                                        $checked = "checked";
+                                                    }
+                                                }
+                                            }
+                                        }
+                                ?>
+                                <tr>
+                                    <td style="width: 85%;">
+                                        <label for="modifiers_<?=$miv->id;?>" class="form-label"><?=$miv->text;?> (<?=$miv->variantName;?>)</label>
+                                    </td>
+                                    <td style="width: 10%;text-align: end;">
+                                        <label for="modifiers_<?=$miv->id;?>" class="form-label"><?=(($currency->position == 1) ? $currency->curr_icon : '').$miv->price;?></label>
+                                    </td>
+                                    <td style="width: 5%;" class="text-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="promo_main_food_items[]" value="<?=$miv->id;?>" id="promo_main_food_items_<?=$miv->id;?>" data-group-id="<?=$mcv->category_id;?>" autocomplete="off">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php 
+                                    endforeach;
+                                endif;
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+            endforeach;
+        ?>
+        </div>
+        <?php
+        endif;
+        ?>
+    </div>
+<?php else: ?>
     <div class="row">
         <div class="col-md-6">
             Selected Size: 
@@ -22,7 +117,12 @@ if (count($modifiers) > 0):
             <?=$size;?>
         </div>
     </div>
+<?php endif; ?>
 </div>
+<?php
+endif;
+if (count($modifiers) > 0):
+?>
 <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
     <?php
     foreach ($modifiers as $mk => $mv):

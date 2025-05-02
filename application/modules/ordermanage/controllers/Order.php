@@ -996,6 +996,10 @@ class Order extends MX_Controller
 		$data['pid']   = $id;
 		$data['tr_row_id']   = $tr_row_id;
 		$data['selectedMods']   = $selectedMods;
+
+		$data['mainFoodsList']   = $this->order_model->findMainFoodsPromo($id);
+		$data['mainCats']   = $this->order_model->findMainCats($id);
+		$data['varientlist']   = $this->order_model->findByvmenuId($id);
 		$this->load->view('ordermanage/posaddmodifier', $data);
 	}
 
@@ -1132,6 +1136,7 @@ class Order extends MX_Controller
 				}
 				$data = [
 					'menu_id' => $fv['pid'],
+					'variant_id' => $fv['vid'],
 					'add_on_id' => $fv['mid'],
 					'modifier_groupid' => $fv['mgid'],
 					'tr_row_id' => $trid,
@@ -1739,6 +1744,7 @@ class Order extends MX_Controller
 									foreach ($res1 as $cmk => $cmv) {
 										$d1=[
 											'menu_id' => $cmv->menu_id,
+											'variant_id' => $cmv->variant_id,
 											'add_on_id' => $cmv->add_on_id,
 											'modifier_groupid' => $cmv->modifier_groupid,
 											'order_id' => $orderid,

@@ -508,8 +508,17 @@ function selectGroupItem(th) {
 //   }
 function itemModifiers(pid,tr_row_id) {
     // var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
+    // pid = 0;
     if (pid == "" || pid == 0) {
-        alert("No Item Found !");
+        // alert("No Item Found !");
+        //create sweatalert alert
+        swal({
+            title: "No Item Found !",
+            text: "Please select an item first.",
+            type: "warning",
+            confirmButtonText: "OK",
+            closeOnConfirm: true
+        });
         return false;
     }
     var csrf = $('#csrfhashresarvation').val(),
@@ -526,6 +535,7 @@ function itemModifiers(pid,tr_row_id) {
             // $('#addfoodlist').html(data);
             $("#mySidebar").find('#sideMfContainer').html(data);
             $('#sideVarContainer').html($("#posAddmodSizeInfo").html());
+            $("#posAddmodSizeInfo").remove();
             // $("#modifierChoosebtnDiv").html(`
             //     <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
             //     `);
@@ -641,7 +651,8 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
     $("input[name='promo_main_food_items[]']:checked").each(function () {
         let value = $(this).val();
         let groupId = $(this).attr("data-group-id");
-        selectedFoods.push({ mid: value, mgid: groupId, pid: pid });
+        let variantid = $(this).attr("data-variantid");
+        selectedFoods.push({ mid: value, mgid: groupId, pid: pid, vid: variantid });
     });
 
     var mods = JSON.stringify(selectedValues),

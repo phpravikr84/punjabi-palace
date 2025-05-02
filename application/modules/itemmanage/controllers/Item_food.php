@@ -1583,7 +1583,7 @@ class Item_food extends MX_Controller
 					// }
 					// New code for updating other modifiers
 					//Remove old modifiers
-					$this->db->where('menu_id', $_POST["ProductsID"])->delete('promotion_other_modifiers');
+					$this->db->where('menu_id', $_POST["ProductsID"])->delete('menu_add_on');
 					// Check Modifier exist or not
 					if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
 						$modifiers = $this->input->post('modifiers', true);
@@ -1602,7 +1602,7 @@ class Item_food extends MX_Controller
 							}
 					
 							$modifierData = [
-								'menu_id'   => $insertedFoodId,
+								'menu_id'   => $_POST["ProductsID"],
 								//'add_on_id' => (int)$modifier,
 								'modifier_groupid' => (int)$modifier,
 								'min'       => $minValue,

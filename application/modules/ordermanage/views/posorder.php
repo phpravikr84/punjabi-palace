@@ -1128,20 +1128,49 @@ foreach ($scan as $file) {
                                                 $this->db->from('add_ons');
                                                 $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
                                                 $this->db->where('cart_selected_modifiers.menu_id', $item['pid']);
+                                                $this->db->where('cart_selected_modifiers.foods_or_mods', 2);
                                                 $this->db->where('cart_selected_modifiers.is_active', 1);
                                                 $q1 = $this->db->get();
+                                                // echo $this->db->last_query();
                                                 $selectedModsForCart = $q1->result();
-                                                if (count($selectedModsForCart) > 0):
-                                                  foreach ($selectedModsForCart as $smk => $smv):
+                                                $this->db->select('item_foods.ProductName AS food_name');
+                                                $this->db->from('item_foods');
+                                                $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=item_foods.ProductsID');
+                                                $this->db->where('cart_selected_modifiers.menu_id',$item['pid']);
+                                                $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
+                                                $this->db->where('cart_selected_modifiers.is_active', 1);
+                                                $q2 = $this->db->get();
+                                                $selectedFoodsForCart = $q2->result();
+
+                                                // echo $this->db->last_query();
+                                                // echo "<pre>";
+                                                // print_r($selectedModsForCart);
+                                                // echo "</pre>";
+                                                if (count($selectedFoodsForCart)>0):
+                                                  foreach ($selectedFoodsForCart as $smk => $smv):
                                                 ?>
-                                                    <br />
-                                                    <small class="modCheck" style="font-style: italic;font-weight: 400;"><?= $smv->add_on_name; ?> <?php if($smv->price>0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $smv->price; ?>)<?php endif; ?></small>
+                                                        <br />
+                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name. ' (Food)';?></small>
                                                 <?php
                                                   endforeach;
-                                                else:
+                                                endif;
+                                                if (count($selectedModsForCart)>0):
+                                                  echo "<br />";
+                                                  foreach ($selectedModsForCart as $smk => $smv):
+                                                    if($smv->foods_or_mods == 1):
+                                                        $smv->add_on_name = $smv->add_on_name . ' (Food)';
                                                 ?>
-                                                <small class="modCheck">Choose Modifiers</small>
-                                                <?php  
+                                                        <br />
+                                                        <small class="modCheck bg-danger" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+                                                <?php 
+                                                    else:
+                                                        $smv->add_on_name = $smv->add_on_name . ' (Modifier)';
+                                                ?>
+                                                        <br />
+                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+                                                <?php
+                                                      endif;
+                                                  endforeach;
                                                 endif;
                                                 ?>
                                               </a>

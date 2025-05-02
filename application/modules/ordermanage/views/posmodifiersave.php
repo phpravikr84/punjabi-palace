@@ -27,7 +27,7 @@ if (count($selectedFoodsForCart)>0):
   foreach ($selectedFoodsForCart as $smk => $smv):
 ?>
         <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->food_name. ' (Food)';?></small>
+        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name. ' (Food)';?></small>
 <?php
   endforeach;
 endif;
@@ -44,7 +44,7 @@ if (count($selectedModsForCart)>0):
         $smv->add_on_name = $smv->add_on_name . ' (Modifier)';
 ?>
         <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
 <?php
       endif;
   endforeach;
