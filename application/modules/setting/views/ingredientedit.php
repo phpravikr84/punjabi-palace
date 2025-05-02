@@ -93,6 +93,7 @@
                                 <select name="convt_ratio" class="form-control" id="convt_ratio_edit">
                                     <option value="1000" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '1000') ? 'selected' : ''; ?>>1000</option>
                                     <option value="100" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '100') ? 'selected' : ''; ?>>100</option>
+                                    <option value="12" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '12') ? 'selected' : ''; ?>>12</option>
                                     <option value="10" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '10') ? 'selected' : ''; ?>>10</option>
                                     <option value="1" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '1') ? 'selected' : ''; ?>>1</option>
                                 </select>

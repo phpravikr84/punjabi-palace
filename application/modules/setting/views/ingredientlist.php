@@ -124,6 +124,7 @@
                                             <select name="convt_ratio" class="form-control" id="convt_ratio">
                                                 <option value="1000">1000</option>
                                                 <option value="100">100</option>
+                                                <option value="12">12</option>
                                                 <option value="10">10</option>
                                                 <option value="1">1</option>
                                             </select>
