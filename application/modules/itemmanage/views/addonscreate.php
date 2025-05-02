@@ -84,6 +84,18 @@ if (!empty($addonsinfo)) {
                                             <input type="text" name="consumption_unit[]" class="form-control consumptionunit" value="<?php echo $ingr_add_on_dtls->modifier_ingr_unitname; ?>"  readonly/>
                                         </div>
 
+                            <?php } else { ?>
+                                        
+                                <div class="form-group col-md-2 consumptionbox" style="display:none;">
+                                    <label>Consumption</label>
+                                    <input type="text" name="consumptiom[]" class="form-control consumption" />
+                                    <input type="hidden" name="consumtion_ingrstock[]" class="form-control consumtion_ingrstock" />
+                                </div>
+                                <div class="form-group col-md-2 consumptionunitbox" style="display:none;">
+                                    <label>Unit</label>
+                                    <input type="hidden" name="consumption_unitid[]" class="form-control consumptionunitid" />
+                                    <input type="text" name="consumption_unit[]" class="form-control consumptionunit" readonly/>
+                                </div>
                             <?php }
                             ?>
          
