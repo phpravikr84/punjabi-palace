@@ -11,10 +11,40 @@ $(document).ready(function(){
     //         }
     //     });
 		// Function to toggle offer section visibility
+		// function toggleOfferSection(checkbox) {
+		// 	//const id = $(checkbox).attr('id').split('_')[1];
+		// 	const idAttr = $(checkbox).attr('id');
+		// 	if (idAttr && idAttr.includes('_')) {
+		// 		const id = idAttr.split('_')[1];
+		// 		// use `id` safely here
+		// 	} else {
+		// 		console.warn('Invalid or missing ID on checkbox:', checkbox);
+		// 	}
+
+		// 	const offerDiv = $('#offeractive_' + id);
+		// 	const offerInput = $('#offer_' + id);
+		// 	if ($(checkbox).prop("checked")) {
+		// 		offerInput.val('1');
+		// 		offerDiv.show();
+		// 	} else {
+		// 		offerInput.val('0');
+		// 		offerDiv.hide();
+		// 	}
+		// }
 		function toggleOfferSection(checkbox) {
-			const id = $(checkbox).attr('id').split('_')[1];
+			const idAttr = $(checkbox).attr('id');
+			let id = null;
+		
+			if (idAttr && idAttr.includes('_')) {
+				id = idAttr.split('_')[1];
+			} else {
+				//console.warn('Invalid or missing ID on checkbox:', checkbox);
+				return; // Exit early if ID is invalid
+			}
+		
 			const offerDiv = $('#offeractive_' + id);
 			const offerInput = $('#offer_' + id);
+		
 			if ($(checkbox).prop("checked")) {
 				offerInput.val('1');
 				offerDiv.show();
@@ -23,6 +53,7 @@ $(document).ready(function(){
 				offerDiv.hide();
 			}
 		}
+		
 
 		// Delegate the click event to dynamically added checkboxes
 		$(document).on('click', "[id^='isoffer_']", function () {

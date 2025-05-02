@@ -1962,7 +1962,8 @@ class Item_food extends MX_Controller
 			$this->form_validation->set_rules('foodname', display('item_name'), 'required|is_unique[item_foods.ProductName]|max_length[100]');
 			$this->form_validation->set_message('is_unique', 'Sorry, this %s already used!');
 		}
-
+		$this->form_validation->set_rules('weightage', 'Weightage', 'required');
+		$this->form_validation->set_rules('food_type', 'Food Type', 'required');
 		//$this->form_validation->set_rules('status', display('status'), 'required');
 
 		// Handle offer dates
