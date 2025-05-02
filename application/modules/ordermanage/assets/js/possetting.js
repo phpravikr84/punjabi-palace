@@ -426,9 +426,10 @@ function selectGroupItem(th) {
             $("#promomainfoodlist").remove();
             $('.addonsinfo').html(data);
 
-            $('#sideVarContainer').html($("#promomainfoodlist").html());
+            
             $('#sideMfContainer').html($("#modifierContent_1").html());
-            $('#sideVarContainer').append($("#posSelectPurchaseTable").html());
+            $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
+            $('#sideVarContainer').append($("#promomainfoodlist").html());
             $("#promomainfoodlist").remove();
             $("#posSelectPurchaseTable").remove();
             $("#modifierContent_1").remove();
