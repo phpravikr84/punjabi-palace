@@ -1647,6 +1647,9 @@ class Order_model extends CI_Model
 		$this->db->order_by('customer_order.order_id', 'desc');
 		$i = 0;
 
+		// Add group_by here
+		$this->db->group_by('customer_order.order_id');
+
 		foreach ($column_search as $item) // loop column 
 		{
 			if ($_POST['search']['value']) // if datatable send POST for search
