@@ -303,7 +303,7 @@ public function count_fooditem()
 	
 		public function ingrediantlist()
 		{
-			$data = $this->db->select("*")->from('ingredients')->where('is_active', 1)->get()->result();
+			$data = $this->db->select("*")->from('ingredients')->where('is_active', 1)->order_by('ingredient_name')->get()->result();
 			//echo $this->db->last_query();
 			return $data;
 		}

@@ -845,10 +845,35 @@ foreach ($scan as $file) {
                                       <input type="hidden" name="select_product_isgroup" class="select_product_isgroup" value="<?php echo $item->isgroup; ?>">
                                       <input type="hidden" name="select_product_cat" class="select_product_cat" value="<?php echo $item->CategoryID; ?>">
                                       <input type="hidden" name="select_varient_name" class="select_varient_name" value="<?php echo $item->variantName; ?>">
-                                      <input type="hidden" name="select_product_name" class="select_product_name" value="<?php echo $item->ProductName;
-                                                                                                                          if (!empty($item->itemnotes)) {
-                                                                                                                            echo " -" . $item->itemnotes;
-                                                                                                                          } ?>">
+                                      <!-- <input type="hidden" name="select_product_name" class="select_product_name" value="<?php //echo $item->ProductName;
+                                                                                                                          //if (!empty($item->itemnotes)) {
+                                                                                                                            //echo " -" . $item->itemnotes;
+                                                                                                                          //} ?>"> -->
+                                        <?php
+                                            $productName = $item->ProductName;
+                                            $variant = $item->variantName;
+
+                                            // Only add variant if it's not "Regular"
+                                            $variantText = '';
+                                            if (!empty($variant) && strtolower($variant) !== 'regular') {
+                                                $variantText = ' (' . $variant . ')';
+                                            }
+
+                                            // Build component text
+                                            $componentText = '';
+                                            if (!empty($item->component)) {
+                                                $components = explode(',', $item->component);
+                                                $componentText = ' (' . implode(', ', array_map('trim', $components)) . ')';
+                                            }
+
+                                            // Uncomment to include item notes
+                                            // $itemNotes = !empty($item->itemnotes) ? ' -' . $item->itemnotes : '';
+
+                                            $fullValue = $productName . $variantText . $componentText;
+                                        ?>
+
+                                      <input type="hidden" name="select_product_name" class="select_product_name" value="<?php echo htmlspecialchars($fullValue, ENT_QUOTES, 'UTF-8'); ?>">
+                                      <input type="hidden" name="select_product_code" class="select_product_code" value="<?php echo $item->ProductCode; ?>">    
                                       <input type="hidden" name="select_product_price" class="select_product_price" value="<?php echo $item->price; ?>">
                                       <input type="hidden" name="select_addons" class="select_addons" value="<?php echo $getadons; ?>">
                                     </div>
@@ -860,11 +885,20 @@ foreach ($scan as $file) {
                                       ?>
                                       <h5><?php echo $item->ProductName; ?> (<?php echo $item->variantName; ?>)
                                         <?php 
-                                        if (!empty($item->itemnotes)) {
-                                          echo " - " . $item->itemnotes;
-                                        } 
+                                        // if (!empty($item->itemnotes)) {
+                                        //   echo " - " . $item->itemnotes;
+                                        // } 
+                          
+                                      if (!empty($item->component)) {
+                                          $components = explode(',', $item->component);
+                                          foreach ($components as $comp) {
+                                            echo '<span class="label label-primary" style="margin-right:5px;">' . trim($comp) . '</span>';
+                                          }
+                                      }
+
+
                                         if (!empty($item->price)) {
-                                          echo "<br /> <strong style='padding-bottom:15px;'>" .(($currency->position == 1) ? $currency->curr_icon : '').$item->price."</strong>";
+                                          echo "<br /> <br/><strong style='padding-bottom:15px;'>" .(($currency->position == 1) ? $currency->curr_icon : '').$item->price."</strong>";
                                         } 
                                         ?>
                                       </h5>

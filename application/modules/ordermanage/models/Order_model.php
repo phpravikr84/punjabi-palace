@@ -1135,13 +1135,41 @@ class Order_model extends CI_Model
 		}
 		return false;
 	}
+	// public function completeorder($limit = null, $start = null, $status = null)
+	// {
+	// 	$sql = "SELECT customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order LEFT JOIN customer_info ON customer_order.customer_id=customer_info.customer_id LEFT JOIN customer_type ON customer_order.cutomertype=customer_type.customer_type_id LEFT JOIN employee_history ON customer_order.waiter_id=employee_history.emp_his_id LEFT JOIN rest_table ON customer_order.table_no=rest_table.tableid LEFT JOIN bill ON customer_order.order_id=bill.order_id WHERE bill.bill_status = $status";
+	// 	$query = $this->db->query($sql);
+	// 	$orderdetails = $query->result();
+	// 	return $orderdetails;
+	// }
 	public function completeorder($limit = null, $start = null, $status = null)
 	{
-		$sql = "SELECT customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order LEFT JOIN customer_info ON customer_order.customer_id=customer_info.customer_id LEFT JOIN customer_type ON customer_order.cutomertype=customer_type.customer_type_id LEFT JOIN employee_history ON customer_order.waiter_id=employee_history.emp_his_id LEFT JOIN rest_table ON customer_order.table_no=rest_table.tableid LEFT JOIN bill ON customer_order.order_id=bill.order_id WHERE bill.bill_status = $status";
-		$query = $this->db->query($sql);
-		$orderdetails = $query->result();
-		return $orderdetails;
+		// Ensure status is set
+		if ($status === null) {
+			return [];
+		}
+
+		$this->db->select('customer_order.*, customer_info.customer_name, customer_type.customer_type, employee_history.first_name, employee_history.last_name, rest_table.tablename, bill.bill_status');
+		$this->db->from('customer_order');
+		$this->db->join('customer_info', 'customer_order.customer_id = customer_info.customer_id', 'left');
+		$this->db->join('customer_type', 'customer_order.cutomertype = customer_type.customer_type_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id = employee_history.emp_his_id', 'left');
+		$this->db->join('rest_table', 'customer_order.table_no = rest_table.tableid', 'left');
+		$this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+		$this->db->where('bill.bill_status', $status);
+
+		// Avoid duplicate customer orders by selecting latest order per customer
+		$this->db->group_by('customer_order.order_id');
+
+		// Add pagination if limit and offset are set
+		if ($limit !== null && $start !== null) {
+			$this->db->limit($limit, $start);
+		}
+
+		$query = $this->db->get();
+		return $query->result();
 	}
+
 	public function count_comorder($status)
 	{
 		$this->db->select('customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename');
@@ -1167,8 +1195,6 @@ class Order_model extends CI_Model
 		}
 		$sql = "SELECT order_menu.row_id,order_menu.order_id,order_menu.groupmid as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.groupvarient as varientid,order_menu.addonsuid,order_menu.qroupqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice FROM order_menu LEFT JOIN item_foods ON order_menu.groupmid=item_foods.ProductsID LEFT JOIN variant ON order_menu.groupvarient=variant.variantid WHERE {$where} AND order_menu.isgroup=1 Group BY order_menu.groupmid UNION SELECT order_menu.row_id,order_menu.order_id,order_menu.menu_id as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.varientid as varientid,order_menu.addonsuid,order_menu.menuqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice FROM order_menu LEFT JOIN item_foods ON order_menu.menu_id=item_foods.ProductsID LEFT JOIN variant ON order_menu.varientid=variant.variantid WHERE {$where} AND order_menu.isgroup=0";
 		$query = $this->db->query($sql);
-		// echo $this->db->last_query();
-		// exit;
 
 		return $query->result();
 	}

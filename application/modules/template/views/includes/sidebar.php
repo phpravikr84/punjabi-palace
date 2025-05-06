@@ -40,8 +40,8 @@
 					"complete_order" => array("controller" => "order","method"=> "completelist","permission" => "read"),
 					"cancel_order" => array("controller" => "order","method" => "cancellist","permission" => "read"),
 					"kitchen_dashboard" => array("controller" => "order","method"=> "allkitchen","permission" => "read"),
-					"counter_dashboard" => array("controller" => "order","method"=> "counterboard","permission" => "read"),
-					"counter_list" => array("controller" => "order","method"=> "counterlist","permission" => "read"),
+					// "counter_dashboard" => array("controller" => "order","method"=> "counterboard","permission" => "read"),
+					// "counter_list" => array("controller" => "order","method"=> "counterlist","permission" => "read"),
 					"pos_setting" => array("controller" => "order","method"=> "possetting","permission" => "read"),
 					"sound_setting" => array("controller" => "order","method"=> "soundsetting","permission" => "read")
 				);

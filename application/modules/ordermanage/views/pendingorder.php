@@ -19,7 +19,9 @@
                                             <th class="text-center"><?php echo display('table');?></th>
                                             <th class="text-center"><?php echo display('ordate');?></th>
                                             <th class="text-right"><?php echo display('amount');?></th>
-                                            <th class="text-center"><?php echo display('action');?></th> 
+                                            <?php if($cancel_flag!=5){ ?>
+                                                <th class="text-center"><?php echo display('action');?></th> 
+                                            <?php } ?>
                                         </tr>
                                 </thead>
                                 <tbody>
@@ -37,12 +39,14 @@
                                          <td class="text-center"><?php $originalDate = $item->order_date;
 											echo $newDate = date("d-M-Y", strtotime($originalDate));?></td>
                                         <td class="text-right"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $item->totalamount;?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </td>
-                                    	<td class="text-center">
-                                         <?php if($this->permission->method('ordermanage','update')->access()): ?>
-                                        <a href="<?php echo base_url("ordermanage/order/orderdetails/$item->order_id") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Details"><i class="fa fa-eye" aria-hidden="true"></i></a> 
-                                         <?php endif; ?>
-                                         <a href="<?php echo base_url("ordermanage/order/posorderinvoice/$item->order_id") ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Invoice"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
-                                        </td>
+                                        <?php if($cancel_flag!=5){ ?>
+                                            <td class="text-center">
+                                            <?php if($this->permission->method('ordermanage','update')->access()): ?>
+                                            <a href="<?php echo base_url("ordermanage/order/orderdetails/$item->order_id") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Details"><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                                            <?php endif; ?>
+                                            <a href="<?php echo base_url("ordermanage/order/posorderinvoice/$item->order_id") ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="Invoice"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                                            </td>
+                                        <?php } ?>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

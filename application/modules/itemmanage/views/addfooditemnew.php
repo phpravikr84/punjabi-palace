@@ -242,7 +242,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" style="display:none;">
                         <label for="date"><?php echo display('production')?> <?php echo display('date')?><i class="text-danger">*</i>
                         </label>
                         <?php if((isset($productinfo) && isset($productinfo['production']))){ ?>
@@ -252,7 +252,7 @@
                         <?php } ?>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" style="display:none;">
                         <label for="date"><?php echo display('expdate')?> <a class="" data-toggle="tooltip" data-placement="top" title="<?php echo display('expiredatenotes')?>"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
                         </label>
                         <?php if((isset($productinfo) && isset($productinfo['production']))){ ?>
