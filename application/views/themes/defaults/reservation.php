@@ -93,9 +93,10 @@
                             </select>
                          </div>
                          <div class="col-lg-3 col-md-6">
-                             <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("hungry/checkavailablity"); ?>" />
+                             <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("hungry/check_and_book_seats"); ?>" />
                              <input name="sloturl" id="sloturl" type="hidden" value="<?php echo base_url("hungry/slotsavailablity"); ?>" />
-                             <button type="button" class="simple_btn" onclick="checkavailablity()"><?php echo display('check_availablity') ?></button>
+                             <button type="button" class="simple_btn" onclick="checkavailablity_pop()"><?php echo display('check_availablity') ?></button>
+                            
                          </div>
                      </div>
                  </form>
@@ -104,6 +105,23 @@
      </div>
  </section>
  <!--End Reservation Area-->
+
+ <div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-dark">
+        <h5 class="modal-title" id="reservationModalLabel">Reservation</h5>
+        <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="reservationContent">
+        <!-- AJAX loaded content -->
+      </div>
+    </div>
+  </div>
+</div>
+
 
  <!--Start Table Chart-->
  <section class="table_chart" id="searchreservation">

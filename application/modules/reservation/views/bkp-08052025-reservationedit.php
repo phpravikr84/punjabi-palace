@@ -15,7 +15,7 @@
                         </div>
                     </div>
                        <div class="form-group row">
-                        <label for="tablicapacity" class="col-sm-4 col-form-label"><?php echo 'No of people: ';?>**</label>
+                        <label for="tablicapacity" class="col-sm-4 col-form-label"><?php echo display('no_of_people');?>**</label>
                         <div class="col-sm-8 customesl">
                         <?php echo $intinfo->person_capicity;?>
                         <input name="tablicapacity" class="form-control" type="hidden" id="tablicapacity" value="<?php echo $intinfo->person_capicity;?>">
@@ -73,9 +73,8 @@
                         <div class="col-sm-8">
                             <select name="status"  class="form-control">
                                 <option value=""  selected="selected"><?php echo display('select_option');?></option>
-                                <option value="2" <?php if(!empty($intinfo)){if($intinfo->status==2){echo "Selected";}} ?>><?php echo 'Booked';?></option>
-                                <option value="1" <?php if(!empty($intinfo)){if($intinfo->status==1){echo "Selected";}} ?>><?php echo 'Free';?></option>
-                                <option value="5" <?php if(!empty($intinfo)){if($intinfo->status==5){echo "Selected";}} ?>><?php echo 'Cancel';?></option>
+                                <option value="2" <?php if(!empty($intinfo)){if($intinfo->status==2){echo "Selected";}} ?>><?php echo display('booked');?></option>
+                                <option value="1" <?php if(!empty($intinfo)){if($intinfo->status==1){echo "Selected";}} ?>><?php echo display('free');?></option>
                               </select>
                         </div>
                         </div>

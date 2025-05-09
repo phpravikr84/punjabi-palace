@@ -392,12 +392,28 @@ class Reservation extends MX_Controller {
 	   }   
  
     }
+	public function updatetablefrm($id){
+		$this->permission->method('reservation','update')->redirect();
+		$data['title'] = display('update');
+		$data['intinfo']   = $this->reservation_model->findById($id);
+		$data['customerinfo']   = $this->reservation_model->findByCusId($data['intinfo']->cid);
+		$data['tableinfo']   = $this->reservation_model->findBytableId($data['intinfo']->tableid);
+		$data['tablelist']     = $this->reservation_model->table_dropdown();
+		$updatetData = array('notif' =>1);
+		$this->db->where('reserveid',$id);
+		$this->db->update('tblreservation',$updatetData);
+        $data['module'] = "reservation";  
+        $data['page']   = "reservationtableassign";
+		$this->load->view('reservation/reservationtableassign', $data);   
+       
+	   }
    public function updateintfrm($id){
 		$this->permission->method('reservation','update')->redirect();
 		$data['title'] = display('update');
 		$data['intinfo']   = $this->reservation_model->findById($id);
 		$data['customerinfo']   = $this->reservation_model->findByCusId($data['intinfo']->cid);
 		$data['tableinfo']   = $this->reservation_model->findBytableId($data['intinfo']->tableid);
+		$data['tablelist']     = $this->reservation_model->table_dropdown();
 		$updatetData = array('notif' =>1);
 		$this->db->where('reserveid',$id);
 		$this->db->update('tblreservation',$updatetData);

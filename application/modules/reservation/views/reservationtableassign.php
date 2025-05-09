@@ -10,10 +10,10 @@
                     <div class="form-group row">
                         <label for="tableid" class="col-sm-4 col-form-label"><?php echo display('tabltno');?>*</label>
                         <div class="col-sm-8 customesl">
-                        <?php echo $tableinfo->tablename;?>
-                        <input name="tableid" type="hidden" value="<?php echo $tableinfo->tablename;?>" />
+                        <?php echo form_dropdown('tableid',$tablelist,(!empty($tablelist->tableid)?$tablelist->tableid:null),'class="form-control" id="tableid" required') ?>
                         </div>
                     </div>
+             
                        <div class="form-group row">
                         <label for="tablicapacity" class="col-sm-4 col-form-label"><?php echo 'No of people: ';?>**</label>
                         <div class="col-sm-8 customesl">
@@ -21,6 +21,7 @@
                         <input name="tablicapacity" class="form-control" type="hidden" id="tablicapacity" value="<?php echo $intinfo->person_capicity;?>">
                         </div>
                     </div> 
+                    <div style="display:none;">
                         <div class="form-group row">
                             <label for="bookdate" class="col-sm-4 col-form-label"><?php echo display('date') ?> *</label>
                             <div class="col-sm-8">
@@ -79,6 +80,7 @@
                               </select>
                         </div>
                         </div>
+                </div>
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-success w-md m-b-5"><?php echo display('update') ?></button>
                         </div>

@@ -148,7 +148,15 @@
                                 <tr class="<?php echo ($sl & 1)?"odd gradeX":"even gradeC" ?>">
                                     <td><?php echo $sl; ?></td>
                                     <td><?php echo $reserve->customer_name; ?></td>
-                                    <td><?php echo $reserve->tablename; ?></td>
+                                    <td>
+                                        <?php 
+                                            if (!empty($reserve->tablename) && $reserve->tablename != '0') {
+                                                echo $reserve->tablename;
+                                            } else {
+                                                echo '<a onclick="assignreservetable(\'' . $reserve->reserveid . '\')" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Update">Assign Table</a>';
+                                            }
+                                        ?>
+                                    </td>
                                     <td><?php echo $reserve->person_capicity; ?></td>
                                     <td><?php echo $reserve->formtime; ?></td>
                                      <td><?php echo $reserve->totime; ?></td>
@@ -156,6 +164,8 @@
                                      <td><?php if($reserve->status==1){echo "Free";} if($reserve->status==2){echo "Booked";} ?></td>
                                    <td class="center">
                                     <?php if($this->permission->method('reservation','update')->access()): ?>
+                                        
+                                        <input name="tableurl" type="hidden" id="tableurl_<?php echo $reserve->reserveid; ?>" value="<?php echo base_url("reservation/reservation/updatetablefrm") ?>" />
                                     <input name="url" type="hidden" id="url_<?php echo $reserve->reserveid; ?>" value="<?php echo base_url("reservation/reservation/updateintfrm") ?>" />
                                         <a onclick="editreserveinfo('<?php echo $reserve->reserveid; ?>')" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Update"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
                                          <?php endif; 

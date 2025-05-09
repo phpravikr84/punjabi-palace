@@ -75,3 +75,35 @@ function checkavail(){
 			 } 
 			});
 	}
+
+	function assignreservetable(id){
+	    var geturl=$("#tableurl_"+id).val();
+	    var myurl =geturl+'/'+id;
+	    var sdate=$("#sldate").val();
+	    var sltime=$("#sltime").val();
+	    var people=$("#people").val();
+		var csrf = $('#csrfhashresarvation').val();
+	    var dataString = "id="+id+"&sdate="+sdate+"&sltime="+sltime+"&people="+people+"&csrf_test_name="+csrf;
+
+		 $.ajax({
+		 type: "POST",
+		 url: myurl,
+		 data: dataString,
+		 success: function(data) {
+			 $('.editinfo').html(data);
+			 
+			  
+			   $('.timepicker').timepicker({
+				timeFormat: 'HH:mm:ss',
+				stepMinute: 5,
+				stepSecond: 15
+			});
+			 $('#edit').modal('show');
+			
+			  $(".datepicker4").datepicker({
+        		dateFormat: "dd-mm-yy"
+    		}); 
+			
+		 } 
+	});
+	}

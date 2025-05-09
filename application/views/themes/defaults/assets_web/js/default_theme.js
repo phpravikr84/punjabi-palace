@@ -102,6 +102,71 @@ function checkavailablity() {
 
 }
 
+function checkavailablity_pop() {
+
+    var getdate = $("#reservation_date").val();
+    var time = $("#reservation_time").val();
+    var people = $("#reservation_person").val();
+    var geturl = $("#checkurl").val();
+    var isopen = basicinfo.reservationopen;
+
+    if (getdate == '') {
+        alert(lang.select_date);
+        return false;
+    }
+    if (time == '') {
+        alert(lang.select_time);
+        return false;
+    }
+    if (people == '' || people == 0) {
+        alert(lang.enter_number_of_people);
+        return false;
+    }
+    var currentDate = new Date();
+    var intime = time.split(":");
+    var day = currentDate.getDate()
+    var month = currentDate.getMonth() + 1;
+    var hours = currentDate.getHours();
+    var year = currentDate.getFullYear()
+    var currentday = Date.parse(year + '-' + month + '-' + day);
+    var inutdate = Date.parse(getdate);
+
+    if (currentday == inutdate) {
+
+        var checkhour = currentDate.setHours(currentDate.getHours() + 1);
+        var endTimeObject = new Date(checkhour);
+        var inputtime = endTimeObject.setHours(intime[0], intime[1], 0);
+    }
+    if (checkhour >= inputtime) {
+        swal("Invalid", lang.select_after_hour_current_time, "warning");
+        return false;
+    }
+
+
+    var dataString = "getdate=" + getdate + "&time=" + time + "&people=" + people+'&csrf_test_name='+basicinfo.csrftokeng;
+    // Call ajax for pass data to other place
+    $.ajax({
+        type: 'POST',
+        url: geturl,
+        data: dataString
+    }).done(function(data, textStatus, jQxhr) {
+        if (data == 1) {
+            swal("Invalid", lang.no_free_seat_to_the_reservation, "warning");
+        } else if (data == 2) {
+            swal("Closed", lang.our_service_is_closed_on_this_date_and_time, "warning");
+        } else {
+            //$('#searchreservation').html(data);
+             // Inject returned view into modal body
+             $('#reservationContent').html(data); //
+             $('#reservationModal').modal('show');
+        }
+    }).fail(function(jqXhr, textStatus, errorThrown) {
+        alert(lang.posting_failed);
+        console.log(errorThrown);
+    });
+
+}
+
 function editreserveinfo(id) {
     var geturl = $("#url_" + id).val();
     var myurl = geturl + '/' + id;

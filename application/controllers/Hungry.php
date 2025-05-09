@@ -847,10 +847,12 @@ class Hungry extends CI_Controller
 		$curtime = strtotime(date("h:i:s A"));
 		$taken = $numofpeople + $gettotalreserverp->totalperson;
 
+
 		$data['newdate'] = $newdate;
 		$data['gettime'] = $this->input->post('time');
 		$data['nopeople'] = $numofpeople;
 		$data['contactno'] = $this->input->post('contactno');
+
 		if ($maxperson < $numofpeople) {
 			echo 1;
 			exit;
@@ -863,6 +865,100 @@ class Hungry extends CI_Controller
 			$this->load->view('themes/' . $this->themeinfo->themename . '/checkavail', $data);
 		}
 	}
+
+	public function check_and_book_seats()
+	{
+		$numofpeople = (int)$this->input->post('people');
+		$newdate = $this->input->post('getdate'); // format: YYYY-MM-DD
+		$time = $this->input->post('time');       // format: HH:MM:SS - HH:MM:SS
+		$contactno = $this->input->post('contactno');
+
+		list($form_time, $to_time) = explode('-', $time);
+		$form_time = trim($form_time);
+		$to_time = trim($to_time);
+
+		$day_id = date('N', strtotime($newdate)); // 1 = Monday ... 7 = Sunday
+
+		// Get max seats per slot (assume default 100 if not specified)
+		$this->db->where('day_id', $day_id);
+		$this->db->where('start_time', $form_time);
+		$this->db->where('end_time', $to_time);
+		$this->db->where('is_active', 1);
+		$slot = $this->db->get('slots')->row();
+
+		if (!$slot) {
+			echo 3; // slot not found
+			return;
+		}
+
+		$totalpersoncapacity = 0;
+		$this->db->select_sum('person_capicity');
+        $query = $this->db->get('rest_table');
+        if ($query->num_rows() > 0) {
+            $totalpersoncapacity = $query->row()->person_capicity;
+        }
+
+
+		$maxreservation = $this->settinginfo->maxreserveperson;
+		$max_seats = isset($totalpersoncapacity) ? $totalpersoncapacity + $maxreservation : $maxreservation;
+
+		// Get total people already reserved for this slot & date
+		$this->db->select_sum('person_capicity');
+		$this->db->where('reserveday', $newdate);
+		$this->db->where('formtime', $form_time);
+		$this->db->where('totime', $to_time);
+		$this->db->where('status', 2); // only confirmed bookings
+		$reserved = $this->db->get('tblreservation')->row();
+		$reserved_people = (int)$reserved->person_capicity;
+
+		$available_seats = $max_seats - $reserved_people;
+
+		// Load settings
+		$rseting = $this->hungry_model->read('*', 'setting', array('id' => 2));
+		$maxperson = (int)$rseting->maxreserveperson;
+
+		// Check if request exceeds system max allowed per booking
+		if ($numofpeople > $maxperson) {
+			echo 1; // exceeds max allowed per booking
+			return;
+		}
+
+		// Check if available seats are enough
+		if ($numofpeople > $available_seats) {
+			echo 1; // not enough seats
+			return;
+		}
+
+		// Check off day
+		$offinformation = $this->hungry_model->read('*', 'reservationofday', array('offdaydate' => $newdate));
+		if ($offinformation) {
+			$offdate = $offinformation->offdaydate;
+			$offtime = explode("-", $offinformation->availtime);
+			$deltime1 = strtotime(trim($offtime[0]));
+			$deltime2 = strtotime(trim($offtime[1]));
+			$curtime = strtotime(date("H:i:s"));
+			if (($curtime >= $deltime1) && ($curtime < $deltime2) && (strtotime($offdate) == strtotime($newdate))) {
+				echo 2; // during blocked/off time
+				return;
+			}
+		}
+
+		// Prepare data for view
+		$data['newdate'] = $newdate;
+		$times = explode('-', $this->input->post('time'));
+		$starttime = trim($times[0]);
+        $endtime = trim($times[1]);
+		$data['gettime'] = $starttime;
+		$data['endtime'] = $endtime;
+
+		$data['nopeople'] = $numofpeople;
+		$data['contactno'] = $contactno;
+		$data['available_seats'] = $available_seats;
+		// Optionally, load a view or return success
+		$this->load->view('themes/' . $this->themeinfo->themename . '/reservationfrmpopup', $data);
+	}
+
+
 	public function reservationform($id)
 	{
 		$id = $this->input->post('id');
@@ -897,12 +993,13 @@ class Hungry extends CI_Controller
 	}
 	public function bookreservation()
 	{
+
 		if ($this->webinfo->web_onoff == 0) {
 			redirect(base_url() . 'login');
 			exit;
 		}
 		$this->form_validation->set_rules('customer_name', "Customer Name", 'required');
-		$this->form_validation->set_rules('tableid', "Table No", 'required');
+		//$this->form_validation->set_rules('tableid', "Table No", 'required');
 		$this->form_validation->set_rules('tablicapacity', "No. of Person", 'required');
 		$this->form_validation->set_rules('bookfromtime', display('s_time'), 'required');
 		$this->form_validation->set_rules('bookendtime', display('e_time'), 'required');
@@ -965,13 +1062,13 @@ class Hungry extends CI_Controller
 			$data['units']   = (object) $postData = array(
 				'reserveid'     		 => $this->input->post('reserveid'),
 				'cid' 	 			 => $rerturnid,
-				'tableid' 	 		 => $this->input->post('tableid', true),
+				//'tableid' 	 		 => $this->input->post('tableid', true),
 				'person_capicity' 	 => $this->input->post('tablicapacity', true),
 				'formtime' 	 		 => $this->input->post('bookfromtime', true),
 				'totime' 	 		 => $this->input->post('bookendtime', true),
 				'reserveday' 	 	 => $newdate,
 				'customer_notes'      => $this->input->post('message', true),
-				'status' 	 	     => 2,
+				'status' 	 	     => 1,
 			);
 
 			if ($this->hungry_model->bookedtable($postData)) {
@@ -1009,7 +1106,11 @@ class Hungry extends CI_Controller
 				$this->email->subject($subject);
 				$this->email->message($htmlContent);
 				$this->email->send();
-				$this->session->set_flashdata('message', display('save_successfully'));
+				$message = "Your reservation request has been submitted successfully.\n" .
+							"Please note that your booking is subject to approval by our manager. You will receive a confirmation message on your registered mobile number or email once your reservation is approved.\n" .
+							"Thank you for choosing us!";
+				$this->session->set_flashdata('message', nl2br($message));
+				//$this->session->set_flashdata('message', display('save_successfully'));
 				redirect('reservation');
 			} else {
 				$this->session->set_flashdata('exception',  display('please_try_again'));
