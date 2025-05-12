@@ -59,54 +59,61 @@ class Purchase_model extends CI_Model {
 			$product_id = $p_id[$i];
 			$total_price = $t_price[$i];
 
-			
-		/**
-		 * ==========================================
-		 * Price Difference Notification Start
-		 * ==========================================
-		 */
+			/**
+			 * ==========================================
+			 *  Check Price Difference Notification Begin
+			 * ==========================================
+			 */
+				// Check for previous price of the ingredient
+				$last_price = $this->db->select('price')
+				->from('purchase_details')
+				->where('indredientid', $product_id)
+				->order_by('purchaseid', 'DESC')
+				->limit(1)
+				->get()
+				->row();
 
-		// Fetch last purchase price
-		$last_price = $this->db->select('purchaseitem.purID, purchaseitem.suplierID, purchase_details.price')
-						->from('purchase_details')
-						->join('purchaseitem', 'purchaseitem.purID = purchase_details.purchaseid', 'left')
-						->where('purchase_details.indredientid', (int) $product_id)
-						->order_by('purchase_details.purchaseid', 'DESC')
-						->limit(1)
-						->get()
-						->row();
+				// Check if the last price is not empty
+				if (!empty($last_price)) {
+					$previous_price = $last_price->price;
+					$price_difference = $product_rate - $previous_price;
+					$price_diff_percentage = ($previous_price > 0) ? (($price_difference / $previous_price) * 100) : 0;
+            
+					// Check if the price difference is not zero
+					if ($last_price) {
+						$previous_price = $last_price->price;
+						$price_difference = $product_rate - $previous_price;
+						$price_diff_percentage = ($previous_price > 0) ? (($price_difference / $previous_price) * 100) : 0;
+					
+						if ($price_difference != 0) {
+							$price_up = $price_difference > 0 ? 1 : 0;
+							$price_down = $price_difference < 0 ? 1 : 0;
+					
+							$price_diff_data = array(
+								'purchase_id'          => $returnid,
+								'supplier_id'          => $this->input->post('suplierid', true),
+								'ingredient_id'        => $product_id,
+								'last_unit'            => 1, // Assuming unit is always 1
+								'last_unit_price'      => $previous_price,
+								'current_unit_price'   => $product_rate,  // Fixed incorrect key name
+								'price_difference'     => $price_difference,
+								'price_up'             => $price_up,
+								'price_down'           => $price_down,
+								'price_diff_percentage'=> $price_diff_percentage,
+								'is_seen'              => 0 // Fixed as per table default
+							);
+					
+							$this->db->insert($this->price_diff_table, $price_diff_data);
+						}
+					}					
+				}
 
-		if ($last_price) {
-			$previous_price = $last_price->price;
-			$price_difference = $product_rate - $previous_price;
-			$price_diff_percentage = ($previous_price > 0) ? (($price_difference / $previous_price) * 100) : 0;
 
-			if ($price_difference != 0) {
-				$price_diff_data = [
-					'purchase_id'            => $returnid,
-					'supplier_id'            => $this->input->post('suplierid', true),
-					'ingredient_id'          => $product_id,
-					'last_purchase_id'		 => $last_price->purID,
-					'last_supplier_id' 		 => $last_price->suplierID,
-					'last_unit'              => 1, // assuming unit always 1
-					'last_unit_price'        => $last_price->price,
-					'current_unit_price'     => $product_rate,
-					'price_difference'       => $price_difference,
-					'price_up'               => $price_difference > 0 ? 1 : 0,
-					'price_down'             => $price_difference < 0 ? 1 : 0,
-					'price_diff_percentage'  => $price_diff_percentage,
-					'is_seen'                => 0
-				];
-
-				$this->db->insert($this->price_diff_table, $price_diff_data);
-			}
-		}
-
-		/**
-		 * ==========================================
-		 * Price Difference Notification End
-		 * ==========================================
-		 */
+			 /**
+			  * =========================================
+			  *  Check Price Difference Notification End
+			  * =========================================
+			  */
 			
 			$data1 = array(
 				'purchaseid'		=>	$returnid,

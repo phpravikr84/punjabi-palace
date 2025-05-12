@@ -841,5 +841,53 @@ class Reports extends MX_Controller {
 				$data['itemsummery']=$this->report_model->closingiteminfo($order_ids);
 				echo $viewprint=$this->load->view('cashclosingsummeryreport',$data,true);
 			}
+
+			public function supplier_procurement_price()
+			{
+				// Permission check
+				$this->permission->method('report', 'read')->redirect();
+
+				$data['title'] = 'Supplier Procurement Price Report';
+
+				// Fetch filters from POST request
+				$from_date = $this->input->post('from_date', true);
+				$to_date = $this->input->post('to_date', true);
+				$supplier_id = $this->input->post('supplier_id', true);
+
+				// Format dates if available
+				$start_date = $end_date = null;
+				if (!empty($from_date)) {
+					$start_date = date('Y-m-d', strtotime(str_replace('/', '-', $from_date)));
+				}
+				if (!empty($to_date)) {
+					$end_date = date('Y-m-d', strtotime(str_replace('/', '-', $to_date)));
+				}
+
+				// Load procurement price difference data regardless of filters
+				$data['results'] = $this->report_model->get_supplier_price_difference($start_date, $end_date, $supplier_id);
+
+				// Fetch suppliers list
+				$data['suppliers'] = $this->report_model->get_all_suppliers();
+				$data['price_changes'] = $data['results'];
+
+				 // Assume $analyticsData is your given array (processed from DB)
+				 $data['analytics_title'] = 'Price Change Analytics';
+				 $data['chartData'] = $data; // send raw dat
+
+				// Settings and currency
+				$data['setting'] = $this->report_model->settinginfo();
+				$data['currency'] = $this->report_model->currencysetting($data['setting']->currency);
+
+				// View setup
+				$data['module'] = "report";
+				$data['page'] = "supplier_procurement_report";
+
+				echo Modules::run('template/layout', $data);
+			}
+
+
+
+			
+			
  
 }
