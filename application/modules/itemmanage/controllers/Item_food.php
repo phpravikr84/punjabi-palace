@@ -2250,6 +2250,54 @@ class Item_food extends MX_Controller
 					}
 					
 					// END of Modifier Insertion [Updated by Jsaha]
+
+
+					// Check if Product Exist
+					if ($this->input->post()) {
+						
+						// Build the post data array conditionally
+						$postData = [];
+
+						// Basic form inputs
+						$postData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
+						$postData['pack_size']        = $this->input->post('pack_size', true);
+						$postData['pack_unit']        = $this->input->post('pack_unit', true);
+						$postData['uom_id']    = $this->input->post('purchase_unit', true);
+						$postData['purchase_price']   = $this->input->post('purchase_price', true);
+						$postData['stock_qty']  = $this->input->post('opening_stock', true);
+						$postData['min_stock']        = $this->input->post('minimum_stock', true);
+						$postData['is_active']        = 1;
+
+						// Insert into ingredients table
+						$this->fooditem_model->create_ingredient($postData);
+						$insert_id = $this->db->insert_id(); //ingradient  table id
+						// Update Food Item 
+						$this->fooditem_model->update_ingredient(
+							$insert_id,
+							[
+								'purchase_product' => $insertedFoodId,
+								'status' => '1'
+							]
+						);
+											
+
+						// If inserted successfully and opening_balance is set
+						$opening_balance = $this->input->post('opening_stock', true);
+						if ($insert_id && $opening_balance !== null && $opening_balance !== '') {
+							$opening_stock_data = [
+								'ingredient_name'    => $this->input->post('foodname', true),
+								'ingredient_id'      => $insert_id,
+								'purchase_price'     => $this->input->post('purchase_price', true),
+								'opening_balance'    => $opening_balance,
+								'opening_date' => date('Y-m-d'),
+								'is_active'          => 1
+							];
+
+							// Insert into ingredients_opening_stock table
+							$this->fooditem_model->ingredient_opening_stock($opening_stock_data);
+						}
+
+					}
 					
 
 					$this->session->set_flashdata('message', display('save_successfully'));

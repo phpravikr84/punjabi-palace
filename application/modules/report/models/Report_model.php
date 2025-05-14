@@ -93,7 +93,7 @@ class Report_model extends CI_Model
 		$this->db->from('ingredients b');
 		$this->db->join('purchase_details a', 'b.id = a.indredientid', 'left');
 		$this->db->join('ingredients_opening_stock d', 'b.id = d.ingredient_id', 'left');
-		$this->db->join('unit_of_measurement c', 'c.id = b.consumption_unit', 'inner');
+		$this->db->join('unit_of_measurement c', 'c.id = b.consumption_unit', 'left');
 		$this->db->group_by('b.id');
 		$this->db->order_by('MAX(a.purchasedate)', 'DESC');  // using MAX because of group_by
 

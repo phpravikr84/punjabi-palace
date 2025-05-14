@@ -892,6 +892,26 @@ if (!function_exists('check_add_on_foodingredient_details_exists')) {
   }
 }
 
+if (!function_exists('is_ingredient_readonly')) {
+  function is_ingredient_readonly($ingredient_id) {
+      $CI =& get_instance();
+      $CI->load->database();
+
+      if (!$ingredient_id) {
+          return '';
+      }
+
+      $CI->db->select('indredientid');
+      $CI->db->from('purchase_details');
+      $CI->db->where('indredientid', $ingredient_id);
+      $query = $CI->db->get();
+
+      return ($query->num_rows() > 0) ? 'readonly' : '';
+  }
+}
+
+
+
 
 
 

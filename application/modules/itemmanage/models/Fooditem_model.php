@@ -461,6 +461,43 @@ public function count_fooditem()
 		// if (!$foodItem) {
 		// 	return [];
 		// }
+		// Fetch Ingradient Details
+
+		$ingredients = $this->db->select('
+			ingredients.id,
+			ingredients.ingredient_name,
+			ingredients.purchase_price,
+			ingredients.cost_perunit,
+			ingredients.uom_id,
+			ingredients.purchase_product,
+			ingredients.consumption_unit,
+			ingredients.pack_size,
+			ingredients.convt_ratio,
+			ingredients.stock_qty,
+			ingredients.min_stock,
+			ingredients.status,
+			ingredients.brand_id,
+			ingredients.is_active AS ingredient_active,
+			ingredients.pack_unit,
+			ingredients_opening_stock.id AS opening_id,
+			ingredients_opening_stock.ingredient_name AS opening_ingredient_name,
+			ingredients_opening_stock.purchase_price AS opening_purchase_price,
+			ingredients_opening_stock.opening_balance,
+			ingredients_opening_stock.opening_date,
+			ingredients_opening_stock.is_active AS opening_active
+		')
+		->from('ingredients')
+		->join('ingredients_opening_stock', 'ingredients.id = ingredients_opening_stock.ingredient_id', 'left')
+		->where('ingredients.purchase_product', $id)
+		->where('ingredients.is_active', 1)
+		->order_by('ingredients.ingredient_name', 'ASC')
+		->get()
+		->result();
+		// Fetch ingredients with their respective unit names	
+			
+	
+		
+
 		//Fetch Production details
 		$production =  $this->db->select("itemid, itemvid, itemquantity, saveddate, productionexpiredate")
 						->from("production")
@@ -501,6 +538,7 @@ public function count_fooditem()
 		$foodItem['variants'] = !empty($variants) ? $variants : [];
 		$foodItem['recipes'] = !empty($recipes) ? $recipes : [];
 		$foodItem['modifiers'] = !empty($modifiers) ? $modifiers : [];
+		$foodItem['ingredients'] = !empty($ingredients) ? $ingredients : [];
 		
 		return $foodItem;
 	}
@@ -815,6 +853,21 @@ public function count_fooditem()
 		return false;
 	}
 
+	public function create_ingredient($data = array())
+	{
+		return $this->db->insert('ingredients', $data);
+	}
+
+	public function ingredient_opening_stock($data = array())
+	{
+		return $this->db->insert('ingredients_opening_stock', $data);
+	}
+
+	public function update_ingredient($id, $data = array())
+	{
+		return $this->db->where('id', $id)
+			->update('ingredients', $data);
+	}
 
 
 }
