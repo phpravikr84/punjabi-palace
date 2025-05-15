@@ -71,11 +71,11 @@ $(document).ready(function(){
                             <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
                         </div>
 
-                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"></div>
+                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
                         <div class="col-md-2 mb-2">
                             <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
                         </div>
@@ -173,17 +173,47 @@ $(document).ready(function(){
         }
     });
 });
+
+
+
+// On page load: assign IDs for any prefilled variant names
+
+
+    // Add new logic for Variant row on Blur an On load
+    function assignVariantIds() {
+        $("input[name='variant_name[]']").each(function(){
+            let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
+            if(variantName !== ""){
+                $(this).attr("id", variantName);
+                $(this).closest(".variant-rowedit").find("input[name='price[]']").attr("id", variantName + "_price");
+                $(this).closest(".variant-rowedit").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
+                $(this).closest(".variant-rowedit").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
+                $(this).closest(".variant-rowedit").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
+                $(this).closest(".variant-rowedit").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
+
+                //
+                $(this).closest(".variant-row").find("input[name='price[]']").attr("id", variantName + "_price");
+                $(this).closest(".variant-row").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
+                $(this).closest(".variant-row").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
+                $(this).closest(".variant-row").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
+                $(this).closest(".variant-row").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
+            }
+        });
+    }
+
 //for Add / Edit view Price Calculation
 
 $(document).ready(function() {
 
+    assignVariantIds();  // <-- run once
     // First attach the event handler
     $(document).on('input', "input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']", function() {
 
         let $input = $(this);
-        console.log('Input ID: ' + $input.attr('id'));  // use console instead of alert for better debugging
+        console.log('Input ID on page loading: ' + $input.attr('id'));  // use console instead of alert for better debugging
 
         let price = parseFloat($input.val());
+        console.log('Price Value:', price);
     
         if (isNaN(price)) {
             $input.next('br').next('.price-comparison').html('');
@@ -195,6 +225,7 @@ $(document).ready(function() {
         if ($row.length === 0) {
             $row = $input.closest('.variant-row');
         }
+        console.log('Row ID loading..:', $row.attr('id'));
         let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
     
         if (variantName === '') {
@@ -209,6 +240,7 @@ $(document).ready(function() {
 
         console.log('Looking for recipe input with selector:', recipeSelector);
         console.log('Number of matching inputs:', recipeInput.length);
+        console.log('Recipe Input:', recipeInput);
 
         if (recipeInput.length === 0) {
             console.error('No recipe cost price input found for variant:', variantName);
@@ -216,11 +248,11 @@ $(document).ready(function() {
             return;
         }
 
-        let recipeCost = parseFloat(recipeInput.val());
-        console.log('Recipe Cost Value:', JSON.stringify(recipeInput));
+        let recipeCost = parseFloat($(recipeSelector).val());
+        console.log('Recipe Cost Value:', recipeCost);
 
         if (isNaN(recipeCost)) {
-            $input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost not available!</small>');
+            //$input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost not available!</small>');
             return;
         }
 
@@ -241,7 +273,10 @@ $(document).ready(function() {
     });
 
     // Then trigger 'input' on all fields after handler is attached
-    $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
+    //$("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
+    $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").each(function () {
+        $(this).trigger('input');
+    });
 
 });
 
@@ -884,11 +919,11 @@ $(document).ready(function(){
                             <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
                         </div>
 
-                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"></div>
-                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"></div>
+                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
                         <div class="col-md-2 mb-2">
                             <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
                         </div>
@@ -1093,25 +1128,7 @@ $(document).ready(function () {
 
 });
 
-// Add new logic for Variant row on Blur an On load
-function assignVariantIds() {
-    $("input[name='variant_name[]']").each(function(){
-        let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
-        if(variantName !== ""){
-            $(this).attr("id", variantName);
-            $(this).closest(".variant-rowedit").find("input[name='price[]']").attr("id", variantName + "_price");
-            $(this).closest(".variant-rowedit").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
-            $(this).closest(".variant-rowedit").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
-            $(this).closest(".variant-rowedit").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
-            $(this).closest(".variant-rowedit").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
-        }
-    });
-}
 
-// On page load: assign IDs for any prefilled variant names
-$(document).ready(function(){
-    assignVariantIds();  // <-- run once
-});
 
 $(document).ready(function () {
     $('[data-toggle="popover"]').popover();

@@ -483,23 +483,23 @@
                                             <!-- Price Fields -->
                                             <div class="col-md-2 mb-2">
                                                 <small>Price</small>
-                                                <input type="text" name="price[]" class="form-control" value="<?php echo $variant->price; ?>">
+                                                <input type="text" name="price[]" class="form-control" value="<?php echo $variant->price; ?>"><br/><span class="price-comparison"></span>
                                             </div>
                                             <div class="col-md-2 mb-2">
                                                 <small>Takeaway</small>
-                                                <input type="text" name="takeaway_price[]" class="form-control" value="<?php echo $variant->takeaway_price; ?>">
+                                                <input type="text" name="takeaway_price[]" class="form-control" value="<?php echo $variant->takeaway_price; ?>"><br/><span class="price-comparison"></span>
                                             </div>
                                             <div class="col-md-2 mb-2">
                                                 <small>Ubereats</small>
-                                                <input type="text" name="uber_eats_price[]" class="form-control" value="<?php echo $variant->uber_eats_price; ?>">
+                                                <input type="text" name="uber_eats_price[]" class="form-control" value="<?php echo $variant->uber_eats_price; ?>"><br/><span class="price-comparison"></span>
                                             </div>
                                             <div class="col-md-2 mb-2">
                                                 <small>Doordash</small>
-                                                <input type="text" name="doordash_price[]" class="form-control" value="<?php echo $variant->doordash_price; ?>">
+                                                <input type="text" name="doordash_price[]" class="form-control" value="<?php echo $variant->doordash_price; ?>"><br/><span class="price-comparison"></span>
                                             </div>
                                             <div class="col-md-2 mb-2">
                                                 <small>Weborder</small>
-                                                <input type="text" name="weborder_price[]" class="form-control" value="<?php echo $variant->web_order_price; ?>">
+                                                <input type="text" name="weborder_price[]" class="form-control" value="<?php echo $variant->web_order_price; ?>"><br/><span class="price-comparison"></span>
                                             </div>
                                             <div class="col-md-2 mb-2">
                                                 <input type="hidden" id="get_deletemodifier" value="<?php echo base_url('/itemmanage/item_food/delete_variant'); ?>" />
@@ -878,6 +878,11 @@
   });
 document.getElementById("isoffer").addEventListener("change", function () {
     document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
+    if (this.checked) {
+        document.getElementById("offeractive").classList.add("showhide");
+    } else {
+        document.getElementById("offeractive").classList.remove("showhide");
+    }
 });
 </script>
 <style>
