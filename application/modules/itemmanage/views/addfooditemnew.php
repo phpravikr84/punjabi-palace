@@ -547,7 +547,7 @@
                                                                 </select>
                                                             </td>
                                                             <td><input type="text" name="product_quantity_<?php echo $variantKey; ?>[]" id="product_quantity_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control quantityCheck" value="<?php echo $recipe->qty; ?>" data-row-id="<?php echo $variantKey; ?>_<?php echo $i; ?>"></td>
-                                                            <td><input type="text" name="product_price_<?php echo $variantKey; ?>[]" id="product_price_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control" value="<?php echo $recipe->recipe_price; ?>"></td>
+                                                            <td><input type="text" name="product_price_<?php echo $variantKey; ?>[]" id="product_price_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control product_price_<?php echo $variantKey; ?>" value="<?php echo $recipe->recipe_price; ?>"></td>
                                                             <td>
                                                                 <input type="hidden" id="unit-total_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $unit_price; ?>" />
                                                                 <input type="hidden" name="unitid_<?php echo $variantKey; ?>[]" id="unitid_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $recipe->unitid; ?>">
@@ -603,6 +603,11 @@
                                     </div>
                                 </div>
                                 <div id="variantContainer">
+                                        <input type="hidden" name="foodCheckBomorNotBomUrl" id="foodCheckBomorNotBomUrl" value="<?php echo base_url('production/production/check_food_item_without_bom'); ?>"/>
+                                        <input name="url" type="hidden" id="url" value="<?php echo base_url('itemmanage/item_food/getingredientitem'); ?>" />
+                                        <input type="hidden" id="get_uom_listby_ing" value="<?php echo base_url('production/production/getUomDetailsNew'); ?>" />
+
+
                                     <div class="row variant-row mb-2" id="variantRow_1">
                                         <div class="col-md-12 mb-2">
                                             <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">

@@ -534,7 +534,7 @@ $(document).ready(function () {
     $(document).on("change", ".ingredient-select", function () {
         var ingredientId = $(this).val(); // Get selected ingredient ID
         var rowId = $(this).attr('data-row-id'); // Get row ID
-        console.log('Row ID:', rowId);
+        console.log('Ingredient Select Row ID:', rowId);
         if((rowId !="{{name}}")){
             checkproduct_list(ingredientId, rowId); // Pass ingredient ID and row ID to function
         }
@@ -591,7 +591,7 @@ function calprice(rowId){
     //alert('Ingredient Name'+ingrden);
     if (ingrden == 0 || ingrden=='') {
       $('#product_quantity_'+rowId).val('');
-      alert('Please select Item!');
+      //alert('Please select Item!');
       $('#product_price_' + rowId).attr("value", '');
 
 
@@ -653,9 +653,11 @@ function checkproduct_list(ingredientId, sl) {
     var product_id = $('#product_id_' + sl).val();
     var product_name = $('#product_id_' + sl + ' option:selected').data('title');
 
+    console.log('Ingradient Select product_id' + product_id);
 
     // Get Unit value based on selected Ingredient
     var getUomIngredientUrl = $("#get_uom_listby_ing").val();
+    console.log('getUomIngredientUrl' + getUomIngredientUrl);
     $.ajax({
         type: "GET",
         url: getUomIngredientUrl + '/' + product_id,
