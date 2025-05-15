@@ -2147,8 +2147,10 @@ class Item_food extends MX_Controller
 						$doordashPrices = $this->input->post('doordash_price', true);
 						$webOrderPrices = $this->input->post('weborder_price', true);
 						$recipeFor = $this->input->post('recipe_for', true);
-						
+
+						$index = 0;
 						foreach ($variantNames as $key => $variantName) {
+							$variantKey = strtolower($recipeFor[$key]); 
 							$existingVariant = $this->db->where([
 								'menuid' => $insertedFoodId,
 								'variantName' => $variantName,
@@ -2163,6 +2165,8 @@ class Item_food extends MX_Controller
 									'uber_eats_price' => $uberEatsPrices[$key],
 									'doordash_price' => $doordashPrices[$key],
 									'web_order_price' => $webOrderPrices[$key],
+									'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
+									'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
 								];
 
 								if ($this->foodvarient_model->create($variantData)) {
@@ -2402,6 +2406,7 @@ class Item_food extends MX_Controller
 
 
 				if ($this->fooditem_model->update_fooditem($postData)) {
+					
                     $this->db->where('menuid', $updatedId);
                     $this->db->delete('variant');
                     $this->db->where('itemid', $updatedId);
@@ -2421,7 +2426,9 @@ class Item_food extends MX_Controller
 						$webOrderPrices = $this->input->post('weborder_price', true);
 						$recipeFor = $this->input->post('recipe_for', true);
 						
+						$index = 0;
 						foreach ($variantNames as $key => $variantName) {
+							$variantKey = strtolower($recipeFor[$key]); 
 							$existingVariant = $this->db->where([
 								'menuid' => $updatedId,
 								'variantName' => $variantName,
@@ -2436,7 +2443,10 @@ class Item_food extends MX_Controller
 									'uber_eats_price' => $uberEatsPrices[$key],
 									'doordash_price' => $doordashPrices[$key],
 									'web_order_price' => $webOrderPrices[$key],
+									'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
+									'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
 								];
+
 
 								if ($this->foodvarient_model->create($variantData)) {
 									$insertedVariantId = $this->db->insert_id();

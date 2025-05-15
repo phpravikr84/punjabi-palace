@@ -303,7 +303,7 @@ public function count_fooditem()
 	
 		public function ingrediantlist()
 		{
-			$data = $this->db->select("*")->from('ingredients')->where('is_active', 1)->order_by('ingredient_name')->get()->result();
+			$data = $this->db->select("*")->from('ingredients')->where('is_active', 1)->where('status', 0)->order_by('ingredient_name')->get()->result();
 			//echo $this->db->last_query();
 			return $data;
 		}
@@ -490,6 +490,7 @@ public function count_fooditem()
 		->join('ingredients_opening_stock', 'ingredients.id = ingredients_opening_stock.ingredient_id', 'left')
 		->where('ingredients.purchase_product', $id)
 		->where('ingredients.is_active', 1)
+		->where('ingredients.status', 0)
 		->order_by('ingredients.ingredient_name', 'ASC')
 		->get()
 		->result();
@@ -844,6 +845,7 @@ public function count_fooditem()
 		');
 		$this->db->from('ingredients');
 		$this->db->where('ingredients.is_active', 1);
+		$this->db->where('ingredients.status', 0);
 		$this->db->where('ingredients.id', $product_id);
 		$query = $this->db->get();
 

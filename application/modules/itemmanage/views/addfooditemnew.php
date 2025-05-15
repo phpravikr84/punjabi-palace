@@ -266,7 +266,7 @@
                         <!-- Only for Product End -->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <div class="row">
+                                <div class="row" id="serving_weightage">
                                     <div class="col-md-6">
                                         <label class="col-form-label">Serving Weightage</label>
                                         <input name="weightage" class="form-control" type="text" 
@@ -513,8 +513,17 @@
                                         <?php if (!empty($recipes)) { ?>
                                             <div class="variant-recipe mt-3" style="border-top: 1px solid #ccc; padding: 10px;">
                                                 <h5 style="display:none;">Recipe for - <?php echo $variantName; ?></h5>
-                                                <small>Recipe Cost Price</small>
-                                                <input type="text" class="form-control" id="recipe_costprice_<?php echo $variantKey; ?>" name="recipe_costprice_<?php echo $variantKey; ?>[]" />
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Cost Price</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_costprice_<?php echo $variantKey; ?>" name="recipe_costprice_<?php echo $variantKey; ?>[]" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Used Quantity</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_usedqty_<?php echo $variantKey; ?>" name="recipe_usedqty_<?php echo $variantKey; ?>[]">
+                                                    </div>
+                                                </div>
+                                                
                                                 <input type="hidden" name="recipe_for[]" value="<?php echo $variantKey; ?>" />
 
                                                 <table class="table table-bordered table-hover" id="recipeTable_<?php echo $variantKey; ?>">
@@ -546,7 +555,7 @@
                                                                     <?php } ?>
                                                                 </select>
                                                             </td>
-                                                            <td><input type="text" name="product_quantity_<?php echo $variantKey; ?>[]" id="product_quantity_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control quantityCheck" value="<?php echo $recipe->qty; ?>" data-row-id="<?php echo $variantKey; ?>_<?php echo $i; ?>"></td>
+                                                            <td><input type="text" name="product_quantity_<?php echo $variantKey; ?>[]" id="product_quantity_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control quantityCheck product_quantity_<?php echo $variantKey; ?>" value="<?php echo $recipe->qty; ?>" data-row-id="<?php echo $variantKey; ?>_<?php echo $i; ?>"></td>
                                                             <td><input type="text" name="product_price_<?php echo $variantKey; ?>[]" id="product_price_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control product_price_<?php echo $variantKey; ?>" value="<?php echo $recipe->recipe_price; ?>"></td>
                                                             <td>
                                                                 <input type="hidden" id="unit-total_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $unit_price; ?>" />
@@ -628,8 +637,17 @@
                                         <div class="col-md-12" id="variantRecipe_{{name}}">
                                             <div class="recipe mt-5" id="recipeBox" style="border-top: 1px solid #ccc; padding: 10px;">
                                                 <h4 style="display:none;">Recipe for - {{name}}</h4>
-                                                <small><strong>Recipe Cost Price</strong></small>
-                                                <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Cost Price</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Used Quantity</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_usedqty_{{name}}" name="recipe_usedqty_{{name}}[]">
+                                                    </div>
+                                                </div>
+                                                
                                                 <input type="hidden" name="recipe_for[]" value="{{name}}">
 
                                                 <table class="table table-bordered" id="recipeTable_{{name}}">
@@ -652,7 +670,7 @@
                                                                     <?php endforeach; ?>
                                                                 </select>
                                                             </td>
-                                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck" data-row-id="{{name}}_1"></td>
+                                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck product_quantity_{{name}}" data-row-id="{{name}}_1"></td>
                                                             <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
                                                             <td>
                                                                 <input type="hidden" id="unit-total_{{name}}_1">
@@ -878,6 +896,7 @@
   });
 document.getElementById("isoffer").addEventListener("change", function () {
     document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
+
     if (this.checked) {
         document.getElementById("offeractive").classList.add("showhide");
     } else {

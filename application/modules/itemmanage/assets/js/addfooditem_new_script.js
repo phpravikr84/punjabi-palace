@@ -83,8 +83,16 @@ $(document).ready(function(){
                         <div class="col-md-12" id="variantRecipe_{{name}}">
                             <div class="recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                 <h4 style="display:none;">Recipe for - {{name}}</h4>
-                                <small>Recipe Cost Price</small>
-                                <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <small><strong>Recipe Cost Price</strong></small>
+                                        <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                    </div>
+                                <div class="col-md-6">
+                                    <small><strong>Recipe Used Quantity</strong></small>
+                                    <input type="text" class="form-control" id="recipe_usedqty_{{name}}" name="recipe_usedqty_{{name}}[]">
+                                </div>
+                            </div>
                                 <input type="hidden" name="recipe_for[]" value="{{name}}">
 
                                 <table class="table table-bordered" id="recipeTable_{{name}}">
@@ -104,7 +112,7 @@ $(document).ready(function(){
                                                     ${options}
                                                 </select>
                                             </td>
-                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck" data-row-id="{{name}}_1"></td>
+                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck product_quantity_{{name}}" data-row-id="{{name}}_1"></td>
                                             <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
                                             <td>
                                                 <input type="hidden" id="unit-total_{{name}}_1">
@@ -411,8 +419,17 @@ $(document).ready(function () {
                                 var recipeTable = `
                                     <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                         <h4>Recipe for - ${variantName}</h4>
-                                        <small>Recipe Cost Price</small>
-                                        <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <small><strong>Recipe Cost Price</strong></small>
+                                                <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small><strong>Recipe Used Quantity</strong></small>
+                                                <input type="text" class="form-control" id="recipe_usedqty_${variantId}" name="recipe_usedqty_${variantId}[]"/>
+                                            </div>
+                                        </div>
+                                        
                                         <input type="hidden" name="recipe_for[]" value="${variantName}"/>
                                         <table class="table table-bordered" id="recipeTable_${variantId}">
                                             <thead>
@@ -431,7 +448,7 @@ $(document).ready(function () {
                                                             ${options}
                                                         </select>
                                                     </td>
-                                                    <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                    <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${variantId}_1"></td>
                                                     <td class="text-right">
                                                         <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
                                                     </td>
@@ -543,7 +560,7 @@ $(document).ready(function () {
                                     ${options}
                                 </select>
                             </td>
-                            <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck" data-row-id="${rowId}"></td>
+                            <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${rowId}"></td>
                             <td><input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00"></td>
                             <td>
                                 <input type="hidden" id="unit-total_${rowId}">
@@ -663,6 +680,33 @@ function calprice(rowId){
         $('.product_price_' + variantId).each(function () {
             recipe_costprice += parseFloat($(this).val());
         });
+
+        //Get the recipe used quantity
+        var recipe_usedqty = 0;
+       $('.product_quantity_' + variantId).each(function () {
+            recipe_usedqty += parseFloat($(this).val());
+        });
+        console.log('Recipe Used Quantity:', recipe_usedqty);
+        $('#recipe_usedqty_' + variantId).val(recipe_usedqty.toFixed(3));
+        $('#recipe_usedqty_' + variantId).attr("value", recipe_usedqty.toFixed(3));
+
+        // Find the first .variant-rowedit or .variant-row
+        var targetRow = $('.variant-rowedit, .variant-row').first();
+        console.log('Target Row:', targetRow.attr('id'));
+
+        // Find any element with a class starting with 'recipe_usedqty_'
+           // Within that row, find input with id or class starting with 'recipe_usedqty_'
+        var qtyInput = targetRow.find('input[id^="recipe_usedqty_"], input[class^="recipe_usedqty_"]').first();
+        console.log('Qty Input:', qtyInput);
+
+        // If found, get its value
+        if (qtyInput.length) {
+            var qtyValue = qtyInput.val(); // use .text() if it's not an input
+            console.log('Qty Value:', qtyValue);
+            $('#weightage').val(qtyValue);
+        }
+
+
  
          // Update total recipe cost input for the current variant
          console.log('Recipe Cost Price:', recipe_costprice);
@@ -814,9 +858,20 @@ $(document).ready(function(){
                                         var recipeTable = `
                                             <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                                 <h4>Recipe for - ${variantName}</h4>
-                                                  <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Cost Price</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Used Quantity</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_usedqty_${variantId}" name="recipe_usedqty_${variantId}[]"/>
+                                                    </div>
+                                                </div>
+                                                  
                                                     <input type="hidden" name="recipe_for[]" value="${variantName}"/>
-                                                <input type="hidden" name="recipe_for[]" value="${variantId}"/>
+
                                                 <table class="table table-bordered" id="recipeTable_${variantId}">
                                                     <thead>
                                                         <tr>
@@ -834,7 +889,7 @@ $(document).ready(function(){
                                                                     ${options}
                                                                 </select>
                                                             </td>
-                                                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${variantId}_1"></td>
                                                             <td class="text-right">
                                                                 <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
                                                             </td>
@@ -931,8 +986,17 @@ $(document).ready(function(){
                         <div class="col-md-12" id="variantRecipe_{{name}}">
                             <div class="recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                 <h4 style="display:none;">Recipe for - {{name}}</h4>
-                                <small>Recipe Cost Price</small>
-                                <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <small><strong>Recipe Cost Price</strong></small>
+                                        <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <small><strong>Recipe Used Quantity</strong></small>
+                                        <input type="text" class="form-control" id="recipe_usedqty_{{name}}" name="recipe_usedqty_{{name}}[]">
+                                    </div>
+                                </div>
+                                
                                 <input type="hidden" name="recipe_for[]" value="{{name}}">
 
                                 <table class="table table-bordered" id="recipeTable_{{name}}">
@@ -952,7 +1016,7 @@ $(document).ready(function(){
                                                     ${options}
                                                 </select>
                                             </td>
-                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck" data-row-id="{{name}}_1"></td>
+                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck product_quantity_{{name}}" data-row-id="{{name}}_1"></td>
                                             <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
                                             <td>
                                                 <input type="hidden" id="unit-total_{{name}}_1">
@@ -1061,6 +1125,35 @@ $(document).ready(function () {
         $recipeInput.val(recipe_costprice.toFixed(3));
         $recipeInput.attr('value', recipe_costprice.toFixed(3));
         console.log('Variant: ' + variantId + ', Recipe Cost Price: ' + recipe_costprice.toFixed(3));
+
+        // Update recipe used quantity
+        var recipe_usedqty = 0;
+        $('input[name="product_quantity_' + variantId + '[]"]').each(function () {
+            var qty = parseFloat($(this).val()) || 0;
+            recipe_usedqty += qty;
+        });
+        var $usedQtyInput = $('#recipe_usedqty_' + variantId);
+        $usedQtyInput.val(recipe_usedqty.toFixed(3));
+        $usedQtyInput.attr('value', recipe_usedqty.toFixed(3));
+        console.log('Variant: ' + variantId + ', Recipe Used Quantity: ' + recipe_usedqty.toFixed(3));
+        
+        
+        // Find the first .variant-rowedit or .variant-row
+        var targetRow = $('.variant-rowedit, .variant-row').first();
+        console.log('Target Row:', targetRow.attr('id'));
+
+        // Find any element with a class starting with 'recipe_usedqty_'
+           // Within that row, find input with id or class starting with 'recipe_usedqty_'
+        var qtyInput = targetRow.find('input[id^="recipe_usedqty_"], input[class^="recipe_usedqty_"]').first();
+        console.log('Qty Input:', qtyInput);
+
+        // If found, get its value
+        if (qtyInput.length) {
+            var qtyValue = qtyInput.val(); // use .text() if it's not an input
+            console.log('Qty Value:', qtyValue);
+            $('#weightage').val(qtyValue);
+        }
+
     }
 
     // Loop through each variant dynamically
@@ -1143,15 +1236,18 @@ $(document).ready(function () {
         if (value == 3) {
             $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').hide();
             $('#productinfo').show();
+            $('#serving_weightage').show();
         } else {
             $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').show();
             $('#productinfo').hide();
+            $('#serving_weightage').hide();
         }
     }
 
     // Default show on page load
-    $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').show();
+    $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore, #serving_weightage').show();
     $('#productinfo').hide();
+    $('#serving_weightage').hide();
 
     // On change of cuisine_type select box
     $('select[name="cusine_type"]').on('change', function () {
