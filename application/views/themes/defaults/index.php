@@ -12,6 +12,7 @@ if (!empty($seoterm)) {
 if($seoterm!="home"){
 	$title2="";
 }
+// echo "Title: ".$seoinfo->title;
 /*for whatsapp modules*/
 $WhatsApp = $this->db->where('directory', 'whatsapp')->where('status', 1)->get('module');
 $whatsapp_count = $WhatsApp->num_rows();
@@ -104,8 +105,10 @@ $whatsapp_count = $WhatsApp->num_rows();
 					</div>
 					<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 						<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-							<?php $allmenu = $this->allmenu;
+							<?php 
+							$allmenu = $this->allmenu;
 							foreach ($allmenu as $menu) {
+								// echo $menu->menu_name;
 								$dropdown = '';
 								$dropdownassest = '';
 								$dropdownaclass = '';
@@ -124,6 +127,12 @@ $whatsapp_count = $WhatsApp->num_rows();
 										$href = base_url() ."mylogin";
 									}
 								}
+								if($seoinfo->title==$menu->menu_name){
+									$activeclass = 'active';
+								} else {
+									$activeclass = '';
+								}
+
 								if(!empty($menu->sub)) {
 									$dropdown = 'dropdown';
 									$dropdownassest = 'id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
@@ -179,11 +188,11 @@ $whatsapp_count = $WhatsApp->num_rows();
 								</div>
 							</li>
 
-							<li class="nav-item">
+							<!-- <li class="nav-item">
 								<a class="nav-link" href="<?php echo base_url(); ?>cart" id="navbarDropdown3">
 									<i class="ti-shopping-cart"></i><span class="badge badge-notify my-cart-badge" id="itemnum"><?php $totalqty = 0; if($this->cart->contents() > 0){ $totalqty = count($this->cart->contents());} echo $totalqty; ?></span>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</nav>

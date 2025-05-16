@@ -66,6 +66,51 @@ class Item_food extends MX_Controller
 		$data['page']   = "fooditemlist";
 		echo Modules::run('template/layout', $data);
 	}
+	public function promo_index()
+	{
+
+		$this->permission->method('itemmanage', 'read')->redirect();
+		// $data['title']    = display('food_list');
+		$data['title']    = "Deals List";
+		#-------------------------------#       
+		#
+		#pagination starts
+		#
+		$config["base_url"] = base_url('itemmanage/item_food/index');
+		$config["total_rows"]  = $this->fooditem_model->count_dealitem();
+		$config["per_page"]    = 25;
+		$config["uri_segment"] = 4;
+		$config["last_link"] = "Last";
+		$config["first_link"] = "First";
+		$config['next_link'] = 'Next';
+		$config['prev_link'] = 'Prev';
+		$config['full_tag_open'] = "<ul class='pagination col-xs pull-right'>";
+		$config['full_tag_close'] = "</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tag_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";
+		/* ends of bootstrap */
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$data["fooditemslist"] = $this->fooditem_model->read_promoitem($config["per_page"], $page);
+		$data['pagenum'] = $page;
+		$data["links"] = $this->pagination->create_links();
+		#
+		#pagination ends
+		#   
+		$data['module'] = "itemmanage";
+		$data['page']   = "fooditemlist";
+		echo Modules::run('template/layout', $data);
+	}
 
 
 	public function create($id = null)
@@ -349,6 +394,66 @@ class Item_food extends MX_Controller
 			$data['page']   = "addfooditem";
 			echo Modules::run('template/layout', $data);
 		}
+	}
+
+	public function addpromofood ()
+	{
+		$this->permission->method('itemmanage', 'addpromofood')->redirect();
+		$data['title'] = "Add Promo Food";
+		#-------------------------------#
+		$this->form_validation->set_rules('CategoryID', display('category_name'), 'required');
+		if (!empty($this->input->post('ProductsID'))) {
+			$this->form_validation->set_rules('foodname', display('item_name'), 'required|max_length[100]');
+		} else {
+			$this->form_validation->set_rules('foodname', display('item_name'), 'required|is_unique[item_foods.ProductName]|max_length[100]');
+			$this->form_validation->set_message('is_unique', 'Sorry, this %s already used!');
+		}
+		$this->form_validation->set_rules('status', display('status'), 'required');
+
+		$savedid = $this->session->userdata('id');
+		$offerstartdate = str_replace('/', '-', $this->input->post('offerstartdate', true));
+		$offerendate = str_replace('/', '-', $this->input->post('offerendate', true));
+
+		$isoffer = $this->input->post('isoffer', true);
+		if ($isoffer == 1) {
+			$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
+			$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
+			$convertstartdate = date('Y-m-d', strtotime($offerstartdate));
+			$convertenddate = date('Y-m-d', strtotime($offerendate));
+			$isoffer = $isoffer;
+			$OffersRate = $this->input->post('offerate', true);
+		} else {
+			$convertstartdate = "0000-00-00";
+			$convertenddate = "0000-00-00";
+			$isoffer = 0;
+			$OffersRate = 0;
+		}
+		#-------------------------------#
+		if ($this->form_validation->run()) {
+			if (empty($this->input->post('ProductsID'))) {
+
+			} else {
+
+			}
+		}  else {
+			$data['taxitems'] = $this->taxchecking();
+			// if (!empty($id)) {
+			// 	$data['title'] = display('update_fooditem');
+			// 	$data['productinfo']   = $this->fooditem_model->findById($id);
+			// }
+
+			$data['categories']   =  $this->category_model->allcategory_dropdown();
+			$data['allkitchen']   =  $this->fooditem_model->allkitchen();
+			$data['food_list']   =  $this->fooditem_model->read_fooditem();
+			$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+			$data['module'] = "itemmanage";
+			$data['page']   = "addpromofood";
+			echo Modules::run('template/layout', $data);
+		}
+	}
+	public function promo_list ()
+	{
+
 	}
 
 	public function new_create_with_error($id = null)

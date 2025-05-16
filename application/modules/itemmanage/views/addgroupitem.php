@@ -548,6 +548,24 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                 $(".rdb").val('0');
             }
         });
+        $("#addhoc_weight_percent").on('input', function() {
+            var value = $(this).val();
+            // if (value > 100) {
+            //     $(this).val(100);
+            // }
+            $('input[name="weight_percent[]"]').each(function() {
+                $(this).val(value);
+            });
+        });
+        $("#addhoc_max_item").on('input', function() {
+            var value = $(this).val();
+            // if (value > 100) {
+            //     $(this).val(100);
+            // }
+            $('input[name="max_quantity[]"]').each(function() {
+                $(this).val(value);
+            });
+        });
 
         <?php
         if (!empty($productinfo->ProductsID)):

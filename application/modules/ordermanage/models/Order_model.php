@@ -64,6 +64,7 @@ class Order_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('item_foods');
 		$this->db->where('ProductsIsActive', 1);
+		$this->db->where('isgroup', null);
 		$this->db->where('cusine_type', 1);
 		$query = $this->db->get();
 		$itemlist = $query->result();
@@ -659,10 +660,14 @@ class Order_model extends CI_Model
 		if (!empty($cid)) {
 			$this->db->where($catcontition);
 		}
-		$this->db->like('ProductName', $pname);
+		if (!empty($pname)) {
+			$this->db->like('ProductName', $pname);
+		}
+		$this->db->where('isgroup', null);
 		$this->db->where('ProductsIsActive', 1);
 		$query = $this->db->get();
 		$itemlist = $query->result();
+		// echo $this->db->last_query();
 		$output = array();
 		if (!empty($itemlist)) {
 			$k = 0;

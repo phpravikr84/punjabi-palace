@@ -91,7 +91,32 @@
 			  ?>
 			  <tr>
 				<td colspan="2">
-				<?php echo $mv->add_on_name;?>
+				<?php echo "Modifiers: ".$mv->add_on_name;?>
+				</td>
+				<td class="text-right"><?php echo 1;?></td>
+			</tr>
+			  <?php
+				  }
+				}
+			  }
+			//   echo "<pre>";
+			//   print_r($selectedFoodsForCart);
+			//   echo "</pre>";
+			 if(count($selectedFoodsForCart)>0){
+				foreach ($selectedFoodsForCart as $mfk => $mfv) {
+				  if ($mfv->menu_id == $item->menu_id) {
+					$this->db->select('variantName');
+					$this->db->from('variant');
+					$this->db->where('variantid',$mfv->variant_id);
+					$vq = $this->db->get();
+					$variant = $vq->row();
+					// echo "<pre>";
+					// print_r($mv);
+					// echo "</pre>";
+			  ?>
+			  <tr>
+				<td colspan="2">
+				<?php echo "Promo Food: ".$mfv->food_name." [". $variant->variantName ."]";?>
 				</td>
 				<td class="text-right"><?php echo 1;?></td>
 			</tr>
@@ -129,7 +154,29 @@
 			  ?>
 			  <tr>
 				<td colspan="2">
-				<?php echo $mv->add_on_name;?>
+				<?php echo "Modifiers: ".$mv->add_on_name;?>
+				</td>
+				<td class="text-right"><?php echo 1;?></td>
+			</tr>
+			  <?php
+				  }
+				}
+			  }
+			  if(count($selectedFoodsForCart)>0){
+				foreach ($selectedFoodsForCart as $mfk => $mfv) {
+				  if ($mfv->menu_id == $item->menu_id) {
+					$this->db->select('variantName');
+					$this->db->from('variant');
+					$this->db->where('variantid',$mfv->variant_id);
+					$vq = $this->db->get();
+					$variant = $vq->row();
+					// echo "<pre>";
+					// print_r($mv);
+					// echo "</pre>";
+			  ?>
+			  <tr>
+				<td colspan="2">
+				<?php echo "Promo Food: ".$mfv->food_name." [". $variant->variantName ."]";?>
 				</td>
 				<td class="text-right"><?php echo 1;?></td>
 			</tr>

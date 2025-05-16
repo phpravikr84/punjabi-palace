@@ -1412,6 +1412,7 @@ class Order extends MX_Controller
 		$this->form_validation->set_rules('ctypeid', display('customer_type'), 'required');
 
 		$this->form_validation->set_rules('customer_name', 'Customer Name', 'required');
+		// $this->db->trans_begin();
 		$saveid = $this->session->userdata('id');
 		$paymentsatus = $this->input->post('card_type', true);
 		$isonline = $this->input->post('isonline', true);
@@ -1732,7 +1733,12 @@ class Order extends MX_Controller
 						}
 					}
 					//Modifiers records are being added [start]
-					if ($cart = $this->cart->contents()) {
+					// echo "<pre>";
+					// print_r($this->cart->contents());
+					// echo "</pre>";
+					// exit();
+					$cart = $this->cart->contents();
+					if (count($cart)>0) {
 						if (count($cart)>0) {
 							foreach ($cart as $ck => $cv) {
 								$this->db->select('cart_selected_modifiers.*');
@@ -1740,85 +1746,322 @@ class Order extends MX_Controller
 								$this->db->where('cart_selected_modifiers.tr_row_id',$cv['rowid']);
 								$q=$this->db->get();
 								$res1=$q->result();
+								// echo "<pre>";
+								// print_r($res1);
+								// echo "</pre>";
+								// return $res1;
+								// exit();
 								if (count($res1)>0) {
+								// if ($q->num_rows() > 0) {
 									foreach ($res1 as $cmk => $cmv) {
-										$d1=[
-											'menu_id' => $cmv->menu_id,
-											'variant_id' => $cmv->variant_id,
-											'add_on_id' => $cmv->add_on_id,
-											'modifier_groupid' => $cmv->modifier_groupid,
-											'order_id' => $orderid,
-											'is_active' => 1,
-											'created_at' => date('Y-m-d H:i:s')
-										];
-										$this->db->insert('ordered_menu_item_modifiers',$d1);
+										$prodId = $cmv->add_on_id;
+										$varId = $cmv->variant_id;
+										//stock checking and stock deducting function for food items [start] 9th May 2025
+										if ($cmv->foods_or_mods==1) {
+											// echo "<pre>";
+											// print_r($cmv);
+											// echo "</pre>";
+											// echo "<br> foods_or_mods: ".$cmv->foods_or_mods;
+											// echo "<br> prodId: ".$prodId;
+											// echo "<br> varId: ".$varId;
+											// return $cmv;
+											// exit();
+											$foodqty = 1;
+											//Food item's stock checking [start]
+											$this->db->select("a.*,SUM(a.itemquantity) as totalqty, b.ProductsID, b.ProductName");
+											$this->db->from('production a');
+											$this->db->join('item_foods b','b.ProductsID = a.itemid','left');
+											$this->db->where('b.ProductsID', $prodId);
+											$this->db->group_by('a.itemid');
+											$this->db->order_by('a.saveddate','desc');
+											$query = $this->db->get();
+											$producreport=$query->result();
+											$result=$producreport[0];
+											$dateRange2 = "a.menu_id='$result->itemid' AND b.order_status!=5";
+											$this->db->select("SUM(a.menuqty) as totalsaleqty,b.order_date");
+											$this->db->from('order_menu a');
+											$this->db->join('customer_order b', 'b.order_id = a.order_id', 'left');
+											$this->db->where($dateRange2, NULL, FALSE);
+											$this->db->order_by('b.order_date', 'desc');
+											$query = $this->db->get();
+											$salereport = $query->row();
+											if (empty($salereport->totalsaleqty)) {
+												$tout = 0;
+											} else {
+												$tout = $salereport->totalsaleqty;
+											}
+											$productName = $result->ProductName;
+											$in_Qnty = $result->totalqty;
+											$out_Qnty = $tout;
+											$stock = $result->totalqty - $salereport->totalsaleqty;
 
-										//Modifiers stock adjustment [start]
-										$this->db->select('add_ons.modifier_id, add_ons.is_food_item, add_ons.add_on_name');
-										$this->db->from('add_ons');
-										$this->db->where('add_ons.add_on_id', $cmv->add_on_id);
-								
-										$query = $this->db->get();
-										$modIngrdId = $query->row();
-										if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 2){
-											// Ingredients
-											
-											// $this->db->select('stock_qty');
-											// $this->db->from('ingredients');
-											// $this->db->where('id', $modIngrdId->modifier_id);
-											$this->db->select('ing.stock_qty, adding.modifier_ingr_adj_qty');
-											$this->db->from('ingredients ing');
-											$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'LEFT');
-											$this->db->where('adding.modifier_ingr_id', $modIngrdId->modifier_id);
+											$checksetitem = $this->db->select('ProductsID,isgroup', 'is_bom')->from('item_foods')->where('ProductsID', $prodId)->where('isgroup', 1)->get()->row();
+											$isavailable = true;
+											if (!empty($checksetitem) && (2+2) != 4) {
+												if ($checksetitem->is_bom == 1) {
+													$groupitemlist = $this->db->select('items,varientid,item_qty')->from('tbl_groupitems')->where('gitemid', $checksetitem->ProductsID)->get()->result();
+													foreach ($groupitemlist as $groupitem) { 
+														$this->db->select('*');
+														$this->db->from('production_details');
+														$this->db->where('foodid', $groupitem->items);
+														$this->db->where('pvarientid', $groupitem->varientid);
+														$productiondetails = $this->db->get()->result();
+														if (empty($productiondetails)) {
+															$isavailable = false;
+															// return 'Please set Ingredients!!first!!!' . $groupitem->items;
+															return '201';
+															break;
+															exit();
+														} else {
+															foreach ($productiondetails as $productiondetail) {
+																$r_stock = $productiondetail->qty * ($foodqty * $groupitem->item_qty);
+																/*add stock in ingredients*/
+																$this->db->select('*');
+																$this->db->from('ingredients');
+																$this->db->where('id', $productiondetail->ingredientid);
+																$this->db->where('stock_qty >=', $r_stock);
+																$stockcheck = $this->db->get()->num_rows();
 
-											$q1 = $this->db->get();
-											$ingredQty = $q1->row();
-											$prev_qty = $ingredQty->stock_qty;
-											// $deduc_qty = $prev_qty * 0.6;
-											$updated_qty = ($prev_qty - $ingredQty->modifier_ingr_adj_qty);
-											// $updated_qty = ($prev_qty - $deduc_qty);
-											$upData = [
-												'stock_qty' => $updated_qty
-											];
-											$this->db->where('id',$modIngrdId->modifier_id)
-												->update('ingredients',$upData);
-										} else {
-											if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 1){
-												//Food Item
-												$this->db->select('ing.id, ing.stock_qty, adding.modifier_ingr_adj_qty');
-												$this->db->from('ingredients ing');
-												$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'INNER');
-												$this->db->where('adding.modifier_foodid', $modIngrdId->modifier_id);
-
-												$q2 = $this->db->get();
-												$ingredStockQty = $q2->result();
-												
-												if (count($ingredStockQty)>0) {
-													foreach ($ingredStockQty as $igsk => $igsv) {
-														if ($igsv->stock_qty < $igsv->modifier_ingr_adj_qty) {
-															// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient stock!!!');
-															// redirect("ordermanage/order/pos_invoice");
-															echo "error";
-															exit;
+																if ($stockcheck == 0) {
+																	// return 'Please check Ingredients!!Some Ingredients are not Available!!!' . $groupitem->items;
+																	return '202';
+																	break;
+																	exit();
+																}
+																/*end add ingredients*/
+															}
 														}
-														$prev_qty = $igsv->stock_qty;
-														$updated_qty = ($prev_qty - $igsv->modifier_ingr_adj_qty);
-														$upData = [
-															'stock_qty' => $updated_qty
-														];
-														$this->db->where('id',$igsv->id)
-															->update('ingredients',$upData);
 													}
-												} 
-												else {
-													// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' can\'t be added!!!');
-													// redirect("ordermanage/order/pos_invoice");
-													echo "error";
-													exit;
+												}
+												// return 1;
+											} else {
+												$this->db->select('*');
+												$this->db->from('production_details');
+												$this->db->where('foodid', $prodId);
+												$this->db->where('pvarientid', $varId);
+												$productiondetails = $this->db->get()->result();
+												// echo "<pre>";
+												// print_r($productiondetails);
+												// echo "</pre>";
+												// return $productiondetails;
+												// exit();
+											}
+
+
+											if (!empty($productiondetails)) {
+
+												foreach ($productiondetails as $productiondetail) {
+													$r_stock = $productiondetail->qty * $foodqty;
+													/*add stock in ingredients*/
+													$this->db->select('*');
+													$this->db->from('ingredients');
+													$this->db->where('id', $productiondetail->ingredientid);
+													$this->db->where('stock_qty >=', $r_stock);
+													$stockcheck = $this->db->get()->num_rows();
+
+													if ($stockcheck == 0) {
+														// return 'Please check Ingredients!!Some Ingredients are not Available!!!';
+														return '202';
+														break;
+														exit();
+													}
+
+
+													/*end add ingredients*/
+												}
+											} else {
+												if ($checksetitem->is_bom == 1) {
+													// return 'Please set Ingredients!!first!!!';
+													return '201';
+													break;
+													exit();
+												} else {
+													// return 1;
 												}
 											}
+											// return 1;
+											//Food item's stock checking [end]
+
+											$d1=[
+												'menu_id' => $cmv->menu_id,
+												'variant_id' => $cmv->variant_id,
+												'add_on_id' => $cmv->add_on_id,
+												'modifier_groupid' => $cmv->modifier_groupid,
+												'order_id' => $orderid,
+												'foods_or_mods' => 1,
+												'is_active' => 1,
+												'created_at' => date('Y-m-d H:i:s')
+											];
+											$this->db->insert('ordered_menu_item_modifiers',$d1);
+											$menuId = $prodId;
+											$menuQty = 1;
+											$menuVarientId = $varId;
+											// Fetch production details for the given menu_id
+											$this->db->select('pro_detailsid, foodid, pvarientid, ingredientid, qty');
+											$this->db->where('foodid', $menuId);
+											$this->db->where('pvarientid', $menuVarientId);
+
+											$productionDetails = $this->db->get('production_details')->result_array();
+											// echo "<pre>";
+											// print_r($productionDetails);
+											// echo "</pre>";
+											// $this->db->trans_rollback();
+											// exit();
+											foreach ($productionDetails as $production) {
+												// echo "<pre>";
+												// print_r($production);
+												// echo "</pre>";
+												$ingredientId = $production['ingredientid'];
+												$usedQty = $production['qty'] * ($menuQty);
+												//fetch the percentage of the ingredient to deduct from promotion_main_modifiers table
+												$this->db->select('category_max_qty, category_weight_percent, total_weight_percent, total_no_of_item');
+												$this->db->from('promotion_main_modifiers');
+												$this->db->where('category_id', $cmv->modifier_groupid);
+												$percentage = $this->db->get()->row();
+												if (!empty($percentage)) {
+													$percent = ($percentage->category_weight_percent == 0) ? $percentage->total_weight_percent : $percentage->category_weight_percent;
+													$usedQty = $usedQty * ($percent / 100);
+												}
+
+
+												// Fetch sales price for the ingredient from `purchase_details`
+												$this->db->select('price, uom_id');
+												$this->db->from('purchase_details');
+												$this->db->join('ingredients', 'purchase_details.indredientid = ingredients.id', 'left');
+												$this->db->join('unit_of_measurement', 'ingredients.uom_id = unit_of_measurement.id', 'left');
+												$this->db->where('purchase_details.indredientid', $ingredientId);
+												$purchaseDetail = $this->db->get()->row_array();
+
+
+												// Print the SQL query
+												// echo $this->db->last_query();
+												// exit;
+
+												$unitPrice = $purchaseDetail['price'] ?? 0;
+												$usedSalesPrice = $usedQty * $unitPrice;
+
+												// Fetch unit details
+												$this->db->select('id, uom_name');
+												$this->db->where('id', $purchaseDetail['uom_id']);
+												$unit = $this->db->get('unit_of_measurement')->row_array();
+
+												$unitId = $unit['id'] ?? null;
+
+												// Prepare data for insertion into `itxn`
+												// $itxnData = [
+												// 	'order_id' => $orderId,
+												// 	'food_id' => $menuId,
+												// 	'pvarient_id' => $production['pvarientid'],
+												// 	'ingredient_id' => $ingredientId,
+												// 	'used_qty' => $usedQty,
+												// 	'used_sales_price' => $usedSalesPrice,
+												// 	'unit_id' => $unitId,
+												// 	'created_at' => date('Y-m-d')
+												// ];
+												// Insert record into `itxn` table
+												// $this->db->insert('itxn', $itxnData);
+												// echo "<pre>";
+												// print_r($purchaseDetail);
+												// echo "</pre>";
+												// echo "<br> ingredientId: " . $ingredientId;
+												// echo "<br> usedQty: " . $usedQty;
+												// $this->db->trans_rollback();
+												// Step 5: Deduct used quantity from ingredients stock_qty
+												$this->db->set('stock_qty', "GREATEST(stock_qty - {$usedQty}, 0)", false);
+												$this->db->where('id', $ingredientId);
+												$this->db->update('ingredients');
+											}
+											//stock checking and stock deducting function for food items [end] 9th May 2025
+										} else {
+											$d1=[
+												'menu_id' => $cmv->menu_id,
+												'variant_id' => $cmv->variant_id,
+												'add_on_id' => $cmv->add_on_id,
+												'modifier_groupid' => $cmv->modifier_groupid,
+												'order_id' => $orderid,
+												'foods_or_mods' => 2,
+												'is_active' => 1,
+												'created_at' => date('Y-m-d H:i:s')
+											];
+											$this->db->insert('ordered_menu_item_modifiers',$d1);
+	
+											//Modifiers stock adjustment [start]
+											$this->db->select('add_ons.modifier_id, add_ons.is_food_item, add_ons.add_on_name');
+											$this->db->from('add_ons');
+											$this->db->where('add_ons.add_on_id', $cmv->add_on_id);
+									
+											$query = $this->db->get();
+											$modIngrdId = $query->row();
+											if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 2){
+												// Ingredients
+												
+												// $this->db->select('stock_qty');
+												// $this->db->from('ingredients');
+												// $this->db->where('id', $modIngrdId->modifier_id);
+												$this->db->select('ing.stock_qty, adding.modifier_ingr_adj_qty');
+												$this->db->from('ingredients ing');
+												$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'LEFT');
+												$this->db->where('adding.modifier_ingr_id', $modIngrdId->modifier_id);
+												$this->db->where('adding.add_on_id', $cmv->add_on_id);
+												$this->db->where('adding.modifier_set_id', $cmv->modifier_groupid);
+	
+												$q1 = $this->db->get();
+												$ingredQty = $q1->row();
+												// echo "<pre>";
+												// print_r($ingredQty);
+												// echo "</pre>";
+												// echo "<br> ingredientId: " . $modIngrdId->modifier_id;
+												// echo "<br> add_on_id: " . $cmv->add_on_id;
+
+												$prev_qty = $ingredQty->stock_qty;
+												// $deduc_qty = $prev_qty * 0.6;
+												$updated_qty = ($prev_qty - $ingredQty->modifier_ingr_adj_qty);
+												// $updated_qty = ($prev_qty - $deduc_qty);
+												$upData = [
+													'stock_qty' => $updated_qty
+												];
+												$this->db->where('id',$modIngrdId->modifier_id)
+													->update('ingredients',$upData);
+											} else {
+												if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 1){
+													//Food Item
+													$this->db->select('ing.id, ing.stock_qty, adding.modifier_ingr_adj_qty');
+													$this->db->from('ingredients ing');
+													$this->db->join('add_on_ingr_dtls adding', 'ing.id=adding.modifier_ingr_id', 'INNER');
+													$this->db->where('adding.modifier_foodid', $modIngrdId->modifier_id);
+													$this->db->where('adding.add_on_id', $cmv->add_on_id);
+													$this->db->where('adding.modifier_set_id', $cmv->modifier_groupid);
+	
+													$q2 = $this->db->get();
+													$ingredStockQty = $q2->result();
+													
+													if (count($ingredStockQty)>0) {
+														foreach ($ingredStockQty as $igsk => $igsv) {
+															if ($igsv->stock_qty < $igsv->modifier_ingr_adj_qty) {
+																// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient stock!!!');
+																// redirect("ordermanage/order/pos_invoice");
+																echo "error";
+																exit;
+															}
+															$prev_qty = $igsv->stock_qty;
+															$updated_qty = ($prev_qty - $igsv->modifier_ingr_adj_qty);
+															$upData = [
+																'stock_qty' => $updated_qty
+															];
+															$this->db->where('id',$igsv->id)
+																->update('ingredients',$upData);
+														}
+													} 
+													else {
+														// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' can\'t be added!!!');
+														// redirect("ordermanage/order/pos_invoice");
+														echo "error";
+														exit;
+													}
+												}
+											}
+											//Modifiers stock adjustment [end]
 										}
-										//Modifiers stock adjustment [end]
 									}
 								}
 								$this-> db-> where('tr_row_id', $cv['rowid']);
@@ -1886,6 +2129,8 @@ class Order extends MX_Controller
 				echo "error";
 			}
 		}
+		
+		// $this->db->trans_rollback();
 	}
 	public function orderlist()
 	{
@@ -3095,9 +3340,21 @@ class Order extends MX_Controller
 		$this->db->select('a.add_on_name, a.price, om.menu_id');
 		$this->db->from('add_ons a');
 		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.foods_or_mods',2);
 		$this->db->where('om.order_id',$id);
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
+
+		$this->db->select('ordered_menu_item_modifiers.menu_id, item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, ordered_menu_item_modifiers.variant_id, ordered_menu_item_modifiers.modifier_groupid');
+		$this->db->from('item_foods');
+		$this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+		$this->db->where('ordered_menu_item_modifiers.order_id',$id);
+		$this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+		$this->db->where('ordered_menu_item_modifiers.is_active', 1);
+		$q2 = $this->db->get();
+		$selectedFoodsForCart = $q2->result();
+
+		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('posinvoiceview', $data);
 	}
@@ -3922,9 +4179,22 @@ class Order extends MX_Controller
 		$this->db->select('a.add_on_name, a.price, om.menu_id');
 		$this->db->from('add_ons a');
 		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.foods_or_mods',2);
 		$this->db->where('om.order_id',$id);
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
+
+		$this->db->select('ordered_menu_item_modifiers.menu_id, item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, ordered_menu_item_modifiers.variant_id, ordered_menu_item_modifiers.modifier_groupid');
+		$this->db->from('item_foods');
+		$this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+		$this->db->where('ordered_menu_item_modifiers.order_id',$id);
+		$this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+		$this->db->where('ordered_menu_item_modifiers.is_active', 1);
+		$q2 = $this->db->get();
+		$selectedFoodsForCart = $q2->result();
+
+		$data['selectedFoodsForCart']=$selectedFoodsForCart;
+
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('ordermanage/invoice_pos', $data);
 	}
@@ -3984,9 +4254,21 @@ class Order extends MX_Controller
 		$this->db->select('a.add_on_name, a.price, om.menu_id');
 		$this->db->from('add_ons a');
 		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.foods_or_mods',2);
 		$this->db->where('om.order_id',$id);
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
+
+		$this->db->select('ordered_menu_item_modifiers.menu_id, item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, ordered_menu_item_modifiers.variant_id, ordered_menu_item_modifiers.modifier_groupid');
+		$this->db->from('item_foods');
+		$this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+		$this->db->where('ordered_menu_item_modifiers.order_id',$id);
+		$this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+		$this->db->where('ordered_menu_item_modifiers.is_active', 1);
+		$q2 = $this->db->get();
+		$selectedFoodsForCart = $q2->result();
+
+		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('ordermanage/details', $data);
 	}
@@ -4060,9 +4342,21 @@ class Order extends MX_Controller
 		$this->db->select('*');
 		$this->db->from('ordered_menu_item_modifiers');
 		$this->db->where('order_id', $id);
+		$this->db->where('foods_or_mods', 2);
 		$this->db->where('is_active', 1);
 		$q1 = $this->db->get();
 		$orderedModifiers = $q1->result();
+
+		$this->db->select('ordered_menu_item_modifiers.menu_id, item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, ordered_menu_item_modifiers.variant_id, ordered_menu_item_modifiers.modifier_groupid');
+		$this->db->from('item_foods');
+		$this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+		$this->db->where('ordered_menu_item_modifiers.order_id',$id);
+		$this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+		$this->db->where('ordered_menu_item_modifiers.is_active', 1);
+		$q2 = $this->db->get();
+		$selectedFoodsForCart = $q2->result();
+
+		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 
 		$data['orderinfo']  	   = $customerorder;
 		$data['customerinfo']   = $this->order_model->read('*', 'customer_info', array('customer_id' => $customerorder->customer_id));
@@ -4167,9 +4461,21 @@ class Order extends MX_Controller
 		$this->db->select('a.add_on_name, a.price, om.menu_id');
 		$this->db->from('add_ons a');
 		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.foods_or_mods',2);
 		$this->db->where('om.order_id',$id);
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
+
+		$this->db->select('ordered_menu_item_modifiers.menu_id, item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, ordered_menu_item_modifiers.variant_id, ordered_menu_item_modifiers.modifier_groupid');
+		$this->db->from('item_foods');
+		$this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+		$this->db->where('ordered_menu_item_modifiers.order_id',$id);
+		$this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+		$this->db->where('ordered_menu_item_modifiers.is_active', 1);
+		$q2 = $this->db->get();
+		$selectedFoodsForCart = $q2->result();
+
+		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		
 		echo $view = $this->load->view('postoken', $data, true);
@@ -4208,15 +4514,25 @@ class Order extends MX_Controller
 		$this->db->select('a.add_on_name, a.price, om.menu_id');
 		$this->db->from('add_ons a');
 		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.foods_or_mods',2);
 		$this->db->where('om.order_id',$id);
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
+
+		$this->db->select('ordered_menu_item_modifiers.menu_id, item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, ordered_menu_item_modifiers.variant_id, ordered_menu_item_modifiers.modifier_groupid');
+		$this->db->from('item_foods');
+		$this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+		$this->db->where('ordered_menu_item_modifiers.order_id',$id);
+		$this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+		$this->db->where('ordered_menu_item_modifiers.is_active', 1);
+		$q2 = $this->db->get();
+		$selectedFoodsForCart = $q2->result();
+
+		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
-
 		echo $view = $this->load->view('postoken', $data, true);
-		//return $view;
-
-
+		// $this->load->view('postoken', $data, true);
+		return $view;
 	}
 	public function postokengenerateupdate($id, $ordstatus)
 	{
@@ -5103,12 +5419,24 @@ class Order extends MX_Controller
 		//  echo $orderid;
 		//  die();
 		//Fetching modifiers info
-		$this->db->select('a.add_on_name, a.price, om.menu_id');
+		$this->db->select('a.add_on_name, a.price, om.menu_id, om.foods_or_mods');
 		$this->db->from('add_ons a');
 		$this->db->join('ordered_menu_item_modifiers om', 'a.add_on_id=om.add_on_id');
+		$this->db->where('om.foods_or_mods',2);
 		$this->db->where('om.order_id',$orderid);
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
+
+		$this->db->select('item_foods.ProductName AS food_name, item_foods.ProductsID as selected_id, ordered_menu_item_modifiers.variant_id, ordered_menu_item_modifiers.modifier_groupid');
+		$this->db->from('item_foods');
+		$this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+		$this->db->where('ordered_menu_item_modifiers.order_id',$orderid);
+		$this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+		$this->db->where('ordered_menu_item_modifiers.is_active', 1);
+		$q2 = $this->db->get();
+		$selectedFoodsForCart = $q2->result();
+
+		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		$view = $this->posprintdirect($orderid);
 		echo $view;
