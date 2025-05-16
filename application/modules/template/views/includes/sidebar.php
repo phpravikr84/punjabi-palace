@@ -81,6 +81,12 @@
 				$HmvcMenu2["promotions"] = array(
 					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
 					"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
+					"deal_list" => array("controller" => "item_food","method" => "promo_index","permission" => "read"),
+				);
+				$HmvcMenu2["promo"] = array(
+					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
+					"add_promo_item" => array("controller" => "item_food","method" => "addpromofood","permission" => "read"),
+					"promo_list" => array("controller" => "item_food","method" => "promo_list","permission" => "read"),
 				);
 						
 				// $HmvcMenu2["production"] = array( 
@@ -258,6 +264,8 @@
 							break;
 						case 'promotions':
 							return 'itemmanage';
+						case 'promo':
+							return 'itemmanage';
 						break;
 						default:
 							return $moduleName;
@@ -281,6 +289,9 @@
 							break;
 						case 'promotions':
 							echo 'Promotions';
+							break;
+						case 'promo':
+							echo 'Promo';
 							break;
 						case 'ingredmanage':
 							echo 'Ingredient Management';
@@ -323,6 +334,18 @@
 						case 'add_group_item':
 							// echo 'Add Combo Food Item';
 							echo 'Add Promotions';
+							break;
+						case 'deal_list':
+							// echo 'Add Combo Food Item';
+							echo 'Promotions';
+							break;
+						case 'add_promo_item':
+							// echo 'Add Combo Food Item';
+							echo 'Add Promo';
+							break;
+						case 'promo_list':
+							// echo 'Add Combo Food Item';
+							echo 'Promo List';
 							break;
 						
 						case 'production_setting':

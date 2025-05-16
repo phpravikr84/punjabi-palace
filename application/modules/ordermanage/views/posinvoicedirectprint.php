@@ -450,12 +450,39 @@ body
                       ?>
                       <div class="row-data">
                         <div class="item-info">
-                          <h5 class="item-title">-<?php echo $mv->add_on_name;?></h5>
+                          <h5 class="item-title">-<?php echo "Modifiers: ".$mv->add_on_name;?></h5>
                           <p class="item-number"><?php echo $mv->price;?> x 1</p>
                         </div>
                         <h5>
                           <?php if($currency->position==1){echo $currency->curr_icon;}?>
                           <?php echo $mv->price*1;?>
+                          <?php if($currency->position==2){echo $currency->curr_icon;}?>
+                        </h5>
+                      </div>
+                      <?php
+                          }
+                        }
+                      }
+                    if(count($selectedFoodsForCart)>0){
+                        foreach ($selectedFoodsForCart as $mfk => $mfv) {
+                          if ($mfv->menu_id == $item->menu_id) {
+                            $this->db->select('variantName');
+                            $this->db->from('variant');
+                            $this->db->where('variantid',$mfv->variant_id);
+                            $vq = $this->db->get();
+                            $variant = $vq->row();
+                            // echo "<pre>";
+                            // print_r($mv);
+                            // echo "</pre>";
+                      ?>
+                      <div class="row-data">
+                        <div class="item-info">
+                          <h5 class="item-title">-<?php echo "Promo Food: ".$mfv->food_name." [". $variant->variantName ."]";?></h5>
+                          <p class="item-number"> x 1</p>
+                        </div>
+                        <h5>
+                          <?php if($currency->position==1){echo $currency->curr_icon;}?>
+                          <?php echo 0*1;?>
                           <?php if($currency->position==2){echo $currency->curr_icon;}?>
                         </h5>
                       </div>

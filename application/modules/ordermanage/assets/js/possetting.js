@@ -1333,6 +1333,40 @@ $(document).on("keypress", '#itemqty_1', function(e){
                   $('#table_member_multi_person').val(0);
 
                   var err = data;
+                  switch (err) {
+                    case '201':
+                        swal({
+                            title: lang.ord_failed,
+                            // text: lang.failed_msg,
+                            text: "You haven't set Ingredients to some items. Please set ingredients to all items.",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: lang.yes+", "+lang.cancel+"!",
+                            closeOnConfirm: true
+                        },
+                        function() {
+
+                        });
+                        return false;
+                        break;
+                    case '202':
+                        swal({
+                            title: lang.ord_failed,
+                            // text: lang.failed_msg,
+                            text: "Please check Ingredients!!Some Ingredients are not Available!!!",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: lang.yes+", "+lang.cancel+"!",
+                            closeOnConfirm: true
+                        },
+                        function() {
+
+                        });
+                        return false;
+                        break;
+                  }
                   if (err == "error") {
                       swal({
                               title: lang.ord_failed,

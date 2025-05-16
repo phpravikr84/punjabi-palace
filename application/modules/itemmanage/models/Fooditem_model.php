@@ -125,6 +125,21 @@ class Fooditem_model extends CI_Model {
 	    $this->db->select('item_foods.*,item_category.Name');
         $this->db->from($this->table);
 		$this->db->join('item_category','item_foods.CategoryID = item_category.CategoryID','left');
+		$this->db->where('item_foods.isgroup',null);
+        $this->db->order_by('ProductsID', 'desc');
+   
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) { 
+            return $query->result();    
+        }
+        return false;
+	} 
+    public function read_promoitem($limit = null, $start = null)
+	{
+	    $this->db->select('item_foods.*,item_category.Name');
+        $this->db->from($this->table);
+		$this->db->join('item_category','item_foods.CategoryID = item_category.CategoryID','left');
+		$this->db->where('item_foods.isgroup',1);
         $this->db->order_by('ProductsID', 'desc');
    
         $query = $this->db->get();
@@ -234,11 +249,24 @@ class Fooditem_model extends CI_Model {
 		}
 	}
 
-public function count_fooditem()
+	public function count_fooditem()
 	{
 		$this->db->select('item_foods.*,item_category.Name');
         $this->db->from($this->table);
 		$this->db->join('item_category','item_foods.CategoryID = item_category.CategoryID','left');
+		$this->db->where('item_foods.isgroup',null);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();  
+        }
+        return false;
+	}
+	public function count_dealitem()
+	{
+		$this->db->select('item_foods.*,item_category.Name');
+        $this->db->from($this->table);
+		$this->db->join('item_category','item_foods.CategoryID = item_category.CategoryID','left');
+		$this->db->where('item_foods.isgroup',1);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->num_rows();  
