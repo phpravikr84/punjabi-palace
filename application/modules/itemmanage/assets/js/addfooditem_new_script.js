@@ -8,37 +8,159 @@
   /** New CSS Added on 13-03-2025 */
 
 $(document).ready(function(){
-    $("#addMore").click(function(){
-        let lastRow = $(".variant-row").last();
-        let variantInput = lastRow.find("input[name='variant_name[]']");
-        let variantValue = $.trim(variantInput.val()).toLowerCase();
+    // $("#addMore").click(function(){
+    //     let lastRow = $(".variant-row").last();
+    //     let variantInput = lastRow.find("input[name='variant_name[]']");
+    //     let variantValue = $.trim(variantInput.val()).toLowerCase();
     
-        if(variantValue === "" || variantValue === "0" || variantValue === null){
-            alert("Variant Name cannot be empty, null, or 0!");
-            variantInput.focus();
-            return false;
+    //     if(variantValue === "" || variantValue === "0" || variantValue === null){
+    //         alert("Variant Name cannot be empty, null, or 0!");
+    //         variantInput.focus();
+    //         return false;
+    //     }
+    
+    //     let newRow = lastRow.clone();
+
+    //      // Get new row index based on number of rows
+    //      let rowCount = $(".variant-row").length + 1;
+
+    //      // Set new ID for the row
+    //      newRow.attr("id", "variantRow_" + rowCount);
+         
+    //     newRow.find("input").val(""); // Clear values
+    //     newRow.find(".price-comparison").html(''); //Clear price comparison message
+    //     newRow.find("input").removeAttr("id"); // Remove old IDs
+    
+    //     $("#variantContainer").append(newRow);
+    // });
+
+    $("#addMore").click(function () {
+    let lastRow = $(".variant-row").last();
+    let variantInput = lastRow.find("input[name='variant_name[]']");
+    let variantValue = $.trim(variantInput.val()).toLowerCase();
+
+    if (variantValue === "" || variantValue === "0" || variantValue === null) {
+        alert("Variant Name cannot be empty, null, or 0!");
+        variantInput.focus();
+        return false;
+    }
+
+
+    let rowCount = $(".variant-row").length + 1;
+    let variantId = "variantRow_" + rowCount;
+    let variantName = "variant" + rowCount; // used to replace {{name}}
+
+    var myurl = baseurl + 'itemmanage/item_food/ingredientlistdropdowns';
+    var csrf = $('#csrfhashresarvation').val();
+
+    $.ajax({
+        type: "GET",
+        url: myurl,
+        data: { csrf_test_name: csrf },
+        dataType: "json",
+        success: function (response) {
+            if (response.status === "success") {
+                var options = '<option value="">Select Ingredients</option>';
+                $.each(response.data, function (key, ingredient) {
+                    options += `<option value="${ingredient.id}" data-title="${ingredient.ingredient_name}">${ingredient.ingredient_name}</option>`;
+                });
+
+                var recipeTable = `
+                    <div class="row variant-row mb-2" id="${variantId}">
+                        <div class="col-md-12 mb-2">
+                            <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
+                        </div>
+
+                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2">
+                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
+                        </div>
+
+                        <div class="col-md-12" id="variantRecipe_{{name}}">
+                            <div class="recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
+                                <h4 style="display:none;">Recipe for - {{name}}</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <small><strong>Recipe Cost Price</strong></small>
+                                        <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                    </div>
+                                <div class="col-md-6">
+                                    <small><strong>Recipe Used Quantity</strong></small>
+                                    <input type="text" class="form-control" id="recipe_usedqty_{{name}}" name="recipe_usedqty_{{name}}[]">
+                                </div>
+                            </div>
+                                <input type="hidden" name="recipe_for[]" value="{{name}}">
+
+                                <table class="table table-bordered" id="recipeTable_{{name}}">
+                                    <thead>
+                                        <tr>
+                                            <th width="200">Item Information</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Unit</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="addPurchaseItem_{{name}}">
+                                        <tr id="row_{{name}}1">
+                                            <td>
+                                                <select name="product_id_{{name}}[]" id="product_id_{{name}}_1" class="postform resizeselect form-control ingredient-select" data-row-id="{{name}}_1">
+                                                    ${options}
+                                                </select>
+                                            </td>
+                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck product_quantity_{{name}}" data-row-id="{{name}}_1"></td>
+                                            <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
+                                            <td>
+                                                <input type="hidden" id="unit-total_{{name}}_1">
+                                                <input type="hidden" name="unitid_{{name}}[]" id="unitid_{{name}}_1">
+                                                <input type="text" name="unitname_{{name}}[]" id="unitname_{{name}}_1" class="form-control" readonly>
+                                            </td>
+                                            <td><button type="button" class="btn btn-danger remove-item"><i class="fa fa-trash"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-success add-item" id="{{name}}" data-variant="{{name}}"><i class="fa fa-plus" aria-hidden="true"></i> Add Ingradient</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                $("#variantContainer").append(recipeTable);
+            } else {
+                alert("Failed to fetch ingredients.");
+            }
+        },
+        error: function () {
+            alert("Error fetching ingredients.");
         }
-    
-        let newRow = lastRow.clone();
-        newRow.find("input").val(""); // Clear values
-        newRow.find(".price-comparison").html(''); //Clear price comparison message
-        newRow.find("input").removeAttr("id"); // Remove old IDs
-    
-        $("#variantContainer").append(newRow);
     });
+});
+
+    
+
+
+    
+    
+    
+    
+    
 
     //Add new logic for variant row
-    $(document).on('blur', "input[name='variant_name[]']", function(){
-        let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
-        if(variantName !== ""){
-            $(this).attr("id", variantName);
-            $(this).closest(".variant-row").find("input[name='price[]']").attr("id", variantName + "_price");
-            $(this).closest(".variant-row").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
-            $(this).closest(".variant-row").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
-            $(this).closest(".variant-row").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
-            $(this).closest(".variant-row").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
-        }
-    });
+    // $(document).on('blur', "input[name='variant_name[]']", function(){
+    //     let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
+    //     if(variantName !== ""){
+    //         $(this).attr("id", variantName);
+    //         $(this).closest(".variant-row").find("input[name='price[]']").attr("id", variantName + "_price");
+    //         $(this).closest(".variant-row").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
+    //         $(this).closest(".variant-row").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
+    //         $(this).closest(".variant-row").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
+    //         $(this).closest(".variant-row").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
+    //     }
+    // });
 
     
     // Remove Row Logic
@@ -59,17 +181,47 @@ $(document).ready(function(){
         }
     });
 });
+
+
+
+// On page load: assign IDs for any prefilled variant names
+
+
+    // Add new logic for Variant row on Blur an On load
+    function assignVariantIds() {
+        $("input[name='variant_name[]']").each(function(){
+            let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
+            if(variantName !== ""){
+                $(this).attr("id", variantName);
+                $(this).closest(".variant-rowedit").find("input[name='price[]']").attr("id", variantName + "_price");
+                $(this).closest(".variant-rowedit").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
+                $(this).closest(".variant-rowedit").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
+                $(this).closest(".variant-rowedit").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
+                $(this).closest(".variant-rowedit").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
+
+                //
+                $(this).closest(".variant-row").find("input[name='price[]']").attr("id", variantName + "_price");
+                $(this).closest(".variant-row").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
+                $(this).closest(".variant-row").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
+                $(this).closest(".variant-row").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
+                $(this).closest(".variant-row").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
+            }
+        });
+    }
+
 //for Add / Edit view Price Calculation
 
 $(document).ready(function() {
 
+    assignVariantIds();  // <-- run once
     // First attach the event handler
     $(document).on('input', "input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']", function() {
 
         let $input = $(this);
-        console.log('Input ID: ' + $input.attr('id'));  // use console instead of alert for better debugging
+        console.log('Input ID on page loading: ' + $input.attr('id'));  // use console instead of alert for better debugging
 
         let price = parseFloat($input.val());
+        console.log('Price Value:', price);
     
         if (isNaN(price)) {
             $input.next('br').next('.price-comparison').html('');
@@ -81,7 +233,9 @@ $(document).ready(function() {
         if ($row.length === 0) {
             $row = $input.closest('.variant-row');
         }
-        let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
+        console.log('Row ID loading..:', $row.attr('id'));
+        //let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
+        let variantName = ($row.find("input[name='variant_name[]']").val() || '').trim().toLowerCase();
     
         if (variantName === '') {
             $input.next('br').next('.price-comparison').html('<small style="color:red;">Enter Variant Name first!</small>');
@@ -95,6 +249,7 @@ $(document).ready(function() {
 
         console.log('Looking for recipe input with selector:', recipeSelector);
         console.log('Number of matching inputs:', recipeInput.length);
+        console.log('Recipe Input:', recipeInput);
 
         if (recipeInput.length === 0) {
             console.error('No recipe cost price input found for variant:', variantName);
@@ -102,11 +257,11 @@ $(document).ready(function() {
             return;
         }
 
-        let recipeCost = parseFloat(recipeInput.val());
-        console.log('Recipe Cost Value:', JSON.stringify(recipeInput));
+        let recipeCost = parseFloat($(recipeSelector).val());
+        console.log('Recipe Cost Value:', recipeCost);
 
         if (isNaN(recipeCost)) {
-            $input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost not available!</small>');
+            //$input.next('br').next('.price-comparison').html('<small style="color:orange;">Recipe cost not available!</small>');
             return;
         }
 
@@ -127,7 +282,10 @@ $(document).ready(function() {
     });
 
     // Then trigger 'input' on all fields after handler is attached
-    $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
+    //$("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").trigger('input');
+    $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").each(function () {
+        $(this).trigger('input');
+    });
 
 });
 
@@ -262,8 +420,17 @@ $(document).ready(function () {
                                 var recipeTable = `
                                     <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                         <h4>Recipe for - ${variantName}</h4>
-                                        <small>Recipe Cost Price</small>
-                                        <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <small><strong>Recipe Cost Price</strong></small>
+                                                <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <small><strong>Recipe Used Quantity</strong></small>
+                                                <input type="text" class="form-control" id="recipe_usedqty_${variantId}" name="recipe_usedqty_${variantId}[]"/>
+                                            </div>
+                                        </div>
+                                        
                                         <input type="hidden" name="recipe_for[]" value="${variantName}"/>
                                         <table class="table table-bordered" id="recipeTable_${variantId}">
                                             <thead>
@@ -282,7 +449,7 @@ $(document).ready(function () {
                                                             ${options}
                                                         </select>
                                                     </td>
-                                                    <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                    <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${variantId}_1"></td>
                                                     <td class="text-right">
                                                         <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
                                                     </td>
@@ -314,14 +481,67 @@ $(document).ready(function () {
     });
 
     // Add new row dynamically
-    $(document).on("click", ".add-item", function () {
-        var variantId = $(this).data("variant"); // Get the correct variant ID
+    // $(document).on("click", ".add-item", function () {
+    //     var variantId = $(this).data("variant"); // Get the correct variant ID
       
+    //     var myurl = baseurl + 'itemmanage/item_food/ingredientlistdropdowns';
+    //     var csrf = $('#csrfhashresarvation').val();
+    //     var rowCount = $("#addPurchaseItem_" + variantId + " tr").length + 1; // Count rows to maintain sequential numbering
+    //     var rowId = variantId + "_" + rowCount; // Unique row ID
+
+    //     $.ajax({
+    //         type: "GET",
+    //         url: myurl,
+    //         data: { csrf_test_name: csrf },
+    //         dataType: "json",
+    //         success: function (response) {
+    //             if (response.status == "success") {
+    //                 var options = '<option value="">Select Ingredients</option>';
+    //                 $.each(response.data, function (key, ingredient) {
+    //                     options += `<option value="${ingredient.id}" data-title="${ingredient.ingredient_name}">${ingredient.ingredient_name}</option>`;
+    //                 });
+
+    //                 var newRow = `
+    //                     <tr id="row_${rowId}">
+    //                         <td>
+    //                             <select name="product_id_${variantId}[]" id="product_id_${rowId}" class="postform resizeselect form-control ingredient-select" data-row-id="${rowId}">
+    //                                 ${options}
+    //                             </select>
+    //                         </td>
+    //                         <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck" data-row-id="${rowId}"></td>
+    //                         <td class="text-right">
+    //                               <input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00">
+    //                         </td>
+    //                         <td class="text-right">
+    //                             <input type="hidden" id="unit-total_${rowId}" class="" />
+    //                             <input type="hidden" name="unitid_${variantId}[]" id="unitid_${rowId}" class="form-control text-right">
+    //                             <input type="text" name="unitname_${variantId}[]" id="unitname_${rowId}" class="form-control text-right" readonly>
+    //                         </td>
+    //                         <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
+    //                     </tr>
+    //                 `;
+
+    //                 $("#addPurchaseItem_" + variantId).append(newRow);
+    //             } else {
+    //                 alert("Failed to fetch ingredients.");
+    //             }
+    //         },
+    //         error: function () {
+    //             alert("Error fetching ingredients.");
+    //         }
+    //     });
+    // });
+
+    $(document).on("click", ".add-item", function () {
+        
+        //var variantId = $(this).data("variant").toString().toLowerCase().trim(); // Ensure lowercase trimmed ID
+        var variantId = $(this).attr('id').toString().toLowerCase().trim();
         var myurl = baseurl + 'itemmanage/item_food/ingredientlistdropdowns';
         var csrf = $('#csrfhashresarvation').val();
-        var rowCount = $("#addPurchaseItem_" + variantId + " tr").length + 1; // Count rows to maintain sequential numbering
-        var rowId = variantId + "_" + rowCount; // Unique row ID
-
+        
+        var rowCount = $("#addPurchaseItem_" + variantId + " tr").length + 1;
+        var rowId = variantId + "_" + rowCount;
+    
         $.ajax({
             type: "GET",
             url: myurl,
@@ -333,7 +553,7 @@ $(document).ready(function () {
                     $.each(response.data, function (key, ingredient) {
                         options += `<option value="${ingredient.id}" data-title="${ingredient.ingredient_name}">${ingredient.ingredient_name}</option>`;
                     });
-
+    
                     var newRow = `
                         <tr id="row_${rowId}">
                             <td>
@@ -341,19 +561,16 @@ $(document).ready(function () {
                                     ${options}
                                 </select>
                             </td>
-                            <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck" data-row-id="${rowId}"></td>
-                            <td class="text-right">
-                                  <input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00">
-                            </td>
-                            <td class="text-right">
-                                <input type="hidden" id="unit-total_${rowId}" class="" />
-                                <input type="hidden" name="unitid_${variantId}[]" id="unitid_${rowId}" class="form-control text-right">
-                                <input type="text" name="unitname_${variantId}[]" id="unitname_${rowId}" class="form-control text-right" readonly>
+                            <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${rowId}"></td>
+                            <td><input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00"></td>
+                            <td>
+                                <input type="hidden" id="unit-total_${rowId}">
+                                <input type="hidden" name="unitid_${variantId}[]" id="unitid_${rowId}">
+                                <input type="text" name="unitname_${variantId}[]" id="unitname_${rowId}" class="form-control" readonly>
                             </td>
                             <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
                         </tr>
                     `;
-
                     $("#addPurchaseItem_" + variantId).append(newRow);
                 } else {
                     alert("Failed to fetch ingredients.");
@@ -364,12 +581,16 @@ $(document).ready(function () {
             }
         });
     });
+    
 
     // Handle onchange event dynamically for ingredient selection
     $(document).on("change", ".ingredient-select", function () {
         var ingredientId = $(this).val(); // Get selected ingredient ID
-        var rowId = $(this).data("row-id"); // Get row ID
-        checkproduct_list(ingredientId, rowId); // Pass ingredient ID and row ID to function
+        var rowId = $(this).attr('data-row-id'); // Get row ID
+        console.log('Ingredient Select Row ID:', rowId);
+        if((rowId !="{{name}}")){
+            checkproduct_list(ingredientId, rowId); // Pass ingredient ID and row ID to function
+        }
     });
 
     //Handle onchange event dynamically for ingredient Selection Edit View
@@ -389,15 +610,23 @@ $(document).ready(function () {
     }
     $(document).on("change", ".ingredient-selecteditview", function () {
         var ingredientId = $(this).val(); // Get selected ingredient ID
-        var rowId = $(this).data("row-id"); // Get row ID
-        checkproduct_list_editview(ingredientId, rowId); // Pass ingredient ID and row ID to function
+        console.log('Ingredient ID:', ingredientId);
+        var rowId = $(this).attr('data-row-id'); // Get row ID
+        console.log('Row ID:', rowId);
+        if((rowId !=="{{name}}")){
+            checkproduct_list(ingredientId, rowId); // Pass ingredient ID and row ID to function
+        }
     });
 
 
     //Handle Quantity Change
     $(document).on("keyup", ".quantityCheck", function () {
-        var rowId = $(this).data("row-id"); // Get row ID
-        calprice(rowId); // Pass ingredient ID and row ID to function
+        var rowId = $(this).attr('data-row-id'); // Get row ID
+        //alert('Row ID'+rowId);
+        console.log('Quantity Row ID:', rowId);
+        if(rowId !=="{{name}}"){
+            calprice(rowId); // Pass ingredient ID and row ID to function
+        }
     });
 
     // Remove row on delete button click
@@ -413,9 +642,9 @@ function calprice(rowId){
     //alert('Row ID'+rowId);
     var ingrden = $('#product_id_'+rowId+' option:selected').data('title');
     //alert('Ingredient Name'+ingrden);
-     if (ingrden == 0 || ingrden=='') {
+    if (ingrden == 0 || ingrden=='') {
       $('#product_quantity_'+rowId).val('');
-      alert('Please select Item!');
+      //alert('Please select Item!');
       $('#product_price_' + rowId).attr("value", '');
 
 
@@ -425,8 +654,11 @@ function calprice(rowId){
       return false;
     }
     else{
+        //alert('Row ID Else condition :'+rowId);
         var toatalval = $('#unit-total_'+rowId).val();
+        //alert('Total Value:' + toatalval);
         var qty = $('#product_quantity_'+rowId).val();
+        //alert('Quantity:' + qty);
         var totalval = parseFloat(toatalval);
         if (isNaN(totalval) || totalval <= 0) {
             totalval = 0;
@@ -437,6 +669,7 @@ function calprice(rowId){
             qty = 0;
         }
         var nitcost=parseFloat(toatalval)*parseFloat(qty);
+        console.log('Nit Cost :', nitcost);
         $('#product_price_'+rowId).val(parseFloat(nitcost).toFixed(3));
         $('#product_price_' + rowId).attr("value", parseFloat(nitcost).toFixed(3));
 
@@ -448,6 +681,33 @@ function calprice(rowId){
         $('.product_price_' + variantId).each(function () {
             recipe_costprice += parseFloat($(this).val());
         });
+
+        //Get the recipe used quantity
+        var recipe_usedqty = 0;
+       $('.product_quantity_' + variantId).each(function () {
+            recipe_usedqty += parseFloat($(this).val());
+        });
+        console.log('Recipe Used Quantity:', recipe_usedqty);
+        $('#recipe_usedqty_' + variantId).val(recipe_usedqty.toFixed(3));
+        $('#recipe_usedqty_' + variantId).attr("value", recipe_usedqty.toFixed(3));
+
+        // Find the first .variant-rowedit or .variant-row
+        var targetRow = $('.variant-rowedit, .variant-row').first();
+        console.log('Target Row:', targetRow.attr('id'));
+
+        // Find any element with a class starting with 'recipe_usedqty_'
+           // Within that row, find input with id or class starting with 'recipe_usedqty_'
+        var qtyInput = targetRow.find('input[id^="recipe_usedqty_"], input[class^="recipe_usedqty_"]').first();
+        console.log('Qty Input:', qtyInput);
+
+        // If found, get its value
+        if (qtyInput.length) {
+            var qtyValue = qtyInput.val(); // use .text() if it's not an input
+            console.log('Qty Value:', qtyValue);
+            $('#weightage').val(qtyValue);
+        }
+
+
  
          // Update total recipe cost input for the current variant
          console.log('Recipe Cost Price:', recipe_costprice);
@@ -473,9 +733,11 @@ function checkproduct_list(ingredientId, sl) {
     var product_id = $('#product_id_' + sl).val();
     var product_name = $('#product_id_' + sl + ' option:selected').data('title');
 
+    console.log('Ingradient Select product_id' + product_id);
 
     // Get Unit value based on selected Ingredient
     var getUomIngredientUrl = $("#get_uom_listby_ing").val();
+    console.log('getUomIngredientUrl' + getUomIngredientUrl);
     $.ajax({
         type: "GET",
         url: getUomIngredientUrl + '/' + product_id,
@@ -597,9 +859,20 @@ $(document).ready(function(){
                                         var recipeTable = `
                                             <div class="variant-recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                                 <h4>Recipe for - ${variantName}</h4>
-                                                  <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Cost Price</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_costprice_${variantId}" name="recipe_costprice_${variantId}[]"/>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <small><strong>Recipe Used Quantity</strong></small>
+                                                        <input type="text" class="form-control" id="recipe_usedqty_${variantId}" name="recipe_usedqty_${variantId}[]"/>
+                                                    </div>
+                                                </div>
+                                                  
                                                     <input type="hidden" name="recipe_for[]" value="${variantName}"/>
-                                                <input type="hidden" name="recipe_for[]" value="${variantId}"/>
+
                                                 <table class="table table-bordered" id="recipeTable_${variantId}">
                                                     <thead>
                                                         <tr>
@@ -617,7 +890,7 @@ $(document).ready(function(){
                                                                     ${options}
                                                                 </select>
                                                             </td>
-                                                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck" data-row-id="${variantId}_1"></td>
+                                                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${variantId}_1"></td>
                                                             <td class="text-right">
                                                                 <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
                                                             </td>
@@ -658,13 +931,120 @@ $(document).ready(function(){
     //     $("#variantContainer").append(row); // Append cloned row
     // });
 
-    $("#addMoreEdit").click(function() {
-        let row = $(".variant-rowedit:first").clone(); // Clone the first variant row
-        row.find("input").val(""); // Clear all input values
-        row.find(".price-comparison").html(''); // Clear any profit/loss messages if present
-        row.find("input").removeAttr("id"); // Remove any existing IDs
-        $("#variantContainer").append(row); // Append the cleared clone to the container
+    // $("#addMoreEdit").click(function() {
+    //     let row = $(".variant-rowedit:first").clone(); // Clone the first variant row
+    //     row.find("input").val(""); // Clear all input values
+    //     row.find(".price-comparison").html(''); // Clear any profit/loss messages if present
+    //     row.find("input").removeAttr("id"); // Remove any existing IDs
+    //     $("#variantContainer").append(row); // Append the cleared clone to the container
+    // });
+
+    $("#addMoreEdit").click(function () {
+        let lastRow = $(".variant-rowedit").last();
+        let variantInput = lastRow.find("input[name='variant_name[]']");
+        let variantValue = $.trim(variantInput.val()).toLowerCase();
+    
+        if (variantValue === "" || variantValue === "0" || variantValue === null) {
+            alert("Variant Name cannot be empty, null, or 0!");
+            variantInput.focus();
+            return false;
+        }
+    
+        let rowCount = $(".variant-rowedit").length + 1;
+        let variantId = "variantRowEdit_" + rowCount;
+        let variantName = "variantEdit" + rowCount;
+    
+        var myurl = baseurl + 'itemmanage/item_food/ingredientlistdropdowns';
+        var csrf = $('#csrfhashresarvation').val();
+    
+        $.ajax({
+            type: "GET",
+            url: myurl,
+            data: { csrf_test_name: csrf },
+            dataType: "json",
+            success: function (response) {
+                if (response.status === "success") {
+                    var options = '<option value="">Select Ingredients</option>';
+                    $.each(response.data, function (key, ingredient) {
+                        options += `<option value="${ingredient.id}" data-title="${ingredient.ingredient_name}">${ingredient.ingredient_name}</option>`;
+                    });
+    
+                    var recipeTable = `
+                    <div class="row variant-row mb-2" id="${variantId}">
+                        <div class="col-md-12 mb-2">
+                            <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
+                        </div>
+
+                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2">
+                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
+                        </div>
+
+                        <div class="col-md-12" id="variantRecipe_{{name}}">
+                            <div class="recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
+                                <h4 style="display:none;">Recipe for - {{name}}</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <small><strong>Recipe Cost Price</strong></small>
+                                        <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <small><strong>Recipe Used Quantity</strong></small>
+                                        <input type="text" class="form-control" id="recipe_usedqty_{{name}}" name="recipe_usedqty_{{name}}[]">
+                                    </div>
+                                </div>
+                                
+                                <input type="hidden" name="recipe_for[]" value="{{name}}">
+
+                                <table class="table table-bordered" id="recipeTable_{{name}}">
+                                    <thead>
+                                        <tr>
+                                            <th width="200">Item Information</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                            <th>Unit</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="addPurchaseItem_{{name}}">
+                                        <tr id="row_{{name}}1">
+                                            <td>
+                                                <select name="product_id_{{name}}[]" id="product_id_{{name}}_1" class="postform resizeselect form-control ingredient-select" data-row-id="{{name}}_1">
+                                                    ${options}
+                                                </select>
+                                            </td>
+                                            <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck product_quantity_{{name}}" data-row-id="{{name}}_1"></td>
+                                            <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
+                                            <td>
+                                                <input type="hidden" id="unit-total_{{name}}_1">
+                                                <input type="hidden" name="unitid_{{name}}[]" id="unitid_{{name}}_1">
+                                                <input type="text" name="unitname_{{name}}[]" id="unitname_{{name}}_1" class="form-control" readonly>
+                                            </td>
+                                            <td><button type="button" class="btn btn-danger remove-item"><i class="fa fa-trash"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-success add-item" id="{{name}}" data-variant="{{name}}"><i class="fa fa-plus" aria-hidden="true"></i> Add Ingradient</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+    
+                    $("#variantContainer").append(recipeTable);
+                } else {
+                    alert("Failed to fetch ingredients.");
+                }
+            },
+            error: function () {
+                alert("Error fetching ingredients.");
+            }
+        });
     });
+    
 
     
     
@@ -746,36 +1126,151 @@ $(document).ready(function () {
         $recipeInput.val(recipe_costprice.toFixed(3));
         $recipeInput.attr('value', recipe_costprice.toFixed(3));
         console.log('Variant: ' + variantId + ', Recipe Cost Price: ' + recipe_costprice.toFixed(3));
+
+        // Update recipe used quantity
+        var recipe_usedqty = 0;
+        $('input[name="product_quantity_' + variantId + '[]"]').each(function () {
+            var qty = parseFloat($(this).val()) || 0;
+            recipe_usedqty += qty;
+        });
+        var $usedQtyInput = $('#recipe_usedqty_' + variantId);
+        $usedQtyInput.val(recipe_usedqty.toFixed(3));
+        $usedQtyInput.attr('value', recipe_usedqty.toFixed(3));
+        console.log('Variant: ' + variantId + ', Recipe Used Quantity: ' + recipe_usedqty.toFixed(3));
+        
+        
+        // Find the first .variant-rowedit or .variant-row
+        var targetRow = $('.variant-rowedit, .variant-row').first();
+        console.log('Target Row:', targetRow.attr('id'));
+
+        // Find any element with a class starting with 'recipe_usedqty_'
+           // Within that row, find input with id or class starting with 'recipe_usedqty_'
+        var qtyInput = targetRow.find('input[id^="recipe_usedqty_"], input[class^="recipe_usedqty_"]').first();
+        console.log('Qty Input:', qtyInput);
+
+        // If found, get its value
+        if (qtyInput.length) {
+            var qtyValue = qtyInput.val(); // use .text() if it's not an input
+            console.log('Qty Value:', qtyValue);
+            $('#weightage').val(qtyValue);
+        }
+
     }
 
     // Loop through each variant dynamically
-    $('input[name="recipe_for[]"]').each(function () {
+    // $('input[name="recipe_for[]"]').each(function () {
+    //     var variantId = $(this).val(); // e.g., "regular", "medium"
+    //     console.log('Variant ID:', variantId);
+    //     updateRecipeCostPrice(variantId);
+    // });
+
+    $('input[name="recipe_for[]"]').each(function () { 
         var variantId = $(this).val(); // e.g., "regular", "medium"
-        updateRecipeCostPrice(variantId);
-    });
+        console.log('Variant ID:', variantId);
+        console.log(typeof variantId);
 
-});
-
-// Add new logic for Variant row on Blur an On load
-function assignVariantIds() {
-    $("input[name='variant_name[]']").each(function(){
-        let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
-        if(variantName !== ""){
-            $(this).attr("id", variantName);
-            $(this).closest(".variant-rowedit").find("input[name='price[]']").attr("id", variantName + "_price");
-            $(this).closest(".variant-rowedit").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
-            $(this).closest(".variant-rowedit").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
-            $(this).closest(".variant-rowedit").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
-            $(this).closest(".variant-rowedit").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
+        if (variantId != "{{name}}") {
+            updateRecipeCostPrice(variantId);
         }
     });
-}
 
-// On page load: assign IDs for any prefilled variant names
-$(document).ready(function(){
-    assignVariantIds();  // <-- run once
+
+    $(document).on('blur', '.variant-name', function () {
+        const $row = $(this).closest('.variant-row');
+        const name = $(this).val().toLowerCase().trim().replace(/\s+/g, '_').replace(/[^\w\-]+/g, ''); // Dynamically generated value
+    
+        // Replace {{name}} dynamically in all the relevant elements
+        $row.find('[id*="{{name}}"], [name*="{{name}}"], [data-row-id*="{{name}}"], [data-variant*="{{name}}"]').each(function () {
+            const idAttr = $(this).attr('id');
+            if (idAttr && idAttr.includes('{{name}}')) {
+                $(this).attr('id', idAttr.replace('{{name}}', name));
+            }
+    
+            const nameAttr = $(this).attr('name');
+            if (nameAttr && nameAttr.includes('{{name}}')) {
+                $(this).attr('name', nameAttr.replace('{{name}}', name));
+            }
+    
+            const dataVariant = $(this).attr('data-variant');
+            if (dataVariant && dataVariant.includes('{{name}}')) {
+                $(this).attr('data-variant', dataVariant.replace('{{name}}', name)); // Update the data-variant attribute dynamically
+            }
+    
+            const dataRowId = $(this).attr('data-row-id');
+            if (dataRowId && dataRowId.includes('{{name}}')) {
+                $(this).attr('data-row-id', dataRowId.replace('{{name}}', name));
+            }
+
+                // CLASS — this is new
+                const $el = $(this);
+            const classAttr = $el.attr('class');
+            if (classAttr && classAttr.includes('{{name}}')) {
+                $el.attr('class', classAttr.replace('{{name}}', name));
+            }
+    
+            updateRecipeCostPrice(name);
+    
+        });
+    
+         //Update the hidden input's value (assumes only one per row)
+        $row.find('input[type="hidden"][name="recipe_for[]"]').val(name);
+        // Update the heading text as well
+        $row.find('h4').text(`Recipe for - ${name}`);
+    });
+    
+
+
 });
 
+
+
+$(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+});
+
+
+$(document).ready(function () {
+
+
+    // Function to toggle visibility
+    function toggleRecipeElements(value) {
+        if (value == 3) {
+            $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').hide();
+            $('#productinfo').show();
+            $('#serving_weightage').show();
+            $('#productprices').show();
+            $('#variantsPanel').hide();
+        } else {
+            $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').show();
+            $('#productinfo').hide();
+            $('#serving_weightage').hide();
+            $('#productprices').hide();
+            $('#variantsPanel').show();
+        }
+    }
+
+    // Default show on page load
+    $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore, #serving_weightage').show();
+    $('#productinfo').hide();
+    $('#serving_weightage').hide();
+    $('#productprices').hide();
+    $('#variantsPanel').show();
+
+    // On change of cuisine_type select box
+    $('select[name="cusine_type"]').on('change', function () {
+        let selectedValue = $(this).val();
+        //alert('selected value '+selectedValue);
+        toggleRecipeElements(selectedValue);
+    });
+
+    // Optionally trigger once in case value is preselected
+    toggleRecipeElements($('select[name="cusine_type"]').val());
+});
+
+$(document).on('change', 'select[name="cusine_type"]', function () {
+    let selectedValue = $(this).val();
+    toggleRecipeElements(selectedValue);
+});
 
 
 

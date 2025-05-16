@@ -2252,8 +2252,10 @@ class Item_food extends MX_Controller
 						$doordashPrices = $this->input->post('doordash_price', true);
 						$webOrderPrices = $this->input->post('weborder_price', true);
 						$recipeFor = $this->input->post('recipe_for', true);
-						
+
+						$index = 0;
 						foreach ($variantNames as $key => $variantName) {
+							$variantKey = strtolower($recipeFor[$key]); 
 							$existingVariant = $this->db->where([
 								'menuid' => $insertedFoodId,
 								'variantName' => $variantName,
@@ -2268,6 +2270,8 @@ class Item_food extends MX_Controller
 									'uber_eats_price' => $uberEatsPrices[$key],
 									'doordash_price' => $doordashPrices[$key],
 									'web_order_price' => $webOrderPrices[$key],
+									'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
+									'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
 								];
 
 								if ($this->foodvarient_model->create($variantData)) {
@@ -2355,6 +2359,54 @@ class Item_food extends MX_Controller
 					}
 					
 					// END of Modifier Insertion [Updated by Jsaha]
+
+
+					// Check if Product Exist
+					if ($this->input->post()) {
+						
+						// Build the post data array conditionally
+						$postData = [];
+
+						// Basic form inputs
+						$postData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
+						$postData['pack_size']        = $this->input->post('pack_size', true);
+						$postData['pack_unit']        = $this->input->post('pack_unit', true);
+						$postData['uom_id']    = $this->input->post('purchase_unit', true);
+						$postData['purchase_price']   = $this->input->post('purchase_price', true);
+						$postData['stock_qty']  = $this->input->post('opening_stock', true);
+						$postData['min_stock']        = $this->input->post('minimum_stock', true);
+						$postData['is_active']        = 1;
+
+						// Insert into ingredients table
+						$this->fooditem_model->create_ingredient($postData);
+						$insert_id = $this->db->insert_id(); //ingradient  table id
+						// Update Food Item 
+						$this->fooditem_model->update_ingredient(
+							$insert_id,
+							[
+								'purchase_product' => $insertedFoodId,
+								'status' => '1'
+							]
+						);
+											
+
+						// If inserted successfully and opening_balance is set
+						$opening_balance = $this->input->post('opening_stock', true);
+						if ($insert_id && $opening_balance !== null && $opening_balance !== '') {
+							$opening_stock_data = [
+								'ingredient_name'    => $this->input->post('foodname', true),
+								'ingredient_id'      => $insert_id,
+								'purchase_price'     => $this->input->post('purchase_price', true),
+								'opening_balance'    => $opening_balance,
+								'opening_date' => date('Y-m-d'),
+								'is_active'          => 1
+							];
+
+							// Insert into ingredients_opening_stock table
+							$this->fooditem_model->ingredient_opening_stock($opening_stock_data);
+						}
+
+					}
 					
 
 					$this->session->set_flashdata('message', display('save_successfully'));
@@ -2459,6 +2511,7 @@ class Item_food extends MX_Controller
 
 
 				if ($this->fooditem_model->update_fooditem($postData)) {
+					
                     $this->db->where('menuid', $updatedId);
                     $this->db->delete('variant');
                     $this->db->where('itemid', $updatedId);
@@ -2466,6 +2519,35 @@ class Item_food extends MX_Controller
                     $this->db->where('foodid', $updatedId);
                     $this->db->delete('production_details');
 
+
+					// Build the post data array conditionally
+					$ingrData = [];
+					$openData = [];
+
+					// Basic form inputs
+					//$ingrData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
+					$ingrData['pack_size']        = $this->input->post('pack_size', true);
+					$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
+					$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
+					$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
+					$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
+					$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
+					$ingrid = $this->input->post('ingredient_id', true);
+
+					$openData['purchase_price']   = $this->input->post('purchase_price', true);
+					$openData['opening_balance']  = $this->input->post('opening_stock', true);
+
+
+					// Update Food Item 
+					$this->db->trans_start();
+					$this->fooditem_model->update_ingredient($ingrid, $ingrData);
+					$this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
+					$this->db->trans_complete();
+
+
+
+
+				
 					
                     //updating variants and production-details [start]
                     if ($this->input->post('variant_name', true)) {
@@ -2478,7 +2560,9 @@ class Item_food extends MX_Controller
 						$webOrderPrices = $this->input->post('weborder_price', true);
 						$recipeFor = $this->input->post('recipe_for', true);
 						
+						$index = 0;
 						foreach ($variantNames as $key => $variantName) {
+							$variantKey = strtolower($recipeFor[$key]); 
 							$existingVariant = $this->db->where([
 								'menuid' => $updatedId,
 								'variantName' => $variantName,
@@ -2493,7 +2577,10 @@ class Item_food extends MX_Controller
 									'uber_eats_price' => $uberEatsPrices[$key],
 									'doordash_price' => $doordashPrices[$key],
 									'web_order_price' => $webOrderPrices[$key],
+									'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
+									'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
 								];
+
 
 								if ($this->foodvarient_model->create($variantData)) {
 									$insertedVariantId = $this->db->insert_id();
@@ -2632,6 +2719,18 @@ class Item_food extends MX_Controller
 		
 			$data['taxitems'] = $this->taxchecking();
 			if (!empty($id)) {
+
+					//Show updated purchase price
+
+				$data['stockinfo'] = $this->db
+									->select('ingredients.*, ingredients_opening_stock.opening_balance, ingredients_opening_stock.purchase_price as opening_price, purchase_details.price as purchase_price')
+									->from('ingredients')
+									->join('ingredients_opening_stock', 'ingredients_opening_stock.ingredient_id = ingredients.id', 'left')
+									->join('purchase_details', 'ingredients.id = purchase_details.indredientid', 'left')
+									->where('ingredients.purchase_product', $id)
+									->get()
+									->row();
+
 			
 				$data['title'] = display('update_fooditem');
 				//$data['productinfo']   = $this->fooditem_model->findById($id);

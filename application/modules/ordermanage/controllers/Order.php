@@ -2637,10 +2637,12 @@ class Order extends MX_Controller
 
 
 			if ($setting->service_chargeType == 1) {
-				$subtotal = $finalbillinfo->total_amount - ($fprice + $anonsfprm);
+				//$subtotal = $finalbillinfo->total_amount - ($fprice + $anonsfprm);
+				$subtotal = $finalbillinfo->total_amount - $anonsfprm;
 				$fsd = $subtotal * $setting->servicecharge / 100;
 			} else {
-				$subtotal = $finalbillinfo->total_amount - ($fprice + $anonsfprm);
+				//$subtotal = $finalbillinfo->total_amount - ($fprice + $anonsfprm);
+				$subtotal = $finalbillinfo->total_amount - $anonsfprm;
 				$fsd = $setting->servicecharge;
 			}
 
@@ -2655,9 +2657,9 @@ class Order extends MX_Controller
 			}
 			$fvat = $finalbillinfo->VAT - ($calvat + $adtvat);
 			$grdiscount = $finalbillinfo->discount - $discount;
-			$fbillamount = $subtotal + $fvat + $fsd - $grdiscount;
+			//$fbillamount = $subtotal + $fvat + $fsd - $grdiscount;
+			$fbillamount = $subtotal; // Only Food Item Price show in cancel item
 			$updatebill = array('total_amount' => $subtotal, 'discount' => $grdiscount, 'service_charge' => $fsd, 'VAT' => $fvat, 'bill_amount' => $fbillamount);
-
 
 			$this->db->where('order_id', $orderid);
 			$this->db->update('bill', $updatebill);
@@ -3038,6 +3040,7 @@ class Order extends MX_Controller
 		/* ends of bootstrap */
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$data["cancel_flag"] = $status;
 		$data["iteminfo"] = $this->order_model->pendingorder($config["per_page"], $page, $status);
 		$data["links"] = $this->pagination->create_links();
 		$data['pagenum'] = $page;

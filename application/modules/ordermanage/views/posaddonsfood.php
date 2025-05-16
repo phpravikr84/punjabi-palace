@@ -39,12 +39,12 @@ $selectedMods = $q2->result();
         <tr>
             <td>
                 <input name="itemname" type="hidden" id="itemname_<?php echo "1"; ?>" value="<?php echo $item->ProductName;
-                                                                                            if (!empty($item->itemnotes)) {
-                                                                                                echo " -" . $item->itemnotes;
+                                                                                            if (!empty($item->component)) {
+                                                                                                echo " (" . $item->component . ")";
                                                                                             } ?>" />
                 <?php echo $item->ProductName;
-                if (!empty($item->itemnotes)) {
-                    echo " -" . $item->itemnotes;
+                if (!empty($item->component)) {
+                    echo " (" . $item->component . ")";
                 } ?>
             </td>
             <td>

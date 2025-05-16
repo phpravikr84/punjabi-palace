@@ -40,8 +40,8 @@
 					"complete_order" => array("controller" => "order","method"=> "completelist","permission" => "read"),
 					"cancel_order" => array("controller" => "order","method" => "cancellist","permission" => "read"),
 					"kitchen_dashboard" => array("controller" => "order","method"=> "allkitchen","permission" => "read"),
-					"counter_dashboard" => array("controller" => "order","method"=> "counterboard","permission" => "read"),
-					"counter_list" => array("controller" => "order","method"=> "counterlist","permission" => "read"),
+					// "counter_dashboard" => array("controller" => "order","method"=> "counterboard","permission" => "read"),
+					// "counter_list" => array("controller" => "order","method"=> "counterlist","permission" => "read"),
 					"pos_setting" => array("controller" => "order","method"=> "possetting","permission" => "read"),
 					"sound_setting" => array("controller" => "order","method"=> "soundsetting","permission" => "read")
 				);
@@ -111,7 +111,8 @@
 				);
 				$HmvcMenu2["report"] = array(
 					"icon" => "<i class='fa fa-line-chart' aria-hidden='true'></i>", 
-					"purchase_report" => array("controller" => "reports","method"  => "index","permission" => "read"), 
+					"purchase_report" => array("controller" => "reports","method"  => "index","permission" => "read"),
+					"supplier_procurement_price_report" => array("controller" => "reports","method"  => "supplier_procurement_price","permission" => "read"), 
 					"stock_report_product_wise" => array("controller" => "reports","method"  => "productwise","permission" => "read"), 
 					"purchase_report_ingredient" => array("controller" => "reports","method" => "ingredientwise","permission" => "read"), 
 					"sell_report" => array("sell_report" => array("controller" => "reports","method"=> "sellrpt","permission" => "read"),
@@ -296,7 +297,7 @@
 						case 'ingredmanage':
 							echo 'Ingredient Management';
 							break;
-			
+
 						default:
 							echo display($name);
 							break;
@@ -309,6 +310,7 @@
 						case 'manage_addons':
 							echo 'Manage Modifiers';
 							break;
+						
 
 						default:
 							echo display($name);
@@ -367,6 +369,10 @@
 						case 'slots':
 								echo 'Weekly Time Slots';
 								break;
+
+						case 'supplier_procurement_price_report':
+							echo 'Supplier Procurement Price Rept';
+							break;
 				
 						default:
 							echo display($name);

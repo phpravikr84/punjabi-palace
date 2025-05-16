@@ -93,7 +93,7 @@ class Report_model extends CI_Model
 		$this->db->from('ingredients b');
 		$this->db->join('purchase_details a', 'b.id = a.indredientid', 'left');
 		$this->db->join('ingredients_opening_stock d', 'b.id = d.ingredient_id', 'left');
-		$this->db->join('unit_of_measurement c', 'c.id = b.consumption_unit', 'inner');
+		$this->db->join('unit_of_measurement c', 'c.id = b.consumption_unit', 'left');
 		$this->db->group_by('b.id');
 		$this->db->order_by('MAX(a.purchasedate)', 'DESC');  // using MAX because of group_by
 
@@ -1000,4 +1000,98 @@ class Report_model extends CI_Model
 		$orderinfo = $query->result();
 		return $orderinfo;
 	}
+
+	public function get_all_suppliers()
+	{
+		return $this->db->select('supid, supName')
+			->from('supplier')
+			->get()
+			->result();
+	}
+	
+	public function get_supplier_procurement($start_date, $end_date, $supplier_id = null)
+	{
+		$this->db->select("
+			ipn.purchase_id,
+			pi.invoiceid,
+			s.supName,
+			i.ingredient_name,
+			ipn.current_unit_price,
+			ipn.last_unit_price,
+			ipn.price_difference,
+			ipn.price_diff_percentage,
+			ipn.price_up,
+			ipn.price_down,
+			pi.purchasedate
+		");
+		$this->db->from('invprice_difference_notification ipn');
+		$this->db->join('supplier s', 'ipn.supplier_id = s.supid', 'left');
+		$this->db->join('ingredients i', 'ipn.ingredient_id = i.id', 'left');
+		$this->db->join('purchaseitem pi', 'ipn.purchase_id = pi.purID', 'left');
+		
+		
+		if (!empty($start_date)) {
+			$this->db->where('pi.purchasedate >=', $start_date);
+		}
+	
+		if (!empty($end_date)) {
+			$this->db->where('pi.purchasedate <=', $end_date);
+		}
+	
+		if (!empty($supplier_id)) {
+			$this->db->where('ipn.supplier_id', $supplier_id);
+		}
+	
+		$this->db->order_by('pi.purchasedate', 'DESC');
+	
+		return $this->db->get()->result();
+	}
+	
+
+	public function get_supplier_price_difference($start_date = null, $end_date = null, $supplier_id = null)
+	{
+		$this->db->select('
+			pdn.notify_id,
+			pdn.purchase_id,
+			pdn.ingredient_id,
+			i.ingredient_name,
+			s.supName AS current_supplier,
+			pdn.last_supplier_id,
+			s2.supName AS last_supplier,
+			pdn.last_unit_price,
+			pdn.current_unit_price,
+			pdn.price_difference,
+			pdn.price_up,
+			pdn.price_down,
+			pdn.price_diff_percentage,
+			pi.purchasedate,
+			pi.invoiceid,
+		')
+		->from('invprice_difference_notification pdn')
+		->join('ingredients i', 'pdn.ingredient_id = i.id', 'left')
+		->join('supplier s', 'pdn.supplier_id = s.supid', 'left')
+		->join('supplier s2', 'pdn.last_supplier_id = s2.supid', 'left')
+		->join('purchaseitem pi', 'pdn.purchase_id = pi.purID', 'left');
+
+		// Apply date filters only if provided
+		if (!empty($start_date)) {
+			$this->db->where('pi.purchasedate >=', $start_date);
+		}
+		if (!empty($end_date)) {
+			$this->db->where('pi.purchasedate <=', $end_date);
+		}
+
+		// Apply supplier filter only if provided
+		if (!empty($supplier_id)) {
+			$this->db->where('pdn.supplier_id', $supplier_id);
+		}
+
+		$this->db->order_by('pi.purchasedate', 'DESC');
+
+		return $this->db->get()->result();
+	}
+
+
+	
+
 }
