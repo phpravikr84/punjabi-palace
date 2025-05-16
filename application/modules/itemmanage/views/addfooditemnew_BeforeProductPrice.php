@@ -187,12 +187,10 @@
                         <!-- Only for Product -->
                         <div class="col-md-12" id="productinfo">
                             <?php
-
                             $ingredient = !empty($productinfo['ingredients'][0]) ? $productinfo['ingredients'][0] : null;
                             $ingredient_id = !empty($productinfo['ingredients'][0]->id) ? $productinfo['ingredients'][0]->id : null;
                             $readonly = is_ingredient_readonly($ingredient_id);
                             ?>
-                            <input type="hidden" name="ingredient_id" value="<?php echo $stockinfo->id; ?>">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -203,7 +201,7 @@
                                         </label>
                                         <input name="pack_size" class="form-control" type="text"
                                             placeholder="<?php echo display('pack_size') ?>" id="pack_size"
-                                            value="<?php echo !empty($stockinfo) ? $stockinfo->pack_size : ''; ?>">
+                                            value="<?php echo !empty($ingredient) ? $ingredient->pack_size : ''; ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="col-form-label">Pack Unit 
@@ -215,7 +213,7 @@
                                             <option value=""><?php echo display('select_pack_unit'); ?></option>
                                             <?php foreach($units as $unit) { ?>
                                                 <option value="<?php echo $unit->id; ?>"
-                                                    <?php if (!empty($stockinfo) && $stockinfo->uom_id == $unit->id) echo 'selected'; ?>>
+                                                    <?php if (!empty($ingredient) && $ingredient->pack_unit == $unit->id) echo 'selected'; ?>>
                                                     <?php echo $unit->uom_name; ?>
                                                 </option>
                                             <?php } ?>
@@ -232,7 +230,7 @@
                                             <option value=""><?php echo display('select_purchase_unit'); ?></option>
                                             <?php foreach($units as $unit) { ?>
                                                 <option value="<?php echo $unit->id; ?>"
-                                                    <?php if (!empty($stockinfo) && $stockinfo->uom_id == $unit->id) echo 'selected'; ?>>
+                                                    <?php if (!empty($ingredient) && $ingredient->uom_id == $unit->id) echo 'selected'; ?>>
                                                     <?php echo $unit->uom_name; ?>
                                                 </option>
                                             <?php } ?>
@@ -242,7 +240,7 @@
                                         <label class="col-form-label">Purchase Price</label>
                                         <input name="purchase_price" class="form-control" type="number" step="0.01"
                                             placeholder="<?php echo display('purchase_price') ?>" id="purchase_price"
-                                            value="<?php echo !empty($stockinfo) ? $stockinfo->opening_price : ''; ?>" <?php echo $readonly; ?>>
+                                            value="<?php echo !empty($ingredient) ? $ingredient->purchase_price : ''; ?>" <?php echo $readonly; ?>>
                                     </div>
                                 </div>
                             </div>
@@ -253,13 +251,13 @@
                                         <label class="col-form-label">Minimum Stock</label>
                                         <input name="minimum_stock" class="form-control" type="number"
                                             placeholder="<?php echo display('minimum_stock') ?>" id="minimum_stock"
-                                            value="<?php echo !empty($stockinfo) ? $stockinfo->min_stock : ''; ?>">
+                                            value="<?php echo !empty($ingredient) ? $ingredient->min_stock : ''; ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="col-form-label">Opening Stock</label>
                                         <input name="opening_stock" class="form-control" type="number"
                                             placeholder="<?php echo display('opening_stock') ?>" id="opening_stock"
-                                            value="<?php echo !empty($stockinfo) ? $stockinfo->opening_balance : ''; ?>" <?php echo $readonly; ?>>
+                                            value="<?php echo !empty($ingredient) ? $ingredient->opening_balance : ''; ?>" <?php echo $readonly; ?>>
                                     </div>
                                 </div>
                             </div>
@@ -299,65 +297,6 @@
                         </div>
                     </div>
                     <!-- Highlighted Recipe Mode Section -->
-
-                    <!-- Only for Product Prices -->
-                    <?php
-                    $variants = !empty($productinfo['variants']) ? $productinfo['variants'] : [ (object)[
-                        'variantid' => '',
-                        'variantName' => '',
-                        'price' => '',
-                        'takeaway_price' => '',
-                        'uber_eats_price' => '',
-                        'doordash_price' => '',
-                        'web_order_price' => '',
-                    ]];
-                    ?>
-
-                    <?php foreach ($variants as $variant): 
-                        $variantName = $variant->variantName ?? 'Regular';
-                        $variantId = $variant->variantid ?? '';
-                    ?>
-                    <div class="row mb-4 p-3" style="background-color:#ececec; border-radius: 5px;">
-                        <div class="col-md-12 mb-3">
-                            <input type="hidden" name="variant_id[]" value="<?= htmlspecialchars($variantId); ?>">
-                            <div class="form-group">
-                                <!-- <label>Variant Name</label> -->
-                                <input type="hidden" name="variant_name[]" class="form-control" value="<?= htmlspecialchars($variantName); ?>" placeholder="Variant Name">
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 mb-3">
-                            <label>Sale Price (Dine In)</label>
-                            <input type="text" name="price[]" class="form-control" value="<?= htmlspecialchars($variant->price ?? ''); ?>">
-                        </div>
-
-                        <div class="col-md-12 mb-3">
-                            <label>Sale Price (Takeaway)</label>
-                            <input type="text" name="takeaway_price[]" class="form-control" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>">
-                        </div>
-
-                        <div class="col-md-12 mb-2">
-                            <h5 class="mb-2">Sale Price (Delivery Partner)</h5>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label>Ubereats</label>
-                            <input type="text" name="uber_eats_price[]" class="form-control" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>">
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label>Doordash</label>
-                            <input type="text" name="doordash_price[]" class="form-control" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>">
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label>Weborder</label>
-                            <input type="text" name="weborder_price[]" class="form-control" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>">
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-
-                    <!-- Only for Product Prices End -->
                    
                     <!-- Highlighted Food Type Section -->
 
@@ -474,7 +413,7 @@
                         </div>
                     </div>
                     <!-- Variants Panel -->
-                    <div class="panel panel-default" id="variantsPanel">
+                    <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingVariants">
                             <h5 class="panel-title">
                                 <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseVariants" aria-expanded="false" aria-controls="collapseVariants" class="accordion-plus-toggle">
@@ -657,7 +596,7 @@
                                                 <div class="custom-control custom-switch" id="recipe_mode">
                                                     <input type="hidden" name="is_bom" value="0">
                                                     <input type="checkbox" class="custom-control-input" id="is_bom_check" name="is_bom_check"
-                                                        <?php echo (isset($productinfo) && $productinfo['is_bom'] == 1) ? 'checked' : ''; ?>>
+                                                        <?php echo (isset($productinfo) && $productinfo['is_bom'] == 1) ? 'checked' : 'checked'; ?>>
                                                     <label class="custom-control-label font-weight-bold" for="is_bom_check">Enable Recipe Mode</label>
                                                 </div>
 

@@ -491,7 +491,7 @@ public function count_fooditem()
 		->join('purchase_details', 'ingredients.id = purchase_details.indredientid', 'left')
 		->where('ingredients.purchase_product', $id)
 		->where('ingredients.is_active', 1)
-		->where('ingredients.status', 1)
+		->where('ingredients.status', 0)
 		->order_by('ingredients.ingredient_name', 'ASC')
 		->get()
 		->result();

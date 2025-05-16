@@ -2414,6 +2414,35 @@ class Item_food extends MX_Controller
                     $this->db->where('foodid', $updatedId);
                     $this->db->delete('production_details');
 
+
+					// Build the post data array conditionally
+					$ingrData = [];
+					$openData = [];
+
+					// Basic form inputs
+					//$ingrData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
+					$ingrData['pack_size']        = $this->input->post('pack_size', true);
+					$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
+					$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
+					$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
+					$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
+					$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
+					$ingrid = $this->input->post('ingredient_id', true);
+
+					$openData['purchase_price']   = $this->input->post('purchase_price', true);
+					$openData['opening_balance']  = $this->input->post('opening_stock', true);
+
+
+					// Update Food Item 
+					$this->db->trans_start();
+					$this->fooditem_model->update_ingredient($ingrid, $ingrData);
+					$this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
+					$this->db->trans_complete();
+
+
+
+
+				
 					
                     //updating variants and production-details [start]
                     if ($this->input->post('variant_name', true)) {
@@ -2585,6 +2614,18 @@ class Item_food extends MX_Controller
 		
 			$data['taxitems'] = $this->taxchecking();
 			if (!empty($id)) {
+
+					//Show updated purchase price
+
+				$data['stockinfo'] = $this->db
+									->select('ingredients.*, ingredients_opening_stock.opening_balance, ingredients_opening_stock.purchase_price as opening_price, purchase_details.price as purchase_price')
+									->from('ingredients')
+									->join('ingredients_opening_stock', 'ingredients_opening_stock.ingredient_id = ingredients.id', 'left')
+									->join('purchase_details', 'ingredients.id = purchase_details.indredientid', 'left')
+									->where('ingredients.purchase_product', $id)
+									->get()
+									->row();
+
 			
 				$data['title'] = display('update_fooditem');
 				//$data['productinfo']   = $this->fooditem_model->findById($id);

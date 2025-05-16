@@ -234,7 +234,8 @@ $(document).ready(function() {
             $row = $input.closest('.variant-row');
         }
         console.log('Row ID loading..:', $row.attr('id'));
-        let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
+        //let variantName = $row.find("input[name='variant_name[]']").val().trim().toLowerCase();
+        let variantName = ($row.find("input[name='variant_name[]']").val() || '').trim().toLowerCase();
     
         if (variantName === '') {
             $input.next('br').next('.price-comparison').html('<small style="color:red;">Enter Variant Name first!</small>');
@@ -1237,10 +1238,14 @@ $(document).ready(function () {
             $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').hide();
             $('#productinfo').show();
             $('#serving_weightage').show();
+            $('#productprices').show();
+            $('#variantsPanel').hide();
         } else {
             $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').show();
             $('#productinfo').hide();
             $('#serving_weightage').hide();
+            $('#productprices').hide();
+            $('#variantsPanel').show();
         }
     }
 
@@ -1248,6 +1253,8 @@ $(document).ready(function () {
     $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore, #serving_weightage').show();
     $('#productinfo').hide();
     $('#serving_weightage').hide();
+    $('#productprices').hide();
+    $('#variantsPanel').show();
 
     // On change of cuisine_type select box
     $('select[name="cusine_type"]').on('change', function () {
@@ -1258,6 +1265,11 @@ $(document).ready(function () {
 
     // Optionally trigger once in case value is preselected
     toggleRecipeElements($('select[name="cusine_type"]').val());
+});
+
+$(document).on('change', 'select[name="cusine_type"]', function () {
+    let selectedValue = $(this).val();
+    toggleRecipeElements(selectedValue);
 });
 
 
