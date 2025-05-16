@@ -317,7 +317,7 @@
                         $variantName = $variant->variantName ?? 'Regular';
                         $variantId = $variant->variantid ?? '';
                     ?>
-                    <div class="row mb-4 p-3" style="background-color:#ececec; border-radius: 5px;">
+                    <div class="row mb-4 p-3" id="productprices" style="background-color:#ececec; border-radius: 5px;">
                         <div class="col-md-12 mb-3">
                             <input type="hidden" name="variant_id[]" value="<?= htmlspecialchars($variantId); ?>">
                             <div class="form-group">
@@ -956,12 +956,13 @@
     // return false;
   });
 document.getElementById("isoffer").addEventListener("change", function () {
-    document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
+    //document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
 
     if (this.checked) {
-        document.getElementById("offeractive").classList.add("showhide");
-    } else {
         document.getElementById("offeractive").classList.remove("showhide");
+       
+    } else {
+        document.getElementById("offeractive").classList.add("showhide");
     }
 });
 </script>
