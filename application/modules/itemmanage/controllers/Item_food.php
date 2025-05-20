@@ -2376,7 +2376,7 @@ class Item_food extends MX_Controller
 						$postData['pack_unit']        = $this->input->post('pack_unit', true);
 						$postData['uom_id']    = $this->input->post('purchase_unit', true);
 						$postData['purchase_price']   = $this->input->post('purchase_price', true);
-						//$postData['stock_qty']  = $this->input->post('opening_stock', true);
+						$postData['stock_qty']  = $this->input->post('opening_stock', true);
 						$postData['min_stock']        = $this->input->post('minimum_stock', true);
 						$postData['is_active']        = 1;
 
@@ -2533,7 +2533,7 @@ class Item_food extends MX_Controller
 					$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
 					$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
 					$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
-					//$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
+					$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
 					$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
 					$ingrid = $this->input->post('ingredient_id', true);
 

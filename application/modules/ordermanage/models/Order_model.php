@@ -2175,9 +2175,9 @@ class Order_model extends CI_Model
 				foreach ($productiondetails as $productiondetail) {
 					$r_stock = $productiondetail->qty * ($foodqty * $groupitem->item_qty);
 					/*add stock in ingredients*/
-					$this->db->set('stock_qty', 'stock_qty-' . $r_stock, FALSE);
-					$this->db->where('id', $productiondetail->ingredientid);
-					$this->db->update('ingredients');
+					// $this->db->set('stock_qty', 'stock_qty-' . $r_stock, FALSE);
+					// $this->db->where('id', $productiondetail->ingredientid);
+					// $this->db->update('ingredients');
 					/*end add ingredients*/
 				}
 			}
@@ -2190,9 +2190,9 @@ class Order_model extends CI_Model
 			foreach ($productiondetails as $productiondetail) {
 				$r_stock = $productiondetail->qty * $foodqty;
 				/*add stock in ingredients*/
-				$this->db->set('stock_qty', 'stock_qty-' . $r_stock, FALSE);
-				$this->db->where('id', $productiondetail->ingredientid);
-				$this->db->update('ingredients');
+				// $this->db->set('stock_qty', 'stock_qty-' . $r_stock, FALSE);
+				// $this->db->where('id', $productiondetail->ingredientid);
+				// $this->db->update('ingredients');
 				/*end add ingredients*/
 			}
 		}
