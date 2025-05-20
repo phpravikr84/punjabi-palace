@@ -109,11 +109,15 @@ class Report_model extends CI_Model
 			} else {
 				$saleqty = $inqty;
 			}
+
+			$totalInQnty = $result->totalqty + $result->open_stock; // Total In Qnty
+			$totalStockQty = $result->stock_qty + $result->open_stock; // Total Stock Qnty
+
 			$myArray[$i]['ingredient_id'] = $result->id;
 			$myArray[$i]['ProductName'] = $result->ingredient_name;
-			$myArray[$i]['In_Qnty'] = $result->totalqty + $result->open_stock . ' ' . $result->uom_short_code;
-			$myArray[$i]['Out_Qnty'] = ($result->totalqty + $result->open_stock) - $result->stock_qty . ' ' . $result->uom_short_code;
-			$myArray[$i]['Stock'] = $result->stock_qty . ' ' . $result->uom_short_code;
+			$myArray[$i]['In_Qnty'] = $totalInQnty . ' ' . $result->uom_short_code;
+			$myArray[$i]['Out_Qnty'] = $totalInQnty - $totalStockQty . $result->uom_short_code;
+			$myArray[$i]['Stock'] = $totalStockQty . ' ' . $result->uom_short_code;
 
 			$myArray[$i]['In_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, $result->totalqty + $result->open_stock)) . ' Unit';
 			$myArray[$i]['Out_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, ($result->totalqty + $result->open_stock) - $result->stock_qty)) . ' Unit';
@@ -171,9 +175,10 @@ class Report_model extends CI_Model
 	{
 		$myarray = array();
 		$dateRange = "a.indredientid='$pid' AND a.purchasedate BETWEEN '$start_date%' AND '$end_date%'";
-		$this->db->select("a.*,SUM(a.quantity) as totalqty, b.id,b.ingredient_name,b.stock_qty,c.uom_short_code");
+		$this->db->select("a.*,SUM(a.quantity) as totalqty,  d.opening_balance as open_stock, b.id,b.ingredient_name,b.stock_qty,c.uom_short_code");
 		$this->db->from('purchase_details a');
 		$this->db->join('ingredients b', 'b.id = a.indredientid', 'left');
+		$this->db->join('ingredients_opening_stock d', 'b.id = d.ingredient_id', 'left');
 		$this->db->join('unit_of_measurement c', 'c.id = b.uom_id', 'inner');
 		$this->db->where($dateRange, NULL, FALSE);
 		$this->db->order_by('a.purchasedate', 'desc');
@@ -186,10 +191,13 @@ class Report_model extends CI_Model
 		} else {
 			$saleqty = $inqty;
 		}
+
+		$totalInQnty = $producreport->totalqty + $producreport->open_stock; // Total In Qnty
+		$totalStockQty = $producreport->stock_qty + $result->open_stock; // Total Stock Qnty
 		$myArray[0]['ProductName'] = $producreport->ingredient_name;
-		$myArray[0]['In_Qnty'] = $producreport->totalqty . ' ' . $producreport->uom_short_code;
-		$myArray[0]['Out_Qnty'] = $producreport->totalqty - $producreport->stock_qty . ' ' . $producreport->uom_short_code;
-		$myArray[0]['Stock'] = $producreport->stock_qty . ' ' . $producreport->uom_short_code;
+		$myArray[0]['In_Qnty'] = $totalInQnty . ' ' . $producreport->uom_short_code;
+		$myArray[0]['Out_Qnty'] = $totalInQnty - $totalStockQty . $producreport->uom_short_code;
+		$myArray[0]['Stock'] = $totalStockQty . ' ' . $producreport->uom_short_code;
 		return $myArray;
 	}
 	public function ingredientreportbyid($start_date, $end_date, $id)

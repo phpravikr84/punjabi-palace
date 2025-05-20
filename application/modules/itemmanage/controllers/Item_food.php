@@ -2091,6 +2091,12 @@ class Item_food extends MX_Controller
 			$OffersRate = 0;
 		}
 
+		if($this->input->post('cusine_type') == 3){
+			$is_bom = 0;
+		} else {
+			$is_bom = 1;
+		}
+
 		// Process selected menu types
 		$menutype = $this->input->post('menutype', true);
 		$alltmtype = "";
@@ -2220,16 +2226,12 @@ class Item_food extends MX_Controller
 					'DateUpdated'        	=> date('Y-m-d H:i:s'),
 					'DateLocked'         	=> date('Y-m-d H:i:s'),
 					'cusine_type'			=> $this->input->post('cusine_type'),
-					'is_bom'				=> $this->input->post('is_bom'),
+					'is_bom'				=> $is_bom,
 					'food_type'				=> $this->input->post('food_type', true),
 					'weightage'				=> $this->input->post('weightage', true),
 					'uomid'					=> $this->input->post('uomid', true),
 				];
 
-				// echo '<pre>';
-				// print_r($_POST);
-				// echo '</pre>';
-				// exit;
 
 				if ($this->fooditem_model->fooditem_create($postData)) {
 					$insertedFoodId = $this->db->insert_id(); //item_foods table id
@@ -2282,14 +2284,15 @@ class Item_food extends MX_Controller
 										'itemvid' => $insertedVariantId,
 										'itemquantity' => $this->input->post('unit', true),
 										'savedby' => $savedid,
-										'is_bom' => $this->input->post('is_bom', true),
+										'is_bom' => $is_bom,
 										'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
 										'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
 									];
 									$this->fooditem_model->create_food_production($productionData);
 
 									// Handle Ingredients Based on Variant
-									if ($this->input->post('is_bom', true)) {
+									//if ($this->input->post('is_bom', true)) {
+									if ($is_bom == 1) {
 										$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
 										$ingredientKey = "product_id_{$variantKey}";
 										$quantityKey = "product_quantity_{$variantKey}";
@@ -2373,7 +2376,7 @@ class Item_food extends MX_Controller
 						$postData['pack_unit']        = $this->input->post('pack_unit', true);
 						$postData['uom_id']    = $this->input->post('purchase_unit', true);
 						$postData['purchase_price']   = $this->input->post('purchase_price', true);
-						$postData['stock_qty']  = $this->input->post('opening_stock', true);
+						//$postData['stock_qty']  = $this->input->post('opening_stock', true);
 						$postData['min_stock']        = $this->input->post('minimum_stock', true);
 						$postData['is_active']        = 1;
 
@@ -2485,7 +2488,7 @@ class Item_food extends MX_Controller
 					'DateUpdated'        	=> date('Y-m-d H:i:s'),
 					'DateLocked'         	=> date('Y-m-d H:i:s'),
 					'cusine_type'			=> $this->input->post('cusine_type'),
-					'is_bom'				=> $this->input->post('is_bom'),
+					'is_bom'				=> $is_bom,
 					'food_type'				=> $this->input->post('food_type', true),
 					'weightage'				=> $this->input->post('weightage', true),
 					'uomid'					=> $this->input->post('uomid', true),
@@ -2530,7 +2533,7 @@ class Item_food extends MX_Controller
 					$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
 					$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
 					$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
-					$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
+					//$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
 					$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
 					$ingrid = $this->input->post('ingredient_id', true);
 
@@ -2590,14 +2593,15 @@ class Item_food extends MX_Controller
 										'itemvid' => $insertedVariantId,
 										'itemquantity' => $this->input->post('unit', true),
 										'savedby' => $savedid,
-										'is_bom' => $this->input->post('is_bom', true),
+										'is_bom' => $is_bom,
 										'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
 										'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
 									];
 									$this->fooditem_model->create_food_production($productionData);
 
 									// Handle Ingredients Based on Variant
-									if ($this->input->post('is_bom', true)) {
+									//if ($this->input->post('is_bom', true)) {
+									if ($is_bom == 1){
 										$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
 										$ingredientKey = "product_id_{$variantKey}";
 										$quantityKey = "product_quantity_{$variantKey}";

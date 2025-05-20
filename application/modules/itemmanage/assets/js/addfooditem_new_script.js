@@ -1235,26 +1235,26 @@ $(document).ready(function () {
     // Function to toggle visibility
     function toggleRecipeElements(value) {
         if (value == 3) {
-            $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').hide();
+            $('#recipe_mode, #recipeBox, #addMore').hide();
             $('#productinfo').show();
             $('#serving_weightage').show();
-            $('#productprices').show();
-            $('#variantsPanel').hide();
+            $('.productprices').find('input').prop('disabled', false).end().show();
+            $('.variantsPanel').hide();
         } else {
-            $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').show();
+            $('#recipe_mode, #recipeBox, #addMore').show();
             $('#productinfo').hide();
             $('#serving_weightage').hide();
-            $('#productprices').hide();
-            $('#variantsPanel').show();
+            $('.productprices').find('input').prop('disabled', true).end().hide();
+            $('.variantsPanel').show();
         }
     }
 
     // Default show on page load
-    $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore, #serving_weightage').show();
+    $('#recipe_mode, #recipeBox, #addMore, #serving_weightage').show();
     $('#productinfo').hide();
     $('#serving_weightage').hide();
-    $('#productprices').hide();
-    $('#variantsPanel').show();
+    $('.productprices').find('input').prop('disabled', true).end().hide();
+    $('.variantsPanel').show();
 
     // On change of cuisine_type select box
     $('select[name="cusine_type"]').on('change', function () {

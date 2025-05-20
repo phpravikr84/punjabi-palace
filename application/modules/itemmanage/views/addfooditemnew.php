@@ -317,7 +317,7 @@
                         $variantName = $variant->variantName ?? 'Regular';
                         $variantId = $variant->variantid ?? '';
                     ?>
-                    <div class="row mb-4 p-3" id="productprices" style="background-color:#ececec; border-radius: 5px;">
+                    <div class="row mb-4 p-3 productprices" style="background-color:#ececec; border-radius: 5px;">
                         <div class="col-md-12 mb-3">
                             <input type="hidden" name="variant_id[]" value="<?= htmlspecialchars($variantId); ?>">
                             <div class="form-group">
@@ -474,7 +474,7 @@
                         </div>
                     </div>
                     <!-- Variants Panel -->
-                    <div class="panel panel-default" id="variantsPanel">
+                    <div class="panel panel-default variantsPanel">
                         <div class="panel-heading" role="tab" id="headingVariants">
                             <h5 class="panel-title">
                                 <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseVariants" aria-expanded="false" aria-controls="collapseVariants" class="accordion-plus-toggle">
@@ -491,9 +491,9 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                            <div class="d-flex text-end align-items-center enable_rec_mode">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="hidden" name="is_bom" value="0">
+                                            <div class="d-flex text-end align-items-center enable_rec_mode" style="display:none !important;">
+                                                <div class="custom-control custom-switch" >
+                                                    <input type="hidden" name="is_bom" value="1">
                                                     <input type="checkbox" class="custom-control-input" id="is_bom_check" name="is_bom_check"
                                                         <?php echo (isset($productinfo) && $productinfo['is_bom'] == 1) ? 'checked' : ''; ?>>
                                                     <label class="custom-control-label font-weight-bold" for="is_bom_check">Enable Recipe Mode</label>
@@ -653,9 +653,9 @@
                             <div class="panel-body">
                             <div class="row">
                                     <div class="col-md-12">
-                                            <div class="d-flex text-end align-items-center enable_rec_mode">
+                                            <div class="d-flex text-end align-items-center enable_rec_mode" style="display:none !important;">
                                                 <div class="custom-control custom-switch" id="recipe_mode">
-                                                    <input type="hidden" name="is_bom" value="0">
+                                                    <input type="hidden" name="is_bom" value="1">
                                                     <input type="checkbox" class="custom-control-input" id="is_bom_check" name="is_bom_check"
                                                         <?php echo (isset($productinfo) && $productinfo['is_bom'] == 1) ? 'checked' : ''; ?>>
                                                     <label class="custom-control-label font-weight-bold" for="is_bom_check">Enable Recipe Mode</label>
