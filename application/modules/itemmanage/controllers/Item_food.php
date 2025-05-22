@@ -2365,7 +2365,7 @@ class Item_food extends MX_Controller
 
 
 					// Check if Product Exist
-					if ($this->input->post()) {
+					if ($this->input->post() && $this->input->post('cusine_type') == 3) {
 						
 						// Build the post data array conditionally
 						$postData = [];
@@ -2528,25 +2528,26 @@ class Item_food extends MX_Controller
 					$openData = [];
 
 					// Basic form inputs
-					//$ingrData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
-					$ingrData['pack_size']        = $this->input->post('pack_size', true);
-					$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
-					$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
-					$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
-					$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
-					$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
-					$ingrid = $this->input->post('ingredient_id', true);
+					if($this->input->post('cusine_type') == 3) {
+						//$ingrData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
+						$ingrData['pack_size']        = $this->input->post('pack_size', true);
+						$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
+						$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
+						$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
+						$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
+						$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
+						$ingrid = $this->input->post('ingredient_id', true);
 
-					$openData['purchase_price']   = $this->input->post('purchase_price', true);
-					$openData['opening_balance']  = $this->input->post('opening_stock', true);
+						$openData['purchase_price']   = $this->input->post('purchase_price', true);
+						$openData['opening_balance']  = $this->input->post('opening_stock', true);
 
 
-					// Update Food Item 
-					$this->db->trans_start();
-					$this->fooditem_model->update_ingredient($ingrid, $ingrData);
-					$this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
-					$this->db->trans_complete();
-
+						// Update Food Item 
+						$this->db->trans_start();
+						$this->fooditem_model->update_ingredient($ingrid, $ingrData);
+						$this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
+						$this->db->trans_complete();
+					}
 
 
 
