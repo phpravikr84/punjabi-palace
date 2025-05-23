@@ -1102,6 +1102,10 @@ class Order extends MX_Controller
 				$modTotalPriceRes = $q->row();
 				$modTotalPrice+= $modTotalPriceRes->mod_total_price;
 			}
+		} else {
+			$this-> db-> where('menu_id', $pid);
+			$this-> db-> where('tr_row_id', $trid);
+			$this-> db-> delete('cart_selected_modifiers');
 		}
 		$d['pid'] = $pid;
 		$d['mods'] = $mods;
@@ -1146,6 +1150,11 @@ class Order extends MX_Controller
 				];
 				$this->db->insert('cart_selected_modifiers',$data);
 			}
+		} else {
+			$this-> db-> where('menu_id', $pid);
+			$this-> db-> where('tr_row_id', $trid);
+			$this-> db-> where('foods_or_mods', 1);
+			$this-> db-> delete('cart_selected_modifiers');
 		}
 		if (count($mods)>0) {
 			// $this-> db-> where('menu_id', $mods[0]['pid']);
@@ -1236,6 +1245,11 @@ class Order extends MX_Controller
 				$modTotalPriceRes = $q->row();
 				$modTotalPrice+= $modTotalPriceRes->mod_total_price;
 			}
+		} else {
+			$this-> db-> where('menu_id', $pid);
+			$this-> db-> where('tr_row_id', $trid);
+			$this-> db-> where('foods_or_mods', 2);
+			$this-> db-> delete('cart_selected_modifiers');
 		}
 		$d['pid'] = $pid;
 		$d['mods'] = $mods;
