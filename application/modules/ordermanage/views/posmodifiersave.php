@@ -49,6 +49,12 @@ if (count($selectedModsForCart)>0):
       endif;
   endforeach;
 endif;
+if (count($selectedModsForCart) == 0 && count($selectedFoodsForCart) == 0):
+?>
+        <br />
+        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">Choose Modifiers</small>
+<?php
+endif;
 ?>
 </div>
 <?php
