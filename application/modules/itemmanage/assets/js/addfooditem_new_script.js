@@ -211,6 +211,38 @@ $(document).ready(function(){
 
 //for Add / Edit view Price Calculation
 
+// Function to handle comparison
+function compareWithPurchasePrice($input) {
+    let $row = $input.closest('.productprices'); // Scoped to .productprices row
+    let purchasePrice = parseFloat($('#purchase_price').val());
+
+    if (isNaN(purchasePrice)) {
+        $row.find('.price-comparison').html('');
+        return;
+    }
+
+    let price = parseFloat($input.val());
+
+    if (isNaN(price)) {
+        $input.next('br').next('.price-comparison').html('');
+        return;
+    }
+
+    let diff = price - purchasePrice;
+    let percentage = ((Math.abs(diff) / purchasePrice) * 100).toFixed(2);
+
+    let message = '';
+    if (diff > 0) {
+        message = `<small class="text-success"><i class="fa fa-long-arrow-up"></i> $${diff.toFixed(2)} (${percentage}%)</small>`;
+    } else if (diff < 0) {
+        message = `<small class="text-danger"><i class="fa fa-long-arrow-down"></i> $${Math.abs(diff).toFixed(2)} (${percentage}%)</small>`;
+    } else {
+        message = `<small class="text-primary"><i class="fa fa-long-arrow-right"></i> Equal to Purchase Price</small>`;
+    }
+
+    $input.next('br').next('.price-comparison').html(message);
+}
+
 $(document).ready(function() {
 
     assignVariantIds();  // <-- run once
@@ -279,6 +311,10 @@ $(document).ready(function() {
         }
     
         $input.next('br').next('.price-comparison').html(message);
+
+        // In case of recipe
+        compareWithPurchasePrice($(this));
+
     });
 
     // Then trigger 'input' on all fields after handler is attached
@@ -286,6 +322,16 @@ $(document).ready(function() {
     $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").each(function () {
         $(this).trigger('input');
     });
+
+    // Triggered when purchase price changes — re-evaluate all related sale prices
+    $('#purchase_price').on('input', function () {
+        $('.productprices').each(function () {
+            $(this).find("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").each(function () {
+                compareWithPurchasePrice($(this));
+            });
+        });
+    });
+
 
 });
 

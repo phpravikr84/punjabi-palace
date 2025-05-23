@@ -910,6 +910,30 @@ if (!function_exists('is_ingredient_readonly')) {
   }
 }
 
+if (!function_exists('get_unit_detail')) {
+  /**
+   * Get unit detail by ID
+   *
+   * @param int $unit_id
+   * @return array|null
+   */
+  function get_unit_detail($unit_id) {
+      $CI =& get_instance(); // Get CI instance
+      $CI->load->database(); // Load DB if not already loaded
+
+      $query = $CI->db
+                  ->where('id', $unit_id)
+                  ->where('is_active', 1)
+                  ->get('unit_of_measurement');
+
+      if ($query->num_rows() > 0) {
+          return $query->row_array(); // return unit details as array
+      }
+
+      return null; // if not found
+  }
+}
+
 
 
 

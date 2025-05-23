@@ -1382,7 +1382,7 @@ class Item_food extends MX_Controller
 	public function addgroupfood($id = null)
 	{
 		$this->permission->method('itemmanage', 'create')->redirect();
-		$data['title'] = "Add/Edit Promotional Deals";
+		$data['title'] = "Add/Edit Meal Deals";
 		#-------------------------------#
 		// echo "<pre>";
 		// print_r($_POST);
@@ -2232,7 +2232,10 @@ class Item_food extends MX_Controller
 					'uomid'					=> $this->input->post('uomid', true),
 				];
 
-
+				// echo '<pre>';
+				// print_r($this->input->post());
+				// echo '</pre>';
+				// exit;
 				if ($this->fooditem_model->fooditem_create($postData)) {
 					$insertedFoodId = $this->db->insert_id(); //item_foods table id
 					
@@ -2244,82 +2247,122 @@ class Item_food extends MX_Controller
 					}
 					file_put_contents('./assets/js/product.json', json_encode($json_product));
 					// Add Variants
-					// Check if variant exists
-					if ($this->input->post('variant_name', true)) {
-						//varient insert [start]
-						$variantNames = $this->input->post('variant_name', true);
+					//Check if variant exist and cusine Type Product
+					// Basic form inputs
+					if($this->input->post('cusine_type') == 3) {
+						$variantName = $this->input->post('variant_name', true);
 						$prices = $this->input->post('price', true);
 						$takeawayPrices = $this->input->post('takeaway_price', true);
 						$uberEatsPrices = $this->input->post('uber_eats_price', true);
 						$doordashPrices = $this->input->post('doordash_price', true);
 						$webOrderPrices = $this->input->post('weborder_price', true);
-						$recipeFor = $this->input->post('recipe_for', true);
 
 						$index = 0;
-						foreach ($variantNames as $key => $variantName) {
-							$variantKey = strtolower($recipeFor[$key]); 
-							$existingVariant = $this->db->where([
-								'menuid' => $insertedFoodId,
-								'variantName' => $variantName,
-							])->get('variant')->row();
+						$variantData = [
+							'menuid' => $insertedFoodId,
+							'variantName' => $variantName[$index],
+							'price' => $prices[$index],
+							'takeaway_price' => $takeawayPrices[$index],
+							'uber_eats_price' => $uberEatsPrices[$index],
+							'doordash_price' => $doordashPrices[$index],
+							'web_order_price' => $webOrderPrices[$index],
+						];
 
-							if (!$existingVariant) {
-								$variantData = [
+						if ($this->foodvarient_model->create($variantData)) {
+							$insertedVariantId = $this->db->insert_id();
+
+							$productionData = [
+								'itemid' => $insertedFoodId,
+								'itemvid' => $insertedVariantId,
+								'itemquantity' => $this->input->post('unit', true),
+								'savedby' => $savedid,
+								'is_bom' => 0,
+								'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
+								'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
+							];
+							$this->fooditem_model->create_food_production($productionData);
+
+						}
+
+					} else {
+					// Check if variant exists & cusine Type Restaurant
+						if ($this->input->post('variant_name', true)) {
+							//varient insert [start]
+							$variantNames = $this->input->post('variant_name', true);
+							$prices = $this->input->post('price', true);
+							$takeawayPrices = $this->input->post('takeaway_price', true);
+							$uberEatsPrices = $this->input->post('uber_eats_price', true);
+							$doordashPrices = $this->input->post('doordash_price', true);
+							$webOrderPrices = $this->input->post('weborder_price', true);
+							$recipeFor = $this->input->post('recipe_for', true);
+
+							$index = 0;
+							foreach ($variantNames as $key => $variantName) {
+								$variantKey = strtolower($recipeFor[$key]); 
+								$existingVariant = $this->db->where([
 									'menuid' => $insertedFoodId,
 									'variantName' => $variantName,
-									'price' => $prices[$key],
-									'takeaway_price' => $takeawayPrices[$key],
-									'uber_eats_price' => $uberEatsPrices[$key],
-									'doordash_price' => $doordashPrices[$key],
-									'web_order_price' => $webOrderPrices[$key],
-									'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
-									'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
-								];
+								])->get('variant')->row();
 
-								if ($this->foodvarient_model->create($variantData)) {
-									$insertedVariantId = $this->db->insert_id();
-
-									$productionData = [
-										'itemid' => $insertedFoodId,
-										'itemvid' => $insertedVariantId,
-										'itemquantity' => $this->input->post('unit', true),
-										'savedby' => $savedid,
-										'is_bom' => $is_bom,
-										'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
-										'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
+								if (!$existingVariant) {
+									$variantData = [
+										'menuid' => $insertedFoodId,
+										'variantName' => $variantName,
+										'price' => $prices[$key],
+										'takeaway_price' => $takeawayPrices[$key],
+										'uber_eats_price' => $uberEatsPrices[$key],
+										'doordash_price' => $doordashPrices[$key],
+										'web_order_price' => $webOrderPrices[$key],
+										'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
+										'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
 									];
-									$this->fooditem_model->create_food_production($productionData);
 
-									// Handle Ingredients Based on Variant
-									//if ($this->input->post('is_bom', true)) {
-									if ($is_bom == 1) {
-										$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
-										$ingredientKey = "product_id_{$variantKey}";
-										$quantityKey = "product_quantity_{$variantKey}";
-										$unitIdKey = "unitid_{$variantKey}";
-										$unitNameKey = "unitname_{$variantKey}";
-										$recipePriceKey = "product_price_{$variantKey}";
+									if ($this->foodvarient_model->create($variantData)) {
+										$insertedVariantId = $this->db->insert_id();
 
-										if ($this->input->post($ingredientKey, true)) {
-											$ingredients = $this->input->post($ingredientKey, true);
-											$quantities = $this->input->post($quantityKey, true);
-											$unitIds = $this->input->post($unitIdKey, true);
-											$unitNames = $this->input->post($unitNameKey, true);
-											$recipePrices = $this->input->post($recipePriceKey, true);
+										$productionData = [
+											'itemid' => $insertedFoodId,
+											'itemvid' => $insertedVariantId,
+											'itemquantity' => $this->input->post('unit', true),
+											'savedby' => $savedid,
+											'is_bom' => $is_bom,
+											'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
+											'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
+										];
+										$this->fooditem_model->create_food_production($productionData);
 
-											foreach ($ingredients as $i => $ingredientId) {
-												$ingredientData = [
-													'foodid' => $insertedFoodId,
-													'pvarientid' => $insertedVariantId,
-													'ingredientid' => $ingredientId,
-													'qty' => $quantities[$i],
-													'unitid' => $unitIds[$i],
-													'unitname' => $unitNames[$i],
-													'recipe_price' => $recipePrices[$i],
-													'createdby' => $this->session->userdata('id'),
-													'created_date' => date('Y-m-d'),
-												];
-												$this->db->insert('production_details', $ingredientData);
+										
+										// Handle Ingredients Based on Variant
+										//if ($this->input->post('is_bom', true)) {
+										if ($is_bom == 1) {
+											$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
+											$ingredientKey = "product_id_{$variantKey}";
+											$quantityKey = "product_quantity_{$variantKey}";
+											$unitIdKey = "unitid_{$variantKey}";
+											$unitNameKey = "unitname_{$variantKey}";
+											$recipePriceKey = "product_price_{$variantKey}";
+
+											if ($this->input->post($ingredientKey, true)) {
+												$ingredients = $this->input->post($ingredientKey, true);
+												$quantities = $this->input->post($quantityKey, true);
+												$unitIds = $this->input->post($unitIdKey, true);
+												$unitNames = $this->input->post($unitNameKey, true);
+												$recipePrices = $this->input->post($recipePriceKey, true);
+
+												foreach ($ingredients as $i => $ingredientId) {
+													$ingredientData = [
+														'foodid' => $insertedFoodId,
+														'pvarientid' => $insertedVariantId,
+														'ingredientid' => $ingredientId,
+														'qty' => $quantities[$i],
+														'unitid' => $unitIds[$i],
+														'unitname' => $unitNames[$i],
+														'recipe_price' => $recipePrices[$i],
+														'createdby' => $this->session->userdata('id'),
+														'created_date' => date('Y-m-d'),
+													];
+													$this->db->insert('production_details', $ingredientData);
+												}
 											}
 										}
 									}
@@ -2408,6 +2451,23 @@ class Item_food extends MX_Controller
 							// Insert into ingredients_opening_stock table
 							$this->fooditem_model->ingredient_opening_stock($opening_stock_data);
 						}
+
+						//Check Insert Production Details
+						$prodDtlUnitname = get_unit_detail($this->input->post('purchase_unit', true));
+						$unitName = $prodDtlUnitname['uom_short_code'];
+							$productionDtlsData = [
+								'foodid' => $insertedFoodId,
+								'pvarientid' => $insertedVariantId,
+								'ingredientid' => $insert_id,
+								'qty' => $this->input->post('pack_size', true),
+								'unitid' => $this->input->post('purchase_unit', true),
+								'unitname' => $unitName,
+								'recipe_price' => $this->input->post('purchase_price', true),
+								'createdby' => $this->session->userdata('id'),
+								'created_date' => date('Y-m-d'),
+							];
+							$this->db->insert('production_details', $productionDtlsData);
+
 
 					}
 					
@@ -2546,6 +2606,52 @@ class Item_food extends MX_Controller
 						$this->db->trans_start();
 						$this->fooditem_model->update_ingredient($ingrid, $ingrData);
 						$this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
+						//Update Production Details
+						// Get post data
+						$ingredientId   = $ingrid;
+						$purchaseUnitId = $this->input->post('purchase_unit', true);
+						$openingStock   = $this->input->post('pack_size', true);
+						$purchasePrice  = $this->input->post('purchase_price', true);
+
+						// Get the unit short code
+						$unitDetail = get_unit_detail($purchaseUnitId);
+						$unitName   = $unitDetail ? $unitDetail['uom_short_code'] : '';
+
+						// Prepare common data
+						$data = [
+							'ingredientid'  => $ingredientId,
+							'qty'           => $openingStock,
+							'unitid'        => $purchaseUnitId,
+							'unitname'      => $unitName,
+							'recipe_price'  => $purchasePrice,
+						];
+
+						// Check if ingredient exists
+						$this->db->where('ingredientid', $ingredientId);
+						$query = $this->db->get('production_details');
+
+						if ($query->num_rows() > 0) {
+							// Exists → update
+							$this->db->where('ingredientid', $ingredientId);
+							$this->db->update('production_details', $data);
+						} 
+						else {
+							// Not exists → insert
+							$productionDtlsData = [
+								'foodid' => $this->input->post('ProductsID', true),
+								'ingredientid' => $ingredientId,
+								'qty' => $this->input->post('pack_size', true),
+								'unitid' => $this->input->post('purchase_unit', true),
+								'unitname' => $unitName,
+								'recipe_price' => $this->input->post('purchase_price', true),
+								'createdby' => $this->session->userdata('id'),
+								'created_date' => date('Y-m-d'),
+							];
+							$this->db->insert('production_details', $productionDtlsData);
+							$lastProDtlsInsertId = $this->db->insert_id();
+						}
+
+
 						$this->db->trans_complete();
 					}
 
@@ -2588,6 +2694,16 @@ class Item_food extends MX_Controller
 
 								if ($this->foodvarient_model->create($variantData)) {
 									$insertedVariantId = $this->db->insert_id();
+
+									//If cusine type is Product then update production details
+									if($this->input->post('cusine_type') == 3) {
+										
+										$productionDtlsData = [
+											'pvarientid' => $insertedVariantId,
+										];
+										$this->db->where('pro_detailsid', $lastProDtlsInsertId);
+										$this->db->update('production_details', $productionDtlsData);
+									}
 
 									$productionData = [
 										'itemid' => $updatedId,

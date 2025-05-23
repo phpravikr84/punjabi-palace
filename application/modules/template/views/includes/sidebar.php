@@ -289,7 +289,7 @@
 							echo 'Ingredients';
 							break;
 						case 'promotions':
-							echo 'Promotions';
+							echo 'Meal Deals';
 							break;
 						case 'promo':
 							echo 'Promo';
@@ -310,7 +310,6 @@
 						case 'manage_addons':
 							echo 'Manage Modifiers';
 							break;
-						
 
 						default:
 							echo display($name);
@@ -335,11 +334,11 @@
 
 						case 'add_group_item':
 							// echo 'Add Combo Food Item';
-							echo 'Add Promotions';
+							echo 'Add Meal Deal';
 							break;
 						case 'deal_list':
 							// echo 'Add Combo Food Item';
-							echo 'Promotions';
+							echo 'List Meal Deal';
 							break;
 						case 'add_promo_item':
 							// echo 'Add Combo Food Item';

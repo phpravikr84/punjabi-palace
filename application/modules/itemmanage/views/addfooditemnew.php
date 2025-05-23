@@ -304,7 +304,7 @@
                     <?php
                     $variants = !empty($productinfo['variants']) ? $productinfo['variants'] : [ (object)[
                         'variantid' => '',
-                        'variantName' => '',
+                        'variantName' => 'Regular',
                         'price' => '',
                         'takeaway_price' => '',
                         'uber_eats_price' => '',
@@ -314,26 +314,26 @@
                     ?>
 
                     <?php foreach ($variants as $variant): 
-                        $variantName = $variant->variantName ?? 'Regular';
-                        $variantId = $variant->variantid ?? '';
+                        $variantNamePr = $variant->variantName ?? 'Regular';
+                        $variantIdPr = $variant->variantid ?? '';
                     ?>
                     <div class="row mb-4 p-3 productprices" style="background-color:#ececec; border-radius: 5px;">
                         <div class="col-md-12 mb-3">
-                            <input type="hidden" name="variant_id[]" value="<?= htmlspecialchars($variantId); ?>">
+                            <input type="hidden" name="variant_id[]" value="<?= htmlspecialchars($variantIdPr); ?>">
                             <div class="form-group">
                                 <!-- <label>Variant Name</label> -->
-                                <input type="hidden" name="variant_name[]" class="form-control" value="<?= htmlspecialchars($variantName); ?>" placeholder="Variant Name">
+                                <input type="hidden" name="variant_name[]" id="pr_variant_name" class="form-control" value="<?= htmlspecialchars($variantNamePr); ?>" placeholder="Variant Name">
                             </div>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Dine In)</label>
-                            <input type="text" name="price[]" class="form-control" value="<?= htmlspecialchars($variant->price ?? ''); ?>">
+                            <input type="text" name="price[]" class="form-control" id="pr_variant_price" value="<?= htmlspecialchars($variant->price ?? ''); ?>"><br/><span class="price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Takeaway)</label>
-                            <input type="text" name="takeaway_price[]" class="form-control" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>">
+                            <input type="text" name="takeaway_price[]" class="form-control" id="pr_takeaway_price" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>"><br/><span class="price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-2">
@@ -342,17 +342,17 @@
 
                         <div class="col-md-4 mb-3">
                             <label>Ubereats</label>
-                            <input type="text" name="uber_eats_price[]" class="form-control" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>">
+                            <input type="text" name="uber_eats_price[]" class="form-control" id="pr_uber_eats_price" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>"><br/><span class="price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Doordash</label>
-                            <input type="text" name="doordash_price[]" class="form-control" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>">
+                            <input type="text" name="doordash_price[]" class="form-control" id="pr_doordash_price" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>"><br/><span class="price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Weborder</label>
-                            <input type="text" name="weborder_price[]" class="form-control" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>">
+                            <input type="text" name="weborder_price[]" class="form-control" id="pr_weborder_price" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>"><br/><span class="price-comparison"></span>
                         </div>
                     </div>
                     <?php endforeach; ?>

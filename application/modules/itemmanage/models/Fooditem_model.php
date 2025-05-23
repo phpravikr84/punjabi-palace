@@ -63,6 +63,8 @@ class Fooditem_model extends CI_Model {
 
 		if ($this->db->affected_rows()) {
 			$this->db->where('menuid',$id)->delete('variant');
+			$this->db->where('itemid',$id)->delete('production');
+			$this->db->where('foodid',$id)->delete('production_details');
 			$this->db->where('menu_id',$id)->delete('menu_add_on');
 			return true;
 		} else {
