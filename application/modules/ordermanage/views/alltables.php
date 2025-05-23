@@ -2,9 +2,11 @@
     <!-- Header Section -->
     <div class="header-container">
         <h1 class="header-title">Tables</h1>
+        
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search">
-            <i class="fa fa-search search-icon"></i>
+            <!-- <input type="text" class="search-input" placeholder="Search">
+            <i class="fa fa-search search-icon"></i> -->
+            <a href="<?php echo $this->input->server('HTTP_REFERER') ?: 'javascript:history.back()'; ?>" class="btn btn-secondary">Back</a>
         </div>
     </div>
 
