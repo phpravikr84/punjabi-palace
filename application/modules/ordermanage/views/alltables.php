@@ -109,7 +109,7 @@
                                         if ($availableSeats < $table['person_capicity']) {
                                             $avail = $availableSeats; // Half Available (Blue & Red)
                                         } else {
-                                            $avail =  $table['person_capicity'];
+                                            $avail =  $availableSeats - $table['person_capicity'];
                                         }
                                         ?>
                                         <?php echo $avail . "/" . $table['person_capicity']; ?>

@@ -6035,6 +6035,16 @@ class Order extends MX_Controller
 		$this->load->view('tablemodal', $data);
 	}
 
+	public function showtablemodalpopup()
+	{
+		$data['tablefloor'] = $this->order_model->tablefloor();
+		$data['soundsetting'] = $this->order_model->read('*', 'tbl_soundsetting', array('soundid' => 1));
+		$data['tableinfo'] =  $this->order_model->get_all_table_total();
+		$data['reservations'] = $this->order_model->get_reservation();
+		
+		$this->load->view('tablemodalNew', $data);
+	}
+
 	public function showtablemodalnew($tableid = null)
 	{
 		$data['tableinfo'] = $this->order_model->get_table_total_bytableid($tableid);

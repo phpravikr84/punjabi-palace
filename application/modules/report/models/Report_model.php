@@ -109,14 +109,15 @@ class Report_model extends CI_Model
 			} else {
 				$saleqty = $inqty;
 			}
+
 			$myArray[$i]['ingredient_id'] = $result->id;
 			$myArray[$i]['ProductName'] = $result->ingredient_name;
-			$myArray[$i]['In_Qnty'] = $result->totalqty + $result->open_stock . ' ' . $result->uom_short_code;
-			$myArray[$i]['Out_Qnty'] = ($result->totalqty + $result->open_stock) - $result->stock_qty . ' ' . $result->uom_short_code;
-			$myArray[$i]['Stock'] = $result->stock_qty . ' ' . $result->uom_short_code;
+			$myArray[$i]['In_Qnty']=$result->totalqty  + $result->open_stock.' '.$result->uom_short_code;
+			$myArray[$i]['Out_Qnty']=($result->totalqty + $result->open_stock) -$result->stock_qty.' '.$result->uom_short_code;
+			$myArray[$i]['Stock']=$result->stock_qty.' '.$result->uom_short_code;
 
-			$myArray[$i]['In_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, $result->totalqty + $result->open_stock)) . ' Unit';
-			$myArray[$i]['Out_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, ($result->totalqty + $result->open_stock) - $result->stock_qty)) . ' Unit';
+			$myArray[$i]['In_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, $result->totalqty)) . ' Unit';
+			$myArray[$i]['Out_Qnty_unit'] = round(get_quantity_purchase_unit($result->id, ($result->totalqty - $result->stock_qty))) . ' Unit';
 			$myArray[$i]['Stock_unit'] = round(get_quantity_purchase_unit($result->id, $result->stock_qty)) . ' Unit';
 
 		}
@@ -186,10 +187,11 @@ class Report_model extends CI_Model
 		} else {
 			$saleqty = $inqty;
 		}
+		
 		$myArray[0]['ProductName'] = $producreport->ingredient_name;
-		$myArray[0]['In_Qnty'] = $producreport->totalqty . ' ' . $producreport->uom_short_code;
-		$myArray[0]['Out_Qnty'] = $producreport->totalqty - $producreport->stock_qty . ' ' . $producreport->uom_short_code;
-		$myArray[0]['Stock'] = $producreport->stock_qty . ' ' . $producreport->uom_short_code;
+		$myArray[0]['In_Qnty']=$producreport->totalqty.' '.$producreport->uom_short_code;
+		$myArray[0]['Out_Qnty']=$producreport->totalqty-$producreport->stock_qty.' '.$producreport->uom_short_code;
+		$myArray[0]['Stock']=$producreport->stock_qty.' '.$producreport->uom_short_code;
 		return $myArray;
 	}
 	public function ingredientreportbyid($start_date, $end_date, $id)

@@ -211,6 +211,56 @@ $(document).ready(function(){
 
 //for Add / Edit view Price Calculation
 
+// Function to handle comparison
+// Function to handle comparison of all price inputs with updated purchase price
+function updateAllPriceComparisons() {
+    let purchasePrice = parseFloat($('#purchase_price').val());
+
+    if (isNaN(purchasePrice)) {
+        $('.price-comparison').html('');
+        return;
+    }
+
+    $('.productprices').each(function () {
+        $(this).find("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").each(function () {
+            let $input = $(this);
+            let price = parseFloat($input.val());
+
+            let variantName = ($row.find("input[name='variant_name[]']").val() || '').trim().toLowerCase();
+
+            if (variantName === '') {
+                // silently skip without showing a message
+                return;
+            }
+
+            if (isNaN(price)) {
+                $input.next('br').next('.price-comparison').html('');
+                return;
+            }
+
+            let diff = price - purchasePrice;
+            let percentage = ((Math.abs(diff) / purchasePrice) * 100).toFixed(2);
+
+            let message = '';
+            if (diff > 0) {
+                message = `<small class="text-success"><i class="fa fa-long-arrow-up"></i> $${diff.toFixed(2)} (${percentage}%)</small>`;
+            } else if (diff < 0) {
+                message = `<small class="text-danger"><i class="fa fa-long-arrow-down"></i> $${Math.abs(diff).toFixed(2)} (${percentage}%)</small>`;
+            } else {
+                message = `<small class="text-primary"><i class="fa fa-long-arrow-right"></i> Equal to Purchase Price</small>`;
+            }
+
+            $input.next('br').next('.price-comparison').html(message);
+        });
+    });
+}
+
+// Only compare when purchase price changes
+$('#purchase_price').on('input', function () {
+    updateAllPriceComparisons();
+});
+
+
 $(document).ready(function() {
 
     assignVariantIds();  // <-- run once
@@ -279,6 +329,7 @@ $(document).ready(function() {
         }
     
         $input.next('br').next('.price-comparison').html(message);
+
     });
 
     // Then trigger 'input' on all fields after handler is attached
@@ -286,6 +337,7 @@ $(document).ready(function() {
     $("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").each(function () {
         $(this).trigger('input');
     });
+
 
 });
 
@@ -1235,26 +1287,26 @@ $(document).ready(function () {
     // Function to toggle visibility
     function toggleRecipeElements(value) {
         if (value == 3) {
-            $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').hide();
+            $('#recipe_mode, #recipeBox, #addMore').hide();
             $('#productinfo').show();
             $('#serving_weightage').show();
-            $('#productprices').show();
-            $('#variantsPanel').hide();
+            $('.productprices').find('input').prop('disabled', false).end().show();
+            $('.variantsPanel').hide();
         } else {
-            $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore').show();
+            $('#recipe_mode, #recipeBox, #addMore').show();
             $('#productinfo').hide();
             $('#serving_weightage').hide();
-            $('#productprices').hide();
-            $('#variantsPanel').show();
+            $('.productprices').find('input').prop('disabled', true).end().hide();
+            $('.variantsPanel').show();
         }
     }
 
     // Default show on page load
-    $('.enable_rec_mode, #recipe_mode, #recipeBox, #addMore, #serving_weightage').show();
+    $('#recipe_mode, #recipeBox, #addMore, #serving_weightage').show();
     $('#productinfo').hide();
     $('#serving_weightage').hide();
-    $('#productprices').hide();
-    $('#variantsPanel').show();
+    $('.productprices').find('input').prop('disabled', true).end().hide();
+    $('.variantsPanel').show();
 
     // On change of cuisine_type select box
     $('select[name="cusine_type"]').on('change', function () {

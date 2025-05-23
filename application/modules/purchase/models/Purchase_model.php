@@ -815,6 +815,7 @@ class Purchase_model extends CI_Model {
 		$this->db->from('ingredients');
 		$this->db->where('is_active',1);
 		$this->db->like('ingredient_name', $product_name);
+		$this->db->order_by('ingredient_name', 'asc');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
 			return $query->result_array();	
@@ -889,7 +890,7 @@ class Purchase_model extends CI_Model {
 	}
 public function ingrediantlist()
 	{
-		 $data = $this->db->select("*")->from('ingredients')->where('is_active',1)->get()->result();
+		 $data = $this->db->select("*")->from('ingredients')->where('is_active',1)->order_by('ingredient_name', 'asc')->get()->result();
 		 //echo $this->db->last_query();
 		 return $data;
 

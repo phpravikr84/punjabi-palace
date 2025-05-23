@@ -86,7 +86,7 @@
                                                             style="color: red; cursor: pointer;"
                                                             data-target="#<?= $uniqueId ?>"></i>
 
-                                                            <div class="custom-tooltip-content" id="<?= $uniqueId ?>" style="display: none; position: absolute; z-index: 999; background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 5px; width: 250px; top: 20px; left: -10px; font-size: 13px;">
+                                                            <div class="custom-tooltip-content" id="<?= $uniqueId ?>" style="display: none; position: absolute; z-index: 999; background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 5px; width: 250px; top: 20px; left: -62px; font-size: 13px;">
                                                                 <?= $tooltipContent ?>
                                                             </div>
                                                         </span>
