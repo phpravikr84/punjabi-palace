@@ -1,15 +1,15 @@
-<div class="container">
-    <!-- Header Section -->
-    <div class="header-container">
-        <h1 class="header-title">Tables</h1>
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search">
-            <i class="fa fa-search search-icon"></i>
-        </div>
-    </div>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('application/modules/ordermanage/assets/css/splitorder.css'); ?>">
 
-    <!-- Status Summary -->
-    <div class="row my-3 text-center">
+
+            <div id="tablemodalNew" class="modal-dialog modal-inner" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h1 class="header-title">Tables</h1>
+                    </div>
+                    <div class="modal-body">
+                    	
+                    <div class="row my-3 text-center">
         <div class="col-md-4">
             <div class="row">
             <?php 
@@ -195,25 +195,16 @@
             </div>
         </div>
     </div>
-
-
-</div>
-
-<!-- Modal Poup -->
-<!-- <div id="modal-ajaxview-tablebook" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Table Details2</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                </button>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" onclick="multi_table()"class="btn btn-success btn-md"><?php echo display('submit')?></button>
+                        <button type="button" class="btn btn-danger btn-md" data-dismiss="modal"><?php echo display('cancel')?></button> -->
+                    </div>
+                </div>
             </div>
-            <div class="modal-body" id="tablebookview">
-            </div>
-        </div>
-    </div>
-</div> -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('application/modules/ordermanage/assets/css/posordernew.css'); ?>">
+
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/modules/ordermanage/assets/css/posordernew.css'); ?>">
 <script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/postop.js'); ?>"></script>
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/tablesetting.js'); ?>" type="text/javascript"></script>

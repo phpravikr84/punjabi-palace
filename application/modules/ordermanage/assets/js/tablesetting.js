@@ -166,11 +166,19 @@
                         $('#table_member_multi_person').val(0);
                         $('#table_person').val(order_person);
                         $('#tablebookviewmodal').modal('hide');
+                        
                         /**
                          * In below line ps is the number of person and tid is the table id
                          * tmmulti is the table_member_multi and table_member_multi_person is the number of person
                          */
-                        window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice?ps=" + order_person + "&tid=" + id + "&tmmulti=0&tmmultipr=0";
+                        //window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice?ps=" + order_person + "&tid=" + id + "&tmmulti=0&tmmultipr=0";
+                        var params = new URLSearchParams(window.location.search);
+                        window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice?ps=" + order_person + "&tid=" + id + "&tmmulti=0&tmmultipr=0"
+                            + (params.get("cid") || params.get("waiter") || params.get("waiter") !== "0"
+                                ? "&cid=" + encodeURIComponent(params.get("cid")) + "&waiter=" + encodeURIComponent(params.get("waiter"))
+                                : "");
+                                $('#cid').val()(params.get("cid"));
+                                $('#waiter').val()(params.get("waiter"));
 
                       return false;
 

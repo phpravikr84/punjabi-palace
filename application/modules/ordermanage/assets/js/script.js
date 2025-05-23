@@ -1043,6 +1043,36 @@ function getAjaxModalNew(
   });
 }
 
+
+function getAjaxModalPopUp(
+  url,
+  callback = false,
+  ajaxclass = "#modal-ajaxviewnew",
+  modalclass = "#tablemodalNew",
+  data = "",
+  method = "get"
+) {
+  var csrf = $("#csrfhashresarvation").val();
+  var fulldata = data + "&csrf_test_name=" + csrf;
+
+  $.ajax({
+    url: url,
+    type: method,
+    data: fulldata,
+    success: function (result) {
+      $(modalclass).modal("show");
+      if (callback) {
+        callback(result);
+        return;
+      }
+      $(ajaxclass).html(result); // Load response into modal body
+    },
+    error: function (xhr, status, error) {
+      console.log("AJAX Error: ", xhr.responseText); // Debugging
+    },
+  });
+}
+
 // function getAjaxModalNew(url, callback = false, ajaxclass = '#tablebookview', modalclass = '#tablebookviewmodal', data = '', method = 'get') {
 // 	var csrf = $('#csrfhashresarvation').val();
 // 	var fulldata = data + '&csrf_test_name=' + csrf;

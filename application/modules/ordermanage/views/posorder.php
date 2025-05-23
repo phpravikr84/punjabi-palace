@@ -329,6 +329,9 @@ $ptdiscount = 0; ?>
 <div id="payprint_marge" class="modal fade  bd-example-modal-lg" role="dialog">
   <div class="modal-dialog modal-lg" id="modal-ajaxview"> </div>
 </div>
+<div id="tablemodalNew" class="modal fade  bd-example-modal-lg" role="dialog">
+  <div class="modal-dialog modal-lg" id="modal-ajaxviewnew"> </div>
+</div>
 <div id="tablemodal" class="modal fade  bd-example-modal-lg" role="dialog">
   <div class="modal-dialog modal-inner" id="table-ajaxview"> </div>
 </div>

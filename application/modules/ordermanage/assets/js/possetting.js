@@ -2340,9 +2340,29 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
     //   }
 
+    // function showTablemodal() {
+    //     var url = "showtablemodalpopup";
+    //     getAjaxModalPopUp(url, false, '#modal-ajaxviewnew', '#tablemodalNew');
+    // }
+
+    // function showTablemodal() {
+    //     window.location.href = basicinfo.baseurl + "ordermanage/order/alltables";
+    // }
+
     function showTablemodal() {
-        window.location.href = basicinfo.baseurl + "ordermanage/order/alltables";
+        const customerName = document.querySelector('#customer_name')?.value.trim();
+        const waiter = document.querySelector('#waiter')?.value.trim();
+    
+        let url = basicinfo.baseurl + "ordermanage/order/alltables";
+    
+        // Check if both fields are valid
+        if (customerName && waiter && waiter !== "0") {
+            url += `?cid=${encodeURIComponent(customerName)}&waiter=${encodeURIComponent(waiter)}`;
+        }
+    
+        window.location.href = url;
     }
+    
 
  
 
@@ -2900,6 +2920,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
     const tmmultipr = getQueryParam('tmmultipr');
     const ps = getQueryParam('ps');
     const custid =  getQueryParam('cid');
+    const waiterid =  getQueryParam('waiter');
 
      // Set Select2 Table Id values
      // Destroy Select2 first (to avoid conflicts)
@@ -2927,5 +2948,8 @@ $(document).on("keypress", '#itemqty_1', function(e){
     }
     if(custid !== null || custid !== 'undefined' || custid != ''){
         $("#customer_name").select2().val(custid).trigger('change');
+    }
+    if(waiterid !== null || waiterid !== 'undefined' || waiterid != ''){
+        $("#waiter").select2().val(waiterid).trigger('change');
     }
 });
