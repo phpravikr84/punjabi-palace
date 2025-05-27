@@ -71,15 +71,6 @@ $(document).ready(function(){
                             <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
                         </div>
 
-                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2">
-                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
-                        </div>
-
                         <div class="col-md-12" id="variantRecipe_{{name}}">
                             <div class="recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                 <h4 style="display:none;">Recipe for - {{name}}</h4>
@@ -125,6 +116,14 @@ $(document).ready(function(){
                                 </table>
                                 <button type="button" class="btn btn-success add-item" id="{{name}}" data-variant="{{name}}"><i class="fa fa-plus" aria-hidden="true"></i> Add Ingradient</button>
                             </div>
+                        </div>
+                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2">
+                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
                 `;
@@ -217,24 +216,17 @@ function updateAllPriceComparisons() {
     let purchasePrice = parseFloat($('#purchase_price').val());
 
     if (isNaN(purchasePrice)) {
-        $('.price-comparison').html('');
+        $('.product-price-comparison').html('');
         return;
     }
 
     $('.productprices').each(function () {
-        $(this).find("input[name='price[]'], input[name='takeaway_price[]'], input[name='uber_eats_price[]'], input[name='doordash_price[]'], input[name='weborder_price[]']").each(function () {
+        $(this).find("input[id^='pr_']").each(function () {
             let $input = $(this);
             let price = parseFloat($input.val());
 
-            let variantName = ($row.find("input[name='variant_name[]']").val() || '').trim().toLowerCase();
-
-            if (variantName === '') {
-                // silently skip without showing a message
-                return;
-            }
-
             if (isNaN(price)) {
-                $input.next('br').next('.price-comparison').html('');
+                $input.next('br').next('.product-price-comparison').html('');
                 return;
             }
 
@@ -250,15 +242,22 @@ function updateAllPriceComparisons() {
                 message = `<small class="text-primary"><i class="fa fa-long-arrow-right"></i> Equal to Purchase Price</small>`;
             }
 
-            $input.next('br').next('.price-comparison').html(message);
+            $input.next('br').next('.product-price-comparison').html(message);
         });
     });
 }
 
-// Only compare when purchase price changes
-$('#purchase_price').on('input', function () {
+// Update on purchase price change
+$(document).on('input', '#purchase_price', function () {
     updateAllPriceComparisons();
 });
+
+
+// 🔥 Also update on any product price input change
+$(document).on('input', "#pr_variant_price, #pr_takeaway_price, #pr_uber_eats_price, #pr_doordash_price, #pr_weborder_price", function () {
+    updateAllPriceComparisons();
+});
+
 
 
 $(document).ready(function() {
@@ -295,6 +294,7 @@ $(document).ready(function() {
         console.log('Variant Name:', variantName);
 
         let recipeSelector = "#recipe_costprice_" + variantName;
+        console.log('Recipe Selector:', recipeSelector);
         let recipeInput = $(recipeSelector);
 
         console.log('Looking for recipe input with selector:', recipeSelector);
@@ -1028,15 +1028,6 @@ $(document).ready(function(){
                             <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
                         </div>
 
-                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                        <div class="col-md-2 mb-2">
-                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
-                        </div>
-
                         <div class="col-md-12" id="variantRecipe_{{name}}">
                             <div class="recipe mt-5" style="border-top: 1px solid #ccc; padding: 10px;">
                                 <h4 style="display:none;">Recipe for - {{name}}</h4>
@@ -1083,6 +1074,15 @@ $(document).ready(function(){
                                 </table>
                                 <button type="button" class="btn btn-success add-item" id="{{name}}" data-variant="{{name}}"><i class="fa fa-plus" aria-hidden="true"></i> Add Ingradient</button>
                             </div>
+                        </div>
+
+                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                        <div class="col-md-2 mb-2">
+                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
                 `;
@@ -1318,11 +1318,12 @@ $(document).ready(function () {
 
     // Optionally trigger once in case value is preselected
     toggleRecipeElements($('select[name="cusine_type"]').val());
-});
 
-$(document).on('change', 'select[name="cusine_type"]', function () {
-    let selectedValue = $(this).val();
-    toggleRecipeElements(selectedValue);
+    $(document).on('change', 'select[name="cusine_type"]', function () {
+        let selectedValue = $(this).val();
+        toggleRecipeElements(selectedValue);
+    });
+
 });
 
 
