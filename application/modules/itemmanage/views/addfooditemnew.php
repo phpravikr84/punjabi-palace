@@ -576,11 +576,11 @@
                                                 <h5 style="display:none;">Recipe for - <?php echo $variantName; ?></h5>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <small><strong>Recipe Cost Price</strong></small>
+                                                        <small><strong>Total Ingredient Cost</strong></small>
                                                         <input type="text" class="form-control" id="recipe_costprice_<?php echo $variantKey; ?>" name="recipe_costprice_<?php echo $variantKey; ?>[]" />
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <small><strong>Recipe Used Quantity</strong></small>
+                                                        <small><strong>Total Ingredient Weight</strong></small>
                                                         <input type="text" class="form-control" id="recipe_usedqty_<?php echo $variantKey; ?>" name="recipe_usedqty_<?php echo $variantKey; ?>[]">
                                                     </div>
                                                 </div>
@@ -683,16 +683,6 @@
                                             <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
                                         </div>
 
-                                        <!-- Pricing Columns -->
-                                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
-                                        <div class="col-md-2 mb-2">
-                                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
-                                        </div>
-
                                         <!-- Recipe Section -->
                                        
                                         <div class="col-md-12" id="variantRecipe_{{name}}">
@@ -700,11 +690,11 @@
                                                 <h4 style="display:none;">Recipe for - {{name}}</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <small><strong>Recipe Cost Price</strong></small>
+                                                        <small><strong>Total Ingredient Cost</strong></small>
                                                         <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <small><strong>Recipe Used Quantity</strong></small>
+                                                        <small><strong>Total Ingredient Weight</strong></small>
                                                         <input type="text" class="form-control" id="recipe_usedqty_{{name}}" name="recipe_usedqty_{{name}}[]">
                                                     </div>
                                                 </div>
@@ -716,8 +706,8 @@
                                                         <tr>
                                                             <th width="200">Item Information</th>
                                                             <th>Qty</th>
-                                                            <th>Price</th>
                                                             <th>Unit</th>
+                                                            <th>Price</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -732,18 +722,27 @@
                                                                 </select>
                                                             </td>
                                                             <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck product_quantity_{{name}}" data-row-id="{{name}}_1"></td>
-                                                            <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
                                                             <td>
                                                                 <input type="hidden" id="unit-total_{{name}}_1">
                                                                 <input type="hidden" name="unitid_{{name}}[]" id="unitid_{{name}}_1">
                                                                 <input type="text" name="unitname_{{name}}[]" id="unitname_{{name}}_1" class="form-control" readonly>
                                                             </td>
+                                                            <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
                                                             <td><button type="button" class="btn btn-danger remove-item"><i class="fa fa-trash"></i></button></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                                 <button type="button" class="btn btn-success add-item" id="{{name}}" data-variant="{{name}}"><i class="fa fa-plus" aria-hidden="true"></i> Add Ingradient</button>
                                             </div>
+                                        </div>
+                                        <!-- Pricing Columns -->
+                                        <div class="col-md-2 mb-2"><small>Price</small><input type="text" name="price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Takeaway</small><input type="text" name="takeaway_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Ubereats</small><input type="text" name="uber_eats_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Doordash</small><input type="text" name="doordash_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2"><small>Weborder</small><input type="text" name="weborder_price[]" class="form-control"><br/><span class="price-comparison"></span></div>
+                                        <div class="col-md-2 mb-2">
+                                            <button type="button" class="removeRowVariant btn btn-danger"><i class="fa fa-times"></i></button>
                                         </div>
                                     </div>
 
