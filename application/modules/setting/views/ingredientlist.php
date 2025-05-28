@@ -1,9 +1,12 @@
 <div class="form-group text-right">
  <?php if($this->permission->method('setting','create')->access()): ?>
 <button type="button" class="btn btn-primary btn-md" data-target="#add0" data-toggle="modal"  ><i class="fa fa-plus-circle" aria-hidden="true"></i>
-<?php echo display('add_ingredient')?></button> 
+<?php echo display('add_ingredient')?></button>
 <?php endif; ?>
-
+<!-- Upload Ingredient-->
+ <button type="button" class="btn btn-primary btn-md" data-target="#uploadIngr" data-toggle="modal"  ><i class="fa fa-plus-circle" aria-hidden="true"></i>
+<?php echo 'Upload Ingredient'; ?></button> 
+<!-- Upload Ingredient End -->
 </div>
 <div id="add0" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -236,6 +239,71 @@
     </div>
 </div>
 
+
+<!-- Upload Ingredient Modal Begin -->
+
+<div id="uploadIngr" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <strong><?php echo 'Upload Ingredient'; ?></strong>
+            </div>
+            <div class="modal-body">
+           
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <?php echo form_open_multipart('setting/ingradient/sheetupload', [
+                                        'id' => 'ingredientUploadForm',
+                                        'onsubmit' => 'return false;',
+                                    ]); ?>
+
+                                    <div class="row">
+                                        <!-- Left Column -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label><?php echo 'Upload Ingredient Sheet'; ?> *</label>
+                                                <input type="file" name="ingredient_filename" id="ingredient_filename" class="form-control" placeholder="<?php echo 'Upload Ingredient'; ?>" autocomplete="off" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <!-- Button Alignment -->
+                                            <div class="form-group text-left" style="margin-top: 20px;">
+                                                <button type="reset" class="btn btn-primary"><?php echo display('reset'); ?></button>
+                                                <button type="submit" class="btn btn-success"><?php echo 'Upload'; ?></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" style="margin-top: 20px;">
+                                                <a href="<?php echo base_url('setting/ingradient/sample_csv'); ?>" class="btn btn-primary">
+                                                    Download Sample
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress" id="uploadProgress" style="display:none; margin-top:10px;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%">0%</div>
+                                    </div> 
+                                <?php echo form_close(); ?>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        <div class="modal-footer">
+                
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Upload Ingredient Modal End -->
+
    
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -250,3 +318,70 @@
     border: 1px solid #ccc;
     }
 </style>
+<script>
+    $(document).ready(function () {
+    $('#ingredientUploadForm').on('submit', function (e) {
+        e.preventDefault();
+
+        var fileInput = $('#ingredient_filename')[0];
+        var file = fileInput.files[0];
+
+        if (!file) {
+            alert('Please select a file to upload.');
+            return;
+        }
+
+        var formData = new FormData(this);
+
+        $('#uploadProgress').show();
+        $('.progress-bar').css('width', '0%').text('0%');
+
+        $.ajax({
+            xhr: function () {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener('progress', function (e) {
+                    if (e.lengthComputable) {
+                        var percentComplete = Math.round((e.loaded / e.total) * 100);
+                        $('.progress-bar').css('width', percentComplete + '%').text(percentComplete + '%');
+                    }
+                }, false);
+                return xhr;
+            },
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            beforeSend: function () {
+                $('.btn-success').prop('disabled', true).text('Uploading...');
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    //alert(response.message + `\nTotal Rows: ${response.total}\nNew Inserts: ${response.inserted}`);
+                   alert(
+                        response.message + 
+                        `\nTotal Rows: ${response.total}\nNew Inserts: ${response.inserted}\nFailed Rows: ${response.failed}` + 
+                        (response.fail_details && response.fail_details.length > 0 ? 
+                            `\n\nFailure Details:\n- ${response.fail_details.join('\n- ')}` : '')
+                    );
+
+                    $('#uploadIngr').modal('hide');
+                    location.reload();
+                } else {
+                    alert(response.message || 'Upload failed on server.');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("AJAX Error:", xhr.responseText);
+                alert('Upload failed. Please try again.');
+            },
+            complete: function () {
+                $('.btn-success').prop('disabled', false).text('Upload');
+                $('#uploadProgress').hide();
+            }
+        });
+    });
+});
+
+</script>

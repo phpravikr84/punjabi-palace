@@ -139,5 +139,92 @@ class Ingradient_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
+	
+	/**
+	 *  Sheet Upload Model 
+	 */
+
+	// public function get_uom_id_by_short_code($short_code)
+	// {
+	// 	return $this->db->select('id')->where('uom_short_code', $short_code)->get('unit_of_measurement')->row('id');
+	// }
+
+	// public function get_uom_id_by_short_code($short_code)
+	// {
+	// 	$short_code = strtolower(trim($short_code));
+
+	// 	return $this->db
+	// 		->select('id')
+	// 		->from('unit_of_measurement')
+	// 		->where('is_active', 1)
+	// 		->group_start()
+	// 			->like('LOWER(uom_short_code)', $short_code)
+	// 			->or_like('LOWER(uom_name)', $short_code)
+	// 		->group_end()
+	// 		->get()
+	// 		->row('id');
+	// }
+
+		public function get_uom_id_by_short_code($short_code)
+	{
+		$short_code = strtolower(trim($short_code));
+
+		$result = $this->db
+			->select('id, uom_variations')
+			->where('is_active', 1)
+			->get('unit_of_measurement')
+			->result();
+
+		foreach ($result as $row) {
+			$variations = array_map('strtolower', array_map('trim', explode(',', $row->uom_variations)));
+
+			if (in_array($short_code, $variations)) {
+				return $row->id;
+			}
+		}
+
+		return null; // Not found
+	}
+
+
+	public function get_brand_id_by_name($brand_name)
+	{
+		if (empty($brand_name)) return null;
+		$brand = $this->db->where('brand_name', $brand_name)->get('brands')->row();
+
+		if ($brand) return $brand->id;
+
+		$this->db->insert('brands', ['brand_name' => $brand_name, 'status' => 1]);
+		return $this->db->insert_id();
+	}
+
+	public function get_temp_by_name($name)
+	{
+		return $this->db->where('ingredient_name', $name)->get('ingredient_temp')->row();
+	}
+
+	public function insert_temp($data)
+	{
+		return $this->db->insert('ingredient_temp', $data);
+	}
+
+	public function get_all_temp()
+	{
+		return $this->db->get('ingredient_temp')->result();
+	}
+
+	public function insert_ingredient($data)
+	{
+		$this->db->insert('ingredients', $data);
+		return $this->db->insert_id();
+	}
+
+	public function get_by_name($name)
+	{
+		return $this->db->where('ingredient_name', $name)->get('ingredients')->row();
+	}
+
+
     
 }

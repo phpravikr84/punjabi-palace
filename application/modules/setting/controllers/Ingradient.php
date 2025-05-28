@@ -357,5 +357,424 @@ class Ingradient extends MX_Controller {
 		exit;
 	}
 
+	// public function sheetupload()
+	// {
+	// 	header('Content-Type: application/json');
+
+	// 	if (!isset($_FILES['ingredient_filename']) || $_FILES['ingredient_filename']['error'] !== 0) {
+	// 		echo json_encode(['status' => 'error', 'message' => 'No file uploaded or upload error.']);
+	// 		return;
+	// 	}
+
+	// 	$file = $_FILES['ingredient_filename']['tmp_name'];
+	// 	$ext = pathinfo($_FILES['ingredient_filename']['name'], PATHINFO_EXTENSION);
+	// 	$allowed = ['csv', 'xls', 'xlsx'];
+
+	// 	if (!in_array(strtolower($ext), $allowed)) {
+	// 		echo json_encode(['status' => 'error', 'message' => 'Invalid file format.']);
+	// 		return;
+	// 	}
+
+	// 	try {
+	// 		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file);
+	// 		$sheetData = $spreadsheet->getActiveSheet()->toArray();
+	// 		$now = date('Y-m-d H:i:s');
+
+	// 		foreach (array_slice($sheetData, 1) as $row) {
+	// 			$data = [
+	// 				'ingredient_name' => trim($row[1]),
+	// 				'uom'             => trim($row[2]),
+	// 				'price'           => floatval($row[3]),
+	// 				'brand'           => trim($row[4]),
+	// 				'opening_stock'   => floatval($row[5]),
+	// 				'purchases'       => floatval($row[6]),
+	// 				'closing_stock'   => floatval($row[7]),
+	// 				'usage'           => floatval($row[8]),
+	// 				'cost'            => floatval($row[9]),
+	// 				'amount'          => floatval($row[10]),
+	// 			];
+
+	// 			$existing = $this->ingradient_model->get_temp_by_name($data['ingredient_name']);
+
+	// 			if ($existing) {
+	// 				$data['updated_at'] = $now;
+	// 				$this->ingradient_model->update_temp($existing->id, $data);
+	// 			} else {
+	// 				$data['created_at'] = $now;
+	// 				$data['updated_at'] = $now;
+	// 				$this->ingradient_model->insert_temp($data);
+	// 			}
+	// 		}
+
+	// 		echo json_encode(['status' => 'success', 'message' => 'Ingredient sheet uploaded successfully.']);
+	// 	} catch (Exception $e) {
+	// 		echo json_encode(['status' => 'error', 'message' => 'Error processing file: ' . $e->getMessage()]);
+	// 	}
+	// }
+
+
+	// public function sheetupload()
+	// {
+	// 	$user_id = $this->session->userdata('user_id');
+	// 	header('Content-Type: application/json');
+
+	// 	if (!isset($_FILES['ingredient_filename']) || $_FILES['ingredient_filename']['error'] !== 0) {
+	// 		echo json_encode(['status' => 'error', 'message' => 'No file uploaded or upload error.']);
+	// 		return;
+	// 	}
+
+	// 	$file = $_FILES['ingredient_filename']['tmp_name'];
+	// 	$ext = pathinfo($_FILES['ingredient_filename']['name'], PATHINFO_EXTENSION);
+	// 	$allowed = ['csv', 'xls', 'xlsx'];
+
+	// 	if (!in_array(strtolower($ext), $allowed)) {
+	// 		echo json_encode(['status' => 'error', 'message' => 'Invalid file format.']);
+	// 		return;
+	// 	}
+
+	// 	try {
+	// 		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file);
+	// 		$sheetData = $spreadsheet->getActiveSheet()->toArray();
+	// 		$now = date('Y-m-d H:i:s');
+	// 		$inserted = 0;
+
+	// 		foreach (array_slice($sheetData, 1) as $row) {
+	// 			$ingredient_name = trim($row[1]);
+
+	// 			if ($this->ingradient_model->get_temp_by_name($ingredient_name)) {
+	// 				continue;
+	// 			}
+
+	// 			$pack_size = floatval($row[2]);
+	// 			$pack_unit = trim($row[3]);
+	// 			$price = floatval($row[4]);
+	// 			$purchase_unit = trim($row[5]);
+	// 			$brand_name = trim($row[6]);
+	// 			$opening_stock = is_numeric($row[7]) ? floatval($row[7]) : null;
+	// 			$opening_date = !empty($row[8]) ? date('Y-m-d', strtotime($row[8])) : null;
+	// 			$consumption_unit = trim($row[9]);
+	// 			$convt_ratio = floatval($row[10]);
+
+	// 			$pack_unit_id = $this->ingradient_model->get_uom_id_by_short_code($pack_unit);
+	// 			$purchase_unit_id = $this->ingradient_model->get_uom_id_by_short_code($purchase_unit);
+	// 			$consumption_unit_id = $this->ingradient_model->get_uom_id_by_short_code($consumption_unit);
+	// 			$brand_id = $this->ingradient_model->get_brand_id_by_name($brand_name);
+
+	// 			$data = [
+	// 				'ingredient_name' => $ingredient_name,
+	// 				'pack_size' => $pack_size,
+	// 				'pack_unit_id' => $pack_unit_id,
+	// 				'purchase_price' => $price,
+	// 				'purchase_unit_id' => $purchase_unit_id,
+	// 				'brand_id' => $brand_id,
+	// 				'opening_balance' => $opening_stock,
+	// 				'opening_date' => $opening_date,
+	// 				'consumption_unit_id' => $consumption_unit_id,
+	// 				'convt_ratio' => $convt_ratio,
+	// 				'saved_by' => $user_id,
+	// 				'created_at' => $now,
+	// 				'updated_at' => $now,
+	// 			];
+
+	// 			$this->ingradient_model->insert_temp($data);
+	// 			$inserted++;
+	// 		}
+
+	// 		$syncResult = $this->sync_temp_to_main();
+
+	// 		echo json_encode([
+	// 			'status' => 'success',
+	// 			'message' => 'File uploaded successfully.',
+	// 			'total' => count($sheetData) - 1,
+	// 			'inserted' => $inserted,
+	// 			'sync_status' => $syncResult['status'],
+	// 			'sync_message' => $syncResult['message']
+	// 		]);
+	// 	} catch (Exception $e) {
+	// 		log_message('error', 'Upload failed: ' . $e->getMessage());
+	// 		echo json_encode(['status' => 'error', 'message' => 'Error processing file: ' . $e->getMessage()]);
+	// 	}
+	// }
+
+	// public function sheetupload()
+	// {
+	// 	$user_id = $this->session->userdata('user_id');
+	// 	header('Content-Type: application/json');
+
+	// 	if (!isset($_FILES['ingredient_filename']) || $_FILES['ingredient_filename']['error'] !== 0) {
+	// 		echo json_encode(['status' => 'error', 'message' => 'No file uploaded or upload error.']);
+	// 		return;
+	// 	}
+
+	// 	$file = $_FILES['ingredient_filename']['tmp_name'];
+	// 	$ext = pathinfo($_FILES['ingredient_filename']['name'], PATHINFO_EXTENSION);
+	// 	$allowed = ['csv', 'xls', 'xlsx'];
+
+	// 	if (!in_array(strtolower($ext), $allowed)) {
+	// 		echo json_encode(['status' => 'error', 'message' => 'Invalid file format.']);
+	// 		return;
+	// 	}
+
+	// 	try {
+	// 		$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file);
+	// 		$sheetData = $spreadsheet->getActiveSheet()->toArray();
+	// 		$now = date('Y-m-d H:i:s');
+	// 		$inserted = 0;
+	// 		$failed = 0;
+
+	// 		foreach (array_slice($sheetData, 1) as $rowIndex => $row) {
+	// 			$ingredient_name = trim($row[1]);
+	// 			$pack_size = floatval($row[2]);
+	// 			$pack_unit = trim($row[3]);
+	// 			$price = floatval($row[4]);
+	// 			$purchase_unit = trim($row[5]);
+	// 			$brand_name = trim($row[6]);
+	// 			$opening_stock = is_numeric($row[7]) ? floatval($row[7]) : null;
+	// 			$opening_date = !empty($row[8]) ? date('Y-m-d', strtotime($row[8])) : null;
+	// 			$consumption_unit = trim($row[9]);
+	// 			$convt_ratio = floatval($row[10]);
+	// 			$min_stock = is_numeric($row[11]) ? floatval($row[11]) : 1;
+
+	// 			// Validate required fields
+	// 			if (
+	// 				empty($ingredient_name) || is_null($ingredient_name) ||
+	// 				empty($pack_size) || $pack_size == 0 || is_null($pack_size) ||
+	// 				empty($pack_unit) || $pack_unit == 0 || is_null($pack_unit) ||
+	// 				empty($price) || $price == 0 || is_null($price) ||
+	// 				empty($purchase_unit) || $purchase_unit == 0 || is_null($purchase_unit) ||
+	// 				empty($consumption_unit) || $consumption_unit == 0 || is_null($consumption_unit) ||
+	// 				empty($convt_ratio) || $convt_ratio == 0 || is_null($convt_ratio)
+	// 			) {
+	// 				$failed++;
+	// 				continue;
+	// 			}
+
+
+	// 			// Skip if already exists in temp
+	// 			if ($this->ingradient_model->get_temp_by_name($ingredient_name)) {
+	// 				$failed++;
+	// 				continue;
+	// 			}
+
+	// 			$pack_unit_id = $this->ingradient_model->get_uom_id_by_short_code($pack_unit);
+	// 			$purchase_unit_id = $this->ingradient_model->get_uom_id_by_short_code($purchase_unit);
+	// 			$consumption_unit_id = $this->ingradient_model->get_uom_id_by_short_code($consumption_unit);
+	// 			$brand_id = $this->ingradient_model->get_brand_id_by_name($brand_name);
+
+	// 			$data = [
+	// 				'ingredient_name' => $ingredient_name,
+	// 				'pack_size' => $pack_size,
+	// 				'pack_unit_id' => $pack_unit_id,
+	// 				'purchase_price' => $price,
+	// 				'purchase_unit_id' => $purchase_unit_id,
+	// 				'brand_id' => $brand_id,
+	// 				'opening_balance' => $opening_stock,
+	// 				'opening_date' => $opening_date,
+	// 				'consumption_unit_id' => $consumption_unit_id,
+	// 				'convt_ratio' => $convt_ratio,
+	// 				'min_stock' => $min_stock,
+	// 				'saved_by' => $user_id,
+	// 				'created_at' => $now,
+	// 				'updated_at' => $now,
+	// 			];
+
+	// 			$this->ingradient_model->insert_temp($data);
+	// 			$inserted++;
+	// 		}
+
+	// 		$syncResult = $this->sync_temp_to_main();
+
+	// 		echo json_encode([
+	// 			'status' => 'success',
+	// 			'message' => 'File uploaded successfully.',
+	// 			'total' => count($sheetData) - 1,
+	// 			'inserted' => $inserted,
+	// 			'failed' => $failed,
+	// 			'sync_status' => $syncResult['status'],
+	// 			'sync_message' => $syncResult['message']
+	// 		]);
+	// 	} catch (Exception $e) {
+	// 		log_message('error', 'Upload failed: ' . $e->getMessage());
+	// 		echo json_encode(['status' => 'error', 'message' => 'Error processing file: ' . $e->getMessage()]);
+	// 	}
+	// }
+
+	public function sheetupload()
+	{
+		$user_id = $this->session->userdata('user_id');
+		header('Content-Type: application/json');
+
+		if (!isset($_FILES['ingredient_filename']) || $_FILES['ingredient_filename']['error'] !== 0) {
+			echo json_encode(['status' => 'error', 'message' => 'No file uploaded or upload error.']);
+			return;
+		}
+
+		$file = $_FILES['ingredient_filename']['tmp_name'];
+		$ext = pathinfo($_FILES['ingredient_filename']['name'], PATHINFO_EXTENSION);
+		$allowed = ['csv', 'xls', 'xlsx'];
+
+		if (!in_array(strtolower($ext), $allowed)) {
+			echo json_encode(['status' => 'error', 'message' => 'Invalid file format.']);
+			return;
+		}
+
+		try {
+			$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file);
+			$sheetData = $spreadsheet->getActiveSheet()->toArray();
+			$now = date('Y-m-d H:i:s');
+			$inserted = 0;
+			$failed = 0;
+			$failDetails = [];
+
+			foreach (array_slice($sheetData, 1) as $rowIndex => $row) {
+				$excelRowNum = $rowIndex + 2; // Excel row number (1-based including header)
+				
+				$ingredient_name = trim($row[1]);
+				$pack_size = floatval($row[2]);
+				$pack_unit = trim($row[3]);
+				$price = floatval($row[4]);
+				$purchase_unit = trim($row[5]);
+				$brand_name = trim($row[6]);
+				$opening_stock = is_numeric($row[7]) ? floatval($row[7]) : null;
+				$opening_date = !empty($row[8]) ? date('Y-m-d', strtotime($row[8])) : null;
+				$consumption_unit = trim($row[9]);
+				$convt_ratio = floatval($row[10]);
+				$min_stock = is_numeric($row[11]) ? floatval($row[11]) : 1;
+
+				$reason = [];
+
+				if (empty($ingredient_name)) $reason[] = "Ingredient Name missing";
+				if (empty($pack_size) || $pack_size == 0) $reason[] = "Pack Size missing or zero";
+				if (empty($pack_unit)) $reason[] = "Pack Unit missing";
+				if (empty($price) || $price == 0) $reason[] = "Price missing or zero";
+				if (empty($purchase_unit)) $reason[] = "Purchase Unit missing";
+				if (empty($consumption_unit)) $reason[] = "Consumption Unit missing";
+				if (empty($convt_ratio) || $convt_ratio == 0) $reason[] = "Conversion Ratio missing or zero";
+
+				if (!empty($reason)) {
+					$failed++;
+					$failDetails[] = "Row $excelRowNum: " . implode(', ', $reason);
+					continue;
+				}
+
+				// Check for duplicates
+				if ($this->ingradient_model->get_temp_by_name($ingredient_name)) {
+					$failed++;
+					$failDetails[] = "Row $excelRowNum: Duplicate Ingredient Name";
+					continue;
+				}
+
+				$pack_unit_id = $this->ingradient_model->get_uom_id_by_short_code($pack_unit);
+				$purchase_unit_id = $this->ingradient_model->get_uom_id_by_short_code($purchase_unit);
+				$consumption_unit_id = $this->ingradient_model->get_uom_id_by_short_code($consumption_unit);
+				$brand_id = $this->ingradient_model->get_brand_id_by_name($brand_name);
+
+				$data = [
+					'ingredient_name' => $ingredient_name,
+					'pack_size' => $pack_size,
+					'pack_unit_id' => $pack_unit_id,
+					'purchase_price' => $price,
+					'purchase_unit_id' => $purchase_unit_id,
+					'brand_id' => $brand_id,
+					'opening_balance' => $opening_stock,
+					'opening_date' => $opening_date,
+					'consumption_unit_id' => $consumption_unit_id,
+					'convt_ratio' => $convt_ratio,
+					'min_stock' => $min_stock,
+					'saved_by' => $user_id,
+					'created_at' => $now,
+					'updated_at' => $now,
+				];
+
+				$this->ingradient_model->insert_temp($data);
+				$inserted++;
+			}
+
+			$syncResult = $this->sync_temp_to_main();
+
+			echo json_encode([
+				'status' => 'success',
+				'message' => 'File uploaded successfully.',
+				'total' => count($sheetData) - 1,
+				'inserted' => $inserted,
+				'failed' => $failed,
+				'fail_details' => $failDetails,
+				'sync_status' => $syncResult['status'],
+				'sync_message' => $syncResult['message']
+			]);
+		} catch (Exception $e) {
+			log_message('error', 'Upload failed: ' . $e->getMessage());
+			echo json_encode(['status' => 'error', 'message' => 'Error processing file: ' . $e->getMessage()]);
+		}
+	}
+
+
+
+
+	public function sync_temp_to_main()
+	{
+		$tempRows = $this->ingradient_model->get_all_temp();
+		if (empty($tempRows)) {
+			return ['status' => 'error', 'message' => 'No ingredients found in temporary table.'];
+		}
+
+		foreach ($tempRows as $row) {
+			if ($this->ingradient_model->get_by_name($row->ingredient_name)) continue;
+
+			$totalPack = $row->pack_size * $row->convt_ratio;
+			$costPerUnit = ($totalPack > 0) ? $row->purchase_price / $totalPack : 0;
+
+			$ingredientData = [
+				'ingredient_name'   => $row->ingredient_name,
+				'purchase_price'    => $row->purchase_price,
+				'cost_perunit'      => round($costPerUnit, 3),
+				'min_stock'         => $row->min_stock,
+				'uom_id'            => $row->purchase_unit_id,
+				'consumption_unit'  => $row->consumption_unit_id,
+				'convt_ratio'       => $row->convt_ratio,
+				'is_active'         => 1,
+				'brand_id'          => $row->brand_id,
+				'pack_unit'         => $row->pack_unit_id,
+				'pack_size'         => $row->pack_size
+			];
+
+			$ingredient_id = $this->ingradient_model->insert_ingredient($ingredientData);
+
+			if (!empty($row->opening_balance) && !empty($row->opening_date)) {
+				$opening_balance = get_quantity_consumption_unit($ingredient_id, $row->opening_balance);
+				$openstockData = [
+					'ingredient_name' => $row->ingredient_name,
+					'ingredient_id'   => $ingredient_id,
+					'purchase_price'  => $row->purchase_price,
+					'opening_balance' => $opening_balance,
+					'opening_date'    => $row->opening_date,
+					'is_active'       => 1
+				];
+
+				$this->ingradient_model->ingredient_opening_stock($openstockData);
+				$this->ingradient_model->update_ingredient([
+					'id' => $ingredient_id,
+					'stock_qty' => $opening_balance
+				]);
+			}
+		}
+
+		return ['status' => 'success', 'message' => 'Ingredients synced from temp table.'];
+	}
+
+
+	public function sample_csv() {
+        $this->load->helper('download');
+
+        $path = FCPATH . 'assets/ingredient_sample.xlsx'; // Points to the file in /assets
+
+        if (file_exists($path)) {
+            $data = file_get_contents($path);
+            force_download('ingredient_sample.xlsx', $data);
+        } else {
+            show_error('File not found.');
+        }
+    }
+
  
 }
