@@ -108,6 +108,7 @@
 					"supplier_manage" => array("controller" => "supplierlist","method"     => "index","permission" => "read"), 
 					"supplier_ledger" => array("controller" => "supplierlist","method" => "supplier_ledger_report","permission" => "read"),
 					"stock_out_ingredients" => array("controller" => "purchase","method" => "stock_out_ingredients","permission" => "read"),
+					"stock_adjustment_list" => array("controller" => "stock_adjustment","method"  => "index","permission" => "create"),
 				);
 				$HmvcMenu2["report"] = array(
 					"icon" => "<i class='fa fa-line-chart' aria-hidden='true'></i>", 
@@ -152,7 +153,8 @@
 						"kitchen_list" => array("controller" => "kitchensetting","method" => "index","permission" => "read"), 
 						"kitchen_assign" => array("controller" => "kitchensetting","method"  => "assignkitchen","permission" => "read"),
 						"kit_dashoard_setting" => array("controller" => "kitchensetting","method"  => "kitchen_dashboardsetting","permission" => "read"),
-					), 
+					),
+
 					// "manage_unitmeasurement" => array(
 					// 	"unit_list" => array("controller" => "unitmeasurement","method"  => "index","permission" => "read"), 
 					// 	"ingradient_list" => array("controller" => "ingradient","method"  => "index","permission" => "read") 
@@ -298,6 +300,8 @@
 							echo 'Ingredient Management';
 							break;
 
+						
+
 						default:
 							echo display($name);
 							break;
@@ -310,7 +314,10 @@
 						case 'manage_addons':
 							echo 'Manage Modifiers';
 							break;
-
+						case 'stock_adjustment':
+						echo 'Stock Adjustment';
+						break;
+				
 						default:
 							echo display($name);
 							break;
@@ -371,6 +378,10 @@
 
 						case 'supplier_procurement_price_report':
 							echo 'Supplier Procurement Price Rept';
+							break;
+
+						case 'stock_adjustment_list':
+							echo 'Stock Adjustment List';
 							break;
 				
 						default:

@@ -944,6 +944,28 @@ if (!function_exists('get_unit_detail')) {
   }
 }
 
+if (!function_exists('get_quantity_purchase')) {
+    /**
+     * Formula 2: Get quantity in purchase unit
+     * Formula: quantity * (pack_size * convt_ratio)
+     */
+    function get_quantity_purchase($ingredient_id, $quantity)
+    {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        $CI->db->select('pack_size, convt_ratio');
+        $CI->db->from('ingredients');
+        $CI->db->where('id', $ingredient_id);
+        $ingredient = $CI->db->get()->row();
+
+        if (!$ingredient || ($ingredient->pack_size * $ingredient->convt_ratio) == 0) return 0.00;
+
+        $result = $quantity * ($ingredient->pack_size * $ingredient->convt_ratio);
+        return number_format($result, 4, '.', '');
+    }
+}
+
 
 
 
