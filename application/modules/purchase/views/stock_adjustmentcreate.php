@@ -84,8 +84,8 @@
                                 Adjustment Date <span class="text-danger">*</span>
                             </label>
                             <div class="col-sm-8">
-                               <input type="date" name="adjustment_date" class="form-control"
-                                    value="<?php echo date('Y-m-d'); ?>" required>
+                               <input type="datetime-local" name="adjustment_date" class="form-control"
+                                    value="<?php echo date('Y-m-d H:i:s'); ?>" readonly required>
                             </div>
                         </div>
 

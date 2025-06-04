@@ -75,7 +75,7 @@ class Stock_adjustment extends MX_Controller {
             'id' => $this->input->post('id'),
             'ingredient_id' => $this->input->post('ingredient_id', true),
             'adjusted_qty' => $adjusted_qty,
-            'adjustment_date' => date('Y-m-d', strtotime($this->input->post('adjustment_date', true))),
+            'adjustment_date' => date('Y-m-d H:i:s', strtotime($this->input->post('adjustment_date', true))),
             'note' => $this->input->post('reason', true),
             'responsible_person' => $this->session->userdata('fullname'),
             'added_by' => $this->session->userdata('id'),

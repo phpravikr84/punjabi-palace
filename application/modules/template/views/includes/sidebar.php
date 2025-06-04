@@ -128,7 +128,8 @@
 					"sell_report_filter" => array("controller" => "reports","method"=> "sellrpt2","permission" => "read"),
 					"sele_by_date" => array("controller" => "reports", "method" => "sellrptbydate", "permission" => "read"),
 					"commission" => array("controller" => "reports","method"=> "payroll_commission","permission" => "read"), 
-					"sale_by_table" => array("controller" => "reports","method"=> "table_sale","permission" => "read")
+					"sale_by_table" => array("controller" => "reports","method"=> "table_sale","permission" => "read"),
+					"stock_ledger_report" => array("controller" => "reports","method"=> "stock_ledger","permission" => "read")
 				);
 		
 				$HmvcMenu2["setting"] = array(
@@ -383,7 +384,11 @@
 						case 'stock_adjustment_list':
 							echo 'Stock Adjustment List';
 							break;
-				
+						
+						case 'stock_ledger_report':
+							echo 'Stock Ledger Report';
+							break;
+							
 						default:
 							echo display($name);
 							break;
