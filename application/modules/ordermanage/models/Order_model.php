@@ -2651,6 +2651,16 @@ class Order_model extends CI_Model
 	
 		return false;
 	}
+
+	public function is_user_waiter($user_id)
+	{
+		return $this->db
+					->where('fk_user_id', $user_id)
+					->where('fk_role_id', 3)
+					->get('sec_user_access_tbl')
+					->num_rows() > 0;
+	}
+
 	
 
 }

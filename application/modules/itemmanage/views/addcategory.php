@@ -4,6 +4,7 @@
             <div class="panel-heading">
                 <div class="panel-title">
                     <h4><?php echo (!empty($title) ? $title : null); ?></h4>
+                    <small style="font-size:0.7em; font-weight:400">(Note: Select a parent category only if this item is a sub-category. If it's a main category, check the "Is Parent Category" box and this field will be disabled.)</small>
                 </div>
             </div>
             <div class="panel-body">
@@ -13,7 +14,8 @@
                 <?php echo form_hidden('CategoryID', (!empty($categoryinfo->CategoryID) ? $categoryinfo->CategoryID : null)); ?>
                 <!-- Parent Category (Multiple Select) -->
                 <div class="form-group row border-bottom pb-2">
-                    <label for="Parentcategory" class="col-sm-4 col-form-label"> <?php echo display('parent_cat'); ?> </label>
+                    <label for="Parentcategory" class="col-sm-2 col-form-label"> <?php echo display('parent_cat'); ?>
+                </label>
                     <div class="col-sm-8">
                         <?php //echo '<pre>'; print_r($categoryinfo); echo '</pre>'; ?>
                         <select name="Parentcategory[]" id="Parentcategory" class="form-control select2">
@@ -33,6 +35,12 @@
                                 }
                             } ?>
                         </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <input name="is_parent_cat" class="form-check-input" type="checkbox"
+                            placeholder="<?php echo 'Is Parent Category'; ?>" id="is_parent_cat"
+                            value="<?php echo !empty($categoryinfo->is_parent_cat) ? $categoryinfo->is_parent_cat : ''; ?>" checked>
+                        <label for="is_parrent_cat"><?php echo 'Is Parent Category'; ?></label>
                     </div>
                 </div>
                 <!-- Parent Category Offer End-->
@@ -105,7 +113,11 @@
                                     <!-- Category Name -->
                                     <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                            <label for="categoryname"><?php echo display('category_name'); ?> *</label>
+                                            <label for="categoryname"><?php echo display('category_name'); ?> *
+                                            <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Is it a subcategory ? Please choose Parent Category also.">
+                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </a>
+                                        </label>
                                             <input name="subCategoryId[]" type="hidden" value="<?php echo $sub->CategoryID; ?>"/>
                                             <input name="categoryname[]" class="form-control category-input" type="text" 
                                                 placeholder="<?php echo display('category_name'); ?>" 
@@ -189,7 +201,11 @@
                         <div class="category-row row g-2 align-items-end mb-5">
                             <!-- Category Name -->
                             <div class="col-lg-3 col-md-6">
-                                <label for="categoryname"><?php echo display('category_name'); ?> *</label>
+                                <label for="categoryname"><?php echo display('category_name'); ?> *
+                                <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Is it a subcategory ? Please choose Parent Category also.">
+                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                            </a>
+                            </label>
                                 <input name="categoryname[]" class="form-control category-input" type="text" 
                                     placeholder="<?php echo display('category_name'); ?>" required>
                             </div>
@@ -407,9 +423,30 @@ function deleteAdonsInfo(id, rowElement) {
                 tags: true // создает новые опции на 
         });
     });
+
+    $(document).ready(function () {
+        var $select = $('#Parentcategory');
+        $select.prop('disabled', true); // use disabled for Select2 compatibility
+        $('#is_parent_cat').on('change', function () {
+            if ($(this).is(':checked')) {
+                $select.prop('disabled', true); // use disabled for Select2 compatibility
+            } else {
+                $select.prop('disabled', false);
+            }
+            // Re-initialize Select2 to reflect disabled state
+            $select.select2();
+        });
+    });
 </script>
 
 <style>
+
+.parentcattooltips { margin-top: 10px; }
+    .select2-container--default.select2-container--disabled .select2-selection--single {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
     .select2-container {
   min-width: 300px;
 }

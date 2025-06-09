@@ -2922,6 +2922,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
     const custid =  getQueryParam('cid');
     const waiterid =  getQueryParam('waiter');
 
+
      // Set Select2 Table Id values
      // Destroy Select2 first (to avoid conflicts)
      if ($.fn.select2 && $('#tableid').data('select2')) {
@@ -2933,6 +2934,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
     setTimeout(function () {
         $('#tableid').val(tid).trigger('change.select2'); // Set value after a slight delay
+        $('#tableid_sha').val(tid);
         console.log("Table ID Updated to:", tid);
     }, 500);
 

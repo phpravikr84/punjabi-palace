@@ -637,6 +637,21 @@ $(document).ready(function () {
 
     // Handle onchange event dynamically for ingredient selection
     $(document).on("change", ".ingredient-select", function () {
+
+        let $this = $(this);
+
+        // Find the closest .variant-row to the changed .ingredient-select
+        let $variantRow = $this.closest(".variant-row");
+        let $variantInput = $variantRow.find("input[name='variant_name[]']");
+        let variantValue = $.trim($variantInput.val());
+
+        if (!variantValue) {
+            alert("Variant Name cannot be empty or null!");
+            $variantInput.focus();
+            return false;
+        }
+
+
         var ingredientId = $(this).val(); // Get selected ingredient ID
         var rowId = $(this).attr('data-row-id'); // Get row ID
         console.log('Ingredient Select Row ID:', rowId);
@@ -1325,6 +1340,5 @@ $(document).ready(function () {
     });
 
 });
-
 
 

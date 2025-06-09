@@ -4824,6 +4824,9 @@ class Order extends MX_Controller
 			}
 			$data['kitchenlist'] = $kitchenlist;
 		}
+
+		$user_id = $this->session->userdata('id');
+		$data['user_is_waiter'] = $this->order_model->is_user_waiter($user_id);
 		$data['title'] = "Counter Dashboard";
 		$data['module'] = "ordermanage";
 		$data['page']   = "allkitchen";
@@ -4861,61 +4864,160 @@ class Order extends MX_Controller
 		$data['page']   = "kitchen_view";
 		$this->load->view('ordermanage/kitchen_view', $data);
 	}
+	// public function itemacepted()
+	// {
+	// 	if ($this->permission->method('ordermanage', 'read')->access() == FALSE) {
+	// 		redirect('dashboard/auth/logout');
+	// 	}
+	// 	$orderid = $this->input->post('orderid');
+	// 	$kitid = $this->input->post('kitid');
+	// 	$itemid = $this->input->post('itemid');
+	// 	$varient = $this->input->post('varient', true);
+
+	// 	$itemids = explode(',', $itemid);
+	// 	$varientids = explode(',', $varient);
+	// 	$itemidsv = array_values(trim($itemids, ','));
+	// 	$varientidsv = array_values(trim($varientids, ','));
+	// 	$i = 0;
+	// 	foreach ($itemids as $sitem) {
+	// 		$vaids = $varientids[$i];
+	// 		$isexit = $this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid', $orderid)->where('kitchenid', $kitid)->where('itemid', $sitem)->where('varient', $vaids)->get()->num_rows();
+	// 		echo $this->db->last_query();
+
+	// 		if ($isexit > 0) {
+	// 		} else {
+	// 			$kitchenorder = array(
+	// 				'kitchenid' => $kitid,
+	// 				'orderid'     => $orderid,
+	// 				'itemid'     => $sitem,
+	// 				'varient'     => $vaids
+	// 			);
+	// 			$this->db->insert('tbl_kitchen_order', $kitchenorder);
+	// 			$itemaccepted = array(
+	// 				'accepttime' => date('Y-m-d H:i:s'),
+	// 				'orderid'     => $orderid,
+	// 				'menuid'     => $sitem,
+	// 				'varient'     => $vaids
+	// 			);
+	// 			$this->db->insert('tbl_itemaccepted', $itemaccepted);
+	// 		}
+	// 		$i++;
+	// 	}
+	// 	$alliteminfo = $this->order_model->customerorderkitchen($orderid, $kitid);
+	// 	$allchecked = "";
+	// 	foreach ($alliteminfo as $single) {
+	// 		$allisexit = $this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid', $orderid)->where('kitchenid', $kitid)->where('itemid', $single->menu_id)->where('varient', $single->variantid)->get()->num_rows();
+
+	// 		if ($allisexit > 0) {
+	// 			$allchecked .= "1,";
+	// 		} else {
+	// 			$allchecked .= "0,";
+	// 		}
+	// 	}
+	// 	if (strpos($allchecked, '0') !== false) {
+	// 		echo 0;
+	// 	} else {
+	// 		echo 1;
+	// 	}
+	// 	$totalnumkitord = $this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid', $orderid)->where('itemid>0')->get()->num_rows();
+	// 	$totalmenuord = $this->db->select('order_menu.*')->from('order_menu')->where('order_id', $orderid)->get()->num_rows();
+	// 	if ($totalmenuord == $totalnumkitord) {
+	// 		$updatetData2 = array('order_status'  => 2);
+	// 		$this->db->where('order_id', $orderid);
+	// 		$this->db->update('customer_order', $updatetData2);
+	// 	}
+	// }
+
 	public function itemacepted()
 	{
 		if ($this->permission->method('ordermanage', 'read')->access() == FALSE) {
 			redirect('dashboard/auth/logout');
 		}
+
 		$orderid = $this->input->post('orderid');
 		$kitid = $this->input->post('kitid');
-		$itemid = $this->input->post('itemid');
-		$varient = $this->input->post('varient', true);
+		$itemid = rtrim($this->input->post('itemid'), ',');
+		$varient = rtrim($this->input->post('varient'), ',');
 
 		$itemids = explode(',', $itemid);
 		$varientids = explode(',', $varient);
-		$itemidsv = array_values(trim($itemids, ','));
-		$varientidsv = array_values(trim($varientids, ','));
+
 		$i = 0;
 		foreach ($itemids as $sitem) {
+			if (!isset($varientids[$i])) {
+				$i++;
+				continue; // Skip if varient is missing for item
+			}
+
 			$vaids = $varientids[$i];
-			$isexit = $this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid', $orderid)->where('kitchenid', $kitid)->where('itemid', $sitem)->where('varient', $vaids)->get()->num_rows();
-			if ($isexit > 0) {
-			} else {
+
+			$isexit = $this->db->select('tbl_kitchen_order.*')
+				->from('tbl_kitchen_order')
+				->where('orderid', $orderid)
+				->where('kitchenid', $kitid)
+				->where('itemid', $sitem)
+				->where('varient', $vaids)
+				->get()
+				->num_rows();
+
+			// Debug: Remove in production
+			log_message('debug', 'SQL: ' . $this->db->last_query());
+
+			if ($isexit == 0) {
 				$kitchenorder = array(
 					'kitchenid' => $kitid,
-					'orderid'     => $orderid,
-					'itemid'     => $sitem,
-					'varient'     => $vaids
+					'orderid'   => $orderid,
+					'itemid'    => $sitem,
+					'varient'   => $vaids
 				);
 				$this->db->insert('tbl_kitchen_order', $kitchenorder);
+
 				$itemaccepted = array(
 					'accepttime' => date('Y-m-d H:i:s'),
-					'orderid'     => $orderid,
+					'orderid'    => $orderid,
 					'menuid'     => $sitem,
-					'varient'     => $vaids
+					'varient'    => $vaids
 				);
 				$this->db->insert('tbl_itemaccepted', $itemaccepted);
 			}
 			$i++;
 		}
+
 		$alliteminfo = $this->order_model->customerorderkitchen($orderid, $kitid);
 		$allchecked = "";
-		foreach ($alliteminfo as $single) {
-			$allisexit = $this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid', $orderid)->where('kitchenid', $kitid)->where('itemid', $single->menu_id)->where('varient', $single->variantid)->get()->num_rows();
 
-			if ($allisexit > 0) {
-				$allchecked .= "1,";
-			} else {
-				$allchecked .= "0,";
-			}
+		foreach ($alliteminfo as $single) {
+			$allisexit = $this->db->select('tbl_kitchen_order.*')
+				->from('tbl_kitchen_order')
+				->where('orderid', $orderid)
+				->where('kitchenid', $kitid)
+				->where('itemid', $single->menu_id)
+				->where('varient', $single->variantid)
+				->get()
+				->num_rows();
+
+			$allchecked .= ($allisexit > 0) ? "1," : "0,";
 		}
+
 		if (strpos($allchecked, '0') !== false) {
 			echo 0;
 		} else {
 			echo 1;
 		}
-		$totalnumkitord = $this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid', $orderid)->where('itemid>0')->get()->num_rows();
-		$totalmenuord = $this->db->select('order_menu.*')->from('order_menu')->where('order_id', $orderid)->get()->num_rows();
+
+		$totalnumkitord = $this->db->select('tbl_kitchen_order.*')
+			->from('tbl_kitchen_order')
+			->where('orderid', $orderid)
+			->where('itemid >', 0)
+			->get()
+			->num_rows();
+
+		$totalmenuord = $this->db->select('order_menu.*')
+			->from('order_menu')
+			->where('order_id', $orderid)
+			->get()
+			->num_rows();
+
 		if ($totalmenuord == $totalnumkitord) {
 			$updatetData2 = array('order_status'  => 2);
 			$this->db->where('order_id', $orderid);

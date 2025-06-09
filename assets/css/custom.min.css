@@ -6208,7 +6208,7 @@ pre .arg {
 }
 
 .custom_btn_in_header{
-    margin: 8px 2px;
+    /* margin: 8px 2px; */
     /* padding: 9px 15px; */
     border: 1px solid #ebebeb;
     background-color: #fff;
