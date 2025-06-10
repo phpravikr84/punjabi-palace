@@ -328,12 +328,12 @@
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Dine In)</label>
-                            <input type="text" name="price[]" class="form-control" id="pr_variant_price" value="<?= htmlspecialchars($variant->price ?? ''); ?>">
+                            <input type="text" name="price[]" class="form-control" id="pr_variant_price" value="<?= htmlspecialchars($variant->price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Takeaway)</label>
-                            <input type="text" name="takeaway_price[]" class="form-control" id="pr_takeaway_price" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>">
+                            <input type="text" name="takeaway_price[]" class="form-control" id="pr_takeaway_price" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-2">
@@ -342,17 +342,17 @@
 
                         <div class="col-md-4 mb-3">
                             <label>Ubereats</label>
-                            <input type="text" name="uber_eats_price[]" class="form-control" id="pr_uber_eats_price" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>">
+                            <input type="text" name="uber_eats_price[]" class="form-control" id="pr_uber_eats_price" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Doordash</label>
-                            <input type="text" name="doordash_price[]" class="form-control" id="pr_doordash_price" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>">
+                            <input type="text" name="doordash_price[]" class="form-control" id="pr_doordash_price" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Weborder</label>
-                            <input type="text" name="weborder_price[]" class="form-control" id="pr_weborder_price" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>">
+                            <input type="text" name="weborder_price[]" class="form-control" id="pr_weborder_price" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -541,6 +541,77 @@
                                                 <input type="hidden" name="variant_id[]" class="form-control" value="<?php echo $variantId; ?>">
                                                 <input type="text" name="variant_name[]" class="form-control" placeholder="Variant Name" value="<?php echo $variantName; ?>">
                                             </div>
+
+                                             <!-- Recipe Section for Variant -->
+                                            <?php if (!empty($recipes)) { ?>
+                                                <div class="variant-recipe mt-3" style="border-top: 1px solid #ccc; padding: 10px;">
+                                                    <h5 style="display:none;">Recipe for - <?php echo $variantName; ?></h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <small><strong>Recipe Cost Price</strong></small>
+                                                            <input type="text" class="form-control" id="recipe_costprice_<?php echo $variantKey; ?>" name="recipe_costprice_<?php echo $variantKey; ?>[]" />
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <small><strong>Recipe Used Quantity</strong></small>
+                                                            <input type="text" class="form-control" id="recipe_usedqty_<?php echo $variantKey; ?>" name="recipe_usedqty_<?php echo $variantKey; ?>[]">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <input type="hidden" name="recipe_for[]" value="<?php echo $variantKey; ?>" />
+
+                                                    <table class="table table-bordered table-hover" id="recipeTable_<?php echo $variantKey; ?>">
+                                                        <thead>
+                                                            <tr>
+                                                                <th><?php echo display('item_information'); ?><i class="text-danger">*</i></th>
+                                                                <th><?php echo display('qty'); ?> <i class="text-danger">*</i></th>
+                                                                <th><?php echo display('price'); ?></th>
+                                                                <th>Unit</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="addPurchaseItem_<?php echo $variantKey; ?>">
+                                                            <?php $i = 1;
+                                                            foreach ($recipes as $recipe) {
+                                                                $unit_data = get_ingredient_unit($recipe->ingredientid);
+                                                                $unit_price = ($unit_data && $unit_data->convt_ratio != 0) ? $unit_data->cost_perunit : 0.000;
+                                                            ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="hidden" name="variant_id_<?php echo $variantKey; ?>[]" value="<?php echo $recipe->pvarientid; ?>">
+                                                                    <input type="hidden" name="menu_id_<?php echo $variantKey; ?>[]" value="<?php echo $productinfo['ProductsID']; ?>">
+                                                                    <select name="product_id_<?php echo $variantKey; ?>[]" class="form-control ingredient-selecteditview" data-row-id="<?php echo $variantKey; ?>_<?php echo $i; ?>" id="product_id_<?php echo $variantKey; ?>_<?php echo $i; ?>">
+                                                                        <option value=""><?php echo display('select'); ?> <?php echo display('ingredients'); ?></option>
+                                                                        <?php foreach ($ingrdientslist as $ingredient) { ?>
+                                                                            <option value="<?php echo $ingredient->id; ?>" data-title="<?php echo $ingredient->id; ?>" <?php echo ($recipe->ingredientid == $ingredient->id) ? 'selected' : ''; ?>>
+                                                                                <?php echo $ingredient->ingredient_name; ?>
+                                                                            </option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input type="text" name="product_quantity_<?php echo $variantKey; ?>[]" id="product_quantity_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control quantityCheck product_quantity_<?php echo $variantKey; ?>" value="<?php echo $recipe->qty; ?>" data-row-id="<?php echo $variantKey; ?>_<?php echo $i; ?>"></td>
+                                                                <td><input type="text" name="product_price_<?php echo $variantKey; ?>[]" id="product_price_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control product_price_<?php echo $variantKey; ?>" value="<?php echo $recipe->recipe_price; ?>"></td>
+                                                                <td>
+                                                                    <input type="hidden" id="unit-total_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $unit_price; ?>" />
+                                                                    <input type="hidden" name="unitid_<?php echo $variantKey; ?>[]" id="unitid_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $recipe->unitid; ?>">
+                                                                    <input type="text" name="unitname_<?php echo $variantKey; ?>[]" id="unitname_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $recipe->unitname; ?>" class="form-control" readonly>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="hidden" id="get_delrecipe" value="<?php echo base_url('itemmanage/item_food/delete_recipe_ingredient'); ?>" />
+                                                                    <button type="button" class="btn btn-danger btn-sm removeEditRecipeBtn"
+                                                                            data-ingredientid="<?php echo $recipe->ingredientid; ?>"
+                                                                            data-variantid="<?php echo $recipe->pvarientid; ?>"
+                                                                            data-menuid="<?php echo $productinfo['ProductsID']; ?>">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            <?php $i++; } ?>
+                                                        </tbody>
+                                                    </table>
+                                                    <button type="button" class="btn btn-success add-item" id="<?php echo $variantKey; ?>" data-variant="<?php echo $variantKey; ?>"><i class="fa fa-plus" aria-hidden="true"></i> Add Ingradient</button>
+                                                </div>
+                                            <?php } ?>
+
                                             <!-- Price Fields -->
                                             <div class="col-md-2 mb-2">
                                                 <small>Price</small>
@@ -570,75 +641,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- Recipe Section for Variant -->
-                                        <?php if (!empty($recipes)) { ?>
-                                            <div class="variant-recipe mt-3" style="border-top: 1px solid #ccc; padding: 10px;">
-                                                <h5 style="display:none;">Recipe for - <?php echo $variantName; ?></h5>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <small><strong>Total Ingredient Cost</strong></small>
-                                                        <input type="text" class="form-control" id="recipe_costprice_<?php echo $variantKey; ?>" name="recipe_costprice_<?php echo $variantKey; ?>[]" />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <small><strong>Total Ingredient Weight</strong></small>
-                                                        <input type="text" class="form-control" id="recipe_usedqty_<?php echo $variantKey; ?>" name="recipe_usedqty_<?php echo $variantKey; ?>[]">
-                                                    </div>
-                                                </div>
-                                                
-                                                <input type="hidden" name="recipe_for[]" value="<?php echo $variantKey; ?>" />
-
-                                                <table class="table table-bordered table-hover" id="recipeTable_<?php echo $variantKey; ?>">
-                                                    <thead>
-                                                        <tr>
-                                                            <th><?php echo display('item_information'); ?><i class="text-danger">*</i></th>
-                                                            <th><?php echo display('qty'); ?> <i class="text-danger">*</i></th>
-                                                            <th><?php echo display('price'); ?></th>
-                                                            <th>Unit</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="addPurchaseItem_<?php echo $variantKey; ?>">
-                                                        <?php $i = 1;
-                                                        foreach ($recipes as $recipe) {
-                                                            $unit_data = get_ingredient_unit($recipe->ingredientid);
-                                                            $unit_price = ($unit_data && $unit_data->convt_ratio != 0) ? $unit_data->cost_perunit : 0.000;
-                                                        ?>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="hidden" name="variant_id_<?php echo $variantKey; ?>[]" value="<?php echo $recipe->pvarientid; ?>">
-                                                                <input type="hidden" name="menu_id_<?php echo $variantKey; ?>[]" value="<?php echo $productinfo['ProductsID']; ?>">
-                                                                <select name="product_id_<?php echo $variantKey; ?>[]" class="form-control ingredient-selecteditview" data-row-id="<?php echo $variantKey; ?>_<?php echo $i; ?>" id="product_id_<?php echo $variantKey; ?>_<?php echo $i; ?>">
-                                                                    <option value=""><?php echo display('select'); ?> <?php echo display('ingredients'); ?></option>
-                                                                    <?php foreach ($ingrdientslist as $ingredient) { ?>
-                                                                        <option value="<?php echo $ingredient->id; ?>" data-title="<?php echo $ingredient->id; ?>" <?php echo ($recipe->ingredientid == $ingredient->id) ? 'selected' : ''; ?>>
-                                                                            <?php echo $ingredient->ingredient_name; ?>
-                                                                        </option>
-                                                                    <?php } ?>
-                                                                </select>
-                                                            </td>
-                                                            <td><input type="text" name="product_quantity_<?php echo $variantKey; ?>[]" id="product_quantity_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control quantityCheck product_quantity_<?php echo $variantKey; ?>" value="<?php echo $recipe->qty; ?>" data-row-id="<?php echo $variantKey; ?>_<?php echo $i; ?>"></td>
-                                                            <td><input type="text" name="product_price_<?php echo $variantKey; ?>[]" id="product_price_<?php echo $variantKey; ?>_<?php echo $i; ?>" class="form-control product_price_<?php echo $variantKey; ?>" value="<?php echo $recipe->recipe_price; ?>"></td>
-                                                            <td>
-                                                                <input type="hidden" id="unit-total_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $unit_price; ?>" />
-                                                                <input type="hidden" name="unitid_<?php echo $variantKey; ?>[]" id="unitid_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $recipe->unitid; ?>">
-                                                                <input type="text" name="unitname_<?php echo $variantKey; ?>[]" id="unitname_<?php echo $variantKey; ?>_<?php echo $i; ?>" value="<?php echo $recipe->unitname; ?>" class="form-control" readonly>
-                                                            </td>
-                                                            <td>
-                                                                <input type="hidden" id="get_delrecipe" value="<?php echo base_url('itemmanage/item_food/delete_recipe_ingredient'); ?>" />
-                                                                <button type="button" class="btn btn-danger btn-sm removeEditRecipeBtn"
-                                                                        data-ingredientid="<?php echo $recipe->ingredientid; ?>"
-                                                                        data-variantid="<?php echo $recipe->pvarientid; ?>"
-                                                                        data-menuid="<?php echo $productinfo['ProductsID']; ?>">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <?php $i++; } ?>
-                                                    </tbody>
-                                                </table>
-                                                <button type="button" class="btn btn-success add-item" id="<?php echo $variantKey; ?>" data-variant="<?php echo $variantKey; ?>"><i class="fa fa-plus" aria-hidden="true"></i> Add Ingradient</button>
-                                            </div>
-                                        <?php } ?>
+                                       
 
                                         <?php } // end variant loop ?>
 
@@ -690,11 +693,11 @@
                                                 <h4 style="display:none;">Recipe for - {{name}}</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <small><strong>Total Ingredient Cost</strong></small>
+                                                        <small><strong>Recipe Cost Price</strong></small>
                                                         <input type="text" class="form-control" id="recipe_costprice_{{name}}" name="recipe_costprice_{{name}}[]">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <small><strong>Total Ingredient Weight</strong></small>
+                                                        <small><strong>Recipe Used Quantity</strong></small>
                                                         <input type="text" class="form-control" id="recipe_usedqty_{{name}}" name="recipe_usedqty_{{name}}[]">
                                                     </div>
                                                 </div>

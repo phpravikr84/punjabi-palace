@@ -935,52 +935,52 @@ foreach ($scan as $file) {
                               echo form_dropdown('ctypeid', $curtomertype, (!empty($ctype) ? $ctype : null), 'class="form-control" id="ctypeid" required') ?>
                             </div>
                             <div id="nonthirdparty" class="col-md-12">
-                              <div class="row align-items-end">
+                              <div class="row">
 
-                                <!-- Waiter Dropdown -->
                                 <div class="col-md-4 form-group">
-                                  <label for="waiter"><?php echo display('waiter'); ?> <span class="color-red">*</span></label>
-                                  <?php
-                                  $waiterkitchen = $this->session->userdata('id');
-                                  echo form_dropdown('waiter', $waiterlist, (!empty($waiterkitchen) ? $waiterkitchen : null), 'class="form-control" id="waiter" required');
-                                  ?>
+                                  <label for="store_id"><?php echo display('waiter'); ?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                  <?php $waiterkitchen = $this->session->userdata('id');
+                                  echo form_dropdown('waiter', $waiterlist, (!empty($waiterkitchen) ? $waiterkitchen : null), 'class="form-control" id="waiter" required') ?>
                                 </div>
-
-                                <!-- Table Modal Button + Table Dropdown -->
-                                <?php if ($possetting->tablemaping == 1) { ?>
-                                <div class="col-md-5 form-group" id="tblsecp" data-tip="Persons">
-                                  <label><?php echo display('table'); ?> <span class="color-red">*</span></label>
-                                  <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-primary d-flex align-items-center" onclick="showTablemodal()" id="table_person">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                          class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                                <?php
+                                if ($possetting->tablemaping == 1) {
+                                ?>
+                                  <div class="col-md-2 form-group pl-0" id="tblsecp" data-tip="Persons">
+                                    <label for="store_id" class="wpr_100 person"> <span class="color-red">&nbsp;&nbsp;</span></label>
+                                    <!-- <input name="" type="button" class="btn btn-primary  form-control" onclick="showTablemodal()" id="table_person" value="<?php //echo display('person'); 
+                                                                                                                                                                ?>"> -->
+                                    <button type="button"
+                                      class="btn btn-primary d-flex justify-content-center align-items-center"
+                                      onclick="showTablemodal()"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      id="table_person">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
                                         <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"></path>
                                       </svg>
                                     </button>
-                                    <div style="display:none;">
-                                      <?php echo form_dropdown('tableid', $tablelist, (!empty($tablelist->tableid) ? $tablelist->tableid : null), 'class="postform resizeselect form-control w-100" id="tableid" required onchange="checktable()"'); ?>
-                                    </div>
-                                    <input type="text" class="form-control" id="tableid_sha" readonly/>
-                                  </div>
-                                  <!-- Hidden Inputs -->
-                                  <input type="hidden" id="table_member" name="table_member" value="" />
-                                  <input type="hidden" id="table_member_multi" name="table_member_multi" value="0" />
-                                  <input type="hidden" id="table_member_multi_person" name="table_member_multi_person" value="0" />
-                                </div>
-                                <?php } ?>
 
-                                <!-- Cook Time -->
-                                <div class="col-md-3 form-group" id="cookingtime">
-                                  <label for="cookedtime"><?php echo 'Cook Time'; ?></label>
-                                  <input name="cookedtime" type="text" class="form-control timepicker3" id="cookedtime"
-                                        placeholder="00:00:00" autocomplete="off" />
+                                    <input type="hidden" id="table_member" name="table_member" class="form-control" value="" />
+                                  </div>
+                                <?php } ?>
+                                <div class="col-md-3 form-group" id="tblsec">
+
+                                  <label for="store_id"><?php echo display('table'); ?> <span class="color-red">*</span></label>
+                                  <?php echo form_dropdown('tableid', $tablelist, (!empty($tablelist->tableid) ? $tablelist->tableid : null), 'class="postform resizeselect form-control" id="tableid" required onchange="checktable()"') ?>
+                                  <input type="hidden" id="table_member_multi" name="table_member_multi" class="form-control" value="0" />
+                                  <input type="hidden" id="table_member_multi_person" name="table_member_multi_person" class="form-control" value="0" />
+
+                                </div>
+                                <?php
+                                ?>
+                                <div class="col-md-3 form-group px-0" id="cookingtime">
+                                  <label for="Cooked Time"><?php echo 'Cook Time'; ?></label>
+                                  <input name="cookedtime" type="text" class="form-control timepicker3" id="cookedtime" placeholder="00:00:00" autocomplete="off" />
                                 </div>
 
                               </div>
                             </div>
-
-
                             <div id="thirdparty" style="display: none;">
                               <div class="col-md-6">
                                 <div class="form-group">

@@ -591,17 +591,7 @@ function generateRandomStr($length = 4) {
 if (!function_exists('getCusineTypeName'))
 {
 function getCusineTypeName($id=1) {
-        // return $id==1 ? 'Restaurant' : 'Banquet';
-        switch ($id) {
-            case 1:
-                return 'Restaurant';
-            case 2:
-                return 'Banquet';
-            case 3:
-                return 'Product';
-            default:
-                return 'Unknown';
-        }
+        return $id==1 ? 'Restaurant' : 'Banquet';
     }
 }
 
@@ -943,55 +933,6 @@ if (!function_exists('get_unit_detail')) {
       return null; // if not found
   }
 }
-
-if (!function_exists('get_quantity_purchase')) {
-    /**
-     * Formula 2: Get quantity in purchase unit
-     * Formula: quantity * (pack_size * convt_ratio)
-     */
-    function get_quantity_purchase($ingredient_id, $quantity)
-    {
-        $CI =& get_instance();
-        $CI->load->database();
-
-        $CI->db->select('pack_size, convt_ratio');
-        $CI->db->from('ingredients');
-        $CI->db->where('id', $ingredient_id);
-        $ingredient = $CI->db->get()->row();
-
-        if (!$ingredient || ($ingredient->pack_size * $ingredient->convt_ratio) == 0) return 0.00;
-
-        $result = $quantity * ($ingredient->pack_size * $ingredient->convt_ratio);
-        return number_format($result, 4, '.', '');
-    }
-}
-
-
-
-/**
- * Generate a unique employee number like 'ADZ24A1B2C'
- */
-if (!function_exists('generate_employee_no')) {
-    function generate_employee_no($user_id) {
-        $year = date('y'); // e.g., 24 for 2024
-        $obfuscated = strtoupper(base_convert($user_id * 98765 + 13579, 10, 36));
-        return 'ADZ' . $year . str_pad($obfuscated, 5, '0', STR_PAD_LEFT); // e.g., ADZ24A1B2
-    }
-}
-
-/**
- * Decode employee number back to user ID (optional)
- */
-if (!function_exists('get_user_id_from_employee_no')) {
-    function get_user_id_from_employee_no($employee_no) {
-        $encoded = substr($employee_no, 5); // Remove 'ADZ' + 2-digit year
-        $number = base_convert($encoded, 36, 10);
-        return intval(($number - 13579) / 98765); // Reverse obfuscation
-    }
-}
-
-
-
 
 
 

@@ -59,6 +59,10 @@ class User_model extends CI_Model {
 			return false; 
 		}
 	}
+
+	public function insert_employee_history($data) {
+        return $this->db->insert('employee_history', $data);
+    }
  
 
 

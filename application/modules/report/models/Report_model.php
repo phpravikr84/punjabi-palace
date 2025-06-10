@@ -1094,6 +1094,362 @@ class Report_model extends CI_Model
 	}
 
 
-	
+	/**
+	 *  Stock Ledger Report
+	 */
+
+	public function get_ingredients() {
+        return $this->db->get_where('ingredients', ['is_active' => 1])->result();
+    }
+
+    public function get_opening_stock($ingredient_id, $from_date) {
+        $this->db->select('opening_balance');
+        $this->db->where('ingredient_id', $ingredient_id);
+        $this->db->where('opening_date <=', $from_date);
+        $this->db->order_by('opening_date', 'desc');
+        $this->db->limit(1);
+        $query = $this->db->get('ingredients_opening_stock');
+        return $query->row() ? $query->row()->opening_balance : 0;
+    }
+
+    // public function get_stock_ledger($from_date = null, $to_date = null, $transaction_type = '')
+	// {
+	// 	// Default to current month if not passed
+	// 	if (empty($from_date)) {
+	// 		$from_date = date('Y-m-01');
+	// 	}
+	// 	if (empty($to_date)) {
+	// 		$to_date = date('Y-m-d');
+	// 	}
+
+	// 	$ledger = [];
+	// 	$ingredients = $this->get_ingredients();
+
+	// 	foreach ($ingredients as $ingredient) {
+	// 		$ingredient_id = $ingredient->id;
+	// 		$opening_stock = $this->get_opening_stock($ingredient_id, $from_date);
+	// 		$current_stock = get_quantity_purchase_unit($ingredient_id, $opening_stock);
+	// 		$transactions = [];
+
+	// 		// Purchases
+	// 		if ($transaction_type == '' || $transaction_type == 'Purchase') {
+	// 			$purchases = $this->db->select("purchaseitem.purchasedate as date, 'Purchase' as type, purchaseitem.invoiceid as ref_no, purchase_details.quantity")
+	// 				->from('purchase_details')
+	// 				->join('purchaseitem', 'purchase_details.purchaseid = purchaseitem.purID', 'left')
+	// 				->where('indredientid', $ingredient_id)
+	// 				->where('purchaseitem.purchasedate >=', $from_date)
+	// 				->where('purchaseitem.purchasedate <=', $to_date)
+	// 				->get()->result();
+
+	// 			foreach ($purchases as $row) {
+	// 				$transactions[] = [
+	// 					'date' => $row->date,
+	// 					'type' => $row->type,
+	// 					'ref_no' => $row->ref_no,
+	// 					'qty' => $row->quantity,
+	// 					'adjusted_qty' => 0,
+	// 					'sale_qty' => 0,
+	// 				];
+	// 			}
+	// 		}
+
+	// 		// Sales
+	// 		if ($transaction_type == '' || $transaction_type == 'Sale') {
+	// 			$sales = $this->db->query("
+	// 				SELECT co.order_date as date, 'Sale' as type, co.saleinvoice as ref_no, 
+	// 					SUM(om.menuqty * pd.qty) as quantity
+	// 				FROM customer_order co
+	// 				INNER JOIN order_menu om ON co.order_id = om.order_id
+	// 				INNER JOIN item_foods ifs ON om.menu_id = ifs.ProductsID
+	// 				INNER JOIN production_details pd ON ifs.ProductsID = pd.foodid
+	// 				WHERE co.order_status = 4
+	// 				AND om.varientid = pd.pvarientid
+	// 				AND pd.ingredientid = ?
+	// 				AND co.order_date BETWEEN ? AND ?
+	// 				GROUP BY co.order_id
+	// 			", [$ingredient_id, $from_date, $to_date])->result();
+
+	// 			foreach ($sales as $row) {
+	// 				$transactions[] = [
+	// 					'date' => $row->date,
+	// 					'type' => $row->type,
+	// 					'ref_no' => $row->ref_no,
+	// 					'qty' => 0,
+	// 					'adjusted_qty' => 0,
+	// 					'sale_qty' => $row->quantity
+	// 				];
+	// 			}
+	// 		}
+
+	// 		// Adjustments
+	// 		if ($transaction_type == '' || $transaction_type == 'Adjustment') {
+	// 			$adjustments = $this->db->select("adjustment_date as date, 'Adjustment' as type, id as ref_no, adjusted_qty")
+	// 				->from('stock_adjustments')
+	// 				->where('ingredient_id', $ingredient_id)
+	// 				->where('adjustment_date >=', $from_date)
+	// 				->where('adjustment_date <=', $to_date)
+	// 				->get()->result();
+
+	// 			foreach ($adjustments as $row) {
+	// 				$transactions[] = [
+	// 					'date' => $row->date,
+	// 					'type' => $row->type,
+	// 					'ref_no' => $row->ref_no,
+	// 					'qty' => 0,
+	// 					'adjusted_qty' => $row->adjusted_qty,
+	// 					'sale_qty' => 0,
+	// 				];
+	// 			}
+	// 		}
+
+	// 		// Sort by date
+	// 		usort($transactions, function ($a, $b) {
+	// 			return strtotime($a['date']) - strtotime($b['date']);
+	// 		});
+
+	// 		// Build ledger rows
+	// 		foreach ($transactions as $txn) {
+	// 			$purchase_qty = $txn['type'] == 'Purchase' ? get_quantity_purchase_unit($ingredient_id, $txn['qty']) : 0;
+	// 			$sale_qty_consumption = $txn['type'] == 'Sale' ? $txn['sale_qty'] : 0;
+	// 			$sale_qty = $txn['type'] == 'Sale' ? get_quantity_purchase_unit($ingredient_id,$txn['sale_qty']) : 0;
+	// 			$adjust_qty = $txn['type'] == 'Adjustment' ? $txn['adjusted_qty'] : 0;
+
+	// 			$closing = $current_stock + $purchase_qty - $sale_qty + $adjust_qty;
+
+	// 			$ledger[] = [
+	// 				'date' => $txn['date'],
+	// 				'transaction_type' => $txn['type'],
+	// 				'ref_no' => $txn['ref_no'],
+	// 				'ingredient_name' => $ingredient->ingredient_name,
+	// 				'opening_stock' => number_format($current_stock, 2),
+	// 				'inward_qty' => number_format($purchase_qty, 2),
+	// 				'outward_qty' => number_format($sale_qty, 2),
+	// 				'adjusted_qty' => number_format($adjust_qty, 2),
+	// 				'closing_stock' => number_format($closing, 2),
+	// 			];
+
+	// 			$current_stock = $closing;
+	// 		}
+	// 	}
+
+	// 	return $ledger;
+	// }
+
+	public function get_stock_ledger($from_date = null, $to_date = null, $transaction_type = '')
+	{
+		if (empty($from_date)) {
+			$from_date = date('Y-m-01');
+		}
+		if (empty($to_date)) {
+			$to_date = date('Y-m-d');
+		}
+
+		$ledger = [];
+		$ingredients = $this->get_ingredients();
+
+		foreach ($ingredients as $ingredient) {
+			$ingredient_id = $ingredient->id;
+
+			$opening_stock_data = $this->db->get_where('ingredients_opening_stock', ['ingredient_id' => $ingredient_id, 'is_active' => 1])->row();
+			$opening_date = $opening_stock_data ? $opening_stock_data->opening_date : $from_date;
+			$opening_ref_id = $opening_stock_data ? $opening_stock_data->id : '-';
+
+			if (!$this->has_transactions($ingredient_id, $from_date, $to_date)) {
+				$from_date = $opening_date;
+			}
+
+			$opening_stock = $this->get_opening_stock($ingredient_id, $from_date);
+			$current_stock = get_quantity_purchase_unit($ingredient_id, $opening_stock);
+			$transactions = [];
+
+			// Opening Stock
+			$transactions[] = [
+				'date' => $opening_date,
+				'type' => 'Opening',
+				'ref_no' => $opening_ref_id,
+				'qty' => $opening_stock,
+				'adjusted_qty' => 0,
+				'sale_qty' => 0,
+				'return_qty' => 0,
+			];
+
+			// Purchase
+			if ($transaction_type == '' || $transaction_type == 'Purchase') {
+				$purchases = $this->db->select("purchaseitem.purchasedate as date, 'Purchase' as type, purchaseitem.invoiceid as ref_no, purchase_details.quantity")
+					->from('purchase_details')
+					->join('purchaseitem', 'purchase_details.purchaseid = purchaseitem.purID', 'left')
+					->where('indredientid', $ingredient_id)
+					->where('purchaseitem.purchasedate >=', $from_date)
+					->where('purchaseitem.purchasedate <=', $to_date)
+					->get()->result();
+
+				foreach ($purchases as $row) {
+					$transactions[] = [
+						'date' => $row->date,
+						'type' => $row->type,
+						'ref_no' => $row->ref_no,
+						'qty' => $row->quantity,
+						'adjusted_qty' => 0,
+						'sale_qty' => 0,
+						'return_qty' => 0,
+					];
+				}
+			}
+
+			// Adjustment
+			if ($transaction_type == '' || $transaction_type == 'Adjustment') {
+				$adjustments = $this->db->select("adjustment_date as date, 'Adjustment' as type, id as ref_no, adjusted_qty")
+					->from('stock_adjustments')
+					->where('ingredient_id', $ingredient_id)
+					->where('adjustment_date >=', $from_date)
+					->where('adjustment_date <=', $to_date)
+					->get()->result();
+
+				foreach ($adjustments as $row) {
+					$transactions[] = [
+						'date' => $row->date,
+						'type' => $row->type,
+						'ref_no' => $row->ref_no,
+						'qty' => 0,
+						'adjusted_qty' => $row->adjusted_qty,
+						'sale_qty' => 0,
+						'return_qty' => 0,
+					];
+				}
+			}
+
+			// Purchase Return
+			if ($transaction_type == '' || $transaction_type == 'Purchase Return') {
+				$returns = $this->db->select("pr.return_date as date, 'Purchase Return' as type, pr.preturn_id as ref_no, prd.qty")
+					->from('purchase_return_details prd')
+					->join('purchase_return pr', 'pr.preturn_id = prd.preturn_id', 'left')
+					->where('prd.product_id', $ingredient_id)
+					->where('pr.return_date >=', $from_date)
+					->where('pr.return_date <=', $to_date)
+					->get()->result();
+
+				foreach ($returns as $row) {
+					$transactions[] = [
+						'date' => $row->date,
+						'type' => $row->type,
+						'ref_no' => $row->ref_no,
+						'qty' => 0,
+						'adjusted_qty' => 0,
+						'sale_qty' => 0,
+						'return_qty' => $row->qty,
+					];
+				}
+			}
+
+			// Sale
+			if ($transaction_type == '' || $transaction_type == 'Sale') {
+				$sales = $this->db->query("
+					SELECT co.order_date as date, 'Sale' as type, co.saleinvoice as ref_no, 
+						SUM(om.menuqty * pd.qty) as quantity
+					FROM customer_order co
+					INNER JOIN order_menu om ON co.order_id = om.order_id
+					INNER JOIN item_foods ifs ON om.menu_id = ifs.ProductsID
+					INNER JOIN production_details pd ON ifs.ProductsID = pd.foodid
+					WHERE co.order_status = 4
+					AND om.varientid = pd.pvarientid
+					AND pd.ingredientid = ?
+					AND co.order_date BETWEEN ? AND ?
+					GROUP BY co.order_id
+				", [$ingredient_id, $from_date, $to_date])->result();
+
+				foreach ($sales as $row) {
+					$transactions[] = [
+						'date' => $row->date,
+						'type' => $row->type,
+						'ref_no' => $row->ref_no,
+						'qty' => 0,
+						'adjusted_qty' => 0,
+						'sale_qty' => $row->quantity,
+						'return_qty' => 0,
+					];
+				}
+			}
+
+			// Sort by date, then type priority
+			usort($transactions, function ($a, $b) {
+				$type_order = [
+					'Opening' => 0,
+					'Purchase' => 1,
+					'Adjustment' => 2,
+					'Purchase Return' => 3,
+					'Sale' => 4
+				];
+				if ($a['date'] == $b['date']) {
+					return $type_order[$a['type']] - $type_order[$b['type']];
+				}
+				return strtotime($a['date']) - strtotime($b['date']);
+			});
+
+			foreach ($transactions as $txn) {
+				$purchase_qty = $txn['type'] == 'Purchase' ? get_quantity_purchase_unit($ingredient_id, $txn['qty']) : 0;
+				$sale_qty = $txn['type'] == 'Sale' ? get_quantity_purchase_unit($ingredient_id, $txn['sale_qty']) : 0;
+				$adjust_qty = $txn['type'] == 'Adjustment' ? $txn['adjusted_qty'] : 0;
+				$return_qty = $txn['type'] == 'Purchase Return' ? get_quantity_purchase_unit($ingredient_id, $txn['return_qty']) : 0;
+				$opening_qty = $txn['type'] == 'Opening' ? get_quantity_purchase_unit($ingredient_id, $txn['qty']) : 0;
+
+				$inward = $purchase_qty;
+				$outward = $sale_qty + $return_qty;
+
+				$closing = $current_stock + $inward - $outward + $adjust_qty;
+				if ($closing < 0) $closing = 0;
+
+				$ledger[] = [
+					'date' => $txn['date'],
+					'transaction_type' => $txn['type'],
+					'ref_no' => $txn['ref_no'],
+					'ingredient_name' => $ingredient->ingredient_name,
+					'opening_stock' => number_format($current_stock, 2),
+					'inward_qty' => number_format($inward, 2),
+					'outward_qty' => number_format($outward, 2),
+					'adjusted_qty' => number_format($adjust_qty, 2),
+					'closing_stock' => number_format($closing, 2),
+				];
+
+				$current_stock = $closing;
+			}
+		}
+
+		return $ledger;
+	}
+
+
+
+	// Helper to check if any transactions exist for the given ingredient in date range
+	private function has_transactions($ingredient_id, $from_date, $to_date)
+	{
+		$purchase_count = $this->db->from('purchase_details')
+			->join('purchaseitem', 'purchase_details.purchaseid = purchaseitem.purID')
+			->where('indredientid', $ingredient_id)
+			->where('purchaseitem.purchasedate >=', $from_date)
+			->where('purchaseitem.purchasedate <=', $to_date)
+			->count_all_results();
+
+		$adjustment_count = $this->db->from('stock_adjustments')
+			->where('ingredient_id', $ingredient_id)
+			->where('adjustment_date >=', $from_date)
+			->where('adjustment_date <=', $to_date)
+			->count_all_results();
+
+		$sale_count = $this->db->query("
+			SELECT COUNT(*) as total
+			FROM customer_order co
+			INNER JOIN order_menu om ON co.order_id = om.order_id
+			INNER JOIN item_foods ifs ON om.menu_id = ifs.ProductsID
+			INNER JOIN production_details pd ON ifs.ProductsID = pd.foodid
+			WHERE co.order_status = 4
+			AND om.varientid = pd.pvarientid
+			AND pd.ingredientid = ?
+			AND co.order_date BETWEEN ? AND ?
+		", [$ingredient_id, $from_date, $to_date])->row()->total;
+
+		return ($purchase_count + $adjustment_count + $sale_count) > 0;
+	}
+
+
 
 }

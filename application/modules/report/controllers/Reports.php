@@ -886,6 +886,48 @@ class Reports extends MX_Controller {
 			}
 
 
+	public function stock_ledger()
+	{
+		// Permission check
+		$this->permission->method('report', 'read')->redirect();
+
+		$data['title'] = 'Stock Ledger Report';
+
+		// Fetch filters from POST request
+		$from_date = $this->input->post('from_date', true);
+		$to_date = $this->input->post('to_date', true);
+		$transaction_type = $this->input->post('transaction_type', true);
+
+		// Default to current month if not provided
+		$start_date = !empty($from_date)
+			? date('Y-m-d', strtotime(str_replace('/', '-', $from_date)))
+			: date('Y-m-01'); // First day of current month
+
+		$end_date = !empty($to_date)
+			? date('Y-m-d', strtotime(str_replace('/', '-', $to_date)))
+			: date('Y-m-d'); // Today
+
+		// Fetch ingredient list
+		$data['ingredients'] = $this->report_model->get_ingredients();
+
+		// Fetch ledger data
+		$data['ledger'] = $this->report_model->get_stock_ledger($start_date, $end_date, $transaction_type);
+
+		// Optional: extra settings
+		$data['setting'] = $this->report_model->settinginfo();
+		$data['currency'] = $this->report_model->currencysetting($data['setting']->currency ?? '');
+
+
+		// View setup
+		$data['module'] = "report";
+		$data['page'] = "stock_ledger_view";
+
+		echo Modules::run('template/layout', $data);
+	}
+
+
+
+
 
 			
 			

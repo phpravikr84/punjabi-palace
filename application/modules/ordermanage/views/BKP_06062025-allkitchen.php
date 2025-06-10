@@ -169,125 +169,89 @@
                                       
                                        
                                         ?>
-                                        <!-- <h4 class="kf_info"><?php echo display('cookedtime') ?>:<?php if($st==1){?><span class="countdown_<?php echo $orderinfo->order_id;echo $c;?>" ></span><?php }else{?><span><?php  echo display('time_over');}?></span></h4> -->
+                                        <h4 class="kf_info"><?php echo display('cookedtime') ?>:<?php if($st==1){?><span class="countdown_<?php echo $orderinfo->order_id;echo $c;?>" ></span><?php }else{?><span><?php  echo display('time_over');}?></span></h4>
                                         
                                     </div>
-                                    <div class="food_select" id="acceptitem<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
-                                        <?php 
-                                            $iteminfo = $this->ordermodel->customerorderkitchen($orderinfo->order_id, $orderinfo->kitchenid);
-                                            $allcancelitem = $this->ordermodel->customercancelkitchen($orderinfo->order_id, $orderinfo->kitchenid);
-                                            $l = 0;
-                                            foreach($iteminfo as $item){
-                                                $l++;
-                                                $ischecked = $this->db->select('tbl_kitchen_order.*')
-                                                    ->from('tbl_kitchen_order')
-                                                    ->where('orderid', $orderinfo->order_id)
-                                                    ->where('kitchenid', $orderinfo->kitchenid)
-                                                    ->where('itemid', $item->menu_id)
-                                                    ->where('varient', $item->variantid)
-                                                    ->get()
-                                                    ->num_rows();
-                                        ?>
-                                            <div class="single_item">
-                                                <div class="align-center justify-between item-dv">
-                                                    <input id='chkbox-<?php echo $l . $item->kitchenid . $orderinfo->order_id; ?>'
-                                                        usemap="<?php echo $orderinfo->order_id; ?>"
-                                                        title="<?php echo $item->varientid; ?>"
-                                                        alt="<?php echo $isaccept; ?>"
-                                                        type='checkbox'
-                                                        <?php 
-                                                            if($ischecked == 1 && $isaccept == 0){ echo "checked disabled"; } 
-                                                            if($isaccept == 1 && $item->food_status == 1){ echo "checked"; }
-                                                        ?>
-                                                        class="individual"
-                                                        name="item<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>"
-                                                        value="<?php echo $item->menu_id; ?>" />
-                                                    <label for='chkbox-<?php echo $l . $item->kitchenid . $orderinfo->order_id; ?>'>
-                                                        <span class="radio-shape"><i class="fa fa-check"></i></span>
-                                                        <div>
-                                                            <span class="display-block"><?php echo $item->ProductName; ?></span>
-                                                            <?php if(!empty($item->varientid)){ ?>
-                                                                <span class="item-span"><?php echo $item->variantName; ?></span>
-                                                            <?php } ?>
-                                                        </div>
-                                                    </label>
-                                                    <h4 class="quantity"><?php echo $item->menuqty; ?>x</h4>
-                                                </div>
-
-                                                <?php if (!empty($item->add_on_id)) {
-                                                    $addons = explode(",", $item->add_on_id);
-                                                    $addonsqty = explode(",", $item->addonsqty);
-                                                    $p = 0;
-                                                ?>
-                                                    <div>
-                                                        <?php 
-                                                            foreach($addons as $addonsid){
-                                                                $adonsinfo = $this->ordermodel->read('*', 'add_ons', array('add_on_id' => $addonsid));
-                                                                echo $adonsinfo->add_on_name . " (" . $addonsqty[$p] . "), ";
-                                                                $p++;
-                                                            }
-                                                        ?>
-                                                    </div>
-                                                <?php } ?>
-
-                                                <?php if (!empty($item->notes)) { ?>
-                                                    <div><strong>Notes:</strong> <?php echo $item->notes; ?></div>
-                                                <?php } ?>
+                                    <div class="food_select" id="acceptitem<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>">
+                                    	<?php 
+										 $iteminfo=$this->ordermodel->customerorderkitchen($orderinfo->order_id,$orderinfo->kitchenid);
+										 $allcancelitem=$this->ordermodel->customercancelkitchen($orderinfo->order_id,$orderinfo->kitchenid);
+										 $l=0;
+										 foreach($iteminfo as $item){
+											// print_r($item);
+											 $l++;
+											 $ischecked=$this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid',$orderinfo->order_id)->where('kitchenid',$orderinfo->kitchenid)->where('itemid',$item->menu_id)->where('varient',$item->variantid)->get()->num_rows();?>
+                                        <div class="single_item">
+                                            <div class="align-center justify-between item-dv">
+                                                <input id='chkbox-<?php echo $l.$item->kitchenid.$orderinfo->order_id;?>' usemap="<?php echo $orderinfo->order_id;?>" title="<?php echo $item->varientid;?>" alt="<?php echo $isaccept;?>" type='checkbox'  <?php if($ischecked==1 && $isaccept==0){ echo "checked disabled";} if($isaccept==1 && $item->food_status==1){ echo "checked";}?> class="individual" name="item<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>" value="<?php echo $item->menu_id;?>"/>
+                                                <label for='chkbox-<?php echo $l.$item->kitchenid.$orderinfo->order_id;?>'>
+                                                    <span class="radio-shape">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                                                   <div>
+                                                        <span class="display-block"><?php echo $item->ProductName;?></span>
+                                                      <?php if(!empty($item->varientid)){?><span class="item-span"><?php echo $item->variantName;?></span><?php } ?>
+                                                   </div>
+                                                </label>
+                                                
+                                                <h4 class="quantity"><?php echo $item->menuqty;?>x</h4>
                                             </div>
-                                        <?php } ?>
-
-                                        <?php 
-                                            if (!empty($allcancelitem)) {
-                                                foreach ($allcancelitem as $cancelitem) {
-                                        ?>
-                                            <div class="single_item bgkitchen">
-                                                <div class="align-center justify-between item-dv">
-                                                    <div>
-                                                        <h4 class="quantity"><?php echo $cancelitem->ProductName; ?></h4>
-                                                        <span class="item-span"><?php echo $item->variantName; ?></span>
-                                                    </div>
-                                                    <h4 class="quantity"><?php echo $cancelitem->quantity; ?>x</h4>
-                                                </div>
+                                            <?php if(!empty($item->add_on_id)){
+												$addons=explode(",",$item->add_on_id);
+												$addonsqty=explode(",",$item->addonsqty);
+												$p=0;
+												?>
+                                            <div><?php 
+											foreach($addons as $addonsid){
+												
+												$adonsinfo=$this->ordermodel->read('*', 'add_ons', array('add_on_id' => $addonsid));
+											echo $adonsinfo->add_on_name;
+											?>(<?php echo $addonsqty[$p];?>), <?php $p++; } ?></div>
+                                            <?php }
+											if(!empty($item->notes)){
+											?>
+                                            <div><strong>Notes:</strong> <?php echo $item->notes;?></div>
+                                            <?php }?>
+                                        </div>
+                                        <?php } 
+										 if(!empty($allcancelitem)){
+											foreach($allcancelitem as $cancelitem){
+										?>
+                                        <div class="single_item bgkitchen">
+                                            <div class="align-center justify-between item-dv">
+                                                 <div>
+                                                        <h4 class="quantity"><?php echo $cancelitem->ProductName;?></h4>
+                                                     <span class="item-span"><?php echo $item->variantName;?></span>
+                                                   </div>
+                                                
+                                                <h4 class="quantity"><?php echo $cancelitem->quantity;?>x</h4>
                                             </div>
-                                        <?php } } ?>
-
-                                        <!-- Action Buttons Section -->
+                                           
+                                        </div>
+                                        <?php } } 
+										 
+										?>
                                         <div class="align-center justify-between">
                                             <div class="checkAll">
-                                                <input id='allSelect<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>'
-                                                    name="item<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>"
-                                                    type='checkbox' class="selectall" value=""/>
-                                                <label for='allSelect<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>'>
-                                                    <span class="radio-shape"><i class="fa fa-check"></i></span>
-                                                    <?php echo display('all'); ?>
+                                                <input id='allSelect<?php echo $orderinfo->order_id;?><?php echo $orderinfo->kitchenid;?>' name="item<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>" type='checkbox' class="selectall" value=""/>
+                                                <label for='allSelect<?php echo $orderinfo->order_id;?><?php echo $orderinfo->kitchenid;?>'>
+                                                    <span class="radio-shape">
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                                                    <?php echo display('all') ?>
                                                 </label>
                                             </div>
-
-                                            <?php if ($user_is_waiter && $isaccept == 1): ?>
-                                                <!-- Waiter sees Pickup -->
-                                                <div class="display-block" id="isprepare<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
-                                                    <button class="btn btn-success w-smd lh-30"
-                                                            onclick="onprepare(<?php echo $orderinfo->order_id; ?>, <?php echo $orderinfo->kitchenid; ?>)">
-                                                        <?php echo 'Pickup'; ?>
-                                                    </button>
-                                                    <p class="text-success" style="margin-top:10px; font-wewight:800;">Ready to pickup.</p>
-                                                </div>
-                                             <?php elseif ($user_is_waiter && $isaccept == 0): ?>
-                                                <div class="display-block" id="isprepare<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
-                                                    <small><img src="<?php echo base_url('assets/img/pot.gif'); ?>" width="40" alt="Pot Image"></small>
-                                                </div>
-                                            <?php elseif (!$user_is_waiter && $isaccept == 0): ?>
-                                                <!-- Non-waiter sees Ready to Serve -->
-                                                <div class="display-block" id="isongoing<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
-                                                    <button class="btn btn-success lh-30"
-                                                            onclick="orderaccept(<?php echo $orderinfo->order_id; ?>, <?php echo $orderinfo->kitchenid; ?>)">
-                                                        <?php echo 'Ready to Pickup'; ?>
-                                                    </button>
-                                                </div>
-                                            <?php endif; ?>
+                                            
+                                            <div class="<?php if($isaccept==1){ echo "display-block"; }else{ echo "display-none";}?>" id="isprepare<?php echo $orderinfo->order_id;?><?php echo $orderinfo->kitchenid;?>">
+                                                <button class="btn btn-success w-smd lh-30" onclick="onprepare(<?php echo $orderinfo->order_id;?>,<?php echo $orderinfo->kitchenid;?>)"><?php echo display('prepared') ?></button>
+                                                <button class="btn btn-info lh-30" onclick="printtoken(<?php echo $orderinfo->order_id;?>,<?php echo $orderinfo->kitchenid;?>)"><i class="fa fa-print"></i></button>
+                                            </div>
+                                            <div class="<?php if($isaccept==0){ echo "display-block"; }else{ echo "display-none";}?>" id="isongoing<?php echo $orderinfo->order_id;?><?php echo $orderinfo->kitchenid;?>">
+                                                <button class="btn btn-success w-smd lh-30" onclick="orderaccept(<?php echo $orderinfo->order_id;?>,<?php echo $orderinfo->kitchenid;?>)"><?php echo display('accept') ?></button>
+                                                <button class="btn btn-danger w-smd lh-30" onclick="ordercancel(<?php echo $orderinfo->order_id;?>,<?php echo $orderinfo->kitchenid;?>)"><?php echo display('reject') ?></button>
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
