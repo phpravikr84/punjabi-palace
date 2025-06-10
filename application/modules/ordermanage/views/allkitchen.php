@@ -270,11 +270,11 @@
                                                             onclick="onprepare(<?php echo $orderinfo->order_id; ?>, <?php echo $orderinfo->kitchenid; ?>)">
                                                         <?php echo 'Pickup'; ?>
                                                     </button>
-                                                    <small style="font-size: 0.7rem;">Ready to pickup.</small>
+                                                    <p class="text-success" style="margin-top:10px; font-wewight:800;">Ready to pickup.</p>
                                                 </div>
                                              <?php elseif ($user_is_waiter && $isaccept == 0): ?>
                                                 <div class="display-block" id="isprepare<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
-                                                    <small><strong>Preparing Food...</strong></small>
+                                                    <small><img src="<?php echo base_url('assets/img/pot.gif'); ?>" width="40" alt="Pot Image"></small>
                                                 </div>
                                             <?php elseif (!$user_is_waiter && $isaccept == 0): ?>
                                                 <!-- Non-waiter sees Ready to Serve -->

@@ -966,7 +966,7 @@ class Order_model extends CI_Model
 		$list[''] = 'Select Waiter';
 		if (!empty($data)) {
 			foreach ($data as $value)
-				$list[$value->emp_his_id] = $value->first_name . " " . $value->last_name;
+				$list[$value->emp_id] = $value->first_name . " " . $value->last_name;
 			return $list;
 		} else {
 			return false;
@@ -974,7 +974,7 @@ class Order_model extends CI_Model
 	}
 	public function waiterwithshift()
 	{
-		$data = $this->db->select("emp_his_id,first_name,last_name")
+		$data = $this->db->select("emp_id,first_name,last_name")
 			->from('employee_history')
 			->where('pos_id', 6)
 			->get()
@@ -995,9 +995,9 @@ class Order_model extends CI_Model
 			->row();
 		$data = array();
 		if (!empty($current_shift)) {
-			$this->db->select("emp.emp_his_id,emp.first_name,emp.last_name,emp.employee_id");
+			$this->db->select("emp.emp_id,emp.first_name,emp.last_name,emp.employee_no");
 			$this->db->from('employee_history as emp');
-			$this->db->join('shift_user as s', 'emp.employee_id=s.emp_id', 'left');
+			$this->db->join('shift_user as s', 'emp.employee_no=s.emp_id', 'left');
 			$this->db->where('emp.pos_id', 6);
 			$this->db->where('s.shift_id', $current_shift->id);
 			$data = $this->db->get()->result();
@@ -1095,7 +1095,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->order_by('customer_order.order_id', 'DESC');
 
@@ -1110,7 +1110,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -1120,7 +1120,7 @@ class Order_model extends CI_Model
 	}
 	public function pendingorder($limit = null, $start = null, $status = null)
 	{
-		$sql = "SELECT customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order LEFT JOIN customer_info ON customer_info.customer_id=customer_order.customer_id LEFT JOIN customer_type ON customer_type.customer_type_id=customer_order.cutomertype LEFT JOIN employee_history ON employee_history.emp_his_id=customer_order.waiter_id LEFT JOIN rest_table ON rest_table.tableid=customer_order.table_no WHERE customer_order.order_status = $status ORDER BY customer_order.order_id DESC";
+		$sql = "SELECT customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order LEFT JOIN customer_info ON customer_info.customer_id=customer_order.customer_id LEFT JOIN customer_type ON customer_type.customer_type_id=customer_order.cutomertype LEFT JOIN employee_history ON employee_history.emp_id=customer_order.waiter_id LEFT JOIN rest_table ON rest_table.tableid=customer_order.table_no WHERE customer_order.order_status = $status ORDER BY customer_order.order_id DESC";
 		$query = $this->db->query($sql);
 		$orderdetails = $query->result();
 		return $orderdetails;
@@ -1131,7 +1131,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->where('customer_order.order_status', $status);
 		$query = $this->db->get();
@@ -1142,7 +1142,7 @@ class Order_model extends CI_Model
 	}
 	// public function completeorder($limit = null, $start = null, $status = null)
 	// {
-	// 	$sql = "SELECT customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order LEFT JOIN customer_info ON customer_order.customer_id=customer_info.customer_id LEFT JOIN customer_type ON customer_order.cutomertype=customer_type.customer_type_id LEFT JOIN employee_history ON customer_order.waiter_id=employee_history.emp_his_id LEFT JOIN rest_table ON customer_order.table_no=rest_table.tableid LEFT JOIN bill ON customer_order.order_id=bill.order_id WHERE bill.bill_status = $status";
+	// 	$sql = "SELECT customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order LEFT JOIN customer_info ON customer_order.customer_id=customer_info.customer_id LEFT JOIN customer_type ON customer_order.cutomertype=customer_type.customer_type_id LEFT JOIN employee_history ON customer_order.waiter_id=employee_history.emp_id LEFT JOIN rest_table ON customer_order.table_no=rest_table.tableid LEFT JOIN bill ON customer_order.order_id=bill.order_id WHERE bill.bill_status = $status";
 	// 	$query = $this->db->query($sql);
 	// 	$orderdetails = $query->result();
 	// 	return $orderdetails;
@@ -1158,7 +1158,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id = customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype = customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id = employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id = employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no = rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
 		$this->db->where('bill.bill_status', $status);
@@ -1181,7 +1181,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->where('bill.bill_status', $status);
@@ -1265,7 +1265,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->where('customer_order.order_id', $id);
 		$this->db->group_by('customer_order.order_id');
@@ -1280,7 +1280,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.memberid', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->where('customer_order.order_id', $orderid);
 		$this->db->group_by('customer_order.order_id');
@@ -1447,7 +1447,7 @@ class Order_model extends CI_Model
 		$today = date("Y-m-d");
 
 		$where = "customer_order.order_date Between '" . $cdate . "' AND '" . $today . "' AND ((customer_order.order_status = 1 OR customer_order.order_status = 2 OR customer_order.order_status = 3) AND ((customer_order.cutomertype = 99 AND customer_order.orderacceptreject = 1) || (customer_order.cutomertype = 3 || customer_order.orderacceptreject != 1) || (customer_order.cutomertype = 4 || customer_order.orderacceptreject != 1) || (customer_order.cutomertype = 1 || customer_order.orderacceptreject != 1)))";
-		$sql = "SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_his_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NULL UNION SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_his_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NOT NULL GROUP BY customer_order.marge_order_id order by mid desc";
+		$sql = "SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NULL UNION SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NOT NULL GROUP BY customer_order.marge_order_id order by mid desc";
 
 		$query = $this->db->query($sql);
 
@@ -1458,7 +1458,7 @@ class Order_model extends CI_Model
 	{
 		$where = "customer_order.order_id = '" . $id . "'";
 
-		$sql = "SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_his_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NULL UNION SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_his_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NOT NULL GROUP BY customer_order.marge_order_id order by mid desc";
+		$sql = "SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NULL UNION SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NOT NULL GROUP BY customer_order.marge_order_id order by mid desc";
 		$query = $this->db->query($sql);
 
 		$orderdetails = $query->result();
@@ -1469,7 +1469,7 @@ class Order_model extends CI_Model
 		$cdate = date('Y-m-d');
 		$where = "customer_order.table_no = '" . $id . "' AND customer_order.order_date = '" . $cdate . "' AND customer_order.cutomertype !=2 AND (customer_order.order_status = 1 OR customer_order.order_status = 2 OR customer_order.order_status = 3)";
 
-		$sql = "SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_his_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NULL UNION SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_his_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NOT NULL GROUP BY customer_order.marge_order_id order by mid desc";
+		$sql = "SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NULL UNION SELECT customer_order.*,customer_order.order_id as mid,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename FROM customer_order Left JOIN customer_info ON customer_order.customer_id=customer_info.customer_id Left Join customer_type ON customer_order.cutomertype=customer_type.customer_type_id left join employee_history ON customer_order.waiter_id=employee_history.emp_id Left Join rest_table ON customer_order.table_no=rest_table.tableid Where {$where} AND customer_order.marge_order_id IS NOT NULL GROUP BY customer_order.marge_order_id order by mid desc";
 		$query = $this->db->query($sql);
 
 		$orderdetails = $query->result();
@@ -1485,7 +1485,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->order_by('customer_order.order_id', 'DESC');
 		$startdate = $this->input->post('startdate', true);
@@ -1544,7 +1544,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$startdate = $this->input->post('startdate', true);
 		$enddate = $this->input->post('enddate', true);
@@ -1563,7 +1563,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->like('customer_order.order_id', $name);
 		$this->db->where($where);
@@ -1580,7 +1580,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->like('rest_table.tablename', $name);
 		$this->db->where($where);
@@ -1599,7 +1599,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('order_menu', 'order_menu.order_id=customer_order.order_id', 'left');
 		$this->db->join('item_foods', 'item_foods.ProductsID=order_menu.menu_id', 'Inner');
@@ -1619,7 +1619,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->where($where);
 		$query = $this->db->get();
@@ -1634,7 +1634,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->where($where);
 		$query = $this->db->get();
@@ -1650,7 +1650,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->where($where);
 		$this->db->limit($limit, $start);
@@ -1670,7 +1670,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->where('customer_order.order_date', $cdate);
@@ -1731,7 +1731,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->where('customer_order.order_date', $cdate);
@@ -1753,7 +1753,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->where($condi);
@@ -1813,7 +1813,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->where($condi);
@@ -1834,7 +1834,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->where($condi);
@@ -1894,7 +1894,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->where($condi);
@@ -1964,7 +1964,7 @@ class Order_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->where($where);
 		$this->db->group_by('customer_order.order_id');

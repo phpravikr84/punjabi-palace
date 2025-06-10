@@ -104,6 +104,61 @@ class User extends MX_Controller {
 
 			if (empty($userLevelData['id'])) {
 				if ($this->user_model->create($userLevelData)) {
+					// Prepare employee_history data with available values
+					$employee_history = array(
+						'emp_id'		=> $this->db->insert_id(), // Get newly inserted user ID
+						'employee_no'   => generate_employee_no($this->db->insert_id()), // Get newly inserted user ID
+						'first_name'    => $this->input->post('firstname', true),
+						'last_name'     => $this->input->post('lastname', true),
+						'email'         => $this->input->post('email', true),
+						'picture'       => (!empty($image) ? $image : $this->input->post('old_image', true)),
+						'is_admin'      => 0,
+						'pos_id'        => '6', // Default or placeholder
+						'division_id'   => 0,
+						'state'         => '',
+						'city'          => '',
+						'zip'           => 0,
+						'citizenship'   => 0,
+						'duty_type'     => 0,
+						'hire_date'     => date('Y-m-d'),
+						'original_hire_date' => date('Y-m-d'),
+						'termination_date' => '0000-00-00',
+						'termination_reason' => '',
+						'voluntary_termination' => 0,
+						'rehire_date' => '0000-00-00',
+						'rate_type' => 0,
+						'rate' => 0,
+						'pay_frequency' => 0,
+						'pay_frequency_txt' => '',
+						'hourly_rate2' => 0,
+						'hourly_rate3' => 0,
+						'home_department' => '',
+						'department_text' => '',
+						'super_visor_id' => '0',
+						'supervisor_report' => '',
+						'dob' => date('Y-m-d'),
+						'gender' => 0,
+						'marital_status' => 0,
+						'ethnic_group' => '',
+						'eeo_class_gp' => '',
+						'work_in_state' => 0,
+						'live_in_state' => 0,
+						'home_email' => '',
+						'business_email' => '',
+						'home_phone' => '',
+						'business_phone' => '',
+						'cell_phone' => '',
+						'emerg_contct' => '',
+						'emrg_h_phone' => '',
+						'emrg_w_phone' => '',
+						'emgr_contct_relation' => '',
+						'alt_em_contct' => '',
+						'alt_emg_h_phone' => '',
+						'alt_emg_w_phone' => ''
+					);
+					
+					// Load the model and insert history
+					$this->user_model->insert_employee_history($employee_history);
 					$this->session->set_flashdata('message', display('save_successfully'));
 				} else {
 					$this->session->set_flashdata('exception', display('please_try_again'));

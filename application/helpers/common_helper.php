@@ -968,6 +968,33 @@ if (!function_exists('get_quantity_purchase')) {
 
 
 
+/**
+ * Generate a unique employee number like 'ADZ24A1B2C'
+ */
+if (!function_exists('generate_employee_no')) {
+    function generate_employee_no($user_id) {
+        $year = date('y'); // e.g., 24 for 2024
+        $obfuscated = strtoupper(base_convert($user_id * 98765 + 13579, 10, 36));
+        return 'ADZ' . $year . str_pad($obfuscated, 5, '0', STR_PAD_LEFT); // e.g., ADZ24A1B2
+    }
+}
+
+/**
+ * Decode employee number back to user ID (optional)
+ */
+if (!function_exists('get_user_id_from_employee_no')) {
+    function get_user_id_from_employee_no($employee_no) {
+        $encoded = substr($employee_no, 5); // Remove 'ADZ' + 2-digit year
+        $number = base_convert($encoded, 36, 10);
+        return intval(($number - 13579) / 98765); // Reverse obfuscation
+    }
+}
+
+
+
+
+
+
 
 
 

@@ -48,20 +48,20 @@ class Auth extends MX_Controller {
 			$user = $this->auth_model->checkUser($userData);
 
 			if($user->num_rows() > 0) {
-            $chef = $this->db->select('emp_his_id,employee_id,pos_id')->where('emp_his_id',$user->row()->id)->get('employee_history')->row();
+            $chef = $this->db->select('emp_id,employee_no,pos_id')->where('emp_id',$user->row()->id)->get('employee_history')->row();
 			$chefid='';
 			if(!empty($chef)) {
 					$shiftcheck = true;
 				$shiftmangment = $this->db->where('directory','shiftmangment')->where('status',1)->get('module')->num_rows();
 				
 				if($shiftmangment == 1){
-				$shiftcheck = $this->checkshift($chef->employee_id);
+				$shiftcheck = $this->checkshift($chef->employee_no);
 					}
 
 					
 				if($shiftcheck == true){
 					if($chef->pos_id == 1){
-					$chefid=$chef->emp_his_id;
+					$chefid=$chef->emp_id;
 					}
 					
 				}

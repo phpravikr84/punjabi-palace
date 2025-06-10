@@ -1595,9 +1595,9 @@ class Order extends MX_Controller
 					/*End Notification*/
 					/*Push Notification*/
 					$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=1";
-					$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+					$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id ');
 					$this->db->from('user');
-					$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+					$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 					$this->db->where($condition);
 					$query = $this->db->get();
 					$allkitchen = $query->result();
@@ -1680,9 +1680,9 @@ class Order extends MX_Controller
 					/*End Notification*/
 					/*Push Notification*/
 					$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=1";
-					$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+					$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id ');
 					$this->db->from('user');
-					$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+					$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 					$this->db->where($condition);
 					$query = $this->db->get();
 					$allkitchen = $query->result();
@@ -4452,7 +4452,7 @@ class Order extends MX_Controller
 		$data['customerinfo']   = $this->order_model->read('*', 'customer_info', array('customer_id' => $customerorder->customer_id));
 
 		if (!empty($customerorder->waiter_id)) {
-			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_his_id' => $customerorder->waiter_id));
+			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_id' => $customerorder->waiter_id));
 		} else {
 			$data['waiterinfo'] = '';
 		}
@@ -4511,7 +4511,7 @@ class Order extends MX_Controller
 			$data['tableinfo'] = '';
 		}
 		if (!empty($customerorder->waiter_id)) {
-			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_his_id' => $customerorder->waiter_id));
+			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_id' => $customerorder->waiter_id));
 		} else {
 			$data['waiterinfo'] = '';
 		}
@@ -4562,7 +4562,7 @@ class Order extends MX_Controller
 			$data['tableinfo'] = '';
 		}
 		if (!empty($customerorder->waiter_id)) {
-			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_his_id' => $customerorder->waiter_id));
+			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_id' => $customerorder->waiter_id));
 		} else {
 			$data['waiterinfo'] = '';
 		}
@@ -4617,7 +4617,7 @@ class Order extends MX_Controller
 			$data['tableinfo'] = '';
 		}
 		if (!empty($customerorder->waiter_id)) {
-			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_his_id' => $customerorder->waiter_id));
+			$data['waiterinfo']      = $this->order_model->read('first_name,last_name', 'employee_history', array('emp_id' => $customerorder->waiter_id));
 		} else {
 			$data['waiterinfo'] = '';
 		}
