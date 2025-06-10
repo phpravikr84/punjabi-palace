@@ -591,7 +591,17 @@ function generateRandomStr($length = 4) {
 if (!function_exists('getCusineTypeName'))
 {
 function getCusineTypeName($id=1) {
-        return $id==1 ? 'Restaurant' : 'Banquet';
+        // return $id==1 ? 'Restaurant' : 'Banquet';
+        switch ($id) {
+            case 1:
+                return 'Restaurant';
+            case 2:
+                return 'Banquet';
+            case 3:
+                return 'Product';
+            default:
+                return 'Unknown';
+        }
     }
 }
 

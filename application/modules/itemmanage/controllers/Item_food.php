@@ -2814,6 +2814,13 @@ class Item_food extends MX_Controller
 								$this->fooditem_model->delete_modifier($updatedId, $modifierId);
 							}
 						}
+					} else {
+						// If no modifiers were submitted, delete all existing modifiers for this menu
+						if (!empty($existingModifierIds)) {
+							foreach ($existingModifierIds as $modifierId) {
+								$this->fooditem_model->delete_modifier($updatedId, $modifierId);
+							}
+						}
 					}
 
 

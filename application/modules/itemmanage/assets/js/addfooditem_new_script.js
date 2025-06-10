@@ -503,12 +503,12 @@ $(document).ready(function () {
                                                     </td>
                                                     <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${variantId}_1"></td>
                                                     <td class="text-right">
-                                                        <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
-                                                    </td>
-                                                    <td class="text-right">
                                                         <input type="hidden" id="unit-total_${variantId}_1" class="" />
                                                         <input type="hidden" name="unitid_${variantId}[]" id="unitid_${variantId}_1" class="form-control text-right">
                                                         <input type="text" name="unitname_${variantId}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
                                                     </td>
                                                     <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
                                                 </tr>
@@ -614,12 +614,12 @@ $(document).ready(function () {
                                 </select>
                             </td>
                             <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${rowId}" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${rowId}"></td>
-                            <td><input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00"></td>
                             <td>
                                 <input type="hidden" id="unit-total_${rowId}">
                                 <input type="hidden" name="unitid_${variantId}[]" id="unitid_${rowId}">
                                 <input type="text" name="unitname_${variantId}[]" id="unitname_${rowId}" class="form-control" readonly>
                             </td>
+                            <td><input type="text" name="product_price_${variantId}[]" id="product_price_${rowId}" class="form-control text-right product_price_${variantId}" placeholder="0.00"></td>
                             <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
                         </tr>
                     `;
@@ -943,13 +943,14 @@ $(document).ready(function(){
                                                                 </select>
                                                             </td>
                                                              <td><input type="text" name="product_quantity_${variantId}[]" id="product_quantity_${variantId}_1" class="form-control quantityCheck product_quantity_${variantId}" data-row-id="${variantId}_1"></td>
-                                                            <td class="text-right">
-                                                                <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
-                                                            </td>
+                                                            
                                                             <td class="text-right">
                                                                 <input type="hidden" id="unit-total_${variantId}_1" class="" />
                                                                 <input type="hidden" name="unitid_${variantId}[]" id="unitid_${variantId}_1" class="form-control text-right">
                                                                 <input type="text" name="unitname_${variantId}[]" id="unitname_${variantId}_1" class="form-control text-right" readonly>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <input type="text" name="product_price_${variantId}[]" id="product_price_${variantId}_1" class="form-control text-right product_price_${variantId}" placeholder="0.00">
                                                             </td>
                                                             <td><button class="btn btn-danger remove-item" type="button"><i class="fa fa-trash"></i></button></td>
                                                         </tr>
@@ -1070,12 +1071,12 @@ $(document).ready(function(){
                                                 </select>
                                             </td>
                                             <td><input type="text" name="product_quantity_{{name}}[]" id="product_quantity_{{name}}_1" class="form-control quantityCheck product_quantity_{{name}}" data-row-id="{{name}}_1"></td>
-                                            <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
                                             <td>
-                                                <input type="hidden" id="unit-total_{{name}}_1">
-                                                <input type="hidden" name="unitid_{{name}}[]" id="unitid_{{name}}_1">
-                                                <input type="text" name="unitname_{{name}}[]" id="unitname_{{name}}_1" class="form-control" readonly>
+                                            <input type="hidden" id="unit-total_{{name}}_1">
+                                            <input type="hidden" name="unitid_{{name}}[]" id="unitid_{{name}}_1">
+                                            <input type="text" name="unitname_{{name}}[]" id="unitname_{{name}}_1" class="form-control" readonly>
                                             </td>
+                                            <td><input type="text" name="product_price_{{name}}[]" id="product_price_{{name}}_1" class="form-control text-right product_price_{{name}}" placeholder="0.00"></td>
                                             <td><button type="button" class="btn btn-danger remove-item"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                     </tbody>
