@@ -20,14 +20,25 @@ class User_model extends CI_Model {
 			->result();
 	}
 
+	// public function single($id = null)
+	// {
+	// 	return $this->db->select('*')
+	// 		->from('user')
+	// 		->where('id', $id)
+	// 		->get()
+	// 		->row();
+	// }
+
 	public function single($id = null)
 	{
-		return $this->db->select('*')
+		return $this->db->select('user.*, sec_user_access_tbl.fk_role_id as pos_id') // Add other fields if needed
 			->from('user')
-			->where('id', $id)
+			->join('sec_user_access_tbl', 'sec_user_access_tbl.fk_user_id = user.id', 'left')
+			->where('user.id', $id)
 			->get()
 			->row();
 	}
+
 
 	public function update($data = array())
 	{
@@ -63,7 +74,56 @@ class User_model extends CI_Model {
 	public function insert_employee_history($data) {
         return $this->db->insert('employee_history', $data);
     }
- 
 
+	public function get_all_positions() {
+        return $this->db->select('pos_id, position_name')
+                        ->from('position')
+                        ->order_by('position_name', 'ASC')
+                        ->get()
+                        ->result();
+    }
+
+	public function get_all_roles() {
+        return $this->db->select('*')
+                        ->from('sec_role_tbl')
+                        ->order_by('role_name', 'ASC')
+                        ->get()
+                        ->result();
+    }
+
+
+	// Get users based on admin condition
+	public function get_users_for_pin_change($is_admin, $user_id)
+	{
+		if ($is_admin == 1) {
+			return $this->db->select('*')
+							->from('user')
+							->where('status', 1)
+							->where_not_in('is_admin', 1)
+							->get()
+							->result();
+		} else {
+			return $this->db->select('*')
+							->from('user')
+							->where('id', $user_id)
+							->where_not_in('is_admin', 1)
+							->get()
+							->result();
+		}
+	}
+
+	// Update user's login_pin
+	public function update_user_pin($user_id, $pin)
+	{
+		return $this->db->where('id', $user_id)
+						->update('user', ['login_pin' => $pin]);
+	}
+
+	public function get_user_by_id($id)
+	{
+		return $this->db->get_where('user', ['id' => $id])->row();
+	}
+
+ 
 
 }
