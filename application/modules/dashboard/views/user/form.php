@@ -48,6 +48,57 @@
                         </div>
                     </div>
 
+                    <!-- Add after password input -->
+                    <div class="form-group row">
+                        <label for="confirm_password" class="col-sm-3 col-form-label"><?php echo display('confirm_password') ?> *</label>
+                        <div class="col-sm-9">
+                            <input name="confirm_password" class="form-control" type="password" placeholder="<?php echo display('confirm_password') ?>" id="confirm_password">
+                            <small id="match-error" class="text-danger" style="display:none;">Passwords do not match.</small>
+                        </div>
+                    </div>
+
+                    <!-- Add Login PIN field -->
+                    <div class="form-group row">
+                        <label for="login_pin" class="col-sm-3 col-form-label">Login Pin (4-digit)</label>
+                        <div class="col-sm-9">
+                            <input name="login_pin" class="form-control" type="text" maxlength="4" pattern="\d{4}" placeholder="e.g., 1234" id="login_pin" value="<?php echo (!empty($user->login_pin) ? $user->login_pin : '') ?>">
+                            <span class="text-danger" id="pin-error" style="display:none;"></span>
+                            <small class="text-muted">Enter a 4-digit numeric PIN.</small><br>
+                            <button type="button" class="btn btn-sm btn-secondary mt-2" id="generate_pin">Generate PIN</button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="pos_id" class="col-sm-3 col-form-label">Select Position as Employee *</label>
+                        <div class="col-sm-9">
+                            <select name="pos_id" id="pos_id" class="form-control" required>
+                                <option value="">Select Position</option>
+                                <?php foreach ($positions as $position): ?>
+                                    <option value="<?php echo $position->pos_id; ?>" 
+                                        <?php echo ($user->pos_id == $position->pos_id ? 'selected' : ''); ?>>
+                                        <?php echo htmlspecialchars($position->position_name); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="role_id" class="col-sm-3 col-form-label">Role *</label>
+                        <div class="col-sm-9">
+                            <select name="role_id" id="role_id" class="form-control" required>
+                                <option value="">Select Role</option>
+                                <?php foreach ($roles as $role): ?>
+                                    <option value="<?php echo $role->role_id; ?>" 
+                                        <?php echo ($user->role_id == $role->role_id ? 'selected' : ''); ?>>
+                                        <?php echo htmlspecialchars($role->role_name); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label for="about" class="col-sm-3 col-form-label"><?php echo display('about') ?></label>
                         <div class="col-sm-9">
@@ -106,5 +157,99 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function () {
+    function validatePasswords() {
+        var pass = $('#password').val();
+        var confirmPass = $('#confirm_password').val();
 
- 
+        if (confirmPass.length > 0 && pass !== confirmPass) {
+            $('#match-error').show();
+            return false;
+        } else {
+            $('#match-error').hide();
+            return true;
+        }
+    }
+
+    // Realtime validation
+    $('#confirm_password, #password').on('keyup blur', function () {
+        validatePasswords();
+    });
+
+    $('form').on('submit', function (e) {
+        var isPasswordValid = validatePasswords();
+        var pin = $('#login_pin').val();
+
+        if (!isPasswordValid) {
+            e.preventDefault();
+        }
+
+        if (pin && !/^\d{4}$/.test(pin)) {
+            alert("Login PIN must be a 4-digit number.");
+            e.preventDefault();
+        }
+    });
+});
+
+</script>
+
+<script>
+$(document).ready(function(){
+    // Validate on blur
+    $('#login_pin').on('blur', function(){
+        var loginPin = $(this).val();
+        var myurl = baseurl + 'dashboard/user/check_login_pin_unique';
+        var csrf = $('#csrfhashresarvation').val();
+
+        if (loginPin.length === 4 && /^\d{4}$/.test(loginPin)) {
+            $.ajax({
+                type: "GET",
+                url: myurl,
+                data: { login_pin: loginPin, csrf_test_name: csrf },
+                dataType: "json",
+                success: function(response) {
+                    if (!response.status) {
+                        $('#pin-error').text(response.message).show();
+                        $('#login_pin').val('').focus();
+                    } else {
+                        $('#pin-error').hide();
+                    }
+                },
+                error: function(xhr) {
+                    console.error('AJAX Error:', xhr);
+                }
+            });
+        }
+    });
+
+    // Generate unique 4-digit PIN
+    $('#generate_pin').click(function(){
+        var myurl = baseurl + 'dashboard/user/check_login_pin_unique';
+        var csrf = $('#csrfhashresarvation').val();
+
+        function tryGeneratePin() {
+            let randomPin = Math.floor(1000 + Math.random() * 9000); // 4-digit number
+            $.ajax({
+                type: "GET",
+                url: myurl,
+                data: { login_pin: randomPin, csrf_test_name: csrf },
+                dataType: "json",
+                success: function(response) {
+                    if (response.status) {
+                        $('#login_pin').val(randomPin);
+                        $('#pin-error').hide();
+                    } else {
+                        tryGeneratePin(); // Try again
+                    }
+                },
+                error: function(xhr) {
+                    console.error('AJAX Error:', xhr);
+                }
+            });
+        }
+
+        tryGeneratePin();
+    });
+});
+</script>

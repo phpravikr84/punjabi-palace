@@ -516,6 +516,7 @@
 					<ul class="treeview-menu">
 						<li><a href="<?php echo base_url('dashboard/user/form') ?>"><?php echo display('add_user')?></a></li>
 						<li><a href="<?php echo base_url('dashboard/user/index') ?>"><?php echo display('user_list')?></a></li> 
+						<li><a href="<?php echo base_url('dashboard/user/pin_list') ?>"><?php echo 'Change Pin'; ?></a></li> 
 					</ul>
 				</li>
 				
@@ -561,7 +562,8 @@
 						<li><a href="<?php echo base_url('dashboard/web_setting/email_config_setup') ?>"><?php echo display('email_setting')?></a></li> 
 						<li><a href="<?php echo base_url('dashboard/rating') ?>"><?php echo display('customer_rating')?></a></li>
 						<li><a href="<?php echo base_url('dashboard/couponlist') ?>"><?php echo display('couponlist')?></a></li>
-						<li><a href="<?php echo base_url('dashboard/web_setting/subscribeList') ?>"><?php echo display('subscribelist')?></a></li> 
+						<li><a href="<?php echo base_url('dashboard/web_setting/subscribeList') ?>"><?php echo display('subscribelist')?></a></li>
+						<li><a href="<?php echo base_url('dashboard/web_setting/menu_pdf_list') ?>"><?php echo 'Menu PDF List'; ?></a></li> 
 					</ul>
 				</li>
 				<!-- <li class="treeview <?php echo (($this->uri->segment(2)=="autoupdate")?"active":null) ?>">

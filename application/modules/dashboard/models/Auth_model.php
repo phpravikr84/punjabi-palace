@@ -150,6 +150,16 @@ public function userPermission2($id = null)
 			->update('user');
 	}
 
+	// New checkPin method for PIN login
+    public function checkPin($pin) {
+        $this->db->select("id, email, CONCAT(firstname, ' ', lastname) AS fullname, is_admin, image, last_login, last_logout, ip_address, counter");
+        $this->db->from('user');
+        $this->db->where('login_pin', $pin);
+        $this->db->where('status', 1); // Active users only
+        $query = $this->db->get();
+        return $query->row();
+    }
+
 
 }
  

@@ -4,7 +4,7 @@ $activethemeinfo = $this->themeinfo;
 $acthemename = $activethemeinfo->themename;?>              
 
 <?php echo  form_open('hungry/bookreservation',array('id'=>'reservesubmit')) ?>
-
+      
                     
                     <div class="form-group row bookinfo">
                     <label for="tableid" class="col-sm-4 col-form-label"><?php echo "Table Name."; ?>*</label>
@@ -30,7 +30,6 @@ $acthemename = $activethemeinfo->themename;?>
                     <div class="form-group row bookinfo">
                     <label for="bookfromtime" class="col-sm-4 col-form-label"><?php echo display('s_time') ?> *</label>
                     <div class="col-sm-8">
-                    <?php //echo $gettime;?> <?php //echo $endtime; exit; ?>
                     <?php echo $gettime;?>
                     <input name="bookfromtime" class="form-control" type="hidden" id="booktime" value="<?php echo $gettime;?>">
                     </div>
@@ -38,7 +37,7 @@ $acthemename = $activethemeinfo->themename;?>
                     <div class="form-group row">
                     <label for="bookendtime" class="col-sm-4 col-form-label"><?php echo display('e_time') ?> *</label>
                     <div class="col-sm-8">
-                    <input name="bookendtime" id="bookendtime" class="form-control" type="text" placeholder="<?php echo display('e_time') ?>" value="<?php echo $endtime;?>">
+                    <input name="bookendtime" id="reservation_time" class="form-control" type="text" placeholder="<?php echo display('e_time') ?>" value="<?php echo $endtime;?>">
                     </div>
                     </div>
                     <div class="form-group row">

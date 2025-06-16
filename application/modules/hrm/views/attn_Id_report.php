@@ -14,11 +14,7 @@
                      <label for="employee_no" class="col-sm-3 col-form-label"><?php echo display('employee_no') ?>
                          *</label>
                      <div class="col-sm-9">
-                         <input name="employee_no" class="form-control" type="text"
-                             placeholder="<?php
-
-                                                                                                    echo display('employee_id_se') ?>" id="employee_no"
-                             onblur="check_if_exists();">
+                         <input name="employee_no" class="form-control" type="text" placeholder="<?php echo display('employee_no_se') ?>" id="employee_no" onblur="check_if_exists();">
                      </div>
                  </div>
                  <div class="form-group row">

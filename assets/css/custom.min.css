@@ -5705,10 +5705,11 @@ pre .arg {
     cursor: pointer;
     border: 1px solid #bfbfbf;
     border-radius: 8px;
-    height: 20rem; /* Adjust this percentage according to your layout */
+    height: 18rem; /* Adjust this percentage according to your layout */
 }
 .product-panel .panel-body {
     padding: 8px;
+    
     border-radius: 8px;
 }
 .product-panel img {
@@ -6208,7 +6209,7 @@ pre .arg {
 }
 
 .custom_btn_in_header{
-    /* margin: 8px 2px; */
+    margin: 8px 2px;
     /* padding: 9px 15px; */
     border: 1px solid #ebebeb;
     background-color: #fff;
@@ -6228,7 +6229,7 @@ pre .arg {
     color: gray;
     padding: 4px 6px;
     border-radius: 5px;
-    margin-right: 8px;
+    /* margin-right: 8px; */
 }
 
 .sidebar-link {

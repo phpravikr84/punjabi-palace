@@ -552,7 +552,7 @@ foreach ($scan as $file) {
         <tr>
         <td>Edit Service Charge</td>
         <td>Shift+R</td>
-        <td>Select Waiter</td>
+        <td>Select </td>
         <td>Shift+W</td>
         </tr>          
         <tr>
@@ -674,7 +674,7 @@ foreach ($scan as $file) {
         <tr>
         <td>Edit Service Charge</td>
         <td>Shift+R</td>
-        <td>Select Waiter</td>
+        <td>Select </td>
         <td>Shift+W</td>
         </tr>          
         <tr>
@@ -938,13 +938,72 @@ foreach ($scan as $file) {
                               <div class="row align-items-end">
 
                                 <!-- Waiter Dropdown -->
-                                <div class="col-md-4 form-group">
-                                  <label for="waiter"><?php echo display('waiter'); ?> <span class="color-red">*</span></label>
-                                  <?php
-                                  $waiterkitchen = $this->session->userdata('id');
-                                  echo form_dropdown('waiter', $waiterlist, (!empty($waiterkitchen) ? $waiterkitchen : null), 'class="form-control" id="waiter" required');
-                                  ?>
-                                </div>
+                               <div class="col-md-4 form-group">
+    <label for="waiter"><?php echo display('waiter'); ?> <span class="color-red">*</span></label>
+
+    <?php
+    $is_admin    = $this->session->userdata('isAdmin');
+    $waiter_id   = (string) $this->session->userdata('id');
+    $waiter_name = $this->session->userdata('fullname');
+
+    // Ensure dropdown options are string-keyed
+    if (is_array($waiterlist) && !empty($waiterlist)) {
+        $waiterlist = array_combine(array_map('strval', array_keys($waiterlist)), array_values($waiterlist));
+    } else {
+        $waiterlist = [];
+    }
+    ?>
+
+    <span class="waiter_select">
+        <?php
+        echo form_dropdown(
+            'waiter',
+            $waiterlist,
+            $waiter_id,
+            ['class' => 'form-control select2 waiter', 'id' => 'waiter', 'required' => 'required']
+        );
+        ?>
+    </span>
+
+    <!-- Read-only textbox -->
+    <?php if($is_admin == 0): ?>
+       
+    <span class="waiter_txtbox" style="display:none;">
+        <input type="hidden" name="waiter_session" id="waiter_session" value="<?php echo htmlspecialchars($waiter_id); ?>">
+        <input type="text" class="form-control" value="<?php echo htmlspecialchars($waiter_name); ?>" readonly autocomplete="off">
+    </span>
+        <?php endif; ?>
+        <script>
+        $(document).ready(function () {
+            var isAdmin = <?php echo (int)$is_admin; ?>;
+            var waiterId = "<?php echo $waiter_id; ?>";
+
+            // Always initialize select2 first
+            //$('#waiter').select2();
+            //alert(isAdmin);
+
+
+            if (isAdmin == 1) {
+                // Admin: show select
+                $('.waiter_select').show();
+                $('.waiter_txtbox').hide();
+            } else {
+                // Not admin: set value first, trigger change, then hide
+                $('.waiter_select').hide();
+                $('.waiter_txtbox').show();
+            }
+        });
+    </script>
+
+</div>
+
+
+
+
+
+
+
+
 
                                 <!-- Table Modal Button + Table Dropdown -->
                                 <?php if ($possetting->tablemaping == 1) { ?>

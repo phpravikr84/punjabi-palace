@@ -74,53 +74,59 @@
 
                     <div class="col-md-6 mb-3 mb-md-0">
 
-                        <label class="sr-only" for="itemsearch"><?php echo display('food_name')?></label>
+                        <!--<label class="sr-only"  style="display: none" for="itemsearch"><?php //echo display('food_name')?></label>-->
 
                         <div class="input-group">
 
-                            <div class="input-group-prepend">
+                            <!--<div class="input-group-prepend" style="display: none">-->
 
-                                <div class="input-group-text">
+                            <!--    <div class="input-group-text">-->
 
-                                    <i class="ti-search"></i>
+                            <!--        <i class="ti-search"></i>-->
 
-                                </div>
+                            <!--    </div>-->
 
-                            </div>
-
-                            <input type="text" class="form-control productSelection" onkeypress="producstList();" name="product_name" id="product_name" placeholder="<?php echo display('search_food_item')?>" aria-required="true"> <input class="autocomplete_hidden_value" name="product_id" id="SchoolHiddenId" type="hidden">
+                            <!--</div>-->
+                            <span class="btn btn-success" style="background-color: #b38434;" data-glf-cuid="ca8e1931-ace7-4935-bab3-13fec84504c7" data-glf-ruid="91be0740-f53e-4786-98f6-8c8d50e5e5c7" > Order Online</span>
+                            <script src="https://www.fbgcdn.com/widget/js/ewm2.js" defer async ></script>
+                            <input style="display:none;" type="text" class="form-control productSelection" onkeypress="producstList();" name="product_name" id="product_name" placeholder="<?php echo display('search_food_item')?>" aria-required="true"> <input class="autocomplete_hidden_value"  style="display: none" name="product_id" id="SchoolHiddenId" type="hidden">
 
                         </div>
 
                     </div>
 
-                    <div class="col-md-4 mb-3 mb-md-0">
+                    <!--<div class="col-md-4 mb-3 mb-md-0">-->
+                    <div class="col-md-6 mb-3 mb-md-0">
 
-                        <label class="sr-only" for="location"><?php echo display('category')?></label>
+                        <!--<label class="sr-only"  style="display: none" for="location"><?php //echo display('category')?></label>-->
 
-                        <div class="input-group">
+                        <div class="input-group"style="display: unset;">
 
-                            <div class="input-group-prepend">
+                            <!--<div class="input-group-prepend" style="display: none">-->
 
-                                <div class="input-group-text">
+                            <!--    <div class="input-group-text">-->
 
-                                    <i class="fa fa-cutlery"></i>
+                            <!--        <i class="fa fa-cutlery"></i>-->
 
-                                </div>
+                            <!--    </div>-->
 
-                            </div>
-
-                            <input type="text" class="form-control categorySelection" onkeypress="allcategoryList();" name="category_name" id="category_name" placeholder="<?php echo display('search_category')?>"><input class="autocomplete_hidden_value2" name="category_id" id="SchoolHiddenId2" type="hidden">
+                            <!--</div>-->
+                            <!-- <a href="https://youbook.com.au/#/venue/punjabipalace"> -->
+                            <a href="https://www.opentable.com.au/r/punjabi-palace-reservations-south-brisbane?restref=278084&lang=en-AU&ot_source=Restaurant%20website">
+                            <span
+                                class="btn btn-success" style="background-color: #b38434;"><span id=glf-restaurant-order-online><span>Book Your Table</span></span></span></a><strong><span
+                                style='font-size:11.0pt;font-family:"Verdana","sans-serif";color:white;
+                                mso-themecolor:background1'><o:p></o:p></span></strong>
+                            <input type="text" class="form-control categorySelection" style="display: none" onkeypress="allcategoryList();" name="category_name" id="category_name" placeholder="<?php echo display('search_category')?>"><input class="autocomplete_hidden_value2" style="display: none" name="category_id" id="SchoolHiddenId2" type="hidden">
 
                         </div>
 
                     </div>
 
-                    <div class="col-md-2">
+                    <!--<div class="col-md-2" style="display: none">-->
+                    <!--    <button type="submit" class="btn btn-success"><?php //echo display('search')?></button>-->
 
-                        <button type="submit" class="btn btn-success"><?php echo display('search')?></button>
-
-                    </div>
+                    <!--</div>-->
 
                 </div>
 
@@ -132,6 +138,79 @@
 
 </div>
 
+
+<!--Start Offer Area-->
+
+<section class="offer_area bg_two sect_pad">
+
+        <div class="container">
+
+            <div class="sect_title mb-5 text-center wow fadeIn">
+
+                <h2 class="curve_title"><?php echo display('exclusive'); ?></h2>
+
+                <h3 class="big_title"><?php ##echo display('best_Offers'); ?>Upcoming Events</h3>
+
+            </div>
+
+            <div class="row offer_inner wow fadeIn" data-wow-delay="0.5s">
+
+                <div class="offer_slider owl-carousel">
+
+                    <!-- <div class="img_part mb-4 mb-md-0" style="margin-top: 20%;">
+                        <a href="#"><img src="<?php //echo base_url('assets/img/ue1.jpg'); ?>" class="img-fluid" alt="Our History"></a>
+                    </div> -->
+
+                    <div class="item">
+                        <div class="img_area">
+                            <img src="<?php echo base_url('assets/img/ue1.webp'); ?>" alt="Upcoming Events">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_area">
+                            <img src="<?php echo base_url('assets/img/ue2.webp'); ?>" alt="Upcoming Events">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="img_area">
+                            <img src="<?php echo base_url('assets/img/ue3.webp'); ?>" alt="Upcoming Events">
+                        </div>
+                    </div>
+                    <!--<div class="item">-->
+
+                    <!--    <div class="img_area">-->
+
+                    <!--        <img src="<?php //echo base_url('assets/img/ue6.webp'); ?>" alt="Upcoming Events">-->
+
+                    <!--    </div>-->
+
+                    <!--</div>-->
+                    <!--<div class="item">-->
+
+                    <!--    <div class="img_area">-->
+
+                    <!--        <img src="<?php echo base_url('assets/img/ue3.webp'); ?>" alt="Upcoming Events">-->
+
+                    <!--    </div>-->
+
+                    <!--</div>-->
+                    <!--<div class="item">-->
+
+                    <!--    <div class="img_area">-->
+
+                    <!--        <img src="<?php //echo base_url('assets/img/ue4.jpg'); ?>" alt="Upcoming Events">-->
+
+                    <!--    </div>-->
+
+                    <!--</div>-->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
 <!--Start About Us-->
@@ -204,13 +283,9 @@ if (!empty($story)) {
 
 <!--End About Us-->
 
-
-
-<!--Start Offer Area-->
-
 <?php $carousal = $this->db->select('*')->from('tbl_widget')->where('widgetid', 15)->where('status', 1)->get()->row();
 
-if (!empty($carousal)) {
+if (!empty($carousal) && (2+2 !=4)) {
 
 ?>
 
@@ -530,7 +605,7 @@ if (!empty($carousal)) {
 
 <?php $reservation = $this->db->select('*')->from('tbl_widget')->where('widgetid', 6)->where('status', 1)->get()->row();
 
-if (!empty($reservation)) {
+if (!empty($reservation) && (2+2!=4)) {
 
 ?>
 
@@ -654,13 +729,63 @@ if (!empty($reservation)) {
 
 <!--Menu AREA-->
 
+<section class="menu_area sect_pad3 bg_img_area" style="padding-bottom: 100px;">
+
+        <div class="bg_img_left img_2 bg_overlay"></div>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-4 wow fadeIn">
+
+                    <div class="sect_title mt-lg-5 mt-0">
+
+                        <h2 class="curve_title"><?php echo "Specials"; ?></h2>
+
+                        <h3 class="big_title"><?php echo "FOOD MENU"; ?></h3>
+
+                        <?php echo "Indulge in our chef’s special dishes, crafted with authentic spices and fresh ingredients. From rich curries to sizzling tandoori delights, our specials bring you the true essence of Indian cuisine. Taste the tradition."; ?>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8 wow fadeIn">
+
+                    <div class="menu_slider owl-carousel">
+
+                            <div class="menu_item">
+
+                                <div class="menu_info">
+
+                                    <img src="<?php echo base_url('assets/img/sp2.webp'); ?>" alt="Special">
+
+                                </div>
+
+                                <div class="menu_img">
+                                <img src="<?php echo base_url('assets/img/sp1.webp'); ?>" alt="Special">
+
+                                </div>
+
+                            </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
 <?php $special = $this->db->select('*')->from('tbl_widget')->where('widgetid', 8)->where('status', 1)->get()->row();
 
-if (!empty($special)) {
+if (!empty($special) && (2+2 !=4)) {
 
 ?>
 
-    <section class="menu_area sect_pad3 bg_img_area">
+    <section class="menu_area sect_pad3 bg_img_area" style="padding-bottom: 100px;">
 
         <div class="bg_img_left img_2 bg_overlay"></div>
 

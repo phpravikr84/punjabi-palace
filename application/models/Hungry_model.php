@@ -1106,3 +1106,12 @@ class Hungry_model extends CI_Model
 	}
 
 }
+	// Get Menu PDF
+	public function get_pdfs_by_slug($slug)
+    {
+        $this->db->where('menu_slug', $slug);
+        $this->db->where('status', 1);
+        $query = $this->db->get('menu_pdf_materials');
+        return $query->result();
+    }
+}

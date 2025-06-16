@@ -272,5 +272,41 @@ class Websetting_model extends CI_Model {
         }
         return false;
 	}
+
+	/**
+	 * Menu PDF
+	 */
+	public function get_active_menus() {
+        $this->db->where('isactive', 1);
+        $this->db->order_by('menu_name', 'asc');
+        return $this->db->get('top_menu')->result();
+    }
+
+    public function save_pdf_material($data) {
+        $this->db->insert('menu_pdf_materials', $data);
+    }
+
+	public function get_menu_slug_by_id($menu_id)
+	{
+		return $this->db->select('menu_slug')
+						->from('top_menu') // replace with your actual table name
+						->where('menuid', $menu_id)
+						->get()
+						->row('menu_slug');
+	}
+
+
+    public function get_pdf_materials() {
+        $this->db->select('m.*, t.menu_name');
+        $this->db->from('menu_pdf_materials m');
+        $this->db->join('top_menu t', 'm.menu_id = t.menuid');
+        return $this->db->get()->result();
+    }
+
+    public function toggle_pdf_status($id) {
+        $material = $this->db->get_where('menu_pdf_materials', ['id' => $id])->row();
+        $new_status = $material->status ? 0 : 1;
+        $this->db->where('id', $id)->update('menu_pdf_materials', ['status' => $new_status]);
+    }
  
 }

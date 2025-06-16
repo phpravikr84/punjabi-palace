@@ -868,17 +868,12 @@ class Hungry extends CI_Controller
 		$id = $this->input->post('id');
 		$cuslomer = $this->session->userdata('CusUserID');
 		$startdate = $this->input->post('sltime');
-		$times = explode('-', $this->input->post('sltime'));
-		$starttime = trim($times[0]);
-        $endtime = trim($times[1]);
 		$endate = date("H:i:s", strtotime($startdate) + (60 * 30));
 		$data['tableinfo'] = $this->hungry_model->read('*', 'rest_table', array('tableid' => $id));
 		$data['tableno'] = $this->input->post('id');
 		$data['newdate'] = $this->input->post('sdate');
-		// $data['gettime'] = $this->input->post('sltime');
-		// $data['endtime'] = $endate;
-		$data['gettime'] = $starttime;
-		$data['endtime'] = $endtime;
+		$data['gettime'] = $this->input->post('sltime');
+		$data['endtime'] = $endate;
 		$data['nopeople'] = $this->input->post('people');
 		$data['contactno'] = $this->input->post('contactno');
 		if (!empty($cuslomer)) {
@@ -887,11 +882,6 @@ class Hungry extends CI_Controller
 			$data['customerinfo'] = '';
 		}
 		$data['formdtable'] = $this->hungry_model->checktable($id);
-
-		// echo '<pre>';
-		// print_r($data);
-		// echo '</pre>';
-		// exit;
 
 		$this->load->view('themes/' . $this->themeinfo->themename . '/reservationfrm', $data);
 	}
@@ -971,7 +961,7 @@ class Hungry extends CI_Controller
 				'totime' 	 		 => $this->input->post('bookendtime', true),
 				'reserveday' 	 	 => $newdate,
 				'customer_notes'      => $this->input->post('message', true),
-				'status' 	 	     => 2,
+				'status' 	 	     => 1,
 			);
 
 			if ($this->hungry_model->bookedtable($postData)) {
@@ -1213,17 +1203,49 @@ class Hungry extends CI_Controller
 			redirect('menu');
 		}
 	}
+	
 	public function services()
 	{
 		if ($this->webinfo->web_onoff == 0) {
 			redirect(base_url() . 'login');
 			exit;
 		}
+		// Dynamically get the slug from URL
+    	$slug = $this->uri->segment(1);
 		$data['title'] = "Banquet & Catering";
 		$data['seoterm'] = "services";
+		$data['pdf_materials'] = $this->hungry_model->get_pdfs_by_slug($slug);
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/services', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
+
+	public function our_menu()
+	{
+		if ($this->webinfo->web_onoff == 0) {
+			redirect(base_url() . 'login');
+			exit;
+		}
+		// Dynamically get the slug from URL
+    	$slug = $this->uri->segment(1);
+		$data['title'] = "Menu";
+		$data['seoterm'] = "our_menu";
+		$data['pdf_materials'] = $this->hungry_model->get_pdfs_by_slug($slug);
+		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/our-menu', $data, TRUE);
+		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
+	}
+	
+		public function delivery()
+	{
+		if ($this->webinfo->web_onoff == 0) {
+			redirect(base_url() . 'login');
+			exit;
+		}
+		$data['title'] = "Home Delivery";
+		$data['seoterm'] = "delivery";
+		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/delivery', $data, TRUE);
+		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
+	}
+	
 	public function removetocartdetails()
 	{
 		$data['title'] = "Article du panier";
@@ -3284,6 +3306,9 @@ document.getElementById("paytrack").click();
 		$emailtext = '<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi ' . $fullname . ',</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Phone:' . $phone . '</p>
 						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">' . $text . '</p>';
+		
+		
+		
 		$config = array(
 			'protocol'  => $send_email->protocol,
 			'smtp_host' => $send_email->smtp_host,
@@ -3293,6 +3318,40 @@ document.getElementById("paytrack").click();
 			'mailtype'  => $send_email->mailtype,
 			'charset'   => 'utf-8'
 		);
+
+		// $fullname = $this->input->post('firstname', TRUE) . ' ' . $this->input->post('lastname', TRUE);
+		// $email = $this->input->post('email', TRUE);
+		// $text = $this->input->post('comments', TRUE);
+		// $phone = $this->input->post('phone', TRUE);
+
+		$to = 'bookings@punjabipalace.com.au'; // Replace with your recipient email
+		$to1 = 'jsaha.adzguru@gmail.com'; // For Testing Purpose
+
+		// Create HTML email content
+		$message = '
+		<html>
+		<head>
+		<title>' . $subject . '</title>
+		</head>
+		<body>
+		<p style="font-family: sans-serif; font-size: 14px;">Someone Contacted Punjabi Palace. Here is the Details below: </p>
+		<p style="font-family: sans-serif; font-size: 14px;">Name: ' . htmlspecialchars($fullname) . ',</p>
+		<p style="font-family: sans-serif; font-size: 14px;">Phone: ' . htmlspecialchars($phone) . '</p>
+		<p style="font-family: sans-serif; font-size: 14px;">Message: ' . nl2br(htmlspecialchars($text)) . '</p>
+		</body>
+		</html>
+		';
+
+		// Set headers
+		$headers = "MIME-Version: 1.0" . "\r\n";
+		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+		$headers .= 'From: Punjabi Palace <' . $email . ">\r\n";
+		$headers .= 'Reply-To: ' . $email . "\r\n";
+		$headers .= 'X-Mailer: PHP/' . phpversion();
+
+		// Send the email
+		mail($to, $subject, $message, $headers);
+		mail($to1, $subject, $message, $headers); // For Testing
 
 		$data = [
 			'fullname' => $fullname,
@@ -3304,15 +3363,15 @@ document.getElementById("paytrack").click();
 
 		$this->db->insert('contact_data', $data);
 
-		$this->load->library('email');
-		$this->email->initialize($config);
-		$this->email->set_newline("\r\n");
-		$this->email->set_mailtype("html");
-		$this->email->from($email, 'Contact Info');
-		$this->email->to($send_email->sender);
-		$this->email->subject($subject);
-		$this->email->message($emailtext);
-		$this->email->send();
+		// $this->load->library('email');
+		// $this->email->initialize($config);
+		// $this->email->set_newline("\r\n");
+		// $this->email->set_mailtype("html");
+		// $this->email->from($email, 'Contact Info');
+		// $this->email->to($send_email->sender);
+		// $this->email->subject($subject);
+		// $this->email->message($emailtext);
+		// $this->email->send();
 		$this->session->set_flashdata('message', display('contact_send'));
 		redirect('contact/');
 	}
@@ -4305,25 +4364,4 @@ document.getElementById("paytrack").click();
                 return false;
             }*/
 	}
-
-	public function slotsavailablity()
-	{
-		$date = $this->input->get('date');
-
-		if ($date) {
-			$dayName = date('l', strtotime($date)); // e.g., 'Thursday'
-			
-			$slots = $this->hungry_model->get_slots_by_day($dayName);
-
-			if (!empty($slots)) {
-				echo json_encode(['success' => true, 'slots' => $slots]);
-			} else {
-				echo json_encode(['success' => false, 'slots' => []]);
-			}
-		} else {
-			echo json_encode(['success' => false, 'message' => 'No date provided']);
-		}
-	}
-
-
 }
