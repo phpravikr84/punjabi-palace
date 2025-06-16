@@ -683,10 +683,10 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                 $('#grandtotal').val(tgtotal);
                 $('#orggrandTotal').val(tgtotal);
                 $('#orginattotal').val(tgtotal);
-                if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
-                    // Add the promo item to the cart
-                    ApplyModifierSelect(promo_item_id,null,0,promo_item_qty);
-                }
+                // if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
+                //     // Add the promo item to the cart
+                //     ApplyModifierSelect(promo_item_id,null,0,promo_item_qty);
+                // }
 
                 // console.log("oldIndvPrice: "+oldIndvPrice);
                 console.log("Subtotal: "+parseFloat(total));
