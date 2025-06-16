@@ -101,7 +101,7 @@ if ($this->session->flashdata('exception')) { ?>
         <div class="form-group row">
             <label for="offerendate" class="col-sm-5 col-form-label"><?php echo display('offerenddate')?></label>
             <div class="col-sm-7">
-                <input name="offerendate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerenddate')?>" id="offerendate"  value="<?php echo (!empty($productinfo->offerendate)?$productinfo->offerendate:null) ?>">
+                <input name="offerendate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerenddate')?>" id="offerendate"  value="<?php echo (($isUpdate)?$productinfo->end_date:null) ?>">
             </div>
         </div>
     </div>
@@ -111,7 +111,7 @@ if ($this->session->flashdata('exception')) { ?>
         <div class="form-group row">
             <label for="discount_offerate" class="col-sm-5 col-form-label"><?php echo display('offer_rate')?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Offer Rate Must be a number. It a Percentange Like: if 5% then put 5"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
             <div class="col-sm-7">
-                <input name="discount_offerate" class="form-control" type="text"  placeholder="0" id="discount_offerate"  value="<?php echo (!empty($productinfo->OffersRate)?$productinfo->OffersRate:'') ?>">
+                <input name="discount_offerate" class="form-control" type="text"  placeholder="0" id="discount_offerate"  value="<?php echo (!empty($productinfo->discount_rate)?$productinfo->discount_rate:'') ?>">
             </div>
         </div>
     </div>
@@ -120,12 +120,16 @@ if ($this->session->flashdata('exception')) { ?>
             <label for="discount_food" class="col-sm-5 col-form-label">Food</label>
             <div class="col-sm-7">
                 <select name="discount_food" id="discount_food" class="form-control">
-                    <option value=""  selected="selected" disabled><?php echo display('select_option');?></option>
+                    <option value="" <?php if(!$isUpdate): ?> selected="selected" <?php endif; ?> disabled><?php echo display('select_option');?></option>
                     <?php 
                     if(count($food_list) > 0){
                         foreach($food_list as $fl => $food){
+                            $selected = '';
+                            if ($isUpdate && ($productinfo->promo_type == 1) && $productinfo->offer_food_id == $food->ProductsID) {
+                                $selected = 'selected';
+                            }
                             ?>
-                            <option value="<?php echo $food->ProductsID; ?>"><?php echo $food->ProductName; ?></option>
+                            <option value="<?php echo $food->ProductsID;?>" <?=$selected;?>><?php echo $food->ProductName; ?></option>
                             <?php
                         }
                     } 
@@ -145,8 +149,14 @@ if ($this->session->flashdata('exception')) { ?>
                     <?php 
                     if(count($food_list) > 0){
                         foreach($food_list as $food){
+                            $selected = '';
+                            if($isUpdate && ($productinfo->promo_type == 2) && $productinfo->offer_food_id == $food->ProductsID) {
+                                $selected = 'selected';
+                            } else {
+                                $selected = '';
+                            }
                             ?>
-                            <option value="<?php echo $food->ProductsID; ?>" <?php if(!empty($productinfo)){if($productinfo->ProductsID == $food->ProductsID){echo "Selected";}} ?>><?php echo $food->ProductName; ?></option>
+                            <option value="<?php echo $food->ProductsID;?>" <?=$selected;?>><?php echo $food->ProductName; ?></option>
                             <?php
                         }
                     } 
@@ -157,7 +167,7 @@ if ($this->session->flashdata('exception')) { ?>
         <div class="form-group row">
             <label for="free_item_buy_qty" class="col-sm-5 col-form-label">Buy Quantity <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="How many of the item purchase can avail the free food"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
             <div class="col-sm-7">
-                <input name="free_item_buy_qty" class="form-control" type="text"  placeholder="0" id="free_item_buy_qty"  value="<?php echo (!empty($productinfo->OffersRate)?$productinfo->OffersRate:'') ?>">
+                <input name="free_item_buy_qty" class="form-control" type="text"  placeholder="0" id="free_item_buy_qty"  value="<?php echo (($isUpdate && ($productinfo->promo_type == 2) && $productinfo->buy_qty)?$productinfo->buy_qty:'') ?>">
             </div>
         </div>
     </div>
@@ -166,12 +176,18 @@ if ($this->session->flashdata('exception')) { ?>
             <label for="free_item_get_food" class="col-sm-5 col-form-label">Get</label>
             <div class="col-sm-7">
                 <select name="free_item_get_food" id="free_item_get_food" class="form-control">
-                    <option value=""  selected="selected" disabled><?php echo display('select_option');?></option>
+                    <option value="" <?php if(!$isUpdate): ?> selected="selected" <?php endif; ?> disabled><?php echo display('select_option');?></option>
                     <?php 
                     if(count($food_list) > 0){
                         foreach($food_list as $food){
+                            $selected = '';
+                            if($isUpdate && ($productinfo->promo_type == 2) && $productinfo->get_food_id == $food->ProductsID) {
+                                $selected = 'selected';
+                            } else {
+                                $selected = '';
+                            }
                             ?>
-                            <option value="<?php echo $food->ProductsID; ?>" <?php if(!empty($productinfo)){if($productinfo->ProductsID == $food->ProductsID){echo "Selected";}} ?>><?php echo $food->ProductName; ?></option>
+                            <option value="<?php echo $food->ProductsID; ?>" <?=$selected;?>><?php echo $food->ProductName; ?></option>
                             <?php
                         }
                     } 
@@ -182,7 +198,7 @@ if ($this->session->flashdata('exception')) { ?>
         <div class="form-group row">
             <label for="free_item_get_qty" class="col-sm-5 col-form-label">Get Quantity <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Free Food Quantity"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
             <div class="col-sm-7">
-                <input name="free_item_get_qty" class="form-control" type="text"  placeholder="0" id="free_item_get_qty"  value="<?php echo (!empty($productinfo->OffersRate)?$productinfo->OffersRate:'') ?>">
+                <input name="free_item_get_qty" class="form-control" type="text"  placeholder="0" id="free_item_get_qty"  value="<?php echo (($isUpdate && ($productinfo->promo_type == 2) && $productinfo->get_qty)?$productinfo->get_qty:'') ?>">
             </div>
         </div>
     </div>
@@ -193,7 +209,6 @@ if ($this->session->flashdata('exception')) { ?>
     </div>
 </div>
             <?php echo form_close(); ?>
-
             </div>
         </div>
     </div>
