@@ -73,9 +73,9 @@ if ($this->session->flashdata('exception')) { ?>
             <label for="promo_type" class="col-sm-5 col-form-label">Type</label>
             <div class="col-sm-7">
                 <select name="promo_type" id="promo_type" class="form-control">
-                    <option value=""  selected="selected" disabled><?php echo display('select_option');?></option>
-                    <option value="1">Discount</option>
-                    <option value="2">Free Item</option>
+                    <option value="" <?php if(!$isUpdate): ?> selected="selected" <?php endif; ?> disabled><?php echo display('select_option');?></option>
+                    <option value="1" <?php if($isUpdate && ($productinfo->promo_type == 1)): ?> selected <?php endif; ?>>Discount</option>
+                    <option value="2" <?php if($isUpdate && ($productinfo->promo_type == 2)): ?> selected <?php endif; ?>>Free Item</option>
                 </select>
             </div>
         </div>

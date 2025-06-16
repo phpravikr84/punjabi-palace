@@ -977,7 +977,7 @@ class Hungry_model extends CI_Model
 			$sessiondata = array(
 				'CusUserID' => $val,
 				'cusfname' => $customername,
-				'customerno' => $cuntomer_no,
+				'customerno' => $customernumber,
 				'CustomerEmail' => $customeremail,
 			);
 
@@ -1104,8 +1104,6 @@ class Hungry_model extends CI_Model
 
 		return $query->result_array();
 	}
-
-}
 	// Get Menu PDF
 	public function get_pdfs_by_slug($slug)
     {
