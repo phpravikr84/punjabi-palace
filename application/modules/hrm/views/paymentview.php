@@ -10,7 +10,7 @@
                         <tr>
                             <th><?php echo display('Sl') ?></th>
                             <th><?php echo display('employee_name') ?></th>
-                            <th><?php echo display('employee_id') ?></th>
+                            <th><?php echo display('employee_no') ?></th>
                             <th><?php echo display('total_salary') ?></th>
                             <th><?php echo display('total_working_minutes') ?></th>
                             <th><?php echo display('working_period') ?></th>
@@ -27,7 +27,7 @@
                         <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                             <td><?php echo $sl; ?></td>
                             <td><?php echo $que->first_name . ' ' . $que->last_name; ?></td>
-                            <td><?php echo $que->employee_id; ?></td>
+                            <td><?php echo $que->employee_no; ?></td>
                             <td><?php echo $que->total_salary; ?></td>
                             <td><?php echo $que->total_working_minutes; ?></td>
                             <td><?php echo $que->working_period; ?></td>
@@ -42,7 +42,7 @@
                                             } else { ?>
 
                                 <a href='#' class='btn btn-success btn-xs'
-                                    onclick='Payment(<?php echo $que->emp_sal_pay_id; ?>,"<?php echo $que->employee_id; ?>","<?php echo $que->total_salary; ?>","<?php echo $que->total_working_minutes; ?>","<?php echo $que->working_period; ?>")'><?php echo display('pay_now') ?></a>
+                                    onclick='Payment(<?php echo $que->emp_sal_pay_id; ?>,"<?php echo $que->employee_no; ?>","<?php echo $que->total_salary; ?>","<?php echo $que->total_working_minutes; ?>","<?php echo $que->working_period; ?>")'><?php echo display('pay_now') ?></a>
                                 <?php  }
 
                                             ?>
@@ -91,14 +91,14 @@
                                     <input name="emp_sal_pay_id" id="salType" type="hidden" value="">
 
                                     <div class="form-group row">
-                                        <label for="employee_id"
+                                        <label for="employee_no"
                                             class="col-sm-3 col-form-label"><?php echo display('employee_name') ?>
                                         </label>
                                         <div class="col-sm-9">
                                             <input type="text" name="empname" class="form-control" id="employee_name"
                                                 value="" readonly>
-                                            <input type="hidden" name="employee_id" class="form-control"
-                                                id="employee_id" value="">
+                                            <input type="hidden" name="employee_no" class="form-control"
+                                                id="employee_no" value="">
                                         </div>
                                     </div>
 

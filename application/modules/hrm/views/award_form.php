@@ -148,10 +148,10 @@
                                 </div>
                                 <div class="form-group row">
 
-                                    <label for="employee_id" class="col-sm-3 col-form-label">
+                                    <label for="employee_no" class="col-sm-3 col-form-label">
                                         <?php echo display('employee_name') ?></label>
                                     <div class="col-sm-9">
-                                        <?php echo form_dropdown('employee_id', $dropdown, null, 'class="form-control width-100"') ?>
+                                        <?php echo form_dropdown('employee_no', $dropdown, null, 'class="form-control width-100"') ?>
 
                                     </div>
 

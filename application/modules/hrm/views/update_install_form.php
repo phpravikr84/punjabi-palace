@@ -9,13 +9,13 @@
                    <input name="loan_inst_id" type="hidden" value="<?php echo $data->loan_inst_id ?>">
 
                    <div class="form-group row">
-                       <label for="employee_id" class="col-sm-3 col-form-label"><?php echo display('employee_name') ?>
+                       <label for="employee_no" class="col-sm-3 col-form-label"><?php echo display('employee_name') ?>
                            *</label>
 
 
                        <div class="col-sm-9">
                            <?php
-                            echo form_dropdown('employee_id', $gndloan, (!empty($data->employee_id) ? $data->employee_id : null), 'class="form-control" onchange="SelectToLoad(this.value)"');
+                            echo form_dropdown('employee_no', $gndloan, (!empty($data->employee_no) ? $data->employee_no : null), 'class="form-control" onchange="SelectToLoad(this.value)"');
                             ?>
 
                        </div>

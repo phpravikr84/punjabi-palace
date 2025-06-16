@@ -11,7 +11,7 @@
                     <thead>
                         <tr>
                             <th><?php echo display('Sl') ?></th>
-                            <th><?php echo display('employee_id') ?></th>
+                            <th><?php echo display('employee_no') ?></th>
                             <th><?php echo display('date') ?></th>
                              <th><?php echo display('sign_in') ?></th>
                             <th><?php echo display('sign_out') ?></th>

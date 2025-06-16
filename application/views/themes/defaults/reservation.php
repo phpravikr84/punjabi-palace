@@ -86,15 +86,11 @@
                              <input type="text" name="reservation_date" id="reservation_date" placeholder="<?php echo display('reservation_date')?>" class="datepickerreserve">
                          </div>
                          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                             <!-- <label for="reservation_time"><i class="ti-alarm-clock"></i></label> -->
-                             <!-- <input type="text" name="reservation_time" id="reservation_time" placeholder="<?php //echo display('reservation_time')?>"> -->
-                             <select name="reservation_time" id="reservation_time" class="form-control" style="display:none;">
-                                <option value=""><?php echo display('select_time'); ?></option>
-                            </select>
+                             <label for="reservation_time"><i class="ti-alarm-clock"></i></label>
+                             <input type="text" name="reservation_time" id="reservation_time" placeholder="<?php echo display('reservation_time')?>">
                          </div>
                          <div class="col-lg-3 col-md-6">
                              <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("hungry/checkavailablity"); ?>" />
-                             <input name="sloturl" id="sloturl" type="hidden" value="<?php echo base_url("hungry/slotsavailablity"); ?>" />
                              <button type="button" class="simple_btn" onclick="checkavailablity()"><?php echo display('check_availablity') ?></button>
                          </div>
                      </div>
@@ -109,57 +105,3 @@
  <section class="table_chart" id="searchreservation">
  </section>
  <!--End Table Chart-->
-<script>
-    $(document).ready(function () {
-    
-        function convertTo12Hour(timeStr) {
-            const [hour, minute] = timeStr.split(':');
-            const h = parseInt(hour);
-            const suffix = h >= 12 ? 'PM' : 'AM';
-            const hour12 = ((h + 11) % 12 + 1);
-            return `${hour12}:${minute} ${suffix}`;
-        }
-
-    $('.simple_btn').prop('disabled', true);
-
-    $('#reservation_date').on('change', function () {
-        var selectedDate = $(this).val();
-        var checkUrl = $('#sloturl').val();
-        if (selectedDate !== '') {
-            $.ajax({
-                type: "GET",
-                url: checkUrl,
-                data: { date: selectedDate },
-                dataType: "json",
-                success: function (response) {
-                    if (response.success && response.slots.length > 0) {
-                        var $reservationTime = $('#reservation_time');
-                        $reservationTime.empty().append('<option value=""><?php echo display('select_time'); ?></option>');
-
-                        $.each(response.slots, function (i, slot) {
-                            var timeRange = slot.start_time + ' - ' + slot.end_time;
-                            var displayStart = convertTo12Hour(slot.start_time); // e.g., '10:00:00' → '10:00 AM'
-                            var displayEnd = convertTo12Hour(slot.end_time);     // e.g., '11:00:00' → '11:00 AM'
-                            var displayRange = displayStart + ' - ' + displayEnd;
-                            $reservationTime.append('<option value="' + timeRange + '">' + displayRange + '</option>');
-                        });
-
-                        $reservationTime.show();
-                        $('.simple_btn').prop('disabled', false);
-                    } else {
-                        $('#reservation_time').hide().empty();
-                        alert('No slot time available on this day!');
-                        $('.simple_btn').prop('disabled', true);
-                    }
-                },
-                error: function () {
-                    alert('Error fetching slot times.');
-                    $('#reservation_time').hide().val('');
-                    $('.simple_btn').prop('disabled', true);
-                }
-            });
-        }
-    });
-});
-
-</script>

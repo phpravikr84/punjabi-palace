@@ -19,7 +19,7 @@
                         <tr>
                             <th><?php echo display('Sl') ?></th>
                             <th>Employee Name</th>
-                            <th><?php echo display('employee_id') ?></th>
+                            <th><?php echo display('employee_no') ?></th>
                             <th><?php echo display('note') ?></th>
                             <th><?php echo display('date') ?></th>
                             <th><?php echo display('note_by') ?></th>
@@ -36,7 +36,7 @@
                         <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                             <td><?php echo $sl; ?></td>
                             <td><?php echo $que->first_name . ' ' . $que->last_name; ?></td>
-                            <td><?php echo $que->employee_id; ?></td>
+                            <td><?php echo $que->employee_no; ?></td>
                             <td><?php echo $que->note; ?></td>
                             <td><?php echo $que->date; ?></td>
                             <td><?php echo $que->note_by; ?></td>
@@ -85,10 +85,10 @@
                                 <?php echo  form_open_multipart('hrm/Employees/create_emp_performance') ?>
 
                                 <div class="form-group row">
-                                    <label for="employee_id"
+                                    <label for="employee_no"
                                         class="col-sm-3 col-form-label"><?php echo display('employee_name') ?> *</label>
                                     <div class="col-sm-9">
-                                        <?php echo form_dropdown('employee_id', $employee, null, 'class="form-control width-400-px" id="employee_id"') ?>
+                                        <?php echo form_dropdown('employee_no', $employee, null, 'class="form-control width-400-px" id="employee_no"') ?>
                                     </div>
                                 </div>
 

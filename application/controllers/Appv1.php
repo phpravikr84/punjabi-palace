@@ -2112,9 +2112,9 @@ public function closinginfo(){
 				$this->App_android_model->update_date('customer_order', $updatetData, 'order_id', $orderid);
 				/*Push Notification*/
 				/*$condition="user.waiter_kitchenToken!='' AND employee_history.pos_id=1";
-		$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id,tbl_assign_kitchen.kitchen_id');
+		$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id,tbl_assign_kitchen.kitchen_id');
 		$this->db->from('user');
-		$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+		$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 		$this->db->join('tbl_assign_kitchen', 'tbl_assign_kitchen.userid = user.id', 'left');
 		$this->db->where($condition);
 		$query = $this->db->get();

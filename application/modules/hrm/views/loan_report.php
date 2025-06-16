@@ -27,7 +27,7 @@ $total = 0;
 
                 ID NO: <?php
 
-                        echo $emp->employee_id;
+                        echo $emp->employee_no;
 
                         ?>
             </div>

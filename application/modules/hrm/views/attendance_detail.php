@@ -9,7 +9,7 @@
 
     <tr>
         <th><?php echo display('employee') ?></th>
-        <td><?php echo $row->employee_id ;?></td>
+        <td><?php echo $row->employee_no ;?></td>
     </tr>
     <tr>
         <th><?php echo display('date') ?></th>

@@ -966,4 +966,122 @@ public function delivarityme()
 		}
 		redirect('dashboard/web_setting/delivarityme');
     }
+
+	/**
+	 * Menu PDF
+	 */
+	public function menu_pdf_upload($id = null)
+	{
+		$data['title'] = display('menu_pdf_upload');
+		$data['menus'] = $this->websetting_model->get_active_menus();
+		$data['material_pdf'] = null;
+		$data['selected_menus'] = [];
+		$data['btn_text'] = '';
+		if ($this->input->method() === 'post') {
+			$menu_ids = $this->input->post('menu_id');
+			$btn_text = $this->input->post('btn_text');
+			$existing_file = $this->input->post('old_pdf_file');
+
+			$this->form_validation->set_rules('btn_text', 'Button Text', 'required');
+
+			if (empty($_FILES['pdf_file']['name']) && empty($existing_file)) {
+				$this->form_validation->set_rules('pdf_file', 'PDF File', 'required');
+			}
+
+			if ($this->form_validation->run()) {
+				$file_name = null;
+
+				if (!empty($_FILES['pdf_file']['name'])) {
+					$config['upload_path']   = './pdf/';
+					$config['allowed_types'] = 'pdf';
+					$config['file_name']     = time() . '_' . $_FILES['pdf_file']['name'];
+
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('pdf_file')) {
+						$data['error'] = $this->upload->display_errors();
+						$data['module'] = "dashboard";
+						$data['page'] = "web/menu_pdf_upload";
+						echo Modules::run('template/layout', $data);
+						return;
+					} else {
+						$file_name = $this->upload->data('file_name');
+					}
+				} elseif (!empty($existing_file)) {
+					$file_name = $existing_file;
+				}
+
+				// Insert (New)
+				if (empty($id)) {
+					$pdf_group_id = time();
+
+					foreach ($menu_ids as $menu_id) {
+						$slug = $this->websetting_model->get_menu_slug_by_id($menu_id);
+						$save_data = [
+							'menu_id'      => $menu_id,
+							'menu_slug'    => $slug,
+							'btn_text'     => $btn_text,
+							'pdf_file'     => $file_name,
+							'status'       => 1,
+							'pdf_group_id' => $pdf_group_id,
+						];
+						$this->websetting_model->save_pdf_material($save_data);
+					}
+
+					$this->session->set_flashdata('message', 'PDF Uploaded Successfully.');
+				} else {
+					// Update specific row using ID
+					$menu_id = is_array($menu_ids) ? $menu_ids[0] : $menu_ids;
+
+					$slug = $this->websetting_model->get_menu_slug_by_id($menu_id);
+
+					$update_data = [
+						'menu_id'   => $menu_id,
+						'menu_slug' => $slug,
+						'btn_text'  => $btn_text,
+						'pdf_file'  => $file_name,
+					];
+
+					$this->db->where('id', $id)->update('menu_pdf_materials', $update_data);
+
+					$this->session->set_flashdata('message', 'PDF Updated Successfully.');
+				}
+
+				redirect('dashboard/web_setting/menu_pdf_list');
+			}
+		}
+
+		if (!empty($id)) {
+			// Fetch specific row using ID
+			$query = $this->db->get_where('menu_pdf_materials', ['id' => $id]);
+			$data['material_pdf'] = $query->row();
+
+			if ($data['material_pdf']) {
+				$data['selected_menus'][] = $data['material_pdf']->menu_id;
+				$data['btn_text'] = $data['material_pdf']->btn_text ?? '';
+			}
+		}
+		$data['module'] = "dashboard";
+		$data['page']   = "web/menu_pdf_upload";
+		echo Modules::run('template/layout', $data);
+	}
+
+
+
+	public function menu_pdf_list()
+	{
+		$data['title']          = display('menu_pdf_list');
+		$data['pdf_materials']  = $this->websetting_model->get_pdf_materials();
+
+		$data['module'] = "dashboard";
+		$data['page']   = "web/menu_pdf_list";  // view file: /modules/dashboard/views/web/menu_pdf_list.php
+		echo Modules::run('template/layout', $data);
+	}
+
+	public function toggle_pdf_status($id)
+	{
+		$this->websetting_model->toggle_pdf_status($id);
+		redirect('dashboard/web_setting/menu_pdf_list');
+	}
+
 }

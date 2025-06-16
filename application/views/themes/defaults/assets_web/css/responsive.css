@@ -184,6 +184,12 @@
     .bg_img_left{
         top: -22px;
         left: -30px;
+        background-size: 40%;
+    }
+    .delivery_left_bg{
+        top: -43px;
+        left: -30px;
+        background-size: 35%;
     }
     .modal-dialog {
         margin: 100px 15px 20px;

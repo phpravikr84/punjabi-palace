@@ -37,17 +37,17 @@ date_default_timezone_set($timezone->timezone); ?>
 
                                 <?php echo  form_open('hrm/Home/create_atten') ?>
                                 <div class="form-group row">
-                                    <label for="employee_id"
+                                    <label for="employee_no"
                                         class="col-sm-3 col-form-label"><?php echo display('emp_id') ?> *</label>
                                     <div class="col-sm-9">
                                         <?php if ($this->session->userdata('isAdmin') == 1 || $this->session->userdata('supervisor') == 1) { ?>
-                                        <?php echo form_dropdown('employee_id', $dropdownatn, null, 'class="form-control width-300-px" id="employee_id"') ?>
+                                        <?php echo form_dropdown('employee_no', $dropdownatn, null, 'class="form-control width-300-px" id="employee_no"') ?>
                                         <?php } else { ?>
                                         <input type="text" name="employee_name" class="form-control"
                                             value="<?php echo $this->session->userdata('first_name') . ' ' . $this->session->userdata('last_name'); ?>"
                                             readonly>
-                                        <input type="hidden" name="employee_id" id="employee_id" class="form-control"
-                                            value="<?php echo $this->session->userdata('employee_id'); ?>">
+                                        <input type="hidden" name="employee_no" id="employee_no" class="form-control"
+                                            value="<?php echo $this->session->userdata('employee_no'); ?>">
                                         <?php } ?>
 
 
@@ -171,7 +171,7 @@ date_default_timezone_set($timezone->timezone); ?>
                         <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                             <td><?php echo $sl; ?></td>
                             <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
-                            <td><?php echo $row['employee_id']; ?></td>
+                            <td><?php echo $row['employee_no']; ?></td>
                             <td><?php echo $row['date']; ?></td>
                             <td><?php echo $row['sign_in']; ?></td>
                             <td><?php echo $row['sign_out']; ?></td>
@@ -230,7 +230,7 @@ date_default_timezone_set($timezone->timezone); ?>
                     </div>
                     <?php endif; ?>
                     <h3>You can export test.csv file Example-</h3>
-                    <h4>employee_id,date,sign_in,sign_out,staytime</h4>
+                    <h4>employee_no,date,sign_in,sign_out,staytime</h4>
                     <h4>EY2T1OWA,2018-10-07,12:14:50 pm,05:07:31 pm,04:59:38</h4>
                     <h2><?php echo display('import_attendance') ?> <span class="color-green"><img src="<?php echo base_url('assets/img/user/fingur.png') ?>" height="100px" width="100px"></span><?php echo display('upload_csv') ?></h2>
                    

@@ -1,6 +1,6 @@
 CREATE TABLE `emp_attendance` (
   `att_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(50) CHARACTER SET latin1 NOT NULL,
   `date` varchar(30) CHARACTER SET latin1 NOT NULL,
   `sign_in` varchar(30) CHARACTER SET latin1 NOT NULL,
   `sign_out` varchar(30) CHARACTER SET latin1 NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `award` (
   `aw_description` varchar(200) NOT NULL,
   `awr_gift_item` varchar(50) NOT NULL,
   `date` date NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `employee_no` int(11) NOT NULL,
   `awarded_by` varchar(30) NOT NULL,
   PRIMARY KEY (`award_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `candidate_interview` (
 CREATE TABLE IF NOT EXISTS `candidate_selection` (
   `can_sel_id` int(11) NOT NULL AUTO_INCREMENT,
   `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(50) CHARACTER SET latin1 NOT NULL,
   `pos_id` varchar(30) CHARACTER SET latin1 NOT NULL,
   `selection_terms` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`can_sel_id`)
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `position` (
 
 CREATE TABLE `employee_performance` (
   `emp_per_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(50) CHARACTER SET latin1 NOT NULL,
   `note` varchar(50) CHARACTER SET latin1 NOT NULL,
   `date` varchar(50) CHARACTER SET latin1 NOT NULL,
   `note_by` varchar(50) CHARACTER SET latin1 NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE `employee_performance` (
 
 CREATE TABLE `employee_salary_payment` (
   `emp_sal_pay_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(50) CHARACTER SET latin1 NOT NULL,
   `total_salary` varchar(50) CHARACTER SET latin1 NOT NULL,
   `total_working_minutes` varchar(50) CHARACTER SET latin1 NOT NULL,
   `working_period` varchar(50) CHARACTER SET latin1 NOT NULL,
@@ -144,8 +144,8 @@ CREATE TABLE `employee_salary_payment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `employee_history` (
-  `emp_his_id` int(11) NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(30) NOT NULL,
+  `emp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `employee_no` varchar(30) NOT NULL,
   `pos` varchar(30) NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `employee_history` (
   `duties` varchar(30) NOT NULL,
   `supervisor` varchar(30) NOT NULL,
   `signature` text NOT NULL,
-  PRIMARY KEY (`emp_his_id`)
+  PRIMARY KEY (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `weekly_holiday` (
@@ -186,7 +186,7 @@ CREATE TABLE `payroll_holiday` (
 
 CREATE TABLE `leave_apply` (
   `leave_appl_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` int(11) NOT NULL,
+  `employee_no` int(11) NOT NULL,
   `apply_strt_date` date NOT NULL,
   `apply_end_date` date NOT NULL,
   `leave_aprv_strt_date` date NOT NULL,
@@ -203,7 +203,7 @@ CREATE TABLE `leave_apply` (
 
 CREATE TABLE `grand_loan` (
   `loan_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(50) CHARACTER SET latin1 NOT NULL,
   `permission_by` varchar(30) CHARACTER SET latin1 NOT NULL,
   `loan_details` varchar(30) CHARACTER SET latin1 NOT NULL,
   `amount` varchar(30) CHARACTER SET latin1 NOT NULL,
@@ -221,7 +221,7 @@ CREATE TABLE `grand_loan` (
 
 CREATE TABLE `loan_installment`(
 `loan_inst_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-`employee_id` varchar(21) CHARACTER SET latin1 NOT NULL,
+`employee_no` varchar(21) CHARACTER SET latin1 NOT NULL,
 `loan_id` varchar(21) CHARACTER SET latin1 NOT NULL,
 `installment_amount` varchar(20) CHARACTER SET latin1 NOT NULL,
 `payment` varchar(20) CHARACTER SET latin1 NOT NULL,
@@ -244,7 +244,7 @@ CREATE TABLE `salary_type` (
 
 CREATE TABLE `salary_sheet_generate` (
   `ssg_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(30) CHARACTER SET latin1 NOT NULL,
   `gdate` varchar(30) CHARACTER SET latin1 NOT NULL,
   `start_date` varchar(30) CHARACTER SET latin1 NOT NULL,
   `end_date` varchar(30) CHARACTER SET latin1 NOT NULL,
@@ -254,7 +254,7 @@ CREATE TABLE `salary_sheet_generate` (
 
 CREATE TABLE IF NOT EXISTS `employee_salary_setup` (
   `e_s_s_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(30) CHARACTER SET latin1 NOT NULL,
   `sal_type` varchar(30) NOT NULL,
   `salary_type_id` varchar(30) CHARACTER SET latin1 NOT NULL,
   `amount` varchar(30) CHARACTER SET latin1 NOT NULL,
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `employee_salary_setup` (
 
 CREATE TABLE `salary_setup_header` (
   `s_s_h_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `employee_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `employee_no` varchar(30) CHARACTER SET latin1 NOT NULL,
   `salary_type_id` varchar(30) CHARACTER SET latin1 NOT NULL,
   `salary_payable` varchar(30) CHARACTER SET latin1 NOT NULL,
   `absent_deduct` varchar(30) CHARACTER SET latin1 NOT NULL,

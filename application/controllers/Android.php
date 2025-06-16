@@ -1515,9 +1515,9 @@ class Android extends MY_Controller
 					curl_close($ch);
 					/*Push Notification*/
 					$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=6";
-					$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+					$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id ');
 					$this->db->from('user');
-					$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+					$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 					$this->db->where($condition);
 					$query = $this->db->get();
 					$allemployee = $query->result();
@@ -1835,9 +1835,9 @@ class Android extends MY_Controller
 		curl_close($ch);
 		/*Push Notification*/
 		$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=6";
-		$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+		$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id ');
 		$this->db->from('user');
-		$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+		$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 		$this->db->where($condition);
 		$query = $this->db->get();
 		$allemployee = $query->result();
@@ -1980,9 +1980,9 @@ class Android extends MY_Controller
 		curl_close($ch);
 		/*Push Notification*/
 		$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=6";
-		$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+		$this->db->select('user.*,employee_history.emp_id,employee_history.employee_id,employee_history.pos_id ');
 		$this->db->from('user');
-		$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+		$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 		$this->db->where($condition);
 		$query = $this->db->get();
 		$allemployee = $query->result();

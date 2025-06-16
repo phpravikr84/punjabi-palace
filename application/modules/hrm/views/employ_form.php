@@ -548,7 +548,7 @@
                                             <label for="s_name"><?php echo display('super_visor_name') ?></label>
                                             <select name="supervisorname" class="form-control">
                                                 <?php foreach ($supervisor as $suplist) { ?>
-                                                <option value="<?php echo $suplist->employee_id ?>">
+                                                <option value="<?php echo $suplist->employee_no ?>">
                                                     <?php echo $suplist->first_name . ' ' . $suplist->last_name ?>
                                                 </option>
                                                 <?php } ?>

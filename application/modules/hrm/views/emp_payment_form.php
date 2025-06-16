@@ -10,12 +10,12 @@
 
                 <?php echo  form_open('hrm/Employees/create_payment') ?>
                 <div class="form-group row">
-                    <label for="employee_id" class="col-sm-3 col-form-label"><?php echo display('employee_id') ?>
+                    <label for="employee_no" class="col-sm-3 col-form-label"><?php echo display('employee_no') ?>
                         *</label>
 
 
                     <div class="col-sm-9">
-                        <select name="employee_id" id="employee_id" class="form-control">
+                        <select name="employee_no" id="employee_no" class="form-control">
                             <option value="">--select id--</option>
                             <?php
                             foreach ($dropdownselection as $values) {

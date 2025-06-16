@@ -47,7 +47,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->where('customer_order.waiter_id',$waiter);
 		$this->db->where('customer_order.order_status',$status);
@@ -62,7 +62,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->where('customer_order.waiter_id',$waiter);
 		$this->db->where('customer_order.order_status',$status);
@@ -78,7 +78,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->join('bill','customer_order.order_id=bill.order_id','left');
 		$this->db->where('customer_order.waiter_id',$waiter);
@@ -115,7 +115,7 @@ class App_android_model extends CI_Model
         $Type = $data['email'];
         $Password = $data['password'];
         $this->db->select("user.id,user.firstname, user.lastname, user.email, employee_history.picture");
-		$this->db->join("employee_history",'employee_history.emp_his_id=user.id','left');
+		$this->db->join("employee_history",'employee_history.emp_id=user.id','left');
 		$this->db->where('employee_history.pos_id', 6);
 		$this->db->where('user.email', $data['email']);
         $this->db->where("(user.password = '" . $Password . "' OR user.password =  '" . md5($Password) . "')", NULL, TRUE);
@@ -398,7 +398,7 @@ class App_android_model extends CI_Model
 			$this->db->from('customer_order');
 			$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 			$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-			$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+			$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 			$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 			$this->db->where('customer_order.isthirdparty',0);
 			$this->db->where('customer_order.cutomertype',2);
@@ -416,7 +416,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->where($where);
 		$this->db->order_by('customer_order.order_id','desc');
@@ -431,7 +431,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->join('bill','customer_order.order_id=bill.order_id','left');
 		$this->db->where('customer_order.order_date',$cdate);
@@ -450,7 +450,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->join('bill','customer_order.order_id=bill.order_id','left');
 		$this->db->where($condi);
@@ -469,7 +469,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->join('bill','customer_order.order_id=bill.order_id','left');
 		$this->db->where($condi);
@@ -487,7 +487,7 @@ class App_android_model extends CI_Model
         $this->db->from('customer_order');
 		$this->db->join('customer_info','customer_order.customer_id=customer_info.customer_id','left');
 		$this->db->join('customer_type','customer_order.cutomertype=customer_type.customer_type_id','left');
-		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_his_id','left');
+		$this->db->join('employee_history','customer_order.waiter_id=employee_history.emp_id','left');
 		$this->db->join('rest_table','customer_order.table_no=rest_table.tableid','left');
 		$this->db->where($where);
 		$this->db->group_by('customer_order.order_id');

@@ -2352,11 +2352,11 @@ $(document).on("keypress", '#itemqty_1', function(e){
     function showTablemodal() {
         const customerName = document.querySelector('#customer_name')?.value.trim();
         const waiter = document.querySelector('#waiter')?.value.trim();
-    
+
         let url = basicinfo.baseurl + "ordermanage/order/alltables";
     
         // Check if both fields are valid
-        if (customerName && waiter && waiter !== "0") {
+        if (customerName || waiter && waiter !== "0") {
             url += `?cid=${encodeURIComponent(customerName)}&waiter=${encodeURIComponent(waiter)}`;
         }
     
@@ -2922,6 +2922,9 @@ $(document).on("keypress", '#itemqty_1', function(e){
     const custid =  getQueryParam('cid');
     const waiterid =  getQueryParam('waiter');
 
+    //Get Waiter Session
+    const waiterSession = $('#waiter_session').val();
+
 
      // Set Select2 Table Id values
      // Destroy Select2 first (to avoid conflicts)
@@ -2952,6 +2955,11 @@ $(document).on("keypress", '#itemqty_1', function(e){
         $("#customer_name").select2().val(custid).trigger('change');
     }
     if(waiterid !== null || waiterid !== 'undefined' || waiterid != ''){
-        $("#waiter").select2().val(waiterid).trigger('change');
+        if(waiterSession != '' && waiterSession != null && waiterSession != undefined){
+            $("#waiter").select2().val(waiterSession).trigger('change');
+        } else {
+            $("#waiter").select2().val(waiterid).trigger('change');
+        }
+        //$("#waiter").select2().val(waiterid).trigger('change');
     }
 });

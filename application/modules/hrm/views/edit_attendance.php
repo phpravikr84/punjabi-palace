@@ -14,7 +14,7 @@
    <div class="form-group row">
         <label for="emp_id" class="col-sm-3 col-form-label"><?php echo display('employee_name') ?> *</label>
         <div class="col-sm-9">
-             <?php echo form_dropdown('employee_id',$dropdownatn,(!empty($data->employee_id)?$data->employee_id:null),'class="form-control" id="employee_id"') ?>
+             <?php echo form_dropdown('employee_no',$dropdownatn,(!empty($data->employee_no)?$data->employee_no:null),'class="form-control" id="employee_no"') ?>
         </div>
     </div>
 

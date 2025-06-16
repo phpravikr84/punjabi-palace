@@ -5,11 +5,11 @@ class Loan_model extends CI_Model {
  
     public function viewLoan()
 	{
-			    return $this->db->select('count(DISTINCT(ln.loan_id)) as loan_id,count(ln.loan_id) as l_id,ln.*,sum(ln.amount) as amount,sum(ln.repayment_amount) as repayment_amount,p.employee_id,p.first_name,p.last_name,,CONCAT_WS(" ",c.first_name,c.last_name) AS Pname')   
+			    return $this->db->select('count(DISTINCT(ln.loan_id)) as loan_id,count(ln.loan_id) as l_id,ln.*,sum(ln.amount) as amount,sum(ln.repayment_amount) as repayment_amount,p.employee_no,p.first_name,p.last_name,,CONCAT_WS(" ",c.first_name,c.last_name) AS Pname')   
             ->from('grand_loan ln')
-            ->join('employee_history p', 'ln.employee_id = p.employee_id')
-             ->join('employee_history c', 'ln.permission_by = c.employee_id', 'left')
-            ->group_by('ln.employee_id')
+            ->join('employee_history p', 'ln.employee_no = p.employee_no')
+             ->join('employee_history c', 'ln.permission_by = c.employee_no', 'left')
+            ->group_by('ln.employee_no')
             ->order_by('ln.loan_id', 'desc')
             ->get()
             ->result();
@@ -19,8 +19,8 @@ class Loan_model extends CI_Model {
 	{
 			    return $this->db->select('ln.*,p.first_name,p.last_name,CONCAT_WS(" ",c.first_name,c.last_name) AS Pname')   
             ->from('grand_loan ln')
-            ->join('employee_history p', 'ln.employee_id = p.employee_id', 'left')
-            ->join('employee_history c', 'ln.permission_by = c.employee_id', 'left')
+            ->join('employee_history p', 'ln.employee_no = p.employee_no', 'left')
+            ->join('employee_history c', 'ln.permission_by = c.employee_no', 'left')
             ->group_by('ln.loan_id')
             ->order_by('ln.loan_id', 'desc')
             ->get()
@@ -52,7 +52,7 @@ class Loan_model extends CI_Model {
         $list = array('' => 'Select One...');
        	if (!empty($data) ) {
        		foreach ($data as $value) {
-       			$list[$value->employee_id] = $value->first_name. $value->last_name."(".$value->employee_id.")";
+       			$list[$value->employee_no] = $value->first_name. $value->last_name."(".$value->employee_no.")";
        		} 
        	}
        	return $list;
@@ -85,10 +85,10 @@ public  function get_install_empid($id)
 
 public function installment_view()
 	{
-			 return $this->db->select("count(DISTINCT(ins.loan_inst_id)) as loan_inst_id,ins.*,p.employee_id,p.first_name,p.last_name,CONCAT_WS(' ', r.first_name, r.last_name) AS receiver")   
+			 return $this->db->select("count(DISTINCT(ins.loan_inst_id)) as loan_inst_id,ins.*,p.employee_no,p.first_name,p.last_name,CONCAT_WS(' ', r.first_name, r.last_name) AS receiver")   
             ->from('loan_installment ins')
-            ->join('employee_history p', 'ins.employee_id = p.employee_id', 'left')
-            ->join('employee_history r', 'ins.received_by = r.employee_id', 'left')
+            ->join('employee_history p', 'ins.employee_no = p.employee_no', 'left')
+            ->join('employee_history r', 'ins.received_by = r.employee_no', 'left')
             ->group_by('ins.loan_inst_id')
             ->order_by('ins.loan_inst_id', 'desc')
             ->get()
@@ -113,9 +113,9 @@ public function emp_salstup_delete($id = null)
 /*  ################### dropdown installment ###### */
  public function installdropdown()
 	{
-		$this->db->select('grand_loan.employee_id,employee_history.first_name,employee_history.last_name');
+		$this->db->select('grand_loan.employee_no,employee_history.first_name,employee_history.last_name');
         $this->db->from('grand_loan');
-        $this->db->join('employee_history','grand_loan.employee_id =employee_history.employee_id','left');
+        $this->db->join('employee_history','grand_loan.employee_no =employee_history.employee_no','left');
         $this->db->group_by('grand_loan.loan_id');
         $this->db->order_by('grand_loan.loan_id','desc');
         $query = $this->db->get();
@@ -123,7 +123,7 @@ public function emp_salstup_delete($id = null)
         $list = array('' => 'Select One...');
        	if (!empty($data) ) {
        		foreach ($data as $value) {
-       			$list[$value->employee_id] = $value->first_name.' '.$value->last_name;
+       			$list[$value->employee_no] = $value->first_name.' '.$value->last_name;
        		} 
        	}
        	return $list;
@@ -167,11 +167,11 @@ public function autoincrement() {
 /* ######### Loan Report ################### start */
 
 public function report_loan($id = null,$start_date = null,$end_date = null){
-	$this->db->select('d.employee_id,d.pos_id,d.first_name,d.last_name,d.picture,b.date_of_approve,b.amount,b.installment,b.loan_id,b.repayment_amount');    
+	$this->db->select('d.employee_no,d.pos_id,d.first_name,d.last_name,d.picture,b.date_of_approve,b.amount,b.installment,b.loan_id,b.repayment_amount');    
 $this->db->from('grand_loan b');
-$this->db->join('employee_history d', 'b.employee_id = d.employee_id','left');
-$this->db->join('loan_installment c', 'b.employee_id = c.employee_id','left');
-$this->db->where('b.employee_id', $id );
+$this->db->join('employee_history d', 'b.employee_no = d.employee_no','left');
+$this->db->join('loan_installment c', 'b.employee_no = c.employee_no','left');
+$this->db->where('b.employee_no', $id );
 $this->db->where('b.date_of_approve >=', $start_date);
 $this->db->where('b.date_of_approve <=', $end_date);
 $this->db->group_by('b.loan_id');
@@ -182,11 +182,11 @@ return $result;
 }
 
 public function report_loan_by_id($id){
-	$this->db->select('d.employee_id,d.pos_id,d.first_name,d.last_name,d.picture,b.date_of_approve,b.amount,b.installment,b.loan_id,b.repayment_amount');    
+	$this->db->select('d.employee_no,d.pos_id,d.first_name,d.last_name,d.picture,b.date_of_approve,b.amount,b.installment,b.loan_id,b.repayment_amount');    
 $this->db->from('grand_loan b');
-$this->db->join('employee_history d', 'b.employee_id = d.employee_id','left');
-$this->db->join('loan_installment c', 'b.employee_id = c.employee_id','left');
-$this->db->where('b.employee_id', $id );
+$this->db->join('employee_history d', 'b.employee_no = d.employee_no','left');
+$this->db->join('loan_installment c', 'b.employee_no = c.employee_no','left');
+$this->db->where('b.employee_no', $id );
 $this->db->group_by('b.loan_id');
 $query = $this->db->get();
 $result = $query->result();
@@ -194,10 +194,10 @@ $result = $query->result();
 return $result;
 }
 public function emp_info($id){
-$this->db->select('d.employee_id,d.pos_id,d.first_name,d.last_name,d.picture,e.position_name');    
+$this->db->select('d.employee_no,d.pos_id,d.first_name,d.last_name,d.picture,e.position_name');    
 $this->db->from('employee_history d');
 $this->db->join('position e', 'e.pos_id = d.pos_id','left');
-$this->db->where('d.employee_id', $id );
+$this->db->where('d.employee_no', $id );
 $query = $this->db->get();
 $result = $query->row();
 

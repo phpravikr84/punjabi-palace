@@ -8,7 +8,7 @@ class Csv_model extends CI_Model {
     function get_addressbook() { 
 
 
-$query =$this->db->select("count(DISTINCT(e.att_id)) as att_id,e.*,p.employee_id,p.first_name,p.last_name")->join('employee_history p','e.employee_id = p.employee_id','left')->group_by('e.att_id')->order_by('e.att_id', 'desc')->get('emp_attendance e');
+$query =$this->db->select("count(DISTINCT(e.att_id)) as att_id,e.*,p.employee_no,p.first_name,p.last_name")->join('employee_history p','e.employee_no = p.employee_no','left')->group_by('e.att_id')->order_by('e.att_id', 'desc')->get('emp_attendance e');
 
 
         if ($query->num_rows() > 0) {
@@ -70,7 +70,7 @@ public function update_attn($data = array())
        $list = array('' => 'Select One...');
         if(!empty($data)){
             foreach ($data as $value){
-                $list[$value->employee_id]=$value->first_name.$value->last_name."(".$value->employee_id.")";
+                $list[$value->employee_no]=$value->first_name.$value->last_name."(".$value->employee_no.")";
             }
         }
         return $list;
@@ -80,10 +80,10 @@ public function update_attn($data = array())
     /********* Repor Start  #################% ********/
      public function userReport($format_start_date,$format_end_date){
       
-$this->db->select('e.*,count(DISTINCT(p.emp_his_id)) as emp_his_id,p.employee_id,p.first_name,p.last_name');
+$this->db->select('e.*,count(DISTINCT(p.emp_id)) as emp_id,p.employee_no,p.first_name,p.last_name');
 
 $this->db->from('emp_attendance e');
-$this->db->join('employee_history p','e.employee_id = p.employee_id','left');
+$this->db->join('employee_history p','e.employee_no = p.employee_no','left');
 $this->db->where('e.date >=', $format_start_date);
 $this->db->where('e.date <=', $format_end_date);
 $this->db->group_by('e.att_id');
@@ -96,7 +96,7 @@ function search($id,$start_date,$end_date)
     {
         if (!empty($id)){
         $this->db->from('emp_attendance');
-        $this->db->like('employee_id', $id);
+        $this->db->like('employee_no', $id);
         $this->db->where('date >=', $start_date);
         $this->db->where('date <=', $end_date); 
         $query = $this->db->get();
@@ -109,10 +109,10 @@ function search($id,$start_date,$end_date)
     function search_intime($date,$start_time,$end_time)
     {
         if (!empty($date)){
-        $this->db->select('count(DISTINCT(e.att_id)) as att_id,e.*,p.employee_id,p.first_name,p.last_name');
+        $this->db->select('count(DISTINCT(e.att_id)) as att_id,e.*,p.employee_no,p.first_name,p.last_name');
 
 $this->db->from('emp_attendance e');
-$this->db->join('employee_history p','e.employee_id = p.employee_id','left');
+$this->db->join('employee_history p','e.employee_no = p.employee_no','left');
         $this->db->like('e.date', $date);
         $this->db->where('e.sign_in >=', $start_time);
         $this->db->where('e.sign_in <=', $end_time); 
@@ -125,7 +125,7 @@ $this->db->join('employee_history p','e.employee_id = p.employee_id','left');
     public function atnrp($id){
                $this->db->select('*');
         $this->db->from('employee_history');
-        $this->db->where('employee_id',$id);
+        $this->db->where('employee_no',$id);
         $ab = $this->db->get();
         return $ab->result();
 }

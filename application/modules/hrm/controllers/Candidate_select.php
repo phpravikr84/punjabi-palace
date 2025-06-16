@@ -279,14 +279,14 @@ public function create_selection()
 		$employee = $this->db->select('*')->from('candidate_basic_info')->where('can_id',$id)->get()->row();
 	
 		
-		$employee_id = $this->randID();
+		$employee_no = $this->randID();
 
 		#-------------------------------#
 		if ($this->form_validation->run() === true) {
 
 			$postData = [
 				'can_id' 	     => $this->input->post('can_id',true),
-				'employee_id' 	 => $employee_id,
+				'employee_no' 	 => $employee_no,
 				'pos_id' 	     => $this->input->post('pos_id',true),
 				'selection_terms'=> $this->input->post('selection_terms',true),
 			];   
@@ -298,7 +298,7 @@ public function create_selection()
 				$headcode="502020000001";
 			}
 
-			$c_code = $employee_id;
+			$c_code = $employee_no;
 			$c_name = $employee->first_name.$employee->last_name;
 			$c_acc=$c_code.'-'.$c_name;
 			$createby = $this->session->userdata('fullname');
@@ -319,7 +319,7 @@ public function create_selection()
 				'CreateDate'       => $createdate,
 			];
 			$Data1 = [
-				'employee_id'                => $employee_id,
+				'employee_no'                => $employee_no,
 				'pos_id' 	                 => $this->input->post('pos_id',true),
 				'first_name' 	             => $employee->first_name,
 				'last_name' 	             => $employee->last_name,
@@ -374,20 +374,20 @@ public function create_selection()
 		$this->form_validation->set_rules('pos_id',display('pos_id')  ,'required|max_length[100]');
 		$this->form_validation->set_rules('selection_terms',display('selection_terms'),'max_length[100]');
 		$employee = $this->db->select('*')->from('candidate_basic_info')->where('can_id',$id)->get()->row();
-		$employee_id = $this->input->post('employee_id',true);
+		$employee_no = $this->input->post('employee_no',true);
 		#-------------------------------#
 		if ($this->form_validation->run() === true) {
 
 			$postData = [
 			    'can_sel_id' 	             => $this->input->post('can_sel_id',true),
 				'can_id' 	                 => $this->input->post('can_id',true),
-				'employee_id' 	             => $employee_id,
+				'employee_no' 	             => $employee_no,
 				'pos_id' 		             => $this->input->post('pos_id',true),
 				'selection_terms' 		     => $this->input->post('selection_terms',true),
 			]; 
 
 			$Data1 = [
-				'employee_id'                => $employee_id,
+				'employee_no'                => $employee_no,
 				'pos_id' 	                 => $this->input->post('pos_id',true),
 				'first_name' 	             => $employee->first_name,
 				'last_name' 	             => $employee->last_name,
@@ -404,7 +404,7 @@ public function create_selection()
 	
 			
 			if ($this->Selection_model->update_selection($postData)) { 
-				$this->db->where('employee_id', $employee_id)
+				$this->db->where('employee_no', $employee_no)
 			  ->update("employee_history", $Data1);
 				$this->session->set_flashdata('message', display('successfully_updated'));
 				redirect("hrm/Candidate_select/candidate_selection_view");

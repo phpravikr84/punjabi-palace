@@ -65,7 +65,7 @@ jQuery(document).on('ready', function ($) {
     }); 
     
     $(".offer_slider").owlCarousel({
-        loop: false,
+        loop: true,
         nav : true,
         autoplay: true,
         autoplayTimeout: 4000,
@@ -73,6 +73,7 @@ jQuery(document).on('ready', function ($) {
         margin: 30,
         autoplayHoverPause: true,
         navText: ['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
+        // navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
         responsive:{
             0:{
                 items: 1
@@ -84,7 +85,32 @@ jQuery(document).on('ready', function ($) {
                 items: 3
             },
             992:{
-                items: 4
+                items: 3
+            }
+        }
+    });
+    $(".bq_slider").owlCarousel({
+        loop: true,
+        nav : true,
+        autoplay: true,
+        autoplayTimeout: 4000,
+        smartSpeed: 1000,
+        margin: 30,
+        autoplayHoverPause: true,
+        // navText: ['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
+        navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+        responsive:{
+            0:{
+                items: 1
+            },
+            460:{
+                items: 2
+            },
+            767:{
+                items: 3
+            },
+            992:{
+                items: 3
             }
         }
     });

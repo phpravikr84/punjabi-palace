@@ -305,7 +305,7 @@ class Report_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->join('tbl_thirdparty_customer', 'customer_order.isthirdparty=tbl_thirdparty_customer.companyId', 'left');
@@ -361,7 +361,7 @@ class Report_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->join('tbl_thirdparty_customer', 'customer_order.isthirdparty=tbl_thirdparty_customer.companyId', 'left');
@@ -400,7 +400,7 @@ class Report_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
 		$this->db->join('tbl_thirdparty_customer', 'customer_order.isthirdparty=tbl_thirdparty_customer.companyId', 'left');
@@ -473,7 +473,7 @@ class Report_model extends CI_Model
 		$this->db->from('tbl_generatedreport');
 		$this->db->join('customer_info', 'tbl_generatedreport.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'tbl_generatedreport.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'tbl_generatedreport.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'tbl_generatedreport.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'tbl_generatedreport.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'tbl_generatedreport.order_id=bill.order_id', 'left');
 		$this->db->join('tbl_thirdparty_customer', 'tbl_generatedreport.isthirdparty=tbl_thirdparty_customer.companyId', 'left');
@@ -529,7 +529,7 @@ class Report_model extends CI_Model
 		$this->db->from('tbl_generatedreport');
 		$this->db->join('customer_info', 'tbl_generatedreport.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'tbl_generatedreport.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'tbl_generatedreport.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'tbl_generatedreport.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'tbl_generatedreport.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'tbl_generatedreport.order_id=bill.order_id', 'left');
 		$this->db->join('tbl_thirdparty_customer', 'tbl_generatedreport.isthirdparty=tbl_thirdparty_customer.companyId', 'left');
@@ -567,7 +567,7 @@ class Report_model extends CI_Model
 		$this->db->from('tbl_generatedreport');
 		$this->db->join('customer_info', 'tbl_generatedreport.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'tbl_generatedreport.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'tbl_generatedreport.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'tbl_generatedreport.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'tbl_generatedreport.table_no=rest_table.tableid', 'left');
 		$this->db->join('bill', 'tbl_generatedreport.order_id=bill.order_id', 'left');
 		$this->db->join('tbl_thirdparty_customer', 'tbl_generatedreport.isthirdparty=tbl_thirdparty_customer.companyId', 'left');
@@ -681,7 +681,7 @@ class Report_model extends CI_Model
 
 		$this->db->select("SUM(a.totalamount) as totalamount,CONCAT(w.first_name, ' ', w.last_name) as ProductName ");
 		$this->db->from('customer_order a');
-		$this->db->join('employee_history w', 'a.waiter_id=w.emp_his_id', 'left');
+		$this->db->join('employee_history w', 'a.waiter_id=w.emp_id', 'left');
 		$this->db->where($dateRange, NULL, FALSE);
 		$this->db->group_by('a.waiter_id');
 
@@ -861,7 +861,7 @@ class Report_model extends CI_Model
 		$this->db->select("SUM(c.total_amount) as totalamount,CONCAT(e.first_name, ' ', e.last_name) as WaiterName ");
 		$this->db->from('customer_order a');
 		$this->db->join('bill c', 'a.order_id=c.order_id');
-		$this->db->join('employee_history e', 'a.waiter_id=e.emp_his_id', 'left');
+		$this->db->join('employee_history e', 'a.waiter_id=e.emp_id', 'left');
 		$this->db->where($dateRange, NULL, FALSE);
 		$this->db->group_by('a.waiter_id');
 

@@ -12,12 +12,12 @@
 
                     <?php echo  form_open('hrm/Employees/new_emp_position') ?>
                          <div class="form-group row">
-                            <label for="employee_id" class="col-sm-3 col-form-label"><?php echo display('employee_id') ?> *</label>
+                            <label for="employee_no" class="col-sm-3 col-form-label"><?php echo display('employee_no') ?> *</label>
 
                             
                             <div class="col-sm-9">
                                
-                                <input type="text" name="employee_id" class="form-control" placeholder="Please Enter New Employee id">
+                                <input type="text" name="employee_no" class="form-control" placeholder="Please Enter New Employee id">
                             </div>
                         </div>
                         <div class="form-group row">

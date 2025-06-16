@@ -47,7 +47,7 @@
                 $highestColumn = $sale->getHighestColumn();
                 for($row=2; $row<=$highestRow; $row++)
                 {
-                $employee_id = $sale->getCellByColumnAndRow(0, $row)->getValue();  
+                $employee_no = $sale->getCellByColumnAndRow(0, $row)->getValue();  
                 $date = $sale->getCellByColumnAndRow(1, $row)->getValue();
                 $in = $sale->getCellByColumnAndRow(2, $row)->getValue();
                 $out = $sale->getCellByColumnAndRow(3, $row)->getValue();
@@ -59,7 +59,7 @@
 				$staytime = date('H:i:s', strtotime($staytime));
                
               	$insert_data = array(
-                       'employee_id'=>$employee_id,
+                       'employee_no'=>$employee_no,
                        'date'      =>$attdate,
                        'sign_in'   => $in_time,
                        'sign_out'  =>$out_time,
@@ -80,7 +80,7 @@
         $data['title'] = display('employee');
   		$this->permission->method('hrm','create')->redirect();
         #-------------------------------#
-        $this->form_validation->set_rules('employee_id',display('employee_id'),'required');
+        $this->form_validation->set_rules('employee_no',display('employee_no'),'required');
          $timezone = $this->db->select('timezone')->from('setting')->get()->row();
    date_default_timezone_set($timezone->timezone);
         $date=date('Y-m-d');
@@ -90,7 +90,7 @@
         if ($this->form_validation->run() === true) {
 
             $postData = [
-                'employee_id'    => $this->input->post('employee_id',true),
+                'employee_no'    => $this->input->post('employee_no',true),
                 'date'           => $date,
                 'sign_in'        => $signin,
                 
@@ -136,7 +136,7 @@
     public function update_atn_form($id = null){
         $this->permission->method('hrm','update')->redirect();
         $this->form_validation->set_rules('att_id',null,'required|max_length[11]');
-        $this->form_validation->set_rules('employee_id',display('employee_id'),'required');
+        $this->form_validation->set_rules('employee_no',display('employee_no'),'required');
         $this->form_validation->set_rules('date',display('date')  ,'required');
         $this->form_validation->set_rules('sign_in',display('sign_in')  ,'required');
         $this->form_validation->set_rules('sign_out',display('sign_out'));
@@ -149,7 +149,7 @@
 
             $postData = [
                 'att_id'               => $this->input->post('att_id',true),
-                'employee_id'              => $this->input->post('employee_id',true),
+                'employee_no'              => $this->input->post('employee_no',true),
                 'date'                 => $this->input->post('date',true),
                 'sign_in'              => $this->input->post('sign_in',true),
                 'sign_out'             => $this->input->post('sign_out',true),
@@ -233,10 +233,10 @@ public function report_user(){
 
         $this->permission->module('hrm','read')->redirect();
         $data['title']    = display('attendance_repor');
-        $id            = $this->input->post('employee_id');
+        $id            = $this->input->post('employee_no');
         $start_date    = $this->input->post('s_date');
         $end_date      = $this->input->post('e_date');
-        $data['employee_id']  = $id;
+        $data['employee_no']  = $id;
         $data['date']  = $start_date;
         $data['date']  = $end_date;
         $data['ab']   = $this->Csv_model->atnrp($id);
@@ -286,7 +286,7 @@ public function report_user(){
     public function edit_atn_form($id = null){
         $this->permission->method('hrm','update')->redirect();
         $this->form_validation->set_rules('att_id',null,'required|max_length[11]');
-        $this->form_validation->set_rules('employee_id',display('employee_id'),'required');
+        $this->form_validation->set_rules('employee_no',display('employee_no'),'required');
         $this->form_validation->set_rules('date',display('date')  ,'required');
         $this->form_validation->set_rules('sign_in',display('sign_in')  ,'required');
         $this->form_validation->set_rules('sign_out',display('sign_out'));
@@ -296,7 +296,7 @@ public function report_user(){
 
             $postData = [
                 'att_id'               => $this->input->post('att_id',true),
-                'employee_id'          => $this->input->post('employee_id',true),
+                'employee_no'          => $this->input->post('employee_no',true),
                 'date'                 => $this->input->post('date',true),
                 'sign_in'              => $this->input->post('sign_in',true),
                 'sign_out'             => $this->input->post('sign_out',true),

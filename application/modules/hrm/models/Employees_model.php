@@ -12,7 +12,7 @@ class Employees_model extends CI_Model {
         $list = array('' => 'Select One...');
        	if (!empty($data) ) {
        		foreach ($data as $value) {
-       			$list[$value->employee_id] = $value->first_name.' '.$value->last_name;
+       			$list[$value->employee_no] = $value->first_name.' '.$value->last_name;
        		} 
        	}
        	return $list;
@@ -21,13 +21,13 @@ class Employees_model extends CI_Model {
 
  public  function get_dropdown_emp_pos($id)
     {
-        $query=$this->db->get_where('employee_history',array('employee_id'=>$id));
+        $query=$this->db->get_where('employee_history',array('employee_no'=>$id));
         return $query->row_array();
     } 
 
  public  function get_pos($id)
     {
-        $query=$this->db->get_where('employee_history',array('employee_id'=>$id));
+        $query=$this->db->get_where('employee_history',array('employee_no'=>$id));
         return $query->row_array();
     } 
     
@@ -74,9 +74,9 @@ public function emp_salstup_delete($id = null)
          public function emp_performanceView()
 	{
 		
-			 return $this->db->select('count(DISTINCT(per.emp_per_id)) as emp_per_id,per.*,p.employee_id,p.first_name,p.last_name')   
+			 return $this->db->select('count(DISTINCT(per.emp_per_id)) as emp_per_id,per.*,p.employee_no,p.first_name,p.last_name')   
             ->from('employee_performance per')
-            ->join('employee_history p', 'per.employee_id = p.employee_id', 'left')
+            ->join('employee_history p', 'per.employee_no = p.employee_no', 'left')
             ->group_by('per.emp_per_id')
             ->order_by('per.emp_per_id', 'desc')
             ->get()
@@ -113,7 +113,7 @@ public function emp_salstup_delete($id = null)
 	public function emp_performance_updateForm($id){
         $result = $this->db->select('a.*,b.first_name,b.last_name')
                            ->from('employee_performance a')
-                           ->join('employee_history b','a.employee_id = b.employee_id')
+                           ->join('employee_history b','a.employee_no = b.employee_no')
                            ->where('emp_per_id',$id)
                            ->get()
                            ->row();
@@ -126,9 +126,9 @@ public function emp_salstup_delete($id = null)
     /* ###########...Employee Payment Start ....##################################  */
 public function emp_paymentView()
 	{
-			return $this->db->select('count(DISTINCT(pment.emp_sal_pay_id)) as emp_sal_pay_id,pment.*,p.employee_id,p.first_name,p.last_name')   
+			return $this->db->select('count(DISTINCT(pment.emp_sal_pay_id)) as emp_sal_pay_id,pment.*,p.employee_no,p.first_name,p.last_name')   
             ->from('employee_salary_payment pment')
-            ->join('employee_history p', 'pment.employee_id = p.employee_id', 'left')
+            ->join('employee_history p', 'pment.employee_no = p.employee_no', 'left')
             ->group_by('pment.emp_sal_pay_id')
             ->order_by('pment.emp_sal_pay_id', 'desc')
             ->get()
@@ -161,7 +161,7 @@ public function emp_paymentView()
 	public function payment_updateForm($id){
         $result = $this->db->select('a.*,b.first_name,b.last_name')
                            ->from('employee_salary_payment a')
-                           ->join('employee_history b','a.employee_id=b.employee_id')
+                           ->join('employee_history b','a.employee_no=b.employee_no')
                            ->where('emp_sal_pay_id',$id)
                            ->get()
                            ->row();
@@ -205,7 +205,7 @@ public function emp_paymentView()
             ->from('employee_history p')
             ->join('department d', 'p.dept_id = d.dept_id', 'left')
             ->join('position po', 'p.pos_id = po.pos_id', 'left')
-			->where('p.employee_id',$id)
+			->where('p.employee_no',$id)
 			->get()
 			->row();
 	}
@@ -213,7 +213,7 @@ public function emp_paymentView()
 		return $this->db->select('*')	
 			->from('employee_history')
 			->where('is_super_visor',1)
-			->order_by('emp_his_id', 'desc')
+			->order_by('emp_id', 'desc')
 			->get()
 			->result();
 	}
@@ -222,8 +222,8 @@ public function emp_paymentView()
 	{
 		return $this->db->select('*')	
 			->from('employee_history')
-			->group_by('employee_id')
-			->order_by('emp_his_id', 'desc')
+			->group_by('employee_no')
+			->order_by('emp_id', 'desc')
 			->get()
 			->result();
 	}
@@ -239,7 +239,7 @@ public function emp_paymentView()
 		$this->db->join('gender gd', 'p.gender = gd.id', 'left');
 		$this->db->join('marital_info ms', 'p.marital_status = ms.id', 'left');
 		$this->db->join('pay_frequency pf', 'p.pay_frequency = pf.id', 'left');
-		$this->db->order_by('p.emp_his_id', 'desc');
+		$this->db->order_by('p.emp_id', 'desc');
 		$query = $this->db->get();
 		return $report = $query->result();
 	}
@@ -251,13 +251,13 @@ public function insert_employee($data = array())
 
 	public function emplyee_history_delete($id = null)
 	{
-		$this->db->where('employee_id',$id)
+		$this->db->where('employee_no',$id)
 			->delete('employee_history');
 
 		if ($this->db->affected_rows()) { 
-				$this->db->where('employee_id',$id)
+				$this->db->where('employee_no',$id)
 			->delete('custom_table');
-			$this->db->where('employee_id',$id)
+			$this->db->where('employee_no',$id)
 			->delete('employee_benifit');
 			return true;
 		} else {
@@ -341,13 +341,13 @@ public function insert_employee($data = array())
     //update form employee ----
     public function update_employee($data = array())
 	{
-		return $this->db->where('employee_id', $data["employee_id"])
+		return $this->db->where('employee_no', $data["employee_no"])
 			->update("employee_history", $data);
 	}
 
 
 	public function employee_updateForm($id){
-        $this->db->where('employee_id',$id);
+        $this->db->where('employee_no',$id);
         $query = $this->db->get('employee_history');
         return $query->row();
     }
@@ -355,7 +355,7 @@ public function insert_employee($data = array())
 	{
 		return $this->db->select('*')	
 			->from('employee_history')
-			->where('employee_id',$id)	
+			->where('employee_no',$id)	
 			->get()
 			->result();
 	}
@@ -364,7 +364,7 @@ public function insert_employee($data = array())
 	{
 		return $this->db->select('company_name,working_period,duties, 	supervisor')	
 			->from('employee_history')
-			->where('employee_id',$id)
+			->where('employee_no',$id)
 			->get()
 			->result();
 	}
@@ -415,7 +415,7 @@ public function insert_employee($data = array())
 		$this->db->join('marital_info ms', 'p.marital_status = ms.id', 'left');
 		$this->db->or_like(
 			array(
-			'p.employee_id'             => $keyword,
+			'p.employee_no'             => $keyword,
 			'po.position_name' 	        => $keyword,
 			'p.first_name' 	            => $keyword,
 			'p.last_name' 	            => $keyword,
@@ -475,14 +475,14 @@ public function insert_employee($data = array())
 	public function customifo($id){
 		$this->db->select('*');
         $this->db->from('custom_table');
-        $this->db->where('employee_id',$id);
+        $this->db->where('employee_no',$id);
         $query = $this->db->get();
        return  $query->result();
 	}
 	public function benifit($id){
 		$this->db->select('*');
         $this->db->from('employee_benifit');
-        $this->db->where('employee_id',$id);
+        $this->db->where('employee_no',$id);
         $query = $this->db->get();
        return  $query->result();
 	}
@@ -490,7 +490,7 @@ public function insert_employee($data = array())
 	public function award($id){
 		$this->db->select('*');
         $this->db->from('award ');
-        $this->db->where('employee_id',$id);
+        $this->db->where('employee_no',$id);
         $query = $this->db->get();
        return  $query->result();
 	}
@@ -498,7 +498,7 @@ public function insert_employee($data = array())
 	 public function performance($id){
 	 	$this->db->select('AVG(number_of_star) as star');
         $this->db->from('employee_performance ');
-        $this->db->where('employee_id',$id);
+        $this->db->where('employee_no',$id);
         $query = $this->db->get();
         $result = $query->row();
         return $star = $result->star;

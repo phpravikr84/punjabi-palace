@@ -219,7 +219,7 @@ public function application(){
 		$this->permission->module('hrm','read')->redirect();
         $data['title'] = display('application');//agent_picture
         #-------------------------------#
-        $this->form_validation->set_rules('employee_id',display('employee_id'));
+        $this->form_validation->set_rules('employee_no',display('employee_no'));
 		$this->form_validation->set_rules('apply_strt_date',display('apply_strt_date'));
 		$this->form_validation->set_rules('apply_end_date',display('apply_end_date'),'max_length[50]');
 		$this->form_validation->set_rules('leave_aprv_strt_date',display('leave_aprv_strt_date')  ,'max_length[100]');
@@ -239,7 +239,7 @@ public function application(){
         #-------------------------------#
         if ($this->form_validation->run() === true) {
 				$postData = [
-			'employee_id'           => $this->input->post('employee_id',true),
+			'employee_no'           => $this->input->post('employee_no',true),
 			'apply_strt_date' 	    => $this->input->post('apply_strt_date',true),
 			'apply_end_date' 	    => $this->input->post('apply_end_date',true),
 			'leave_aprv_strt_date' 	=> $this->input->post('leave_aprv_strt_date',true),
@@ -278,7 +278,7 @@ public function application(){
   		$this->permission->module('hrm','read')->redirect();
         $data['title'] = display('application');//agent_picture
         #-------------------------------#
-        $this->form_validation->set_rules('employee_id',display('employee_id'));
+        $this->form_validation->set_rules('employee_no',display('employee_no'));
 		$this->form_validation->set_rules('apply_strt_date',display('apply_strt_date'));
 		$this->form_validation->set_rules('apply_end_date',display('apply_end_date'),'max_length[50]');
 		    $this->load->library('Fileupload');
@@ -291,7 +291,7 @@ public function application(){
         #-------------------------------#
         if ($this->form_validation->run() === true) {
 				$postData = [
-			'employee_id'           => $this->input->post('employee_id',true),
+			'employee_no'           => $this->input->post('employee_no',true),
 			'leave_type_id'         => $this->input->post('leave_type_id',true),
 			'apply_strt_date' 	    => $this->input->post('apply_strt_date',true),
 			'apply_end_date' 	    => $this->input->post('apply_end_date',true),
@@ -448,7 +448,7 @@ public function application(){
 
 			$postData = [
 			'leave_appl_id' 	    => $this->input->post('leave_appl_id',true),
-		    'employee_id'           => $this->input->post('employee_id',true),
+		    'employee_no'           => $this->input->post('employee_no',true),
 			'apply_strt_date' 	    => $this->input->post('apply_strt_date',true),
 			'apply_end_date' 	    => $this->input->post('apply_end_date',true),
 			'leave_aprv_strt_date' 	=> (!empty($this->input->post('leave_aprv_strt_date',true))?$this->input->post('leave_aprv_strt_date',true):'0000-00-00'),
@@ -488,9 +488,9 @@ public function application(){
 	}
 	// Leave free for employee
 	public function free_leave(){
-		$employee_id    = $this->input->post('employee_id');
+		$employee_no    = $this->input->post('employee_no');
 		$type           = $this->input->post('leave_type');
-		$employee_leave = $this->db->select('SUM(num_aprv_day) as lv')->from('leave_apply')->where('employee_id',$employee_id)->where('leave_type_id',$type)->get()->row();
+		$employee_leave = $this->db->select('SUM(num_aprv_day) as lv')->from('leave_apply')->where('employee_no',$employee_no)->where('leave_type_id',$type)->get()->row();
 		$totalleave = $this->db->select('leave_days')->from('leave_type')->where('leave_type_id',$type)->get()->row();
 		$data = array(
 			'enjoy' => (!empty($employee_leave->lv)?$employee_leave->lv:0),

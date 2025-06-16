@@ -146,9 +146,9 @@ class Hungry_model extends CI_Model
 	}
 	public function ourteam() 
 	{
-		$this->db->select('employee_history.emp_his_id,employee_history.employee_id,employee_history.first_name,employee_history.last_name,employee_history.picture,custom_table.custom_field,custom_table.custom_data');
+		$this->db->select('employee_history.emp_id,employee_history.employee_no,employee_history.first_name,employee_history.last_name,employee_history.picture,custom_table.custom_field,custom_table.custom_data');
 		$this->db->from('employee_history');
-		$this->db->join('custom_table', 'custom_table.employee_id=employee_history.employee_id', 'left');
+		$this->db->join('custom_table', 'custom_table.employee_no=employee_history.employee_no', 'left');
 		$this->db->where('employee_history.pos_id', 1);
 		$query = $this->db->get();
 		$itemlist = $query->result();
@@ -1018,7 +1018,7 @@ class Hungry_model extends CI_Model
 		$this->db->from('customer_order');
 		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
 		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
-		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_his_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
 		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
 		$this->db->order_by('customer_order.order_id', 'DESC');
 		$this->db->where('customer_order.customer_id', $id);
@@ -1090,19 +1090,12 @@ class Hungry_model extends CI_Model
 		$customerd = $cquery->row();
 	}
 
-	/**
-	 * Get slot list on base of date
-	 */
-	public function get_slots_by_day($dayName)
-	{
-		$this->db->select('s.start_time, s.end_time');
-		$this->db->from('slots s');
-		$this->db->join('days d', 's.day_id = d.day_id');
-		$this->db->where('d.day_name', $dayName);
-		$this->db->where('s.is_active', 1);
-		$query = $this->db->get();
-
-		return $query->result_array();
-	}
-
+	// Get Menu PDF
+	public function get_pdfs_by_slug($slug)
+    {
+        $this->db->where('menu_slug', $slug);
+        $this->db->where('status', 1);
+        $query = $this->db->get('menu_pdf_materials');
+        return $query->result();
+    }
 }

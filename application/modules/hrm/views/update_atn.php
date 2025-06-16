@@ -10,7 +10,7 @@
                 <div class="form-group row">
 
                     <div class="col-sm-9">
-                        <input type="hidden" name="employee_id" value="<?php echo $data->employee_id ?>"
+                        <input type="hidden" name="employee_no" value="<?php echo $data->employee_no ?>"
                             class="form-control" readonly="readonly">
                     </div>
                 </div>

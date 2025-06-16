@@ -1,7 +1,6 @@
 <?php $webinfo = $this->webinfo;
 $activethemeinfo = $this->themeinfo;
 $acthemename = $activethemeinfo->themename;
-global $title, $seoterm, $title2;
 if ($title != "Menu") {
 	$this->session->unset_userdata('product_id');
 	$this->session->unset_userdata('categoryid');
@@ -9,11 +8,6 @@ if ($title != "Menu") {
 if (!empty($seoterm)) {
 	$seoinfo = $this->db->select('*')->from('tbl_seoption')->where('title_slug', $seoterm)->get()->row();
 }
-
-if($seoterm!="home"){
-	$title2="";
-}
-// echo "Title: ".$seoinfo->title;
 /*for whatsapp modules*/
 $WhatsApp = $this->db->where('directory', 'whatsapp')->where('status', 1)->get('module');
 $whatsapp_count = $WhatsApp->num_rows();
@@ -72,15 +66,14 @@ $whatsapp_count = $WhatsApp->num_rows();
 		<script src="<?php echo base_url() . $whatsapp_url; ?>/js/floating-wpp.min.js"></script>
 
 	<?php
-	}	
-	// echo "<pre>";
-	// print_r($this->session);
-	// echo "</pre>";
-	// exit;
-	?>
+	} ?>
 	<!-- end whatsapp modules -->
+	 <style>
+		.offer_slider .owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+			display: block !important;
+		}
+	 </style>
 </head>
-
 <body>
 
 	<!-- Preloader -->
@@ -96,9 +89,9 @@ $whatsapp_count = $WhatsApp->num_rows();
 					</a>
 
 					<div class="sidebar-toggle-btn">
-						<a class="nav-link nav_link_in" href="<?php echo base_url(); ?>cart" id="navbarDropdown3" >
+						<!-- <a class="nav-link nav_link_in" href="<?php echo base_url(); ?>cart" id="navbarDropdown3" >
 							<i class="ti-shopping-cart"></i><span class="badge badge-notify my-cart-badge badge_color_in" ><?php $totalqty = 0; if($this->cart->contents() > 0){$totalqty = count($this->cart->contents());} echo $totalqty; ?></span>
-						</a>
+						</a> -->
 						<button type="button" id="sidebarCollapse" class="btn">
 							<i class="ti-menu"></i>
 						</button>
@@ -107,18 +100,84 @@ $whatsapp_count = $WhatsApp->num_rows();
 					<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 						<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 							<?php 
+							// $allmenu = $this->allmenu;
+							// foreach ($allmenu as $menu) {
+							// 	$dropdown = '';
+							// 	$dropdownassest = '';
+							// 	$dropdownaclass = '';
+							// 	$activeclass = '';
+							// 	if ($menu->menu_name == 'Home') {
+							// 		$activeclass = 'active';
+							// 		$href = base_url() . $menu->menu_slug;
+							// 	} else {
+							// 		$activeclass = '';
+							// 		$href = base_url() . $menu->menu_slug;
+							// 	}
+							// 	if ($menu->menu_slug == 'myprofile') {
+							// 		if (empty($myid)) {
+							// 			$menu->menu_name = "Login";
+							// 			$href = base_url() ."mylogin";
+							// 		}
+							// 	}
+							// 	if(!empty($menu->sub)) {
+							// 		$dropdown = 'dropdown';
+							// 		$dropdownassest = 'id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
+							// 		$dropdownaclass = 'dropdown-toggle';
+							// 		$href = '#';
+							// 	}
+							?>
+							<?php 
+							// $allmenu = $this->allmenu;
+							// foreach ($allmenu as $menu) {
+							// 	$dropdown = '';
+							// 	$dropdownassest = '';
+							// 	$dropdownaclass = '';
+							// 	$activeclass = '';
+							// 	if ($menu->menu_name == 'Home') {
+							// 		$activeclass = 'active';
+							// 		$href = base_url() . $menu->menu_slug;
+							// 	} else {
+							// 		$activeclass = '';
+							// 		$href = base_url() . $menu->menu_slug;
+							// 	}
+							// 	if ($menu->menu_slug == 'myprofile') {
+							// 		$myid = $this->session->userdata('CusUserID');
+							// 		if (empty($myid)) {
+							// 			$menu->menu_name = "Login";
+							// 			$href = base_url() ."mylogin";
+							// 		}
+							// 	}
+							// 	if($seoinfo->title==$menu->menu_name){
+							// 		$activeclass = 'active';
+							// 	} else {
+							// 		$activeclass = '';
+							// 	}
+							// 	if(!empty($menu->sub)) {
+							// 		$dropdown = 'dropdown';
+							// 		$dropdownassest = 'id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
+							// 		$dropdownaclass = 'dropdown-toggle';
+							// 		$href = '#';
+							// 		if($menu->menu_name == "Login"){
+							// 			$dropdownaclass = '';
+							// 			$href = base_url() ."mylogin";
+							// 			$dropdown = '';
+							// 			$dropdownassest = '';
+							// 		}
+							// 	}
+							?>
+							<?php 
+							$mArr = ['Login', 'Cart'];
 							$allmenu = $this->allmenu;
 							foreach ($allmenu as $menu) {
-								// echo $menu->menu_name;
 								$dropdown = '';
 								$dropdownassest = '';
 								$dropdownaclass = '';
 								$activeclass = '';
 								if ($menu->menu_name == 'Home') {
-									$activeclass = 'active';
+									// $activeclass = 'active';
 									$href = base_url() . $menu->menu_slug;
 								} else {
-									$activeclass = '';
+									// $activeclass = '';
 									$href = base_url() . $menu->menu_slug;
 								}
 								if ($menu->menu_slug == 'myprofile') {
@@ -128,12 +187,12 @@ $whatsapp_count = $WhatsApp->num_rows();
 										$href = base_url() ."mylogin";
 									}
 								}
+								
 								if($seoinfo->title==$menu->menu_name){
 									$activeclass = 'active';
 								} else {
 									$activeclass = '';
 								}
-
 								if(!empty($menu->sub)) {
 									$dropdown = 'dropdown';
 									$dropdownassest = 'id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"';
@@ -146,6 +205,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 										$dropdownassest = '';
 									}
 								}
+								if(!in_array($menu->menu_name, $mArr, true)):
 							?>
 								<li class="nav-item <?php echo $dropdown; ?> <?php echo $activeclass; ?>">
 									<a class="nav-link <?php echo $dropdownaclass; ?>" href="<?php echo $href; ?>" <?php echo $dropdownassest; ?>><?php echo $menu->menu_name; ?></a>
@@ -168,8 +228,10 @@ $whatsapp_count = $WhatsApp->num_rows();
 									</div>
 
 								</li>
-							<?php } ?>
-							<li class="nav-item">
+							<?php 
+								endif;
+							} ?>
+							<li class="nav-item" style="display: none;">
 								<a class="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa fa-search"></i>
 								</a>
@@ -203,7 +265,8 @@ $whatsapp_count = $WhatsApp->num_rows();
 						<i class="ti-close"></i>
 					</div>
 					<ul class="metismenu list-unstyled" id="mobile-menu">
-						<?php foreach ($allmenu as $menu) {
+						<?php 
+						foreach ($allmenu as $menu) {
 							if ($menu->menu_name == 'Home') {
 								$activeclass = 'active';
 								$mobile = '';
@@ -216,29 +279,33 @@ $whatsapp_count = $WhatsApp->num_rows();
 								$mobile = 'aria-expanded="false"';
 								$href = '#';
 							}
+							if(!in_array($menu->menu_name, $mArr, true)):
 						?>
 							<li>
 								<a href="<?php echo $href; ?>" <?php echo $mobile; ?>><?php echo $menu->menu_name; ?> <?php if (!empty($menu->sub)) { ?><span class="fa arrow"></span><?php } ?></a>
 								<?php if (!empty($menu->sub)) { ?>
 									<ul aria-expanded="false">
-										<?php 
-											foreach ($menu->sub as $submenu) {
-												$menurl = $submenu->menu_slug;
-												$menuname = $submenu->menu_name;
-												if ($submenu->menu_slug == 'logout') {
-													$myid = $this->session->userdata('CusUserID');
-													if (empty($myid)) {
-														$menurl = "mylogin";
-														$menuname = "Login";
-													}
+										<?php foreach ($menu->sub as $submenu) {
+											$menurl = $submenu->menu_slug;
+											$menuname = $submenu->menu_name;
+											if ($submenu->menu_slug == 'logout') {
+												$myid = $this->session->userdata('CusUserID');
+												if (empty($myid)) {
+													$menurl = "mylogin";
+													$menuname = "Login";
 												}
+											}
 										?>
 											<li><a href="<?php echo base_url() . $menurl; ?>"><?php echo $menuname; ?></a></li>
 										<?php } ?>
 									</ul>
 								<?php }  ?>
 							</li>
-						<?php }  ?>
+						<?php 
+							endif;
+						} 
+						?>
+
 					</ul>
 				</nav>
 				<div class="overlay"></div>
@@ -253,7 +320,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 						<div class="item_caption animated_caption">
 							<h3 class="curve_title"><?php echo $slider->title ?></h3>
 							<h2><?php echo $slider->subtitle ?></h2>
-							<!-- <a href="<?php echo $slider->slink ?>" class="btn1"><?php echo display('see_more')?></a> -->
+							<!-- <a href="<?php ##echo $slider->slink ?>" class="btn1"><?php ##echo display('see_more')?></a> -->
 						</div>
 					</div>
 				<?php } ?>
@@ -261,9 +328,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 			</div>
 			<!--END SLIDER PART -->
 		<?php } else {
-			
 		?>
-        
 			<!--PAGE HEADER AREA-->
 			<div class="page_header menu_banner_bg">
 				<div class="container wow fadeIn">
@@ -291,7 +356,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 
 
 	<!-- Newsletter -->
-	<section class="newsletter_area sect_pad" style="display: none; visibility:hidden;">
+	<section class="newsletter_area  sect_pad">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3 text-center">
@@ -414,14 +479,10 @@ $whatsapp_count = $WhatsApp->num_rows();
 	<a href="#0" class="cd-top">
 		<i class="ti-arrow-up"></i>
 	</a>
-	<?php 
-	if ($whatsapp_count  == 1) {
+	<?php if ($whatsapp_count  == 1) {
     $whatsapp_data = $WhatsApp->row();
     $whatsapp_url =  str_replace("/images/thumbnail.jpg", "", $whatsapp_data->image);
     $wtapp = $this->db->select('*')->from('whatsapp_settings')->get()->row();
-	//echo $this->db->last_query();
-	//print_r($wtapp);
-	if(!empty($wtapp)){
     if ($wtapp->chatenable == 1) {
 ?>
 <div id="WAButton"></div>
@@ -440,7 +501,7 @@ $(function() {
 });
 </script>
 
-<?php } } } ?>
+<?php } } ?>
 	<!-- end whatsapp modules -->
 	<!--====== SCRIPTS JS ======-->
 	<script src="<?php echo base_url(); ?>assets/js/jquery-ui.min.js" type="text/javascript"></script>
@@ -451,8 +512,7 @@ $(function() {
 	<script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/plugins/wow/wow.min.js"></script>
 	<script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 	<script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/plugins/clockpicker/clockpicker.min.js"></script>
-	<script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/plugins/theia-sticky-sidebar/dist/ResizeSensor.min.js"></script>
-	<script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/plugins/theia-sticky-sidebar/dist/theia-sticky-sidebar.min.js"></script>
+	
 	<?php if ($this->settinginfo->site_align == 'RTL') { ?>
 		<script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/plugins/bootstrap-4.1.3-dist/js/bootstrap-rtl.js"></script>
 		<script src="<?php echo base_url(); ?>application/views/themes/<?php echo $acthemename; ?>/assets_web/js/custom-rtl.js"></script>
@@ -465,8 +525,3 @@ $(function() {
 </body>
 
 </html>
-<?php 
-if (isset($_SESSION['message'])) {
-	unset($_SESSION['message']);
-}
-?>

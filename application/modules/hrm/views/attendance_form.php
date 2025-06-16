@@ -10,9 +10,9 @@
 
                     <?php echo  form_open('hrm/Home/create_atten') ?>
                         <div class="form-group row">
-                            <label for="employee_id" class="col-sm-3 col-form-label"><?php echo display('emp_id') ?> *</label>
+                            <label for="employee_no" class="col-sm-3 col-form-label"><?php echo display('emp_id') ?> *</label>
                             <div class="col-sm-9">
-                            <?php echo form_dropdown('employee_id',$dropdownatn,null,'class="form-control" id="employee_id"') ?>
+                            <?php echo form_dropdown('employee_no',$dropdownatn,null,'class="form-control" id="employee_no"') ?>
                                
                             </div>
                         </div>

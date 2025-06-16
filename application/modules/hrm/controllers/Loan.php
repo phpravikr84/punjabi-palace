@@ -28,7 +28,7 @@ class Loan extends MX_Controller {
 		$this->permission->module('hrm','create')->redirect();
 		$data['title'] = display('loan');
 		#-------------------------------#
-		$this->form_validation->set_rules('employee_id',display('employee_id'),'required|max_length[50]');
+		$this->form_validation->set_rules('employee_no',display('employee_no'),'required|max_length[50]');
 		$this->form_validation->set_rules('permission_by',display('permission_by'),'required|max_length[50]');
 		$this->form_validation->set_rules('loan_details',display('loan_details'));
 		$this->form_validation->set_rules('amount',display('amount')  ,'required|max_length[100]');
@@ -44,13 +44,13 @@ class Loan extends MX_Controller {
 
 		#-------------------------------#
 		if ($this->form_validation->run() === true) {
-$emp_id = $this->input->post('employee_id',true);
-		$c_name = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_id',$emp_id)->get()->row();
+$emp_id = $this->input->post('employee_no',true);
+		$c_name = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_no',$emp_id)->get()->row();
 		$c_acc=$emp_id.'-'.$c_name->first_name.$c_name->last_name;
       $coatransactionInfo = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName',$c_acc)->get()->row();
   $COAID = $coatransactionInfo->HeadCode;
 			$postData = [
-				'employee_id'        => $this->input->post('employee_id',true),
+				'employee_no'        => $this->input->post('employee_no',true),
 				'permission_by'      => $this->input->post('permission_by',true),
 				'loan_details' 	     => $this->input->post('loan_details',true),
 				'amount' 	         => $this->input->post('amount',true),
@@ -74,7 +74,7 @@ $emp_id = $this->input->post('employee_id',true);
       'Vtype'          => 'GrantLoan',
       'VDate'          => date('Y-m-d'),
       'COAID'          => 1020101,
-      'Narration'      => 'Cash in hand Credit For Employee Id'.$this->input->post('employee_id',true),
+      'Narration'      => 'Cash in hand Credit For Employee Id'.$this->input->post('employee_no',true),
       'Debit'          => 0,
       'Credit'         => $this->input->post('amount',true),
       'IsPosted'       => 1,
@@ -90,7 +90,7 @@ $emp_id = $this->input->post('employee_id',true);
       'Vtype'          => 'Loan Grant',
       'VDate'          => date('Y-m-d'),
       'COAID'          => $COAID,
-      'Narration'      => 'Payable For Employee Id'.$this->input->post('employee_id',true),
+      'Narration'      => 'Payable For Employee Id'.$this->input->post('employee_no',true),
       'Debit'          => $this->input->post('amount',true),
       'Credit'         => 0,
       'IsPosted'       => 1,
@@ -133,7 +133,7 @@ $emp_id = $this->input->post('employee_id',true);
 	public function update_grnloan_form($id = null){
 		$this->permission->module('hrm','update')->redirect();
 		$this->form_validation->set_rules('loan_id',null,'required|max_length[11]');
-		$this->form_validation->set_rules('employee_id',display('employee_id'),'required|max_length[50]');
+		$this->form_validation->set_rules('employee_no',display('employee_no'),'required|max_length[50]');
 		$this->form_validation->set_rules('permission_by',display('permission_by'),'required|max_length[50]');
 		$this->form_validation->set_rules('loan_details',display('loan_details'));
 		$this->form_validation->set_rules('amount',display('amount')  ,'required|max_length[100]');
@@ -149,7 +149,7 @@ $emp_id = $this->input->post('employee_id',true);
 
 			$postData = [
 				'loan_id' 	         => $this->input->post('loan_id',true),
-				'employee_id'        => $this->input->post('employee_id',true),
+				'employee_no'        => $this->input->post('employee_no',true),
 				'permission_by'      => $this->input->post('permission_by',true),
 				'loan_details' 	     => $this->input->post('loan_details',true),
 				'amount' 	         => $this->input->post('amount',true),
@@ -198,7 +198,7 @@ $emp_id = $this->input->post('employee_id',true);
 		$this->permission->module('hrm','create')->redirect(); 
 		$data['title'] = display('selectionlist');
 		#-------------------------------#
-		$this->form_validation->set_rules('employee_id',display('employee_id'),'required|max_length[50]');
+		$this->form_validation->set_rules('employee_no',display('employee_no'),'required|max_length[50]');
 		$this->form_validation->set_rules('loan_id',display('loan_id'),'required|max_length[50]');
 		$this->form_validation->set_rules('installment_amount',display('installment_amount'));
 		$this->form_validation->set_rules('payment',display('payment')  ,'required|max_length[100]');
@@ -210,14 +210,14 @@ $emp_id = $this->input->post('employee_id',true);
 
 		
 		if ($this->form_validation->run() === true) {
-			$emp_id = $this->input->post('employee_id',true);
-		$c_name = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_id',$emp_id)->get()->row();
+			$emp_id = $this->input->post('employee_no',true);
+		$c_name = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_no',$emp_id)->get()->row();
 		$c_acc=$emp_id.'-'.$c_name->first_name.$c_name->last_name;
        $coatransactionInfo = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName',$c_acc)->get()->row();
        $COAID = $coatransactionInfo->HeadCode;
 
 			$postData = [
-				'employee_id'        => $this->input->post('employee_id',true),
+				'employee_no'        => $this->input->post('employee_no',true),
 				'loan_id' 	         => $this->input->post('loan_id',true),
 				'installment_amount' => $this->input->post('installment_amount',true),
 				'payment' 	         => $this->input->post('payment',true),
@@ -233,7 +233,7 @@ $emp_id = $this->input->post('employee_id',true);
       'Vtype'       => 'LoanInstall',
       'VDate'       => date('Y-m-d'),
       'COAID'       => 1020101,
-      'Narration'   => 'Cash in hand Debit For Employee Id'.$this->input->post('employee_id',true),
+      'Narration'   => 'Cash in hand Debit For Employee Id'.$this->input->post('employee_no',true),
       'Debit'       => $this->input->post('payment',true),
       'Credit'      => 0,
       'IsPosted'    => 1,
@@ -249,7 +249,7 @@ $emp_id = $this->input->post('employee_id',true);
       'Vtype'          => 'LoanInstall',
       'VDate'          => date('Y-m-d'),
       'COAID'          => $COAID,
-      'Narration'      => 'Payable For Employee Id'.$this->input->post('employee_id',true),
+      'Narration'      => 'Payable For Employee Id'.$this->input->post('employee_no',true),
       'Debit'          => 0,
       'Credit'         => $this->input->post('payment',true),
       'IsPosted'       => 1,
@@ -281,8 +281,8 @@ $emp_id = $this->input->post('employee_id',true);
 	}
 
 	public function select_to_load(){
-		$id = $this->input->post('employee_id');
-		$data = $this->db->select('*')->from('grand_loan')->where('employee_id',$id)->get()->result();
+		$id = $this->input->post('employee_no');
+		$data = $this->db->select('*')->from('grand_loan')->where('employee_no',$id)->get()->result();
 		 $html = "<option value=\'\'>Select One</option>";
          foreach($data as $info){
          	$html.="<option value='$info->loan_id'>$info->loan_id</option>";
@@ -325,7 +325,7 @@ $emp_id = $this->input->post('employee_id',true);
 	public function update_install_form($id = null){
 		$this->permission->module('hrm','update')->redirect();
 		$this->form_validation->set_rules('loan_inst_id',null,'required|max_length[11]');
-		$this->form_validation->set_rules('employee_id',display('employee_id'),'required|max_length[50]');
+		$this->form_validation->set_rules('employee_no',display('employee_no'),'required|max_length[50]');
 		$this->form_validation->set_rules('loan_id',display('loan_id'),'required|max_length[50]');
 		$this->form_validation->set_rules('installment_amount',display('installment_amount'));
 		$this->form_validation->set_rules('payment',display('payment')  ,'required|max_length[100]');
@@ -339,7 +339,7 @@ $emp_id = $this->input->post('employee_id',true);
 
 			$postData = [
 				'loan_inst_id' 	     => $this->input->post('loan_inst_id',true),
-				'employee_id'        => $this->input->post('employee_id',true),
+				'employee_no'        => $this->input->post('employee_no',true),
 				'loan_id' 	         => $this->input->post('loan_id',true),
 				'installment_amount' => $this->input->post('installment_amount',true),
 				'payment' 	         => $this->input->post('payment',true),
@@ -383,10 +383,10 @@ $emp_id = $this->input->post('employee_id',true);
 
     public function lnreport_view(){
     	$this->permission->module('hrm','read')->redirect();
-		$this->form_validation->set_rules('employee_id',display('employee_id'),'required');
+		$this->form_validation->set_rules('employee_no',display('employee_no'),'required');
 		if ($this->form_validation->run() === true) {
 		
-    	$id             = $this->input->post('employee_id');
+    	$id             = $this->input->post('employee_no');
     	$start_date     = $this->input->post('start_date');
     	$end_date       = $this->input->post('end_date');
     	$data['ab']     = $this->Loan_model->report_loan($id,$start_date,$end_date);

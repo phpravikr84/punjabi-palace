@@ -91,7 +91,7 @@ function employechange(id) {
         method: 'post',
         dataType: 'json',
         data: {
-            'employee_id': id,
+            'employee_no': id,
 			'csrf_test_name':csrf
         },
         success: function(data) {

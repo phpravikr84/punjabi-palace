@@ -4,12 +4,12 @@
 
                    <div class="panel-body">
 
-                       <?php echo  form_open('hrm/Payroll/updates_salstup_form/' . $data->employee_id) ?>
+                       <?php echo  form_open('hrm/Payroll/updates_salstup_form/' . $data->employee_no) ?>
                        <div class="form-group row">
-                           <label for="employee_id"
+                           <label for="employee_no"
                                class="col-sm-3 col-form-label"><?php echo display('employee_name') ?> *</label>
                            <div class="col-sm-9">
-                               <?php echo form_dropdown('employee_id', $employee, (!empty($data->employee_id) ? $data->employee_id : null), 'class="form-control width-615-px" id="employee_id" onchange="employechange(this.value)"') ?>
+                               <?php echo form_dropdown('employee_no', $employee, (!empty($data->employee_no) ? $data->employee_no : null), 'class="form-control width-615-px" id="employee_no" onchange="employechange(this.value)"') ?>
                            </div>
                        </div>
 
