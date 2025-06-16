@@ -693,7 +693,7 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                 console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
                 
                 $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
-                $(".page-loader-wrapper").hide();
+                $(".page-loader-wrapper").hide(); 
             }
         });
     }, 2000);
