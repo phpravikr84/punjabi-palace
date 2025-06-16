@@ -147,7 +147,7 @@ $acthemename = $activethemeinfo->themename;
                             <?php $i = 0;
                             foreach ($cart as $item) {
                                 $itemprice = $item['price'] * $item['qty'];
-                                $iteminfo = $this->hungry_model->getiteminfo($item['pid']);
+                                $iteminfo = $this->frontend_model->getiteminfo($item['pid']);
                                 $vatcalc = $itemprice * $iteminfo->productvat / 100;
                                 $pvat = $pvat + $vatcalc;
                                 if ($iteminfo->OffersRate > 0) {
@@ -233,7 +233,7 @@ $acthemename = $activethemeinfo->themename;
                         $discount = 0;
                         foreach ($this->cart->contents() as $item) {
                             $itemprice = $item['price'] * $item['qty'];
-                            $iteminfo = $this->hungry_model->getiteminfo($item['pid']);
+                            $iteminfo = $this->frontend_model->getiteminfo($item['pid']);
                             $vatcalc = $itemprice * $iteminfo->productvat / 100;
                             $pvat = $pvat + $vatcalc;
                             if ($iteminfo->OffersRate > 0) {
@@ -306,7 +306,7 @@ $acthemename = $activethemeinfo->themename;
                             </li>
                         </ul>
                     <?php } ?>
-                     <?php echo form_open('hungry/checkcouponqr','method="post" class="coupon"')?>
+                     <?php echo form_open('frontend/checkcouponqr','method="post" class="coupon"')?>
                         <div class="form-group appcart_dispaly">
                             <input type="text" class="form-control app_cart_redius" id="couponcode" name="couponcode" placeholder="<?php echo display('enter_coupon_code')?>" required autocomplete="off" >
                             <input name="coupon" class="btn app_cart_btn_bg" type="submit" value="Apply" />
@@ -317,7 +317,7 @@ $acthemename = $activethemeinfo->themename;
                 </form>
             </div>
         </div>
-        <?php echo form_open('hungry/placeorderqr','method="post" class="order_form"')?>
+        <?php echo form_open('frontend/placeorderqr','method="post" class="order_form"')?>
             <input name="vat" id="vat" type="hidden" value="<?php echo $calvat; ?>" />
             <input name="invoice_discount" id="invoice_discount" type="hidden" value="<?php echo $discount + $coupon; ?>" />
             <input name="service_charge" id="servicecharge" type="hidden" value="<?php echo $servicecharge; ?>" />

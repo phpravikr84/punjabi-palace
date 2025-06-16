@@ -471,7 +471,7 @@ $config['csrf_exclude_uris'] = array('dashboard/autoupdate/update', 'dashboard/a
 
 if (isset($_SERVER["REQUEST_URI"])) 
 {
-    if((stripos($_SERVER["REQUEST_URI"],'/v1') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/v3') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/android') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/app') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/appv1') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/hungry') === FALSE))
+    if((stripos($_SERVER["REQUEST_URI"],'/v1') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/v3') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/android') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/app') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/appv1') === FALSE) && (stripos($_SERVER["REQUEST_URI"],'/frontend') === FALSE))
     {
         $config['csrf_protection'] = TRUE;
     }

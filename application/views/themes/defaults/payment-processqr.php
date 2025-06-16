@@ -31,7 +31,7 @@ try {
     $result = $transactions_api->charge($location_id,  $request_body);
 	if($result['transaction']['id']){
 	
-		$redirecturl=base_url().'hungry/successfulqr/'.$orderid.'/'.$page;
+		$redirecturl=base_url().'frontend/successfulqr/'.$orderid.'/'.$page;
 		header("Location: ".$redirecturl); /* Redirect browser */
   exit();
 	}

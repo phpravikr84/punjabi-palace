@@ -1,7 +1,8 @@
 <?php $webinfo = $this->webinfo;
 $activethemeinfo = $this->themeinfo;
 $acthemename = $activethemeinfo->themename; 
-global $title, $seoterm, $title2;
+//global $title, $seoterm, $title2;
+global $title;
 if ($title != "Menu") {
 	$this->session->unset_userdata('product_id');
 	$this->session->unset_userdata('categoryid');
@@ -312,7 +313,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 				<div class="overlay"></div>
 			</div>
 		</div>
-		<?php if ($title2 == 'Welcome to Hungry') { ?>
+		<?php if ($title2 == 'Welcome to frontend') { ?>
 			<!--START SLIDER PART-->
 			<div class="main_slider owl-carousel">
 				<?php foreach ($slider_info as $slider) { ?>
@@ -372,7 +373,7 @@ $whatsapp_count = $WhatsApp->num_rows();
 		</div>
 	</section>
 	<!-- End Newsletter -->
-	<?php if ($title2 == 'Welcome to Hungry' || $title == 'Contact Us') { ?>
+	<?php if ($title2 == 'Welcome to frontend' || $title == 'Contact Us') { ?>
 		<!-- Map Area -->
 		<?php $googlemap = $this->db->select('*')->from('tbl_widget')->where('widgetid', 14)->where('status', 1)->get()->row();
 		if (!empty($googlemap)) {

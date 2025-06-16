@@ -12,7 +12,7 @@ $acthemename = $activethemeinfo->themename;?>
                  </button>
              </div>
              <div class="modal-body ">
-                 <?php echo form_open_multipart('hungry/updateprofile', array('id' => 'profileupdate')) ?>
+                 <?php echo form_open_multipart('frontend/updateprofile', array('id' => 'profileupdate')) ?>
                  <input type="hidden" name="Customerid" class="form-control" id="Customerid" value="<?php echo $customerinfo->customer_id; ?>">
                  <div class="form-group row">
                      <label for="name" class="col-sm-4 col-form-label"><?php echo display('name') ?></label>
@@ -64,7 +64,7 @@ $acthemename = $activethemeinfo->themename;?>
                                  <h6 class="panel-title"><a href="<?php echo base_url(); ?>myprofile" class="accordion-toggle"><?php echo display('my_profile')?></a></h6>
                                  <h6 class="panel-title"><a href="<?php echo base_url(); ?>myorderlist" class="accordion-toggle"><?php echo display('morderlist')?></a></h6>
                                  <h6 class="panel-title"><a href="<?php echo base_url(); ?>myoreservationlist" class="accordion-toggle"><?php echo display('my_reservation')?></a></h6>
-                                 <h6 class="panel-title"><a href="<?php echo base_url(); ?>hungry/logout" class="accordion-toggle"><?php echo display('logout')?></a></h6>
+                                 <h6 class="panel-title"><a href="<?php echo base_url(); ?>frontend/logout" class="accordion-toggle"><?php echo display('logout')?></a></h6>
                              </div>
                          </div>
                      </div>

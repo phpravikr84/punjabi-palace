@@ -52,7 +52,7 @@ foreach($slpayment as $checkmethod){
         <?php }
         
         ?>
-         <?php echo form_open('hungry/placeorder','method="post" class="row"')?> 
+         <?php echo form_open('frontend/placeorder','method="post" class="row"')?> 
             <div class="col-xl-8 col-lg-7">
                 <?php if (empty($this->session->userdata('CusUserID'))) { ?>
                 <div class="panel-group" id="accordion">
@@ -286,7 +286,7 @@ foreach($slpayment as $checkmethod){
                             // echo "</pre>";
                             foreach ($cart as $item) {
                             $itemprice = $item['price'] * $item['qty'];
-                            $iteminfo = $this->hungry_model->getiteminfo($item['pid']);
+                            $iteminfo = $this->frontend_model->getiteminfo($item['pid']);
                             $mypdiscountprice = 0;
                             if (!empty($taxinfos)) {
                             $tx = 0;

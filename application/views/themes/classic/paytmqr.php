@@ -8,7 +8,7 @@ $acthemename = $activethemeinfo->themename;?>
             <div class="row">
                 <div class="col-sm-12 paytm_padding">  
                 	 <div id="form-container">
-   				<form action="<?php echo base_url();?>hungry/pgRedirectqr" method="post">
+   				<form action="<?php echo base_url();?>frontend/pgRedirectqr" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" id="ORDER_ID" name="ORDER_ID" size="20" maxlength="20" autocomplete="off" tabindex="1" value="<?php echo  "ORDS" .$orderinfo->order_id?>">
                 </div>

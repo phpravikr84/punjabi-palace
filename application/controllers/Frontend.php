@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Hungry extends CI_Controller
+class Frontend extends CI_Controller
 {
 
 	/**
@@ -30,9 +30,9 @@ class Hungry extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model(array(
-			'hungry_model'
+			'frontend_model'
 		));
-		$this->allmenu = $this->hungry_model->allmenu_dropdown(); 
+		$this->allmenu = $this->frontend_model->allmenu_dropdown(); 
 		$this->themeinfo = $this->db->select('*')->from('themes')->where('status', 1)->get()->row();
 		$this->webinfo = $this->db->select('*')->from('common_setting')->get()->row();
 		$this->settinginfo = $this->db->select('*')->from('setting')->get()->row();
@@ -44,39 +44,40 @@ class Hungry extends CI_Controller
 	public function index()
 	{
 		$data['title'] = $this->settinginfo->title;
-		$data['title2'] = "Welcome to Hungry";
+		$data['title2'] = "Welcome to frontend";
 		$data['seoterm'] = "home";
-		$data['slider_info'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '1');
-		$data['banner_story'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '2');
-		$data['foodhistory'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '5');
-		$data['banner_menu'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '3');
-		$data['reservation_sl'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '6');
-		$data['gallery'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '7');
-		$data['best_seller'] =  $this->hungry_model->bestseller();
-		$data['food_list'] =  $this->hungry_model->FoodList();
-		$data['special_menu'] =  $this->hungry_model->specialmenu();
+		$data['slider_info'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '1');
+		$data['banner_story'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '2');
+		$data['foodhistory'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '5');
+		$data['banner_menu'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '3');
+		$data['reservation_sl'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '6');
+		$data['gallery'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '7');
+		$data['best_seller'] =  $this->frontend_model->bestseller();
+		$data['food_list'] =  $this->frontend_model->FoodList();
+		$data['special_menu'] =  $this->frontend_model->specialmenu();
 		if ($this->themeinfo->themename == "modern") {
-			$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '11'));
-			$data["categorylist"] = $this->hungry_model->categories();
+			$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '11'));
+			$data["categorylist"] = $this->frontend_model->categories();
 			$start = $this->input->post('start');
 			$limit = $this->input->post('limit');
-			$data["searchresult"] = $this->hungry_model->searchinfo($product = null, $category = null, $limit, $start);
-			$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-			$data['delivarytime'] =  $this->hungry_model->read_all('*', 'tbl_delivaritime', '', '', '', '');
+			$data["searchresult"] = $this->frontend_model->searchinfo($product = null, $category = null, $limit, $start);
+			$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+			$data['delivarytime'] =  $this->frontend_model->read_all('*', 'tbl_delivaritime', '', '', '', '');
 		}
-		$data['todaymenu_menu'] =  $this->hungry_model->read_all('*', 'tbl_menutype', 'menutype', '', '', '');
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-		$data['ourteam'] =  $this->hungry_model->ourteam();
+		$data['todaymenu_menu'] =  $this->frontend_model->read_all('*', 'tbl_menutype', 'menutype', '', '', '');
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['ourteam'] =  $this->frontend_model->ourteam();
 		$data['taxinfos'] = $this->taxchecking();
 		if ($this->webinfo->web_onoff == 0) {
 			redirect(base_url() . 'login');
 			exit;
 		}
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/home', $data, TRUE);
-		$data['todaymenu_menu'] =  $this->hungry_model->read_all('*', 'tbl_menutype', 'menutype', '', '', '');
+		$data['todaymenu_menu'] =  $this->frontend_model->read_all('*', 'tbl_menutype', 'menutype', '', '', '');
 		// echo "<pre>";
 		// print_r($data);
 		// echo "</pre>";
+        // echo $data['title2'];
 		// exit;
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -114,14 +115,14 @@ class Hungry extends CI_Controller
 	{
 		$start = $this->input->post('start');
 		$limit = $this->input->post('limit');
-		$data["searchresult"] = $this->hungry_model->searchinfo($product = null, $category = null, $limit, $start);
+		$data["searchresult"] = $this->frontend_model->searchinfo($product = null, $category = null, $limit, $start);
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/loadfooditem', $data);
 	}
 	public function showfoodonload2()
 	{
 		$start = $this->input->post('start');
 		$limit = $this->input->post('limit');
-		$data["searchresult"] = $this->hungry_model->searchinfo($product = null, $category = null, $limit, $start);
+		$data["searchresult"] = $this->frontend_model->searchinfo($product = null, $category = null, $limit, $start);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/loadfooditem', $data);
 	}
 	public function searchitemforcat()
@@ -135,9 +136,9 @@ class Hungry extends CI_Controller
 		}
 		$catid=trim($catid,',');*/
 		if (!empty($itemorcat)) {
-			$data["searchresult"] = $this->hungry_model->searchitemcat($itemorcat);
+			$data["searchresult"] = $this->frontend_model->searchitemcat($itemorcat);
 		} else {
-			$data["searchresult"] = $this->hungry_model->searchinfo($product = null, $category = null, $limit, $start);
+			$data["searchresult"] = $this->frontend_model->searchinfo($product = null, $category = null, $limit, $start);
 		}
 		$this->load->view('themes/' . $this->themeinfo->themename . '/loadfooditem', $data);
 	}
@@ -160,7 +161,7 @@ class Hungry extends CI_Controller
 		$start = $this->input->post('start');
 		$limit = $this->input->post('limit');
 		$data['mtype'] = $mtypeid;
-		$data['todaymenu_food'] =  $this->hungry_model->todaymenu($mtypeid, $limit, $start);
+		$data['todaymenu_food'] =  $this->frontend_model->todaymenu($mtypeid, $limit, $start);
 		$data['taxinfos'] = $this->taxchecking();
 		if ($this->webinfo->web_onoff == 0) {
 			redirect(base_url() . 'login');
@@ -182,13 +183,13 @@ class Hungry extends CI_Controller
 		$this->session->set_userdata($sessiondata);
 		$product  = $this->session->userdata('product_id');
 		$category = $this->session->userdata('categoryid');
-		$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '8'));
+		$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '8'));
 		#-------------------------------#       
 		#
 		#pagination starts
 		#
 		$config["base_url"] = base_url('menu');
-		$config["total_rows"]  = $this->hungry_model->count_totalitem($product, $category);
+		$config["total_rows"]  = $this->frontend_model->count_totalitem($product, $category);
 		$config["per_page"]    = 20;
 		$config["uri_segment"] = 2;
 		$config["last_link"] = "Last";
@@ -213,9 +214,9 @@ class Hungry extends CI_Controller
 		/* ends of bootstrap */
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-		$data["searchresult"] = $this->hungry_model->searchinfo($product, $category, $config["per_page"], $page);
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-		$data['totalrows'] =  $this->hungry_model->count_totalitem($product, $category);
+		$data["searchresult"] = $this->frontend_model->searchinfo($product, $category, $config["per_page"], $page);
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['totalrows'] =  $this->frontend_model->count_totalitem($product, $category);
 		$countall = $data['totalrows'];
 		if ($page == 0) {
 			$initial = 1;
@@ -235,9 +236,9 @@ class Hungry extends CI_Controller
 		#
 		#pagination ends
 		#  
-		$data['ads'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => 4));
-		$data["categorylist"] = $this->hungry_model->categories();
-		$data["deals"] = $this->hungry_model->todaydeals();
+		$data['ads'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => 4));
+		$data["categorylist"] = $this->frontend_model->categories();
+		$data["deals"] = $this->frontend_model->todaydeals();
 		$data['taxinfos'] = $this->taxchecking();
 		if ($this->webinfo->web_onoff == 0) {
 			redirect(base_url() . 'login');
@@ -262,13 +263,13 @@ class Hungry extends CI_Controller
 		$this->session->set_userdata($sessiondata);
 		$product  = $this->session->userdata('product_id');
 		$category = $this->session->userdata('categoryid');
-		$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '8'));
+		$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '8'));
 		#-------------------------------#       
 		#
 		#pagination starts
 		#
 		$config["base_url"] = base_url('menu');
-		$config["total_rows"]  = $this->hungry_model->count_totalitem($product, $category);
+		$config["total_rows"]  = $this->frontend_model->count_totalitem($product, $category);
 		$config["per_page"]    = 20;
 		$config["uri_segment"] = 2;
 		$config["last_link"] = "Last";
@@ -293,9 +294,9 @@ class Hungry extends CI_Controller
 		/* ends of bootstrap */
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-		$data["searchresult"] = $this->hungry_model->searchinfo($product, $category, $config["per_page"], $page);
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-		$data['totalrows'] =  $this->hungry_model->count_totalitem($product, $category);
+		$data["searchresult"] = $this->frontend_model->searchinfo($product, $category, $config["per_page"], $page);
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['totalrows'] =  $this->frontend_model->count_totalitem($product, $category);
 		$data['taxinfos'] = $this->taxchecking();
 		$countall = $data['totalrows'];
 		if ($page == 0) {
@@ -332,18 +333,18 @@ class Hungry extends CI_Controller
 		$data['seoterm'] = "food_details";
 		$islogin = $this->session->userdata('CusUserID');
 		$data['customerislogin'] = $islogin;
-		$data['iteminfo']   	  = $this->hungry_model->detailsinfo($pid, $vid);
-		$data['category'] =  $this->hungry_model->read('*', 'item_category', array('CategoryID' => $data['iteminfo']['CategoryID']));
-		$data['related'] =  $this->hungry_model->relateditem($data['iteminfo']['CategoryID'], $data['iteminfo']['ProductsID']);
-		$data['totalreview'] = $this->hungry_model->read_rating('tbl_rating', 'reviewtxt', 'proid', $data['iteminfo']['ProductsID']);
-		$data['totalrating'] = $this->hungry_model->read_rating('tbl_rating', 'rating', 'proid', $data['iteminfo']['ProductsID']);
-		$data['average'] = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $data['iteminfo']['ProductsID']);
-		$data['readreview'] = $this->hungry_model->read_review('tbl_rating', 'proid', $data['iteminfo']['ProductsID']);
-		$data['varientlist']   = $this->hungry_model->findByvmenuId($pid);
+		$data['iteminfo']   	  = $this->frontend_model->detailsinfo($pid, $vid);
+		$data['category'] =  $this->frontend_model->read('*', 'item_category', array('CategoryID' => $data['iteminfo']['CategoryID']));
+		$data['related'] =  $this->frontend_model->relateditem($data['iteminfo']['CategoryID'], $data['iteminfo']['ProductsID']);
+		$data['totalreview'] = $this->frontend_model->read_rating('tbl_rating', 'reviewtxt', 'proid', $data['iteminfo']['ProductsID']);
+		$data['totalrating'] = $this->frontend_model->read_rating('tbl_rating', 'rating', 'proid', $data['iteminfo']['ProductsID']);
+		$data['average'] = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $data['iteminfo']['ProductsID']);
+		$data['readreview'] = $this->frontend_model->read_review('tbl_rating', 'proid', $data['iteminfo']['ProductsID']);
+		$data['varientlist']   = $this->frontend_model->findByvmenuId($pid);
 		if (!empty($islogin)) {
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
 			$data['isgivenreview']	         = 0;
-			$allorderbycustomer = $this->hungry_model->read_all('*', 'customer_order', 'order_id', '', 'customer_id', $islogin);
+			$allorderbycustomer = $this->frontend_model->read_all('*', 'customer_order', 'order_id', '', 'customer_id', $islogin);
 
 			if (!empty($allorderbycustomer)) {
 				foreach ($allorderbycustomer as $buyorder) {
@@ -374,17 +375,17 @@ class Hungry extends CI_Controller
 		$data['title']     = "Détails de la nourriture";
 		$islogin = $this->session->userdata('CusUserID');
 		$data['customerislogin'] = $islogin;
-		$data['iteminfo']   	  = $this->hungry_model->detailsinfo($pid, $vid);
-		$data['category'] =  $this->hungry_model->read('*', 'item_category', array('CategoryID' => $data['iteminfo']->CategoryID));
-		$data['related'] =  $this->hungry_model->relateditem($data['iteminfo']->CategoryID, $data['iteminfo']->ProductsID, $data['iteminfo']->variantid);
-		$data['totalreview'] = $this->hungry_model->read_rating('tbl_rating', 'reviewtxt', 'proid', $data['iteminfo']->ProductsID);
-		$data['totalrating'] = $this->hungry_model->read_rating('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
-		$data['average'] = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
-		$data['readreview'] = $this->hungry_model->read_review('tbl_rating', 'proid', $data['iteminfo']->ProductsID);
+		$data['iteminfo']   	  = $this->frontend_model->detailsinfo($pid, $vid);
+		$data['category'] =  $this->frontend_model->read('*', 'item_category', array('CategoryID' => $data['iteminfo']->CategoryID));
+		$data['related'] =  $this->frontend_model->relateditem($data['iteminfo']->CategoryID, $data['iteminfo']->ProductsID, $data['iteminfo']->variantid);
+		$data['totalreview'] = $this->frontend_model->read_rating('tbl_rating', 'reviewtxt', 'proid', $data['iteminfo']->ProductsID);
+		$data['totalrating'] = $this->frontend_model->read_rating('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
+		$data['average'] = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
+		$data['readreview'] = $this->frontend_model->read_review('tbl_rating', 'proid', $data['iteminfo']->ProductsID);
 		if (!empty($islogin)) {
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
 			$data['isgivenreview']	         = 0;
-			$allorderbycustomer = $this->hungry_model->read_all('*', 'customer_order', 'order_id', '', 'customer_id', $islogin);
+			$allorderbycustomer = $this->frontend_model->read_all('*', 'customer_order', 'order_id', '', 'customer_id', $islogin);
 
 			if (!empty($allorderbycustomer)) {
 				foreach ($allorderbycustomer as $buyorder) {
@@ -408,21 +409,21 @@ class Hungry extends CI_Controller
 	public function appdetailsedit($pid, $vid, $orderid)
 	{
 		$data['title']     = "Détails de la nourriture";
-		$customerorder = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$customerorder = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
 		$data['orderinfo']  	   = $customerorder;
 		$islogin = $this->session->userdata('CusUserID');
 		$data['customerislogin'] = $islogin;
-		$data['iteminfo']   	  = $this->hungry_model->detailsinfo($pid, $vid);
-		$data['category'] =  $this->hungry_model->read('*', 'item_category', array('CategoryID' => $data['iteminfo']->CategoryID));
-		$data['related'] =  $this->hungry_model->relateditem($data['iteminfo']->CategoryID, $data['iteminfo']->ProductsID, $data['iteminfo']->variantid);
-		$data['totalreview'] = $this->hungry_model->read_rating('tbl_rating', 'reviewtxt', 'proid', $data['iteminfo']->ProductsID);
-		$data['totalrating'] = $this->hungry_model->read_rating('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
-		$data['average'] = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
-		$data['readreview'] = $this->hungry_model->read_review('tbl_rating', 'proid', $data['iteminfo']->ProductsID);
+		$data['iteminfo']   	  = $this->frontend_model->detailsinfo($pid, $vid);
+		$data['category'] =  $this->frontend_model->read('*', 'item_category', array('CategoryID' => $data['iteminfo']->CategoryID));
+		$data['related'] =  $this->frontend_model->relateditem($data['iteminfo']->CategoryID, $data['iteminfo']->ProductsID, $data['iteminfo']->variantid);
+		$data['totalreview'] = $this->frontend_model->read_rating('tbl_rating', 'reviewtxt', 'proid', $data['iteminfo']->ProductsID);
+		$data['totalrating'] = $this->frontend_model->read_rating('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
+		$data['average'] = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $data['iteminfo']->ProductsID);
+		$data['readreview'] = $this->frontend_model->read_review('tbl_rating', 'proid', $data['iteminfo']->ProductsID);
 		if (!empty($islogin)) {
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
 			$data['isgivenreview']	         = 0;
-			$allorderbycustomer = $this->hungry_model->read_all('*', 'customer_order', 'order_id', '', 'customer_id', $islogin);
+			$allorderbycustomer = $this->frontend_model->read_all('*', 'customer_order', 'order_id', '', 'customer_id', $islogin);
 
 			if (!empty($allorderbycustomer)) {
 				foreach ($allorderbycustomer as $buyorder) {
@@ -458,18 +459,18 @@ class Hungry extends CI_Controller
 	{
 
 		$data['title'] = "Menu QR";
-		$data["categorylist"] = $this->hungry_model->categories();
+		$data["categorylist"] = $this->frontend_model->categories();
 		$this->load->view('themes/' . $this->themeinfo->themename . '/app', $data);
 	}
 	public function searchqrfood()
 	{
 		$item = $this->input->post('foodname', TRUE);
-		$getitem = $this->hungry_model->getqritem($item);
+		$getitem = $this->frontend_model->getqritem($item);
 		if ((!empty($getitem)) && (!empty($item))) {
 			$data["itemlist"] = $getitem;
 			$this->load->view('themes/' . $this->themeinfo->themename . '/searchapp', $data);
 		} else {
-			$data["categorylist"] = $this->hungry_model->categories();
+			$data["categorylist"] = $this->frontend_model->categories();
 			$this->load->view('themes/' . $this->themeinfo->themename . '/appqr', $data);
 		}
 	}
@@ -478,8 +479,8 @@ class Hungry extends CI_Controller
 		$id = $this->input->post('pid');
 		$sid = $this->input->post('sid');
 		$data['type']   	  = $this->input->post('type');
-		$data['item']   	  = $this->hungry_model->finditem($id, $sid);
-		$data['addonslist']   = $this->hungry_model->findaddons($id);
+		$data['item']   	  = $this->frontend_model->finditem($id, $sid);
+		$data['addonslist']   = $this->frontend_model->findaddons($id);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/addonsitemqr', $data);
 	}
 	public function addonsitemqr2()
@@ -488,8 +489,8 @@ class Hungry extends CI_Controller
 		$sid = $this->input->post('sid');
 		echo $data['orderid'] = $this->input->post('orderid');
 		$data['type']   	  = $this->input->post('type');
-		$data['item']   	  = $this->hungry_model->finditem($id, $sid);
-		$data['addonslist']   = $this->hungry_model->findaddons($id);
+		$data['item']   	  = $this->frontend_model->finditem($id, $sid);
+		$data['addonslist']   = $this->frontend_model->findaddons($id);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/addonsitemqr2', $data);
 	}
 	public function addtocartqr()
@@ -747,7 +748,7 @@ class Hungry extends CI_Controller
 	{
 		if (!empty($this->cart->contents())) {
 			$data['title'] = "Page du panier";
-			$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
+			$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
 			$this->load->view('themes/' . $this->themeinfo->themename . '/appcart', $data);
 		} else {
 			redirect('qr-menu');
@@ -807,7 +808,7 @@ class Hungry extends CI_Controller
 		if (!empty($ratinginfo)) {
 			$this->session->set_flashdata('exception',  display('please_try_again'));
 		} else {
-			$this->hungry_model->insert_data('tbl_rating', $data);
+			$this->frontend_model->insert_data('tbl_rating', $data);
 			$this->session->set_flashdata('message', display('save_successfully'));
 		}
 		redirect("details/" . $productid . '/' . $varientid . '#review');
@@ -821,23 +822,23 @@ class Hungry extends CI_Controller
 		$id = $this->input->post('pid');
 		$sid = $this->input->post('sid');
 		$data['type']   	  = $this->input->post('type');
-		$data['item']   	  = $this->hungry_model->finditem($id, $sid);
-		$data['addonslist']   = $this->hungry_model->findaddons($id);
-		$data['varientlist']   = $this->hungry_model->findByvmenuId($id);
+		$data['item']   	  = $this->frontend_model->finditem($id, $sid);
+		$data['addonslist']   = $this->frontend_model->findaddons($id);
+		$data['varientlist']   = $this->frontend_model->findByvmenuId($id);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/addonsitem', $data);
 	}
 	public function checkavailablity()
 	{
 		$numofpeople = $this->input->post('people');
 		$newdate = $this->input->post('getdate');
-		$gettable = $this->hungry_model->checkavailtable();
-		$data['tableinfo'] = $this->hungry_model->checkfree($gettable, $numofpeople);
-		$rseting = $this->hungry_model->read('*', 'setting', array('id' => 2));
+		$gettable = $this->frontend_model->checkavailtable();
+		$data['tableinfo'] = $this->frontend_model->checkfree($gettable, $numofpeople);
+		$rseting = $this->frontend_model->read('*', 'setting', array('id' => 2));
 		$openingtimerv = strtotime($rseting->reservation_open);
 		$closetimerv = strtotime($rseting->reservation_close);
 		$maxperson = $rseting->maxreserveperson;
-		$gettotalreserverp = $this->hungry_model->bookedpeople();
-		$offinformation = $this->hungry_model->read('*', 'reservationofday', array('offdaydate' => $newdate));
+		$gettotalreserverp = $this->frontend_model->bookedpeople();
+		$offinformation = $this->frontend_model->read('*', 'reservationofday', array('offdaydate' => $newdate));
 
 		$offdate = $offinformation->offdaydate;
 		$offtime = explode("-", $offinformation->availtime);
@@ -869,7 +870,7 @@ class Hungry extends CI_Controller
 		$cuslomer = $this->session->userdata('CusUserID');
 		$startdate = $this->input->post('sltime');
 		$endate = date("H:i:s", strtotime($startdate) + (60 * 30));
-		$data['tableinfo'] = $this->hungry_model->read('*', 'rest_table', array('tableid' => $id));
+		$data['tableinfo'] = $this->frontend_model->read('*', 'rest_table', array('tableid' => $id));
 		$data['tableno'] = $this->input->post('id');
 		$data['newdate'] = $this->input->post('sdate');
 		$data['gettime'] = $this->input->post('sltime');
@@ -881,7 +882,7 @@ class Hungry extends CI_Controller
 		} else {
 			$data['customerinfo'] = '';
 		}
-		$data['formdtable'] = $this->hungry_model->checktable($id);
+		$data['formdtable'] = $this->frontend_model->checktable($id);
 
 		$this->load->view('themes/' . $this->themeinfo->themename . '/reservationfrm', $data);
 	}
@@ -942,14 +943,14 @@ class Hungry extends CI_Controller
 				'is_active'          => 1,
 			);
 			$mobile = $this->input->post('email', true);
-			$rerturnid = $this->hungry_model->insertcustomer($customerData, $mobile);
+			$rerturnid = $this->frontend_model->insertcustomer($customerData, $mobile);
 			if (!empty($pointsys)) {
 				$pointstable = array(
 					'customerid'   => $rerturnid,
 					'amount'       => 0,
 					'points'       => 10
 				);
-				$this->hungry_model->insert_data('tbl_customerpoint', $pointstable);
+				$this->frontend_model->insert_data('tbl_customerpoint', $pointstable);
 			}
 
 			$data['units']   = (object) $postData = array(
@@ -964,11 +965,11 @@ class Hungry extends CI_Controller
 				'status' 	 	     => 1,
 			);
 
-			if ($this->hungry_model->bookedtable($postData)) {
+			if ($this->frontend_model->bookedtable($postData)) {
 				$insert_id = $this->db->insert_id();
 				$this->db->where('tableid', $tableid);
 				$this->db->update('rest_table', $udata);
-				$send_email = $this->hungry_model->read('*', 'email_config', array('email_config_id' => 1));
+				$send_email = $this->frontend_model->read('*', 'email_config', array('email_config_id' => 1));
 
 				$fullname = $this->input->post('customer_name', true);
 				$email = $this->input->post('email', true);
@@ -1017,11 +1018,11 @@ class Hungry extends CI_Controller
 		}
 		$data['title'] = "Réservation";
 		$data['seoterm'] = "reservation";
-		$data['banner_story'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '2');
-		$data['foodhistory'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '5');
-		$data['reservation_sl'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '6');
-		$data['reservation_modern'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '14'));
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['banner_story'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '2');
+		$data['foodhistory'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '5');
+		$data['reservation_sl'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '6');
+		$data['reservation_modern'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '14'));
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/reservation', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -1104,8 +1105,8 @@ class Hungry extends CI_Controller
 			'itemnote' => $foodnote
 		);
 		$this->cart->update($data);
-		$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-		$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
+		$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+		$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
 		$this->load->view('themes/' . $this->themeinfo->themename . '/cartlist', $data);
 	}
 	public function cartupdate()
@@ -1127,8 +1128,8 @@ class Hungry extends CI_Controller
 			);
 			$this->cart->update($data);
 		}
-		$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-		$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
+		$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+		$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
 		$data['taxinfos'] = $this->taxchecking();
 		$this->load->view('themes/' . $this->themeinfo->themename . '/cartlist', $data);
 	}
@@ -1151,9 +1152,9 @@ class Hungry extends CI_Controller
 			);
 			$this->cart->update($data);
 		}
-		$data['paymentinfo'] =  $this->hungry_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
-		$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-		$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
+		$data['paymentinfo'] =  $this->frontend_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
+		$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+		$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
 		$data['taxinfos'] = $this->taxchecking();
 		$this->load->view('themes/' . $this->themeinfo->themename . '/desktopcheckoutitem', $data);
 	}
@@ -1176,8 +1177,8 @@ class Hungry extends CI_Controller
 			);
 			$this->cart->update($data);
 		}
-		$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-		$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
+		$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+		$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
 		$data['taxinfos'] = $this->taxchecking();
 		$this->load->view('themes/' . $this->themeinfo->themename . '/mobilecheckoutitem', $data);
 	}
@@ -1193,10 +1194,10 @@ class Hungry extends CI_Controller
 		if (!empty($this->cart->contents())) {
 			$data['title'] = "Page du panier";
 			$data['seoterm'] = "cart_page";
-			$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-			$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
+			$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+			$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
 			$data['taxinfos'] = $this->taxchecking();
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 			$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/cart', $data, TRUE);
 			$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 		} else {
@@ -1214,7 +1215,7 @@ class Hungry extends CI_Controller
     	$slug = $this->uri->segment(1);
 		$data['title'] = "Banquet & Catering";
 		$data['seoterm'] = "services";
-		$data['pdf_materials'] = $this->hungry_model->get_pdfs_by_slug($slug);
+		$data['pdf_materials'] = $this->frontend_model->get_pdfs_by_slug($slug);
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/services', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -1229,7 +1230,7 @@ class Hungry extends CI_Controller
     	$slug = $this->uri->segment(1);
 		$data['title'] = "Menu";
 		$data['seoterm'] = "our_menu";
-		$data['pdf_materials'] = $this->hungry_model->get_pdfs_by_slug($slug);
+		$data['pdf_materials'] = $this->frontend_model->get_pdfs_by_slug($slug);
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/our-menu', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -1255,9 +1256,9 @@ class Hungry extends CI_Controller
 			'rowid'   => $rowid,
 			'qty'     => 0
 		);
-		$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+		$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
 		$this->cart->update($data);
-		$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
+		$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '9'));
 		$data['taxinfos'] = $this->taxchecking();
 		$this->load->view('themes/' . $this->themeinfo->themename . '/cartlist', $data);
 	}
@@ -1265,7 +1266,7 @@ class Hungry extends CI_Controller
 	{
 		$shippingcharge = $this->input->post('shippingcharge');
 		$shipname = $this->input->post('shipname');
-		$shipinfo = $this->hungry_model->read('*', 'shipping_method', array('shipping_method	' => $shipname));
+		$shipinfo = $this->frontend_model->read('*', 'shipping_method', array('shipping_method	' => $shipname));
 		$sessiondata = array('shippingmethod' => $shipname, 'shippingid' => $shipinfo->ship_id, 'shiptype' => $shipinfo->shiptype, 'shippingrate' => $shippingcharge);
 		$this->session->set_userdata($sessiondata);
 	}
@@ -1274,7 +1275,7 @@ class Hungry extends CI_Controller
 		$shippingcharge = $this->input->post('shippingcharge');
 		$shipname = $this->input->post('shipname');
 		$shipaddress = $this->input->post('shipaddress');
-		$shipinfo = $this->hungry_model->read('*', 'shipping_method', array('shipping_method	' => $shipname));
+		$shipinfo = $this->frontend_model->read('*', 'shipping_method', array('shipping_method	' => $shipname));
 		$sessiondata = array('shippingmethod' => $shipname, 'shippingaddress' => $shipaddress, 'shippingid' => $shipinfo->ship_id, 'shiptype' => $shipinfo->shiptype, 'shippingrate' => $shippingcharge);
 		$this->session->set_userdata($sessiondata);
 	}
@@ -1310,7 +1311,7 @@ class Hungry extends CI_Controller
 	public function checkcoupon()
 	{
 		$couponcode = $this->input->post('couponcode');
-		$couponinfo = $this->hungry_model->read('*', 'tbl_token', array('tokencode' => $couponcode));
+		$couponinfo = $this->frontend_model->read('*', 'tbl_token', array('tokencode' => $couponcode));
 		if (!empty($couponinfo)) {
 			$startdate = strtotime($couponinfo->tokenstartdate);
 			$enddate = strtotime($couponinfo->tokenendate);
@@ -1332,7 +1333,7 @@ class Hungry extends CI_Controller
 	public function checkcouponqr()
 	{
 		$couponcode = $this->input->post('couponcode');
-		$couponinfo = $this->hungry_model->read('*', 'tbl_token', array('tokencode' => $couponcode));
+		$couponinfo = $this->frontend_model->read('*', 'tbl_token', array('tokencode' => $couponcode));
 		if (!empty($couponinfo)) {
 			$startdate = strtotime($couponinfo->tokenstartdate);
 			$enddate = strtotime($couponinfo->tokenendate);
@@ -1363,16 +1364,16 @@ class Hungry extends CI_Controller
 				$customedata = $this->db->select('*')->from('customer_info')->where('customer_id', $cuslomer)->get()->row();
 
 				if (!empty($orderinfo)) {
-					$billinginfo = $this->hungry_model->read('*', 'tbl_billingaddress', array('orderid' => $orderinfo->order_id));
+					$billinginfo = $this->frontend_model->read('*', 'tbl_billingaddress', array('orderid' => $orderinfo->order_id));
 					if (!empty($billinginfo)) {
-						$data['billinginfo'] =  $this->hungry_model->read('*', 'tbl_billingaddress', array('orderid' => $orderinfo->order_id));
+						$data['billinginfo'] =  $this->frontend_model->read('*', 'tbl_billingaddress', array('orderid' => $orderinfo->order_id));
 					} else {
-						$data['billinginfo'] =  $this->hungry_model->read('*', 'tbl_billingaddress', array('email' => $customedata->customer_email));
+						$data['billinginfo'] =  $this->frontend_model->read('*', 'tbl_billingaddress', array('email' => $customedata->customer_email));
 					}
 
-					$data['shippinginfo'] =  $this->hungry_model->read('*', 'tbl_shippingaddress', array('orderid' => $orderinfo->order_id));
+					$data['shippinginfo'] =  $this->frontend_model->read('*', 'tbl_shippingaddress', array('orderid' => $orderinfo->order_id));
 				} else {
-					$data['billinginfo'] = $this->hungry_model->read('*', 'tbl_billingaddress', array('email' => $customedata->customer_email));;
+					$data['billinginfo'] = $this->frontend_model->read('*', 'tbl_billingaddress', array('email' => $customedata->customer_email));;
 					$data['shippinginfo'] = '';
 				}
 				$data['customedata'] = $customedata;
@@ -1381,11 +1382,11 @@ class Hungry extends CI_Controller
 				$data['shippinginfo'] = '';
 				$data['customedata'] = '';
 			}
-			$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-			$data['paymentinfo'] =  $this->hungry_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
-			$data['countryinfo'] =  $this->hungry_model->read_all('*', 'tbl_country', 'countryid', '', 'status', '1');
+			$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+			$data['paymentinfo'] =  $this->frontend_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
+			$data['countryinfo'] =  $this->frontend_model->read_all('*', 'tbl_country', 'countryid', '', 'status', '1');
 			$data['taxinfos'] = $this->taxchecking();
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 			$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/checkout', $data, TRUE);
 			$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 		} else {
@@ -1399,7 +1400,7 @@ class Hungry extends CI_Controller
 	public function getstate($id)
 	{
 		echo '<option value="" data-stateid="">' . display('select_state') . '</option>';
-		$allstate = $this->hungry_model->read_all('*', 'tbl_state', 'stateid', '', 'countryid', $id);
+		$allstate = $this->frontend_model->read_all('*', 'tbl_state', 'stateid', '', 'countryid', $id);
 		if (!empty($allstate)) {
 			foreach ($allstate as $state) {
 				echo '<option value="' . $state->statename . '" data-stateid="' . $state->stateid . '">' . $state->statename . '</option>';
@@ -1409,7 +1410,7 @@ class Hungry extends CI_Controller
 	public function getcity($id)
 	{
 		echo '<option value="" data-city="">' . display('select_city') . '</option>';
-		$allcity = $this->hungry_model->read_all('*', 'tbl_city', 'cityid', '', 'stateid', $id);
+		$allcity = $this->frontend_model->read_all('*', 'tbl_city', 'cityid', '', 'stateid', $id);
 		if (!empty($allcity)) {
 			foreach ($allcity as $city) {
 				echo '<option value="' . $city->cityname . '" data-city="' . $city->cityid . '">' . $city->cityname . '</option>';
@@ -1425,7 +1426,7 @@ class Hungry extends CI_Controller
 			exit;
 		}
 		if ($this->session->userdata('CusUserID') == false) {
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 			$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/login', $data, TRUE);
 			$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 		} else {
@@ -1440,7 +1441,7 @@ class Hungry extends CI_Controller
 			redirect(base_url() . 'login');
 			exit;
 		}
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/signup', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -1454,7 +1455,7 @@ class Hungry extends CI_Controller
 		$this->form_validation->set_rules('u_pass', 'Password', 'required');
 		$this->form_validation->set_message('is_unique', 'Désolé, cette adresse %s a déjà été utilisée !');
 
-		$coa = $this->hungry_model->headcode();
+		$coa = $this->frontend_model->headcode();
 		if ($coa->HeadCode != NULL) {
 			$headcode = $coa->HeadCode + 1;
 		} else {
@@ -1530,17 +1531,17 @@ class Hungry extends CI_Controller
 			$indata['customer_phone']      		= $this->input->post('phone', TRUE);
 			$indata['crdate']     		        = date('Y-m-d');
 
-			$insert_ID = $this->hungry_model->insert_data('customer_info', $indata);
+			$insert_ID = $this->frontend_model->insert_data('customer_info', $indata);
 			if (!empty($pointsys)) {
 				$pointstable = array(
 					'customerid'   => $insert_ID,
 					'amount'       => 0,
 					'points'       => 10
 				);
-				$this->hungry_model->insert_data('tbl_customerpoint', $pointstable);
+				$this->frontend_model->insert_data('tbl_customerpoint', $pointstable);
 			}
 			if ($insert_ID) {
-				$output = $this->hungry_model->read("*", 'customer_info', array('customer_id' => $insert_ID));
+				$output = $this->frontend_model->read("*", 'customer_info', array('customer_id' => $insert_ID));
 				$c_name = $this->input->post('user_name');
 				$c_acc = $sino . '-' . $c_name;
 				$createdate = date('Y-m-d H:i:s');
@@ -1559,7 +1560,7 @@ class Hungry extends CI_Controller
 					'CreateBy'         => $insert_ID,
 					'CreateDate'       => $createdate,
 				);
-				$this->hungry_model->insert_data('acc_coa', $postData1);
+				$this->frontend_model->insert_data('acc_coa', $postData1);
 				// $this->session->set_flashdata('message', display('save_successfully'));
 				redirect('mylogin');
 			} else {
@@ -1579,7 +1580,7 @@ class Hungry extends CI_Controller
 		$this->form_validation->set_rules('u_pass2', 'Password', 'required');
 		$this->form_validation->set_message('is_unique', 'Désolé, cette adresse %s a déjà été utilisée !');
 
-		$coa = $this->hungry_model->headcode();
+		$coa = $this->frontend_model->headcode();
 		if ($coa->HeadCode != NULL) {
 			$headcode = $coa->HeadCode + 1;
 		} else {
@@ -1624,17 +1625,17 @@ class Hungry extends CI_Controller
 			$indata['customer_phone']      		= $this->input->post('phone', TRUE);
 			$indata['crdate']     		        = date('Y-m-d');
 
-			$insert_ID = $this->hungry_model->insert_data('customer_info', $indata);
+			$insert_ID = $this->frontend_model->insert_data('customer_info', $indata);
 			if (!empty($pointsys)) {
 				$pointstable = array(
 					'customerid'   => $insert_ID,
 					'amount'       => 0,
 					'points'       => 10
 				);
-				$this->hungry_model->insert_data('tbl_customerpoint', $pointstable);
+				$this->frontend_model->insert_data('tbl_customerpoint', $pointstable);
 			}
 			if ($insert_ID) {
-				$output = $this->hungry_model->read("*", 'customer_info', array('customer_id' => $insert_ID));
+				$output = $this->frontend_model->read("*", 'customer_info', array('customer_id' => $insert_ID));
 				$c_name = $this->input->post('user_name');
 				$c_acc = $sino . '-' . $c_name;
 				$createdate = date('Y-m-d H:i:s');
@@ -1653,7 +1654,7 @@ class Hungry extends CI_Controller
 					'CreateBy'         => $insert_ID,
 					'CreateDate'       => $createdate,
 				);
-				$this->hungry_model->insert_data('acc_coa', $postData1);
+				$this->frontend_model->insert_data('acc_coa', $postData1);
 
 				$sessiondata = array(
 					'CusUserID' => $insert_ID,
@@ -1674,9 +1675,9 @@ class Hungry extends CI_Controller
 		$username = $this->input->post('email');
 		$password = md5($this->input->post('pass1'));
 
-		$cek = $this->hungry_model->loginUser($username, $password);
+		$cek = $this->frontend_model->loginUser($username, $password);
 		if ($cek <> 0) {
-			$userinfo = $this->hungry_model->userinfo($cek);
+			$userinfo = $this->frontend_model->userinfo($cek);
 			$registerdate = $userinfo->crdate;
 			$duration = date('Y-m-d', strtotime($registerdate . ' + 365 days'));
 			$scan = scandir('application/modules/');
@@ -1718,7 +1719,7 @@ class Hungry extends CI_Controller
 	public function passwordrecovery()
 	{
 		$data['customer_email']   = $this->input->post('email', TRUE);
-		$IsReg = $this->hungry_model->checkEmailOrPhoneIsRegistered('customer_info', $data);
+		$IsReg = $this->frontend_model->checkEmailOrPhoneIsRegistered('customer_info', $data);
 
 		if (!$IsReg) {
 			echo "404";
@@ -1734,7 +1735,7 @@ class Hungry extends CI_Controller
 		$this->db->where('customer_id', $data->customer_id);
 		$this->db->update('customer_info', $updatetData2);
 
-		$email_config = $this->hungry_model->read('*', 'email_config', array('email_config_id' => 1));
+		$email_config = $this->frontend_model->read('*', 'email_config', array('email_config_id' => 1));
 		$config = array(
 			'protocol'  => $email_config->protocol,
 			'smtp_host' => $email_config->smtp_host,
@@ -1820,7 +1821,7 @@ class Hungry extends CI_Controller
 				redirect('checkout');
 				exit;
 			}
-			$coa = $this->hungry_model->headcode();
+			$coa = $this->frontend_model->headcode();
 			if ($coa->HeadCode != NULL) {
 				$headcode = $coa->HeadCode + 1;
 			} else {
@@ -1860,14 +1861,14 @@ class Hungry extends CI_Controller
 			$user['favorite_delivery_address'] = $this->input->post('billing_address_1');
 			$user['crdate']    = date('Y-m-d');
 			$user['is_active'] = 1;
-			$customerid = $this->hungry_model->insert_data('customer_info', $user);
+			$customerid = $this->frontend_model->insert_data('customer_info', $user);
 			if (!empty($pointsys)) {
 				$pointstable = array(
 					'customerid'   => $customerid,
 					'amount'       => 0,
 					'points'       => 10
 				);
-				$this->hungry_model->insert_data('tbl_customerpoint', $pointstable);
+				$this->frontend_model->insert_data('tbl_customerpoint', $pointstable);
 			}
 			//insert Coa for Customer Receivable
 			$c_name = $this->input->post('f_name') . " " . $this->input->post('l_name');
@@ -1886,7 +1887,7 @@ class Hungry extends CI_Controller
 			$postData1['DepreciationRate'] = '0';
 			$postData1['CreateBy'] 		= $customerid;
 			$postData1['CreateDate'] 	= $createdate;
-			$this->hungry_model->insert_data('acc_coa', $postData1);
+			$this->frontend_model->insert_data('acc_coa', $postData1);
 
 			$mysesdata = array('CusUserID' => $customerid);
 			$this->session->set_userdata($mysesdata);
@@ -1938,7 +1939,7 @@ class Hungry extends CI_Controller
 		$orderinfo['tokenno']  			= $tokenno;
 		$orderinfo['customer_note'] 	= $this->input->post('ordre_notes');
 		$orderinfo['order_status'] 		= 1;
-		$orderid = $this->hungry_model->insert_data('customer_order', $orderinfo);
+		$orderid = $this->frontend_model->insert_data('customer_order', $orderinfo);
 
 		$taxinfos = $this->taxchecking();
 		if (!empty($taxinfos)) {
@@ -1957,7 +1958,7 @@ class Hungry extends CI_Controller
 			$coupon['orderid']   			= $orderid;
 			$coupon['couponcode']   		= $this->session->userdata('couponcode');
 			$coupon['couponrate']   	    = $this->session->userdata('couponprice');;
-			$this->hungry_model->insert_data('usedcoupon', $coupon);
+			$this->frontend_model->insert_data('usedcoupon', $coupon);
 		}
 
 		//insert bill for online customer
@@ -1973,7 +1974,7 @@ class Hungry extends CI_Controller
 		$bill['zip'] = $this->input->post('postcode');
 		$bill['phone'] = $this->input->post('phone');
 		$bill['DateInserted'] = date('Y-m-d H:i:s');
-		$this->hungry_model->insert_data('tbl_billingaddress', $bill);
+		$this->frontend_model->insert_data('tbl_billingaddress', $bill);
 
 
 		$isdiffship = $this->input->post('isdiffship');
@@ -1991,20 +1992,20 @@ class Hungry extends CI_Controller
 		$ship['phone'] = $this->input->post('phone2');
 		$ship['DateInserted'] = date('Y-m-d H:i:s');
 		if (!empty($isdiffship)) {
-			$this->hungry_model->insert_data('tbl_shippingaddress', $ship);
+			$this->frontend_model->insert_data('tbl_shippingaddress', $ship);
 		} else {
-			$this->hungry_model->insert_data('tbl_shippingaddress', $bill);
+			$this->frontend_model->insert_data('tbl_shippingaddress', $bill);
 		}
 
 
 		//Order transaction
 		$paymentsatus = $this->input->post('card_type');
-		if ($this->hungry_model->orderitem($orderid, $customerid)) {
+		if ($this->frontend_model->orderitem($orderid, $customerid)) {
 			$this->session->set_flashdata('message', display('order_successfully_placed'));
 			$getseting = $this->db->select("storename,email")->from('setting')->get()->row();
 			$ToEmail = $this->input->post('email', TRUE);
 			$htmlContent = SendorderEmail($orderid, $customerid);
-			$send_email = $this->hungry_model->read('*', 'email_config', array('email_config_id' => 1));
+			$send_email = $this->frontend_model->read('*', 'email_config', array('email_config_id' => 1));
 			$config = array(
 				'protocol'  => $send_email->protocol,
 				'smtp_host' => $send_email->smtp_host,
@@ -2081,13 +2082,13 @@ class Hungry extends CI_Controller
 			// curl_close($ch2);
 			/*End Notification*/
 			if ($paymentsatus == 5) {
-				redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
+				redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
 			} else if ($paymentsatus == 8) {
-				redirect('hungry/payments/' . $orderid . '/2');
+				redirect('frontend/payments/' . $orderid . '/2');
 			} else if ($paymentsatus == 9) {
-				redirect('hungry/stripe/' . $orderid . '/2');
+				redirect('frontend/stripe/' . $orderid . '/2');
 			} else if ($paymentsatus == 10) {
-				$paymentinfo = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 10));
+				$paymentinfo = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 10));
 				$nittotal = $this->input->post('grandtotal') * 100;
 				echo '<form>
   <script src="https://js.paystack.co/v1/inline.js"></script>
@@ -2112,7 +2113,7 @@ document.getElementById("paytrack").click();
          ]
       },
       callback: function(response){
-		  window.location.href="' . base_url() . 'hungry/successful/' . $orderid . '/2";
+		  window.location.href="' . base_url() . 'frontend/successful/' . $orderid . '/2";
       },
       onClose: function(){
            window.location.href="' . base_url() . 'menu";
@@ -2122,19 +2123,19 @@ document.getElementById("paytrack").click();
   }
 </script>';
 			} else if ($paymentsatus == 11) {
-				redirect('hungry/paytm/' . $orderid . '/2');
+				redirect('frontend/paytm/' . $orderid . '/2');
 			} else if ($paymentsatus == 12) {
-				redirect('hungry/orange/' . $orderid . '/2');
+				redirect('frontend/orange/' . $orderid . '/2');
 			} else if ($paymentsatus == 6) {
-				redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
+				redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
 			} else if ($paymentsatus == 7) {
-				redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
+				redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
 			} else if ($paymentsatus == 3) {
-				redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
+				redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
 			} else if ($paymentsatus == 2) {
-				redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
+				redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
 			} else if ($paymentsatus == 13) {
-				redirect('hungry/iyzico_paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
+				redirect('frontend/iyzico_paymentgateway/' . $orderid . '/' . $paymentsatus . '/2');
 			} else {
 				if ($paymentsatus != 4 && $paymentsatus != 1) {
 					//dynamic payment moduls
@@ -2166,7 +2167,7 @@ document.getElementById("paytrack").click();
 							'amount'       => "",
 							'points'       => 10
 						);
-						$this->hungry_model->insert_data('tbl_customerpoint', $pointstable2);
+						$this->frontend_model->insert_data('tbl_customerpoint', $pointstable2);
 					}
 				}
 				$WhatsApp = $this->db->where('directory', 'whatsapp')->where('status', 1)->get('module');
@@ -2202,7 +2203,7 @@ document.getElementById("paytrack").click();
 			$mytoken = $this->session->userdata('token');
 			$emailexists = $this->db->select("*")->from('customer_info')->where('customer_name', $customerName)->where('customer_phone', $phone)->where('customer_token', $mytoken)->get()->row();
 			if (empty($emailexists)) {
-				$coa = $this->hungry_model->headcode();
+				$coa = $this->frontend_model->headcode();
 				if ($coa->HeadCode != NULL) {
 					$headcode = $coa->HeadCode + 1;
 				} else {
@@ -2245,14 +2246,14 @@ document.getElementById("paytrack").click();
 				$user['favorite_delivery_address'] = "Not Set";
 				$user['crdate']    = date('Y-m-d');
 				$user['is_active'] = 1;
-				$customerid = $this->hungry_model->insert_data('customer_info', $user);
+				$customerid = $this->frontend_model->insert_data('customer_info', $user);
 				if (!empty($pointsys)) {
 					$pointstable = array(
 						'customerid'   => $customerid,
 						'amount'       => 0,
 						'points'       => 10
 					);
-					$this->hungry_model->insert_data('tbl_customerpoint', $pointstable);
+					$this->frontend_model->insert_data('tbl_customerpoint', $pointstable);
 				}
 				//insert Coa for Customer Receivable
 				$c_name = $this->input->post('customerName', TRUE);
@@ -2271,7 +2272,7 @@ document.getElementById("paytrack").click();
 				$postData1['DepreciationRate'] = '0';
 				$postData1['CreateBy'] 		= $customerid;
 				$postData1['CreateDate'] 	= $createdate;
-				$this->hungry_model->insert_data('acc_coa', $postData1);
+				$this->frontend_model->insert_data('acc_coa', $postData1);
 				$mysesdata = array('CusUserID' => $customerid);
 				$this->session->set_userdata($mysesdata);
 			} else {
@@ -2313,7 +2314,7 @@ document.getElementById("paytrack").click();
 			$orderinfo['table_no']  		= $this->session->userdata('tableid');
 			$orderinfo['customer_note'] 	= $this->input->post('ordernote');
 			$orderinfo['order_status'] 		= 1;
-			$orderid = $this->hungry_model->insert_data('customer_order', $orderinfo);
+			$orderid = $this->frontend_model->insert_data('customer_order', $orderinfo);
 
 
 			//coupon record
@@ -2321,7 +2322,7 @@ document.getElementById("paytrack").click();
 				$coupon['orderid']   			= $orderid;
 				$coupon['couponcode']   		= $this->session->userdata('couponcode');
 				$coupon['couponrate']   	    = $this->session->userdata('couponprice');;
-				$this->hungry_model->insert_data('usedcoupon', $coupon);
+				$this->frontend_model->insert_data('usedcoupon', $coupon);
 			}
 			//insert bill for online customer
 			$bill['orderid'] = $orderid;
@@ -2336,7 +2337,7 @@ document.getElementById("paytrack").click();
 			$bill['zip'] = "";
 			$bill['phone'] = $this->input->post('phone', TRUE);
 			$bill['DateInserted'] = date('Y-m-d H:i:s');
-			$this->hungry_model->insert_data('tbl_billingaddress', $bill);
+			$this->frontend_model->insert_data('tbl_billingaddress', $bill);
 
 			//insert ship for online customer
 			$ship['orderid'] = $orderid;
@@ -2351,17 +2352,17 @@ document.getElementById("paytrack").click();
 			$ship['zip'] = "";
 			$ship['phone'] = $this->input->post('phone', TRUE);
 			$ship['DateInserted'] = date('Y-m-d H:i:s');
-			$this->hungry_model->insert_data('tbl_shippingaddress', $ship);
+			$this->frontend_model->insert_data('tbl_shippingaddress', $ship);
 
 
 			//Order transaction
 			$paymentsatus = $this->input->post('card_type');
-			if ($this->hungry_model->orderitem($orderid, $customerid)) {
+			if ($this->frontend_model->orderitem($orderid, $customerid)) {
 				$this->session->set_flashdata('message', display('order_successfully_placed'));
 				$getseting = $this->db->select("storename,email")->from('setting')->get()->row();
 				$ToEmail = $this->input->post('email', TRUE);
 				$htmlContent = SendorderEmail($orderid, $customerid);
-				$send_email = $this->hungry_model->read('*', 'email_config', array('email_config_id' => 1));
+				$send_email = $this->frontend_model->read('*', 'email_config', array('email_config_id' => 1));
 				$config = array(
 					'protocol'  => $send_email->protocol,
 					'smtp_host' => $send_email->smtp_host,
@@ -2441,13 +2442,13 @@ document.getElementById("paytrack").click();
 				/*End Notification*/
 
 				if ($paymentsatus == 5) {
-					redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
+					redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
 				} else if ($paymentsatus == 8) {
-					redirect('hungry/payments/' . $orderid . '/1');
+					redirect('frontend/payments/' . $orderid . '/1');
 				} else if ($paymentsatus == 9) {
-					redirect('hungry/stripe/' . $orderid . '/1');
+					redirect('frontend/stripe/' . $orderid . '/1');
 				} else if ($paymentsatus == 10) {
-					$paymentinfo = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 10));
+					$paymentinfo = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 10));
 					$nittotal = $this->input->post('grandtotal') * 100;
 					echo '<form>
   <script src="https://js.paystack.co/v1/inline.js"></script>
@@ -2472,7 +2473,7 @@ document.getElementById("paytrack").click();
          ]
       },
       callback: function(response){
-		  window.location.href="' . base_url() . 'hungry/successful/' . $orderid . '/1";
+		  window.location.href="' . base_url() . 'frontend/successful/' . $orderid . '/1";
       },
       onClose: function(){
            window.location.href="' . base_url() . 'qr-menu";
@@ -2482,17 +2483,17 @@ document.getElementById("paytrack").click();
   }
 </script>';
 				} else if ($paymentsatus == 11) {
-					redirect('hungry/paytm/' . $orderid . '/1');
+					redirect('frontend/paytm/' . $orderid . '/1');
 				} else if ($paymentsatus == 12) {
-					redirect('hungry/orange/' . $orderid . '/1');
+					redirect('frontend/orange/' . $orderid . '/1');
 				} else if ($paymentsatus == 6) {
-					redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
+					redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
 				} else if ($paymentsatus == 7) {
-					redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
+					redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
 				} else if ($paymentsatus == 3) {
-					redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
+					redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
 				} else if ($paymentsatus == 2) {
-					redirect('hungry/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
+					redirect('frontend/paymentgateway/' . $orderid . '/' . $paymentsatus . '/1');
 				} else {
 					$mysesdata = array('CusUserID' => $customerid);
 					$this->session->set_userdata($mysesdata);
@@ -2526,11 +2527,11 @@ document.getElementById("paytrack").click();
 								'amount'       => "",
 								'points'       => 10
 							);
-							$this->hungry_model->insert_data('tbl_customerpoint', $pointstable2);
+							$this->frontend_model->insert_data('tbl_customerpoint', $pointstable2);
 						}
 					}
 
-					redirect('hungry/cashpayment/' . $orderid);
+					redirect('frontend/cashpayment/' . $orderid);
 				}
 			} else {
 				$this->session->set_flashdata('exception',  display('please_try_again'));
@@ -2543,8 +2544,8 @@ document.getElementById("paytrack").click();
 	public function cashpayment($orderid)
 	{
 
-		$orderinfor = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$customerinfo 	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $orderinfor->customer_id));
+		$orderinfor = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$customerinfo 	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $orderinfor->customer_id));
 		$icon = base_url('assets/img/applogo.png');
 		$fields3 = array(
 			'to' => $customerinfo->customer_token,
@@ -2589,14 +2590,14 @@ document.getElementById("paytrack").click();
 	{
 		$data['title'] = "Informations de paiement";
 		$data['seoterm'] = "payment_information";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 8));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 8));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $page;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/square', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
@@ -2608,14 +2609,14 @@ document.getElementById("paytrack").click();
 		$data['seoterm'] = "payment_information";
 		$orderid = $this->input->post('orderid', true);
 		$data['orderid']             = $orderid;
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 8));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 8));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $pageid;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/payment-process', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
@@ -2625,14 +2626,14 @@ document.getElementById("paytrack").click();
 	{
 		$data['title'] = "Informations de paiement";
 		$data['seoterm'] = "payment_information";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 11));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 11));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $page;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/paytm', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
@@ -2644,14 +2645,14 @@ document.getElementById("paytrack").click();
 		$data['seoterm'] = "payment_information";
 		$orderid = $this->input->post('orderid', true);
 		$data['orderid']             = $orderid;
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 11));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 11));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$pageid = $this->input->post('pageid', true);
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/PaytmKit/pgRedirect', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
@@ -2661,16 +2662,16 @@ document.getElementById("paytrack").click();
 	{
 		$data['title'] = "Informations de paiement Stripe";
 		$data['seoterm'] = "stripe_payment_information";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 9));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 9));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $page;
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/stripe_view', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -2683,14 +2684,14 @@ document.getElementById("paytrack").click();
 		$currency = $this->input->post('currency', true);
 
 		$data['orderid']             = $orderid;
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$paymentinfo   	          = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 9));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$paymentinfo   	          = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 9));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 
 		\Stripe\Stripe::setApiKey($paymentinfo->marchantid);
 
@@ -2703,15 +2704,15 @@ document.getElementById("paytrack").click();
 
 		$this->session->set_flashdata('success', 'Paiement effectué avec succès.');
 
-		redirect('hungry/successful/' . $orderid . '/' . $pageid, 'refresh');
+		redirect('frontend/successful/' . $orderid . '/' . $pageid, 'refresh');
 	}
 
 	public function orange($orderid, $page = null)
 	{
 		$data['title'] = "Informations de paiement";
 		$data['seoterm'] = "payment_information";
-		$orderinfo  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$paymentinfo  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 12));
+		$orderinfo  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$paymentinfo  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 12));
 		$this->lsoft_setting->payment_by_orange_money_lib($orderid, $orderinfo->customer_id, $paymentinfo->paymentid);
 		echo '<p style="text-align:center">Veuillez patienter........</p>';
 	}
@@ -2720,15 +2721,15 @@ document.getElementById("paytrack").click();
 	{
 		$data['title'] = "Informations de paiement";
 		$data['seoterm'] = "payment_information";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => $paymentid));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	   = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => $paymentid));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	   = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
-		$customer  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
+		$customer  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
 		if ($paymentid == 5) {
 
 			$full_name = $customer->customer_name;
@@ -2744,9 +2745,9 @@ document.getElementById("paytrack").click();
 			$post_data['total_amount'] =  $bill->bill_amount;
 			$post_data['currency'] =  $data['paymentinfo']->currency;
 			$post_data['tran_id'] = $orderid;
-			$post_data['success_url'] =  base_url() . "hungry/successful/" . $orderid . '/' . $page;
-			$post_data['fail_url'] = base_url() . "hungry/fail/" . $orderid . '/' . $page;
-			$post_data['cancel_url'] = base_url() . "hungry/cancilorder/" . $orderid . '/' . $page;
+			$post_data['success_url'] =  base_url() . "frontend/successful/" . $orderid . '/' . $page;
+			$post_data['fail_url'] = base_url() . "frontend/fail/" . $orderid . '/' . $page;
+			$post_data['cancel_url'] = base_url() . "frontend/cancilorder/" . $orderid . '/' . $page;
 			//$post_data['multi_card_name']="mastercard,visacard,amexcard,bkash";
 			# $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
 
@@ -2794,7 +2795,7 @@ document.getElementById("paytrack").click();
 
 			if ($this->sslcommerz->RequestToSSLC($post_data, false)) {
 
-				redirect('hungry/fail/' . $orderid . '/' . $page);
+				redirect('frontend/fail/' . $orderid . '/' . $page);
 			}
 		} else if ($paymentid == 6) {
 			$data['page'] = $page;
@@ -2815,14 +2816,14 @@ document.getElementById("paytrack").click();
 	public function iyzico_paymentgateway($orderid, $paymentid, $page = null)
 	{
 		$data['title'] = "Informations de paiement";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => $paymentid));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	   = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => $paymentid));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	   = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 
 
 		$value =  $this->load->library('Iyzipaybootstrap');
@@ -2845,7 +2846,7 @@ document.getElementById("paytrack").click();
 		$request->setBasketId($orderid);
 		$request->setPaymentGroup(\Iyzipay\Model\PaymentGroup::PRODUCT);
 		if ($page == 2) {
-			$request->setCallbackUrl(base_url() . "hungry/successful/" . $orderid . '/2');
+			$request->setCallbackUrl(base_url() . "frontend/successful/" . $orderid . '/2');
 		} else {
 			$request->setCallbackUrl(base_url() . "qr-menu");
 		}
@@ -2903,7 +2904,7 @@ document.getElementById("paytrack").click();
 				$u = 0;
 				$price = $item_info->price * $item_info->menuqty;
 				foreach ($addonsid as $value) {
-					$add_ons = $this->hungry_model->read('*', 'add_ons', array('add_on_id' => $value));
+					$add_ons = $this->frontend_model->read('*', 'add_ons', array('add_on_id' => $value));
 					$price = $price + ($add_ons->price) * $addonsqty[$u];
 					$u++;
 				}
@@ -2936,8 +2937,8 @@ document.getElementById("paytrack").click();
 
 	public function successful($orderid, $page = null)
 	{
-		$billinfo = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$orderinfo  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$billinfo = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$orderinfo  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
 		$customerid 	   = $orderinfo->customer_id;
 		$scan = scandir('application/modules/');
 		$getcus = "";
@@ -2966,7 +2967,7 @@ document.getElementById("paytrack").click();
 					'amount'       => $totalgrtotal,
 					'points'       => $thisordpoint + 10
 				);
-				$this->hungry_model->insert_data('tbl_customerpoint', $pointstable2);
+				$this->frontend_model->insert_data('tbl_customerpoint', $pointstable2);
 			} else {
 				$pamnt = $isexitscusp->amount + $totalgrtotal;
 				$tpoints = $isexitscusp->points + $thisordpoint;
@@ -3055,8 +3056,8 @@ document.getElementById("paytrack").click();
 	{
 		$orderid = $this->input->post('li_0_name');
 
-		$billinfo = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$orderinfo  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$billinfo = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$orderinfo  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
 		$customerid 	   = $orderinfo->customer_id;
 		$scan = scandir('application/modules/');
 		$getcus = "";
@@ -3085,7 +3086,7 @@ document.getElementById("paytrack").click();
 					'amount'       => $totalgrtotal,
 					'points'       => $thisordpoint + 10
 				);
-				$this->hungry_model->insert_data('tbl_customerpoint', $pointstable2);
+				$this->frontend_model->insert_data('tbl_customerpoint', $pointstable2);
 			} else {
 				$pamnt = $isexitscusp->amount + $totalgrtotal;
 				$tpoints = $isexitscusp->points + $thisordpoint;
@@ -3195,14 +3196,14 @@ document.getElementById("paytrack").click();
 		$product  = $this->session->userdata('product_id');
 		$category = $this->session->userdata('categoryid');
 		if ($this->themeinfo->themename == "modern") {
-			$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '11'));
-			$data["categorylist"] = $this->hungry_model->categories();
+			$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '11'));
+			$data["categorylist"] = $this->frontend_model->categories();
 			$start = $this->input->post('start');
 			$limit = $this->input->post('limit');
-			$data["searchresult"] = $this->hungry_model->searchinfo($product = null, $category = null, $limit, $start);
-			$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
-			$data['delivarytime'] =  $this->hungry_model->read_all('*', 'tbl_delivaritime', '', '', '', '');
-			$data['totalrows'] =  $this->hungry_model->count_totalitem($product, $category);
+			$data["searchresult"] = $this->frontend_model->searchinfo($product = null, $category = null, $limit, $start);
+			$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'shipping_method', 'ship_id', '', 'is_active', '1');
+			$data['delivarytime'] =  $this->frontend_model->read_all('*', 'tbl_delivaritime', '', '', '', '');
+			$data['totalrows'] =  $this->frontend_model->count_totalitem($product, $category);
 			$countall = $data['totalrows'];
 			if ($page == 0) {
 				$initial = 1;
@@ -3219,13 +3220,13 @@ document.getElementById("paytrack").click();
 			}
 			$data['showing'] = "Montrant  " . $initial . " - " . $numrecord . " sur " . $config['total_rows'];
 		} else {
-			$data['offerimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '8'));
-			$data["searchresult"] = $this->hungry_model->searchinfo($product, $category, '', '');
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-			$data['ads'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => 4));
-			$data["categorylist"] = $this->hungry_model->categories();
-			$data["deals"] = $this->hungry_model->todaydeals();
-			$data['totalrows'] =  $this->hungry_model->count_totalitem($product, $category);
+			$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '8'));
+			$data["searchresult"] = $this->frontend_model->searchinfo($product, $category, '', '');
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['ads'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => 4));
+			$data["categorylist"] = $this->frontend_model->categories();
+			$data["deals"] = $this->frontend_model->todaydeals();
+			$data['totalrows'] =  $this->frontend_model->count_totalitem($product, $category);
 			$countall = $data['totalrows'];
 			if ($page == 0) {
 				$initial = 1;
@@ -3267,14 +3268,18 @@ document.getElementById("paytrack").click();
 		}
 		$data['title'] = "À propos de nous";
 		$data['seoterm'] = "about_us";
-		$data['banner_story'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '2');
-		$data['banner_menu'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '3');
-		$data['foodhistory'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '5');
-		$data['gallery'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '7');
-		$data['banner_modern'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', '', 'delation_status', 'Sltypeid', '13');
-		$data['banner_middle'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '15'));
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-		$data['ourteam'] =  $this->hungry_model->ourteam();
+		$data['banner_story'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '2');
+		$data['banner_menu'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '3');
+		$data['foodhistory'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '5');
+		$data['gallery'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '7');
+		$data['banner_modern'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', '', 'delation_status', 'Sltypeid', '13');
+		$data['banner_middle'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '15'));
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['ourteam'] =  $this->frontend_model->ourteam();
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
+        // exit;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/about', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -3287,9 +3292,9 @@ document.getElementById("paytrack").click();
 		}
 		$data['title'] = "Contactez nous";
 		$data['seoterm'] = "contact_us";
-		$data['slider_info'] =  $this->hungry_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '1');
-		$data['contactimg'] =  $this->hungry_model->read('*', 'tbl_slider', array('Sltypeid' => '10'));
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['slider_info'] =  $this->frontend_model->read_all_slider('*', 'tbl_slider', 'slid', 'delation_status', 'Sltypeid', '1');
+		$data['contactimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '10'));
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/contact', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -3297,7 +3302,7 @@ document.getElementById("paytrack").click();
 	public function sendemail()
 	{
 
-		$send_email = $this->hungry_model->read('*', 'email_config', array('email_config_id' => 1));
+		$send_email = $this->frontend_model->read('*', 'email_config', array('email_config_id' => 1));
 		$fullname = $this->input->post('firstname', TRUE) . ' ' . $this->input->post('lastname', TRUE);
 		$email = $this->input->post('email', TRUE);
 		$text = $this->input->post('comments', TRUE);
@@ -3380,9 +3385,9 @@ document.getElementById("paytrack").click();
 	{
 		$fromemail = $this->input->post('email');
 		$subject = "Souscription Client";
-		$exitsemail = $this->hungry_model->read('*', 'subscribe_emaillist', array('email' => $fromemail));
+		$exitsemail = $this->frontend_model->read('*', 'subscribe_emaillist', array('email' => $fromemail));
 		if (empty($exitsemail)) {
-			$send_email = $this->hungry_model->read('*', 'email_config', array('email_config_id' => 1));
+			$send_email = $this->frontend_model->read('*', 'email_config', array('email_config_id' => 1));
 			$config = array(
 				'protocol'  => $send_email->protocol,
 				'smtp_host' => $send_email->smtp_host,
@@ -3406,7 +3411,7 @@ document.getElementById("paytrack").click();
 			$this->email->send();
 			$subs['email'] 		        = $fromemail;
 			$subs['dateinsert'] 		= date('Y-m-d H:i:s');
-			$this->hungry_model->insert_data('subscribe_emaillist', $subs);
+			$this->frontend_model->insert_data('subscribe_emaillist', $subs);
 		}
 	}
 
@@ -3418,7 +3423,7 @@ document.getElementById("paytrack").click();
 		}
 		$data['title'] = "Politique de confidentialité";
 		$data['seoterm'] = "privacy_policy";
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/privacy', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -3431,7 +3436,7 @@ document.getElementById("paytrack").click();
 		}
 		$data['title'] = "Nos termes et conditions";
 		$data['seoterm'] = "our_terms";
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/terms', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}
@@ -3440,7 +3445,7 @@ document.getElementById("paytrack").click();
 	{
 		$data['title'] = "Nos termes et conditions";
 		$data['seoterm'] = "our_terms";
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$this->load->view('themes/' . $this->themeinfo->themename . '/termsqr', $data);
 	}
 
@@ -3448,7 +3453,7 @@ document.getElementById("paytrack").click();
 	{
 		$data['title'] = "Politiques de remboursement";
 		$data['seoterm'] = "refundpolity";
-		$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$this->load->view('themes/' . $this->themeinfo->themename . '/returnpolicyqr', $data);
 	}
 
@@ -3460,8 +3465,8 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('mylogin');
 		} else {
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 			$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/profile', $data, TRUE);
 			$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 		}
@@ -3474,7 +3479,7 @@ document.getElementById("paytrack").click();
 		$this->form_validation->set_rules('mobile', 'Mobile', 'required');
 		$Customerid = $this->input->post('Customerid');
 		if ($this->form_validation->run()) {
-			$custinfo = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $Customerid));
+			$custinfo = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $Customerid));
 
 			if (!empty($custinfo)) {
 				if ($this->input->post('password') == '') {
@@ -3484,7 +3489,7 @@ document.getElementById("paytrack").click();
 				}
 				$customernum = $custinfo->cuntomer_no;
 				$headname = $custinfo->cuntomer_no . '-' . $custinfo->customer_name;
-				$coa = $this->hungry_model->read('*', 'acc_coa', array('HeadName' => $headname));
+				$coa = $this->frontend_model->read('*', 'acc_coa', array('HeadName' => $headname));
 				$coaheadid = $coa->HeadCode;
 
 				//logo upload
@@ -3512,7 +3517,7 @@ document.getElementById("paytrack").click();
 				$updatetData['customer_phone']      		= $this->input->post('mobile', TRUE);
 				$updatetData['customer_picture']      		= (!empty($logo) ? $logo : $this->input->post('oldimage'));
 				$updatetData['favorite_delivery_address']  = $this->input->post('favouriteaddress', TRUE);
-				$update = $this->hungry_model->update_info('customer_info', $updatetData, 'customer_id', $Customerid);
+				$update = $this->frontend_model->update_info('customer_info', $updatetData, 'customer_id', $Customerid);
 
 
 				if ($update) {
@@ -3545,9 +3550,9 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('mylogin');
 		} else {
-			$data['iteminfo'] = $this->hungry_model->myorderlist($islogin);
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['iteminfo'] = $this->frontend_model->myorderlist($islogin);
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 			$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/myorderlist', $data, TRUE);
 			$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 		}
@@ -3560,9 +3565,9 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('qr-menu');
 		} else {
-			$data['iteminfo'] = $this->hungry_model->myorderlist($islogin);
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['iteminfo'] = $this->frontend_model->myorderlist($islogin);
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
 			$this->load->view('themes/' . $this->themeinfo->themename . '/apporderlist', $data);
 		}
 	}
@@ -3575,12 +3580,12 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('mylogin');
 		} else {
-			$customerorder = $this->hungry_model->read('*', 'customer_order', array('order_id' => $id));
+			$customerorder = $this->frontend_model->read('*', 'customer_order', array('order_id' => $id));
 			$data['orderinfo']  	   = $customerorder;
-			$data['billinfo']	   = $this->hungry_model->billinfo($id);
-			$data['iteminfo'] = $this->hungry_model->customerorder($id);
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['billinfo']	   = $this->frontend_model->billinfo($id);
+			$data['iteminfo'] = $this->frontend_model->customerorder($id);
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 			$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/vieworder', $data, TRUE);
 			$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 		}
@@ -3593,12 +3598,12 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('qr-menu');
 		} else {
-			$customerorder = $this->hungry_model->read('*', 'customer_order', array('order_id' => $id));
+			$customerorder = $this->frontend_model->read('*', 'customer_order', array('order_id' => $id));
 			$data['orderinfo']  	   = $customerorder;
-			$data['billinfo']	   = $this->hungry_model->billinfo($id);
-			$data['iteminfo'] = $this->hungry_model->customerorder($id);
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['billinfo']	   = $this->frontend_model->billinfo($id);
+			$data['iteminfo'] = $this->frontend_model->customerorder($id);
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
 			$this->load->view('themes/' . $this->themeinfo->themename . '/popupview', $data);
 		}
 	}
@@ -3611,13 +3616,13 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('qr-menu');
 		} else {
-			$data["categorylist"] = $this->hungry_model->categories();
-			$customerorder = $this->hungry_model->read('*', 'customer_order', array('order_id' => $id));
+			$data["categorylist"] = $this->frontend_model->categories();
+			$customerorder = $this->frontend_model->read('*', 'customer_order', array('order_id' => $id));
 			$data['orderinfo']  	   = $customerorder;
-			$data['billinfo']	   = $this->hungry_model->billinfo($id);
-			$data['iteminfo'] = $this->hungry_model->customerorder($id);
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['billinfo']	   = $this->frontend_model->billinfo($id);
+			$data['iteminfo'] = $this->frontend_model->customerorder($id);
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
 			$this->load->view('themes/' . $this->themeinfo->themename . '/updateorder', $data);
 		}
 	}
@@ -3629,16 +3634,16 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('qr-menu');
 		} else {
-			$data["categorylist"] = $this->hungry_model->categories();
-			$customerorder = $this->hungry_model->read('*', 'customer_order', array('order_id' => $id));
+			$data["categorylist"] = $this->frontend_model->categories();
+			$customerorder = $this->frontend_model->read('*', 'customer_order', array('order_id' => $id));
 			$data['storesetting'] = $this->db->select('*')->from('setting')->where('id', 2)->get()->row();
 
 			$data['orderinfo']  	   = $customerorder;
-			$data['billinfo']	   = $this->hungry_model->billinfo($id);
-			$data['iteminfo'] = $this->hungry_model->customerorder($id);
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
-			$data['shippinginfo'] =  $this->hungry_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
+			$data['billinfo']	   = $this->frontend_model->billinfo($id);
+			$data['iteminfo'] = $this->frontend_model->customerorder($id);
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['shippinginfo'] =  $this->frontend_model->read_all('*', 'payment_method', 'payment_method_id', '', 'is_active', '1');
 			$this->load->view('themes/' . $this->themeinfo->themename . '/updatecart', $data);
 		}
 	}
@@ -3678,7 +3683,7 @@ document.getElementById("paytrack").click();
 			$atprice = '0';
 		}
 
-		$orderchecked = $this->hungry_model->check_order($orderid, $pid, $sizeid);
+		$orderchecked = $this->frontend_model->check_order($orderid, $pid, $sizeid);
 		if (empty($orderchecked)) {
 			$postInfo = array(
 				'order_id'      => $orderid,
@@ -3689,7 +3694,7 @@ document.getElementById("paytrack").click();
 				'varientid'     => $sizeid,
 				'isupdate'     => 1,
 			);
-			$this->hungry_model->new_entry($postInfo);
+			$this->frontend_model->new_entry($postInfo);
 		} else {
 			$udata = array(
 				'menuqty'       => $qty,
@@ -3702,7 +3707,7 @@ document.getElementById("paytrack").click();
 			$this->db->where('varientid', $sizeid);
 			$this->db->update('order_menu', $udata);
 		}
-		$existingitem = $this->hungry_model->customerorder($orderid);
+		$existingitem = $this->frontend_model->customerorder($orderid);
 
 
 		$i = 0;
@@ -3717,7 +3722,7 @@ document.getElementById("paytrack").click();
 				$addonsqty = explode(",", $item->addonsqty);
 				$x = 0;
 				foreach ($addons as $addonsid) {
-					$adonsinfo = $this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+					$adonsinfo = $this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 					$adonsprice = $adonsprice + $adonsinfo->price * $addonsqty[$x];
 					$x++;
 				}
@@ -3748,8 +3753,8 @@ document.getElementById("paytrack").click();
 			'totalamount'     => $updatedprice,
 		);
 
-		$this->hungry_model->update_order($postData);
-		$this->hungry_model->payment_info($orderid, $calvat, $scharge, $discount, $subtotal, $updatedprice);
+		$this->frontend_model->update_order($postData);
+		$this->frontend_model->payment_info($orderid, $calvat, $scharge, $discount, $subtotal, $updatedprice);
 		echo '<h6 class="mb-0">' . $updatedprice . '</h6>';
 	}
 
@@ -3763,8 +3768,8 @@ document.getElementById("paytrack").click();
 		$newtotal = $ctotal + $cvat - $cdiscount;
 		$settinginfo = $this->settinginfo;
 		$data['settinginfo'] = $settinginfo;
-		$orderinfo = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$oldbillinfo = $this->hungry_model->billinfo($orderid);
+		$orderinfo = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$oldbillinfo = $this->frontend_model->billinfo($orderid);
 		if ($cart = $this->cart->contents()) {
 			foreach ($cart as $item) {
 				$total = $this->cart->total();
@@ -3779,7 +3784,7 @@ document.getElementById("paytrack").click();
 				$new_str = str_replace(',', '0', $item['addonsid']);
 				$new_str2 = str_replace(',', '0', $item['addonsqty']);
 				$uaid = $item['pid'] . $new_str . $new_str2 . $item['sizeid'];
-				$orderchecked = $this->hungry_model->check_order($orderid, $item['pid'], $item['sizeid'], $uaid);
+				$orderchecked = $this->frontend_model->check_order($orderid, $item['pid'], $item['sizeid'], $uaid);
 				if (empty($orderchecked)) {
 					$data3 = array(
 						'order_id'				=>	$orderid,
@@ -3817,7 +3822,7 @@ document.getElementById("paytrack").click();
 				}
 			}
 		}
-		$existingitem = $this->hungry_model->customerorder($orderid);
+		$existingitem = $this->frontend_model->customerorder($orderid);
 		$i = 0;
 		$totalamount = 0;
 		$subtotal = 0;
@@ -3829,7 +3834,7 @@ document.getElementById("paytrack").click();
 				$addonsqty = explode(",", $item->addonsqty);
 				$x = 0;
 				foreach ($addons as $addonsid) {
-					$adonsinfo = $this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+					$adonsinfo = $this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 					$adonsprice = $adonsprice + $adonsinfo->price * $addonsqty[$x];
 					$x++;
 				}
@@ -3856,11 +3861,11 @@ document.getElementById("paytrack").click();
 			'totalamount'     => $updatedprice,
 			'isupdate'        => 1,
 		);
-		$this->hungry_model->update_order($postData);
+		$this->frontend_model->update_order($postData);
 		/*$updatetData['discount']    		=$oldbillinfo->discount+$cdiscount;
-	    $this->hungry_model->update_info('bill',$updatetData,'bill_id',$oldbillinfo->bill_id);*/
-		$billinfo = $this->hungry_model->billinfo($orderid);
-		$this->hungry_model->payment_info($orderid, $calvat, $scharge, $discount, $subtotal, $updatedprice);
+	    $this->frontend_model->update_info('bill',$updatetData,'bill_id',$oldbillinfo->bill_id);*/
+		$billinfo = $this->frontend_model->billinfo($orderid);
+		$this->frontend_model->payment_info($orderid, $calvat, $scharge, $discount, $subtotal, $updatedprice);
 		$this->session->set_flashdata('message', display('ord_uodate_success'));
 		$this->cart->destroy();
 		if ($billinfo->payment_method_id == 4) {
@@ -3871,17 +3876,17 @@ document.getElementById("paytrack").click();
 					'order_id'        => $orderid,
 					'customerpaid'     => $orderinfo->totalamount,
 				);
-				$this->hungry_model->update_order($postData2);
+				$this->frontend_model->update_order($postData2);
 				redirect('apporedrlist');
 			} else {
 				if ($paymentsatus == 5) {
-					redirect('hungry/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
+					redirect('frontend/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
 				} else if ($paymentsatus == 8) {
 					redirect('paymentsqr/' . $orderid . '/1/' . $newtotal);
 				} else if ($paymentsatus == 9) {
-					redirect('hungry/stripeqr/' . $orderid . '/1/' . $newtotal);
+					redirect('frontend/stripeqr/' . $orderid . '/1/' . $newtotal);
 				} else if ($paymentsatus == 10) {
-					$paymentinfo = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 10));
+					$paymentinfo = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 10));
 					echo '<form>
 					<script src="https://js.paystack.co/v1/inline.js"></script>
 					<button type="button" onclick="payWithPaystack()" id="paytrack" style="display:none;"> Payr </button> 
@@ -3905,7 +3910,7 @@ document.getElementById("paytrack").click();
 							]
 						},
 						callback: function(response){
-							window.location.href="' . base_url() . 'hungry/successfulqr/' . $orderid . '/1";
+							window.location.href="' . base_url() . 'frontend/successfulqr/' . $orderid . '/1";
 						},
 						onClose: function(){
 							window.location.href="' . base_url() . 'apporedrlist";
@@ -3915,17 +3920,17 @@ document.getElementById("paytrack").click();
 					}
 					</script>';
 				} else if ($paymentsatus == 11) {
-					redirect('hungry/paytmqr/' . $orderid . '/1/' . $newtotal);
+					redirect('frontend/paytmqr/' . $orderid . '/1/' . $newtotal);
 				} else if ($paymentsatus == 12) {
-					redirect('hungry/orangeqr/' . $orderid . '/1/' . $newtotal);
+					redirect('frontend/orangeqr/' . $orderid . '/1/' . $newtotal);
 				} else if ($paymentsatus == 6) {
-					redirect('hungry/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
+					redirect('frontend/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
 				} else if ($paymentsatus == 7) {
-					redirect('hungry/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
+					redirect('frontend/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
 				} else if ($paymentsatus == 3) {
-					redirect('hungry/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
+					redirect('frontend/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
 				} else if ($paymentsatus == 2) {
-					redirect('hungry/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
+					redirect('frontend/paymentgatewayqr/' . $orderid . '/' . $paymentsatus . '/1/' . $newtotal);
 				}
 			}
 		}
@@ -3934,14 +3939,14 @@ document.getElementById("paytrack").click();
 	public function paymentsqr($orderid, $page = null, $newtotal)
 	{
 		$data['title'] = "Informations de paiement";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 8));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 8));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $page;
 		$data['grandtotal'] = $newtotal;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/squareqr', $data, TRUE);
@@ -3955,14 +3960,14 @@ document.getElementById("paytrack").click();
 		$pageid = $this->input->post('pageid', true);
 		$grandtotal = $this->input->post('amount', true);
 		$data['orderid']             = $orderid;
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 8));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 8));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $pageid;
 		$data['grandtotal'] = $grandtotal;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/payment-processqr', $data, TRUE);
@@ -3972,14 +3977,14 @@ document.getElementById("paytrack").click();
 	public function paytmqr($orderid, $page = null, $newtotal)
 	{
 		$data['title'] = "Informations de paiement";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 11));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 11));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $page;
 		$data['grandtotal'] = $newtotal;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/paytmqr', $data, TRUE);
@@ -3991,14 +3996,14 @@ document.getElementById("paytrack").click();
 		$data['title'] = "Informations de paiement";
 		$orderid = $this->input->post('orderid', true);
 		$data['orderid']             = $orderid;
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 11));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 11));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$pageid = $this->input->post('pageid', true);
 		$grandtotal = $this->input->post('amount', true);
 		$data['grandtotal'] = $grandtotal;
@@ -4009,14 +4014,14 @@ document.getElementById("paytrack").click();
 	public function stripeqr($orderid, $page, $newtotal)
 	{
 		$data['title'] = "Informations de paiement Stripe";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 9));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 9));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 		$data['page'] = $page;
 		$data['grandtotal'] = $newtotal;
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/stripe_viewqr', $data, TRUE);
@@ -4032,14 +4037,14 @@ document.getElementById("paytrack").click();
 		$pageid = $this->input->post('pageid', true);
 
 		$data['orderid']             = $orderid;
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$paymentinfo   	          = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 9));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill  	                   = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	       = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$paymentinfo   	          = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 9));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill  	                   = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	       = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
 
 		\Stripe\Stripe::setApiKey($paymentinfo->marchantid);
 
@@ -4052,14 +4057,14 @@ document.getElementById("paytrack").click();
 
 		$this->session->set_flashdata('success', 'Paiement effectué avec succès.');
 
-		redirect('hungry/successfulqr/' . $orderid . '/' . $pageid, 'refresh');
+		redirect('frontend/successfulqr/' . $orderid . '/' . $pageid, 'refresh');
 	}
 
 	public function orangeqr($orderid, $page = null, $newtotal)
 	{
 		$data['title'] = "Informations de paiement";
-		$orderinfo  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$paymentinfo  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => 12));
+		$orderinfo  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$paymentinfo  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => 12));
 		$this->lsoft_setting->payment_by_orange_money_libqr($orderid, $orderinfo->customer_id, $paymentinfo->paymentid, $page, $newtotal);
 		echo '<p style="text-align:center">Veuillez patienter........</p>';
 	}
@@ -4067,15 +4072,15 @@ document.getElementById("paytrack").click();
 	public function paymentgatewayqr($orderid, $paymentid, $page = null, $newtotal)
 	{
 		$data['title'] = "Informations de paiement";
-		$data['orderinfo']  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['paymentinfo']  	   = $this->hungry_model->read('*', 'paymentsetup', array('paymentid' => $paymentid));
-		$data['customerinfo']  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
-		$bill = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$data['billinfo']  	   = $this->hungry_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
+		$data['orderinfo']  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['paymentinfo']  	   = $this->frontend_model->read('*', 'paymentsetup', array('paymentid' => $paymentid));
+		$data['customerinfo']  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$bill = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$data['billinfo']  	   = $this->frontend_model->read('*', 'bill_card_payment', array('bill_id' => $bill->bill_id));
 
-		$data['iteminfo']       = $this->hungry_model->customerorder($orderid);
-		$data['mybill']	   = $this->hungry_model->billinfo($orderid);
-		$customer  	   = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
+		$data['iteminfo']       = $this->frontend_model->customerorder($orderid);
+		$data['mybill']	   = $this->frontend_model->billinfo($orderid);
+		$customer  	   = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $data['orderinfo']->customer_id));
 		if ($paymentid == 5) {
 
 			$full_name = $customer->customer_name;
@@ -4091,9 +4096,9 @@ document.getElementById("paytrack").click();
 			$post_data['total_amount'] =  $newtotal;
 			$post_data['currency'] =  $data['paymentinfo']->currency;
 			$post_data['tran_id'] = $orderid;
-			$post_data['success_url'] =  base_url() . "hungry/successful/" . $orderid . '/' . $page;
-			$post_data['fail_url'] = base_url() . "hungry/fail/" . $orderid . '/' . $page;
-			$post_data['cancel_url'] = base_url() . "hungry/cancilorder/" . $orderid . '/' . $page;
+			$post_data['success_url'] =  base_url() . "frontend/successful/" . $orderid . '/' . $page;
+			$post_data['fail_url'] = base_url() . "frontend/fail/" . $orderid . '/' . $page;
+			$post_data['cancel_url'] = base_url() . "frontend/cancilorder/" . $orderid . '/' . $page;
 			# $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
 
 			# EMI INFO
@@ -4140,7 +4145,7 @@ document.getElementById("paytrack").click();
 
 			if ($this->sslcommerz->RequestToSSLC($post_data, false)) {
 
-				redirect('hungry/fail/' . $orderid . '/' . $page);
+				redirect('frontend/fail/' . $orderid . '/' . $page);
 			}
 		} else if ($paymentid == 6) {
 			$data['page'] = $page;
@@ -4164,8 +4169,8 @@ document.getElementById("paytrack").click();
 
 	public function successfulqr($orderid, $page = null)
 	{
-		$billinfo = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$orderinfo  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$billinfo = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$orderinfo  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
 		$customerid 	   = $orderinfo->customer_id;
 
 		$cusinfo = $this->db->select('*')->from('customer_info')->where('customer_id', $orderinfo->customer_id)->get()->row();
@@ -4221,8 +4226,8 @@ document.getElementById("paytrack").click();
 	{
 		$orderid = $this->input->post('li_0_name');
 
-		$billinfo = $this->hungry_model->read('*', 'bill', array('order_id' => $orderid));
-		$orderinfo  	       = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$billinfo = $this->frontend_model->read('*', 'bill', array('order_id' => $orderid));
+		$orderinfo  	       = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
 		$customerid 	   = $orderinfo->customer_id;
 
 		$cusinfo = $this->db->select('*')->from('customer_info')->where('customer_id', $orderinfo->customer_id)->get()->row();
@@ -4279,9 +4284,9 @@ document.getElementById("paytrack").click();
 		if (empty($islogin)) {
 			redirect('mylogin');
 		} else {
-			$data['reserveinfo']  	   = $this->hungry_model->customerreservation($islogin);
-			$data['customerinfo'] = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $islogin));
-			$data['openclosetime'] =  $this->hungry_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+			$data['reserveinfo']  	   = $this->frontend_model->customerreservation($islogin);
+			$data['customerinfo'] = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $islogin));
+			$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 			$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/myreservation', $data, TRUE);
 			$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 		}
@@ -4314,9 +4319,9 @@ document.getElementById("paytrack").click();
                 //file is not writeable
                 return false;
             }*/
-		/*$replace=  '$route["default_controller"] = "hungry";';
+		/*$replace=  '$route["default_controller"] = "frontend";';
             //set a flag
-            $flag     = '$route["default_controller"] = "hungry";';
+            $flag     = '$route["default_controller"] = "frontend";';
 			$config_file=APPPATH."config\\routes.php";
 			$routes_data = file_get_contents($config_file);*/
 		//$pattern = '/[^\n]*default_controller[^\n]*/';

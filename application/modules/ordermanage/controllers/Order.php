@@ -4757,7 +4757,7 @@ class Order extends MX_Controller
 		$this->session->set_flashdata('message', display('order_successfully'));
 
 		if (empty($this->session->userdata('id'))) {
-			redirect('hungry/orderdelevered/001');
+			redirect('frontend/orderdelevered/001');
 		} else {
 			redirect('ordermanage/order/pos_invoice/' . $orderid);
 		}

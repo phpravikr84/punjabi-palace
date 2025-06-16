@@ -3,7 +3,7 @@
 $activethemeinfo = $this->themeinfo;
 $acthemename = $activethemeinfo->themename;?>              
 
-<?php echo  form_open('hungry/bookreservation',array('id'=>'reservesubmit')) ?>
+<?php echo  form_open('frontend/bookreservation',array('id'=>'reservesubmit')) ?>
       
                     
                     <div class="form-group row bookinfo">

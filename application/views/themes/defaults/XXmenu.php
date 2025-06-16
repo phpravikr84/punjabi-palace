@@ -130,7 +130,7 @@ $acthemename = $activethemeinfo->themename;
                                 </a>
                             </figure>
                             <a href="<?php echo base_url() . 'details/' . $deals->ProductsID . '/' . $deals->variantid; ?>" class="h6"><?php echo $deals->ProductName ?></a>
-                            <?php $ratingp = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $deals->ProductsID);
+                            <?php $ratingp = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $deals->ProductsID);
                             if (!empty($ratingp)) {
                                 $averagerating = round(number_format($ratingp->averagerating, 1));
                             ?>
@@ -235,7 +235,7 @@ $acthemename = $activethemeinfo->themename;
                                 </div>
                                 <div class="item_details col-lg-6 col-sm-5 pl-0">
                                     <a href="<?php echo base_url() . 'details/' . $menuitem->ProductsID . '/' . $menuitem->variantid; ?>" class="item_title"><?php echo $menuitem->ProductName ?></a>
-                                    <?php $ratingp = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $menuitem->ProductsID);
+                                    <?php $ratingp = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $menuitem->ProductsID);
                                     if (!empty($ratingp)) {
                                         $averagerating = round(number_format($ratingp->averagerating, 1));
                                     ?>
@@ -381,7 +381,7 @@ $acthemename = $activethemeinfo->themename;
                         $pvat = 0;
                         foreach ($cart as $item) {
                             $itemprice = $item['price'] * $item['qty'];
-                            $iteminfo = $this->hungry_model->getiteminfo($item['pid']);
+                            $iteminfo = $this->frontend_model->getiteminfo($item['pid']);
                             $mypdiscountprice = 0;
                             if (!empty($taxinfos)) {
                                 $tx = 0;

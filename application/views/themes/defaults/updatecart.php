@@ -119,7 +119,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
                     	<?php $i=0; 
 						foreach ($cart as $item){
 										$itemprice= $item['price']*$item['qty'];
-										$iteminfo=$this->hungry_model->getiteminfo($item['pid']);
+										$iteminfo=$this->frontend_model->getiteminfo($item['pid']);
 										$vatcalc=$itemprice*$iteminfo->productvat/100;
 										$pvat=$pvat+$vatcalc;
 										if($iteminfo->OffersRate>0){
@@ -201,7 +201,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
 							$discount=0;
 							foreach ($this->cart->contents() as $item){
 										$itemprice= $item['price']*$item['qty'];
-								        $iteminfo=$this->hungry_model->getiteminfo($item['pid']);
+								        $iteminfo=$this->frontend_model->getiteminfo($item['pid']);
 										$vatcalc=$itemprice*$iteminfo->productvat/100;
 										$pvat=$pvat+$vatcalc;
 										if($iteminfo->OffersRate>0){
@@ -244,7 +244,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
                 </div>
             </div>
 
-            <?php echo form_open('hungry/updateqrorder','method="post" class="order_form"')?>
+            <?php echo form_open('frontend/updateqrorder','method="post" class="order_form"')?>
             <input name="orderid" id="orderid" type="hidden" value="<?php echo $orderinfo->order_id;?>" />
              <?php if($billinfo->payment_method_id==4){?>
             <input name="vat" id="vat" type="hidden" value="<?php echo $calvat;?>" />

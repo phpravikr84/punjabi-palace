@@ -16,7 +16,7 @@
     </div>
 </div>
 <!--END HEADER TOP-->
-<?php if ($title2 == 'Welcome to Hungry') { ?>
+<?php if ($title2 == 'Welcome to frontend') { ?>
     <!--START SLIDER PART-->
     <div class="main_slider owl-carousel">
         <?php foreach ($slider_info as $slider) { ?>
@@ -136,7 +136,7 @@ if (!empty($reservation)) {
                                 <input type="text" name="reservation_contact" id="reservation_contact" placeholder="<?php echo display('reservation_contact')?>" autocomplete="off">
                             </div>
                             <div class="col-lg-12">
-                                <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("hungry/checkavailablity"); ?>" />
+                                <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("frontend/checkavailablity"); ?>" />
                                 <button type="button" class="simple_btn" onclick="checkavailablity()"><?php echo display('book_table')?></button>
                             </div>
                         </div>

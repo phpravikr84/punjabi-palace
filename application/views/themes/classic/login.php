@@ -43,7 +43,7 @@
                              <label for="brand1"><?php echo display('remember_me')?></label>
                              <a href="javascript:void(0);" class="lost-pass classic-lostpass" data-toggle="modal" data-target="#lostpassword" data-dismiss="modal"><u><?php echo display('forgot_password')?></u></a>
                          </div>
-                         <a class="btn btn-success btn-sm search classic-login" onclick="logincustomer();"><?php echo display('login')?></a>&nbsp; <?php echo display('or')?> &nbsp;<a href="<?php echo base_url() . 'hungry/signup' ?>" class="btn btn-success btn-sm search"><?php echo display('register')?></a><?php $facrbooklogn = $this->db->where('directory', 'facebooklogin')->where('status', 1)->get('module')->num_rows(); if ($facrbooklogn == 1) { ?>&nbsp; <?php echo display('or')?> &nbsp;
+                         <a class="btn btn-success btn-sm search classic-login" onclick="logincustomer();"><?php echo display('login')?></a>&nbsp; <?php echo display('or')?> &nbsp;<a href="<?php echo base_url() . 'frontend/signup' ?>" class="btn btn-success btn-sm search"><?php echo display('register')?></a><?php $facrbooklogn = $this->db->where('directory', 'facebooklogin')->where('status', 1)->get('module')->num_rows(); if ($facrbooklogn == 1) { ?>&nbsp; <?php echo display('or')?> &nbsp;
                          <!-- <a class="btn btn-primary btn-sm  search text-white" href="<?php echo base_url('facebooklogin/facebooklogin/index/1') ?>"><i class="fa fa-facebook pr-1"></i><?php echo display('facebook_login') ?></a> -->
                      <?php } ?>
                      </div>

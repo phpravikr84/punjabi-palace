@@ -36,7 +36,7 @@ class Lsoft_setting
         Monetbil::setEmail($customerinfo->customer_email);
         Monetbil::setLogo('https://www.monetbil.com/assets/img/10968676_866299023433198_1949262999_o.png');
 
-        $return_url = base_url('hungry/successful/'.$orderid);
+        $return_url = base_url('frontend/successful/'.$orderid);
         $notify_url = base_url('menu');
         Monetbil::setReturn_url($return_url);
         Monetbil::setNotify_url($notify_url);

@@ -53,7 +53,7 @@ $(document).on('click', '.sa-clicon', function() {
 			return false;
 			}
 		else{
-		 var geturl=basicinfo.baseurl+'hungry/cartupdateqr';
+		 var geturl=basicinfo.baseurl+'frontend/cartupdateqr';
 		 var dataString = "CartID="+id+"&qty="+qty+"&Udstatus="+status+'&csrf_test_name='+basicinfo.csrftokeng;
 		  $.ajax({
 		 	 type: "POST",
@@ -74,7 +74,7 @@ $(document).on('click', '.sa-clicon', function() {
 		}
 	}
 	function removetocart(rid){
-		 var geturl=basicinfo.baseurl+'hungry/removetocartdetailsqr';
+		 var geturl=basicinfo.baseurl+'frontend/removetocartdetailsqr';
 		 var dataString = "rowid="+rid+'&csrf_test_name='+basicinfo.csrftokeng;
 		  $.ajax({
 		 	 type: "POST",
@@ -129,7 +129,7 @@ function itemreduce(pid,vid,id) {
 		 var varientname=$("#varient_"+id).val();
 		 var price=$("#itemprice_"+id).val();
 		 var catid=$("#catid_"+id).val();
-	     var myurl =basicinfo.baseurl+'hungry/deltocartqr/';
+	     var myurl =basicinfo.baseurl+'frontend/deltocartqr/';
 		 var dataString = "pid="+pid+'&itemname='+itemname+'&varientname='+varientname+'&qty='+qty+'&price='+price+'&catid='+catid+'&sizeid='+sizeid+'&Udstatus='+reduce+'&csrf_test_name='+basicinfo.csrftokeng;
 		 $.ajax({
 		 	 type: "POST",
@@ -192,7 +192,7 @@ function appcart(pid,vid,id){
 		});
 	}
 function addonsitemqr(id,sid,type){
-		 var myurl=basicinfo.baseurl+'hungry/addonsitemqr/'+id;
+		 var myurl=basicinfo.baseurl+'frontend/addonsitemqr/'+id;
 		 var dataString = "pid="+id+"&sid="+sid+'&type='+type+'&csrf_test_name='+basicinfo.csrftokeng;
 		  $.ajax({
 		 	 type: "POST",

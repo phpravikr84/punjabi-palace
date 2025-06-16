@@ -11,7 +11,7 @@
 <input type='hidden' name='mode' value='2CO' />
 <input type='hidden' name='li_0_type' value='product' />
 <input type='hidden' name='li_0_name' value='<?php echo $orderinfo->order_id;?>' />
-<input type='hidden' name='x_receipt_link_url' value='<?php echo base_url();?>hungry/successful2/<?php echo $page;?>' /> 
+<input type='hidden' name='x_receipt_link_url' value='<?php echo base_url();?>frontend/successful2/<?php echo $page;?>' /> 
 <input type='hidden' name='li_0_price' value='<?php echo $orderinfo->totalamount;?>' />
 <input type='hidden' name='card_holder_name' value='<?php echo $customerinfo->customer_name;?>' />
 <input type='hidden' name='street_address' value='<?php echo $customerinfo->customer_address;?>' />
@@ -53,7 +53,7 @@
 											$addonsqty=explode(",",$item->addonsqty);
 											$x=0;
 											foreach($addons as $addonsid){
-													$adonsinfo=$this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+													$adonsinfo=$this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 													$adonsprice=$adonsprice+$adonsinfo->price*$addonsqty[$x];
 													$x++;
 												}
@@ -82,7 +82,7 @@
 									if(!empty($item->add_on_id)){
 										$y=0;
 											foreach($addons as $addonsid){
-													$adonsinfo=$this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+													$adonsinfo=$this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 													$adonsprice=$adonsprice+$adonsinfo->price*$addonsqty[$y];?>
                                                     <tr>
                                                         <td colspan="2">

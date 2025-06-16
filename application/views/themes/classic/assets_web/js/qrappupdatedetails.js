@@ -43,7 +43,7 @@
             var price = $("#itemprice_999" + id).val();
             var catid = $("#catid_999" + id).val();
             var reduce = "insert";
-            var myurl = basicinfo.baseurl+'hungry/addtocartqr2/';
+            var myurl = basicinfo.baseurl+'frontend/addtocartqr2/';
             var dataString = "pid=" + pid + '&itemname=' + itemname + '&varientname=' + varientname + '&qty=' + qty + '&price=' + price + '&catid=' + catid + '&sizeid=' + sizeid + '&Udstatus=' + reduce+'&csrf_test_name='+basicinfo.csrftokeng;
             $.ajax({
                 type: "POST",
@@ -60,7 +60,7 @@
         }
 
         function addonsitemqr(id, sid, type) {
-            var myurl = basicinfo.baseurl+'hungry/addonsitemqr/' + id;
+            var myurl = basicinfo.baseurl+'frontend/addonsitemqr/' + id;
             var dataString = "pid=" + id + "&sid=" + sid + '&type=' + type+'&csrf_test_name='+basicinfo.csrftokeng;
             $.ajax({
                 type: "POST",
@@ -97,7 +97,7 @@
             var varientname = $("#varient_1" + mid).val();
             var qty = $("#sst61_" + mid).val();
             var price = $("#itemprice_1" + mid).val();
-            var myurl = basicinfo.baseurl+'hungry/addtocartqr2/';
+            var myurl = basicinfo.baseurl+'frontend/addtocartqr2/';
             var dataString = "pid=" + pid + '&itemname=' + itemname + '&varientname=' + varientname + '&qty=' + qty + '&price=' + price + '&catid=' + catid + '&sizeid=' + sizeid + '&addonsid=' + addons + '&allprice=' + allprice + '&adonsunitprice=' + adonsprice + '&adonsqty=' + adonsqty + '&adonsname=' + adonsname+'&csrf_test_name='+basicinfo.csrftokeng;
             $.ajax({
                 type: "POST",

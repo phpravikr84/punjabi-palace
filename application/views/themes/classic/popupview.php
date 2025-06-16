@@ -19,7 +19,7 @@
 											$addonsqty=explode(",",$item->addonsqty);
 											$x=0;
 											foreach($addons as $addonsid){
-													$adonsinfo=$this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+													$adonsinfo=$this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 													$adonsprice=$adonsprice+$adonsinfo->price*$addonsqty[$x];
 													$x++;
 												}
@@ -41,7 +41,7 @@
 												$y=0;
 											$alladonsprice=0;
 											foreach($addons as $addonsid){
-													$adonsinfo=$this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+													$adonsinfo=$this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 													$alladonsprice=$alladonsprice+$adonsinfo->price;
 													$y++;
 											}

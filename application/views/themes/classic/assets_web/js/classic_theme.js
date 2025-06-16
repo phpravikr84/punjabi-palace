@@ -135,7 +135,7 @@ function editreserveinfo(id) {
 }
 
 function addonsitem(id, sid, type) {
-    var myurl = basicinfo.baseurl+'hungry/addonsitem/' + id;
+    var myurl = basicinfo.baseurl+'frontend/addonsitem/' + id;
     var dataString = "pid=" + id + "&sid=" + sid + '&type=' + type+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
         type: "POST",
@@ -178,7 +178,7 @@ function addtocartitem(pid, id, type) {
     var price = $("#itemprice_" + id + type).val();
     var catid = $("#catid_" + id + type).val();
     var ismenupage = $("#cartpage" + id + type).val();
-    var myurl = basicinfo.baseurl+'hungry/addtocart/';
+    var myurl = basicinfo.baseurl+'frontend/addtocart/';
     var dataString = "pid=" + pid + '&itemname=' + itemname + '&varientname=' + varientname + '&qty=' + qty +
         '&price=' + price + '&catid=' + catid + '&sizeid=' + sizeid+'&csrf_test_name='+basicinfo.csrftokeng;
 
@@ -228,7 +228,7 @@ function addonsfoodtocart(pid, id, type) {
     var qty = $("#sst6" + id + "_" + type).val();
     var price = $("#itemprice_" + id + type).val();
     var ismenupage = $("#cartpage" + id + type).val();
-    var myurl = basicinfo.baseurl+'hungry/addtocart/';
+    var myurl = basicinfo.baseurl+'frontend/addtocart/';
     var dataString = "pid=" + pid + '&itemname=' + itemname + '&varientname=' + varientname + '&qty=' + qty +
         '&price=' + price + '&catid=' + catid + '&sizeid=' + sizeid + '&addonsid=' + addons + '&allprice=' +
         allprice + '&adonsunitprice=' + adonsprice + '&adonsqty=' + adonsqty + '&adonsname=' + adonsname+'&csrf_test_name='+basicinfo.csrftokeng;
@@ -281,7 +281,7 @@ function addonsfoodtocartmulti(pid, id, type) {
     var qty = $("#sst6" + id + "_" + type).val();
     var price = $("#itemprice_" + id + type).val();
     var ismenupage = $("#cartpage" + id + type).val();
-    var myurl = basicinfo.baseurl+'hungry/addtocart/';
+    var myurl = basicinfo.baseurl+'frontend/addtocart/';
     var dataString = "pid=" + pid + '&itemname=' + itemname + '&varientname=' + varientname + '&qty=' + qty +
         '&price=' + price + '&catid=' + catid + '&sizeid=' + sizeid + '&addonsid=' + addons + '&allprice=' +
         allprice + '&adonsunitprice=' + adonsprice + '&adonsqty=' + adonsqty + '&adonsname=' + adonsname+'&csrf_test_name='+basicinfo.csrftokeng;
@@ -310,7 +310,7 @@ function addonsfoodtocartmulti(pid, id, type) {
 }
 
 function addonsitem2(id, sid, type) {
-    var myurl = basicinfo.baseurl+'hungry/addonsitem/' + id;
+    var myurl = basicinfo.baseurl+'frontend/addonsitem/' + id;
     var dataString = "pid=" + id + "&sid=" + sid + '&type=' + type+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
         type: "POST",
@@ -332,7 +332,7 @@ function addtocartitem2(pid, id, type) {
     var price = $("#itemprice2_" + id + type).val();
     var catid = $("#catid2_" + id + type).val();
     var ismenupage = $("#cartpage2" + id + type).val();
-    var myurl = basicinfo.baseurl+'hungry/addtocart/';
+    var myurl = basicinfo.baseurl+'frontend/addtocart/';
     var dataString = "pid=" + pid + '&itemname=' + itemname + '&varientname=' + varientname + '&qty=' + qty +
         '&price=' + price + '&catid=' + catid + '&sizeid=' + sizeid+'&csrf_test_name='+basicinfo.csrftokeng;
 
@@ -360,7 +360,7 @@ function addtocartitem2(pid, id, type) {
 }
 
 function removecart(rid) {
-    var geturl = basicinfo.baseurl+'hungry/removetocart';
+    var geturl = basicinfo.baseurl+'frontend/removetocart';
     var dataString = "rowid=" + rid+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
         type: "POST",
@@ -381,7 +381,7 @@ function updatecart(id, qty, status) {
     if (status == "del" && qty == 0) {
         return false;
     } else {
-        var geturl = basicinfo.baseurl+'hungry/cartupdate';
+        var geturl = basicinfo.baseurl+'frontend/cartupdate';
         var dataString = "CartID=" + id + "&qty=" + qty + "&Udstatus=" + status+'&csrf_test_name='+basicinfo.csrftokeng;
         $.ajax({
             type: "POST",
@@ -395,7 +395,7 @@ function updatecart(id, qty, status) {
 }
 
 function removetocart(rid) {
-    var geturl = basicinfo.baseurl+'hungry/removetocartdetails';
+    var geturl = basicinfo.baseurl+'frontend/removetocartdetails';
     var dataString = "rowid=" + rid+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
         type: "POST",
@@ -426,7 +426,7 @@ function getcheckbox(price, name) {
 		}
     var grandtotal = grandtotal.toFixed(2);
     $("#grtotal").text(grandtotal);
-    var geturl = basicinfo.baseurl+'hungry/setshipping';
+    var geturl = basicinfo.baseurl+'frontend/setshipping';
     var dataString = "shippingcharge=" + price + '&shipname=' + name+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
         type: "POST",
@@ -447,7 +447,7 @@ function gotocheckout() {
         type: "POST",
         global: false,
         dataType: 'json',
-        url: basicinfo.baseurl+'hungry/checkopenclose',
+        url: basicinfo.baseurl+'frontend/checkopenclose',
         data: dataString,
         success: function(data) {
             isopen = data.isopen;
@@ -482,7 +482,7 @@ function subscribeemail() {
         alert(lang.please_enter_valid_email);
         return false;
     }
-    var geturl = basicinfo.baseurl+'hungry/subscribe';
+    var geturl = basicinfo.baseurl+'frontend/subscribe';
     var dataString = "email=" + email+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
         type: "POST",
@@ -503,7 +503,7 @@ function itemnote(rowid, notes) {
 function addnotetoitem() {
     var rowid = $("#foodcartid").val();
     var note = $("#foodnote").val();
-    var geturl = basicinfo.baseurl+'hungry/additemnote';
+    var geturl = basicinfo.baseurl+'frontend/additemnote';
     var dataString = "foodnote=" + note + '&rowid=' + rowid+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
         type: "POST",
@@ -520,7 +520,7 @@ function showfood(mtypeid) {
 			var limit = 8;
 			var start = 0;
 			var action = "inactive";
-			var geturl = basicinfo.baseurl+'hungry/mtypefood';
+			var geturl = basicinfo.baseurl+'frontend/mtypefood';
 			var dataString = "mtypeid=" + mtypeid + '&limit=' + limit + '&start=' + start+'&csrf_test_name='+basicinfo.csrftokeng;
 			$.ajax({
 				type: "POST",
@@ -540,7 +540,7 @@ function showfood(mtypeid) {
 		}
 function load_country_data(mtypeid, limit, start, action) {
 			$.ajax({
-				url: basicinfo.baseurl+'hungry/mtypefood',
+				url: basicinfo.baseurl+'frontend/mtypefood',
 				method: "POST",
 				data: {
 					mtypeid: mtypeid,

@@ -14,7 +14,7 @@
 							$color="#004040";
 							}*/
 						?>
-                      <input name="url" type="hidden" id="url_<?php echo $table->tableid; ?>" value="<?php echo base_url("hungry/reservationform") ?>" />
+                      <input name="url" type="hidden" id="url_<?php echo $table->tableid; ?>" value="<?php echo base_url("frontend/reservationform") ?>" />
                         <div class="col-md-4 col-sm-6 text-center mb-3">
                         <?php echo $table->tablename; ?>
                             <a href="#" data-toggle="modal" data-target="#bookinfo" onclick="editreserveinfo('<?php echo $table->tableid; ?>')">

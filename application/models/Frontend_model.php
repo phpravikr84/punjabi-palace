@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  * @author linktech
  */
-class Hungry_model extends CI_Model
+class Frontend_model extends CI_Model
 {
 	//put your code here
 	public function allmenu_dropdown()
