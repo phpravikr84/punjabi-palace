@@ -927,7 +927,7 @@ public function closinginfo(){
 			if (!empty($data)) {
 				$i = 0;
 				foreach ($data as $value) {
-					$output[$i]['waiterid'] = $value->emp_his_id;
+					$output[$i]['waiterid'] = $value->emp_id;
 					$output[$i]['Waitername'] = $value->first_name . " " . $value->last_name;
 					$i++;
 				}
@@ -940,7 +940,7 @@ public function closinginfo(){
 
 	public function waiterwithshift()
 	{
-		$data = $this->db->select("emp_his_id,first_name,last_name")
+		$data = $this->db->select("emp_id,first_name,last_name")
 			->from('employee_history')
 			->where('pos_id', 6)
 			->get()
@@ -961,9 +961,9 @@ public function closinginfo(){
 			->row();
 		$data = array();
 		if (!empty($current_shift)) {
-			$this->db->select("emp.emp_his_id,emp.first_name,emp.last_name,emp.employee_id");
+			$this->db->select("emp.emp_id,emp.first_name,emp.last_name,emp.employee_no");
 			$this->db->from('employee_history as emp');
-			$this->db->join('shift_user as s', 'emp.employee_id=s.emp_id', 'left');
+			$this->db->join('shift_user as s', 'emp.employee_no=s.emp_id', 'left');
 			$this->db->where('emp.pos_id', 6);
 			$this->db->where('s.shift_id', $current_shift->id);
 			$data = $this->db->get()->result();
@@ -2112,9 +2112,9 @@ public function closinginfo(){
 				$this->App_android_model->update_date('customer_order', $updatetData, 'order_id', $orderid);
 				/*Push Notification*/
 				/*$condition="user.waiter_kitchenToken!='' AND employee_history.pos_id=1";
-		$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id,tbl_assign_kitchen.kitchen_id');
+		$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id,tbl_assign_kitchen.kitchen_id');
 		$this->db->from('user');
-		$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+		$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 		$this->db->join('tbl_assign_kitchen', 'tbl_assign_kitchen.userid = user.id', 'left');
 		$this->db->where($condition);
 		$query = $this->db->get();

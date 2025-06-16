@@ -32,13 +32,13 @@
 
 
                                  <div class="form-group row">
-                                     <label for="employee_id"
+                                     <label for="employee_no"
                                          class="col-sm-3 col-form-label"><?php echo display('employee_name') ?>
                                          *</label>
 
                                      <div class="col-sm-9">
 
-                                         <?php echo form_dropdown('employee_id', $gndloan, (!empty($example->employee_id) ? $example->employee_id : null), 'class="form-control width-400-px"  id="employee_id" onchange="SelectToLoad(this.value)"') ?>
+                                         <?php echo form_dropdown('employee_no', $gndloan, (!empty($example->employee_no) ? $example->employee_no : null), 'class="form-control width-400-px"  id="employee_no" onchange="SelectToLoad(this.value)"') ?>
                                      </div>
                                  </div>
                                  <div class="form-group row">
@@ -149,7 +149,7 @@
                          <tr>
                              <th><?php echo display('Sl') ?></th>
                              <th><?php echo display('name') ?></th>
-                             <th><?php echo display('employee_id') ?></th>
+                             <th><?php echo display('employee_no') ?></th>
                              <th><?php echo display('loan_id') ?></th>
                              <th><?php echo display('installment_amount') ?></th>
                              <th><?php echo display('payment') ?></th>
@@ -168,7 +168,7 @@
                          <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                              <td><?php echo $sl; ?></td>
                              <td><?php echo $que->first_name . ' ' . $que->last_name; ?></td>
-                             <td><?php echo $que->employee_id; ?></td>
+                             <td><?php echo $que->employee_no; ?></td>
                              <td><?php echo $que->loan_id; ?></td>
                              <td><?php echo $que->installment_amount; ?>$</td>
                              <td><?php echo $que->payment; ?>$</td>

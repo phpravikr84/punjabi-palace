@@ -315,7 +315,7 @@ public function edit_role($id=null)
 				if ($query->num_rows() == 0) {
 					// The user has the required role, insert into employee_history table
 					$employee_history_data = array( 
-						'employee_id'          => $user_id,  
+						'employee_no'          => $user_id,  
 						'pos_id'               => 6,  // Static value as there is no pos_id in user table
 						'first_name'           => $user_exist->firstname,  
 						'last_name'            => $user_exist->lastname,  
@@ -389,7 +389,7 @@ public function edit_role($id=null)
 				if ($query->num_rows() == 0) {
 					// The user has the required role, insert into employee_history table
 					$employee_history_data = array( 
-						'employee_id'          => $user_id,  
+						'employee_no'          => $user_id,  
 						'pos_id'               => 6,  // Static value as there is no pos_id in user table
 						'first_name'           => $user_exist->firstname,  
 						'last_name'            => $user_exist->lastname,  

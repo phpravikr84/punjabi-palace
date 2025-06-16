@@ -26,7 +26,7 @@
                             <th><?php echo display('Sl') ?></th>
                             <th><?php echo display('name') ?></th>
                             <th><?php echo display('can_id') ?></th>
-                            <th><?php echo display('employee_id') ?></th>
+                            <th><?php echo display('employee_no') ?></th>
                             <th><?php echo display('pos_id') ?></th>
                             <th><?php echo display('selection_terms') ?></th>
 
@@ -40,7 +40,7 @@
                             <td><?php echo $sl; ?></td>
                             <td><?php echo $que->first_name . ' ' . $que->last_name; ?></td>
                             <td><?php echo $que->can_id; ?></td>
-                            <td><?php echo $que->employee_id; ?></td>
+                            <td><?php echo $que->employee_no; ?></td>
                             <td><?php echo $que->pos_id; ?></td>
                             <td><?php echo $que->selection_terms; ?></td>
 

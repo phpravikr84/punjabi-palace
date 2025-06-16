@@ -6,7 +6,7 @@ Name | Getter | Setter | Type | Description | Notes
 **id** | getId() | setId($value) | **string** | The tender&#39;s unique ID. | [optional] 
 **type** | getType() | setType($value) | **string** | The type of tender. | [optional] 
 **name** | getName() | setName($value) | **string** | A human-readable description of the tender. | [optional] 
-**employee_id** | getEmployeeId() | setEmployeeId($value) | **string** | The ID of the employee that processed the tender. | [optional] 
+**employee_no** | getEmployeeId() | setEmployeeId($value) | **string** | The ID of the employee that processed the tender. | [optional] 
 **receipt_url** | getReceiptUrl() | setReceiptUrl($value) | **string** | The URL of the receipt for the tender. | [optional] 
 **card_brand** | getCardBrand() | setCardBrand($value) | **string** | The brand of credit card provided. | [optional] 
 **pan_suffix** | getPanSuffix() | setPanSuffix($value) | **string** | The last four digits of the provided credit card&#39;s account number. | [optional] 

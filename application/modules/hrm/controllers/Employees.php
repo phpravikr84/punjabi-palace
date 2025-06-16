@@ -132,7 +132,7 @@ public function create_emp_performance()
 	$data['title'] = display('performancelist');
 	$this->permission->method('hrm','create')->redirect();
 		#-------------------------------#
-	$this->form_validation->set_rules('employee_id',display('employee_id'),'required|max_length[50]');
+	$this->form_validation->set_rules('employee_no',display('employee_no'),'required|max_length[50]');
 	$this->form_validation->set_rules('note',display('note'));
 	$this->form_validation->set_rules('date',display('date'));
 	$this->form_validation->set_rules('number_of_star',display('number_of_star'));
@@ -140,7 +140,7 @@ public function create_emp_performance()
 		#-------------------------------#
 	if ($this->form_validation->run() === true) {
 		$postData = [
-			'employee_id'            => $this->input->post('employee_id',true),
+			'employee_no'            => $this->input->post('employee_no',true),
 			'note' 	                 => $this->input->post('note',true),
 			'date'                   => $this->input->post('date',true),
 			'note_by' 	             =>  $this->session->userdata('fullname'),
@@ -183,7 +183,7 @@ public function delete_emp_performance($id = null)
 public function update_emp_performance_form($id = null){
 	$this->permission->method('hrm','update')->redirect();
 	$this->form_validation->set_rules('emp_per_id',null,'max_length[11]');
-	$this->form_validation->set_rules('employee_id',display('employee_id'),'max_length[50]');
+	$this->form_validation->set_rules('employee_no',display('employee_no'),'max_length[50]');
 	$this->form_validation->set_rules('note',display('note'));
 	$this->form_validation->set_rules('date',display('date'));
 	$this->form_validation->set_rules('note_by',display('note_by'));
@@ -195,7 +195,7 @@ public function update_emp_performance_form($id = null){
 
 		$postData = [
 			'emp_per_id' 	         => $this->input->post('emp_per_id',true),
-			'employee_id'            => $this->input->post('employee_id',true),
+			'employee_no'            => $this->input->post('employee_no',true),
 			'note' 	                 => $this->input->post('note',true),
 			'date'                   => $this->input->post('date',true),
 			'note_by' 	             => $this->input->post('note_by',true),
@@ -242,7 +242,7 @@ public function create_payment()
 	$this->permission->method('hrm','create')->redirect();
 	$data['title'] = display('add_payment');
 		#-------------------------------#
-	$this->form_validation->set_rules('employee_id',display('employee_id'),'max_length[50]');
+	$this->form_validation->set_rules('employee_no',display('employee_no'),'max_length[50]');
 	$this->form_validation->set_rules('total_salary',display('total_salary'));
 	$this->form_validation->set_rules('total_working_minutes',display('total_working_minutes'));
 	$this->form_validation->set_rules('working_period',display('working_period'));
@@ -255,7 +255,7 @@ public function create_payment()
 	if ($this->form_validation->run() === true) {
 
 		$postData = [
-			'employee_id'                  => $this->input->post('employee_id',true),
+			'employee_no'                  => $this->input->post('employee_no',true),
 			'total_salary' 	               => $this->input->post('total_salary',true),
 			'total_working_minutes'        => $this->input->post('total_working_minutes',true),
 			'working_period' 	           => $this->input->post('working_period',true),
@@ -302,7 +302,7 @@ public function delete_payment($id = null)
 public function update_payment_form($id = null){
 	$this->permission->method('hrm','update')->redirect();
 	$this->form_validation->set_rules('emp_sal_pay_id',null,'required|max_length[11]');
-	$this->form_validation->set_rules('employee_id',display('employee_id'),'max_length[50]');
+	$this->form_validation->set_rules('employee_no',display('employee_no'),'max_length[50]');
 	$this->form_validation->set_rules('total_salary',display('total_salary'));
 	$this->form_validation->set_rules('total_working_minutes',display('total_working_minutes'));
 	$this->form_validation->set_rules('working_period',display('working_period'));
@@ -314,7 +314,7 @@ public function update_payment_form($id = null){
 
 		$postData = [
 			'emp_sal_pay_id' 	           => $this->input->post('emp_sal_pay_id',true),
-			'employee_id'                  => $this->input->post('employee_id',true),
+			'employee_no'                  => $this->input->post('employee_no',true),
 			'total_salary' 	               => $this->input->post('total_salary',true),
 			'total_working_minutes'        => $this->input->post('total_working_minutes',true),
 			'working_period' 	           => $this->input->post('working_period',true),
@@ -471,7 +471,7 @@ public function cv()
 		$this->form_validation->set_rules('c_f_name[]','Custom Field Name');
 		$this->form_validation->set_rules('c_f_type[]','Custom Field Type');
 		$this->form_validation->set_rules('customvalue[]','Custom Value');
-		$employee_id = $this->randID();
+		$employee_no = $this->randID();
 		$customr_field = $this->input->post('c_f_name');
 		$customr_field_type = $this->input->post('c_f_type');
 		$customr_value = $this->input->post('customvalue');
@@ -484,7 +484,7 @@ public function cv()
 		if ($this->form_validation->run() === true) {
 			 $this->load->library('fileupload');
 			$postData = array(
-				'employee_id'             => $employee_id,
+				'employee_no'             => $employee_no,
 				'pos_id' 	              => $this->input->post('pos_id',true),
 				'first_name' 	          => $this->input->post('first_name',true),
 				'middle_name'             => $this->input->post('middle_name',true),
@@ -551,7 +551,7 @@ public function cv()
 				$headcode="502020000001";
 			}
 
-			$c_code = $employee_id;
+			$c_code = $employee_no;
 			$c_name = $this->input->post('first_name',true).$this->input->post('last_name',true);
 			$c_acc=$c_code.'-'.$c_name;
 			$createby = $this->session->userdata('fullname');
@@ -591,7 +591,7 @@ public function cv()
 						'custom_field'            =>  $customr_field[$i],
 						'custom_data_type' 	      => $customr_field_type[$i],
 						'custom_data' 	          => $customr_value[$i],
-						'employee_id' 	          => $employee_id,
+						'employee_no' 	          => $employee_no,
 					);
 					if(!empty($customr_field[$i])){
 						$this->db->insert('custom_table', $custom);
@@ -605,7 +605,7 @@ public function cv()
 						'bnf_cl_code_des' 	    => $benifit_code_desc[$i],
 						'bnff_acural_date' 	    => date("Y-m-d", strtotime(!empty($benifit_acc_date[$i])?$benifit_acc_date[$i]:date('Y-m-d'))),
 						'bnf_status'            => $benift_status[$i],
-						'employee_id' 	        => $employee_id,
+						'employee_no' 	        => $employee_no,
 					);
 					if(!empty($benifit_code[$i])){
 						$this->db->insert('employee_benifit', $benifit);
@@ -653,7 +653,7 @@ public function cv()
         # search for filename by id
 		$id = $this->uri->segment(4);
 		$this->db->select('*');
-		$this->db->where('employee_id', $id);
+		$this->db->where('employee_no', $id);
 		$q = $this->db->get('employee_history');
         # if exists continue
 		if($q->num_rows() > 0)
@@ -803,7 +803,7 @@ public function cv()
 		if ($this->form_validation->run() === true) {
 
 			$data['employee']   = (Object) $postData = array(
-				'employee_id'             => $this->input->post('employee_id',true),
+				'employee_no'             => $this->input->post('employee_no',true),
 				'pos_id' 	              => $this->input->post('pos_id',true),
 				'first_name' 	          => $this->input->post('first_name',true),
 				'maiden_name'             => $this->input->post('maiden_name'),
@@ -869,9 +869,9 @@ public function cv()
 				$this->db->where('HeadName', $old_accname)
 				->update("acc_coa", $accHead);
 
-				$this->db->where('employee_id',$this->input->post('employee_id',true))
+				$this->db->where('employee_no',$this->input->post('employee_no',true))
 				->delete('custom_table');
-				$this->db->where('employee_id',$this->input->post('employee_id',true))
+				$this->db->where('employee_no',$this->input->post('employee_no',true))
 				->delete('employee_benifit');
 				for ($i=0; $i < sizeof($customr_field); $i++) {
 					//print_r(count($customr_field));exit();
@@ -879,7 +879,7 @@ public function cv()
 						'custom_field'            =>  $customr_field[$i],
 						'custom_data_type' 	      => $customr_field_type[$i],
 						'custom_data' 	          => $customr_value[$i],
-						'employee_id' 	          => $this->input->post('employee_id',true),
+						'employee_no' 	          => $this->input->post('employee_no',true),
 					);
 					if(!empty($customr_field[$i])){
 						$this->db->insert('custom_table', $custom);
@@ -893,17 +893,17 @@ public function cv()
 						'bnf_cl_code_des' 	    => $benifit_code_desc[$i],
 						'bnff_acural_date' 	    => date("Y-m-d", strtotime(!empty($benifit_acc_date[$i])?$benifit_acc_date[$i]:date('Y-m-d'))),
 						'bnf_status'            => $benift_status[$i],
-						'employee_id' 	        => $this->input->post('employee_id',true),
+						'employee_no' 	        => $this->input->post('employee_no',true),
 					];
 					if(!empty($benifit_code[$i])){
 						$this->db->insert('employee_benifit', $benifit);
 					}
 				}
-				$empid = $this->db->select('*')->from('employee_history')->where('employee_id',$id)->get()->row();
-				$userinfo = $this->db->select('*')->from('user')->where('id',$empid->emp_his_id)->get()->row();
+				$empid = $this->db->select('*')->from('employee_history')->where('employee_no',$id)->get()->row();
+				$userinfo = $this->db->select('*')->from('user')->where('id',$empid->emp_id)->get()->row();
 				if(empty($userinfo)){
 					$userData = array(
-					'id' 		  			  => $empid->emp_his_id,
+					'id' 		  			  => $empid->emp_id,
 					'firstname' 	          => $this->input->post('first_name',true),
 					'lastname' 	          	  => $this->input->post('last_name',true),
 					'email' 	              => $this->input->post('email',true),
@@ -930,7 +930,7 @@ public function cv()
 					'image' 	              => $img,
 				
 			);
-			$this->db->where('id', $empid->emp_his_id);
+			$this->db->where('id', $empid->emp_id);
 			$this->db->update('user', $userData);
 			}
 				
@@ -987,10 +987,10 @@ public function cv()
 	// Employee Salary Paid info
 	public function EmployeePayment(){
 		$sal_id = $this->input->post('sal_id');
-		$employee_id = $this->input->post('employee_id');
-		$emplyeeinfo = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_id',$employee_id)->get()->row();
+		$employee_no = $this->input->post('employee_no');
+		$emplyeeinfo = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_no',$employee_no)->get()->row();
 		$data = array(
-			'employee_id'=> $employee_id,
+			'employee_no'=> $employee_no,
 			'Ename'       => $emplyeeinfo->first_name.$emplyeeinfo->last_name,
 			'salP_id'    => $sal_id,
 		);
@@ -1008,8 +1008,8 @@ public function cv()
 			'paid_by' 	                   => $this->session->userdata('fullname'),
 		]; 
 
-		$emp_id = $this->input->post('employee_id',true);
-		$c_name = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_id',$emp_id)->get()->row();
+		$emp_id = $this->input->post('employee_no',true);
+		$c_name = $this->db->select('first_name,last_name')->from('employee_history')->where('employee_no',$emp_id)->get()->row();
 		$c_acc=$emp_id.'-'.$c_name->first_name.$c_name->last_name;
        $coatransactionInfo = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName',$c_acc)->get()->row();
        $COAID = $coatransactionInfo->HeadCode;
@@ -1019,7 +1019,7 @@ public function cv()
       'Vtype'       => 'Salary',
       'VDate'       => date('Y-m-d'),
       'COAID'       => 1020101,
-      'Narration'   => 'Cash in hand Debit For Employee Id'.$this->input->post('employee_id',true),
+      'Narration'   => 'Cash in hand Debit For Employee Id'.$this->input->post('employee_no',true),
       'Debit'       => $this->input->post('total_salary',true),
       'Credit'      => 0,
       'IsPosted'    => 1,
@@ -1033,7 +1033,7 @@ public function cv()
       'Vtype'          => 'Salary',
       'VDate'          => date('Y-m-d'),
       'COAID'          => $COAID,
-      'Narration'      => 'Salary For Employee Id'.$this->input->post('employee_id',true),
+      'Narration'      => 'Salary For Employee Id'.$this->input->post('employee_no',true),
       'Debit'          => 0,
       'Credit'         => $this->input->post('total_salary',true),
       'IsPosted'       => 1,

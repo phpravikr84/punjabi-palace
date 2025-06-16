@@ -331,3 +331,22 @@ tinymce.init({
  
     
 });
+
+// Custom Function starts from here
+// Function to show a success alert
+function showErrorAlert(message, inputSelector) {
+    swal({
+        title: "Error!",
+        text: message,
+        type: "error",
+        confirmButtonClass: "btn-success",
+        confirmButtonText: "OK",
+        closeOnConfirm: true
+    }, function () {
+        if (inputSelector) {
+            setTimeout(() => {
+                $(inputSelector).focus();
+            }, 100);
+        }
+    });
+}

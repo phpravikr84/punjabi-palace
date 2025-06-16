@@ -11,13 +11,13 @@
                  <?php echo  form_open('hrm/Home/AtnReport_view', 'name="myForm"') ?>
 
                  <div class="form-group row">
-                     <label for="employee_id" class="col-sm-3 col-form-label"><?php echo display('employee_id') ?>
+                     <label for="employee_no" class="col-sm-3 col-form-label"><?php echo display('employee_no') ?>
                          *</label>
                      <div class="col-sm-9">
-                         <input name="employee_id" class="form-control" type="text"
+                         <input name="employee_no" class="form-control" type="text"
                              placeholder="<?php
 
-                                                                                                    echo display('employee_id_se') ?>" id="employee_id"
+                                                                                                    echo display('employee_id_se') ?>" id="employee_no"
                              onblur="check_if_exists();">
                      </div>
                  </div>

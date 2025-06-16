@@ -117,7 +117,7 @@ class Payroll extends MX_Controller {
 		$this->permission->module('hrm','create')->redirect();
 		$data['title'] = display('selectionlist');
 		#-------------------------------#
-		$this->form_validation->set_rules('employee_id',display('employee_id'),'required|max_length[50]');
+		$this->form_validation->set_rules('employee_no',display('employee_no'),'required|max_length[50]');
 		$this->form_validation->set_rules('sal_type',display('sal_type'));
 		$this->form_validation->set_rules('amount[]',display('amount'));
 		$this->form_validation->set_rules('salary_payable',display('salary_payable'));
@@ -132,7 +132,7 @@ class Payroll extends MX_Controller {
 			foreach($amount as $key=>$value)
 			{	
 				$postData = [
-					'employee_id'           => $this->input->post('employee_id',true),
+					'employee_no'           => $this->input->post('employee_no',true),
 					'sal_type'              => $this->input->post('sal_type',true),
 					'salary_type_id' 	    => $key,
 					'amount' 	            => (!empty($value)?$value:0),
@@ -146,7 +146,7 @@ class Payroll extends MX_Controller {
 			}
 			if(empty($amount)){
 						$postData = [
-						'employee_id'           => $this->input->post('employee_id',true),
+						'employee_no'           => $this->input->post('employee_no',true),
 						'sal_type'              => $this->input->post('sal_type',true),
 						'salary_type_id' 	    => 0,
 						'amount' 	            => 0,
@@ -172,7 +172,7 @@ class Payroll extends MX_Controller {
 				$tax_manager=0;
 			}
 			$Data1 = [
-				'employee_id'                => $this->input->post('employee_id',true),
+				'employee_no'                => $this->input->post('employee_no',true),
 				'salary_payable' 	         => $this->input->post('salary_payable',true),
 				'absent_deduct' 	         => $absent_deduct,
 				'tax_manager' 	             => $tax_manager,	
@@ -231,7 +231,7 @@ class Payroll extends MX_Controller {
 
 		if ($this->form_validation->run() === true) {
 
-			$employee = $this->db->select('employee_id')->from('employee_salary_setup')->group_by('employee_id')->get()->result();
+			$employee = $this->db->select('employee_no')->from('employee_salary_setup')->group_by('employee_no')->get()->result();
 			
 			$startd    = $this->input->post('start_date');
 			$ab=date('Y-m-d');
@@ -239,7 +239,7 @@ class Payroll extends MX_Controller {
 				foreach($employee as $key=>$value)
 				{ 
 			$postData = [
-				'employee_id'         =>  $value->employee_id,
+				'employee_no'         =>  $value->employee_no,
 				'name'                =>  $this->input->post('name',true),
 				'gdate'               =>  $ab,
 				'start_date' 	      =>  $this->input->post('start_date',true), 
@@ -248,11 +248,11 @@ class Payroll extends MX_Controller {
 			]; 
 
 		$this->db->insert('salary_sheet_generate', $postData);
-		$aAmount   = $this->db->select('gross_salary,sal_type,employee_id')->from('employee_salary_setup')->where('employee_id', $value->employee_id)->get()->row();
+		$aAmount   = $this->db->select('gross_salary,sal_type,employee_no')->from('employee_salary_setup')->where('employee_no', $value->employee_no)->get()->row();
 		$Amount    = $aAmount->gross_salary;
 		$startd    = $this->input->post('start_date');
 		$end       = $this->input->post('end_date');
-		$times     = $this->db->select('SUM(TIME_TO_SEC(staytime)) AS staytime')->from('emp_attendance')->where('date BETWEEN "'. date('Y-m-d', strtotime($startd)). '" and "'. date('Y-m-d', strtotime($end)).'"')->where("employee_id" ,$value->employee_id )->get()->row()->staytime;
+		$times     = $this->db->select('SUM(TIME_TO_SEC(staytime)) AS staytime')->from('emp_attendance')->where('date BETWEEN "'. date('Y-m-d', strtotime($startd)). '" and "'. date('Y-m-d', strtotime($end)).'"')->where("employee_no" ,$value->employee_no )->get()->row()->staytime;
 		$wormin = ($times/60);
 		$worhour = number_format($wormin/60,2);
 		if($aAmount->sal_type == 1){
@@ -287,14 +287,14 @@ class Payroll extends MX_Controller {
 		}else if($aAmount->sal_type == 2){
 			$netAmount = $Amount;
 		}
-			$workingper   = $this->db->select('COUNT(date) AS date')->from('emp_attendance')->where('date BETWEEN "'. date('d-m-Y', strtotime($startd)). '" and "'. date('d-m-Y', strtotime($end)).'"')->where("employee_id" ,$value->employee_id )->get()->row()->date;
+			$workingper   = $this->db->select('COUNT(date) AS date')->from('emp_attendance')->where('date BETWEEN "'. date('d-m-Y', strtotime($startd)). '" and "'. date('d-m-Y', strtotime($end)).'"')->where("employee_no" ,$value->employee_no )->get()->row()->date;
 			$paymentData = array(
-				'employee_id'           => $value->employee_id,
+				'employee_no'           => $value->employee_no,
 				'total_salary'          => $netAmount,
 				'total_working_minutes' => $worhour, 
 				'working_period'        => $workingper,
 			);
-			if(!empty($aAmount->employee_id)){
+			if(!empty($aAmount->employee_no)){
 				$this->db->insert('employee_salary_payment', $paymentData);
 			}
 		}
@@ -302,7 +302,7 @@ class Payroll extends MX_Controller {
 				redirect("hrm/Payroll/create_salary_generate");
 			} else {
 				$data['title']  = display('create');
-				$data['emplist']=$this->db->select('*')->from('employee_history')->group_by('employee_id')->get()->result();
+				$data['emplist']=$this->db->select('*')->from('employee_history')->group_by('employee_no')->get()->result();
 				$data['module'] = "hrm";
 				$data['page']   = "salary_generate_form"; 
 				$data['salgen'] = $this->Payroll_model->salary_generateView();
@@ -358,7 +358,7 @@ class Payroll extends MX_Controller {
 		public function updates_salstup_form($id = null){
 			$this->permission->module('hrm','update')->redirect();
  		#-------------------------------#
-			$this->form_validation->set_rules('employee_id',display('employee_id'),'required|max_length[50]');
+			$this->form_validation->set_rules('employee_no',display('employee_no'),'required|max_length[50]');
 			$this->form_validation->set_rules('sal_type',display('sal_type'));
 			$this->form_validation->set_rules('amount[]',display('amount'));
 			$this->form_validation->set_rules('salary_payable',display('salary_payable'));
@@ -374,7 +374,7 @@ class Payroll extends MX_Controller {
 				{
 
 					$postData = array(
-						'employee_id'        => $this->input->post('employee_id',true),
+						'employee_no'        => $this->input->post('employee_no',true),
 						'sal_type'           => $this->input->post('sal_type',true),
 						'salary_type_id' 	 => $key,
 						'amount' 	         => $value,
@@ -386,7 +386,7 @@ class Payroll extends MX_Controller {
 				}
 				if(empty($amount)){
 						$upodate=array('gross_salary'=>$this->input->post('gross_salary',true));
-						$update= $this->db->where('employee_id',$this->input->post('employee_id',true))->update("employee_salary_setup", $upodate);
+						$update= $this->db->where('employee_no',$this->input->post('employee_no',true))->update("employee_salary_setup", $upodate);
 					}
 
 
@@ -411,7 +411,7 @@ class Payroll extends MX_Controller {
 
 
 				$Data = [
-					'employee_id'                => $this->input->post('employee_id',true),
+					'employee_no'                => $this->input->post('employee_no',true),
 					'salary_payable' 	         => $this->input->post('salary_payable',true),
 					'absent_deduct' 	         => $absent_deduct,
 					'tax_manager' 	             => $tax_manager,
@@ -473,8 +473,8 @@ class Payroll extends MX_Controller {
 //employee Basic Salary get
 	public function employeebasic(){
 		$this->permission->module('hrm','read')->redirect();
-		$id = $this->input->post('employee_id');
-		$data = $this->db->select('rate,rate_type')->from('employee_history')->where('employee_id',$id)->get()->row();
+		$id = $this->input->post('employee_no');
+		$data = $this->db->select('rate,rate_type')->from('employee_history')->where('employee_no',$id)->get()->row();
 		$basic = $data->rate;
 		if($data->rate_type ==1){
 			$type = 'Hourly';

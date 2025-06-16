@@ -418,7 +418,7 @@ $(document).on("change", "#varientinfo", function () {
   $("#vprice").text(price);
 });
 
-function posaddonsfoodtocart(pid, id, more = null) {
+function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqty = 1) {
   var addons = [];
   var adonsqty = [];
   var allprice = 0;
@@ -453,6 +453,10 @@ function posaddonsfoodtocart(pid, id, more = null) {
   <input name="selProdSid_${pid}" id="selProdSid_${pid}" type="hidden" value="${sizeid}" />
   <input name="selProdQty_${pid}" id="selProdQty_${pid}" type="hidden" value="${checkqty}" />
   `;
+  if (excludePrice) {
+    price = 0; // Set price to 0 if excludePrice is true
+    qty = promoqty; // Set qty to promoqty if excludePrice is true
+  }
   $("#addinvoice").append(varientHtml);
   new Audio(mysound + audio[0]).play();
   if (typeof updateid == "undefined") {

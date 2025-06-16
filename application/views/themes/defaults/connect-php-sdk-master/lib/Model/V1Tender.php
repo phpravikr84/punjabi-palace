@@ -27,7 +27,7 @@ class V1Tender implements ArrayAccess
         'id' => 'string',
         'type' => 'string',
         'name' => 'string',
-        'employee_id' => 'string',
+        'employee_no' => 'string',
         'receipt_url' => 'string',
         'card_brand' => 'string',
         'pan_suffix' => 'string',
@@ -50,7 +50,7 @@ class V1Tender implements ArrayAccess
         'id' => 'id',
         'type' => 'type',
         'name' => 'name',
-        'employee_id' => 'employee_id',
+        'employee_no' => 'employee_no',
         'receipt_url' => 'receipt_url',
         'card_brand' => 'card_brand',
         'pan_suffix' => 'pan_suffix',
@@ -73,7 +73,7 @@ class V1Tender implements ArrayAccess
         'id' => 'setId',
         'type' => 'setType',
         'name' => 'setName',
-        'employee_id' => 'setEmployeeId',
+        'employee_no' => 'setEmployeeId',
         'receipt_url' => 'setReceiptUrl',
         'card_brand' => 'setCardBrand',
         'pan_suffix' => 'setPanSuffix',
@@ -96,7 +96,7 @@ class V1Tender implements ArrayAccess
         'id' => 'getId',
         'type' => 'getType',
         'name' => 'getName',
-        'employee_id' => 'getEmployeeId',
+        'employee_no' => 'getEmployeeId',
         'receipt_url' => 'getReceiptUrl',
         'card_brand' => 'getCardBrand',
         'pan_suffix' => 'getPanSuffix',
@@ -127,10 +127,10 @@ class V1Tender implements ArrayAccess
       */
     protected $name;
     /**
-      * $employee_id The ID of the employee that processed the tender.
+      * $employee_no The ID of the employee that processed the tender.
       * @var string
       */
-    protected $employee_id;
+    protected $employee_no;
     /**
       * $receipt_url The URL of the receipt for the tender.
       * @var string
@@ -214,10 +214,10 @@ class V1Tender implements ArrayAccess
             } else {
               $this->name = null;
             }
-            if (isset($data["employee_id"])) {
-              $this->employee_id = $data["employee_id"];
+            if (isset($data["employee_no"])) {
+              $this->employee_no = $data["employee_no"];
             } else {
-              $this->employee_id = null;
+              $this->employee_no = null;
             }
             if (isset($data["receipt_url"])) {
               $this->receipt_url = $data["receipt_url"];
@@ -339,22 +339,22 @@ class V1Tender implements ArrayAccess
         return $this;
     }
     /**
-     * Gets employee_id
+     * Gets employee_no
      * @return string
      */
     public function getEmployeeId()
     {
-        return $this->employee_id;
+        return $this->employee_no;
     }
   
     /**
-     * Sets employee_id
-     * @param string $employee_id The ID of the employee that processed the tender.
+     * Sets employee_no
+     * @param string $employee_no The ID of the employee that processed the tender.
      * @return $this
      */
-    public function setEmployeeId($employee_id)
+    public function setEmployeeId($employee_no)
     {
-        $this->employee_id = $employee_id;
+        $this->employee_no = $employee_no;
         return $this;
     }
     /**

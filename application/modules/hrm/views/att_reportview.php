@@ -42,7 +42,7 @@ foreach ($ab as $ca) {
 
                 ID NO: <?php
 
-                        echo $ca->employee_id;
+                        echo $ca->employee_no;
 
 
                         ?>

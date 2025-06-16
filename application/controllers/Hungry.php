@@ -32,7 +32,7 @@ class Hungry extends CI_Controller
 		$this->load->model(array(
 			'hungry_model'
 		));
-		$this->allmenu = $this->hungry_model->allmenu_dropdown();
+		$this->allmenu = $this->hungry_model->allmenu_dropdown(); 
 		$this->themeinfo = $this->db->select('*')->from('themes')->where('status', 1)->get()->row();
 		$this->webinfo = $this->db->select('*')->from('common_setting')->get()->row();
 		$this->settinginfo = $this->db->select('*')->from('setting')->get()->row();
@@ -2010,9 +2010,9 @@ class Hungry extends CI_Controller
 			$this->session->unset_userdata('couponprice');
 			/*Push Notification*/
 			$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=6";
-			$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+			$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id ');
 			$this->db->from('user');
-			$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+			$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 			$this->db->where($condition);
 			$query = $this->db->get();
 			$allemployee = $query->result();
@@ -2369,9 +2369,9 @@ document.getElementById("paytrack").click();
 				$this->session->unset_userdata('shippingid');
 				/*Push Notification*/
 				$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=6";
-				$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+				$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id ');
 				$this->db->from('user');
-				$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+				$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 				$this->db->where($condition);
 				$query = $this->db->get();
 				$allemployee = $query->result();

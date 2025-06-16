@@ -4,7 +4,7 @@
 Name | Getter | Setter | Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
 **id** | getId() | setId($value) | **string** | The timecard&#39;s unique ID. | [optional] 
-**employee_id** | getEmployeeId() | setEmployeeId($value) | **string** | The ID of the employee the timecard is associated with. | 
+**employee_no** | getEmployeeId() | setEmployeeId($value) | **string** | The ID of the employee the timecard is associated with. | 
 **deleted** | getDeleted() | setDeleted($value) | **bool** | If true, the timecard was deleted by the merchant, and it is no longer valid. | [optional] 
 **clockin_time** | getClockinTime() | setClockinTime($value) | **string** | The clock-in time for the timecard, in ISO 8601 format. | [optional] 
 **clockout_time** | getClockoutTime() | setClockoutTime($value) | **string** | The clock-out time for the timecard, in ISO 8601 format. Provide this value only if importing timecard information from another system. | [optional] 

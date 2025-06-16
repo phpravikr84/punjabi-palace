@@ -6,10 +6,10 @@
 
                    <?php echo  form_open('hrm/Loan/lnreport_view') ?>
                    <div class="form-group row">
-                       <label for="employee_id" class="col-sm-2 col-form-label"><?php echo display('e_r_id') ?>
+                       <label for="employee_no" class="col-sm-2 col-form-label"><?php echo display('e_r_id') ?>
                            *</label>
                        <div class="col-sm-3">
-                           <?php echo form_dropdown('employee_id', $gndloan, (!empty($example->employee_id) ? $example->employee_id : null), 'class="form-control"') ?>
+                           <?php echo form_dropdown('employee_no', $gndloan, (!empty($example->employee_no) ? $example->employee_no : null), 'class="form-control"') ?>
                        </div>
                        <div class="col-sm-3">
                            <input name="start_date" class="form-control datepicker" type="text"
@@ -47,7 +47,7 @@
                            <tr>
                                <th><?php echo display('Sl') ?></th>
                                <th><?php echo display('name') ?></th>
-                               <th><?php echo display('employee_id') ?></th>
+                               <th><?php echo display('employee_no') ?></th>
                                <th><?php echo display('total_loan') ?></th>
                                <th><?php echo display('total_amount') ?></th>
                                <th><?php echo display('repayment_amount') ?></th>
@@ -60,9 +60,9 @@
                            <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                                <td><?php echo $sl; ?></td>
                                <td><a
-                                       href="<?php echo base_url("hrm/Loan/view_details/$que->employee_id") ?>"><?php echo $que->first_name . ' ' . $que->last_name; ?></a>
+                                       href="<?php echo base_url("hrm/Loan/view_details/$que->employee_no") ?>"><?php echo $que->first_name . ' ' . $que->last_name; ?></a>
                                </td>
-                               <td><?php echo $que->employee_id; ?></td>
+                               <td><?php echo $que->employee_no; ?></td>
                                <td><?php echo $que->l_id; ?></td>
                                <td><?php echo $que->amount; ?></td>
                                <td><?php echo $que->repayment_amount; ?></td>

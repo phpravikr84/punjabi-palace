@@ -870,7 +870,7 @@ class V1EmployeesApi
      * Provides summary information for all of a business's employee timecards.
      *
      * @param string $order The order in which timecards are listed in the response, based on their created_at field. (optional)
-     * @param string $employee_id If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
+     * @param string $employee_no If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
      * @param string $begin_clockin_time If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
      * @param string $end_clockin_time If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
      * @param string $begin_clockout_time If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
@@ -883,9 +883,9 @@ class V1EmployeesApi
      * @return \SquareConnect\Model\V1Timecard[]
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function listTimecards($order = null, $employee_id = null, $begin_clockin_time = null, $end_clockin_time = null, $begin_clockout_time = null, $end_clockout_time = null, $begin_updated_at = null, $end_updated_at = null, $deleted = null, $limit = null, $batch_token = null)
+    public function listTimecards($order = null, $employee_no = null, $begin_clockin_time = null, $end_clockin_time = null, $begin_clockout_time = null, $end_clockout_time = null, $begin_updated_at = null, $end_updated_at = null, $deleted = null, $limit = null, $batch_token = null)
     {
-        list($response, $statusCode, $httpHeader) = $this->listTimecardsWithHttpInfo ($order, $employee_id, $begin_clockin_time, $end_clockin_time, $begin_clockout_time, $end_clockout_time, $begin_updated_at, $end_updated_at, $deleted, $limit, $batch_token);
+        list($response, $statusCode, $httpHeader) = $this->listTimecardsWithHttpInfo ($order, $employee_no, $begin_clockin_time, $end_clockin_time, $begin_clockout_time, $end_clockout_time, $begin_updated_at, $end_updated_at, $deleted, $limit, $batch_token);
         return $response; 
     }
 
@@ -896,7 +896,7 @@ class V1EmployeesApi
      * Provides summary information for all of a business's employee timecards.
      *
      * @param string $order The order in which timecards are listed in the response, based on their created_at field. (optional)
-     * @param string $employee_id If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
+     * @param string $employee_no If provided, the endpoint returns only timecards for the employee with the specified ID. (optional)
      * @param string $begin_clockin_time If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
      * @param string $end_clockin_time If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. (optional)
      * @param string $begin_clockout_time If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. (optional)
@@ -909,7 +909,7 @@ class V1EmployeesApi
      * @return Array of \SquareConnect\Model\V1Timecard[], HTTP status code, HTTP response headers (array of strings)
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function listTimecardsWithHttpInfo($order = null, $employee_id = null, $begin_clockin_time = null, $end_clockin_time = null, $begin_clockout_time = null, $end_clockout_time = null, $begin_updated_at = null, $end_updated_at = null, $deleted = null, $limit = null, $batch_token = null)
+    public function listTimecardsWithHttpInfo($order = null, $employee_no = null, $begin_clockin_time = null, $end_clockin_time = null, $begin_clockout_time = null, $end_clockout_time = null, $begin_updated_at = null, $end_updated_at = null, $deleted = null, $limit = null, $batch_token = null)
     {
         
   
@@ -929,8 +929,8 @@ class V1EmployeesApi
         if ($order !== null) {
             $queryParams['order'] = $this->apiClient->getSerializer()->toQueryValue($order);
         }// query params
-        if ($employee_id !== null) {
-            $queryParams['employee_id'] = $this->apiClient->getSerializer()->toQueryValue($employee_id);
+        if ($employee_no !== null) {
+            $queryParams['employee_no'] = $this->apiClient->getSerializer()->toQueryValue($employee_no);
         }// query params
         if ($begin_clockin_time !== null) {
             $queryParams['begin_clockin_time'] = $this->apiClient->getSerializer()->toQueryValue($begin_clockin_time);
@@ -1114,13 +1114,13 @@ class V1EmployeesApi
      *
      * Provides the details for a single employee.
      *
-     * @param string $employee_id The employee&#39;s ID. (required)
+     * @param string $employee_no The employee&#39;s ID. (required)
      * @return \SquareConnect\Model\V1Employee
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function retrieveEmployee($employee_id)
+    public function retrieveEmployee($employee_no)
     {
-        list($response, $statusCode, $httpHeader) = $this->retrieveEmployeeWithHttpInfo ($employee_id);
+        list($response, $statusCode, $httpHeader) = $this->retrieveEmployeeWithHttpInfo ($employee_no);
         return $response; 
     }
 
@@ -1130,20 +1130,20 @@ class V1EmployeesApi
      *
      * Provides the details for a single employee.
      *
-     * @param string $employee_id The employee&#39;s ID. (required)
+     * @param string $employee_no The employee&#39;s ID. (required)
      * @return Array of \SquareConnect\Model\V1Employee, HTTP status code, HTTP response headers (array of strings)
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function retrieveEmployeeWithHttpInfo($employee_id)
+    public function retrieveEmployeeWithHttpInfo($employee_no)
     {
         
-        // verify the required parameter 'employee_id' is set
-        if ($employee_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $employee_id when calling retrieveEmployee');
+        // verify the required parameter 'employee_no' is set
+        if ($employee_no === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $employee_no when calling retrieveEmployee');
         }
   
         // parse inputs
-        $resourcePath = "/v1/me/employees/{employee_id}";
+        $resourcePath = "/v1/me/employees/{employee_no}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1157,10 +1157,10 @@ class V1EmployeesApi
         
         
         // path params
-        if ($employee_id !== null) {
+        if ($employee_no !== null) {
             $resourcePath = str_replace(
-                "{" . "employee_id" . "}",
-                $this->apiClient->getSerializer()->toPathValue($employee_id),
+                "{" . "employee_no" . "}",
+                $this->apiClient->getSerializer()->toPathValue($employee_no),
                 $resourcePath
             );
         }
@@ -1399,14 +1399,14 @@ class V1EmployeesApi
      *
      * V1 UpdateEmployee
      *
-     * @param string $employee_id The ID of the role to modify. (required)
+     * @param string $employee_no The ID of the role to modify. (required)
      * @param \SquareConnect\Model\V1Employee $body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
      * @return \SquareConnect\Model\V1Employee
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function updateEmployee($employee_id, $body)
+    public function updateEmployee($employee_no, $body)
     {
-        list($response, $statusCode, $httpHeader) = $this->updateEmployeeWithHttpInfo ($employee_id, $body);
+        list($response, $statusCode, $httpHeader) = $this->updateEmployeeWithHttpInfo ($employee_no, $body);
         return $response; 
     }
 
@@ -1416,17 +1416,17 @@ class V1EmployeesApi
      *
      * V1 UpdateEmployee
      *
-     * @param string $employee_id The ID of the role to modify. (required)
+     * @param string $employee_no The ID of the role to modify. (required)
      * @param \SquareConnect\Model\V1Employee $body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
      * @return Array of \SquareConnect\Model\V1Employee, HTTP status code, HTTP response headers (array of strings)
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function updateEmployeeWithHttpInfo($employee_id, $body)
+    public function updateEmployeeWithHttpInfo($employee_no, $body)
     {
         
-        // verify the required parameter 'employee_id' is set
-        if ($employee_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $employee_id when calling updateEmployee');
+        // verify the required parameter 'employee_no' is set
+        if ($employee_no === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $employee_no when calling updateEmployee');
         }
         // verify the required parameter 'body' is set
         if ($body === null) {
@@ -1434,7 +1434,7 @@ class V1EmployeesApi
         }
   
         // parse inputs
-        $resourcePath = "/v1/me/employees/{employee_id}";
+        $resourcePath = "/v1/me/employees/{employee_no}";
         $httpBody = '';
         $queryParams = array();
         $headerParams = array();
@@ -1448,10 +1448,10 @@ class V1EmployeesApi
         
         
         // path params
-        if ($employee_id !== null) {
+        if ($employee_no !== null) {
             $resourcePath = str_replace(
-                "{" . "employee_id" . "}",
-                $this->apiClient->getSerializer()->toPathValue($employee_id),
+                "{" . "employee_no" . "}",
+                $this->apiClient->getSerializer()->toPathValue($employee_no),
                 $resourcePath
             );
         }

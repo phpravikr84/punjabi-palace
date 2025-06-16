@@ -8,7 +8,7 @@ function SelectToLoad(id) {
         method: 'post',
         dataType: 'json',
         data: {
-            'employee_id': id,'csrf_test_name':csrf
+            'employee_no': id,'csrf_test_name':csrf
         },
         success: function(data) {
 

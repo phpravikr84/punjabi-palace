@@ -84,18 +84,18 @@
 
 
                                 <div class="form-group row">
-                                    <label for="employee_id" class="col-sm-2 col-form-label">Select
+                                    <label for="employee_no" class="col-sm-2 col-form-label">Select
                                         <?php echo display('employee_name') ?></label>
                                     <div class="col-sm-4">
 
                                         <?php if ($this->session->userdata('isAdmin') == 1 || $this->session->userdata('supervisor') == 1) { ?>
-                                        <?php echo form_dropdown('employee_id', $dropdown, null, 'class="form-control width-100" id="employee_id"') ?>
+                                        <?php echo form_dropdown('employee_no', $dropdown, null, 'class="form-control width-100" id="employee_no"') ?>
                                         <?php } else { ?>
                                         <input type="text" name="employee_name" class="form-control"
                                             value="<?php echo $this->session->userdata('first_name') . ' ' . $this->session->userdata('last_name'); ?>"
                                             readonly>
-                                        <input type="hidden" name="employee_id" id="employee_id" class="form-control"
-                                            value="<?php echo $this->session->userdata('employee_id'); ?>">
+                                        <input type="hidden" name="employee_no" id="employee_no" class="form-control"
+                                            value="<?php echo $this->session->userdata('employee_no'); ?>">
                                         <?php } ?>
 
                                     </div> <label for="leave_type" class="col-sm-2 col-form-label">Select
@@ -177,7 +177,7 @@
                                         <select name="approved_by" class="form-control width-100">
                                             <option value="">Select One</option>
                                             <?php foreach ($supr as $supervisor) { ?>
-                                            <option value="<?php echo $supervisor->employee_id; ?>">
+                                            <option value="<?php echo $supervisor->employee_no; ?>">
                                                 <?php echo $supervisor->first_name . ' ' . $supervisor->last_name; ?>
                                             </option>
                                             <?php } ?>

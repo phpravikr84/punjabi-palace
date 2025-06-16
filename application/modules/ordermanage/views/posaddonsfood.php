@@ -92,22 +92,32 @@ $selectedMods = $q2->result();
       // echo "modifiers count: ". count($modifiers);
       // echo "<br>modifiers type: ". gettype($modifiers);
       // exit();
+        $modGroupQty = 0;
         foreach ($modifiers as $mk => $mv):
+        //Fetching modifier item information from the database
+        $this->db->select('add_on_id,add_on_name,price,is_comp');
+        $this->db->from('add_ons');
+        $this->db->where('modifier_set_id', $mv->id);
+        $this->db->where('is_active', 1);
+        $miq = $this->db->get();
+        $modifier_items = $miq->result();
           // echo "<pre>";
           // print_r($mv);
           // echo "</pre>";
+        if(count($modifier_items)>0):
+            $modGroupQty++;
       ?>
       <div class="panel panel-default" id="modifiersPanel_<?=$mv->id;?>">
           <div class="panel-heading" role="tab" id="headingModifiers_<?=$mv->id;?>">
               <h5 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers_<?=$mv->id;?>" aria-expanded="<?=(($mk==0)?'true':'false')?>" aria-controls="collapseModifiers" class="accordion-plus-toggle <?=(($mk==0)?'':'collapsed')?>">
+                  <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==1)?'true':'false')?>" aria-controls="collapseModifiers" class="accordion-plus-toggle <?=(($modGroupQty==1)?'':'collapsed')?>">
                     <?=$mv->name;?>
                     <br />
-                            <small class="modifier-set-sub-heading" <?php if($mk==0): ?>style="display:block !important;"<?php endif; ?>>Select the items for adding them into the cart</small>
+                            <small class="modifier-set-sub-heading" <?php if($modGroupQty==1): ?>style="display:block !important;"<?php endif; ?>>Select the items for adding them into the cart</small>
                   </a>
               </h5>
           </div>
-          <div id="collapseModifiers_<?=$mv->id;?>" class="panel-collapse collapse <?=(($mk==0)?'in':'')?>" role="tabpanel" aria-labelledby="headingModifiers_<?=$mv->id;?>" aria-expanded="<?=(($mk==0)?'true':'false')?>" style="">
+          <div id="collapseModifiers_<?=$mv->id;?>" class="panel-collapse collapse <?=(($modGroupQty==1)?'in':'')?>" role="tabpanel" aria-labelledby="headingModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==1)?'true':'false')?>" style="">
               <div class="panel-body">
                   <div class="mt-3">
                       <table class="table table-bordered">
@@ -120,13 +130,6 @@ $selectedMods = $q2->result();
                           </thead> -->
                           <tbody>
                               <?php 
-                              //Fetching modifier item information from the database
-                              $this->db->select('add_on_id,add_on_name,price,is_comp');
-                              $this->db->from('add_ons');
-                              $this->db->where('modifier_set_id', $mv->id);
-                              $this->db->where('is_active', 1);
-                              $miq = $this->db->get();
-                              $modifier_items = $miq->result();
                               if(count($modifier_items)>0):
                                 // echo "<pre>";
                                 // print_r($modifier_items);
@@ -168,7 +171,11 @@ $selectedMods = $q2->result();
           </div>
       </div>
       <?php
-        endforeach;
+        endif;
+        endforeach;        
+        if ($modGroupQty == 0) {
+            echo "No modifier items found for this product !";
+        }
       ?> 
       <!-- <div class="row">
         <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;">

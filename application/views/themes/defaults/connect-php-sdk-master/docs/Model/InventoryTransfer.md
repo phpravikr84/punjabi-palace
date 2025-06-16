@@ -14,7 +14,7 @@ Name | Getter | Setter | Type | Description | Notes
 **occurred_at** | getOccurredAt() | setOccurredAt($value) | **string** | A client-generated timestamp in RFC 3339 format that indicates when the transfer took place. For write actions, the &#x60;occurred_at&#x60; timestamp cannot be older than 24 hours or in the future relative to the time of the request. | [optional] 
 **created_at** | getCreatedAt() | setCreatedAt($value) | **string** | A read-only timestamp in RFC 3339 format that indicates when Square received the transfer request. | [optional] 
 **source** | getSource() | setSource($value) | [**\SquareConnect\Model\SourceApplication**](SourceApplication.md) | Read-only information about the application that initiated the inventory transfer. | [optional] 
-**employee_id** | getEmployeeId() | setEmployeeId($value) | **string** | The Square ID of the [Employee](#type-employee) responsible for the inventory transfer. | [optional] 
+**employee_no** | getEmployeeId() | setEmployeeId($value) | **string** | The Square ID of the [Employee](#type-employee) responsible for the inventory transfer. | [optional] 
 
 Note: All properties are protected and only accessed via getters and setters.
 

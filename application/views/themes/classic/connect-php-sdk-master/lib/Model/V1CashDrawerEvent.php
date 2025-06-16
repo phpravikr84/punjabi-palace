@@ -25,7 +25,7 @@ class V1CashDrawerEvent implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'string',
-        'employee_id' => 'string',
+        'employee_no' => 'string',
         'event_type' => 'string',
         'event_money' => '\SquareConnect\Model\V1Money',
         'created_at' => 'string',
@@ -38,7 +38,7 @@ class V1CashDrawerEvent implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'employee_id' => 'employee_id',
+        'employee_no' => 'employee_no',
         'event_type' => 'event_type',
         'event_money' => 'event_money',
         'created_at' => 'created_at',
@@ -51,7 +51,7 @@ class V1CashDrawerEvent implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'employee_id' => 'setEmployeeId',
+        'employee_no' => 'setEmployeeId',
         'event_type' => 'setEventType',
         'event_money' => 'setEventMoney',
         'created_at' => 'setCreatedAt',
@@ -64,7 +64,7 @@ class V1CashDrawerEvent implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'employee_id' => 'getEmployeeId',
+        'employee_no' => 'getEmployeeId',
         'event_type' => 'getEventType',
         'event_money' => 'getEventMoney',
         'created_at' => 'getCreatedAt',
@@ -77,10 +77,10 @@ class V1CashDrawerEvent implements ArrayAccess
       */
     protected $id;
     /**
-      * $employee_id The ID of the employee that created the event.
+      * $employee_no The ID of the employee that created the event.
       * @var string
       */
-    protected $employee_id;
+    protected $employee_no;
     /**
       * $event_type The type of event that occurred.
       * @var string
@@ -114,10 +114,10 @@ class V1CashDrawerEvent implements ArrayAccess
             } else {
               $this->id = null;
             }
-            if (isset($data["employee_id"])) {
-              $this->employee_id = $data["employee_id"];
+            if (isset($data["employee_no"])) {
+              $this->employee_no = $data["employee_no"];
             } else {
-              $this->employee_id = null;
+              $this->employee_no = null;
             }
             if (isset($data["event_type"])) {
               $this->event_type = $data["event_type"];
@@ -161,22 +161,22 @@ class V1CashDrawerEvent implements ArrayAccess
         return $this;
     }
     /**
-     * Gets employee_id
+     * Gets employee_no
      * @return string
      */
     public function getEmployeeId()
     {
-        return $this->employee_id;
+        return $this->employee_no;
     }
   
     /**
-     * Sets employee_id
-     * @param string $employee_id The ID of the employee that created the event.
+     * Sets employee_no
+     * @param string $employee_no The ID of the employee that created the event.
      * @return $this
      */
-    public function setEmployeeId($employee_id)
+    public function setEmployeeId($employee_no)
     {
-        $this->employee_id = $employee_id;
+        $this->employee_no = $employee_no;
         return $this;
     }
     /**

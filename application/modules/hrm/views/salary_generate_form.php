@@ -39,7 +39,7 @@
                                             <?php if(!empty($emplist)){
 												foreach($emplist as $emp){
 												?>
-                                            <option value="<?php echo $emp->employee_id;?>"><?php echo $emp->first_name.' '.$emp->last_name;?></option>
+                                            <option value="<?php echo $emp->employee_no;?>"><?php echo $emp->first_name.' '.$emp->last_name;?></option>
                                             <?php }
 											}
 											?>
@@ -109,7 +109,7 @@
                         <tr>
                             <th><?php echo display('cid') ?></th>
                             <th><?php echo display('employee_name') ?></th>
-                            <th><?php echo display('employee_id') ?></th>
+                            <th><?php echo display('employee_no') ?></th>
                             <th><?php echo display('name') ?></th>
                             <th><?php echo display('gdate') ?></th>
                             <th><?php echo display('start_dates') ?></th>
@@ -125,7 +125,7 @@
                         <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                             <td><?php echo $sl; ?></td>
                             <td><?php echo $que->first_name . ' ' . $que->last_name; ?></td>
-                            <td><?php echo $que->employee_id; ?></td>
+                            <td><?php echo $que->employee_no; ?></td>
                             <td><?php echo $que->name; ?></td>
                             <td><?php echo $que->gdate; ?></td>
                             <td><?php echo $que->start_date; ?></td>

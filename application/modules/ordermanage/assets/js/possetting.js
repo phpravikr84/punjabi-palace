@@ -544,7 +544,7 @@ function itemModifiers(pid,tr_row_id) {
         }
     });
 }
-function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
+function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) {
     let selectedValues = [];
 
     $("input[name='modifier_items[]']:checked").each(function () {
@@ -557,10 +557,32 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
     console.log("Modifier Selected Values: " + mods);
     //sending to the controller to check validations and save to the database
     if (skipAddToCart==0) {
-        if(!posaddonsfoodtocart(pid,1))
-        {
-            alert("Error adding this item to the cart!");
-            return false;
+        if (promoqty!=0) {
+            if(!posaddonsfoodtocart(pid,1,null,true,promoqty))
+            {
+                // alert("Error adding the free item to the cart!");
+                swal({
+                    title: "Error adding the free item to the cart!",
+                    text: "Please try again.",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                });
+                return false;
+            }
+        } else {
+            if(!posaddonsfoodtocart(pid,1))
+            {
+                // alert("Error adding this item to the cart!");
+                swal({
+                    title: "Error adding this item to the cart!",
+                    text: "Please try again.",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                });
+                return false;
+            }
         }
     }
     $(".page-loader-wrapper").show();
@@ -579,19 +601,47 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
                 $(".page-loader-wrapper").hide();
                 console.log("Modifier save data: " + data);
                 if (data == 420) {
-                    alert("The modifier doesn't have any ingredients!!!");
+                    // alert("The modifier doesn't have any ingredients!!!");
+                    swal({
+                        title: "The modifier doesn't have any ingredients!!!",
+                        text: "Please check the modifier ingredients.",
+                        type: "warning",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
                     return false;
                 }
                 if (data == 421) {
-                    alert("The modifier doesn't have sufficient ingredients!!!");
+                    // alert("The modifier doesn't have sufficient ingredients!!!");
+                    swal({
+                        title: "The modifier doesn't have sufficient ingredients!!!",
+                        text: "Please check the modifier stock.",
+                        type: "warning",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
                     return false;
                 }
                 if (data == 422) {
-                    alert("The modifier doesn't have sufficient stock!!!");
+                    // alert("The modifier doesn't have sufficient stock!!!");
+                    swal({
+                        title: "The modifier doesn't have sufficient stock!!!",
+                        text: "Please check the modifier stock.",
+                        type: "warning",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
                     return false;
                 }
                 if (data == 423) {
-                    alert("The modifier can't be added!!!");
+                    // alert("The modifier can't be added!!!");
+                    swal({
+                        title: "The modifier can't be added!!!",
+                        text: "Please check the modifier settings.",
+                        type: "warning",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
                     return false;
                 }
                 if ($("#selectedModsDetails_"+pid)) {
@@ -602,9 +652,14 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
                     $('#tdiscount_'+pid).remove();
                     $('#tgtotal_'+pid).remove();
                     $('#sc_'+pid).remove();
+                    $('#promo_item_id_'+pid).remove();
+                    $('#promo_item_qty_'+pid).remove();
                 }
                 $("#addfoodlist").append(data);
                 closeNav();
+                var promo_item_id = $('#promo_item_id_'+pid).val();
+                var promo_item_qty = $('#promo_item_qty_'+pid).val();
+
                 var modTotalPrice = $('#modTotalPrice_'+pid).val();
                 var togText = $("#modToggleText_"+pid).val();
                 let selectedNewModsHtml = $("#selectedModsDetails_"+pid).html();
@@ -628,6 +683,10 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
                 $('#grandtotal').val(tgtotal);
                 $('#orggrandTotal').val(tgtotal);
                 $('#orginattotal').val(tgtotal);
+                if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
+                    // Add the promo item to the cart
+                    ApplyModifierSelect(promo_item_id,null,0,promo_item_qty);
+                }
 
                 // console.log("oldIndvPrice: "+oldIndvPrice);
                 console.log("Subtotal: "+parseFloat(total));

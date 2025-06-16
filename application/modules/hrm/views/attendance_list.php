@@ -65,7 +65,7 @@
                         <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                             <td><?php echo $sl; ?></td>
                             <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
-                            <td><?php echo $row['employee_id']; ?></td>
+                            <td><?php echo $row['employee_no']; ?></td>
                             <td><?php echo $row['date']; ?></td>
                             <td><?php echo $row['sign_in']; ?></td>
                             <td><?php echo $row['sign_out']; ?></td>
@@ -107,10 +107,10 @@
                                 <?php echo  form_open('hrm/Home/AtnReport_view', 'name="myForm"') ?>
 
                                 <div class="form-group row">
-                                    <label for="employee_id"
-                                        class="col-sm-3 col-form-label"><?php echo display('employee_id') ?> *</label>
+                                    <label for="employee_no"
+                                        class="col-sm-3 col-form-label"><?php echo display('employee_no') ?> *</label>
                                     <div class="col-sm-9">
-                                        <input name="employee_id" class="form-control" type="text" placeholder="<?php echo display('employee_id_se') ?>" id="employee_id" onblur="check_if_exists();">
+                                        <input name="employee_no" class="form-control" type="text" placeholder="<?php echo display('employee_id_se') ?>" id="employee_no" onblur="check_if_exists();">
                                     </div>
                                 </div>
                                 <div class="form-group row">

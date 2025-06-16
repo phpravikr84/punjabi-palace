@@ -32,7 +32,7 @@ class InventoryPhysicalCount implements ArrayAccess
         'location_id' => 'string',
         'quantity' => 'string',
         'source' => '\SquareConnect\Model\SourceApplication',
-        'employee_id' => 'string',
+        'employee_no' => 'string',
         'occurred_at' => 'string',
         'created_at' => 'string'
     );
@@ -50,7 +50,7 @@ class InventoryPhysicalCount implements ArrayAccess
         'location_id' => 'location_id',
         'quantity' => 'quantity',
         'source' => 'source',
-        'employee_id' => 'employee_id',
+        'employee_no' => 'employee_no',
         'occurred_at' => 'occurred_at',
         'created_at' => 'created_at'
     );
@@ -68,7 +68,7 @@ class InventoryPhysicalCount implements ArrayAccess
         'location_id' => 'setLocationId',
         'quantity' => 'setQuantity',
         'source' => 'setSource',
-        'employee_id' => 'setEmployeeId',
+        'employee_no' => 'setEmployeeId',
         'occurred_at' => 'setOccurredAt',
         'created_at' => 'setCreatedAt'
     );
@@ -86,7 +86,7 @@ class InventoryPhysicalCount implements ArrayAccess
         'location_id' => 'getLocationId',
         'quantity' => 'getQuantity',
         'source' => 'getSource',
-        'employee_id' => 'getEmployeeId',
+        'employee_no' => 'getEmployeeId',
         'occurred_at' => 'getOccurredAt',
         'created_at' => 'getCreatedAt'
     );
@@ -132,10 +132,10 @@ class InventoryPhysicalCount implements ArrayAccess
       */
     protected $source;
     /**
-      * $employee_id The Square ID of the [Employee](#type-employee) responsible for the physical count.
+      * $employee_no The Square ID of the [Employee](#type-employee) responsible for the physical count.
       * @var string
       */
-    protected $employee_id;
+    protected $employee_no;
     /**
       * $occurred_at A client-generated timestamp in RFC 3339 format that indicates when the physical count took place. For write actions, the `occurred_at` timestamp cannot be older than 24 hours or in the future relative to the time of the request.
       * @var string
@@ -194,10 +194,10 @@ class InventoryPhysicalCount implements ArrayAccess
             } else {
               $this->source = null;
             }
-            if (isset($data["employee_id"])) {
-              $this->employee_id = $data["employee_id"];
+            if (isset($data["employee_no"])) {
+              $this->employee_no = $data["employee_no"];
             } else {
-              $this->employee_id = null;
+              $this->employee_no = null;
             }
             if (isset($data["occurred_at"])) {
               $this->occurred_at = $data["occurred_at"];
@@ -364,22 +364,22 @@ class InventoryPhysicalCount implements ArrayAccess
         return $this;
     }
     /**
-     * Gets employee_id
+     * Gets employee_no
      * @return string
      */
     public function getEmployeeId()
     {
-        return $this->employee_id;
+        return $this->employee_no;
     }
   
     /**
-     * Sets employee_id
-     * @param string $employee_id The Square ID of the [Employee](#type-employee) responsible for the physical count.
+     * Sets employee_no
+     * @param string $employee_no The Square ID of the [Employee](#type-employee) responsible for the physical count.
      * @return $this
      */
-    public function setEmployeeId($employee_id)
+    public function setEmployeeId($employee_no)
     {
-        $this->employee_id = $employee_id;
+        $this->employee_no = $employee_no;
         return $this;
     }
     /**

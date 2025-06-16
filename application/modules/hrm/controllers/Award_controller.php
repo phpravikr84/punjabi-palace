@@ -35,7 +35,7 @@ public function create_award()
 		$this->form_validation->set_rules('awr_gift_item',display('awr_gift_item'),'max_length[50]');
 		$this->form_validation->set_rules('date',display('date')  ,'max_length[50]');
 		
-        $this->form_validation->set_rules('employee_id',display('employee_id')  ,'max_length[50]');
+        $this->form_validation->set_rules('employee_no',display('employee_no')  ,'max_length[50]');
         $this->form_validation->set_rules('awarded_by',display('awarded_by')  ,'max_length[50]');
       
         #-------------------------------#
@@ -49,7 +49,7 @@ public function create_award()
 			'awr_gift_item' 	                  => $this->input->post('awr_gift_item',true),
 			'date' 	          => $this->input->post('date',true),
 			
-                'employee_id' => $this->input->post('employee_id',true),
+                'employee_no' => $this->input->post('employee_no',true),
                 'awarded_by' => $this->input->post('awarded_by',true),
                 
             ];   
@@ -100,7 +100,7 @@ public function delete_award($id = null)
         $this->form_validation->set_rules('awr_gift_item',display('awr_gift_item'),'max_length[50]');
         $this->form_validation->set_rules('date',display('date')  ,'max_length[50]');
         
-        $this->form_validation->set_rules('employee_id',display('employee_id')  ,'max_length[50]');
+        $this->form_validation->set_rules('employee_no',display('employee_no')  ,'max_length[50]');
         $this->form_validation->set_rules('awarded_by',display('awarded_by')  ,'max_length[50]');
         
         #-------------------------------#
@@ -113,7 +113,7 @@ public function delete_award($id = null)
             'awr_gift_item'                       => $this->input->post('awr_gift_item',true),
             'date'            => $this->input->post('date',true),
             
-                'employee_id' => $this->input->post('employee_id',true),
+                'employee_no' => $this->input->post('employee_no',true),
                 'awarded_by' => $this->input->post('awarded_by',true),
 
        

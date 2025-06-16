@@ -57,12 +57,12 @@
                   </div>
                   <div class="form-group row">
 
-                      <label for="employee_id" class="col-sm-3 col-form-label">
-                          <?php echo display('employee_id') ?></label>
+                      <label for="employee_no" class="col-sm-3 col-form-label">
+                          <?php echo display('employee_no') ?></label>
                       <div class="col-sm-9">
                           <?php
-                            $value = $bb['employee_id'];
-                            echo form_dropdown('employee_id', $dropdown, $value, 'class="form-control"');
+                            $value = $bb['employee_no'];
+                            echo form_dropdown('employee_no', $dropdown, $value, 'class="form-control"');
                             ?>
 
                       </div>

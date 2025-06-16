@@ -14,10 +14,10 @@ Method | HTTP request | Description
 [**listTimecardEvents**](V1EmployeesApi.md#listTimecardEvents) | **GET** /v1/me/timecards/{timecard_id}/events | Provides summary information for all events associated with a particular timecard.
 [**listTimecards**](V1EmployeesApi.md#listTimecards) | **GET** /v1/me/timecards | Provides summary information for all of a business&#39;s employee timecards.
 [**retrieveCashDrawerShift**](V1EmployeesApi.md#retrieveCashDrawerShift) | **GET** /v1/{location_id}/cash-drawer-shifts/{shift_id} | Provides the details for a single cash drawer shift, including all events that occurred during the shift.
-[**retrieveEmployee**](V1EmployeesApi.md#retrieveEmployee) | **GET** /v1/me/employees/{employee_id} | Provides the details for a single employee.
+[**retrieveEmployee**](V1EmployeesApi.md#retrieveEmployee) | **GET** /v1/me/employees/{employee_no} | Provides the details for a single employee.
 [**retrieveEmployeeRole**](V1EmployeesApi.md#retrieveEmployeeRole) | **GET** /v1/me/roles/{role_id} | Provides the details for a single employee role.
 [**retrieveTimecard**](V1EmployeesApi.md#retrieveTimecard) | **GET** /v1/me/timecards/{timecard_id} | Provides the details for a single timecard.
-[**updateEmployee**](V1EmployeesApi.md#updateEmployee) | **PUT** /v1/me/employees/{employee_id} | V1 UpdateEmployee
+[**updateEmployee**](V1EmployeesApi.md#updateEmployee) | **PUT** /v1/me/employees/{employee_no} | V1 UpdateEmployee
 [**updateEmployeeRole**](V1EmployeesApi.md#updateEmployeeRole) | **PUT** /v1/me/roles/{role_id} | Modifies the details of an employee role.
 [**updateTimecard**](V1EmployeesApi.md#updateTimecard) | **PUT** /v1/me/timecards/{timecard_id} | Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
 
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **listTimecards**
-> \SquareConnect\Model\V1Timecard[] listTimecards($order, $employee_id, $begin_clockin_time, $end_clockin_time, $begin_clockout_time, $end_clockout_time, $begin_updated_at, $end_updated_at, $deleted, $limit, $batch_token)
+> \SquareConnect\Model\V1Timecard[] listTimecards($order, $employee_no, $begin_clockin_time, $end_clockin_time, $begin_clockout_time, $end_clockout_time, $begin_updated_at, $end_updated_at, $deleted, $limit, $batch_token)
 
 Provides summary information for all of a business's employee timecards.
 
@@ -449,7 +449,7 @@ SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACC
 
 $api_instance = new SquareConnect\Api\V1EmployeesApi();
 $order = "order_example"; // string | The order in which timecards are listed in the response, based on their created_at field.
-$employee_id = "employee_id_example"; // string | If provided, the endpoint returns only timecards for the employee with the specified ID.
+$employee_no = "employee_id_example"; // string | If provided, the endpoint returns only timecards for the employee with the specified ID.
 $begin_clockin_time = "begin_clockin_time_example"; // string | If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format.
 $end_clockin_time = "end_clockin_time_example"; // string | If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format.
 $begin_clockout_time = "begin_clockout_time_example"; // string | If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format.
@@ -461,7 +461,7 @@ $limit = 56; // int | The maximum integer number of employee entities to return 
 $batch_token = "batch_token_example"; // string | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 
 try {
-    $result = $api_instance->listTimecards($order, $employee_id, $begin_clockin_time, $end_clockin_time, $begin_clockout_time, $end_clockout_time, $begin_updated_at, $end_updated_at, $deleted, $limit, $batch_token);
+    $result = $api_instance->listTimecards($order, $employee_no, $begin_clockin_time, $end_clockin_time, $begin_clockout_time, $end_clockout_time, $begin_updated_at, $end_updated_at, $deleted, $limit, $batch_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling V1EmployeesApi->listTimecards: ', $e->getMessage(), PHP_EOL;
@@ -474,7 +474,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | **string**| The order in which timecards are listed in the response, based on their created_at field. | [optional]
- **employee_id** | **string**| If provided, the endpoint returns only timecards for the employee with the specified ID. | [optional]
+ **employee_no** | **string**| If provided, the endpoint returns only timecards for the employee with the specified ID. | [optional]
  **begin_clockin_time** | **string**| If filtering results by their clockin_time field, the beginning of the requested reporting period, in ISO 8601 format. | [optional]
  **end_clockin_time** | **string**| If filtering results by their clockin_time field, the end of the requested reporting period, in ISO 8601 format. | [optional]
  **begin_clockout_time** | **string**| If filtering results by their clockout_time field, the beginning of the requested reporting period, in ISO 8601 format. | [optional]
@@ -551,7 +551,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **retrieveEmployee**
-> \SquareConnect\Model\V1Employee retrieveEmployee($employee_id)
+> \SquareConnect\Model\V1Employee retrieveEmployee($employee_no)
 
 Provides the details for a single employee.
 
@@ -566,10 +566,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new SquareConnect\Api\V1EmployeesApi();
-$employee_id = "employee_id_example"; // string | The employee's ID.
+$employee_no = "employee_id_example"; // string | The employee's ID.
 
 try {
-    $result = $api_instance->retrieveEmployee($employee_id);
+    $result = $api_instance->retrieveEmployee($employee_no);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling V1EmployeesApi->retrieveEmployee: ', $e->getMessage(), PHP_EOL;
@@ -581,7 +581,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **employee_id** | **string**| The employee&#39;s ID. |
+ **employee_no** | **string**| The employee&#39;s ID. |
 
 ### Return type
 
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateEmployee**
-> \SquareConnect\Model\V1Employee updateEmployee($employee_id, $body)
+> \SquareConnect\Model\V1Employee updateEmployee($employee_no, $body)
 
 V1 UpdateEmployee
 
@@ -708,11 +708,11 @@ require_once(__DIR__ . '/vendor/autoload.php');
 SquareConnect\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $api_instance = new SquareConnect\Api\V1EmployeesApi();
-$employee_id = "employee_id_example"; // string | The ID of the role to modify.
+$employee_no = "employee_id_example"; // string | The ID of the role to modify.
 $body = new \SquareConnect\Model\V1Employee(); // \SquareConnect\Model\V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 try {
-    $result = $api_instance->updateEmployee($employee_id, $body);
+    $result = $api_instance->updateEmployee($employee_no, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling V1EmployeesApi->updateEmployee: ', $e->getMessage(), PHP_EOL;
@@ -724,7 +724,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **employee_id** | **string**| The ID of the role to modify. |
+ **employee_no** | **string**| The ID of the role to modify. |
  **body** | [**\SquareConnect\Model\V1Employee**](../Model/V1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. |
 
 ### Return type

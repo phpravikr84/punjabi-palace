@@ -560,9 +560,9 @@ class App extends MY_Controller
 
 					/*Push Notification*/
 					$condition = "user.waiter_kitchenToken!='' AND employee_history.pos_id=6";
-					$this->db->select('user.*,employee_history.emp_his_id,employee_history.employee_id,employee_history.pos_id ');
+					$this->db->select('user.*,employee_history.emp_id,employee_history.employee_no,employee_history.pos_id ');
 					$this->db->from('user');
-					$this->db->join('employee_history', 'employee_history.emp_his_id = user.id', 'left');
+					$this->db->join('employee_history', 'employee_history.emp_id = user.id', 'left');
 					$this->db->where($condition);
 					$query = $this->db->get();
 					$allemployee = $query->result();
@@ -709,8 +709,8 @@ class App extends MY_Controller
 			if ($foodlist != FALSE) {
 				$i = 0;
 				foreach ($foodlist as $list) {
-					$output['waiterinfo'][$i]['emp_his_id']                    = $list->emp_his_id;
-					$output['waiterinfo'][$i]['employee_id']                   = $list->employee_id;
+					$output['waiterinfo'][$i]['emp_id']                    = $list->emp_id;
+					$output['waiterinfo'][$i]['employee_no']                   = $list->employee_no;
 					$output['waiterinfo'][$i]['pos_id']                        = $list->pos_id;
 					$output['waiterinfo'][$i]['first_name']                    = $list->first_name;
 					$output['waiterinfo'][$i]['last_name']                     = $list->last_name;
@@ -786,7 +786,7 @@ class App extends MY_Controller
 				}
 				$k = 0;
 				foreach ($foodlist as $user) {
-					$output['userinfo'][$k]['id']                            = $user->emp_his_id;
+					$output['userinfo'][$k]['id']                            = $user->emp_id;
 					$output['userinfo'][$k]['firstname']                     = $user->first_name;
 					$output['userinfo'][$k]['lastname']                      = $user->last_name;
 					$output['userinfo'][$k]['email']                         = $user->email;

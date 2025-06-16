@@ -11,7 +11,7 @@ Name | Getter | Setter | Type | Description | Notes
 **location_id** | getLocationId() | setLocationId($value) | **string** | The Square ID of the [Location](#type-location) where the related quantity of items are being tracked. | [optional] 
 **quantity** | getQuantity() | setQuantity($value) | **string** | The number of items affected by the physical count as a decimal string. Fractional quantities are not supported. | [optional] 
 **source** | getSource() | setSource($value) | [**\SquareConnect\Model\SourceApplication**](SourceApplication.md) | Read-only information about the application that submitted the physical count. | [optional] 
-**employee_id** | getEmployeeId() | setEmployeeId($value) | **string** | The Square ID of the [Employee](#type-employee) responsible for the physical count. | [optional] 
+**employee_no** | getEmployeeId() | setEmployeeId($value) | **string** | The Square ID of the [Employee](#type-employee) responsible for the physical count. | [optional] 
 **occurred_at** | getOccurredAt() | setOccurredAt($value) | **string** | A client-generated timestamp in RFC 3339 format that indicates when the physical count took place. For write actions, the &#x60;occurred_at&#x60; timestamp cannot be older than 24 hours or in the future relative to the time of the request. | [optional] 
 **created_at** | getCreatedAt() | setCreatedAt($value) | **string** | A read-only timestamp in RFC 3339 format that indicates when Square received the physical count. | [optional] 
 

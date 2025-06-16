@@ -29,11 +29,11 @@
 
                                  <?php echo  form_open('hrm/Payroll/create_s_setup') ?>
                                  <div class="form-group row">
-                                     <label for="employee_id"
+                                     <label for="employee_no"
                                          class="col-sm-3 col-form-label"><?php echo display('employee_name') ?>
                                          *</label>
                                      <div class="col-sm-9">
-                                         <?php echo form_dropdown('employee_id', $employee, null, 'class="form-control width-615-px" id="employee_id" onchange="employechange(this.value)"') ?>
+                                         <?php echo form_dropdown('employee_no', $employee, null, 'class="form-control width-615-px" id="employee_no" onchange="employechange(this.value)"') ?>
                                      </div>
                                  </div>
 
@@ -147,7 +147,7 @@
                          <tr>
                              <th><?php echo display('cid') ?></th>
                              <th><?php echo display('employee_name') ?></th>
-                             <th><?php echo display('employee_id') ?></th>
+                             <th><?php echo display('employee_no') ?></th>
                              <th><?php echo display('sal_type') ?></th>
                              <th>Date</th>
 
@@ -160,7 +160,7 @@
                          <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
                              <td><?php echo $sl; ?></td>
                              <td><?php echo $que->first_name . ' ' . $que->last_name; ?></td>
-                             <td><?php echo $que->employee_id; ?></td>
+                             <td><?php echo $que->employee_no; ?></td>
                              <td><?php echo $que->sal_type; ?></td>
                              <td><?php echo $que->create_date; ?></td>
                          </tr>

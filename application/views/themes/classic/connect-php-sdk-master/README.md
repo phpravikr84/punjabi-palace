@@ -178,10 +178,10 @@ Class | Method | HTTP request | Description
 *V1EmployeesApi* | [**listTimecardEvents**](docs/Api/V1EmployeesApi.md#listtimecardevents) | **GET** /v1/me/timecards/{timecard_id}/events | Provides summary information for all events associated with a particular timecard.
 *V1EmployeesApi* | [**listTimecards**](docs/Api/V1EmployeesApi.md#listtimecards) | **GET** /v1/me/timecards | Provides summary information for all of a business&#39;s employee timecards.
 *V1EmployeesApi* | [**retrieveCashDrawerShift**](docs/Api/V1EmployeesApi.md#retrievecashdrawershift) | **GET** /v1/{location_id}/cash-drawer-shifts/{shift_id} | Provides the details for a single cash drawer shift, including all events that occurred during the shift.
-*V1EmployeesApi* | [**retrieveEmployee**](docs/Api/V1EmployeesApi.md#retrieveemployee) | **GET** /v1/me/employees/{employee_id} | Provides the details for a single employee.
+*V1EmployeesApi* | [**retrieveEmployee**](docs/Api/V1EmployeesApi.md#retrieveemployee) | **GET** /v1/me/employees/{employee_no} | Provides the details for a single employee.
 *V1EmployeesApi* | [**retrieveEmployeeRole**](docs/Api/V1EmployeesApi.md#retrieveemployeerole) | **GET** /v1/me/roles/{role_id} | Provides the details for a single employee role.
 *V1EmployeesApi* | [**retrieveTimecard**](docs/Api/V1EmployeesApi.md#retrievetimecard) | **GET** /v1/me/timecards/{timecard_id} | Provides the details for a single timecard.
-*V1EmployeesApi* | [**updateEmployee**](docs/Api/V1EmployeesApi.md#updateemployee) | **PUT** /v1/me/employees/{employee_id} | V1 UpdateEmployee
+*V1EmployeesApi* | [**updateEmployee**](docs/Api/V1EmployeesApi.md#updateemployee) | **PUT** /v1/me/employees/{employee_no} | V1 UpdateEmployee
 *V1EmployeesApi* | [**updateEmployeeRole**](docs/Api/V1EmployeesApi.md#updateemployeerole) | **PUT** /v1/me/roles/{role_id} | Modifies the details of an employee role.
 *V1EmployeesApi* | [**updateTimecard**](docs/Api/V1EmployeesApi.md#updatetimecard) | **PUT** /v1/me/timecards/{timecard_id} | Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
 *V1ItemsApi* | [**adjustInventory**](docs/Api/V1ItemsApi.md#adjustinventory) | **POST** /v1/{location_id}/inventory/{variation_id} | Adjusts an item variation&#39;s current available inventory.

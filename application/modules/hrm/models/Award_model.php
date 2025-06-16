@@ -7,9 +7,9 @@ class Award_model extends CI_Model {
 	{
 		
 
-			 return $this->db->select('count(DISTINCT(aw.award_id)) as award_id,aw.*,p.employee_id,p.first_name,p.last_name')   
+			 return $this->db->select('count(DISTINCT(aw.award_id)) as award_id,aw.*,p.employee_no,p.first_name,p.last_name')   
             ->from('award aw')
-            ->join('employee_history p', 'aw.employee_id = p.employee_id', 'left')
+            ->join('employee_history p', 'aw.employee_no = p.employee_no', 'left')
             ->group_by('aw.award_id')
             ->order_by('aw.award_id', 'desc')
             ->get()
@@ -57,7 +57,7 @@ public function update_award($data = array())
     	$list = array('' => 'Select One...');
     	if(!empty($data)){
     		foreach ($data as  $value) {
-    			$list[$value->employee_id]=$value->first_name." ".$value->last_name;
+    			$list[$value->employee_no]=$value->first_name." ".$value->last_name;
     		}
     	}
     	return $list;

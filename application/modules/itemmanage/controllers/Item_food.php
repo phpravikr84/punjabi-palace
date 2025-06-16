@@ -396,16 +396,16 @@ class Item_food extends MX_Controller
 		}
 	}
 
-	public function addpromofood ()
+	public function addpromofood ($id = null)
 	{
 		$this->permission->method('itemmanage', 'addpromofood')->redirect();
 		$data['title'] = "Add Promo Food";
 		#-------------------------------#
-		$this->form_validation->set_rules('CategoryID', display('category_name'), 'required');
+		// $this->form_validation->set_rules('CategoryID', display('category_name'), 'required');
 		if (!empty($this->input->post('ProductsID'))) {
-			$this->form_validation->set_rules('foodname', display('item_name'), 'required|max_length[100]');
+			$this->form_validation->set_rules('promo_title', "Title", 'required|max_length[100]');
 		} else {
-			$this->form_validation->set_rules('foodname', display('item_name'), 'required|is_unique[item_foods.ProductName]|max_length[100]');
+			$this->form_validation->set_rules('promo_title', "Title", 'required|is_unique[promo_data.promo_title]|max_length[100]');
 			$this->form_validation->set_message('is_unique', 'Sorry, this %s already used!');
 		}
 		$this->form_validation->set_rules('status', display('status'), 'required');
@@ -414,46 +414,305 @@ class Item_food extends MX_Controller
 		$offerstartdate = str_replace('/', '-', $this->input->post('offerstartdate', true));
 		$offerendate = str_replace('/', '-', $this->input->post('offerendate', true));
 
-		$isoffer = $this->input->post('isoffer', true);
-		if ($isoffer == 1) {
-			$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
-			$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
-			$convertstartdate = date('Y-m-d', strtotime($offerstartdate));
-			$convertenddate = date('Y-m-d', strtotime($offerendate));
-			$isoffer = $isoffer;
-			$OffersRate = $this->input->post('offerate', true);
-		} else {
-			$convertstartdate = "0000-00-00";
-			$convertenddate = "0000-00-00";
-			$isoffer = 0;
-			$OffersRate = 0;
-		}
+		$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
+		$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
+		$convertstartdate = date('Y-m-d', strtotime($offerstartdate));
+		$convertenddate = date('Y-m-d', strtotime($offerendate));
+
+		// $isoffer = $this->input->post('isoffer', true);
+		// if ($isoffer == 1) {
+		// 	$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
+		// 	$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
+		// 	$convertstartdate = date('Y-m-d', strtotime($offerstartdate));
+		// 	$convertenddate = date('Y-m-d', strtotime($offerendate));
+		// 	$isoffer = $isoffer;
+		// 	$OffersRate = $this->input->post('offerate', true);
+		// } else {
+		// 	$convertstartdate = "0000-00-00";
+		// 	$convertenddate = "0000-00-00";
+		// 	$isoffer = 0;
+		// 	$OffersRate = 0;
+		// }
 		#-------------------------------#
 		if ($this->form_validation->run()) {
+			$promo_title= $this->input->post('promo_title');
+			$offerstartdate= $this->input->post('offerstartdate');
+			$offerendate= $this->input->post('offerendate');
+			$status= $this->input->post('status');
+			$promo_type= $this->input->post('promo_type');
+			
 			if (empty($this->input->post('ProductsID'))) {
+				//add new item
+				// echo "<pre>";
+				// print_r($_POST);
+				// echo "</pre>";
+				$postData = array(
+					'promo_title'     	=> $promo_title,
+					'start_date'   		=> $convertstartdate,
+					'end_date'   		=> $convertenddate,
+					'status'       		=> $status,
+					'promo_type'       	=> $promo_type,
+					'created_at'      	=> date('Y-m-d H:i:s')
+				);
+				if ($promo_type == 1) {
+					//discount item
+					$discount_offerate = $this->input->post('discount_offerate');
+					$discount_food = $this->input->post('discount_food');
+					$postData['discount_rate'] = $discount_offerate;
+					$postData['offer_food_id'] = $discount_food;
 
+					//check if the food id is already exist in the table with the same offer period
+					$this->db->select('ProductsID');
+					$this->db->from('item_foods');
+					$this->db->where('ProductsID', $discount_food);
+					$this->db->where('offerIsavailable', 1);
+					// $this->db->where('offerstartdate <=', $convertstartdate);
+					$this->db->where('offerendate >=', $convertstartdate);
+					$checkDiscountExistItemFoods = $this->db->get()->row();
+					if ($checkDiscountExistItemFoods) {
+						$this->session->set_flashdata('exception', 'This food item already has an active offer during the selected period.');
+						redirect('itemmanage/item_food/addpromofood');
+					}
+					$this->db->select('offer_food_id, id');
+					$this->db->from('promo_data');
+					$this->db->where('offer_food_id', $discount_food);
+					$this->db->where('status', 1);
+					$this->db->where('promo_type', 1);
+					// $this->db->where('start_date <=', $convertstartdate);
+					// $this->db->where('end_date >=', $convertenddate);
+					$this->db->where('end_date >=', $convertstartdate);
+					$checkDiscountExistPromoData = $this->db->get()->row();
+					if ($checkDiscountExistPromoData) {
+						$this->session->set_flashdata('exception', 'This food item already has an active offer during the selected period.');
+						redirect('itemmanage/item_food/addpromofood');
+					}
+					$this->db->where('ProductsID', $discount_food);
+					$this->db->set('OffersRate', $discount_offerate);
+					$this->db->set('offerIsavailable', 1);
+					$this->db->set('offerstartdate', $convertstartdate);
+					$this->db->set('offerendate', $convertenddate);
+					$this->db->update('item_foods');
+				}
+				if ($promo_type == 2) {
+					//combo item
+					$free_item_buy_food = $this->input->post('free_item_buy_food');
+					$free_item_buy_qty = $this->input->post('free_item_buy_qty');
+					$free_item_get_food = $this->input->post('free_item_get_food');
+					$free_item_get_qty = $this->input->post('free_item_get_qty');
+
+					$postData['offer_food_id'] = $free_item_buy_food;
+					$postData['buy_qty'] = $free_item_buy_qty;
+					$postData['get_food_id'] = $free_item_get_food;
+					$postData['get_qty'] = $free_item_get_qty;
+
+					//check if the food id is already exist in the promo_data table with the same offer period
+					$this->db->select('offer_food_id, id');
+					$this->db->from('promo_data');
+					$this->db->where('offer_food_id', $free_item_buy_food);
+					$this->db->where('status', 1);
+					$this->db->where('promo_type', 2);
+					// $this->db->where('start_date <=', $convertstartdate);
+					$this->db->where('end_date >=', $convertstartdate);
+					$checkComboExistPromoData = $this->db->get()->row();
+					// echo "Last Query: " . $this->db->last_query();
+					// echo "<pre>";
+					// print_r($checkComboExistPromoData);
+					// echo "</pre>";
+					// exit;
+					if ($checkComboExistPromoData) {
+						$this->session->set_flashdata('exception', 'This food item already has an active offer during the selected period.');
+						redirect('itemmanage/item_food/addpromofood');
+					}
+				}
+				$logData = array(
+					'action_page'         => "Add Promo Food",
+					'action_done'     	  => "Insert Data",
+					'remarks'             => "New Promo Food Added",
+					'user_name'           => $this->session->userdata('fullname', true),
+					'entry_date'          => date('Y-m-d H:i:s'),
+				);
+				if ($this->fooditem_model->promo_food_create($postData)) {
+					$this->logs_model->log_recorded($logData);
+					$this->session->set_flashdata('message', display('save_successfully'));
+					redirect('itemmanage/item_food/promo_list');
+				} else {
+					$this->session->set_flashdata('exception',  display('please_try_again'));
+				}
 			} else {
+				//update existing item
+				$this->permission->method('itemmanage', 'update')->redirect();
+				$data['promo_food_data_update']   = (object) $postData = array(
+					'promo_title'     	=> $promo_title,
+					'start_date'   		=> $convertstartdate,
+					'end_date'   		=> $convertenddate,
+					'status'       		=> $status,
+					'promo_type'       	=> $promo_type,
+					'updated_at'      	=> date('Y-m-d H:i:s')
+				);
+				$logData = array(
+					'action_page'         => "Promo Food List",
+					'action_done'     	 => "Update Data",
+					'remarks'             => "Promo Food Updated",
+					'user_name'           => $this->session->userdata('fullname', true),
+					'entry_date'          => date('Y-m-d H:i:s'),
+				);
+				if ($promo_type == 1) {
+					//discount item
+					$discount_offerate = $this->input->post('discount_offerate');
+					$discount_food = $this->input->post('discount_food');
+					$postData['discount_rate'] = $discount_offerate;
+					$postData['offer_food_id'] = $discount_food;
 
+					//check if the food id is already exist in the table with the same offer period except current food item
+					// $this->db->select('ProductsID');
+					// $this->db->from('item_foods');
+					// $this->db->where('ProductsID', $discount_food);
+					// $this->db->where('offerIsavailable', 1);
+					// // $this->db->where('offerstartdate <=', $convertstartdate);
+					// $this->db->where('offerendate >=', $convertstartdate);
+					// $checkDiscountExistItemFoods = $this->db->get()->row();
+					// if ($checkDiscountExistItemFoods) {
+					// 	$this->session->set_flashdata('exception', 'This food item already has an active offer during the selected period.');
+					// 	redirect('itemmanage/item_food/addpromofood');
+					// }
+					$this->db->select('offer_food_id, id');
+					$this->db->from('promo_data');
+					$this->db->where('offer_food_id', $discount_food);
+					$this->db->where('status', 1);
+					$this->db->where('promo_type', 1);
+					// $this->db->where('start_date <=', $convertstartdate);
+					// $this->db->where('end_date >=', $convertenddate);
+					$this->db->where('end_date >=', $convertstartdate);
+					$this->db->where('id !=', $this->input->post('ProductsID'));
+					$checkDiscountExistPromoData = $this->db->get()->row();
+					if ($checkDiscountExistPromoData) {
+						$this->session->set_flashdata('exception', 'This food item already has an active offer during the selected period.');
+						redirect('itemmanage/item_food/addpromofood');
+					}
+
+					$this->db->where('ProductsID', $discount_food);
+					$this->db->set('OffersRate', $discount_offerate);
+					$this->db->set('offerIsavailable', 1);
+					$this->db->set('offerstartdate', $convertstartdate);
+					$this->db->set('offerendate', $convertenddate);
+					$this->db->update('item_foods');
+				}
+				if ($promo_type == 2) {
+					//combo item
+					$free_item_buy_food = $this->input->post('free_item_buy_food');
+					$free_item_buy_qty = $this->input->post('free_item_buy_qty');
+					$free_item_get_food = $this->input->post('free_item_get_food');
+					$free_item_get_qty = $this->input->post('free_item_get_qty');
+
+					//check if the food id is already exist in the promo_data table with the same offer period
+					$this->db->select('offer_food_id, id');
+					$this->db->from('promo_data');
+					$this->db->where('offer_food_id', $free_item_buy_food);
+					$this->db->where('status', 1);
+					$this->db->where('promo_type', 2);
+					// $this->db->where('start_date <=', $convertstartdate);
+					$this->db->where('end_date >=', $convertstartdate);
+					$this->db->where('id !=', $this->input->post('ProductsID'));
+					$checkComboExistPromoData = $this->db->get()->row();
+					if ($checkComboExistPromoData) {
+						$this->session->set_flashdata('exception', 'This food item already has an active offer during the selected period.');
+						redirect('itemmanage/item_food/addpromofood');
+					}
+
+					$postData['offer_food_id'] = $free_item_buy_food;
+					$postData['buy_qty'] = $free_item_buy_qty;
+					$postData['get_food_id'] = $free_item_get_food;
+					$postData['get_qty'] = $free_item_get_qty;
+				}
+				if ($this->fooditem_model->promo_food_update($this->input->post('ProductsID'),$postData)) {
+					$this->logs_model->log_recorded($logData);
+					$this->session->set_flashdata('message', display('update_successfully'));
+				} else {
+					$this->session->set_flashdata('exception',  display('please_try_again'));
+				}
+				redirect("itemmanage/item_food/addpromofood/" . $postData['ProductsID']);
 			}
 		}  else {
 			$data['taxitems'] = $this->taxchecking();
-			// if (!empty($id)) {
-			// 	$data['title'] = display('update_fooditem');
-			// 	$data['productinfo']   = $this->fooditem_model->findById($id);
-			// }
-
-			$data['categories']   =  $this->category_model->allcategory_dropdown();
-			$data['allkitchen']   =  $this->fooditem_model->allkitchen();
+			// echo "<script>alert('Update ID: ".$id."')</script>";
+			if (!empty($id)) {
+				$data['title'] = "Update Promo Food";
+				$data['productinfo'] = $this->fooditem_model->promoItemFindById($id);
+			}
+			// $data['categories']  =  $this->category_model->allcategory_dropdown();
+			// $data['allkitchen']  =  $this->fooditem_model->allkitchen();
 			$data['food_list']   =  $this->fooditem_model->read_fooditem();
-			$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+			// $data['todaymenu']   =  $this->todaymenu_model->read_menulist();
 			$data['module'] = "itemmanage";
 			$data['page']   = "addpromofood";
 			echo Modules::run('template/layout', $data);
 		}
 	}
+	public function promo_delete($id = null)
+	{
+		$this->permission->method('itemmanage', 'promo_delete')->redirect();
+		if (empty($id)) {
+			$this->session->set_flashdata('exception',  display('please_try_again'));
+			redirect('itemmanage/item_food/promo_list');
+		}
+		if ($this->fooditem_model->promo_delete($id)) {
+			$this->session->set_flashdata('message', display('delete_successfully'));
+			$logData = array(
+				'action_page'         => "Promo Food List",
+				'action_done'     	  => "Delete Data",
+				'remarks'             => "Promo Food Deleted",
+				'user_name'           => $this->session->userdata('fullname', true),
+				'entry_date'          => date('Y-m-d H:i:s'),
+			);
+			$this->logs_model->log_recorded($logData);
+			redirect('itemmanage/item_food/promo_list');
+		} else {
+			$this->session->set_flashdata('exception',  display('please_try_again'));
+			redirect('itemmanage/item_food/promo_list');
+		}
+	}
 	public function promo_list ()
 	{
-
+		$this->permission->method('itemmanage', 'promo_list')->redirect();
+		$data['title']    = 'Promo Food List';
+		#-------------------------------#       
+		#
+		#pagination starts
+		#
+		$config["base_url"] = base_url('itemmanage/item_food/promo_list');
+		$config["total_rows"]  = $this->fooditem_model->count_fooditem();
+		$config["per_page"]    = 25;
+		$config["uri_segment"] = 4;
+		$config["last_link"] = "Last";
+		$config["first_link"] = "First";
+		$config['next_link'] = 'Next';
+		$config['prev_link'] = 'Prev';
+		$config['full_tag_open'] = "<ul class='pagination col-xs pull-right'>";
+		$config['full_tag_close'] = "</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tag_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";
+		/* ends of bootstrap */
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$data["promoitemslist"] = $this->fooditem_model->read_promoitems($config["per_page"], $page);
+		$data['pagenum'] = $page;
+		$data["links"] = $this->pagination->create_links();
+		#
+		#pagination ends
+		#   
+		$data['module'] = "itemmanage";
+		$data['page']   = "promo_list";
+		echo Modules::run('template/layout', $data);
 	}
 
 	public function new_create_with_error($id = null)

@@ -1,6 +1,6 @@
 <?php $webinfo = $this->webinfo;
 $activethemeinfo = $this->themeinfo;
-$acthemename = $activethemeinfo->themename;
+$acthemename = $activethemeinfo->themename; 
 global $title, $seoterm, $title2;
 if ($title != "Menu") {
 	$this->session->unset_userdata('product_id');

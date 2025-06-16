@@ -33,11 +33,11 @@
 
                                  <?php echo  form_open('hrm/Loan/create_grandloan') ?>
                                  <div class="form-group row">
-                                     <label for="employee_id"
+                                     <label for="employee_no"
                                          class="col-sm-3 col-form-label"><?php echo display('employee_name') ?>
                                          *</label>
                                      <div class="col-sm-9">
-                                         <?php echo form_dropdown('employee_id', $gndloan, null, 'class="form-control width-617-px" id="employee_id"') ?>
+                                         <?php echo form_dropdown('employee_no', $gndloan, null, 'class="form-control width-617-px" id="employee_no"') ?>
 
                                      </div>
                                  </div>

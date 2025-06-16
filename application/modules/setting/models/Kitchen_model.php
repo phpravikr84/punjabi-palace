@@ -97,7 +97,7 @@ public function countlist()
 		$this->db->select('user.firstname,user.lastname,user.id,user.email,employee_history.phone');
         $this->db->from('user');
 		$this->db->where('employee_history.pos_id',1);
-		$this->db->join('employee_history','employee_history.emp_his_id=user.id','Left');
+		$this->db->join('employee_history','employee_history.emp_id=user.id','Left');
 		$this->db->order_by('id', 'desc');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

@@ -17,7 +17,7 @@ public function emp_salsetup_create($data = array())
 	}
 public function emp_salstup_delete($id = null)
 	{
-		$this->db->where('employee_id',$id)
+		$this->db->where('employee_no',$id)
 			->delete('employee_salary_setup');
 
 		if ($this->db->affected_rows()) {
@@ -52,10 +52,10 @@ public function delete_salsetup($id = null)
      public function salary_setupindex()
 	{
 
-			 return $this->db->select('count(DISTINCT(sstp.e_s_s_id)) as e_s_s_id,sstp.*,p.employee_id,p.first_name,p.last_name')   
+			 return $this->db->select('count(DISTINCT(sstp.e_s_s_id)) as e_s_s_id,sstp.*,p.employee_no,p.first_name,p.last_name')   
             ->from('employee_salary_setup sstp')
-            ->join('employee_history p', 'sstp.employee_id = p.employee_id', 'left')
-            ->group_by('sstp.employee_id')
+            ->join('employee_history p', 'sstp.employee_no = p.employee_no', 'left')
+            ->group_by('sstp.employee_no')
             ->order_by('sstp.salary_type_id', 'desc')
             ->get()
             ->result();
@@ -84,7 +84,7 @@ public function delete_salsetup($id = null)
 
 	public function s_delete($id = null)
 	{
-		$this->db->where('employee_id',$id)
+		$this->db->where('employee_no',$id)
 			->delete('employee_salary_setup');
 
 		if ($this->db->affected_rows()) {
@@ -104,7 +104,7 @@ public function delete_salsetup($id = null)
         $list = array('' => 'Select One...');
        	if (!empty($data) ) {
        		foreach ($data as $value) {
-       			$list[$value->employee_id] = $value->first_name." ".$value->last_name;
+       			$list[$value->employee_no] = $value->first_name." ".$value->last_name;
        		} 
        	}
        	return $list;
@@ -121,9 +121,9 @@ public function delete_salsetup($id = null)
 	{
 
 
-			 return $this->db->select('count(DISTINCT(slg.ssg_id)) as ssg_id,slg.*,p.employee_id,p.first_name,p.last_name')   
+			 return $this->db->select('count(DISTINCT(slg.ssg_id)) as ssg_id,slg.*,p.employee_no,p.first_name,p.last_name')   
             ->from('salary_sheet_generate slg')
-            ->join('employee_history p', 'slg.employee_id = p.employee_id', 'left')
+            ->join('employee_history p', 'slg.employee_no = p.employee_no', 'left')
             ->group_by('slg.ssg_id')
             ->order_by('slg.ssg_id', 'desc')
             ->get()
@@ -161,7 +161,7 @@ public function delete_salsetup($id = null)
 
 public function update_sal_stup($data = array())//
 	{
-		$term = array('employee_id' => $data['employee_id'], 'salary_type_id' => $data['salary_type_id']);
+		$term = array('employee_no' => $data['employee_no'], 'salary_type_id' => $data['salary_type_id']);
 
 		return $this->db->where($term)
 			->update("employee_salary_setup", $data);
@@ -169,12 +169,12 @@ public function update_sal_stup($data = array())//
 
 	public function update_sal_head($data = array())
 	{
-		return $this->db->where('employee_id', $data["employee_id"])
+		return $this->db->where('employee_no', $data["employee_no"])
 			->update("salary_setup_header", $data);
 	}
 
 	public function salary_s_updateForm($id){
-        $this->db->where('employee_id',$id);
+        $this->db->where('employee_no',$id);
         $query = $this->db->get('employee_salary_setup','salary_setup_header');
         return $query->row();
     }
@@ -187,7 +187,7 @@ public function update_sal_stup($data = array())//
 		return $result = $this->db->select('employee_salary_setup.*,salary_type.*')	
 			 ->from('employee_salary_setup')
 			 ->join('salary_type','salary_type.salary_type_id=employee_salary_setup.salary_type_id')
-	         ->where('employee_salary_setup.employee_id',$id)
+	         ->where('employee_salary_setup.employee_no',$id)
 	         ->where('emp_sal_type',1)
 			 ->get()
 			 ->result();
@@ -197,7 +197,7 @@ public function update_sal_stup($data = array())//
 		return $result = $this->db->select('employee_salary_setup.*,salary_type.*')	
 			 ->from('employee_salary_setup')
 			 ->join('salary_type','salary_type.salary_type_id=employee_salary_setup.salary_type_id')
-	         ->where('employee_salary_setup.employee_id',$id)
+	         ->where('employee_salary_setup.employee_no',$id)
 	         ->where('emp_sal_type',0)
 			 ->get()
 			 ->result();
@@ -208,7 +208,7 @@ public function update_sal_stup($data = array())//
 
 	public  function get_empid($id)
     {
-        $query=$this->db->get_where('employee_salary_setup',array('employee_id'=>$id));
+        $query=$this->db->get_where('employee_salary_setup',array('employee_no'=>$id));
         return $query->row_array();
     } 
     public  function get_type($id)
@@ -216,7 +216,7 @@ public function update_sal_stup($data = array())//
        
         return $result = $this->db->select('sal_type')
                        ->from('employee_salary_setup')
-                       ->where('employee_id',$id)
+                       ->where('employee_no',$id)
                        ->get()
                        ->row_array();
     } 
@@ -258,7 +258,7 @@ public function update_sal_stup($data = array())//
         
         return $result = $this->db->select('salary_payable')
                        ->from('salary_setup_header')
-                       ->where('employee_id',$id)
+                       ->where('employee_no',$id)
                        ->get()
                        ->row_array();
     } 
@@ -274,7 +274,7 @@ public function create_employee_payment($data = array())
 	{
 		return $result = $this->db->select('rate,rate_type')
                        ->from('employee_history')
-                       ->where('employee_id',$id)
+                       ->where('employee_no',$id)
                        ->get()
                        ->row();
 

@@ -136,6 +136,55 @@ class Fooditem_model extends CI_Model {
         }
         return false;
 	} 
+    public function read_promoitems($limit = null, $start = null)
+	{
+	    $this->db->select('promo_data.*');
+        $this->db->from('promo_data');
+        $this->db->order_by('id', 'desc');
+   
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) { 
+            return $query->result();    
+        }
+        return false;
+	}
+    public function promoItemFindById($id = null)
+	{
+		if (empty($id)) {
+			return false;
+		}
+	    $this->db->select('promo_data.*');
+        $this->db->from('promo_data');
+		$this->db->where('id', $id);
+        $this->db->order_by('id', 'desc');   
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->row();
+        }
+        return false;
+	}
+	public function promo_delete($id = null)
+	{
+		if (empty($id)) {
+			return false;
+		}
+		$this->db->where('id', $id)->delete('promo_data');
+		//optimize the table after delete
+		$this->db->query('OPTIMIZE TABLE promo_data');
+		if ($this->db->affected_rows()) {
+			// Optionally, you can delete related data if needed
+			//get promo type from promo_data table and if promo type is 1 then set the 'offerIsavailable' to 0 in item_foods table
+			$promoData = $this->promoItemFindById($id);
+			if ($promoData->promo_type == 1) {
+				// If promo type is 1, set 'offerIsavailable' to 0 for the related food items
+				$this->db->where('ProductsID', $promoData->offer_food_id)->update('item_foods', ['offerIsavailable' => 0]);
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+
     public function read_promoitem($limit = null, $start = null)
 	{
 	    $this->db->select('item_foods.*,item_category.Name');
@@ -257,6 +306,18 @@ class Fooditem_model extends CI_Model {
         $this->db->from($this->table);
 		$this->db->join('item_category','item_foods.CategoryID = item_category.CategoryID','left');
 		$this->db->where('item_foods.isgroup',null);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();  
+        }
+        return false;
+	}
+	public function count_promoitem()
+	{
+		$this->db->select('promo_data.*');
+        $this->db->from('promo_data');
+		//order by
+		$this->db->order_by('promo_data.id', 'desc');
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->num_rows();  
@@ -906,6 +967,25 @@ class Fooditem_model extends CI_Model {
 	{
 		return $this->db->where('ingredient_id', $id)
 			->update('ingredients_opening_stock', $data);
+	}
+	public function promo_food_create($data = array())
+	{
+		$this->db->insert('promo_data', $data);
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public function promo_food_update($id, $data = array())
+	{
+		$this->db->where('id', $id);
+		$this->db->update('promo_data', $data);
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 

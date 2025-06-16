@@ -77,14 +77,14 @@ $(document).ready(function(e) {
 
 function leavetypechange(id) {
     var leave_type = id;
-    var employee_id = $('#employee_id').val();
+    var employee_no = $('#employee_no').val();
 	var csrf = $('#csrfhashresarvation').val();
     $.ajax({
         url: basicinfo.baseurl+"hrm/Leave/free_leave",
         method: 'post',
         dataType: 'json',
         data: {
-            'employee_id': employee_id,
+            'employee_no': employee_no,
             'leave_type': id,
 			'csrf_test_name':csrf
         },

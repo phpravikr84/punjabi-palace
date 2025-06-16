@@ -1,9 +1,9 @@
 "use strict";
 
-function Payment(salpayid, employee_id, TotalSalary, WorkHour, Period) {
+function Payment(salpayid, employee_no, TotalSalary, WorkHour, Period) {
 
     var sal_id = salpayid;
-    var employee_id = employee_id;
+    var employee_no = employee_no;
 	var csrf = $('#csrfhashresarvation').val();
     $.ajax({
         url: basicinfo.baseurl+"hrm/Employees/EmployeePayment/",
@@ -11,13 +11,13 @@ function Payment(salpayid, employee_id, TotalSalary, WorkHour, Period) {
         dataType: 'json',
         data: {
             'sal_id': sal_id,
-            'employee_id': employee_id,
+            'employee_no': employee_no,
             'totalamount': TotalSalary,
 			'csrf_test_name':csrf,
         },
         success: function(data) {
             document.getElementById('employee_name').value = data.Ename;
-            document.getElementById('employee_id').value = data.employee_id;
+            document.getElementById('employee_no').value = data.employee_no;
             document.getElementById('salType').value = salpayid;
             document.getElementById('total_salary').value = TotalSalary;
             document.getElementById('total_working_minutes').value = WorkHour;

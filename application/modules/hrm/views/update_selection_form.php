@@ -18,8 +18,8 @@
                             *</label>
                         <div class="col-sm-9">
                             <?php echo form_dropdown('can_id', $dropdownselection, (!empty($data->can_id) ? $data->can_id : null), ' class="form-control" onchange="SelectToLoadsl(this.value)" id="c_id"') ?>
-                            <input type="hidden" name="employee_id" class="form-control" id="employee_id"
-                                value="<?php echo $data->employee_id ?>">
+                            <input type="hidden" name="employee_no" class="form-control" id="employee_no"
+                                value="<?php echo $data->employee_no ?>">
                         </div>
                     </div>
 

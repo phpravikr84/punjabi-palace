@@ -86,7 +86,7 @@ public function holiday_delete($id = null){
     	$list = array('' => 'Select One...');
     	if(!empty($data)){
     		foreach ($data as  $value) {
-    			$list[$value->employee_id]=$value->first_name." ".$value->last_name;
+    			$list[$value->employee_no]=$value->first_name." ".$value->last_name;
     		}
     	}
     	return $list;
@@ -95,9 +95,9 @@ public function holiday_delete($id = null){
     public function manageleave()
 	{
 
-      return $this->db->select('count(DISTINCT(ap.leave_appl_id)) as leave_appl_id,ap.*,p.employee_id,p.first_name,p.last_name, type.leave_type')   
+      return $this->db->select('count(DISTINCT(ap.leave_appl_id)) as leave_appl_id,ap.*,p.employee_no,p.first_name,p.last_name, type.leave_type')   
             ->from('leave_apply ap')
-            ->join('employee_history p', 'ap.employee_id = p.employee_id', 'left')
+            ->join('employee_history p', 'ap.employee_no = p.employee_no', 'left')
             ->join('leave_type as type', 'type.leave_type_id = ap.leave_type_id', 'left')
             ->group_by('ap.leave_appl_id')
             ->order_by('ap.leave_appl_id', 'desc')
@@ -188,6 +188,6 @@ public function holiday_delete($id = null){
 	} 
 
     public function supervisorList(){
-        return $result = $this->db->select('first_name,last_name,employee_id')->from('employee_history')->where('is_super_visor',1)->get()->result();
+        return $result = $this->db->select('first_name,last_name,employee_no')->from('employee_history')->where('is_super_visor',1)->get()->result();
     }
 }

@@ -21,7 +21,7 @@
                         <div class="panel">
 
                             <div class="panel-body">
-                                <?php echo  form_open_multipart('hrm/Employees/update_employee_form/' . $data->employee_id, 'id="emp_form"') ?>
+                                <?php echo  form_open_multipart('hrm/Employees/update_employee_form/' . $data->employee_no, 'id="emp_form"') ?>
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
@@ -32,8 +32,8 @@
                                                 placeholder="First Name" value="<?php echo $data->first_name; ?>">
                                             <input type="hidden" name="oldfirstname"
                                                 value="<?php echo $data->first_name; ?>">
-                                            <input type="hidden" name="employee_id"
-                                                value="<?php echo $data->employee_id; ?>">
+                                            <input type="hidden" name="employee_no"
+                                                value="<?php echo $data->employee_no; ?>">
 
                                         </div>
 
@@ -612,7 +612,7 @@
                                             <label for="s_name"><?php echo display('super_visor_name') ?></label>
                                             <select name="supervisorname" class="form-control">
                                                 <?php foreach ($supervisor as $suplist) { ?>
-                                                <option value="<?php echo $suplist->employee_id ?>" <?php if ($data->super_visor_id == $suplist->employee_id) {
+                                                <option value="<?php echo $suplist->employee_no ?>" <?php if ($data->super_visor_id == $suplist->employee_no) {
                                                                                                             echo 'selected';
                                                                                                         } ?>>
                                                     <?php echo $suplist->first_name . ' ' . $suplist->last_name ?>

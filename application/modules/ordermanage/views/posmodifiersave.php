@@ -208,3 +208,35 @@ $multiplletaxvalue = htmlentities(serialize($multiplletax));
 <input name="sc_<?= $pid; ?>" type="hidden" value="<?php echo $servicecharge; ?>" id="sc_<?= $pid; ?>" />
 <input name="tdiscount_<?= $pid; ?>" type="hidden" value="<?php echo $pdiscount; ?>" placeholder="0.00" id="tdiscount_<?= $pid; ?>" />
 <input name="tgtotal_<?= $pid; ?>" type="hidden" value="<?php echo $calvat + $servicetotal + $itemtotal - $pdiscount; ?>" id="tgtotal_<?= $pid; ?>" />
+
+<?php 
+// check if the item id [$pid] has any active promo (promo_type = 2) in the database
+$this->db->select('promo_items.*');
+$this->db->from('promo_items');
+$this->db->where('promo_items.offer_food_id', $pid);
+$this->db->where('promo_items.status', 1);
+$this->db->where('promo_items.promo_type', 2); // promo_type = 2 for free item
+$this->db->where('promo_items.end_date >=', date('Y-m-d'));
+$promo_query = $this->db->get();
+$promo_get_food_id = $promo_get_food_qty = 0;
+if ($promo_query->num_rows() > 0) {
+    $promo_item = $promo_query->row();
+    // If there is an active promo, display the promo details
+    // echo '<div class="alert alert-info">';
+    // echo '<strong>Promo Available:</strong> ' . $promo_item->promo_title . '<br>';
+    // echo 'Promo Type: ' . ($promo_item->promo_type == 1 ? 'Discount' : 'Free Item') . '<br>';
+    // echo 'Start Date: ' . getFormattedDateTime($promo_item->start_date, LONG_DATE_FORMAT) . '<br>';
+    // echo 'End Date: ' . getFormattedDateTime($promo_item->end_date, LONG_DATE_FORMAT);
+    // echo '</div>';
+    // create a hidden input field to store the promo item ID and quantity
+    $promo_get_food_id = $promo_item->get_food_id; // The food ID that is part of the promo
+    $promo_get_food_qty = $promo_item->get_qty; // The quantity of the food item in the promo
+} else {
+    // No active promo found for this item
+    // echo '<div class="alert alert-warning">No active promo available for this item.</div>';
+    $promo_get_food_id = 0;
+    $promo_get_food_qty = 0;
+}
+echo '<input type="hidden" name="promo_item_id" id="promo_item_id_'.$pid.'" value="' . $promo_get_food_id . '">';
+echo '<input type="hidden" name="promo_item_qty" id="promo_item_qty_'.$pid.'" value="' . $promo_get_food_qty . '">';
+?>

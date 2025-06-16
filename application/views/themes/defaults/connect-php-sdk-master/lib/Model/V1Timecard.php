@@ -25,7 +25,7 @@ class V1Timecard implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'string',
-        'employee_id' => 'string',
+        'employee_no' => 'string',
         'deleted' => 'bool',
         'clockin_time' => 'string',
         'clockout_time' => 'string',
@@ -44,7 +44,7 @@ class V1Timecard implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'employee_id' => 'employee_id',
+        'employee_no' => 'employee_no',
         'deleted' => 'deleted',
         'clockin_time' => 'clockin_time',
         'clockout_time' => 'clockout_time',
@@ -63,7 +63,7 @@ class V1Timecard implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'employee_id' => 'setEmployeeId',
+        'employee_no' => 'setEmployeeId',
         'deleted' => 'setDeleted',
         'clockin_time' => 'setClockinTime',
         'clockout_time' => 'setClockoutTime',
@@ -82,7 +82,7 @@ class V1Timecard implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'employee_id' => 'getEmployeeId',
+        'employee_no' => 'getEmployeeId',
         'deleted' => 'getDeleted',
         'clockin_time' => 'getClockinTime',
         'clockout_time' => 'getClockoutTime',
@@ -101,10 +101,10 @@ class V1Timecard implements ArrayAccess
       */
     protected $id;
     /**
-      * $employee_id The ID of the employee the timecard is associated with.
+      * $employee_no The ID of the employee the timecard is associated with.
       * @var string
       */
-    protected $employee_id;
+    protected $employee_no;
     /**
       * $deleted If true, the timecard was deleted by the merchant, and it is no longer valid.
       * @var bool
@@ -168,10 +168,10 @@ class V1Timecard implements ArrayAccess
             } else {
               $this->id = null;
             }
-            if (isset($data["employee_id"])) {
-              $this->employee_id = $data["employee_id"];
+            if (isset($data["employee_no"])) {
+              $this->employee_no = $data["employee_no"];
             } else {
-              $this->employee_id = null;
+              $this->employee_no = null;
             }
             if (isset($data["deleted"])) {
               $this->deleted = $data["deleted"];
@@ -245,22 +245,22 @@ class V1Timecard implements ArrayAccess
         return $this;
     }
     /**
-     * Gets employee_id
+     * Gets employee_no
      * @return string
      */
     public function getEmployeeId()
     {
-        return $this->employee_id;
+        return $this->employee_no;
     }
   
     /**
-     * Sets employee_id
-     * @param string $employee_id The ID of the employee the timecard is associated with.
+     * Sets employee_no
+     * @param string $employee_no The ID of the employee the timecard is associated with.
      * @return $this
      */
-    public function setEmployeeId($employee_id)
+    public function setEmployeeId($employee_no)
     {
-        $this->employee_id = $employee_id;
+        $this->employee_no = $employee_no;
         return $this;
     }
     /**

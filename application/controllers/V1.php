@@ -56,7 +56,7 @@ class V1 extends MY_Controller
 				$shiftcheck = true;
 				$shiftmangment = $this->db->where('directory', 'shiftmangment')->where('status', 1)->get('module')->num_rows();
 				if ($shiftmangment == 1) {
-					$shiftcheck = $this->checkshift($result->employee_id);
+					$shiftcheck = $this->checkshift($result->employee_no);
 				}
 				if ($shiftcheck == true) {
 					$str = substr($result->picture, 2);

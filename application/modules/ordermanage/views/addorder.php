@@ -309,7 +309,7 @@
                                     <div class="col-sm-8">
                                       <?php 
 						if(empty($waiterlist)){$waiterlist = array('' => '--Select--');}
-						echo form_dropdown('waiter',$waiterlist,(!empty($waiterlist->emp_his_id)?$waiterlist->emp_his_id:null),'class="form-control" id="waiter" required') ?>
+						echo form_dropdown('waiter',$waiterlist,(!empty($waiterlist->emp_id)?$waiterlist->emp_id:null),'class="form-control" id="waiter" required') ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">

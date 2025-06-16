@@ -14,11 +14,11 @@
                 <input name="emp_pos_id" type="hidden" value="<?php echo $data->emp_pos_id ?>">
 
                 <div class="form-group row">
-                    <label for="employee_id" class="col-sm-3 col-form-label"><?php echo display('employee_id') ?>
+                    <label for="employee_no" class="col-sm-3 col-form-label"><?php echo display('employee_no') ?>
                         *</label>
                     <div class="col-sm-9">
-                        <input type="text" name="employee_id" class="form-control" id="employee_id"
-                            value="<?php echo $data->employee_id ?>">
+                        <input type="text" name="employee_no" class="form-control" id="employee_no"
+                            value="<?php echo $data->employee_no ?>">
                     </div>
                 </div>
 

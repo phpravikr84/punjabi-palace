@@ -7,10 +7,43 @@
     //     }
     // } 
     // echo "<pre>";
-    // print_r($food_list);
+    // print_r($productinfo);
     // echo "</pre>";
+    $isUpdate=false;
+    if(!empty($productinfo->id)){
+        $isUpdate=true;
+        $title = "Update Promo Food";
+    }
+if ($this->session->flashdata('message')) {
+    if ($message && strpos($message, 'Welcome') === false) {
 ?>
-
+    <div class="alert alert-success alert-dismissible" role="alert" style="color: #3c763d !important;background-color: #dff0d8 !important;border-color: #d6e9c6 !important;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php 
+        //check if there is any word: "Welcome" in the message, then don't show it
+        $message = $this->session->flashdata('message');
+        echo $message;
+        unset($_SESSION['message']);
+        ?>
+    </div>
+<?php 
+    }
+}
+if ($this->session->flashdata('exception')) { ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php 
+        echo $this->session->flashdata('exception');
+        unset($_SESSION['exception']);
+        ?>
+    </div>
+<?php } ?>
+<?php if (validation_errors()) { ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo validation_errors() ?>
+    </div>
+<?php } ?>
 <div class="row">
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd">
@@ -22,16 +55,16 @@
             <div class="panel-body">
                 <?php echo form_open_multipart("itemmanage/item_food/addpromofood") ?>                    
                 <?php echo form_hidden('id',$this->session->userdata('id'));?>
-                <?php echo form_hidden('ProductsID', (!empty($productinfo->ProductsID)?$productinfo->ProductsID:null)) ?>
+                <?php echo form_hidden('ProductsID', (!empty($productinfo->id)?$productinfo->id:null)); ?>
                 <input name="bigimage" type="hidden" value="<?php echo (!empty($productinfo->bigthumb)?$productinfo->bigthumb:null) ?>" />
                 <input name="mediumimage" type="hidden" value="<?php echo (!empty($productinfo->medium_thumb)?$productinfo->medium_thumb:null) ?>" />
                 <input name="smallimage" type="hidden" value="<?php echo (!empty($productinfo->small_thumb)?$productinfo->small_thumb:null) ?>" />
                      
 
 <div class="form-group row">
-    <label for="promo_title" class="col-sm-1 col-form-label">Title <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="Offer Name"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+    <label for="promo_title" class="col-sm-1 col-form-label">Title <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="The name of the Promo Offer"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
     <div class="col-sm-11">
-        <input name="promo_title" class="form-control" type="text"  placeholder="Enter Promo Title" id="promo_title"  value="">
+        <input name="promo_title" class="form-control" type="text"  placeholder="Enter Promo Title" id="promo_title"  value="<?=(($isUpdate)?$productinfo->promo_title:'');?>">
     </div>
 </div>
 <div class="form-group row">
@@ -55,10 +88,9 @@
     </div>
     <div class="col-sm-6">
         <div class="form-group row">
-            <label for="lastname" class="col-sm-5 col-form-label"><?php echo display('status');?></label>
+            <label for="status" class="col-sm-5 col-form-label"><?php echo display('status');?></label>
             <div class="col-sm-7">
-                <select name="status"  class="form-control">
-                    <option value=""  selected="selected"><?php echo display('select_option');?></option>
+                <select name="status" id="status" class="form-control">
                     <option value="1" <?php  if(!empty($productinfo)){if($productinfo->ProductsIsActive==1){echo "Selected";}} else{echo "Selected";} ?>><?php echo display('active')?></option>
                     <option value="0" <?php  if(!empty($productinfo)){if($productinfo->ProductsIsActive==0){echo "Selected";}} ?>><?php echo display('inactive')?></option>
                 </select>
@@ -153,6 +185,11 @@
                 <input name="free_item_get_qty" class="form-control" type="text"  placeholder="0" id="free_item_get_qty"  value="<?php echo (!empty($productinfo->OffersRate)?$productinfo->OffersRate:'') ?>">
             </div>
         </div>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-12 col-md-12 text-right">
+        <button type="submit" class="btn btn-success" name="promo_submit_btn" id="promo_submit_btn"><?php echo 'Submit'; ?></button>
     </div>
 </div>
             <?php echo form_close(); ?>
@@ -256,12 +293,252 @@
         if(promo_type == 1){
             $("#discount_item_div").show();
             $("#free_item_div").hide();
+            $("#free_item_buy_food").val('');
+            $("#free_item_buy_qty").val('');
+            $("#free_item_get_food").val('');
+            $("#free_item_get_qty").val('');
         }else if(promo_type == 2){
             $("#discount_item_div").hide();
             $("#free_item_div").show();
+            $("#discount_offerate").val('');
+            $("#discount_food").val(null);
         }else{
             $("#discount_item_div").hide();
             $("#free_item_div").hide();
         }
     });
+    // $(document).on("click", "#promo_submit_btn", (e) => {
+    //     e.preventDefault();
+        
+    //     var promo_title = $("#promo_title").val();
+    //     var promo_type = $("#promo_type").children("option:selected").val();
+    //     var offerstartdate = $("#offerstartdate").val();
+    //     var offerendate = $("#offerendate").val();
+    //     var discount_offerate = $("#discount_offerate").val();
+    //     var discount_food = $("#discount_food").children("option:selected").val();
+    //     var free_item_buy_food = $("#free_item_buy_food").children("option:selected").val();
+    //     var free_item_buy_qty = $("#free_item_buy_qty").val();
+    //     var free_item_get_food = $("#free_item_get_food").children("option:selected").val();
+    //     var free_item_get_qty = $("#free_item_get_qty").val();
+
+    //     if (promo_title == "") {
+    //         swal({
+    //             title: "Error!",
+    //             text: "Please enter promo title",
+    //             type: "error",
+    //             confirmButtonClass: "btn-success",
+    //             confirmButtonText: "OK",
+    //             closeOnConfirm: true
+    //         }, function () {
+    //             setTimeout(() => { $("#promo_title").focus(); }, 100);
+    //         });
+    //         return false;
+    //     }
+
+    //     if (promo_type == "") {
+    //         swal({
+    //             title: "Error!",
+    //             text: "Please select promo type",
+    //             type: "error",
+    //             confirmButtonClass: "btn-success",
+    //             confirmButtonText: "OK",
+    //             closeOnConfirm: true
+    //         }, function () {
+    //             setTimeout(() => { $("#promo_type").focus(); }, 100);
+    //         });
+    //         return false;
+    //     }
+
+    //     if (offerstartdate == "") {
+    //         swal({
+    //             title: "Error!",
+    //             text: "Please select offer start date",
+    //             type: "error",
+    //             confirmButtonClass: "btn-success",
+    //             confirmButtonText: "OK",
+    //             closeOnConfirm: true
+    //         }, function () {
+    //             setTimeout(() => { $("#offerstartdate").focus(); }, 100);
+    //         });
+    //         return false;
+    //     }
+
+    //     if (offerendate == "") {
+    //         swal({
+    //             title: "Error!",
+    //             text: "Please select offer end date",
+    //             type: "error",
+    //             confirmButtonClass: "btn-success",
+    //             confirmButtonText: "OK",
+    //             closeOnConfirm: true
+    //         }, function () {
+    //             setTimeout(() => { $("#offerendate").focus(); }, 100);
+    //         });
+    //         return false;
+    //     }
+
+    //     if (promo_type == 1) {
+    //         if (discount_offerate == "") {
+    //             swal({
+    //                 title: "Error!",
+    //                 text: "Please enter discount offer rate",
+    //                 type: "error",
+    //                 confirmButtonClass: "btn-success",
+    //                 confirmButtonText: "OK",
+    //                 closeOnConfirm: true
+    //             }, function () {
+    //                 setTimeout(() => { $("#discount_offerate").focus(); }, 100);
+    //             });
+    //             return false;
+    //         }
+
+    //         if (discount_food == "") {
+    //             swal({
+    //                 title: "Error!",
+    //                 text: "Please select food for discount",
+    //                 type: "error",
+    //                 confirmButtonClass: "btn-success",
+    //                 confirmButtonText: "OK",
+    //                 closeOnConfirm: true
+    //             }, function () {
+    //                 setTimeout(() => { $("#discount_food").focus(); }, 100);
+    //             });
+    //             return false;
+    //         }
+
+    //     } else if (promo_type == 2) {
+    //         if (free_item_buy_food == "") {
+    //             swal({
+    //                 title: "Error!",
+    //                 text: "Please select food for buy",
+    //                 type: "error",
+    //                 confirmButtonClass: "btn-success",
+    //                 confirmButtonText: "OK",
+    //                 closeOnConfirm: true
+    //             }, function () {
+    //                 setTimeout(() => { $("#free_item_buy_food").focus(); }, 100);
+    //             });
+    //             return false;
+    //         }
+
+    //         if (free_item_buy_qty == "") {
+    //             swal({
+    //                 title: "Error!",
+    //                 text: "Please enter buy quantity",
+    //                 type: "error",
+    //                 confirmButtonClass: "btn-success",
+    //                 confirmButtonText: "OK",
+    //                 closeOnConfirm: true
+    //             }, function () {
+    //                 setTimeout(() => { $("#free_item_buy_qty").focus(); }, 100);
+    //             });
+    //             return false;
+    //         }
+
+    //         if (free_item_get_food == "") {
+    //             swal({
+    //                 title: "Error!",
+    //                 text: "Please select food for get",
+    //                 type: "error",
+    //                 confirmButtonClass: "btn-success",
+    //                 confirmButtonText: "OK",
+    //                 closeOnConfirm: true
+    //             }, function () {
+    //                 setTimeout(() => { $("#free_item_get_food").focus(); }, 100);
+    //             });
+    //             return false;
+    //         }
+
+    //         if (free_item_get_qty == "") {
+    //             swal({
+    //                 title: "Error!",
+    //                 text: "Please enter get quantity",
+    //                 type: "error",
+    //                 confirmButtonClass: "btn-success",
+    //                 confirmButtonText: "OK",
+    //                 closeOnConfirm: true
+    //             }, function () {
+    //                 setTimeout(() => { $("#free_item_get_qty").focus(); }, 100);
+    //             });
+    //             return false;
+    //         }
+    //     }
+
+    //     return false;
+    //     // $("#promo_submit_btn").closest("form").submit();
+    // });
+
+
+    $(document).on("click", "#promo_submit_btn", (e) => {
+    e.preventDefault();
+    
+    var promo_title = $("#promo_title").val();
+    var promo_type = $("#promo_type").children("option:selected").val();
+    var offerstartdate = $("#offerstartdate").val();
+    var offerendate = $("#offerendate").val();
+    
+    var discount_offerate = $("#discount_offerate").val();
+    var discount_food = $("#discount_food").children("option:selected").val();
+    
+    var free_item_buy_food = $("#free_item_buy_food").children("option:selected").val();
+    var free_item_buy_qty = $("#free_item_buy_qty").val();
+    var free_item_get_food = $("#free_item_get_food").children("option:selected").val();
+    var free_item_get_qty = $("#free_item_get_qty").val();
+    var status = $("select[name='status']").children("option:selected").val();
+
+    if (promo_title == "") {
+        showErrorAlert("Please enter promo title", "#promo_title");
+        return false;
+    }
+
+    if (promo_type == "") {
+        showErrorAlert("Please select promo type", "#promo_type");
+        return false;
+    }
+
+    if (offerstartdate == "") {
+        showErrorAlert("Please select offer start date", "#offerstartdate");
+        return false;
+    }
+
+    if (offerendate == "") {
+        showErrorAlert("Please select offer end date", "#offerendate");
+        return false;
+    }
+
+    if (promo_type == 1) {
+        if (discount_offerate == "") {
+            showErrorAlert("Please enter discount offer rate", "#discount_offerate");
+            return false;
+        }
+
+        if (discount_food == "") {
+            showErrorAlert("Please select food for discount", "#discount_food");
+            return false;
+        }
+    } else if (promo_type == 2) {
+        if (free_item_buy_food == "") {
+            showErrorAlert("Please select food for buy", "#free_item_buy_food");
+            return false;
+        }
+
+        if (free_item_buy_qty == "") {
+            showErrorAlert("Please enter buy quantity", "#free_item_buy_qty");
+            return false;
+        }
+
+        if (free_item_get_food == "") {
+            showErrorAlert("Please select food for get", "#free_item_get_food");
+            return false;
+        }
+
+        if (free_item_get_qty == "") {
+            showErrorAlert("Please enter get quantity", "#free_item_get_qty");
+            return false;
+        }
+    }
+    // return false;
+    $("#promo_submit_btn").closest("form").submit();
+});
+
 </script>

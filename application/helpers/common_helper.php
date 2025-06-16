@@ -605,6 +605,31 @@ function getCusineTypeName($id=1) {
     }
 }
 
+//function for getting the current date and time [made by Jyotirmoy Saha]
+define('LONG_DATE_TIME_FORMAT', 'l jS \of F Y   h:i a');
+define('LONG_DATE_FORMAT', 'l jS \of F Y');
+define('LONG_TIME_FORMAT', 'h:i a');
+if (!function_exists('getFormattedDateTime'))
+{
+function getFormattedDateTime($date = '', $format = 'd/m/Y')
+{
+    $date = ($date == '') ? date('Y-m-d') : $date;
+    $d = date_format(date_create($date), $format);
+    return $d;
+}
+}
+if (!function_exists('getToday'))
+{
+function getToday($includeTime = true, $dformat = 'Y-m-d', $tformat = 'H:i:s')
+{
+    $dt = date($dformat);
+    if ($includeTime) {
+        $dt = date($dformat . ' ' . $tformat);
+    }
+    return $dt;
+}
+}
+
 if (!function_exists('get_price_diff_data')) {
   function get_price_diff_data($id) {
       $CI = &get_instance(); // Get CodeIgniter instance

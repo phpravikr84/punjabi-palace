@@ -36,7 +36,7 @@ class InventoryAdjustment implements ArrayAccess
         'occurred_at' => 'string',
         'created_at' => 'string',
         'source' => '\SquareConnect\Model\SourceApplication',
-        'employee_id' => 'string',
+        'employee_no' => 'string',
         'transaction_id' => 'string',
         'refund_id' => 'string',
         'purchase_order_id' => 'string',
@@ -60,7 +60,7 @@ class InventoryAdjustment implements ArrayAccess
         'occurred_at' => 'occurred_at',
         'created_at' => 'created_at',
         'source' => 'source',
-        'employee_id' => 'employee_id',
+        'employee_no' => 'employee_no',
         'transaction_id' => 'transaction_id',
         'refund_id' => 'refund_id',
         'purchase_order_id' => 'purchase_order_id',
@@ -84,7 +84,7 @@ class InventoryAdjustment implements ArrayAccess
         'occurred_at' => 'setOccurredAt',
         'created_at' => 'setCreatedAt',
         'source' => 'setSource',
-        'employee_id' => 'setEmployeeId',
+        'employee_no' => 'setEmployeeId',
         'transaction_id' => 'setTransactionId',
         'refund_id' => 'setRefundId',
         'purchase_order_id' => 'setPurchaseOrderId',
@@ -108,7 +108,7 @@ class InventoryAdjustment implements ArrayAccess
         'occurred_at' => 'getOccurredAt',
         'created_at' => 'getCreatedAt',
         'source' => 'getSource',
-        'employee_id' => 'getEmployeeId',
+        'employee_no' => 'getEmployeeId',
         'transaction_id' => 'getTransactionId',
         'refund_id' => 'getRefundId',
         'purchase_order_id' => 'getPurchaseOrderId',
@@ -176,10 +176,10 @@ class InventoryAdjustment implements ArrayAccess
       */
     protected $source;
     /**
-      * $employee_id The Square ID of the [Employee](#type-employee) responsible for the inventory adjustment.
+      * $employee_no The Square ID of the [Employee](#type-employee) responsible for the inventory adjustment.
       * @var string
       */
-    protected $employee_id;
+    protected $employee_no;
     /**
       * $transaction_id The read-only Square ID of the [Transaction][#type-transaction] that caused the adjustment. Only relevant for payment-related state transitions.
       * @var string
@@ -268,10 +268,10 @@ class InventoryAdjustment implements ArrayAccess
             } else {
               $this->source = null;
             }
-            if (isset($data["employee_id"])) {
-              $this->employee_id = $data["employee_id"];
+            if (isset($data["employee_no"])) {
+              $this->employee_no = $data["employee_no"];
             } else {
-              $this->employee_id = null;
+              $this->employee_no = null;
             }
             if (isset($data["transaction_id"])) {
               $this->transaction_id = $data["transaction_id"];
@@ -524,22 +524,22 @@ class InventoryAdjustment implements ArrayAccess
         return $this;
     }
     /**
-     * Gets employee_id
+     * Gets employee_no
      * @return string
      */
     public function getEmployeeId()
     {
-        return $this->employee_id;
+        return $this->employee_no;
     }
   
     /**
-     * Sets employee_id
-     * @param string $employee_id The Square ID of the [Employee](#type-employee) responsible for the inventory adjustment.
+     * Sets employee_no
+     * @param string $employee_no The Square ID of the [Employee](#type-employee) responsible for the inventory adjustment.
      * @return $this
      */
-    public function setEmployeeId($employee_id)
+    public function setEmployeeId($employee_no)
     {
-        $this->employee_id = $employee_id;
+        $this->employee_no = $employee_no;
         return $this;
     }
     /**

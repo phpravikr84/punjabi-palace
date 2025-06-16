@@ -128,15 +128,15 @@
 
 
                                     <td class="center">
-                                      <a href="<?php echo base_url("hrm/Employees/update_employee_form/$row->employee_id") ?>" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a> 
-                                      <?php if($row->employee_id=='E4Y91CAX'){?>
+                                      <a href="<?php echo base_url("hrm/Employees/update_employee_form/$row->employee_no") ?>" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a> 
+                                      <?php if($row->employee_no=='E4Y91CAX'){?>
                                         
                                         <?php } 
 										else{
 										?>
-                                          <a href="<?php echo base_url("hrm/Employees/delete_employhistory/$row->employee_id") ?>" class="btn btn-xs btn-danger" onclick="return confirm('<?php echo display('are_you_sure') ?>') "><i class="fa fa-trash"></i></a>
+                                          <a href="<?php echo base_url("hrm/Employees/delete_employhistory/$row->employee_no") ?>" class="btn btn-xs btn-danger" onclick="return confirm('<?php echo display('are_you_sure') ?>') "><i class="fa fa-trash"></i></a>
                                         <?php } ?>
-                                        <a href="<?php echo base_url("hrm/Employees/cv/$row->employee_id");?>" class="btn btn-default"><i class="fa fa-user"></i></a>
+                                        <a href="<?php echo base_url("hrm/Employees/cv/$row->employee_no");?>" class="btn btn-default"><i class="fa fa-user"></i></a>
                                        
                                     </td>
                                 </tr>
