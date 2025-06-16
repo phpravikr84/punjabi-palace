@@ -52,7 +52,7 @@
                 <div class="col-md-6">
                     <div class="product-summary-content">
                         <h2 class="font-roboto"><?php echo $iteminfo->ProductName; ?></h2>
-                        <?php $ratingp = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $iteminfo->ProductsID);
+                        <?php $ratingp = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $iteminfo->ProductsID);
                         if (!empty($ratingp)) {
                             $averagerating = round(number_format($ratingp->averagerating, 1));
                         ?>
@@ -363,7 +363,7 @@
                                                                 <p><?php echo display('rate_it')?>:</p>
                                                                 <div class="rateyo-readonly-widg"></div>
                                                             </div>
-                                                            <?php echo form_open('hungry/reviewsubmit','method="post" class="review-form"')?>
+                                                            <?php echo form_open('frontend/reviewsubmit','method="post" class="review-form"')?>
                                                                 <input type="hidden" id="rating" name="rating" value="">
                                                                 <input type="hidden" id="productid" name="productid" value="<?php echo $iteminfo->ProductsID; ?>">
                                                                 <input type="hidden" id="varientid" name="varientid" value="<?php echo $iteminfo->variantid; ?>">

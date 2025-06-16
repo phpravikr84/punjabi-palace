@@ -197,7 +197,7 @@ $acthemename = $activethemeinfo->themename;?>
                                          <div class="item_details">
                                              <a href="<?php echo base_url() . 'details/' . $menuitem->ProductsID . '/' . $menuitem->variantid; ?>" class="item_title"><?php echo $menuitem->ProductName ?></a>
                                              <div class="grid_only">
-                                                 <?php $ratingp = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $menuitem->ProductsID);
+                                                 <?php $ratingp = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $menuitem->ProductsID);
                                                     if (!empty($ratingp)) {
                                                         $averagerating = round(number_format($ratingp->averagerating, 1));
                                                     ?>
@@ -313,7 +313,7 @@ $acthemename = $activethemeinfo->themename;?>
                                                                 } ?><?php echo $menuitem->price; ?><?php if ($this->storecurrency->position == 2) {
                                                                                                         echo $this->storecurrency->curr_icon;
                                                                                                     } ?></h5>
-                                             <?php $ratingpt = $this->hungry_model->read_average('tbl_rating', 'rating', 'proid', $menuitem->ProductsID);
+                                             <?php $ratingpt = $this->frontend_model->read_average('tbl_rating', 'rating', 'proid', $menuitem->ProductsID);
                                                 if (!empty($ratingpt)) {
                                                     $averageratingt = round(number_format($ratingpt->averagerating, 1));
                                                 ?>
@@ -412,7 +412,7 @@ $acthemename = $activethemeinfo->themename;?>
                             $pvat = 0;
                             foreach ($cart as $item) {
                                 $itemprice = $item['price'] * $item['qty'];
-                                $iteminfo = $this->hungry_model->getiteminfo($item['pid']);
+                                $iteminfo = $this->frontend_model->getiteminfo($item['pid']);
                                 $mypdiscountprice = 0;
                                 if (!empty($taxinfos)) {
                                     $tx = 0;
@@ -551,11 +551,11 @@ $acthemename = $activethemeinfo->themename;?>
  <!--End Menu Area-->
     <?php 			$html='';
 					$wtapp = $this->db->select('*')->from('whatsapp_settings')->get()->row();
-					$storeinfo = $this->hungry_model->read('*', 'setting', array('id' => 2));
-					$currencysign = $this->hungry_model->read('*', 'currency', array('currencyid' => $storeinfo->currency));
-					$wporderinfo = $this->hungry_model->read('*', 'customer_order', array('order_id' => $orderid));
-					$customerinfo = $this->hungry_model->read('*', 'customer_info', array('customer_id' => $wporderinfo->customer_id));
-					$alliteminfo =  $this->hungry_model->customerorder($orderid);
+					$storeinfo = $this->frontend_model->read('*', 'setting', array('id' => 2));
+					$currencysign = $this->frontend_model->read('*', 'currency', array('currencyid' => $storeinfo->currency));
+					$wporderinfo = $this->frontend_model->read('*', 'customer_order', array('order_id' => $orderid));
+					$customerinfo = $this->frontend_model->read('*', 'customer_info', array('customer_id' => $wporderinfo->customer_id));
+					$alliteminfo =  $this->frontend_model->customerorder($orderid);
 					$storename=$storeinfo->storename;
 					$html.='Hi! I would Like To Place An Order %0a--------------------------------------- %0a*Order ID꞉ '.$orderid.' || Order Time꞉ '.$wporderinfo->order_time.'*%0a Customer Name꞉ '.$customerinfo->customer_name.'%0a Customer Address꞉ '.$customerinfo->customer_address.'%0a---------------------------------------%0a';
 					foreach($alliteminfo as $items){
@@ -565,7 +565,7 @@ $acthemename = $activethemeinfo->themename;?>
 							    $addonsqty=explode(",",$items->addonsqty);
 								$y=0;
 								foreach($addons as $addonsid){
-									$adonsinfo=$this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+									$adonsinfo=$this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 									$html.='➖ '.$addonsqty[$y].' X '.$adonsinfo->add_on_name.'     '.$currencysign->curr_icon.$adonsinfo->price.'%0a';
 									$y++;
 									}

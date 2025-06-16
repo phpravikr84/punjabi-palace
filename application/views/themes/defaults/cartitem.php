@@ -14,7 +14,7 @@ if ($cart = $this->cart->contents()){
         $pvat=0;
         foreach ($cart as $item){
           $itemprice= $item['price']*$item['qty'];
-          $iteminfo=$this->hungry_model->getiteminfo($item['pid']);
+          $iteminfo=$this->frontend_model->getiteminfo($item['pid']);
           $mypdiscountprice =0;
           if(!empty($taxinfos)){
 $tx=0;
@@ -158,7 +158,7 @@ $addn++;
 </li>
 <li class="cart-footer text-right">
   <div class="checkout-box">
-    <a href="<?php echo base_url();?>hungry/cart" class="simple_btn mt-0"><?php echo display('go_to_checkout') ?></a>
+    <a href="<?php echo base_url();?>frontend/cart" class="simple_btn mt-0"><?php echo display('go_to_checkout') ?></a>
   </div>
 </li>
 <?php }

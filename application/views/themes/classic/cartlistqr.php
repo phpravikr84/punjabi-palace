@@ -20,7 +20,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
                     	<?php $i=0; 
 						foreach ($cart as $item){
 										$itemprice= $item['price']*$item['qty'];
-										$iteminfo=$this->hungry_model->getiteminfo($item['pid']);
+										$iteminfo=$this->frontend_model->getiteminfo($item['pid']);
 										$vatcalc=$itemprice*$iteminfo->productvat/100;
 										$pvat=$pvat+$vatcalc;
 										if($iteminfo->OffersRate>0){
@@ -84,7 +84,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
 							$discount=0;
 							foreach ($this->cart->contents() as $item){
 										$itemprice= $item['price']*$item['qty'];
-								        $iteminfo=$this->hungry_model->getiteminfo($item['pid']);
+								        $iteminfo=$this->frontend_model->getiteminfo($item['pid']);
 										$vatcalc=$itemprice*$iteminfo->productvat/100;
 										$pvat=$pvat+$vatcalc;
 										if($iteminfo->OffersRate>0){
@@ -141,7 +141,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
 							$discount=0;
 							foreach ($this->cart->contents() as $item){
 										$itemprice= $item['price']*$item['qty'];
-								        $iteminfo=$this->hungry_model->getiteminfo($item['pid']);
+								        $iteminfo=$this->frontend_model->getiteminfo($item['pid']);
 										$vatcalc=$itemprice*$iteminfo->productvat/100;
 										$pvat=$pvat+$vatcalc;
 										if($iteminfo->OffersRate>0){
@@ -201,7 +201,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
 						<?php if($this->storecurrency->position==2){echo $this->storecurrency->curr_icon;}?></p>
                         </li>
                     </ul>
-                    <form class="coupon" action="<?php echo base_url("hungry/checkcouponqr") ?>" method="post">
+                    <form class="coupon" action="<?php echo base_url("frontend/checkcouponqr") ?>" method="post">
                             <div class="form-group cartlist_d">
                                 <input type="text" class="form-control cartlistqr" id="couponcode" name="couponcode" placeholder="Enter coupon code" required autocomplete="off" >
                             <input name="coupon" class="btn cartlistqrbtn" type="submit" value="Apply" /></div>

@@ -96,7 +96,7 @@ $this->db->select('*');
                                     </div>
                                     <div class="item_info col-sm-3 text-center">
                                         <h5 class="mb-0"><?php if($this->storecurrency->position==1){echo $this->storecurrency->curr_icon;}?><?php echo $tmenuf->price;?><?php if($this->storecurrency->position==2){echo $this->storecurrency->curr_icon;}?></h5>
-                                        <?php $ratingp=$this->hungry_model->read_average('tbl_rating','rating','proid',$tmenuf->ProductsID);
+                                        <?php $ratingp=$this->frontend_model->read_average('tbl_rating','rating','proid',$tmenuf->ProductsID);
 							if(!empty($ratingp)){
 								$averagerating=round(number_format($ratingp->averagerating,1));
 							?>

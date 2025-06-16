@@ -42,7 +42,7 @@ foreach ($categorylist as $category) {
                     }
                     $mainwithsub = $allcat . $category->CategoryID;
                     $condition = "item_foods.CategoryID IN($mainwithsub)";
-                    $itemlist = $this->hungry_model->qrmenue($condition);
+                    $itemlist = $this->frontend_model->qrmenue($condition);
                     $k = 0;
                     foreach ($itemlist as $item) {
                         $k++;

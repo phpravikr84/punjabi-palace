@@ -12,7 +12,7 @@ $acthemename=$activethemeinfo->themename;
             <div class="row">
                 <div class="col-sm-12"> 
                 <div id="form-container">
-  <?php echo form_open('hungry/stripePostqr','method="post" id="payment-form" class="require-validation" role="form" data-stripe-publishable-key="'.$paymentinfo->password.'"')?> 
+  <?php echo form_open('frontend/stripePostqr','method="post" id="payment-form" class="require-validation" role="form" data-stripe-publishable-key="'.$paymentinfo->password.'"')?> 
      
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-6 form-group required'>

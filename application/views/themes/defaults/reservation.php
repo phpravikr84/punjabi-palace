@@ -90,7 +90,7 @@
                              <input type="text" name="reservation_time" id="reservation_time" placeholder="<?php echo display('reservation_time')?>">
                          </div>
                          <div class="col-lg-3 col-md-6">
-                             <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("hungry/checkavailablity"); ?>" />
+                             <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("frontend/checkavailablity"); ?>" />
                              <button type="button" class="simple_btn" onclick="checkavailablity()"><?php echo display('check_availablity') ?></button>
                          </div>
                      </div>

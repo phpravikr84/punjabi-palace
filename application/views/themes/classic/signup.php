@@ -25,7 +25,7 @@
                     <?php } ?>
                                     <p>please enter your details in the boxes below.</p>
                                     <div class="rrtt">
-                                      <?= form_open_multipart('hungry/submitregister','class="row"') ?>
+                                      <?= form_open_multipart('frontend/submitregister','class="row"') ?>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label class="control-label" for="user_email">Name</label>

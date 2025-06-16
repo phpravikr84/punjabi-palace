@@ -10,7 +10,7 @@ $acthemename = $activethemeinfo->themename;?>
                 <div class="col-sm-12"> 
                 <div id="form-container">
 
-  <?php echo form_open('hungry/stripePost','method="post" id="payment-form" class="require-validation" role="form" data-stripe-publishable-key="'.$paymentinfo->password.'"')?>   
+  <?php echo form_open('frontend/stripePost','method="post" id="payment-form" class="require-validation" role="form" data-stripe-publishable-key="'.$paymentinfo->password.'"')?>   
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-6 form-group required'>
                                 <label class='control-label'>Name on Card</label> <input

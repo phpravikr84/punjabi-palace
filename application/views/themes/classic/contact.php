@@ -89,7 +89,7 @@ if (!empty($seoterm)) {
                         <h3 class="mb-3"><?php echo $contactsms->widget_name; ?></h3>
                         <p class="mb-4"><?php echo $contactsms->widget_desc; ?></p>
                     <?php } ?>
-                    <?php echo form_open('hungry/sendemail','method="post"')?>
+                    <?php echo form_open('frontend/sendemail','method="post"')?>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="firstname"><?php echo display('first_name') ?></label>

@@ -19,7 +19,7 @@
                   <p class="app-playstore"><?php echo display('download_apps_playstore')?></p>
                   <p><a href="https://play.google.com/store/apps/details?id=com.adzguru.kitchenchef" target="_blank"><img src="<?php echo base_url(); ?>assets/img/appsicon.png" alt="apps" width="50px;"/> <?php echo display('kitchen_app')?></a></p>
                   <p><a href="https://play.google.com/store/apps/details?id=com.adzguru.waiters" target="_blank"><img src="<?php echo base_url(); ?>assets/img/appsicon.png" alt="apps" width="50px;"/> <?php echo display('waiter_app')?></a></p>
-                  <p><a href="https://play.google.com/store/apps/details?id=com.adzguru.hungry" target="_blank"><img src="<?php echo base_url(); ?>assets/img/appsicon.png" alt="apps" width="50px;"/> <?php echo display('customer_app')?></a></p>
+                  <p><a href="https://play.google.com/store/apps/details?id=com.adzguru.frontend" target="_blank"><img src="<?php echo base_url(); ?>assets/img/appsicon.png" alt="apps" width="50px;"/> <?php echo display('customer_app')?></a></p>
                   </div>
                 
              </div>

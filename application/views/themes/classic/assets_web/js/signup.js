@@ -15,7 +15,7 @@
 				var dataString = 'email='+email +'&pass1='+pass+'&csrf_test_name='+basicinfo.csrftokeng;
 					$.ajax({
 						type: "POST",
-						url:basicinfo.baseurl+'hungry/userlogin',
+						url:basicinfo.baseurl+'frontend/userlogin',
 						data: dataString,
 						success: function(data){
 							var err = data;
@@ -40,7 +40,7 @@
 				var dataString = 'email='+email+'&csrf_test_name='+basicinfo.csrftokeng;
 					$.ajax({
 						type: "POST",
-						url:basicinfo.baseurl+'hungry/passwordrecovery',
+						url:basicinfo.baseurl+'frontend/passwordrecovery',
 						data: dataString,
 						success: function(data){
 							var err = data;

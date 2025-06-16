@@ -18,9 +18,9 @@ $acthemename = $activethemeinfo->themename;?>
         <input type="hidden" name="card_issuer" value="<?php echo $billinfo->issuer_name;?>">
         <input type="hidden" name="card_no" value="<?php echo $billinfo->card_no;?>">
         <input type="hidden" name="currency" value="<?php echo $paymentinfo->currency;?>">
-        <input type="hidden" name="success_url" value="<?php echo base_url();?>hungry/successful/<?php echo $orderinfo->order_id;?>">
-        <input type="hidden" name="fail_url" value = "<?php echo base_url();?>hungry/fail/<?php echo $orderinfo->order_id;?>">
-        <input type="hidden" name="cancel_url" value = "<?php echo base_url();?>hungry/cancilorder/<?php echo $orderinfo->order_id;?>">
+        <input type="hidden" name="success_url" value="<?php echo base_url();?>frontend/successful/<?php echo $orderinfo->order_id;?>">
+        <input type="hidden" name="fail_url" value = "<?php echo base_url();?>frontend/fail/<?php echo $orderinfo->order_id;?>">
+        <input type="hidden" name="cancel_url" value = "<?php echo base_url();?>frontend/cancilorder/<?php echo $orderinfo->order_id;?>">
         <input type="submit" value="Pay with SSLCOMMERZ" name="pay" class="rma_display_none" >
     </form>
 <script>

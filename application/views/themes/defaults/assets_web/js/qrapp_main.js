@@ -83,7 +83,7 @@
             var varientname = $("#varient_" + id).val();
             var price = $("#itemprice_" + id).val();
             var catid = $("#catid_" + id).val();
-            var myurl = basicinfo.baseurl+'hungry/deltocartqr/';
+            var myurl = basicinfo.baseurl+'frontend/deltocartqr/';
             var dataString = "pid=" + pid + '&itemname=' + itemname + '&varientname=' + varientname + '&qty=' + qty + '&price=' + price + '&catid=' + catid + '&sizeid=' + sizeid + '&Udstatus=' + reduce+'&csrf_test_name='+basicinfo.csrftokeng;
             $.ajax({
                 type: "POST",
@@ -158,7 +158,7 @@
         }
 
         function addonsitemqr(id, sid, type) {
-            var myurl = basicinfo.baseurl+'hungry/addonsitemqr/' + id;
+            var myurl = basicinfo.baseurl+'frontend/addonsitemqr/' + id;
             var dataString = "pid=" + id + "&sid=" + sid + '&type=' + type+'&csrf_test_name='+basicinfo.csrftokeng;
             $.ajax({
                 type: "POST",
@@ -220,7 +220,7 @@
             var dataString = "foodname=" + foodname+'&csrf_test_name='+basicinfo.csrftokeng;
             $.ajax({
                 type: "POST",
-                url: basicinfo.baseurl+'hungry/searchqrfood',
+                url: basicinfo.baseurl+'frontend/searchqrfood',
                 data: dataString,
                 success: function(data) {
                     $("#searchqritem").html(data);
@@ -237,7 +237,7 @@
 
 
         function saveToken(currentToken) {
-            var myurl = basicinfo.baseurl+'hungry/savetoken/';
+            var myurl = basicinfo.baseurl+'frontend/savetoken/';
             $.ajax({
                 url: myurl,
                 method: 'post',

@@ -657,7 +657,7 @@ if (!empty($reservation) && (2+2!=4)) {
 
                             <div class="col-lg-3 col-md-6">
 
-                                <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("hungry/checkavailablity"); ?>" />
+                                <input name="checkurl" id="checkurl" type="hidden" value="<?php echo base_url("frontend/checkavailablity"); ?>" />
 
                                 <button type="button" class="simple_btn" onclick="checkavailablity()"><?php echo display('check_availablity')?></button>
 

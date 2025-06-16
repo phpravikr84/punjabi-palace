@@ -615,7 +615,7 @@ foreach ($scan as $file) {
                 foreach ($languagenames as $languagename) {
                   if ($lii >= 2) {
                 ?>
-                    <li><a href="javascript:;" onclick="addlang(this)" data-url="<?php echo base_url(); ?>hungry/setlangue/<?php echo $languagename->name; ?>">
+                    <li><a href="javascript:;" onclick="addlang(this)" data-url="<?php echo base_url(); ?>frontend/setlangue/<?php echo $languagename->name; ?>">
                         <?php echo ucfirst($languagename->name); ?></a></li>
                 <?php
                   }
@@ -735,7 +735,7 @@ foreach ($scan as $file) {
               foreach ($languagenames as $languagename) {
                 if ($lii >= 2) {
               ?>
-                  <li><a href="javascript:;" onclick="addlang(this)" data-url="<?php echo base_url(); ?>hungry/setlangue/<?php echo $languagename->name; ?>">
+                  <li><a href="javascript:;" onclick="addlang(this)" data-url="<?php echo base_url(); ?>frontend/setlangue/<?php echo $languagename->name; ?>">
                       <?php echo ucfirst($languagename->name); ?></a></li>
               <?php
                 }

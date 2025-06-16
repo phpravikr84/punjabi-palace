@@ -43,7 +43,7 @@ if(!empty($this->cart->contents())){ $totalqty= count($this->cart->contents());}
                         <?php $i=0; 
 						foreach ($cart as $item){
 										$itemprice= $item['price']*$item['qty'];
-										$iteminfo=$this->hungry_model->getiteminfo($item['pid']);
+										$iteminfo=$this->frontend_model->getiteminfo($item['pid']);
 										$mypdiscountprice =0;
 										if(!empty($taxinfos)){
                                     $tx=0;

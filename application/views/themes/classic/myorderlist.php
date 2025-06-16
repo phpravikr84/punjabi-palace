@@ -19,7 +19,7 @@ $acthemename = $activethemeinfo->themename;
                                     <h6 class="panel-title"><a href="<?php echo base_url();?>myprofile" class="accordion-toggle">My Profile</a></h6>
                                     <h6 class="panel-title"><a href="<?php echo base_url();?>myorderlist" class="accordion-toggle">My Order List</a></h6>
                                     <h6 class="panel-title"><a href="<?php echo base_url();?>myoreservationlist" class="accordion-toggle">My Reservation</a></h6>
-                                    <h6 class="panel-title"><a href="<?php echo base_url();?>hungry/logout" class="accordion-toggle">Logout</a></h6>
+                                    <h6 class="panel-title"><a href="<?php echo base_url();?>frontend/logout" class="accordion-toggle">Logout</a></h6>
                                 </div>
                             </div>
                         </div>

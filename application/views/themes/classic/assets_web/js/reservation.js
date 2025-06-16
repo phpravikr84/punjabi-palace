@@ -27,7 +27,7 @@ function submitreserve(){
 			return false;
 			}
 		var dataString = "email="+mail+'&csrf_test_name='+basicinfo.csrftokeng;
-		var actionurl =basicinfo.baseurl+'hungry/checkemailisexits';
+		var actionurl =basicinfo.baseurl+'frontend/checkemailisexits';
 			 $.ajax({
 				 type: "POST",
 				 url: actionurl,

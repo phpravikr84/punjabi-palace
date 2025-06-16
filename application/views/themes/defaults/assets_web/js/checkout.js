@@ -44,7 +44,7 @@ $(document).ready(function() {
     var dataString = 'email=' + email + '&pass1=' + pass+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
     type: "POST",
-    url: basicinfo.baseurl+'hungry/userlogin',
+    url: basicinfo.baseurl+'frontend/userlogin',
     data: dataString,
     success: function(data) {
     var err = data;
@@ -67,7 +67,7 @@ $(document).ready(function() {
     var dataString = 'email=' + email+'&csrf_test_name='+basicinfo.csrftokeng;
     $.ajax({
     type: "POST",
-    url: basicinfo.baseurl+'hungry/passwordrecovery',
+    url: basicinfo.baseurl+'frontend/passwordrecovery',
     data: dataString,
     success: function(data) {
     var err = data;
@@ -82,7 +82,7 @@ $(document).ready(function() {
     }
     $(document).on('change', '#country', function() {
     var id = $('#country option:selected').data('id');
-    var url = 'hungry/getstate' + '/' + id;
+    var url = 'frontend/getstate' + '/' + id;
     $.ajax({
     type: "GET",
     url: url,
@@ -94,7 +94,7 @@ $(document).ready(function() {
     });
     $(document).on('change', '#district', function() {
         var id = $('#district option:selected').data('stateid');
-        var url = 'hungry/getcity' + '/' + id;
+        var url = 'frontend/getcity' + '/' + id;
     $.ajax({
     type: "GET",
     url: url,
@@ -106,7 +106,7 @@ $(document).ready(function() {
     });
     $(document).on('change', '#country2', function() {
     var id = $('#country2 option:selected').data('id');
-    var url = 'hungry/getstate' + '/' + id;
+    var url = 'frontend/getstate' + '/' + id;
     $.ajax({
     type: "GET",
     url: url,
@@ -118,7 +118,7 @@ $(document).ready(function() {
     });
     $(document).on('change', '#district2', function() {
     var id = $('#district2 option:selected').data('stateid');
-    var url = 'hungry/getcity' + '/' + id;
+    var url = 'frontend/getcity' + '/' + id;
     $.ajax({
     type: "GET",
     url: url,

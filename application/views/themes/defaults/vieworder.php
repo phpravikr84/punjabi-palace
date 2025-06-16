@@ -18,7 +18,7 @@ $acthemename=$activethemeinfo->themename;
                                     <h6 class="panel-title"><a href="<?php echo base_url();?>myprofile" class="accordion-toggle">My Profile</a></h6>
                                     <h6 class="panel-title"><a href="<?php echo base_url();?>myorderlist" class="accordion-toggle">My Order List</a></h6>
                                     <h6 class="panel-title"><a href="<?php echo base_url();?>myoreservationlist" class="accordion-toggle">My Reservation</a></h6>
-                                    <h6 class="panel-title"><a href="<?php echo base_url();?>hungry/logout" class="accordion-toggle">Logout</a></h6>
+                                    <h6 class="panel-title"><a href="<?php echo base_url();?>frontend/logout" class="accordion-toggle">Logout</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@ $acthemename=$activethemeinfo->themename;
 											$addonsqty=explode(",",$item->addonsqty);
 											$x=0;
 											foreach($addons as $addonsid){
-													$adonsinfo=$this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+													$adonsinfo=$this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 													$adonsprice=$adonsprice+$adonsinfo->price*$addonsqty[$x];
 													$x++;
 												}
@@ -127,7 +127,7 @@ $acthemename=$activethemeinfo->themename;
 									if(!empty($item->add_on_id)){
 										$y=0;
 											foreach($addons as $addonsid){
-													$adonsinfo=$this->hungry_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+													$adonsinfo=$this->frontend_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
 													$adonsprice=$adonsprice+$adonsinfo->price*$addonsqty[$y];?>
                                                     <tr>
                                                         <td colspan="2">

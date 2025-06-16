@@ -59,7 +59,7 @@ function addextra(pid,vid,id,orderid) {
 		 var qty=$("#sst"+id).val();
 		 var price=$("#itemprice_"+id).val();
 		 var catid=$("#catid_"+id).val();
-	     var myurl =basicinfo.baseurl+'hungry/updateorder/';
+	     var myurl =basicinfo.baseurl+'frontend/updateorder/';
 		 var dataString = "pid="+pid+'&itemname='+itemname+'&varientname='+varientname+'&qty='+qty+'&price='+price+'&catid='+catid+'&sizeid='+sizeid+'&orderid='+orderid+'&Udstatus='+reduce+'&csrf_test_name='+basicinfo.csrftokeng;
 		 $.ajax({
 		 	 type: "POST",
@@ -72,7 +72,7 @@ function addextra(pid,vid,id,orderid) {
 		});
 }
 function addonsitemqr(id,sid,type,orderid){
-		 var myurl=basicinfo.baseurl+'hungry/addonsitemqr2/'+id;
+		 var myurl=basicinfo.baseurl+'frontend/addonsitemqr2/'+id;
 		 var dataString = "pid="+id+"&sid="+sid+'&type='+type+'&orderid='+orderid+'&csrf_test_name='+basicinfo.csrftokeng;
 		  $.ajax({
 		 	 type: "POST",
@@ -108,7 +108,7 @@ function addextra2(pid,id,type,orderid){
 	 var varientname=$("#varient_1"+mid).val();
 	 var qty=$("#sst61_"+mid).val();
 	 var price=$("#itemprice_1"+mid).val();	
-	 var myurl =basicinfo.baseurl+'hungry/updateorder/';
+	 var myurl =basicinfo.baseurl+'frontend/updateorder/';
 	 var dataString = "pid="+pid+'&itemname='+itemname+'&varientname='+varientname+'&qty='+qty+'&price='+price+'&catid='+catid+'&sizeid='+sizeid+'&addonsid='+addons+'&allprice='+allprice+'&adonsunitprice='+adonsprice+'&adonsqty='+adonsqty+'&adonsname='+adonsname+'&orderid='+orderid+'&csrf_test_name='+basicinfo.csrftokeng;
 		$.ajax({
 		 	 type: "POST",
