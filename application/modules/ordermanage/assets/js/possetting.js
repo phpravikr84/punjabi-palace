@@ -2333,12 +2333,18 @@ $(document).on("keypress", '#itemqty_1', function(e){
       var order_person = $('#table_member').val();
       if (order_person != "") {
           var csrf = $('#csrfhashresarvation').val();
+          // Ensure order_person is a number
+         var order_person = parseInt($('#order_person').val(), 10);
+         if (isNaN(order_person)) order_person = 0;
           $.ajax({
               type: "GET",
               url: url,
               data: { csrf_test_name: csrf },
               success: function(data) {
-                  if (order_person > data) {
+                var capacity = parseInt(data.capacity || data, 10); // handle both plain/text and JSON
+                console.log('Order Person' + order_person);
+                console.log('Table Capacity' + capacity);
+                  if (order_person > capacity) {
 
                       setTimeout(function() {
 
@@ -2997,7 +3003,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
     setTimeout(function () {
         $('#tableid').val(tid).trigger('change.select2'); // Set value after a slight delay
         $('#tableid_sha').val(tid);
-        console.log("Table ID Updated to:", tid);
+        //console.log("Table ID Updated to:", tid);
     }, 500);
 
 
