@@ -3268,5 +3268,10 @@ class Item_food extends MX_Controller
 	  * ========================Food Item===========================
 	  */
 
+
+	public function get_food_menus() {
+        $this->db->select('*')->from('menu'); // adjust table name if needed
+        return $this->db->get()->result();
+    }
 	
 }

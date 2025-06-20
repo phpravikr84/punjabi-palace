@@ -124,6 +124,11 @@ class User_model extends CI_Model {
 		return $this->db->get_where('user', ['id' => $id])->row();
 	}
 
- 
+ 	public function get_all() {
+        // return list of users
+        $this->db->select('*');
+        $this->db->from('user'); // assuming table is 'user'
+        return $this->db->get()->result();
+    }
 
 }

@@ -988,5 +988,47 @@ class Fooditem_model extends CI_Model {
 		}
 	}
 
+	public function get_food_menus()
+	{
+		return $this->db->select('m.ProductsID, m.ProductName, fv.variantid, fv.variantName')
+			->from('order_menu om')
+			->join('production_details pd', 'pd.foodid = om.menu_id AND pd.pvarientid = om.varientid', 'inner')
+			->join('item_foods m', 'm.ProductsID = om.menu_id', 'inner')
+			->join('variant fv', 'fv.variantid = om.varientid', 'inner')
+			->group_by(['m.ProductsID', 'fv.variantid']) // avoid duplicates properly
+			->get()
+			->result();
+	}
+
+	public function get_detail_by_id($id)
+	{
+		// Get waste main data with user info
+		$this->db->select('w.*, u.firstname, u.lastname');
+		$this->db->from('waste_management w');
+		$this->db->join('user u', 'u.id = w.user_id', 'left');
+		$this->db->where('w.id', $id);
+		$waste = $this->db->get()->row();
+
+		if (!$waste) {
+			return null;
+		}
+
+		// Get associated waste items with ingredient/food/variant names
+		$this->db->select('wi.*, 
+			i.ingredient_name, 
+			f.ProductName AS food_name, 
+			v.variantName');
+		$this->db->from('waste_management_items wi');
+		$this->db->join('ingredients i', 'i.id = wi.ingredient_id', 'left');
+		$this->db->join('item_foods f', 'f.ProductsID = wi.food_id', 'left');
+		$this->db->join('variant v', 'v.variantid = wi.variant_id', 'left');
+		$this->db->where('wi.waste_id', $id);
+		$waste->items = $this->db->get()->result();
+
+		return $waste;
+	}
+
+
+
 
 }

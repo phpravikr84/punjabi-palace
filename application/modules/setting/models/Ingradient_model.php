@@ -226,5 +226,16 @@ class Ingradient_model extends CI_Model {
 	}
 
 
-    
+	public function get_purchased_ingredients()
+	{
+		return $this->db->select('i.id, i.ingredient_name, i.purchase_price, i.cost_perunit, i.consumption_unit, i.uom_id, i.brand_id, i.status')
+			->distinct()
+			->from('order_menu om')
+			->join('production_details pd', 'pd.foodid = om.menu_id', 'inner')
+			->join('ingredients i', 'i.id = pd.ingredientid', 'inner')
+			->where('i.is_active', 1)
+			->get()
+			->result();
+	}
+		
 }
