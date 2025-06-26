@@ -82,7 +82,7 @@ if ($this->session->flashdata('exception')) { ?>
         <div class="form-group row">
             <label for="offerstartdate" class="col-sm-5 col-form-label"><?php echo display('offerdate')?></label>
             <div class="col-sm-7">
-                <input name="offerstartdate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerdate')?>" id="offerstartdate"  value="<?php echo (!empty($productinfo->offerstartdate)?$productinfo->offerstartdate:null) ?>">
+                <input name="offerstartdate" class="form-control datepicker" type="text"  placeholder="<?php echo display('offerdate')?>" id="offerstartdate"  value="<?php echo (!empty($productinfo->start_date)?$productinfo->start_date:null) ?>">
             </div>
         </div>
     </div>
@@ -91,8 +91,8 @@ if ($this->session->flashdata('exception')) { ?>
             <label for="status" class="col-sm-5 col-form-label"><?php echo display('status');?></label>
             <div class="col-sm-7">
                 <select name="status" id="status" class="form-control">
-                    <option value="1" <?php  if(!empty($productinfo)){if($productinfo->ProductsIsActive==1){echo "Selected";}} else{echo "Selected";} ?>><?php echo display('active')?></option>
-                    <option value="0" <?php  if(!empty($productinfo)){if($productinfo->ProductsIsActive==0){echo "Selected";}} ?>><?php echo display('inactive')?></option>
+                    <option value="1" <?php  if(!empty($productinfo)){if($productinfo->status==1){echo "Selected";}} else{echo "Selected";} ?>><?php echo display('active')?></option>
+                    <option value="0" <?php  if(!empty($productinfo)){if($productinfo->status==0){echo "Selected";}} ?>><?php echo display('inactive')?></option>
                 </select>
             </div>
         </div>
@@ -303,6 +303,11 @@ if ($this->session->flashdata('exception')) { ?>
     endif;
 ?>
 <script type="text/javascript">
+    // trigger change event on promo_type to set initial visibility
+    setTimeout(() => {
+        $("#promo_type").trigger("change");
+        console.log("Promo Type Change Triggered");
+    }, 500);
     $(document).on("change", "#promo_type", ()=>{
         var promo_type = $("#promo_type").children("option:selected").val();
         if(promo_type == 1){
@@ -555,5 +560,4 @@ if ($this->session->flashdata('exception')) { ?>
     // return false;
     $("#promo_submit_btn").closest("form").submit();
 });
-
 </script>

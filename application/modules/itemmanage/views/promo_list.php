@@ -41,10 +41,10 @@ if ($this->session->flashdata('message')) {
                         <tr>
                             <th><?php echo display('serial') ?></th>
                             <th><?php echo 'Name' ?></th>
+                            <th><?php echo 'Offer Food' ?></th>
                             <th><?php echo 'Promo Type' ?></th>
                             <th><?php echo 'Start Date'; ?></th> 
                             <th><?php echo 'End Date' ?></th>
-                            <th><?php echo 'Offer Food' ?></th>
                             <th><?php echo display('status') ?></th>
                             <th><?php echo display('action') ?></th>
                         </tr>
@@ -57,18 +57,7 @@ if ($this->session->flashdata('message')) {
                                 <tr class="<?php echo ($sl & 1)?"odd gradeX":"even gradeC" ?>">
                                     <td><?php echo $sl; ?></td>
                                     <td><?php echo $fooditems->promo_title; ?></td>
-                                    <td class="text-center">
-                                        <?php 
-                                        if($fooditems->promo_type==1): 
-                                            echo "<strong class='text-success'>Discount</strong>"; 
-                                        else:
-                                            echo "<strong class='text-success'>Free Item</strong>"; 
-                                        endif;
-                                        ?>
-                                    </td>
-                                    <td> <?php echo getFormattedDateTime($fooditems->start_date, LONG_DATE_FORMAT); ?></td>
-                                    <td> <?php echo getFormattedDateTime($fooditems->end_date, LONG_DATE_FORMAT); ?></td>
-                                    <td>
+                                    <td><strong>
                                     <?php 
                                         // echo getCusineTypeName($fooditems->cusine_type);
                                         //getting food name by offer food id
@@ -89,7 +78,19 @@ if ($this->session->flashdata('message')) {
                                             echo 'No food item found';
                                         }
                                     ?>
+                                    </strong>
                                     </td>
+                                    <td class="text-center">
+                                        <?php 
+                                        if($fooditems->promo_type==1): 
+                                            echo "<strong class='text-success'>Discount</strong>"; 
+                                        else:
+                                            echo "<strong class='text-success'>Free Item</strong>"; 
+                                        endif;
+                                        ?>
+                                    </td>
+                                    <td> <?php echo getFormattedDateTime($fooditems->start_date, LONG_DATE_FORMAT); ?></td>
+                                    <td> <?php echo getFormattedDateTime($fooditems->end_date, LONG_DATE_FORMAT); ?></td>
                                     <td><?php if($fooditems->status==1){echo display('active');}else{echo display('inactive');} ?></td>
                                     <td class="center">
                                     <?php if($this->permission->method('itemmanage','update')->access()): 

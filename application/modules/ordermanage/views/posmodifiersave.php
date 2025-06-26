@@ -229,6 +229,8 @@ if ($promo_query->num_rows() > 0) {
     if ($promo_item->end_date >= date('Y-m-d')) {
         $promo_get_food_id = $promo_item->get_food_id; // The food ID that is part of the promo
         $promo_get_food_qty = $promo_item->get_qty; // The quantity of the food item in the promo
+        echo '<input type="hidden" name="promo_item_id" id="promo_item_id_'.$pid.'" value="' . $promo_get_food_id . '">';
+        echo '<input type="hidden" name="promo_item_qty" id="promo_item_qty_'.$pid.'" value="' . $promo_get_food_qty . '">';
     }
     // If there is an active promo, display the promo details
     // echo '<div class="alert alert-info">';
@@ -243,6 +245,4 @@ if ($promo_query->num_rows() > 0) {
     $promo_get_food_id = 0;
     $promo_get_food_qty = 0;
 }
-echo '<input type="hidden" name="promo_item_id" id="promo_item_id_'.$pid.'" value="' . $promo_get_food_id . '">';
-echo '<input type="hidden" name="promo_item_qty" id="promo_item_qty_'.$pid.'" value="' . $promo_get_food_qty . '">';
 ?>

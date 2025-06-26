@@ -976,7 +976,7 @@ class Order extends MX_Controller
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
 		$data['page']   = "posaddmodifier";
-		$data['item']   	  = $this->order_model->findid($id, $sid);
+		$data['item']   = $this->order_model->findid($id, $sid);
 		//Fetching modifier groups information from the database
 		$this->db->select('modifier_groups.*,menu_add_on.*');
 		$this->db->from('modifier_groups');
@@ -1261,6 +1261,25 @@ class Order extends MX_Controller
 		$d['module'] = "ordermanage";
 		$d['page']   = "posmodifiersave";
 		$this->load->view('ordermanage/posmodifiersave', $d);
+	}
+
+	public function getItemDetails()
+	{
+		// fetch the actual itemname, varientid, and varientname from the database table item_foods join with varient table with the given pid
+		$pid = $this->input->post('pid');
+		$this->db->select('item_foods.*, variant.variantid, variant.variantName');
+		$this->db->from('item_foods');
+		$this->db->join('variant', 'item_foods.ProductsID = variant.menuid', 'left');
+		$this->db->where('item_foods.ProductsID', $pid);
+		$query = $this->db->get();
+		$itemDetails = $query->row_array();
+		if ($itemDetails) {
+			// Return the item details as a JSON response
+			echo json_encode($itemDetails);
+		} else {
+			// If no item found, return an empty array
+			echo json_encode([]);
+		}
 	}
 
 	public function cartclear()

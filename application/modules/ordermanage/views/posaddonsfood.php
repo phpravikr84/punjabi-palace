@@ -172,7 +172,7 @@ $selectedMods = $q2->result();
       </div>
       <?php
         endif;
-        endforeach;        
+        endforeach;
         if ($modGroupQty == 0) {
             echo "No modifier items found for this product !";
         }
