@@ -369,7 +369,11 @@
                     $('#sideMfContainer').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
                     // $('#modSubHeading').html(`No Modifiers Found For this Item`);
                 }
-                openNav();
+                if (!isPromoFreeItem) {
+                    openNav();
+                } else {
+                    isPromoFreeItem=false;
+                }
                 //   $('#edit').modal('show');
 				  
 				  //$('#edit').find('.close').focus();
@@ -532,9 +536,12 @@ function itemModifiers(pid,tr_row_id) {
         data: dataString,
         success: function(data) {
             console.log("Modifier data: " + data);
+            $("#posSelectPurchaseTable").remove();
             // $('#addfoodlist').html(data);
             $("#mySidebar").find('#sideMfContainer').html(data);
-            $('#sideVarContainer').html($("#posAddmodSizeInfo").html());
+            // $('#sideVarContainer').html($("#posAddmodSizeInfo").html());
+            $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
+            $("#posSelectPurchaseTable").remove();
             $("#posAddmodSizeInfo").remove();
             // $("#modifierChoosebtnDiv").html(`
             //     <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
@@ -545,6 +552,10 @@ function itemModifiers(pid,tr_row_id) {
     });
 }
 function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) {
+    if (pid==0) {
+        console.log("No Item Found !");
+        return false;
+    }
     let selectedValues = [];
 
     $("input[name='modifier_items[]']:checked").each(function () {
@@ -657,8 +668,12 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                 }
                 $("#addfoodlist").append(data);
                 closeNav();
-                var promo_item_id = $('#promo_item_id_'+pid).val();
-                var promo_item_qty = $('#promo_item_qty_'+pid).val();
+                var promo_item_id = promo_item_qty = 0;
+                if ($("#promo_item_id_"+pid).length > 0) {
+                    // Get the promo item id and quantity if they exist
+                    promo_item_id = $('#promo_item_id_'+pid).val();
+                    promo_item_qty = $('#promo_item_qty_'+pid).val();
+                }
 
                 var modTotalPrice = $('#modTotalPrice_'+pid).val();
                 var togText = $("#modToggleText_"+pid).val();
@@ -683,21 +698,26 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                 $('#grandtotal').val(tgtotal);
                 $('#orggrandTotal').val(tgtotal);
                 $('#orginattotal').val(tgtotal);
-                // if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
-                //     // Add the promo item to the cart
-                //     ApplyModifierSelect(promo_item_id,null,0,promo_item_qty);
-                // }
 
                 // console.log("oldIndvPrice: "+oldIndvPrice);
                 console.log("Subtotal: "+parseFloat(total));
                 console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
                 
                 $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
-                $(".page-loader-wrapper").hide(); 
+                $(".page-loader-wrapper").hide();
+                if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
+                    // Add the promo item to the cart
+                    isPromoFreeItem = true;
+                    $('.select_product_id[value="'+promo_item_id+'"]').parent('.panel-body').parent('.select_product').click();
+                    ApplyModifierSelect(promo_item_id,null,0,promo_item_qty);
+                    $('#promo_item_id_'+pid).remove();
+                    $('#promo_item_qty_'+pid).remove();
+                }
             }
         });
     }, 2000);
 }
+let isPromoFreeItem = false;
 function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
     let selectedValues = [];
     let selectedFoods = [];

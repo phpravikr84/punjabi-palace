@@ -1,3 +1,77 @@
+<?php 
+// echo "<pre>";
+// print_r($this->cart->contents());
+// echo "</pre>";
+$selectedItemName=$selectedVarientId=$selectedItemQty=$selectedItemPrice=$selectedVarientName="";
+if ($cart = $this->cart->contents()){
+    foreach ($cart as $ck => $cv) {
+        // $size = $cv['size'];
+        if ($pid == $cv['pid']) {
+            $selectedItemName=$cv['name'];
+            $selectedVarientId=$cv['sizeid'];
+            $selectedItemQty=$cv['qty'];
+            $selectedItemPrice=$cv['price'];
+            $selectedVarientName=$cv['size'];
+        }
+    }
+}
+// echo "<br>pid: ".$pid;
+// echo "<br>Selected Item Name: ".$selectedItemName;
+?>
+<div id="posSelectPurchaseTable">
+<table class="table table-bordered table-hover bg-white" id="purchaseTable">
+    <thead>
+        <tr>
+            <th class="text-center"><?php echo display('item_information') ?></th>
+            <th class="text-center"><?php echo display('size') ?></th>
+            <th class="text-center wp_100"><?php echo display('qty') ?></th>
+            <th class="text-center wp_120"><?php echo display('price') ?></th>
+        </tr>
+    </thead>
+    <tbody id="addItem">
+        <tr>
+            <td>
+                <input name="itemname" type="hidden" id="itemname_<?php echo "1"; ?>" value="<?php echo $selectedItemName;
+                                                                                            if (!empty($item->component)) {
+                                                                                                echo " (" . $item->component . ")";
+                                                                                            } ?>" />
+                <?php 
+                echo $selectedItemName;
+                if (!empty($item->component)) {
+                    echo " (" . $item->component . ")";
+                } 
+                ?>
+            </td>
+            <td>
+                <input name="sizeid" type="hidden" id="sizeid_<?php echo "1"; ?>" value="<?php echo $selectedVarientId; ?>" />
+                <input name="size" type="hidden" value="<?php echo $selectedVarientName; ?>" id="size_<?php echo 1; ?>" />
+                <input name="catid" type="hidden" value="<?php echo (!empty($catid) ? $catid : null) ?>" id="catid" />
+                <input name="totalvarient" type="hidden" value="<?php echo $totalvarient; ?>" id="totalvarient" />
+                <input name="customqty" type="hidden" value="<?php echo $selectedItemQty; ?>" id="customqty" />
+                <select name="varientinfo" class="form-control" required id="varientinfo" <?php if(count($varientlist)==1): ?> disabled <?php endif;?>>
+                    <?php foreach ($varientlist as $thisvarient) { ?>
+                        <option <?php if(count($varientlist)==1): ?> disabled aria-readonly="true" <?php endif;?> value="<?php echo $thisvarient->variantid; ?>" data-title="<?php echo $thisvarient->variantName; ?>" data-price="<?php echo $thisvarient->price; ?>" <?php if ($selectedVarientId == $thisvarient->variantid) {
+                                                                                                                                                                                        echo "selected";
+                                                                                                                                                                                    } ?>><?php echo $thisvarient->variantName; ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+            <td>
+                <input type="number" name="itemqty" id="itemqty_<?php echo "1"; ?>" class="form-control text-right" value="<?=$selectedItemQty;?>" min="1" />
+            </td>
+            <td>
+                <input name="itemprice" type="hidden" value="<?php echo $selectedItemPrice; ?>" id="itemprice_<?php echo "1"; ?>" />
+                <span id="vprice"><?php echo (($currency->position == 1) ? $currency->curr_icon : '').$selectedItemPrice; ?></span>
+            </td>
+
+        </tr>
+
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>
+</div>
 <?php
 //   echo "<pre>";
 //   print_r($mainCats);
@@ -5,7 +79,7 @@
 //   echo "mainCats count: ". count($mainCats);
 //   echo "<br>modifiers type: ". var_dump($modifiers);
 //   exit();
-$size="";
+$size=""; 
 if ($cart = $this->cart->contents()){
     foreach ($cart as $ck => $cv) {
         $size = $cv['size'];
@@ -125,10 +199,21 @@ if (count($modifiers) > 0):
 ?>
 <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
     <?php
+    $modGroupQty = 0;
     foreach ($modifiers as $mk => $mv):
         // echo "<pre>";
         // print_r($mv);
         // echo "</pre>";
+        //Fetching modifier item information from the database
+        $this->db->select('add_on_id,add_on_name,price,is_comp,minqty,maxqty,is_food_item');
+        $this->db->from('add_ons');
+        $this->db->where('modifier_set_id', $mv->id);
+        $this->db->where('is_active', 1);
+        $this->db->order_by('sort_order', "ASC");
+        $miq = $this->db->get();
+        $modifier_items = $miq->result();
+        if(count($modifier_items)>0):
+        $modGroupQty++;
     ?>
         <div class="panel panel-default" id="modifiersPanel_<?=$mv->id;?>">
             <div class="panel-heading" role="tab" id="headingModifiers_<?=$mv->id;?>">
@@ -153,14 +238,6 @@ if (count($modifiers) > 0):
                             </thead> -->
                             <tbody>
                                 <?php
-                                //Fetching modifier item information from the database
-                                $this->db->select('add_on_id,add_on_name,price,is_comp,minqty,maxqty,is_food_item');
-                                $this->db->from('add_ons');
-                                $this->db->where('modifier_set_id', $mv->id);
-                                $this->db->where('is_active', 1);
-                                $this->db->order_by('sort_order', "ASC");
-                                $miq = $this->db->get();
-                                $modifier_items = $miq->result();
                                 // echo "<pre>";
                                 // print_r($selectedMods);
                                 // echo "</pre><br>";
@@ -206,11 +283,15 @@ if (count($modifiers) > 0):
             </div>
         </div>
     <?php
+    endif;
     endforeach;
+    if ($modGroupQty == 0) {
+        echo "No modifier items found for this product !";
+    }
     ?>
     <div class="row">
         <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
-            <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?= $pid; ?>,'<?= $tr_row_id; ?>',1);">Apply</button>
+            <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>,'<?=$tr_row_id;?>',1);">Apply</button>
         </div>
     </div>
 </div>

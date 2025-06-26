@@ -456,7 +456,186 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
   if (excludePrice) {
     price = 0; // Set price to 0 if excludePrice is true
     qty = promoqty; // Set qty to promoqty if excludePrice is true
-  }
+    //make an ajax request to fetch the actual itemname, sizeid, and varientname from the database table item_foods.
+    $.ajax({
+      type: "POST",
+      url: baseurl + "ordermanage/order/getItemDetails",
+      data: {
+        pid: pid,
+        csrf_test_name: csrf
+      },
+      success: function (response) {
+        var itemDetails = JSON.parse(response);
+        itemname = itemDetails.ProductName;
+        sizeid = itemDetails.variantid;
+        varientname = itemDetails.variantName;
+        // Now append the HTML with the fetched details
+        // $("#addinvoice").append(varientHtml);
+        $("#addinvoice").append(varientHtml);
+        new Audio(mysound + audio[0]).play();
+        if (typeof updateid == "undefined") {
+          /*check production*/
+          var productionsetting = $("#production_setting").val();
+          if (productionsetting == 1) {
+            var isselected = $("#productionsetting-" + pid + "-" + sizeid).length;
+
+            if (isselected == 1) {
+              var checkqty =
+                parseInt($("#productionsetting-" + pid + "-" + sizeid).text()) + qty;
+            } else {
+              var checkqty = qty;
+            }
+
+            var checkvalue = checkproduction(pid, sizeid, checkqty);
+
+            if (checkvalue == false) {
+              return false;
+            }
+          }
+          /*end checking*/
+          var geturl = $("#carturl").val();
+          var myurl = geturl;
+          var dataString =
+            "pid=" +
+            pid +
+            "&itemname=" +
+            itemname +
+            "&varientname=" +
+            varientname +
+            "&qty=" +
+            qty +
+            "&price=" +
+            price +
+            "&catid=" +
+            catid +
+            "&sizeid=" +
+            sizeid +
+            "&addonsid=" +
+            addons +
+            "&allprice=" +
+            allprice +
+            "&adonsunitprice=" +
+            adonsprice +
+            "&adonsqty=" +
+            adonsqty +
+            "&adonsname=" +
+            adonsname +
+            "&isgroup=" +
+            isgroup +
+            "&totalvarient=" +
+            totalvarient +
+            "&customqty=" +
+            customqty +
+            "&csrf_test_name=" +
+            csrf;
+        } else {
+          /*check production*/
+          var productionsetting = $("#production_setting").val();
+          if (productionsetting == 1) {
+            var isselected = $(
+              "#productionsetting-update-" + pid + "-" + sizeid
+            ).length;
+
+            if (isselected == 1) {
+              var checkqty =
+                parseInt(
+                  $("#productionsetting-update-" + pid + "-" + sizeid).text()
+                ) + qty;
+            } else {
+              var checkqty = qty;
+            }
+
+            var checkvalue = checkproduction(pid, sizeid, checkqty);
+            if (checkvalue == false) {
+              return false;
+            }
+          }
+          /*end checking*/
+          var geturl = $("#updatecarturl").val();
+          var myurl = geturl;
+          var dataString =
+            "pid=" +
+            pid +
+            "&itemname=" +
+            itemname +
+            "&varientname=" +
+            varientname +
+            "&qty=" +
+            qty +
+            "&price=" +
+            price +
+            "&catid=" +
+            catid +
+            "&sizeid=" +
+            sizeid +
+            "&addonsid=" +
+            addons +
+            "&allprice=" +
+            allprice +
+            "&adonsunitprice=" +
+            adonsprice +
+            "&adonsqty=" +
+            adonsqty +
+            "&adonsname=" +
+            adonsname +
+            "&orderid=" +
+            updateid +
+            "&isgroup=" +
+            isgroup +
+            "&totalvarient=" +
+            totalvarient +
+            "&customqty=" +
+            customqty +
+            "&csrf_test_name=" +
+            csrf;
+        }
+        $("#tr_row_id_"+pid).remove();
+        $.ajax({
+          type: "POST",
+          url: myurl,
+          data: dataString,
+          success: function (data) {
+            if (typeof updateid == "undefined") {
+              $("#addfoodlist").html(data);
+            } else {
+              $("#updatefoodlist").html(data);
+            }
+            console.log("Add to cart data: " + data);
+            console.log("Add to cart row id: " + $("#tr_row_id_"+pid).val());
+          $('#sideMfContainer').html($("#modifierContent").html());
+        //   $("#modifierContent").show();
+            var total = $("#grtotal").val();
+            var totalitem = $("#totalitem").val();
+            $("#item-number").text(totalitem);
+
+            var tax = $("#tvat").val();
+            var discount = $("#tdiscount").val();
+            var tgtotal = $("#tgtotal").val();
+            $("#calvat").text(tax);
+            $("#vat").val(tax);
+            $("#invoice_discount").val(discount);
+            var sc = $("#sc").val();
+            $("#service_charge").val(sc);
+            if (basicinfo.isvatinclusive == 1) {
+              $("#caltotal").text(tgtotal - tax);
+            } else {
+              $("#caltotal").text(tgtotal);
+            }
+            $("#grandtotal").val(tgtotal);
+            $("#orggrandTotal").val(tgtotal);
+            $("#orginattotal").val(tgtotal);
+            if (more != 1) {
+              $("#edit").modal("hide");
+            }
+          },
+        });
+      },
+      error: function (error) {
+        console.error("Error fetching item details:", error);
+      }
+    });
+
+  } else {
   $("#addinvoice").append(varientHtml);
   new Audio(mysound + audio[0]).play();
   if (typeof updateid == "undefined") {
@@ -615,6 +794,7 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
       }
     },
   });
+}
   return true;
 }
 function posPromofoodtocart(pid, id, more = null) {
