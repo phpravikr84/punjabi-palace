@@ -1015,6 +1015,28 @@ if (!function_exists('get_user_id_from_employee_no')) {
     }
 }
 
+// Get user detail by user ID
+if (!function_exists('get_user_detail')) {
+    function get_user_detail($user_id) {
+        // Get CI instance
+        $CI =& get_instance();
+        
+        // Load the database if not already loaded
+        $CI->load->database();
+        
+        // Run the query
+        $CI->db->where('id', $user_id);
+        $query = $CI->db->get('user');
+
+        // Return result as array or null
+        if ($query->num_rows() > 0) {
+            return $query->row(); // return as object
+            // return $query->row_array(); // if you prefer array
+        } else {
+            return null;
+        }
+    }
+}
 
 
 

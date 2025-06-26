@@ -2367,13 +2367,11 @@ $(document).on("keypress", '#itemqty_1', function(e){
                   if (order_person > capacity) {
 
                       setTimeout(function() {
-
                           toastr.options = {
                               closeButton: true,
                               progressBar: true,
                               showMethod: 'slideDown',
                               timeOut: 4000,
-
                           };
                           toastr.warning('table capacity overflow', 'Warning');
 

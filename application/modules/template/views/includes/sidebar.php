@@ -69,7 +69,8 @@
 						//"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
 						"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
 						"food_availablity" => array("controller" => "item_food","method"     => "availablelist","permission" => "read"),
-						"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read")
+						"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read"),
+						"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read")
 						),
 				"manage_addons" => array(
 						"add_adons" => array("controller" => "menu_addons","method"     => "create","permission" => "create"), 
@@ -387,6 +388,10 @@
 						
 						case 'stock_ledger_report':
 							echo 'Stock Ledger Report';
+							break;
+						
+						case 'waste_food':
+							echo 'Waste Food';
 							break;
 							
 						default:
