@@ -1,11 +1,4 @@
 <div class="row">
-      <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_category/category_list'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Main List'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_category/create_category'); ?>" class="btn btn-success"><?php echo 'Create Category'; ?></a>
-        </div>
-    </div>
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd lobidrag">
             <div class="panel-heading">
@@ -20,9 +13,9 @@
                 <?php echo form_hidden('id', $this->session->userdata('id')); ?>
                 <?php echo form_hidden('CategoryID', (!empty($categoryinfo->CategoryID) ? $categoryinfo->CategoryID : null)); ?>
                 <!-- Parent Category (Multiple Select) -->
-                <div class="form-group row border-bottom pb-2">
-                    <label for="Parentcategory" class="col-sm-2 col-form-label"> <?php echo 'Group'; ?>
-                </label>
+                <div class="form-group row border-bottom pb-2" id="GroupContainer">
+                    <label for="Parentcategory" class="col-sm-2 col-form-label"> <?php echo display('parent_cat'); ?>
+                    </label>
                     <div class="col-sm-8">
                         <?php //echo '<pre>'; print_r($categoryinfo); echo '</pre>'; ?>
                         <select name="Parentcategory[]" id="Parentcategory" class="form-control select2">
@@ -47,7 +40,7 @@
                         <input name="is_parent_cat" class="form-check-input" type="checkbox"
                             placeholder="<?php echo 'Is Parent Category'; ?>" id="is_parent_cat"
                             value="<?php echo !empty($categoryinfo->is_parent_cat) ? $categoryinfo->is_parent_cat : ''; ?>" checked>
-                        <label for="is_parrent_cat"><?php echo 'Is Group'; ?></label>
+                        <label for="is_parrent_cat"><?php echo 'Is Parent Category'; ?></label>
                     </div>
                 </div>
                 <!-- Parent Category Offer End-->

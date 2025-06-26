@@ -59,25 +59,19 @@
 				);
 				$HmvcMenu2["itemmanage"] = array(
 					"icon"           => "<i class='fa fa-cube' aria-hidden='true'></i>", 
-					"edit_group" => array("controller" => "item_category","method"=> "group_list","permission" => "create"), 
-					"edit_category" => array("controller" => "item_category","method" => "category_list","permission" => "read"),
-					"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
-					"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
-					"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read"),
-
-					// "manage_category" => array(
-					// 	"add_category" => array("controller" => "item_category","method"=> "create","permission" => "create"), 
-					// 	"category_list" => array("controller" => "item_category","method" => "index","permission" => "read")
-					// 	),  
-				// "manage_food" => array(
-				// 		"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
-				// 		"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
-				// 		//"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
-				// 		"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
-				// 		"food_availablity" => array("controller" => "item_food","method"     => "availablelist","permission" => "read"),
-				// 		"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read"),
-				// 		"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read")
-				// 		),
+					"manage_category" => array(
+						"add_category" => array("controller" => "item_category","method"=> "create","permission" => "create"), 
+						"category_list" => array("controller" => "item_category","method" => "index","permission" => "read")
+						),  
+				"manage_food" => array(
+						"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
+						"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
+						//"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
+						"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
+						"food_availablity" => array("controller" => "item_food","method"     => "availablelist","permission" => "read"),
+						"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read"),
+						"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read")
+						),
 				"manage_addons" => array(
 						"add_adons" => array("controller" => "menu_addons","method"     => "create","permission" => "create"), 
 						"addons_list" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
@@ -307,7 +301,6 @@
 						case 'ingredmanage':
 							echo 'Ingredient Management';
 							break;
-						
 
 						
 
@@ -326,7 +319,6 @@
 						case 'stock_adjustment':
 						echo 'Stock Adjustment';
 						break;
-						
 				
 						default:
 							echo display($name);
@@ -401,15 +393,7 @@
 						case 'waste_food':
 							echo 'Waste Food';
 							break;
-
-						case 'edit_group':
-							echo 'Edit Group';
-							break;
-
-						case 'edit_category':
-							echo 'Edit Category';
-							break;
-
+							
 						default:
 							echo display($name);
 							break;

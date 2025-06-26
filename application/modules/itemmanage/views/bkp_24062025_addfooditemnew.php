@@ -418,99 +418,58 @@
                             <h5 class="panel-title">
                                 <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories" class="accordion-plus-toggle"> -->
                                 <a role="button" data-toggle="collapse" href="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories" class="accordion-plus-toggle">
-                                Group & Categories
+                                Categories
                                 </a>
                             </h5>
                         </div>
                         <div id="collapseCategories" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingCategories">
                             <div class="panel-body">
-                                    <div class="mt-3">
-                                        <input type="hidden" id="getSubcategoriesUrl" value="<?php echo base_url('itemmanage/item_food/get_subcategories'); ?>">
-                                        <?php if (!empty($categories)) { ?>
-                                            <?php 
-                                                // Handle selected categories for edit mode
-                                                $selected_parent = $selected_child = $selected_grandchild = '';
-                                                if (isset($productinfo) && !empty($productinfo['CategoryID'])) {
-                                                    $selectedCategories = explode(',', $productinfo['CategoryID']);
-                                                    $last_category_id = end($selectedCategories);
-                                                    
-                                                    foreach ($categories as $cat) {
-                                                        if ($cat->CategoryID == $last_category_id) {
-                                                            if ($cat->parentid == 0) {
-                                                                $selected_parent = $last_category_id;
-                                                            } else {
-                                                                foreach ($categories as $parent_cat) {
-                                                                    if ($parent_cat->CategoryID == $cat->parentid) {
-                                                                        $selected_child = $last_category_id;
-                                                                        if ($parent_cat->parentid == 0) {
-                                                                            $selected_parent = $parent_cat->CategoryID;
-                                                                        } else {
-                                                                            $selected_grandchild = $last_category_id;
-                                                                            $selected_child = $parent_cat->CategoryID;
-                                                                            foreach ($categories as $grandparent_cat) {
-                                                                                if ($grandparent_cat->CategoryID == $parent_cat->parentid) {
-                                                                                    $selected_parent = $grandparent_cat->CategoryID;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            ?>
+                                <div class="mt-3">
+                                    <?php if (!empty($categories)) { ?>
+                                        <?php 
+                                            if(isset($productinfo)) {
+                                                // Convert CategoryID string to an array
+                                                $selectedCategories = explode(',', $productinfo['CategoryID']);
+                                            } else {
+                                                $selectedCategories = [];
+                                            }
 
-                                            <!-- Parent Category Dropdown -->
-                                            <div class="mb-3">
-                                                <label class="form-label fw-bold">Select Group</label>
-                                                <select id="parent_category" name="CategoryID[parent]" class="form-control selectcategories">
-                                                    <option value="">Select Category Group</option>
-                                                    <?php foreach ($categories as $category) { ?>
-                                                        <?php if ($category->parentid == 0) { ?>
-                                                            <option value="<?php echo $category->CategoryID; ?>" <?php echo ($selected_parent == $category->CategoryID) ? 'selected' : ''; ?>>
-                                                                <?php echo htmlspecialchars($category->Name); ?>
+                                        ?>
+                                        <?php foreach ($categories as $category) { ?>
+                                            <?php if ($category->parentid == 0) { ?>
+                                            <?php $all_subcategories = sub_categories_by_parent_id($category->CategoryID); ?>
+                                                  <label class="form-label fw-bold"><?php echo $category->Name; ?></label>
+                                               
+                                                <select id="categorySelect_<?php echo $category->CategoryID; ?>" name="CategoryID[]" class="form-control selectcategories" multiple data-group-id="<?php echo $category->CategoryID; ?>">
+                                                    <?php 
+                                                    if (!empty($all_subcategories)) { 
+                                                        foreach ($all_subcategories as $all_subcategory) { ?>
+                                                            <option value="parent_<?php echo $all_subcategory->CategoryID; ?>" class="fw-bold"  <?php if(in_array($all_subcategory->CategoryID, $selectedCategories)){echo "selected";} ?> >
+                                                                <?php echo $all_subcategory->Name; ?>
                                                             </option>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
 
-                                            <!-- Child Category Dropdown -->
-                                            <div class="mb-3" id="child_category_container" style="display: <?php echo $selected_child ? 'block' : 'none'; ?>;">
-                                                <label class="form-label fw-bold">Category</label>
-                                                <select id="child_category" name="CategoryID[child]" class="form-control selectcategories" multiple data-group-id="<?php echo $category->CategoryID; ?>">
-                                                    <option value="0">Select Category</option>
-                                                    <?php if ($selected_child) { 
-                                                        $child_categories = sub_categories_by_parent_id($selected_parent);
-                                                        foreach ($child_categories as $child) { ?>
-                                                            <option value="<?php echo $child->CategoryID; ?>" <?php echo ($selected_child == $child->CategoryID) ? 'selected' : ''; ?>>
-                                                                <?php echo htmlspecialchars($child->Name); ?>
-                                                            </option>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
+                                                            <?php if (!empty($all_subcategory->sub)) {
+                                                                foreach ($all_subcategory->sub as $child) { ?>
+                                                                    <option value="<?php echo $all_subcategory->CategoryID; ?>_<?php echo $child->CategoryID; ?>" data-parent="parent_<?php echo $all_subcategory->CategoryID; ?>" <?php if(in_array($child->CategoryID, $selectedCategories)){echo "selected";} ?>>
+                                                                        -- <?php echo $child->Name; ?>
+                                                                    </option>
 
-                                            <!-- Grandchild Category Dropdown -->
-                                            <div class="mb-3" id="grandchild_category_container" style="display: <?php echo $selected_grandchild ? 'block' : 'none'; ?>;">
-                                                <label class="form-label fw-bold">Sub-subcategory</label>
-                                                <select id="grandchild_category" name="CategoryID[grandchild]" class="form-control selectcategories">
-                                                    <option value="0">Select Sub-subcategory</option>
-                                                    <?php if ($selected_grandchild) { 
-                                                        $grandchild_categories = sub_categories_by_parent_id($selected_child);
-                                                        foreach ($grandchild_categories as $grandchild) { ?>
-                                                            <option value="<?php echo $grandchild->CategoryID; ?>" <?php echo ($selected_grandchild == $grandchild->CategoryID) ? 'selected' : ''; ?>>
-                                                                <?php echo htmlspecialchars($grandchild->Name); ?>
-                                                            </option>
-                                                        <?php } ?>
-                                                    <?php } ?>
+                                                                    <?php if (!empty($child->sub)) {
+                                                                        foreach ($child->sub as $subChild) { ?>
+                                                                            <option value="<?php echo $child->CategoryID; ?>_<?php echo $subChild->CategoryID; ?>" data-parent="child_<?php echo $child->CategoryID; ?>" <?php if(in_array($subChild->CategoryID, $selectedCategories)){echo "selected";} ?>>
+                                                                                ---- <?php echo $subChild->Name; ?>
+                                                                            </option>
+                                                                        <?php }
+                                                                    } ?>
+                                                                <?php }
+                                                            } ?>
+                                                        <?php }
+                                                    } ?>
                                                 </select>
-                                            </div>
+                                            <?php } ?>
                                         <?php } ?>
-                                    </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -724,7 +683,7 @@
 
                                     <div class="row variant-row mb-2" id="variantRow_1">
                                         <div class="col-md-12 mb-2">
-                                            <input type="text" name="variant_name[]" class="form-control variant-name" id="variant_name_1" placeholder="Variant Name">
+                                            <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
                                         </div>
 
                                         <!-- Recipe Section -->

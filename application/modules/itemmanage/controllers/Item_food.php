@@ -3264,6 +3264,29 @@ class Item_food extends MX_Controller
 
 	
 	
+	public function get_subcategories($parent_id) {
+        // Get parent_id from POST request
+        //$parent_id = $this->input->post('parent_id', TRUE);
+
+        // Validate parent_id
+        if (empty($parent_id) || !is_numeric($parent_id)) {
+            echo '<option value="">Select Subcategory</option>';
+            return;
+        }
+
+        // Fetch subcategories from the model
+        $subcategories = $this->fooditem_model->get_subcategories_by_parent_id($parent_id);
+
+        // Build HTML options for the select box
+        $ $options = '<option value="">Select Subcategory</option>';
+        if (!empty($subcategories)) {
+            foreach ($subcategories as $subcategory) {
+                $options .= '<option value="' . $subcategory->CategoryID . '">' . htmlspecialchars($subcategory->Name) . '</option>';
+            }
+        }
+
+        echo $options;
+    }
 	 /**
 	  * ========================Food Item===========================
 	  */

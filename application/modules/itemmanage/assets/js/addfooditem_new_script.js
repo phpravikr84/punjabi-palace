@@ -191,6 +191,7 @@ $(document).ready(function(){
         $("input[name='variant_name[]']").each(function(){
             let variantName = $.trim($(this).val()).toLowerCase().replace(/\s+/g, "_").replace(/[^\w\-]+/g, "");
             if(variantName !== ""){
+                console.log("Assigning ID for variant: " + variantName);
                 $(this).attr("id", variantName);
                 $(this).closest(".variant-rowedit").find("input[name='price[]']").attr("id", variantName + "_price");
                 $(this).closest(".variant-rowedit").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
@@ -198,12 +199,21 @@ $(document).ready(function(){
                 $(this).closest(".variant-rowedit").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
                 $(this).closest(".variant-rowedit").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
 
+                $(this).closest(".variant-rowedit").find("input[name^='recipe_costprice_']").attr("id", variantName + "_recipe_costprice");
+                $(this).closest(".variant-rowedit").find("input[name^='recipe_usedqty_']").attr("id", variantName + "_recipe_usedqty");
+
+
+
                 //
                 $(this).closest(".variant-row").find("input[name='price[]']").attr("id", variantName + "_price");
                 $(this).closest(".variant-row").find("input[name='takeaway_price[]']").attr("id", variantName + "_takeaway_price");
                 $(this).closest(".variant-row").find("input[name='uber_eats_price[]']").attr("id", variantName + "_uber_eats_price");
                 $(this).closest(".variant-row").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
                 $(this).closest(".variant-row").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
+
+                $(this).closest(".variant-row").find("input[name^='recipe_costprice_']").attr("id", variantName + "_recipe_costprice");
+                $(this).closest(".variant-row").find("input[name^='recipe_usedqty_']").attr("id", variantName + "_recipe_usedqty");
+
             }
         });
     }
@@ -261,6 +271,31 @@ $(document).on('input', "#pr_variant_price, #pr_takeaway_price, #pr_uber_eats_pr
 
 
 $(document).ready(function() {
+
+     // Set default variant name
+    // let $firstVariantInput = $("input[name='variant_name[]']").first();
+    // console.log("First variant input value before:", $firstVariantInput.val());
+
+    // if ($.trim($firstVariantInput.val()) === "") {
+    //     $firstVariantInput.val("Regular");
+    //     console.log("First variant input set to Regular");
+    // }
+
+
+    const $variant = $("#variant_name_1");
+
+    if ($variant.length && $.trim($variant.val()) === "") {
+        $variant.val("Regular").trigger("input");
+
+        setTimeout(function () {
+            assignVariantIds();
+        }, 50);
+    }
+
+
+
+
+
 
     assignVariantIds();  // <-- run once
     // First attach the event handler
@@ -665,7 +700,7 @@ $(document).ready(function () {
         var geturl = $("#url").val();
     
         if (ingredientId == 0 || ingredientId == '') {
-            alert('Please select Ingredient !');
+            console.log('Please select Ingredient !');
             $('#product_id_' + sl).val("").trigger('change');
             return false;
         }
@@ -1339,6 +1374,63 @@ $(document).ready(function () {
         toggleRecipeElements(selectedValue);
     });
 
+});
+
+
+//New Category Dropdown ajax
+$(document).ready(function() {
+      // Initialize Select2 for all dropdowns
+
+
+    // Handle parent category change
+    $('#parent_category').change(function() {
+        var parent_id = $(this).val();
+        // $('#child_category_container').hide();
+        // $('#grandchild_category_container').hide();
+        // $('#child_category').val('0').trigger('change');
+        // $('#grandchild_category').val('0').trigger('change');
+        // $('#child_category_container').hide();
+        // $('#grandchild_category_container').hide();
+        // $('#child_category').empty().append('<option value="">Select Subcategory</option>');
+        // $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
+        var getSubcategoriesUrl = $('#getSubcategoriesUrl').val();
+
+        var csrf = $('#csrfhashresarvation').val();
+
+        if (parent_id) {
+            $.ajax({
+                url: getSubcategoriesUrl + '/' + parent_id,
+                type: 'GET',
+                data: { csrf_test_name: csrf  },
+                success: function(response) {
+                    console.log('Response:', response);
+                    $('#child_category').html(response);
+                    $('#child_category_container').show();
+                }
+            });
+        }
+    });
+
+    // Handle child category change
+    $('#child_category').change(function() {
+        var parent_id = $(this).val();
+        $('#grandchild_category_container').hide();
+        $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
+        var csrf = $('#csrfhashresarvation').val();
+        if (parent_id) {
+            $.ajax({
+                url: getSubcategoriesUrl + '/' + parent_id,
+                type: 'GET',
+                data: { csrf_test_name: csrf },
+                success: function(response) {
+                    if ($(response).filter('option').length > 1) { // Check if there are subcategories
+                        $('#grandchild_category').html(response);
+                        $('#grandchild_category_container').show();
+                    }
+                }
+            });
+        }
+    });
 });
 
 
