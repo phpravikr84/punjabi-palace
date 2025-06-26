@@ -1,4 +1,12 @@
 <div class="row">
+    <!-- Button area -->
+    <div class="col-sm-12 mb-3">
+        <div class="d-flex justify-content-start">
+            <a href="<?php echo base_url('itemmanage/menu_addons/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Main Modifiers Listing'; ?></a>
+            <a href="<?php echo base_url('itemmanage/menu_addons/create'); ?>" class="btn btn-success"><?php echo 'Create Modifiers'; ?></a>
+        </div>
+    </div>
+
     <!--  table area -->
     <div class="col-sm-12">
 
@@ -40,7 +48,7 @@
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </a>
                                         <?php endif; ?>
-                                        <a onclick="addapplyitems('<?php echo $addons->group_id; ?>')" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo 'Apply Items'; ?>">Apply to items</a>
+                                        <!-- <a onclick="addapplyitems('<?php //echo $addons->group_id; ?>')" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo 'Apply Items'; ?>">Apply to items</a> -->
                                     </td>
                                 </tr>
                                 <?php $sl++; ?>

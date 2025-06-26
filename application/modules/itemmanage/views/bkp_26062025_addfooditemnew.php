@@ -1,19 +1,10 @@
 
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_new_script.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
-<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <div class="row">
     <!-- <pre>
         <?php ##print_r($productinfo); ?>
     </pre> -->
-    <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_food/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Main Food Listing'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_food/create_new'); ?>" class="btn btn-success"><?php echo 'Create Food'; ?></a>
-        </div>
-    </div>
     <?php echo form_open_multipart("itemmanage/item_food/create_new") ?>
     <?php echo form_hidden('id',$this->session->userdata('id'));?>
     <?php echo form_hidden('ProductsID', (isset($productinfo) && !empty($productinfo['ProductsID'])?$productinfo['ProductsID']:null)) ?>
@@ -21,7 +12,6 @@
     <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
     <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
         <div class="text-right mb-3">
-            <input type="checkbox" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100">
             <button type="submit" class="btn btn-primary w-100">Save Food Item</button>
         </div>
         <!-- First Panel - Add Form -->
@@ -1016,28 +1006,6 @@ document.getElementById("isoffer").addEventListener("change", function () {
        
     } else {
         document.getElementById("offeractive").classList.add("showhide");
-    }
-});
-</script>
-<script>
-    $(document).ready(function () {
-    // Initial setup based on checkbox state
-    toggleRecipeFields($('#recipe_mode_toggle').prop('checked'));
-
-    // Toggle handler
-    $('#recipe_mode_toggle').change(function () {
-        let isChecked = $(this).prop('checked');
-        toggleRecipeFields(isChecked);
-    });
-
-    function toggleRecipeFields(show) {
-        if (show) {
-            $('#recipe_mode, #recipeBox, #addMore').show();
-            $('.variantsPanel').show();
-        } else {
-            $('#recipe_mode, #recipeBox, #addMore').hide();
-            $('.variantsPanel').hide();
-        }
     }
 });
 </script>
