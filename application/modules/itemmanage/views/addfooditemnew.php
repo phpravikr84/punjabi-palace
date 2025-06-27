@@ -68,6 +68,7 @@
     <input name="bigimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['bigthumb'])?$productinfo['bigthumb']:null) ?>" />
     <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
     <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
+    <input type="hidden" name="foodItemCheck" id="foodItemCheck" value="<?php echo base_url('itemmanage/item_food/check_food_production'); ?>" />
         <div class="text-right mb-3">
             <!-- <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100"> -->
             <input type="hidden" name="recipeMode" id="recipeMode">
@@ -582,7 +583,7 @@
                             <div class="form-group">
                                 <label class="control-label variant-act-toggle-swtch">Variants are <strong class="text-success">Enabled</strong></label><br>
                                 <label class="switch">
-                                    <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" checked>
+                                    <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle">
                                     <div class="slider"></div>
                                 </label>
                             </div>
@@ -1123,6 +1124,9 @@ $(document).ready(function () {
             $('.variantsPanel').show();
             $('.productprices').find('input').prop('disabled', true).end().hide();
             $('#serving_weightage').hide();
+
+            // Check this item is not recipe type
+            
         } else {
             $('#recipe_mode, #recipeBox, #addMore').hide();
             $('.variantsPanel').hide();

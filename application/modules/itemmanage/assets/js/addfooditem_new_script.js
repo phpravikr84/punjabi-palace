@@ -1172,6 +1172,7 @@ $(document).ready(function(){
                 if (response.status == "success") {
                     alert("Variant & its recipes deleted successfully!");
                     row.remove();
+                    window.location.reload();
                 } else {
                     alert("Failed to delete variant & its recipes. Please try again.");
                 }
@@ -1432,5 +1433,43 @@ $(document).ready(function() {
         }
     });
 });
+
+//Handle Switch on Edit page -- Disable due to already php function implement by Joy
+// $(document).ready(function () {
+//     // Extract the last segment from the URL (e.g., 66)
+//     var segments = window.location.pathname.split('/');
+//     var lastSegment = segments[segments.length - 1];
+//     var getEditFoodItemcheck = $('#foodItemCheck').val();
+//      var csrf = $('#csrfhashresarvation').val();
+//      console.log(getEditFoodItemcheck);
+
+//     // Check if last segment is a number (to prevent sending garbage)
+//     if ($.isNumeric(lastSegment)) {
+//         $.ajax({
+//             url: getEditFoodItemcheck + '/' + lastSegment,
+//             method: "GET",
+//             data: { csrf_test_name: csrf },
+//             dataType: "json",
+//             success: function (response) {
+//                 if (response.exists) {
+//                      $('#recipe_mode_toggle')
+//                         .prop('checked', false);             // Set checked attribute
+//                         //.bootstrapToggle('on'); 
+//                                    // Toggle ON visually
+//                                     $('#recipe_mode_toggle').click();
+                        
+//                 } else {
+//                     $('#recipe_mode_toggle')
+//                         .prop('checked', true);          // Remove checked attribute
+//                         //.bootstrapToggle('off');
+//                          $('#recipe_mode_toggle').click();    
+//                 }
+//             },
+//             error: function () {
+//                 console.log("AJAX error while checking production details.");
+//             }
+//         });
+//     }
+// });
 
 
