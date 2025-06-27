@@ -32,62 +32,6 @@
 				$HmvcMenu2   = array();
 				
 				//$modulecheck = $this->db->select("*")->from("tbl_module_purchasekey")->where('module','printershare')->order_by('mpid',"desc")->limit(1)->get()->row();
-				$HmvcMenu2["ingradient"] = array(
-					"icon" => "<i class='fa fa-cube' aria-hidden='true'></i>",
-					"unit_list" => array("controller" => "unitmeasurement","method"  => "index","permission" => "read"), 
-					"ingradient_list" => array("controller" => "ingradient","method"  => "index","permission" => "read") 
-				);
-				$HmvcMenu2["itemmanage"] = array(
-					"icon"           => "<i class='fa fa-cube' aria-hidden='true'></i>", 
-					"edit_group" => array("controller" => "item_category","method"=> "group_list","permission" => "create"), 
-					"edit_category" => array("controller" => "item_category","method" => "category_list","permission" => "read"),
-					"edit_food" => array("controller" => "item_food","method" => "index","permission" => "read"),
-					"edit_modifiers" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
-					"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read"),
-
-					// "manage_category" => array(
-					// 	"add_category" => array("controller" => "item_category","method"=> "create","permission" => "create"), 
-					// 	"category_list" => array("controller" => "item_category","method" => "index","permission" => "read")
-					// 	),  
-				// "manage_food" => array(
-				// 		"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
-				// 		"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
-				// 		//"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
-				// 		"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
-				// 		"food_availablity" => array("controller" => "item_food","method"     => "availablelist","permission" => "read"),
-				// 		"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read"),
-				// 		"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read")
-				// 		),
-				// "manage_addons" => array(
-				// 		"add_adons" => array("controller" => "menu_addons","method"     => "create","permission" => "create"), 
-				// 		"addons_list" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
-				// 		"assign_adons_list" => array("controller" => "menu_addons","method"     => "assignaddons","permission" => "read")   
-				// 		)
-				);
-				$HmvcMenu2["promotions"] = array(
-					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
-					"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
-					"deal_list" => array("controller" => "item_food","method" => "promo_index","permission" => "read"),
-				);
-				$HmvcMenu2["promo"] = array(
-					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
-					"add_promo_item" => array("controller" => "item_food","method" => "addpromofood","permission" => "read"),
-					"promo_list" => array("controller" => "item_food","method" => "promo_list","permission" => "read"),
-				);
-
-				$HmvcMenu2["purchase"] = array(
-					"icon"=> "<i class='fa fa-shopping-cart' aria-hidden='true'></i>", 
-
-					"purchase_item" => array("controller" => "purchase","method" => "index","permission" => "read"),
-					"purchase_add" => array("controller" => "purchase","method"     => "create","permission" => "create"),
-					"purchase_return" => array("controller" => "purchase","method" => "return_form","permission" => "create"),
-					"return_invoice" => array("controller" => "purchase","method" => "return_invoice","permission" => "create"),
-					"supplier_manage" => array("controller" => "supplierlist","method"     => "index","permission" => "read"), 
-					"supplier_ledger" => array("controller" => "supplierlist","method" => "supplier_ledger_report","permission" => "read"),
-					"stock_out_ingredients" => array("controller" => "purchase","method" => "stock_out_ingredients","permission" => "read"),
-					"stock_adjustment_list" => array("controller" => "stock_adjustment","method"  => "index","permission" => "create"),
-				);
-
 				$HmvcMenu2["ordermanage"] = array(
 					"icon" => "<i class='fa fa-first-order' aria-hidden='true'></i>", 
 					"pos_invoice" => array("controller" => "order","method"=> "pos_invoice","permission" => "read"),
@@ -108,8 +52,43 @@
 					"unavailable_day" => array("controller" => "reservation","method" => "unavailablelist","permission" => "read"), 
 					"reservasetting" => array("controller" => "reservation","method" => "setting","permission" => "read"),   
 				);
-				
+				$HmvcMenu2["ingradient"] = array(
+					"icon" => "<i class='fa fa-cube' aria-hidden='true'></i>",
+					"unit_list" => array("controller" => "unitmeasurement","method"  => "index","permission" => "read"), 
+					"ingradient_list" => array("controller" => "ingradient","method"  => "index","permission" => "read") 
+				);
+				$HmvcMenu2["itemmanage"] = array(
+					"icon"           => "<i class='fa fa-cube' aria-hidden='true'></i>", 
+					"manage_category" => array(
+						"add_category" => array("controller" => "item_category","method"=> "create","permission" => "create"), 
+						"category_list" => array("controller" => "item_category","method" => "index","permission" => "read")
+						),  
+				"manage_food" => array(
+						"add_food" => array("controller" => "item_food","method" => "create_new","permission" => "create"), 
+						"food_list" => array("controller" => "item_food","method" => "index","permission" => "read"),
+						//"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
+						"food_varient" => array("controller" => "item_food", "method"  => "foodvarientlist","permission" => "read"), 
+						"food_availablity" => array("controller" => "item_food","method"     => "availablelist","permission" => "read"),
+						"menu_type" => array("controller" => "item_food", "method"  => "todaymenutype","permission" => "read"),
+						"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read")
+						),
+				"manage_addons" => array(
+						"add_adons" => array("controller" => "menu_addons","method"     => "create","permission" => "create"), 
+						"addons_list" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
+						"assign_adons_list" => array("controller" => "menu_addons","method"     => "assignaddons","permission" => "read")   
+						)
+				);
 
+				$HmvcMenu2["promotions"] = array(
+					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
+					"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
+					"deal_list" => array("controller" => "item_food","method" => "promo_index","permission" => "read"),
+				);
+				$HmvcMenu2["promo"] = array(
+					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
+					"add_promo_item" => array("controller" => "item_food","method" => "addpromofood","permission" => "read"),
+					"promo_list" => array("controller" => "item_food","method" => "promo_list","permission" => "read"),
+				);
 						
 				// $HmvcMenu2["production"] = array( 
 				// 	"icon"           => "<i class='fa fa-product-hunt' aria-hidden='true'></i>", 
@@ -120,6 +99,18 @@
 				// 	//"production_setting" => array("controller" => "production","method" => "possetting","permission" => "create")
 				// 	);
 
+				$HmvcMenu2["purchase"] = array(
+					"icon"=> "<i class='fa fa-shopping-cart' aria-hidden='true'></i>", 
+
+					"purchase_item" => array("controller" => "purchase","method" => "index","permission" => "read"),
+					"purchase_add" => array("controller" => "purchase","method"     => "create","permission" => "create"),
+					"purchase_return" => array("controller" => "purchase","method" => "return_form","permission" => "create"),
+					"return_invoice" => array("controller" => "purchase","method" => "return_invoice","permission" => "create"),
+					"supplier_manage" => array("controller" => "supplierlist","method"     => "index","permission" => "read"), 
+					"supplier_ledger" => array("controller" => "supplierlist","method" => "supplier_ledger_report","permission" => "read"),
+					"stock_out_ingredients" => array("controller" => "purchase","method" => "stock_out_ingredients","permission" => "read"),
+					"stock_adjustment_list" => array("controller" => "stock_adjustment","method"  => "index","permission" => "create"),
+				);
 				$HmvcMenu2["report"] = array(
 					"icon" => "<i class='fa fa-line-chart' aria-hidden='true'></i>", 
 					"purchase_report" => array("controller" => "reports","method"  => "index","permission" => "read"),
@@ -310,7 +301,6 @@
 						case 'ingredmanage':
 							echo 'Ingredient Management';
 							break;
-						
 
 						
 
@@ -329,7 +319,6 @@
 						case 'stock_adjustment':
 						echo 'Stock Adjustment';
 						break;
-						
 				
 						default:
 							echo display($name);
@@ -402,23 +391,9 @@
 							break;
 						
 						case 'waste_food':
-							echo 'Manage Wastage';
+							echo 'Waste Food';
 							break;
-
-						case 'edit_group':
-							echo 'Edit Group';
-							break;
-
-						case 'edit_category':
-							echo 'Edit Category';
-							break;
-						case 'edit_food':
-							echo 'Edit Item';
-							break;
-						case 'edit_modifiers':
-							echo 'Edit Modifiers';
-							break;
-
+							
 						default:
 							echo display($name);
 							break;

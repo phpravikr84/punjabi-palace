@@ -25,7 +25,6 @@
                                 <?php echo form_hidden('id', (!empty($intinfo->id) ? $intinfo->id : null)); ?>
                                 <input type="hidden" name="getIngrItem" id="getIngrItem" value="<?php echo base_url('setting/ingradient/search_ingredient'); ?>"/>
                                 <input type="hidden" name="chkIngredient" id="chkIngredient" value="<?php echo base_url('setting/ingradient/check_ingredient_exist'); ?>"/>
-                                <input type="hidden" name="getConvertRatio" id="chkConvertR" value="<?php echo base_url('/setting/ingradient//get_conversion_ratio'); ?>" />
                                 <div class="row">
                                 <!-- Brands -- Added--> 
                                 <div class="col-md-12">
@@ -125,7 +124,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo 'Conversation Ratio'; ?> *</label>
-                                            <input type="text" class="form-control" id="convt_ratio" />
+                                            <select name="convt_ratio" class="form-control" id="convt_ratio">
+                                                <option value="1000">1000</option>
+                                                <option value="100">100</option>
+                                                <option value="12">12</option>
+                                                <option value="10">10</option>
+                                                <option value="1">1</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo display('status'); ?> *</label>

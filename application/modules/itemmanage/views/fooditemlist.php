@@ -1,6 +1,13 @@
 <div class="row">
+    <!-- Button area -->
+    <div class="col-sm-12 mb-5" style="margin-bottom: 15px;">
+        <div class="d-flex justify-content-start">
+            <a href="<?php echo base_url('itemmanage/item_food/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Manage Item'; ?></a>
+            <a href="<?php echo base_url('itemmanage/item_food/create_new'); ?>" class="btn btn-success"><?php echo 'Create Item'; ?></a>
+        </div>
+    </div>
     <!--  table area -->
-    <div class="col-sm-12">
+    <div class="col-sm-12 mt-5">
 
         <div class="panel panel-default thumbnail"> 
             <div class="panel-body">
@@ -10,7 +17,7 @@
                             <th><?php echo display('serial') ?></th>
                             <th><?php echo display('image') ?></th>
                             <th><?php echo display('category_name') ?></th>
-                            <th><?php echo display('item_name') ?></th>
+                            <th><?php echo 'Item Name'; ?></th>
                             <th><?php echo 'Cusine Type'; ?></th> 
                             <th><?php echo display('component') ?></th>
                             <th><?php echo display('vat_tax') ?></th>  

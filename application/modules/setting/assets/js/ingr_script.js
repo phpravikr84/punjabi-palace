@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var getUrl = $('#getIngrItem').val(); // should return your endpoint URL
     var csrf = $('#csrfhashresarvation').val();
-    var convertRatio =  $("#convt_ratio").val(); // get the conversion ratio from the input field
+    //var convertRatio =  $("#convt_ratio").val(); // get the conversion ratio from the input field
     var submitBtn = $('button[type="submit"]'); // Add/Submit button
     var open_balance_div = $('.open_balance_div'); // Open balance div
     var open_balance_date_div = $('.open_balance_date_div'); // Open balance date div
@@ -214,4 +214,31 @@ $(document).ready(function () {
         // Refresh the window when the modal is fully hidden
         window.location.reload();
     });
+});
+
+//Convertion ratio update when pack size and consumption unit change
+$(document).ready(function () {
+    function fetchConversionRatio() {
+        var pack_unit = $('#pack_unit').val();
+        var consumption_unit = $('#consumption_unit').val();
+        var getConvertUrl =  $('#chkConvertR').val();
+         var csrf = $('#csrfhashresarvation').val();
+        if (pack_unit && consumption_unit) {
+            $.ajax({
+                url: getConvertUrl + '/' + pack_unit + '/' + consumption_unit,
+                type: "GET",
+                  data: {
+                        csrf_test_name: csrf
+                    },
+                success: function (response) {
+                    $('#convt_ratio').val(response);
+                },
+                error: function () {
+                    $('#convt_ratio').val('');
+                }
+            });
+        }
+    }
+
+    $('#pack_unit, #consumption_unit').change(fetchConversionRatio);
 });

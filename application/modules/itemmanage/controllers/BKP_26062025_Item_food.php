@@ -2311,1432 +2311,835 @@ class Item_food extends MX_Controller
 	 * NEW FOOD ITEM
 	 */
 		
-	// public function create_new($id = null)
-	// {
+	public function create_new($id = null)
+	{
 
-	// 	$this->permission->method('itemmanage', 'create_new')->redirect();
-	// 	$data['title'] = display('add_food');
+		$this->permission->method('itemmanage', 'create_new')->redirect();
+		$data['title'] = display('add_food');
 
-	// 	// Validation Rules
-	// 	//$this->form_validation->set_rules('CategoryID[]', display('category_name'), 'required');
+		// Validation Rules
+		//$this->form_validation->set_rules('CategoryID[]', display('category_name'), 'required');
 
-	// 	if (!empty($this->input->post('ProductsID'))) {
-	// 		$this->form_validation->set_rules('foodname', display('item_name'), 'required|max_length[100]');
-	// 		$this->form_validation->set_rules('weightage', 'Weightage', 'required');
-	// 	} else {
-	// 		$this->form_validation->set_rules('foodname', display('item_name'), 'required|is_unique[item_foods.ProductName]|max_length[100]');
-	// 		$this->form_validation->set_message('is_unique', 'Sorry, this %s already used!');
+		if (!empty($this->input->post('ProductsID'))) {
+			$this->form_validation->set_rules('foodname', display('item_name'), 'required|max_length[100]');
+			$this->form_validation->set_rules('weightage', 'Weightage', 'required');
+		} else {
+			$this->form_validation->set_rules('foodname', display('item_name'), 'required|is_unique[item_foods.ProductName]|max_length[100]');
+			$this->form_validation->set_message('is_unique', 'Sorry, this %s already used!');
 		
-	// 	}
+		}
 		
-	// 	$this->form_validation->set_rules('food_type', 'Food Type', 'required');
-	// 	//$this->form_validation->set_rules('status', display('status'), 'required');
-
-	// 	// Handle offer dates
-	// 	$offerstartdate = str_replace('/', '-', $this->input->post('offerstartdate', true));
-	// 	$offerenddate = str_replace('/', '-', $this->input->post('offerendate', true));
-
-	// 	$isoffer = $this->input->post('isoffer', true) == 1 ? 1 : 0;
-	// 	$special = $this->input->post('special', true) == 1 ? 1 : 0;
-	// 	$myvat = $this->input->post('vat') ?: 0;
-
-	// 	if ($isoffer) {
-	// 		$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
-	// 		$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
-	// 		$convertstartdate = date('Y-m-d', strtotime($offerstartdate));
-	// 		$convertenddate = date('Y-m-d', strtotime($offerenddate));
-	// 		$OffersRate = $this->input->post('offerate', true);
-	// 	} else {
-	// 		$convertstartdate = "0000-00-00";
-	// 		$convertenddate = "0000-00-00";
-	// 		$OffersRate = 0;
-	// 	}
-
-	// 	if($this->input->post('cusine_type') == 3){
-	// 		$is_bom = 0;
-	// 	} else {
-	// 		$is_bom = 1;
-	// 	}
-
-	// 	// Process selected menu types
-	// 	$menutype = $this->input->post('menutype', true);
-	// 	$alltmtype = "";
-	// 	if (!empty($menutype)) {
-	// 		foreach ($menutype as $types) {
-	// 			$alltmtype .= $this->input->post('mytmenu_' . $types, true) . ",";
-	// 		}
-	// 		$alltmtype = trim($alltmtype, ',');
-	// 	}
-	// 	$uniqueStr = implode(',', array_unique(explode(',', $alltmtype)));
-
-	// 	if ($this->form_validation->run()) {
-	// 		// Image Upload
-	// 		$img = $big = $medium = $small = '';
-
-	// 		/****************image Upload*************/
-	// 		$config['upload_path']          = 'application/modules/itemmanage/assets/images/';
-	// 		$config['allowed_types']        = 'gif|jpg|jpeg|png';
-	// 		$config['max_size']             = 100000;
-	// 		$this->load->library('upload', $config);
-	// 		if (! $this->upload->do_upload('picture')) {
-	// 			$error = array('error' => $this->upload->display_errors());
-	// 			$img = '';
-	// 			$big = '';
-	// 			$medium = '';
-	// 			$small = '';
-	// 		} else {
-	// 			if (!empty($id)) {
-	// 				$imageinfo = $this->db->select('*')->from('item_foods')->where('ProductsID', $id)->get()->row();
-	// 				unlink($imageinfo->ProductImage);
-	// 				unlink($imageinfo->bigthumb);
-	// 				unlink($imageinfo->medium_thumb);
-	// 				unlink($imageinfo->small_thumb);
-	// 			}
-
-	// 			$fdata = $this->upload->data();
-
-	// 			$image_sizes = array('big' => array(555, 370), 'medium' => array(268, 223), 'small' => array(116, 116));
-	// 			$this->load->library('image_lib');
-	// 			foreach ($image_sizes as $key => $resize) {
-	// 				$config1 = array(
-	// 					'source_image' => $fdata['full_path'],
-	// 					'new_image' => $fdata['file_path'] . $key . '/',
-	// 					'maintain_ratio' => FALSE,
-	// 					'width' => $resize[0],
-	// 					'height' => $resize[1],
-	// 					'quality' => 70,
-	// 				);
-	// 				$this->image_lib->initialize($config1);
-	// 				$this->image_lib->resize();
-	// 				$this->image_lib->clear();
-	// 			}
-	// 			$this->load->library('image_lib', $config);
-	// 			$this->image_lib->resize();
-	// 			$big = 'application/modules/itemmanage/assets/images/big/' . $fdata['file_name'];
-	// 			$medium = 'application/modules/itemmanage/assets/images/medium/' . $fdata['file_name'];
-	// 			$small = 'application/modules/itemmanage/assets/images/small/' . $fdata['file_name'];
-	// 			$img = 'application/modules/itemmanage/assets/images/' . $fdata['file_name'];
-	// 		}
-
-	// 		/****************end*********************/
-
-	// 		if (empty($this->input->post('ProductsID'))) {
-	// 			// new
-	// 			$this->permission->method('itemmanage', 'create')->redirect();
-				
-	// 			$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
-
-	// 			if (!is_array($categoryIdsRaw)) {
-	// 				$categoryIdsRaw = [];
-	// 			}
-
-	// 			$categoryIds = [];
-
-	// 			foreach ($categoryIdsRaw as $category) {
-	// 				if (strpos($category, '_') !== false) {
-	// 					// Parent and child category case
-	// 					$parts = explode('_', $category);
-	// 					foreach ($parts as $part) {
-	// 						$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
-	// 						if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
-	// 							$categoryIds[] = $cleanedPart;
-	// 						}
-	// 					}
-	// 				} else {
-	// 					// Only parent category
-	// 					$cleanedCategory = str_replace('parent_', '', $category);
-	// 					if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
-	// 						$categoryIds[] = $cleanedCategory;
-	// 					}
-	// 				}
-	// 			}
-
-	// 			// Remove duplicates and store as a comma-separated string
-	// 			$categoryIds = implode(',', array_unique($categoryIds));
-
-
-	// 			$savedid = $this->session->userdata('id');
-
-	// 			// Prepare data for insertion
-	// 			$postData = [
-	// 				'ProductsID' => $this->input->post('ProductsID'),
-	// 				'CategoryID' => $categoryIds,
-	// 				'ProductName' => $this->input->post('foodname', true),
-	// 				'component' => $this->input->post('component', true),
-	// 				'menutype'               => $uniqueStr,
-	// 				'itemnotes' => $this->input->post('itemnotes', true),
-	// 				'descrip' => $this->input->post('descrip', true),
-	// 				'kitchenid' =>  $this->input->post('kitchen'),
-	// 				'cookedtime' => $this->input->post('cookedtime', true),
-	// 				'productvat'             => $myvat,
-	// 				'OffersRate'             => $OffersRate,
-	// 				'special'       			=> $special,
-	// 				'offerIsavailable'       => $isoffer,
-	// 				'offerstartdate'         => $convertstartdate,
-	// 				'offerendate'            => $convertenddate,
-	// 				//'is_customqty'           => $this->input->post('customqty', true),
-	// 				'ProductsIsActive'   	=> $this->input->post('status'),
-	// 				'ProductImage'      	=> $img,
-	// 				'bigthumb'      		=> $big,
-	// 				'medium_thumb'      	=> $medium,
-	// 				'small_thumb'      		=> $small,
-	// 				'UserIDInserted'     	=> $savedid,
-	// 				'UserIDUpdated'      	=> $savedid,
-	// 				'UserIDLocked'       	=> $savedid,
-	// 				'DateInserted'       	=> date('Y-m-d H:i:s'),
-	// 				'DateUpdated'        	=> date('Y-m-d H:i:s'),
-	// 				'DateLocked'         	=> date('Y-m-d H:i:s'),
-	// 				'cusine_type'			=> $this->input->post('cusine_type'),
-	// 				'is_bom'				=> $is_bom,
-	// 				'food_type'				=> $this->input->post('food_type', true),
-	// 				'weightage'				=> $this->input->post('weightage', true),
-	// 				'uomid'					=> $this->input->post('uomid', true),
-	// 			];
-
-	// 			// echo '<pre>';
-	// 			// print_r($this->input->post());
-	// 			// echo '</pre>';
-	// 			// exit;
-	// 			if ($this->fooditem_model->fooditem_create($postData)) {
-	// 				$insertedFoodId = $this->db->insert_id(); //item_foods table id
-					
-	// 				// Update JSON cache file
-	// 				$query = $this->db->select('*')->from('item_foods')->where('ProductsIsActive', 1)->get();
-	// 				$json_product = [];
-	// 				foreach ($query->result() as $row) {
-	// 					$json_product[] = ['label' => $row->ProductName, 'value' => $row->ProductsID];
-	// 				}
-	// 				file_put_contents('./assets/js/product.json', json_encode($json_product));
-	// 				// Add Variants
-	// 				//Check if variant exist and cusine Type Product
-	// 				// Basic form inputs
-	// 				if($this->input->post('cusine_type') == 3) {
-	// 					$variantName = $this->input->post('variant_name', true);
-	// 					$prices = $this->input->post('price', true);
-	// 					$takeawayPrices = $this->input->post('takeaway_price', true);
-	// 					$uberEatsPrices = $this->input->post('uber_eats_price', true);
-	// 					$doordashPrices = $this->input->post('doordash_price', true);
-	// 					$webOrderPrices = $this->input->post('weborder_price', true);
-
-	// 					$index = 0;
-	// 					$variantData = [
-	// 						'menuid' => $insertedFoodId,
-	// 						'variantName' => $variantName[$index],
-	// 						'price' => $prices[$index],
-	// 						'takeaway_price' => $takeawayPrices[$index],
-	// 						'uber_eats_price' => $uberEatsPrices[$index],
-	// 						'doordash_price' => $doordashPrices[$index],
-	// 						'web_order_price' => $webOrderPrices[$index],
-	// 					];
-
-	// 					if ($this->foodvarient_model->create($variantData)) {
-	// 						$insertedVariantId = $this->db->insert_id();
-
-	// 						$productionData = [
-	// 							'itemid' => $insertedFoodId,
-	// 							'itemvid' => $insertedVariantId,
-	// 							'itemquantity' => $this->input->post('unit', true),
-	// 							'savedby' => $savedid,
-	// 							'is_bom' => 0,
-	// 							'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
-	// 							'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
-	// 						];
-	// 						$this->fooditem_model->create_food_production($productionData);
-
-	// 					}
-
-	// 				} else {
-	// 				// Check if variant exists & cusine Type Restaurant
-	// 					if ($this->input->post('variant_name', true)) {
-	// 						//varient insert [start]
-	// 						$variantNames = $this->input->post('variant_name', true);
-	// 						$prices = $this->input->post('price', true);
-	// 						$takeawayPrices = $this->input->post('takeaway_price', true);
-	// 						$uberEatsPrices = $this->input->post('uber_eats_price', true);
-	// 						$doordashPrices = $this->input->post('doordash_price', true);
-	// 						$webOrderPrices = $this->input->post('weborder_price', true);
-	// 						$recipeFor = $this->input->post('recipe_for', true);
-
-	// 						$index = 0;
-	// 						foreach ($variantNames as $key => $variantName) {
-	// 							$variantKey = strtolower($recipeFor[$key]); 
-	// 							$existingVariant = $this->db->where([
-	// 								'menuid' => $insertedFoodId,
-	// 								'variantName' => $variantName,
-	// 							])->get('variant')->row();
-
-	// 							if (!$existingVariant) {
-	// 								$variantData = [
-	// 									'menuid' => $insertedFoodId,
-	// 									'variantName' => $variantName,
-	// 									'price' => $prices[$key],
-	// 									'takeaway_price' => $takeawayPrices[$key],
-	// 									'uber_eats_price' => $uberEatsPrices[$key],
-	// 									'doordash_price' => $doordashPrices[$key],
-	// 									'web_order_price' => $webOrderPrices[$key],
-	// 									'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
-	// 									'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
-	// 								];
-
-	// 								if ($this->foodvarient_model->create($variantData)) {
-	// 									$insertedVariantId = $this->db->insert_id();
-
-	// 									$productionData = [
-	// 										'itemid' => $insertedFoodId,
-	// 										'itemvid' => $insertedVariantId,
-	// 										'itemquantity' => $this->input->post('unit', true),
-	// 										'savedby' => $savedid,
-	// 										'is_bom' => $is_bom,
-	// 										'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
-	// 										'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
-	// 									];
-	// 									$this->fooditem_model->create_food_production($productionData);
-
-										
-	// 									// Handle Ingredients Based on Variant
-	// 									//if ($this->input->post('is_bom', true)) {
-	// 									if ($is_bom == 1) {
-	// 										$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
-	// 										$ingredientKey = "product_id_{$variantKey}";
-	// 										$quantityKey = "product_quantity_{$variantKey}";
-	// 										$unitIdKey = "unitid_{$variantKey}";
-	// 										$unitNameKey = "unitname_{$variantKey}";
-	// 										$recipePriceKey = "product_price_{$variantKey}";
-
-	// 										if ($this->input->post($ingredientKey, true)) {
-	// 											$ingredients = $this->input->post($ingredientKey, true);
-	// 											$quantities = $this->input->post($quantityKey, true);
-	// 											$unitIds = $this->input->post($unitIdKey, true);
-	// 											$unitNames = $this->input->post($unitNameKey, true);
-	// 											$recipePrices = $this->input->post($recipePriceKey, true);
-
-	// 											foreach ($ingredients as $i => $ingredientId) {
-	// 												$ingredientData = [
-	// 													'foodid' => $insertedFoodId,
-	// 													'pvarientid' => $insertedVariantId,
-	// 													'ingredientid' => $ingredientId,
-	// 													'qty' => $quantities[$i],
-	// 													'unitid' => $unitIds[$i],
-	// 													'unitname' => $unitNames[$i],
-	// 													'recipe_price' => $recipePrices[$i],
-	// 													'createdby' => $this->session->userdata('id'),
-	// 													'created_date' => date('Y-m-d'),
-	// 												];
-	// 												$this->db->insert('production_details', $ingredientData);
-	// 											}
-	// 										}
-	// 									}
-	// 								}
-	// 							}
-	// 						}
-	// 					}
-	// 				}
-	// 				// END of Variant and its Production update
-	// 				// Now insert Modifiers
-	// 				// Check Modifier exist or not
-	// 				if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
-	// 					$modifiers = $this->input->post('modifiers', true);
-	// 					$minValues = $this->input->post('min', true) ?? [];
-	// 					$maxValues = $this->input->post('max', true) ?? [];
-	// 					$isReqValues = $this->input->post('isreq', true) ?? [];
-	// 					$sortValues = $this->input->post('sort', true) ?? [];
-					
-	// 					foreach ($modifiers as $key => $modifier) {
-	// 						$minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
-	// 						$maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : 0;
-					
-	// 						// Ensure min is not greater than max
-	// 						if ($minValue > $maxValue) {
-	// 							$maxValue = $minValue; 
-	// 						}
-					
-	// 						$modifierData = [
-	// 							'menu_id'   => $insertedFoodId,
-	// 							//'add_on_id' => (int)$modifier,
-	// 							'modifier_groupid' => (int)$modifier,
-	// 							'min'       => $minValue,
-	// 							'max'       => $maxValue,
-	// 							'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
-	// 							'sortby'    => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
-	// 						];
-					
-	// 						// Insert Modifier
-	// 						$this->fooditem_model->create_modifiers($modifierData);
-	// 					}
-	// 				}
-					
-	// 				// END of Modifier Insertion [Updated by Jsaha]
-
-
-	// 				// Check if Product Exist
-	// 				if ($this->input->post() && $this->input->post('cusine_type') == 3) {
-						
-	// 					// Build the post data array conditionally
-	// 					$postData = [];
-
-	// 					// Basic form inputs
-	// 					$postData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
-	// 					$postData['pack_size']        = $this->input->post('pack_size', true);
-	// 					$postData['pack_unit']        = $this->input->post('pack_unit', true);
-	// 					$postData['uom_id']    = $this->input->post('purchase_unit', true);
-	// 					$postData['purchase_price']   = $this->input->post('purchase_price', true);
-	// 					$postData['stock_qty']  = $this->input->post('opening_stock', true);
-	// 					$postData['min_stock']        = $this->input->post('minimum_stock', true);
-	// 					$postData['is_active']        = 1;
-
-	// 					// Insert into ingredients table
-	// 					$this->fooditem_model->create_ingredient($postData);
-	// 					$insert_id = $this->db->insert_id(); //ingradient  table id
-	// 					// Update Food Item 
-	// 					$this->fooditem_model->update_ingredient(
-	// 						$insert_id,
-	// 						[
-	// 							'purchase_product' => $insertedFoodId,
-	// 							'status' => '1'
-	// 						]
-	// 					);
-											
-
-	// 					// If inserted successfully and opening_balance is set
-	// 					$opening_balance = $this->input->post('opening_stock', true);
-	// 					if ($insert_id && $opening_balance !== null && $opening_balance !== '') {
-	// 						$opening_stock_data = [
-	// 							'ingredient_name'    => $this->input->post('foodname', true),
-	// 							'ingredient_id'      => $insert_id,
-	// 							'purchase_price'     => $this->input->post('purchase_price', true),
-	// 							'opening_balance'    => $opening_balance,
-	// 							'opening_date' => date('Y-m-d'),
-	// 							'is_active'          => 1
-	// 						];
-
-	// 						// Insert into ingredients_opening_stock table
-	// 						$this->fooditem_model->ingredient_opening_stock($opening_stock_data);
-	// 					}
-
-	// 					//Check Insert Production Details
-	// 					$prodDtlUnitname = get_unit_detail($this->input->post('purchase_unit', true));
-	// 					$unitName = $prodDtlUnitname['uom_short_code'];
-	// 						$productionDtlsData = [
-	// 							'foodid' => $insertedFoodId,
-	// 							'pvarientid' => $insertedVariantId,
-	// 							'ingredientid' => $insert_id,
-	// 							'qty' => $this->input->post('pack_size', true),
-	// 							'unitid' => $this->input->post('purchase_unit', true),
-	// 							'unitname' => $unitName,
-	// 							'recipe_price' => $this->input->post('purchase_price', true),
-	// 							'createdby' => $this->session->userdata('id'),
-	// 							'created_date' => date('Y-m-d'),
-	// 						];
-	// 						$this->db->insert('production_details', $productionDtlsData);
-
-
-	// 				}
-					
-
-	// 				$this->session->set_flashdata('message', display('save_successfully'));
-	// 				redirect('itemmanage/item_food/create_new');
-	// 			}
-	// 		} else {
-	// 			//edit
-	// 			$this->permission->method('itemmanage', 'update')->redirect();
-	// 			if (empty($img)) {
-	// 				$img = $this->input->post('old_image', true);
-	// 				$big = $this->input->post('bigimage', true);
-	// 				$medium = $this->input->post('mediumimage', true);
-	// 				$small = $this->input->post('smallimage', true);
-	// 			}
-	// 			//Update Category
-	// 			$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
-
-	// 			if (!is_array($categoryIdsRaw)) {
-	// 				$categoryIdsRaw = [];
-	// 			}
-
-	// 			$categoryIds = [];
-
-	// 			foreach ($categoryIdsRaw as $category) {
-	// 				if (strpos($category, '_') !== false) {
-	// 					// Parent and child category case
-	// 					$parts = explode('_', $category);
-	// 					foreach ($parts as $part) {
-	// 						$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
-	// 						if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
-	// 							$categoryIds[] = $cleanedPart;
-	// 						}
-	// 					}
-	// 				} else {
-	// 					// Only parent category
-	// 					$cleanedCategory = str_replace('parent_', '', $category);
-	// 					if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
-	// 						$categoryIds[] = $cleanedCategory;
-	// 					}
-	// 				}
-	// 			}
-
-	// 			// Remove duplicates and store as a comma-separated string
-	// 			$categoryIds = implode(',', array_unique($categoryIds));
-
-	// 			//Update Food Item Id
-	// 			$updatedId = $this->input->post('ProductsID');
-	// 			$savedid = $this->session->userdata('id');
-
-	// 			$postData = [
-	// 				'ProductsID' => $this->input->post('ProductsID'),
-	// 				'CategoryID' => $categoryIds,
-	// 				'ProductName' => $this->input->post('foodname', true),
-	// 				'component' => $this->input->post('component', true),
-	// 				'menutype'               => $uniqueStr,
-	// 				'itemnotes' => $this->input->post('itemnotes', true),
-	// 				'descrip' => $this->input->post('descrip', true),
-	// 				'kitchenid' =>  $this->input->post('kitchen'),
-	// 				'cookedtime' => $this->input->post('cookedtime', true),
-	// 				'productvat'             => $myvat,
-	// 				'OffersRate'             => $OffersRate,
-	// 				'special'       			=> $special,
-	// 				'offerIsavailable'       => $isoffer,
-	// 				'offerstartdate'         => $convertstartdate,
-	// 				'offerendate'            => $convertenddate,
-	// 				//'is_customqty'           => $this->input->post('customqty', true),
-	// 				'ProductsIsActive'   	=> $this->input->post('status'),
-	// 				'ProductImage'      	=> $img,
-	// 				'bigthumb'      		=> $big,
-	// 				'medium_thumb'      	=> $medium,
-	// 				'small_thumb'      		=> $small,
-	// 				'UserIDInserted'     	=> $savedid,
-	// 				'UserIDUpdated'      	=> $savedid,
-	// 				'UserIDLocked'       	=> $savedid,
-	// 				'DateInserted'       	=> date('Y-m-d H:i:s'),
-	// 				'DateUpdated'        	=> date('Y-m-d H:i:s'),
-	// 				'DateLocked'         	=> date('Y-m-d H:i:s'),
-	// 				'cusine_type'			=> $this->input->post('cusine_type'),
-	// 				'is_bom'				=> $is_bom,
-	// 				'food_type'				=> $this->input->post('food_type', true),
-	// 				'weightage'				=> $this->input->post('weightage', true),
-	// 				'uomid'					=> $this->input->post('uomid', true),
-	// 			];
-	// 			$logData = array(
-	// 				'action_page'         => "Food List",
-	// 				'action_done'     	 => "Update Data",
-	// 				'remarks'             => "Food Updated",
-	// 				'user_name'           => $this->session->userdata('fullname', true),
-	// 				'entry_date'          => date('Y-m-d H:i:s'),
-	// 			);
-	// 			$taxsettings = $this->taxchecking();
-	// 			if (!empty($taxsettings)) {
-	// 				$tx = 0;
-	// 				$taxitems = array();
-	// 				foreach ($taxsettings as $taxitem) {
-	// 					$filedtax = 'tax' . $tx;
-	// 					$taxitems[$filedtax] = $this->input->post($filedtax, true);
-	// 					$tx++;
-	// 				}
-	// 				$postData = array_merge($postData, $taxitems);
-	// 			}
-
-
-	// 			if ($this->fooditem_model->update_fooditem($postData)) {
-					
-    //                 $this->db->where('menuid', $updatedId);
-    //                 $this->db->delete('variant');
-    //                 $this->db->where('itemid', $updatedId);
-    //                 $this->db->delete('production');
-    //                 $this->db->where('foodid', $updatedId);
-    //                 $this->db->delete('production_details');
-
-
-	// 				// Build the post data array conditionally
-	// 				$ingrData = [];
-	// 				$openData = [];
-
-	// 				// Basic form inputs
-	// 				if($this->input->post('cusine_type') == 3) {
-	// 					//$ingrData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
-	// 					$ingrData['pack_size']        = $this->input->post('pack_size', true);
-	// 					$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
-	// 					$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
-	// 					$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
-	// 					$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
-	// 					$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
-	// 					$ingrid = $this->input->post('ingredient_id', true);
-
-	// 					$openData['purchase_price']   = $this->input->post('purchase_price', true);
-	// 					$openData['opening_balance']  = $this->input->post('opening_stock', true);
-
-
-	// 					// Update Food Item 
-	// 					$this->db->trans_start();
-	// 					$this->fooditem_model->update_ingredient($ingrid, $ingrData);
-	// 					$this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
-	// 					//Update Production Details
-	// 					// Get post data
-	// 					$ingredientId   = $ingrid;
-	// 					$purchaseUnitId = $this->input->post('purchase_unit', true);
-	// 					$openingStock   = $this->input->post('pack_size', true);
-	// 					$purchasePrice  = $this->input->post('purchase_price', true);
-
-	// 					// Get the unit short code
-	// 					$unitDetail = get_unit_detail($purchaseUnitId);
-	// 					$unitName   = $unitDetail ? $unitDetail['uom_short_code'] : '';
-
-	// 					// Prepare common data
-	// 					$data = [
-	// 						'ingredientid'  => $ingredientId,
-	// 						'qty'           => $openingStock,
-	// 						'unitid'        => $purchaseUnitId,
-	// 						'unitname'      => $unitName,
-	// 						'recipe_price'  => $purchasePrice,
-	// 					];
-
-	// 					// Check if ingredient exists
-	// 					$this->db->where('ingredientid', $ingredientId);
-	// 					$query = $this->db->get('production_details');
-
-	// 					if ($query->num_rows() > 0) {
-	// 						// Exists → update
-	// 						$this->db->where('ingredientid', $ingredientId);
-	// 						$this->db->update('production_details', $data);
-	// 					} 
-	// 					else {
-	// 						// Not exists → insert
-	// 						$productionDtlsData = [
-	// 							'foodid' => $this->input->post('ProductsID', true),
-	// 							'ingredientid' => $ingredientId,
-	// 							'qty' => $this->input->post('pack_size', true),
-	// 							'unitid' => $this->input->post('purchase_unit', true),
-	// 							'unitname' => $unitName,
-	// 							'recipe_price' => $this->input->post('purchase_price', true),
-	// 							'createdby' => $this->session->userdata('id'),
-	// 							'created_date' => date('Y-m-d'),
-	// 						];
-	// 						$this->db->insert('production_details', $productionDtlsData);
-	// 						$lastProDtlsInsertId = $this->db->insert_id();
-	// 					}
-
-
-	// 					$this->db->trans_complete();
-	// 				}
-
-
-
-				
-					
-    //                 //updating variants and production-details [start]
-    //                 if ($this->input->post('variant_name', true)) {
-	// 					//varient insert [start]
-	// 					$variantNames = $this->input->post('variant_name', true);
-	// 					$prices = $this->input->post('price', true);
-	// 					$takeawayPrices = $this->input->post('takeaway_price', true);
-	// 					$uberEatsPrices = $this->input->post('uber_eats_price', true);
-	// 					$doordashPrices = $this->input->post('doordash_price', true);
-	// 					$webOrderPrices = $this->input->post('weborder_price', true);
-	// 					$recipeFor = $this->input->post('recipe_for', true);
-						
-	// 					$index = 0;
-	// 					foreach ($variantNames as $key => $variantName) {
-	// 						$variantKey = strtolower($recipeFor[$key]); 
-	// 						$existingVariant = $this->db->where([
-	// 							'menuid' => $updatedId,
-	// 							'variantName' => $variantName,
-	// 						])->get('variant')->row();
-
-	// 						if (!$existingVariant) {
-	// 							$variantData = [
-	// 								'menuid' => $updatedId,
-	// 								'variantName' => $variantName,
-	// 								'price' => $prices[$key],
-	// 								'takeaway_price' => $takeawayPrices[$key],
-	// 								'uber_eats_price' => $uberEatsPrices[$key],
-	// 								'doordash_price' => $doordashPrices[$key],
-	// 								'web_order_price' => $webOrderPrices[$key],
-	// 								'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
-	// 								'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
-	// 							];
-
-
-	// 							if ($this->foodvarient_model->create($variantData)) {
-	// 								$insertedVariantId = $this->db->insert_id();
-
-	// 								//If cusine type is Product then update production details
-	// 								if($this->input->post('cusine_type') == 3) {
-										
-	// 									$productionDtlsData = [
-	// 										'pvarientid' => $insertedVariantId,
-	// 									];
-	// 									$this->db->where('pro_detailsid', $lastProDtlsInsertId);
-	// 									$this->db->update('production_details', $productionDtlsData);
-	// 								}
-
-	// 								$productionData = [
-	// 									'itemid' => $updatedId,
-	// 									'itemvid' => $insertedVariantId,
-	// 									'itemquantity' => $this->input->post('unit', true),
-	// 									'savedby' => $savedid,
-	// 									'is_bom' => $is_bom,
-	// 									'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
-	// 									'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
-	// 								];
-	// 								$this->fooditem_model->create_food_production($productionData);
-
-	// 								// Handle Ingredients Based on Variant
-	// 								//if ($this->input->post('is_bom', true)) {
-	// 								if ($is_bom == 1){
-	// 									$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
-	// 									$ingredientKey = "product_id_{$variantKey}";
-	// 									$quantityKey = "product_quantity_{$variantKey}";
-	// 									$unitIdKey = "unitid_{$variantKey}";
-	// 									$unitNameKey = "unitname_{$variantKey}";
-	// 									$recipePriceKey = "product_price_{$variantKey}";
-
-	// 									if ($this->input->post($ingredientKey, true)) {
-	// 										$ingredients = $this->input->post($ingredientKey, true);
-	// 										$quantities = $this->input->post($quantityKey, true);
-	// 										$unitIds = $this->input->post($unitIdKey, true);
-	// 										$unitNames = $this->input->post($unitNameKey, true);
-	// 										$recipePrices = $this->input->post($recipePriceKey, true);
-
-	// 										foreach ($ingredients as $i => $ingredientId) {
-	// 											$ingredientData = [
-	// 												'foodid' => $updatedId,
-	// 												'pvarientid' => $insertedVariantId,
-	// 												'ingredientid' => $ingredientId,
-	// 												'qty' => $quantities[$i],
-	// 												'unitid' => $unitIds[$i],
-	// 												'unitname' => $unitNames[$i],
-	// 												'recipe_price' => $recipePrices[$i],
-	// 												'createdby' => $this->session->userdata('id'),
-	// 												'created_date' => date('Y-m-d'),
-	// 											];
-	// 											$this->db->insert('production_details', $ingredientData);
-	// 										}
-	// 									}
-	// 								}
-	// 							}
-	// 						}
-	// 					}
-	// 				}
-    //                 //updating variants and production-details [end]
-					
-					
-	// 				// Update Modifiers
-	// 				// Fetch existing modifiers from the database
-	// 				$existingModifiers = $this->fooditem_model->get_modifiers_by_menu_id($updatedId);
-	// 				$existingModifierIds = array_column($existingModifiers, 'modifier_groupid'); // Extract group IDs
-
-	// 				// Get submitted modifier data
-	// 				if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
-	// 					$modifiers = $this->input->post('modifiers', true);
-	// 					$minValues = $this->input->post('min', true) ?? [];
-	// 					$maxValues = $this->input->post('max', true) ?? [];
-	// 					$isReqValues = $this->input->post('isreq', true) ?? [];
-	// 					$sortValues = $this->input->post('sort', true) ?? [];
-
-	// 					$submittedModifierIds = []; // Store modifier_groupid values that were submitted
-
-	// 					foreach ($modifiers as $key => $modifier) {
-	// 						$modifierGroupId = (int)$modifier;
-	// 						$submittedModifierIds[] = $modifierGroupId; // Keep track of submitted modifier IDs
-
-	// 						$minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
-	// 						$maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : 0;
-
-	// 						// Ensure min is not greater than max
-	// 						if ($minValue > $maxValue) {
-	// 							$maxValue = $minValue;
-	// 						}
-
-	// 						$modifierData = [
-	// 							'menu_id'   => $updatedId,
-	// 							'modifier_groupid' => $modifierGroupId,
-	// 							'min'       => $minValue,
-	// 							'max'       => $maxValue,
-	// 							'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
-	// 							'sortby'    => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
-	// 							'is_active' => 1
-	// 						];
-
-	// 						// Check if modifier exists
-	// 						$existingRowId = $this->fooditem_model->modifier_exists($updatedId, $modifierGroupId);
-
-	// 						if ($existingRowId) {
-	// 							// If exists, update the modifier
-	// 							$this->fooditem_model->update_modifier_new($existingRowId, $modifierData);
-	// 						} else {
-	// 							// If not exists, insert a new modifier
-	// 							$this->fooditem_model->insert_modifier_new($modifierData);
-	// 						}
-	// 					}
-
-	// 					// Find modifiers that were removed (exist in DB but not in submitted data)
-	// 					$modifiersToDelete = array_diff($existingModifierIds, $submittedModifierIds);
-
-	// 					// Delete removed modifiers
-	// 					if (!empty($modifiersToDelete)) {
-	// 						foreach ($modifiersToDelete as $modifierId) {
-	// 							$this->fooditem_model->delete_modifier($updatedId, $modifierId);
-	// 						}
-	// 					}
-	// 				} else {
-	// 					// If no modifiers were submitted, delete all existing modifiers for this menu
-	// 					if (!empty($existingModifierIds)) {
-	// 						foreach ($existingModifierIds as $modifierId) {
-	// 							$this->fooditem_model->delete_modifier($updatedId, $modifierId);
-	// 						}
-	// 					}
-	// 				}
-
-
-	// 				$this->logs_model->log_recorded($logData);
-	// 				$this->db->select('*');
-	// 				$this->db->from('item_foods');
-	// 				$this->db->where('ProductsIsActive', 1);
-	// 				$query = $this->db->get();
-	// 				foreach ($query->result() as $row) {
-	// 					$json_product[] = array('label' => $row->ProductName, 'value' => $row->ProductsID);
-	// 				}
-	// 				$cache_file = './assets/js/product.json';
-	// 				$productList = json_encode($json_product);
-	// 				file_put_contents($cache_file, $productList);
-
-
-	// 				$this->session->set_flashdata('message', display('update_successfully'));
-	// 			} else {
-	// 				$this->session->set_flashdata('exception',  display('please_try_again'));
-	// 			}
-	// 			redirect("itemmanage/item_food/create_new/" . $postData['ProductsID']);
-	// 		}
-	// 	} else {
-		
-	// 		$data['taxitems'] = $this->taxchecking();
-	// 		if (!empty($id)) {
-
-	// 				//Show updated purchase price
-
-	// 			$data['stockinfo'] = $this->db
-	// 								->select('ingredients.*, ingredients_opening_stock.opening_balance, ingredients_opening_stock.purchase_price as opening_price, purchase_details.price as purchase_price')
-	// 								->from('ingredients')
-	// 								->join('ingredients_opening_stock', 'ingredients_opening_stock.ingredient_id = ingredients.id', 'left')
-	// 								->join('purchase_details', 'ingredients.id = purchase_details.indredientid', 'left')
-	// 								->where('ingredients.purchase_product', $id)
-	// 								->get()
-	// 								->row();
-
-			
-	// 			$data['title'] = display('update_fooditem');
-	// 			//$data['productinfo']   = $this->fooditem_model->findById($id);
-	// 			$data['productinfo']   = $this->fooditem_model->findByFoodId($id);
-	// 		}
-
-	// 		$data['categories']   =  $this->category_model->allcategory_dropdown();
-	// 		$data['allkitchen']   =  $this->fooditem_model->allkitchen();
-	// 		$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
-	// 		$data['item']   = $this->fooditem_model->item_dropdown();
-	// 		$data['units'] = $this->fooditem_model->get_food_units();
-	// 		$data['ingrdientslist']   = $this->fooditem_model->ingrediantlist();
-	// 		$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
-	// 		$data['module'] = "itemmanage";
-	// 		$data['page']   = "addfooditemnew";
-	// 		echo Modules::run('template/layout', $data); 
-	// 	}
-
-
-	// }
-
-
-    public function create_new($id = null)
-    {
-        $this->permission->method('itemmanage', $id ? 'update' : 'create')->redirect();
-        $data['title'] = $id ? display('update_fooditem') : display('add_food');
-
-        // Check if the request is a form submission (POST)
-        if ($this->input->method() === 'post') {
-			  // Price Validation for Arrays
-            $cusine_type = $this->input->post('cusine_type', true);
-            $recipeMode = $this->input->post('recipeMode', true);
-
-            // Validation Rules
-            $this->form_validation->set_rules('foodname', display('item_name'), $id ? 'required|max_length[100]' : 'required|max_length[100]');
-            $this->form_validation->set_rules('food_type', 'Food Type', 'required');
-            $this->form_validation->set_rules('kitchen', 'Kitchen Name', 'required');
-            $this->form_validation->set_rules('CategoryID[parent]', 'Category Group', 'required');
-            //$this->form_validation->set_rules('recipeMode', 'Recipe Mode', 'required');
-
-            // Offer Validation
-            if ($this->input->post('isoffer', true)) {
-                $this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
-                $this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
-                $this->form_validation->set_rules('offerate', 'Offer Rate', 'required|numeric|greater_than[0]');
-            }
-
-			if($recipeMode == 0){
-				$this->form_validation->set_rules('weightage', 'Weightage', 'required');
-				$this->form_validation->set_rules('uomid', 'Unit', 'required');
+		$this->form_validation->set_rules('food_type', 'Food Type', 'required');
+		//$this->form_validation->set_rules('status', display('status'), 'required');
+
+		// Handle offer dates
+		$offerstartdate = str_replace('/', '-', $this->input->post('offerstartdate', true));
+		$offerenddate = str_replace('/', '-', $this->input->post('offerendate', true));
+
+		$isoffer = $this->input->post('isoffer', true) == 1 ? 1 : 0;
+		$special = $this->input->post('special', true) == 1 ? 1 : 0;
+		$myvat = $this->input->post('vat') ?: 0;
+
+		if ($isoffer) {
+			$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
+			$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
+			$convertstartdate = date('Y-m-d', strtotime($offerstartdate));
+			$convertenddate = date('Y-m-d', strtotime($offerenddate));
+			$OffersRate = $this->input->post('offerate', true);
+		} else {
+			$convertstartdate = "0000-00-00";
+			$convertenddate = "0000-00-00";
+			$OffersRate = 0;
+		}
+
+		if($this->input->post('cusine_type') == 3){
+			$is_bom = 0;
+		} else {
+			$is_bom = 1;
+		}
+
+		// Process selected menu types
+		$menutype = $this->input->post('menutype', true);
+		$alltmtype = "";
+		if (!empty($menutype)) {
+			foreach ($menutype as $types) {
+				$alltmtype .= $this->input->post('mytmenu_' . $types, true) . ",";
+			}
+			$alltmtype = trim($alltmtype, ',');
+		}
+		$uniqueStr = implode(',', array_unique(explode(',', $alltmtype)));
+
+		if ($this->form_validation->run()) {
+			// Image Upload
+			$img = $big = $medium = $small = '';
+
+			/****************image Upload*************/
+			$config['upload_path']          = 'application/modules/itemmanage/assets/images/';
+			$config['allowed_types']        = 'gif|jpg|jpeg|png';
+			$config['max_size']             = 100000;
+			$this->load->library('upload', $config);
+			if (! $this->upload->do_upload('picture')) {
+				$error = array('error' => $this->upload->display_errors());
+				$img = '';
+				$big = '';
+				$medium = '';
+				$small = '';
+			} else {
+				if (!empty($id)) {
+					$imageinfo = $this->db->select('*')->from('item_foods')->where('ProductsID', $id)->get()->row();
+					unlink($imageinfo->ProductImage);
+					unlink($imageinfo->bigthumb);
+					unlink($imageinfo->medium_thumb);
+					unlink($imageinfo->small_thumb);
+				}
+
+				$fdata = $this->upload->data();
+
+				$image_sizes = array('big' => array(555, 370), 'medium' => array(268, 223), 'small' => array(116, 116));
+				$this->load->library('image_lib');
+				foreach ($image_sizes as $key => $resize) {
+					$config1 = array(
+						'source_image' => $fdata['full_path'],
+						'new_image' => $fdata['file_path'] . $key . '/',
+						'maintain_ratio' => FALSE,
+						'width' => $resize[0],
+						'height' => $resize[1],
+						'quality' => 70,
+					);
+					$this->image_lib->initialize($config1);
+					$this->image_lib->resize();
+					$this->image_lib->clear();
+				}
+				$this->load->library('image_lib', $config);
+				$this->image_lib->resize();
+				$big = 'application/modules/itemmanage/assets/images/big/' . $fdata['file_name'];
+				$medium = 'application/modules/itemmanage/assets/images/medium/' . $fdata['file_name'];
+				$small = 'application/modules/itemmanage/assets/images/small/' . $fdata['file_name'];
+				$img = 'application/modules/itemmanage/assets/images/' . $fdata['file_name'];
 			}
 
-          
-            if ($cusine_type == 3 || $recipeMode == 0) {
-                $prices = $this->input->post('price', true);
-                $takeaway_prices = $this->input->post('takeaway_price', true);
-                $uber_eats_prices = $this->input->post('uber_eats_price', true);
-                $doordash_prices = $this->input->post('doordash_price', true);
-                $weborder_prices = $this->input->post('weborder_price', true);
+			/****************end*********************/
 
-                // foreach ($prices as $index => $price) {
-                //     $this->form_validation->set_rules("price[$index]", "Dine-In Price (Variant " . ($index + 1) . ")", 'required|numeric|greater_than_equal_to[0]');
-                //     $this->form_validation->set_rules("takeaway_price[$index]", "Takeaway Price (Variant " . ($index + 1) . ")", 'required|numeric|greater_than_equal_to[0]');
-                //     $this->form_validation->set_rules("uber_eats_price[$index]", "Uber Eats Price (Variant " . ($index + 1) . ")", 'required|numeric|greater_than_equal_to[0]');
-                //     $this->form_validation->set_rules("doordash_price[$index]", "DoorDash Price (Variant " . ($index + 1) . ")", 'required|numeric|greater_than_equal_to[0]');
-                //     $this->form_validation->set_rules("weborder_price[$index]", "Web Order Price (Variant " . ($index + 1) . ")", 'required|numeric|greater_than_equal_to[0]');
-                // }
-            }
+			if (empty($this->input->post('ProductsID'))) {
+				// new
+				$this->permission->method('itemmanage', 'create')->redirect();
+				
+				$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
 
-            // Recipe Validation for Non-Product Cuisine with Recipe Mode
-            if ($cusine_type != 3 && $recipeMode == 1) {
-                $variant_names = $this->input->post('variant_name', true);
-                if (!empty($variant_names)) {
-                    foreach ($variant_names as $index => $variant_name) {
-                        if (!empty($variant_name)) {
-                            $variant_key = strtolower(str_replace(' ', '_', $variant_name));
-                            $ingredients = $this->input->post("product_id_$variant_key", true);
-                            if (empty($ingredients) || count(array_filter($ingredients)) === 0) {
-                                $this->form_validation->set_rules("product_id_$variant_key" . "[]", "Ingredients for $variant_name", 'required');
-                            } else {
-                                foreach ($ingredients as $i => $ingredient) {
-                                    if (!empty($ingredient)) {
-                                        $this->form_validation->set_rules("product_id_$variant_key" . "[$i]", "Ingredient (Variant $variant_name)", 'required');
-                                        $this->form_validation->set_rules("product_quantity_$variant_key" . "[$i]", "Quantity (Variant $variant_name)", 'required|numeric|greater_than[0]');
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+				if (!is_array($categoryIdsRaw)) {
+					$categoryIdsRaw = [];
+				}
 
-            // Custom Error Messages
-            $this->form_validation->set_message('is_unique', 'The %s is already taken.');
-            $this->form_validation->set_error_delimiters('', '');
+				$categoryIds = [];
 
-            if ($this->form_validation->run() === FALSE) {
-                // Format validation errors for SweetAlert 1
-                $errors = [];
-                foreach ($this->form_validation->error_array() as $field => $error) {
-                    $errors[] = ['field' => $field, 'message' => $error];
-                }
-                $response = [
-                    'status' => 'error',
-                    'errors' => $errors,
-                    'message' => 'Please correct the following errors:'
-                ];
-                echo json_encode($response);
-                return;
-            }
+				foreach ($categoryIdsRaw as $category) {
+					if (strpos($category, '_') !== false) {
+						// Parent and child category case
+						$parts = explode('_', $category);
+						foreach ($parts as $part) {
+							$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
+							if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
+								$categoryIds[] = $cleanedPart;
+							}
+						}
+					} else {
+						// Only parent category
+						$cleanedCategory = str_replace('parent_', '', $category);
+						if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
+							$categoryIds[] = $cleanedCategory;
+						}
+					}
+				}
 
-            // Handle File Upload
-            $img = $big = $medium = $small = '';
-            if (!empty($_FILES['picture']['name'])) {
-                $config = [
-                    'upload_path' => 'application/modules/itemmanage/assets/images/',
-                    'allowed_types' => 'gif|jpg|jpeg|png',
-                    'max_size' => 100000,
-                    'file_ext_tolower' => true,
-                ];
-                $this->load->library('upload', $config);
-                if (!$this->upload->do_upload('picture')) {
-                    $response = [
-                        'status' => 'error',
-                        'message' => strip_tags($this->upload->display_errors())
-                    ];
-                    echo json_encode($response);
-                    return;
-                }
-
-                if ($id) {
-                    $imageinfo = $this->db->select('ProductImage, bigthumb, medium_thumb, small_thumb')
-                        ->from('item_foods')->where('ProductsID', $id)->get()->row();
-                    foreach ([$imageinfo->ProductImage, $imageinfo->bigthumb, $imageinfo->medium_thumb, $imageinfo->small_thumb] as $old_img) {
-                        if ($old_img && file_exists($old_img)) {
-                            unlink($old_img);
-                        }
-                    }
-                }
-
-                $fdata = $this->upload->data();
-                $image_sizes = [
-                    'big' => [555, 370],
-                    'medium' => [268, 223],
-                    'small' => [116, 116],
-                ];
-                $this->load->library('image_lib');
-                foreach ($image_sizes as $key => $resize) {
-                    $config1 = [
-                        'source_image' => $fdata['full_path'],
-                        'new_image' => $fdata['file_path'] . $key . '/',
-                        'maintain_ratio' => FALSE,
-                        'width' => $resize[0],
-                        'height' => $resize[1],
-                        'quality' => 70,
-                    ];
-                    $this->image_lib->initialize($config1);
-                    $this->image_lib->resize();
-                    $this->image_lib->clear();
-                }
-                $img = 'application/modules/itemmanage/assets/images/' . $fdata['file_name'];
-                $big = 'application/modules/itemmanage/assets/images/big/' . $fdata['file_name'];
-                $medium = 'application/modules/itemmanage/assets/images/medium/' . $fdata['file_name'];
-                $small = 'application/modules/itemmanage/assets/images/small/' . $fdata['file_name'];
-            } elseif ($id) {
-                $img = $this->input->post('old_image', true);
-                $big = $this->input->post('bigimage', true);
-                $medium = $this->input->post('mediumimage', true);
-                $small = $this->input->post('smallimage', true);
-            }
-
-            // Process Offer Dates
-            $isoffer = $this->input->post('isoffer', true) ? 1 : 0;
-            $offerstartdate = $isoffer ? date('Y-m-d', strtotime(str_replace('/', '-', $this->input->post('offerstartdate', true)))) : '0000-00-00';
-            $offerenddate = $isoffer ? date('Y-m-d', strtotime(str_replace('/', '-', $this->input->post('offerendate', true)))) : '0000-00-00';
-            $OffersRate = $isoffer ? $this->input->post('offerate', true) : 0;
-
-            // Set is_bom
-            $is_bom = ($cusine_type == 3 || $recipeMode == 0) ? 0 : 1;
-
-            // Process Menu Types
-            $menutype = $this->input->post('menutype', true);
-            $alltmtype = '';
-            if (!empty($menutype)) {
-                foreach ($menutype as $type) {
-                    $alltmtype .= $this->input->post('mytmenu_' . $type, true) . ',';
-                }
-                $alltmtype = implode(',', array_unique(array_filter(explode(',', trim($alltmtype, ',')))));
-            }
-
-            // Process Categories
-            $categoryIds = array_unique(array_filter(array_map(function($cat) {
-                return str_replace('parent_', '', strpos($cat, '_') !== false ? explode('_', $cat)[1] : $cat);
-            }, (array)$this->input->post('CategoryID', true))));
-            $categoryIds = implode(',', $categoryIds);
-
-            // Common Data
-            $savedid = $this->session->userdata('id');
-            $postData = [
-                'ProductsID' => $this->input->post('ProductsID', true),
-                'CategoryID' => $categoryIds,
-                'ProductName' => $this->input->post('foodname', true),
-                'component' => $this->input->post('component', true),
-                'menutype' => $alltmtype,
-                'itemnotes' => $this->input->post('itemnotes', true),
-                'descrip' => $this->input->post('descrip', true),
-                'kitchenid' => $this->input->post('kitchen', true),
-                'cookedtime' => $this->input->post('cookedtime', true),
-                'productvat' => $this->input->post('vat', true) ?: 0,
-                'OffersRate' => $OffersRate,
-                'special' => $this->input->post('special', true) ? 1 : 0,
-                'offerIsavailable' => $isoffer,
-                'offerstartdate' => $offerstartdate,
-                'offerendate' => $offerenddate,
-                'ProductsIsActive' => $this->input->post('status', true),
-                'ProductImage' => $img,
-                'bigthumb' => $big,
-                'medium_thumb' => $medium,
-                'small_thumb' => $small,
-                'UserIDInserted' => $savedid,
-                'UserIDUpdated' => $savedid,
-                'UserIDLocked' => $savedid,
-                'DateInserted' => date('Y-m-d H:i:s'),
-                'DateUpdated' => date('Y-m-d H:i:s'),
-                'DateLocked' => date('Y-m-d H:i:s'),
-                'cusine_type' => $cusine_type,
-                'is_bom' => $is_bom,
-                'food_type' => $this->input->post('food_type', true),
-                'weightage' => $this->input->post('weightage', true),
-                'uomid' => $this->input->post('uomid', true),
-            ];
-
-            // Handle Tax Settings
-            $taxsettings = $this->taxchecking();
-            if (!empty($taxsettings)) {
-                foreach ($taxsettings as $key => $taxitem) {
-                    $postData['tax' . $key] = $this->input->post('tax' . $key, true) ?: 0;
-                }
-            }
-
-            // Start Transaction
-            $this->db->trans_start();
-
-            try {
-                if (!$this->input->post('ProductsID')) {
-                    // Create New Food Item
-                    if ($this->fooditem_model->fooditem_create($postData)) {
-                        $insertedFoodId = $this->db->insert_id();
-
-                        // Update JSON Cache
-                        $this->update_product_json();
-
-                        // Handle Variants
-                        if ($cusine_type == 3) {
-                            $variantNames = $this->input->post('variant_name', true);
-                            $prices = $this->input->post('price', true);
-                            $takeawayPrices = $this->input->post('takeaway_price', true);
-                            $uberEatsPrices = $this->input->post('uber_eats_price', true);
-                            $doordashPrices = $this->input->post('doordash_price', true);
-                            $webOrderPrices = $this->input->post('weborder_price', true);
-
-                            foreach ($variantNames as $key => $variantName) {
-                                $variantData = [
-                                    'menuid' => $insertedFoodId,
-                                    'variantName' => $variantName ?: 'Regular',
-                                    'price' => $prices[$key] ?? 0,
-                                    'takeaway_price' => $takeawayPrices[$key] ?? 0,
-                                    'uber_eats_price' => $uberEatsPrices[$key] ?? 0,
-                                    'doordash_price' => $doordashPrices[$key] ?? 0,
-                                    'web_order_price' => $webOrderPrices[$key] ?? 0,
-                                ];
-                                if ($this->foodvarient_model->create($variantData)) {
-                                    $insertedVariantId = $this->db->insert_id();
-                                    $productionData = [
-                                        'itemid' => $insertedFoodId,
-                                        'itemvid' => $insertedVariantId,
-                                        'itemquantity' => $this->input->post('unit', true) ?: 1,
-                                        'savedby' => $savedid,
-                                        'is_bom' => 0,
-                                        'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true) ?: date('Y-m-d'))),
-                                        'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true) ?: date('Y-m-d'))),
-                                    ];
-                                    $this->fooditem_model->create_food_production($productionData);
-                                }
-                            }
-
-                            // Handle Ingredient for cusine_type = 3
-                            $ingredientData = [
-                                'ingredient_name' => $this->input->post('foodname', true),
-                                'pack_size' => $this->input->post('pack_size', true) ?: 0,
-                                'pack_unit' => $this->input->post('pack_unit', true) ?: 0,
-                                'uom_id' => $this->input->post('purchase_unit', true) ?: 0,
-                                'purchase_price' => $this->input->post('purchase_price', true) ?: 0,
-                                'stock_qty' => $this->input->post('opening_stock', true) ?: 0,
-                                'min_stock' => $this->input->post('minimum_stock', true) ?: 0,
-                                'is_active' => 1,
-                            ];
-                            $this->fooditem_model->create_ingredient($ingredientData);
-                            $insert_id = $this->db->insert_id();
-                            $this->fooditem_model->update_ingredient($insert_id, ['purchase_product' => $insertedFoodId, 'status' => '1']);
-
-                            if ($insert_id && $this->input->post('opening_stock', true)) {
-                                $opening_stock_data = [
-                                    'ingredient_name' => $this->input->post('foodname', true),
-                                    'ingredient_id' => $insert_id,
-                                    'purchase_price' => $this->input->post('purchase_price', true) ?: 0,
-                                    'opening_balance' => $this->input->post('opening_stock', true) ?: 0,
-                                    'opening_date' => date('Y-m-d'),
-                                    'is_active' => 1,
-                                ];
-                                $this->fooditem_model->ingredient_opening_stock($opening_stock_data);
-                            }
-
-                            foreach ($variantNames as $key => $variantName) {
-                                $insertedVariantId = $this->db->select('variantid')->from('variant')
-                                    ->where(['menuid' => $insertedFoodId, 'variantName' => $variantName])->get()->row()->variantid;
-                                $unitDetail = get_unit_detail($this->input->post('purchase_unit', true));
-                                $productionDtlsData = [
-                                    'foodid' => $insertedFoodId,
-                                    'pvarientid' => $insertedVariantId,
-                                    'ingredientid' => $insert_id,
-                                    'qty' => $this->input->post('pack_size', true) ?: 0,
-                                    'unitid' => $this->input->post('purchase_unit', true) ?: 0,
-                                    'unitname' => $unitDetail['uom_short_code'] ?? '',
-                                    'recipe_price' => $this->input->post('purchase_price', true) ?: 0,
-                                    'createdby' => $savedid,
-                                    'created_date' => date('Y-m-d'),
-                                ];
-                                $this->db->insert('production_details', $productionDtlsData);
-                            }
-                        } else {
-                            $this->save_variants($insertedFoodId, $savedid, $is_bom);
-                        }
-
-                        // Handle Modifiers
-                        $this->save_modifiers($insertedFoodId);
-
-                        $this->db->trans_complete();
-                        $response = [
-                            'status' => 'success',
-                            'message' => display('save_successfully')
-                        ];
-                        echo json_encode($response);
-                        return;
-                    } else {
-                        throw new Exception(display('please_try_again'));
-                    }
-                } else {
-                    // Update Existing Food Item
-                    if ($this->fooditem_model->update_fooditem($postData)) {
-						// echo '<pre>';
-						// print_r($_POST);
-						// echo '</pre>';
-						// exit;
-						//Food Id
-						$id = $this->input->post('ProductsID');
-                        $this->db->where('menuid', $id)->delete('variant');
-                        $this->db->where('itemid', $id)->delete('production');
-                        $this->db->where('foodid', $id)->delete('production_details');
-
-                        if ($cusine_type == 3) {
-                            $ingrData = [
-                                'pack_size' => $this->input->post('pack_size', true) ?: 0,
-                                'pack_unit' => $this->input->post('pack_unit', true) ?: 0,
-                                'uom_id' => $this->input->post('purchase_unit', true) ?: 0,
-                                'purchase_price' => $this->input->post('purchase_price', true) ?: 0,
-                                'stock_qty' => $this->input->post('opening_stock', true) ?: 0,
-                                'min_stock' => $this->input->post('minimum_stock', true) ?: 0,
-                            ];
-                            $openData = [
-                                'purchase_price' => $this->input->post('purchase_price', true) ?: 0,
-                                'opening_balance' => $this->input->post('opening_stock', true) ?: 0,
-                            ];
-                            $ingrid = $this->input->post('ingredient_id', true);
-                            $this->fooditem_model->update_ingredient($ingrid, $ingrData);
-                            $this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
-
-                            $variantNames = $this->input->post('variant_name', true);
-                            $prices = $this->input->post('price', true);
-                            $takeawayPrices = $this->input->post('takeaway_price', true);
-                            $uberEatsPrices = $this->input->post('uber_eats_price', true);
-                            $doordashPrices = $this->input->post('doordash_price', true);
-                            $webOrderPrices = $this->input->post('weborder_price', true);
-
-                            foreach ($variantNames as $key => $variantName) {
-                                $variantData = [
-                                    'menuid' => $id,
-                                    'variantName' => $variantName ?: 'Regular',
-                                    'price' => $prices[$key] ?? 0,
-                                    'takeaway_price' => $takeawayPrices[$key] ?? 0,
-                                    'uber_eats_price' => $uberEatsPrices[$key] ?? 0,
-                                    'doordash_price' => $doordashPrices[$key] ?? 0,
-                                    'web_order_price' => $webOrderPrices[$key] ?? 0,
-                                ];
-                                $this->foodvarient_model->create($variantData);
-                                $insertedVariantId = $this->db->insert_id();
-
-                                $unitDetail = get_unit_detail($this->input->post('purchase_unit', true));
-                                $productionDtlsData = [
-                                    'foodid' => $id,
-                                    'pvarientid' => $insertedVariantId,
-                                    'ingredientid' => $ingrid,
-                                    'qty' => $this->input->post('pack_size', true) ?: 0,
-                                    'unitid' => $this->input->post('purchase_unit', true) ?: 0,
-                                    'unitname' => $unitDetail['uom_short_code'] ?? '',
-                                    'recipe_price' => $this->input->post('purchase_price', true) ?: 0,
-                                    'createdby' => $savedid,
-                                    'created_date' => date('Y-m-d'),
-                                ];
-                                $this->db->insert('production_details', $productionDtlsData);
-                            }
-                        } else {
-                            $this->save_variants($id, $savedid, $is_bom);
-                        }
-
-                        $this->save_modifiers($id);
-
-                        $this->logs_model->log_recorded([
-                            'action_page' => 'Food List',
-                            'action_done' => 'Update Data',
-                            'remarks' => 'Food Updated',
-                            'user_name' => $this->session->userdata('fullname', true),
-                            'entry_date' => date('Y-m-d H:i:s'),
-                        ]);
-
-                        $this->update_product_json();
-
-                        $this->db->trans_complete();
-                        $response = [
-                            'status' => 'success',
-                            'message' => display('update_successfully')
-                        ];
-                        echo json_encode($response);
-                        return;
-                    } else {
-                        throw new Exception(display('please_try_again'));
-                    }
-                }
-            } catch (Exception $e) {
-                $this->db->trans_rollback();
-                $response = [
-                    'status' => 'error',
-                    'message' => $e->getMessage()
-                ];
-                echo json_encode($response);
-                return;
-            }
-        }
-
-        // Load form view for GET requests or non-AJAX requests
-        $data['taxitems'] = $this->taxchecking();
-        if ($id) {
-            $data['stockinfo'] = $this->db
-                ->select('ingredients.*, ingredients_opening_stock.opening_balance, ingredients_opening_stock.purchase_price as opening_price, purchase_details.price as purchase_price')
-                ->from('ingredients')
-                ->join('ingredients_opening_stock', 'ingredients_opening_stock.ingredient_id = ingredients.id', 'left')
-                ->join('purchase_details', 'ingredients.id = purchase_details.indredientid', 'left')
-                ->where('ingredients.purchase_product', $id)
-                ->get()
-                ->row();
-            $data['productinfo'] = $this->fooditem_model->findByFoodId($id);
-        }
-
-        $data['categories'] = $this->category_model->allcategory_dropdown();
-        $data['allkitchen'] = $this->fooditem_model->allkitchen();
-        $data['todaymenu'] = $this->todaymenu_model->read_menulist();
-        $data['item'] = $this->fooditem_model->item_dropdown();
-        $data['units'] = $this->fooditem_model->get_food_units();
-        $data['ingrdientslist'] = $this->fooditem_model->ingrediantlist();
-        $data['addonslist'] = $this->fooditem_model->read_modified_groups_addons($config['per_page'], $page ?? 0);
-        $data['module'] = 'itemmanage';
-        $data['page'] = 'addfooditemnew';
-        echo Modules::run('template/layout', $data);
-    }
-
-    /**
-     * Helper method to save variants
-     */
-    private function save_variants($foodId, $savedId, $is_bom)
-    {
-        $variantNames = $this->input->post('variant_name', true);
-        if (!$variantNames) return;
-
-        $prices = $this->input->post('price', true);
-        $takeawayPrices = $this->input->post('takeaway_price', true);
-        $uberEatsPrices = $this->input->post('uber_eats_price', true);
-        $doordashPrices = $this->input->post('doordash_price', true);
-        $webOrderPrices = $this->input->post('weborder_price', true);
-        $recipeFor = $this->input->post('recipe_for', true);
-
-        foreach ($variantNames as $key => $variantName) {
-            if (empty($variantName)) continue;
-            $variantKey = strtolower(str_replace(' ', '_', $variantName));
-            $variantData = [
-                'menuid' => $foodId,
-                'variantName' => $variantName,
-                'price' => $prices[$key] ?? 0,
-                'takeaway_price' => $takeawayPrices[$key] ?? 0,
-                'uber_eats_price' => $uberEatsPrices[$key] ?? 0,
-                'doordash_price' => $doordashPrices[$key] ?? 0,
-                'web_order_price' => $webOrderPrices[$key] ?? 0,
-                'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[0] ?? 0,
-                'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[0] ?? 0,
-            ];
-
-            if (!$this->db->where(['menuid' => $foodId, 'variantName' => $variantName])->get('variant')->row()) {
-                $this->foodvarient_model->create($variantData);
-                $variantId = $this->db->insert_id();
-
-                $productionData = [
-                    'itemid' => $foodId,
-                    'itemvid' => $variantId,
-                    'itemquantity' => $this->input->post('unit', true) ?: 1,
-                    'savedby' => $savedId,
-                    'is_bom' => $is_bom,
-                    'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true) ?: date('Y-m-d'))),
-                    'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true) ?: date('Y-m-d'))),
-                ];
-                $this->fooditem_model->create_food_production($productionData);
-
-                if ($is_bom && $this->input->post('cusine_type') != 3) {
-                    $ingredientKey = "product_id_$variantKey";
-                    $quantityKey = "product_quantity_$variantKey";
-                    $unitIdKey = "unitid_$variantKey";
-                    $unitNameKey = "unitname_$variantKey";
-                    $recipePriceKey = "product_price_$variantKey";
-
-                    $ingredients = $this->input->post($ingredientKey, true);
-                    if ($ingredients) {
-                        $quantities = $this->input->post($quantityKey, true);
-                        $unitIds = $this->input->post($unitIdKey, true);
-                        $unitNames = $this->input->post($unitNameKey, true);
-                        $recipePrices = $this->input->post($recipePriceKey, true);
-
-                        foreach ($ingredients as $i => $ingredientId) {
-                            if (empty($ingredientId) || empty($quantities[$i])) continue;
-                            $ingredientData = [
-                                'foodid' => $foodId,
-                                'pvarientid' => $variantId,
-                                'ingredientid' => $ingredientId,
-                                'qty' => $quantities[$i] ?? 0,
-                                'unitid' => $unitIds[$i] ?? 0,
-                                'unitname' => $unitNames[$i] ?? '',
-                                'recipe_price' => $recipePrices[$i] ?? 0,
-                                'createdby' => $savedId,
-                                'created_date' => date('Y-m-d'),
-                            ];
-                            $this->db->insert('production_details', $ingredientData);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Helper method to save modifiers
-     */
-    private function save_modifiers($foodId)
-    {
-        $existingModifiers = $this->fooditem_model->get_modifiers_by_menu_id($foodId);
-        $existingModifierIds = array_column($existingModifiers, 'modifier_groupid');
-        $modifiers = $this->input->post('modifiers', true);
-        $submittedModifierIds = [];
-
-        if ($modifiers && is_array($modifiers)) {
-            $minValues = $this->input->post('min', true) ?? [];
-            $maxValues = $this->input->post('max', true) ?? [];
-            $isReqValues = $this->input->post('isreq', true) ?? [];
-            $sortValues = $this->input->post('sort', true) ?? [];
-
-            foreach ($modifiers as $key => $modifier) {
-                $modifierGroupId = (int)$modifier;
-                $submittedModifierIds[] = $modifierGroupId;
-                $minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
-                $maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : $minValue;
-
-                $modifierData = [
-                    'menu_id' => $foodId,
-                    'modifier_groupid' => $modifierGroupId,
-                    'min' => $minValue,
-                    'max' => $maxValue,
-                    'isreq' => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
-                    'sortby' => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
-                    'is_active' => 1,
-                ];
-
-                $existingRowId = $this->fooditem_model->modifier_exists($foodId, $modifierGroupId);
-                $existingRowId ? $this->fooditem_model->update_modifier_new($existingRowId, $modifierData) : $this->fooditem_model->insert_modifier_new($modifierData);
-            }
-
-            foreach (array_diff($existingModifierIds, $submittedModifierIds) as $modifierId) {
-                $this->fooditem_model->delete_modifier($foodId, $modifierId);
-            }
-        } elseif ($existingModifierIds) {
-            foreach ($existingModifierIds as $modifierId) {
-                $this->fooditem_model->delete_modifier($foodId, $modifierId);
-            }
-        }
-    }
+				// Remove duplicates and store as a comma-separated string
+				$categoryIds = implode(',', array_unique($categoryIds));
 
 
-	/**
-	 * Helper method to update product JSON cache
-	 */
-	private function update_product_json()
-	{
-		$query = $this->db->select('ProductName, ProductsID')->from('item_foods')->where('ProductsIsActive', 1)->get();
-		$json_product = array_map(function($row) {
-			return ['label' => $row->ProductName, 'value' => $row->ProductsID];
-		}, $query->result());
-		file_put_contents('./assets/js/product.json', json_encode($json_product));
+				$savedid = $this->session->userdata('id');
+
+				// Prepare data for insertion
+				$postData = [
+					'ProductsID' => $this->input->post('ProductsID'),
+					'CategoryID' => $categoryIds,
+					'ProductName' => $this->input->post('foodname', true),
+					'component' => $this->input->post('component', true),
+					'menutype'               => $uniqueStr,
+					'itemnotes' => $this->input->post('itemnotes', true),
+					'descrip' => $this->input->post('descrip', true),
+					'kitchenid' =>  $this->input->post('kitchen'),
+					'cookedtime' => $this->input->post('cookedtime', true),
+					'productvat'             => $myvat,
+					'OffersRate'             => $OffersRate,
+					'special'       			=> $special,
+					'offerIsavailable'       => $isoffer,
+					'offerstartdate'         => $convertstartdate,
+					'offerendate'            => $convertenddate,
+					//'is_customqty'           => $this->input->post('customqty', true),
+					'ProductsIsActive'   	=> $this->input->post('status'),
+					'ProductImage'      	=> $img,
+					'bigthumb'      		=> $big,
+					'medium_thumb'      	=> $medium,
+					'small_thumb'      		=> $small,
+					'UserIDInserted'     	=> $savedid,
+					'UserIDUpdated'      	=> $savedid,
+					'UserIDLocked'       	=> $savedid,
+					'DateInserted'       	=> date('Y-m-d H:i:s'),
+					'DateUpdated'        	=> date('Y-m-d H:i:s'),
+					'DateLocked'         	=> date('Y-m-d H:i:s'),
+					'cusine_type'			=> $this->input->post('cusine_type'),
+					'is_bom'				=> $is_bom,
+					'food_type'				=> $this->input->post('food_type', true),
+					'weightage'				=> $this->input->post('weightage', true),
+					'uomid'					=> $this->input->post('uomid', true),
+				];
+
+				// echo '<pre>';
+				// print_r($this->input->post());
+				// echo '</pre>';
+				// exit;
+				if ($this->fooditem_model->fooditem_create($postData)) {
+					$insertedFoodId = $this->db->insert_id(); //item_foods table id
+					
+					// Update JSON cache file
+					$query = $this->db->select('*')->from('item_foods')->where('ProductsIsActive', 1)->get();
+					$json_product = [];
+					foreach ($query->result() as $row) {
+						$json_product[] = ['label' => $row->ProductName, 'value' => $row->ProductsID];
+					}
+					file_put_contents('./assets/js/product.json', json_encode($json_product));
+					// Add Variants
+					//Check if variant exist and cusine Type Product
+					// Basic form inputs
+					if($this->input->post('cusine_type') == 3) {
+						$variantName = $this->input->post('variant_name', true);
+						$prices = $this->input->post('price', true);
+						$takeawayPrices = $this->input->post('takeaway_price', true);
+						$uberEatsPrices = $this->input->post('uber_eats_price', true);
+						$doordashPrices = $this->input->post('doordash_price', true);
+						$webOrderPrices = $this->input->post('weborder_price', true);
+
+						$index = 0;
+						$variantData = [
+							'menuid' => $insertedFoodId,
+							'variantName' => $variantName[$index],
+							'price' => $prices[$index],
+							'takeaway_price' => $takeawayPrices[$index],
+							'uber_eats_price' => $uberEatsPrices[$index],
+							'doordash_price' => $doordashPrices[$index],
+							'web_order_price' => $webOrderPrices[$index],
+						];
+
+						if ($this->foodvarient_model->create($variantData)) {
+							$insertedVariantId = $this->db->insert_id();
+
+							$productionData = [
+								'itemid' => $insertedFoodId,
+								'itemvid' => $insertedVariantId,
+								'itemquantity' => $this->input->post('unit', true),
+								'savedby' => $savedid,
+								'is_bom' => 0,
+								'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
+								'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
+							];
+							$this->fooditem_model->create_food_production($productionData);
+
+						}
+
+					} else {
+					// Check if variant exists & cusine Type Restaurant
+						if ($this->input->post('variant_name', true)) {
+							//varient insert [start]
+							$variantNames = $this->input->post('variant_name', true);
+							$prices = $this->input->post('price', true);
+							$takeawayPrices = $this->input->post('takeaway_price', true);
+							$uberEatsPrices = $this->input->post('uber_eats_price', true);
+							$doordashPrices = $this->input->post('doordash_price', true);
+							$webOrderPrices = $this->input->post('weborder_price', true);
+							$recipeFor = $this->input->post('recipe_for', true);
+
+							$index = 0;
+							foreach ($variantNames as $key => $variantName) {
+								$variantKey = strtolower($recipeFor[$key]); 
+								$existingVariant = $this->db->where([
+									'menuid' => $insertedFoodId,
+									'variantName' => $variantName,
+								])->get('variant')->row();
+
+								if (!$existingVariant) {
+									$variantData = [
+										'menuid' => $insertedFoodId,
+										'variantName' => $variantName,
+										'price' => $prices[$key],
+										'takeaway_price' => $takeawayPrices[$key],
+										'uber_eats_price' => $uberEatsPrices[$key],
+										'doordash_price' => $doordashPrices[$key],
+										'web_order_price' => $webOrderPrices[$key],
+										'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
+										'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
+									];
+
+									if ($this->foodvarient_model->create($variantData)) {
+										$insertedVariantId = $this->db->insert_id();
+
+										$productionData = [
+											'itemid' => $insertedFoodId,
+											'itemvid' => $insertedVariantId,
+											'itemquantity' => $this->input->post('unit', true),
+											'savedby' => $savedid,
+											'is_bom' => $is_bom,
+											'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
+											'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
+										];
+										$this->fooditem_model->create_food_production($productionData);
+
+										
+										// Handle Ingredients Based on Variant
+										//if ($this->input->post('is_bom', true)) {
+										if ($is_bom == 1) {
+											$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
+											$ingredientKey = "product_id_{$variantKey}";
+											$quantityKey = "product_quantity_{$variantKey}";
+											$unitIdKey = "unitid_{$variantKey}";
+											$unitNameKey = "unitname_{$variantKey}";
+											$recipePriceKey = "product_price_{$variantKey}";
+
+											if ($this->input->post($ingredientKey, true)) {
+												$ingredients = $this->input->post($ingredientKey, true);
+												$quantities = $this->input->post($quantityKey, true);
+												$unitIds = $this->input->post($unitIdKey, true);
+												$unitNames = $this->input->post($unitNameKey, true);
+												$recipePrices = $this->input->post($recipePriceKey, true);
+
+												foreach ($ingredients as $i => $ingredientId) {
+													$ingredientData = [
+														'foodid' => $insertedFoodId,
+														'pvarientid' => $insertedVariantId,
+														'ingredientid' => $ingredientId,
+														'qty' => $quantities[$i],
+														'unitid' => $unitIds[$i],
+														'unitname' => $unitNames[$i],
+														'recipe_price' => $recipePrices[$i],
+														'createdby' => $this->session->userdata('id'),
+														'created_date' => date('Y-m-d'),
+													];
+													$this->db->insert('production_details', $ingredientData);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					// END of Variant and its Production update
+					// Now insert Modifiers
+					// Check Modifier exist or not
+					if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
+						$modifiers = $this->input->post('modifiers', true);
+						$minValues = $this->input->post('min', true) ?? [];
+						$maxValues = $this->input->post('max', true) ?? [];
+						$isReqValues = $this->input->post('isreq', true) ?? [];
+						$sortValues = $this->input->post('sort', true) ?? [];
+					
+						foreach ($modifiers as $key => $modifier) {
+							$minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
+							$maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : 0;
+					
+							// Ensure min is not greater than max
+							if ($minValue > $maxValue) {
+								$maxValue = $minValue; 
+							}
+					
+							$modifierData = [
+								'menu_id'   => $insertedFoodId,
+								//'add_on_id' => (int)$modifier,
+								'modifier_groupid' => (int)$modifier,
+								'min'       => $minValue,
+								'max'       => $maxValue,
+								'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
+								'sortby'    => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
+							];
+					
+							// Insert Modifier
+							$this->fooditem_model->create_modifiers($modifierData);
+						}
+					}
+					
+					// END of Modifier Insertion [Updated by Jsaha]
+
+
+					// Check if Product Exist
+					if ($this->input->post() && $this->input->post('cusine_type') == 3) {
+						
+						// Build the post data array conditionally
+						$postData = [];
+
+						// Basic form inputs
+						$postData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
+						$postData['pack_size']        = $this->input->post('pack_size', true);
+						$postData['pack_unit']        = $this->input->post('pack_unit', true);
+						$postData['uom_id']    = $this->input->post('purchase_unit', true);
+						$postData['purchase_price']   = $this->input->post('purchase_price', true);
+						$postData['stock_qty']  = $this->input->post('opening_stock', true);
+						$postData['min_stock']        = $this->input->post('minimum_stock', true);
+						$postData['is_active']        = 1;
+
+						// Insert into ingredients table
+						$this->fooditem_model->create_ingredient($postData);
+						$insert_id = $this->db->insert_id(); //ingradient  table id
+						// Update Food Item 
+						$this->fooditem_model->update_ingredient(
+							$insert_id,
+							[
+								'purchase_product' => $insertedFoodId,
+								'status' => '1'
+							]
+						);
+											
+
+						// If inserted successfully and opening_balance is set
+						$opening_balance = $this->input->post('opening_stock', true);
+						if ($insert_id && $opening_balance !== null && $opening_balance !== '') {
+							$opening_stock_data = [
+								'ingredient_name'    => $this->input->post('foodname', true),
+								'ingredient_id'      => $insert_id,
+								'purchase_price'     => $this->input->post('purchase_price', true),
+								'opening_balance'    => $opening_balance,
+								'opening_date' => date('Y-m-d'),
+								'is_active'          => 1
+							];
+
+							// Insert into ingredients_opening_stock table
+							$this->fooditem_model->ingredient_opening_stock($opening_stock_data);
+						}
+
+						//Check Insert Production Details
+						$prodDtlUnitname = get_unit_detail($this->input->post('purchase_unit', true));
+						$unitName = $prodDtlUnitname['uom_short_code'];
+							$productionDtlsData = [
+								'foodid' => $insertedFoodId,
+								'pvarientid' => $insertedVariantId,
+								'ingredientid' => $insert_id,
+								'qty' => $this->input->post('pack_size', true),
+								'unitid' => $this->input->post('purchase_unit', true),
+								'unitname' => $unitName,
+								'recipe_price' => $this->input->post('purchase_price', true),
+								'createdby' => $this->session->userdata('id'),
+								'created_date' => date('Y-m-d'),
+							];
+							$this->db->insert('production_details', $productionDtlsData);
+
+
+					}
+					
+
+					$this->session->set_flashdata('message', display('save_successfully'));
+					redirect('itemmanage/item_food/create_new');
+				}
+			} else {
+				//edit
+				$this->permission->method('itemmanage', 'update')->redirect();
+				if (empty($img)) {
+					$img = $this->input->post('old_image', true);
+					$big = $this->input->post('bigimage', true);
+					$medium = $this->input->post('mediumimage', true);
+					$small = $this->input->post('smallimage', true);
+				}
+				//Update Category
+				$categoryIdsRaw = $this->input->post('CategoryID', true) ?? []; // Ensure it's an array
+
+				if (!is_array($categoryIdsRaw)) {
+					$categoryIdsRaw = [];
+				}
+
+				$categoryIds = [];
+
+				foreach ($categoryIdsRaw as $category) {
+					if (strpos($category, '_') !== false) {
+						// Parent and child category case
+						$parts = explode('_', $category);
+						foreach ($parts as $part) {
+							$cleanedPart = str_replace('parent_', '', $part); // Remove "parent_"
+							if (!empty($cleanedPart) && $cleanedPart !== 'parent') {
+								$categoryIds[] = $cleanedPart;
+							}
+						}
+					} else {
+						// Only parent category
+						$cleanedCategory = str_replace('parent_', '', $category);
+						if (!empty($cleanedCategory) && $cleanedCategory !== 'parent') {
+							$categoryIds[] = $cleanedCategory;
+						}
+					}
+				}
+
+				// Remove duplicates and store as a comma-separated string
+				$categoryIds = implode(',', array_unique($categoryIds));
+
+				//Update Food Item Id
+				$updatedId = $this->input->post('ProductsID');
+				$savedid = $this->session->userdata('id');
+
+				$postData = [
+					'ProductsID' => $this->input->post('ProductsID'),
+					'CategoryID' => $categoryIds,
+					'ProductName' => $this->input->post('foodname', true),
+					'component' => $this->input->post('component', true),
+					'menutype'               => $uniqueStr,
+					'itemnotes' => $this->input->post('itemnotes', true),
+					'descrip' => $this->input->post('descrip', true),
+					'kitchenid' =>  $this->input->post('kitchen'),
+					'cookedtime' => $this->input->post('cookedtime', true),
+					'productvat'             => $myvat,
+					'OffersRate'             => $OffersRate,
+					'special'       			=> $special,
+					'offerIsavailable'       => $isoffer,
+					'offerstartdate'         => $convertstartdate,
+					'offerendate'            => $convertenddate,
+					//'is_customqty'           => $this->input->post('customqty', true),
+					'ProductsIsActive'   	=> $this->input->post('status'),
+					'ProductImage'      	=> $img,
+					'bigthumb'      		=> $big,
+					'medium_thumb'      	=> $medium,
+					'small_thumb'      		=> $small,
+					'UserIDInserted'     	=> $savedid,
+					'UserIDUpdated'      	=> $savedid,
+					'UserIDLocked'       	=> $savedid,
+					'DateInserted'       	=> date('Y-m-d H:i:s'),
+					'DateUpdated'        	=> date('Y-m-d H:i:s'),
+					'DateLocked'         	=> date('Y-m-d H:i:s'),
+					'cusine_type'			=> $this->input->post('cusine_type'),
+					'is_bom'				=> $is_bom,
+					'food_type'				=> $this->input->post('food_type', true),
+					'weightage'				=> $this->input->post('weightage', true),
+					'uomid'					=> $this->input->post('uomid', true),
+				];
+				$logData = array(
+					'action_page'         => "Food List",
+					'action_done'     	 => "Update Data",
+					'remarks'             => "Food Updated",
+					'user_name'           => $this->session->userdata('fullname', true),
+					'entry_date'          => date('Y-m-d H:i:s'),
+				);
+				$taxsettings = $this->taxchecking();
+				if (!empty($taxsettings)) {
+					$tx = 0;
+					$taxitems = array();
+					foreach ($taxsettings as $taxitem) {
+						$filedtax = 'tax' . $tx;
+						$taxitems[$filedtax] = $this->input->post($filedtax, true);
+						$tx++;
+					}
+					$postData = array_merge($postData, $taxitems);
+				}
+
+
+				if ($this->fooditem_model->update_fooditem($postData)) {
+					
+                    $this->db->where('menuid', $updatedId);
+                    $this->db->delete('variant');
+                    $this->db->where('itemid', $updatedId);
+                    $this->db->delete('production');
+                    $this->db->where('foodid', $updatedId);
+                    $this->db->delete('production_details');
+
+
+					// Build the post data array conditionally
+					$ingrData = [];
+					$openData = [];
+
+					// Basic form inputs
+					if($this->input->post('cusine_type') == 3) {
+						//$ingrData['ingredient_name']  = $this->input->post('foodname', true); // from form input name
+						$ingrData['pack_size']        = $this->input->post('pack_size', true);
+						$ingrData['pack_unit']        = $this->input->post('pack_unit', true);
+						$ingrData['uom_id']    = $this->input->post('purchase_unit', true);
+						$ingrData['purchase_price']   = $this->input->post('purchase_price', true);
+						$ingrData['stock_qty']  = $this->input->post('opening_stock', true);
+						$ingrData['min_stock']        = $this->input->post('minimum_stock', true);
+						$ingrid = $this->input->post('ingredient_id', true);
+
+						$openData['purchase_price']   = $this->input->post('purchase_price', true);
+						$openData['opening_balance']  = $this->input->post('opening_stock', true);
+
+
+						// Update Food Item 
+						$this->db->trans_start();
+						$this->fooditem_model->update_ingredient($ingrid, $ingrData);
+						$this->fooditem_model->update_ingredient_opening_stock($ingrid, $openData);
+						//Update Production Details
+						// Get post data
+						$ingredientId   = $ingrid;
+						$purchaseUnitId = $this->input->post('purchase_unit', true);
+						$openingStock   = $this->input->post('pack_size', true);
+						$purchasePrice  = $this->input->post('purchase_price', true);
+
+						// Get the unit short code
+						$unitDetail = get_unit_detail($purchaseUnitId);
+						$unitName   = $unitDetail ? $unitDetail['uom_short_code'] : '';
+
+						// Prepare common data
+						$data = [
+							'ingredientid'  => $ingredientId,
+							'qty'           => $openingStock,
+							'unitid'        => $purchaseUnitId,
+							'unitname'      => $unitName,
+							'recipe_price'  => $purchasePrice,
+						];
+
+						// Check if ingredient exists
+						$this->db->where('ingredientid', $ingredientId);
+						$query = $this->db->get('production_details');
+
+						if ($query->num_rows() > 0) {
+							// Exists → update
+							$this->db->where('ingredientid', $ingredientId);
+							$this->db->update('production_details', $data);
+						} 
+						else {
+							// Not exists → insert
+							$productionDtlsData = [
+								'foodid' => $this->input->post('ProductsID', true),
+								'ingredientid' => $ingredientId,
+								'qty' => $this->input->post('pack_size', true),
+								'unitid' => $this->input->post('purchase_unit', true),
+								'unitname' => $unitName,
+								'recipe_price' => $this->input->post('purchase_price', true),
+								'createdby' => $this->session->userdata('id'),
+								'created_date' => date('Y-m-d'),
+							];
+							$this->db->insert('production_details', $productionDtlsData);
+							$lastProDtlsInsertId = $this->db->insert_id();
+						}
+
+
+						$this->db->trans_complete();
+					}
+
+
+
+				
+					
+                    //updating variants and production-details [start]
+                    if ($this->input->post('variant_name', true)) {
+						//varient insert [start]
+						$variantNames = $this->input->post('variant_name', true);
+						$prices = $this->input->post('price', true);
+						$takeawayPrices = $this->input->post('takeaway_price', true);
+						$uberEatsPrices = $this->input->post('uber_eats_price', true);
+						$doordashPrices = $this->input->post('doordash_price', true);
+						$webOrderPrices = $this->input->post('weborder_price', true);
+						$recipeFor = $this->input->post('recipe_for', true);
+						
+						$index = 0;
+						foreach ($variantNames as $key => $variantName) {
+							$variantKey = strtolower($recipeFor[$key]); 
+							$existingVariant = $this->db->where([
+								'menuid' => $updatedId,
+								'variantName' => $variantName,
+							])->get('variant')->row();
+
+							if (!$existingVariant) {
+								$variantData = [
+									'menuid' => $updatedId,
+									'variantName' => $variantName,
+									'price' => $prices[$key],
+									'takeaway_price' => $takeawayPrices[$key],
+									'uber_eats_price' => $uberEatsPrices[$key],
+									'doordash_price' => $doordashPrices[$key],
+									'web_order_price' => $webOrderPrices[$key],
+									'recipe_cost' => $this->input->post('recipe_costprice_' . $variantKey, true)[$index],
+									'recipe_weightage' => $this->input->post('recipe_usedqty_' . $variantKey, true)[$index],
+								];
+
+
+								if ($this->foodvarient_model->create($variantData)) {
+									$insertedVariantId = $this->db->insert_id();
+
+									//If cusine type is Product then update production details
+									if($this->input->post('cusine_type') == 3) {
+										
+										$productionDtlsData = [
+											'pvarientid' => $insertedVariantId,
+										];
+										$this->db->where('pro_detailsid', $lastProDtlsInsertId);
+										$this->db->update('production_details', $productionDtlsData);
+									}
+
+									$productionData = [
+										'itemid' => $updatedId,
+										'itemvid' => $insertedVariantId,
+										'itemquantity' => $this->input->post('unit', true),
+										'savedby' => $savedid,
+										'is_bom' => $is_bom,
+										'production_date' => date('Y-m-d', strtotime($this->input->post('production_date', true))),
+										'expire_date' => date('Y-m-d', strtotime($this->input->post('expire_date', true))),
+									];
+									$this->fooditem_model->create_food_production($productionData);
+
+									// Handle Ingredients Based on Variant
+									//if ($this->input->post('is_bom', true)) {
+									if ($is_bom == 1){
+										$variantKey = strtolower($recipeFor[$key]); // Example: 'small', 'large', 'regular'
+										$ingredientKey = "product_id_{$variantKey}";
+										$quantityKey = "product_quantity_{$variantKey}";
+										$unitIdKey = "unitid_{$variantKey}";
+										$unitNameKey = "unitname_{$variantKey}";
+										$recipePriceKey = "product_price_{$variantKey}";
+
+										if ($this->input->post($ingredientKey, true)) {
+											$ingredients = $this->input->post($ingredientKey, true);
+											$quantities = $this->input->post($quantityKey, true);
+											$unitIds = $this->input->post($unitIdKey, true);
+											$unitNames = $this->input->post($unitNameKey, true);
+											$recipePrices = $this->input->post($recipePriceKey, true);
+
+											foreach ($ingredients as $i => $ingredientId) {
+												$ingredientData = [
+													'foodid' => $updatedId,
+													'pvarientid' => $insertedVariantId,
+													'ingredientid' => $ingredientId,
+													'qty' => $quantities[$i],
+													'unitid' => $unitIds[$i],
+													'unitname' => $unitNames[$i],
+													'recipe_price' => $recipePrices[$i],
+													'createdby' => $this->session->userdata('id'),
+													'created_date' => date('Y-m-d'),
+												];
+												$this->db->insert('production_details', $ingredientData);
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+                    //updating variants and production-details [end]
+					
+					
+					// Update Modifiers
+					// Fetch existing modifiers from the database
+					$existingModifiers = $this->fooditem_model->get_modifiers_by_menu_id($updatedId);
+					$existingModifierIds = array_column($existingModifiers, 'modifier_groupid'); // Extract group IDs
+
+					// Get submitted modifier data
+					if ($this->input->post('modifiers', true) && is_array($this->input->post('modifiers', true))) {
+						$modifiers = $this->input->post('modifiers', true);
+						$minValues = $this->input->post('min', true) ?? [];
+						$maxValues = $this->input->post('max', true) ?? [];
+						$isReqValues = $this->input->post('isreq', true) ?? [];
+						$sortValues = $this->input->post('sort', true) ?? [];
+
+						$submittedModifierIds = []; // Store modifier_groupid values that were submitted
+
+						foreach ($modifiers as $key => $modifier) {
+							$modifierGroupId = (int)$modifier;
+							$submittedModifierIds[] = $modifierGroupId; // Keep track of submitted modifier IDs
+
+							$minValue = isset($minValues[$key]) && $minValues[$key] !== '' ? (int)$minValues[$key] : 0;
+							$maxValue = isset($maxValues[$key]) && $maxValues[$key] !== '' ? (int)$maxValues[$key] : 0;
+
+							// Ensure min is not greater than max
+							if ($minValue > $maxValue) {
+								$maxValue = $minValue;
+							}
+
+							$modifierData = [
+								'menu_id'   => $updatedId,
+								'modifier_groupid' => $modifierGroupId,
+								'min'       => $minValue,
+								'max'       => $maxValue,
+								'isreq'     => isset($isReqValues[$key]) && $isReqValues[$key] === 'on' ? 1 : 0,
+								'sortby'    => isset($sortValues[$key]) && $sortValues[$key] !== '' ? (int)$sortValues[$key] : 0,
+								'is_active' => 1
+							];
+
+							// Check if modifier exists
+							$existingRowId = $this->fooditem_model->modifier_exists($updatedId, $modifierGroupId);
+
+							if ($existingRowId) {
+								// If exists, update the modifier
+								$this->fooditem_model->update_modifier_new($existingRowId, $modifierData);
+							} else {
+								// If not exists, insert a new modifier
+								$this->fooditem_model->insert_modifier_new($modifierData);
+							}
+						}
+
+						// Find modifiers that were removed (exist in DB but not in submitted data)
+						$modifiersToDelete = array_diff($existingModifierIds, $submittedModifierIds);
+
+						// Delete removed modifiers
+						if (!empty($modifiersToDelete)) {
+							foreach ($modifiersToDelete as $modifierId) {
+								$this->fooditem_model->delete_modifier($updatedId, $modifierId);
+							}
+						}
+					} else {
+						// If no modifiers were submitted, delete all existing modifiers for this menu
+						if (!empty($existingModifierIds)) {
+							foreach ($existingModifierIds as $modifierId) {
+								$this->fooditem_model->delete_modifier($updatedId, $modifierId);
+							}
+						}
+					}
+
+
+					$this->logs_model->log_recorded($logData);
+					$this->db->select('*');
+					$this->db->from('item_foods');
+					$this->db->where('ProductsIsActive', 1);
+					$query = $this->db->get();
+					foreach ($query->result() as $row) {
+						$json_product[] = array('label' => $row->ProductName, 'value' => $row->ProductsID);
+					}
+					$cache_file = './assets/js/product.json';
+					$productList = json_encode($json_product);
+					file_put_contents($cache_file, $productList);
+
+
+					$this->session->set_flashdata('message', display('update_successfully'));
+				} else {
+					$this->session->set_flashdata('exception',  display('please_try_again'));
+				}
+				redirect("itemmanage/item_food/create_new/" . $postData['ProductsID']);
+			}
+		} else {
+		
+			$data['taxitems'] = $this->taxchecking();
+			if (!empty($id)) {
+
+					//Show updated purchase price
+
+				$data['stockinfo'] = $this->db
+									->select('ingredients.*, ingredients_opening_stock.opening_balance, ingredients_opening_stock.purchase_price as opening_price, purchase_details.price as purchase_price')
+									->from('ingredients')
+									->join('ingredients_opening_stock', 'ingredients_opening_stock.ingredient_id = ingredients.id', 'left')
+									->join('purchase_details', 'ingredients.id = purchase_details.indredientid', 'left')
+									->where('ingredients.purchase_product', $id)
+									->get()
+									->row();
+
+			
+				$data['title'] = display('update_fooditem');
+				//$data['productinfo']   = $this->fooditem_model->findById($id);
+				$data['productinfo']   = $this->fooditem_model->findByFoodId($id);
+			}
+
+			$data['categories']   =  $this->category_model->allcategory_dropdown();
+			$data['allkitchen']   =  $this->fooditem_model->allkitchen();
+			$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+			$data['item']   = $this->fooditem_model->item_dropdown();
+			$data['units'] = $this->fooditem_model->get_food_units();
+			$data['ingrdientslist']   = $this->fooditem_model->ingrediantlist();
+			$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
+			$data['module'] = "itemmanage";
+			$data['page']   = "addfooditemnew";
+			echo Modules::run('template/layout', $data); 
+		}
+
+
 	}
-
-	/**
-	 *  NEW Food Item Create 
-	 */
 
 	public function ingredientlistdropdowns()
 	{

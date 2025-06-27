@@ -1,37 +1,23 @@
+
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_new_script.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
-<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <div class="row">
     <!-- <pre>
         <?php ##print_r($productinfo); ?>
     </pre> -->
-    <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_food/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Manage Item'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_food/create_new'); ?>" class="btn btn-success"><?php echo 'Create Item'; ?></a>
-        </div>
-    </div>
-  
-    <?php
-        $action_url = isset($id) && $id ? 'itemmanage/item_food/create_new/' . $id : 'itemmanage/item_food/create_new';
-        echo form_open_multipart($action_url, ['id' => 'addFoodItemForm']);
-    ?>
+    <?php echo form_open_multipart("itemmanage/item_food/create_new") ?>
     <?php echo form_hidden('id',$this->session->userdata('id'));?>
     <?php echo form_hidden('ProductsID', (isset($productinfo) && !empty($productinfo['ProductsID'])?$productinfo['ProductsID']:null)) ?>
     <input name="bigimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['bigthumb'])?$productinfo['bigthumb']:null) ?>" />
     <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
     <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
         <div class="text-right mb-3">
-            <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100">
-            <input type="hidden" name="recipeMode" id="recipeMode">
-            <button type="submit" class="btn btn-primary w-100">Save Item</button>
+            <button type="submit" class="btn btn-primary w-100">Save Food Item</button>
         </div>
         <!-- First Panel - Add Form -->
         <div class="col-md-5">
             <div class="card">
-                <div class="card-header">Add Item</div>
+                <div class="card-header">Add Food Item</div>
                 <div class="card-body form-panel">
                     <div class="row">
                         <div class="col-md-6">
@@ -59,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Name</label>
+                                <label>Food Name</label>
                                 <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (isset($productinfo) && !empty($productinfo['ProductName'])?$productinfo['ProductName']:null) ?>" required="">
                             </div>
                         </div>
@@ -93,7 +79,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Type</label>
+                                <label>Food Type</label>
                                 <div class="d-flex gap-4">
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" name="food_type" value="1" id="veg"
@@ -423,7 +409,7 @@
         <!-- Second Panel - Vertical Tabs -->
         <div class="col-md-7">
             <div class="card">
-                <div class="card-header">Item Details</div>
+                <div class="card-header">Food Details</div>
                 <div class="card-body">
                     <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
                     <!-- Categories Panel -->
@@ -432,99 +418,58 @@
                             <h5 class="panel-title">
                                 <!-- <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories" class="accordion-plus-toggle"> -->
                                 <a role="button" data-toggle="collapse" href="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories" class="accordion-plus-toggle">
-                                Group & Categories
+                                Categories
                                 </a>
                             </h5>
                         </div>
                         <div id="collapseCategories" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingCategories">
                             <div class="panel-body">
-                                    <div class="mt-3">
-                                        <input type="hidden" id="getSubcategoriesUrl" value="<?php echo base_url('itemmanage/item_food/get_subcategories'); ?>">
-                                        <?php if (!empty($categories)) { ?>
-                                            <?php 
-                                                // Handle selected categories for edit mode
-                                                $selected_parent = $selected_child = $selected_grandchild = '';
-                                                if (isset($productinfo) && !empty($productinfo['CategoryID'])) {
-                                                    $selectedCategories = explode(',', $productinfo['CategoryID']);
-                                                    $last_category_id = end($selectedCategories);
-                                                    
-                                                    foreach ($categories as $cat) {
-                                                        if ($cat->CategoryID == $last_category_id) {
-                                                            if ($cat->parentid == 0) {
-                                                                $selected_parent = $last_category_id;
-                                                            } else {
-                                                                foreach ($categories as $parent_cat) {
-                                                                    if ($parent_cat->CategoryID == $cat->parentid) {
-                                                                        $selected_child = $last_category_id;
-                                                                        if ($parent_cat->parentid == 0) {
-                                                                            $selected_parent = $parent_cat->CategoryID;
-                                                                        } else {
-                                                                            $selected_grandchild = $last_category_id;
-                                                                            $selected_child = $parent_cat->CategoryID;
-                                                                            foreach ($categories as $grandparent_cat) {
-                                                                                if ($grandparent_cat->CategoryID == $parent_cat->parentid) {
-                                                                                    $selected_parent = $grandparent_cat->CategoryID;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            ?>
+                                <div class="mt-3">
+                                    <?php if (!empty($categories)) { ?>
+                                        <?php 
+                                            if(isset($productinfo)) {
+                                                // Convert CategoryID string to an array
+                                                $selectedCategories = explode(',', $productinfo['CategoryID']);
+                                            } else {
+                                                $selectedCategories = [];
+                                            }
 
-                                            <!-- Parent Category Dropdown -->
-                                            <div class="mb-3">
-                                                <label class="form-label fw-bold">Select Group</label>
-                                                <select id="parent_category" name="CategoryID[parent]" class="form-control selectcategories">
-                                                    <option value="">Select Category Group</option>
-                                                    <?php foreach ($categories as $category) { ?>
-                                                        <?php if ($category->parentid == 0) { ?>
-                                                            <option value="<?php echo $category->CategoryID; ?>" <?php echo ($selected_parent == $category->CategoryID) ? 'selected' : ''; ?>>
-                                                                <?php echo htmlspecialchars($category->Name); ?>
+                                        ?>
+                                        <?php foreach ($categories as $category) { ?>
+                                            <?php if ($category->parentid == 0) { ?>
+                                            <?php $all_subcategories = sub_categories_by_parent_id($category->CategoryID); ?>
+                                                  <label class="form-label fw-bold"><?php echo $category->Name; ?></label>
+                                               
+                                                <select id="categorySelect_<?php echo $category->CategoryID; ?>" name="CategoryID[]" class="form-control selectcategories" multiple data-group-id="<?php echo $category->CategoryID; ?>">
+                                                    <?php 
+                                                    if (!empty($all_subcategories)) { 
+                                                        foreach ($all_subcategories as $all_subcategory) { ?>
+                                                            <option value="parent_<?php echo $all_subcategory->CategoryID; ?>" class="fw-bold"  <?php if(in_array($all_subcategory->CategoryID, $selectedCategories)){echo "selected";} ?> >
+                                                                <?php echo $all_subcategory->Name; ?>
                                                             </option>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
 
-                                            <!-- Child Category Dropdown -->
-                                            <div class="mb-3" id="child_category_container" style="display: <?php echo $selected_child ? 'block' : 'none'; ?>;">
-                                                <label class="form-label fw-bold">Category</label>
-                                                <select id="child_category" name="CategoryID[child]" class="form-control selectcategories" multiple data-group-id="<?php echo $category->CategoryID; ?>">
-                                                    <option value="0">Select Category</option>
-                                                    <?php if ($selected_child) { 
-                                                        $child_categories = sub_categories_by_parent_id($selected_parent);
-                                                        foreach ($child_categories as $child) { ?>
-                                                            <option value="<?php echo $child->CategoryID; ?>" <?php echo ($selected_child == $child->CategoryID) ? 'selected' : ''; ?>>
-                                                                <?php echo htmlspecialchars($child->Name); ?>
-                                                            </option>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
+                                                            <?php if (!empty($all_subcategory->sub)) {
+                                                                foreach ($all_subcategory->sub as $child) { ?>
+                                                                    <option value="<?php echo $all_subcategory->CategoryID; ?>_<?php echo $child->CategoryID; ?>" data-parent="parent_<?php echo $all_subcategory->CategoryID; ?>" <?php if(in_array($child->CategoryID, $selectedCategories)){echo "selected";} ?>>
+                                                                        -- <?php echo $child->Name; ?>
+                                                                    </option>
 
-                                            <!-- Grandchild Category Dropdown -->
-                                            <div class="mb-3" id="grandchild_category_container" style="display: <?php echo $selected_grandchild ? 'block' : 'none'; ?>;">
-                                                <label class="form-label fw-bold">Sub-subcategory</label>
-                                                <select id="grandchild_category" name="CategoryID[grandchild]" class="form-control selectcategories">
-                                                    <option value="0">Select Sub-subcategory</option>
-                                                    <?php if ($selected_grandchild) { 
-                                                        $grandchild_categories = sub_categories_by_parent_id($selected_child);
-                                                        foreach ($grandchild_categories as $grandchild) { ?>
-                                                            <option value="<?php echo $grandchild->CategoryID; ?>" <?php echo ($selected_grandchild == $grandchild->CategoryID) ? 'selected' : ''; ?>>
-                                                                <?php echo htmlspecialchars($grandchild->Name); ?>
-                                                            </option>
-                                                        <?php } ?>
-                                                    <?php } ?>
+                                                                    <?php if (!empty($child->sub)) {
+                                                                        foreach ($child->sub as $subChild) { ?>
+                                                                            <option value="<?php echo $child->CategoryID; ?>_<?php echo $subChild->CategoryID; ?>" data-parent="child_<?php echo $child->CategoryID; ?>" <?php if(in_array($subChild->CategoryID, $selectedCategories)){echo "selected";} ?>>
+                                                                                ---- <?php echo $subChild->Name; ?>
+                                                                            </option>
+                                                                        <?php }
+                                                                    } ?>
+                                                                <?php }
+                                                            } ?>
+                                                        <?php }
+                                                    } ?>
                                                 </select>
-                                            </div>
+                                            <?php } ?>
                                         <?php } ?>
-                                    </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -738,7 +683,7 @@
 
                                     <div class="row variant-row mb-2" id="variantRow_1">
                                         <div class="col-md-12 mb-2">
-                                            <input type="text" name="variant_name[]" class="form-control variant-name" id="variant_name_1" placeholder="Variant Name">
+                                            <input type="text" name="variant_name[]" class="form-control variant-name" placeholder="Variant Name">
                                         </div>
 
                                         <!-- Recipe Section -->
@@ -932,86 +877,86 @@
 }
 </style>
 <script type="text/javascript">
-//     $(document).on("click", "#addfooditemsubmit", (e)=>{
-//     e.preventDefault();
-//     // alert("Form Submission Prevented " + $("#addfooditemsubmit").closest("form"));
-//     // return false;
-//     const
-//       $foodname = $("#foodname"),
-//       $regPrice = $("#regPrice"),
-//       $takeawayPrice = $("#takeawayPrice"),
-//       $uberEatsPrice = $("#uberEatsPrice"),
-//       $webOrderPrice = $("#webOrderPrice"),
-//       $addfooditemerr = $("#addfooditemerr");
-//     var
-//       foodname = $foodname.val(),
-//       regPrice = $regPrice.val(),
-//       takeawayPrice = $takeawayPrice.val(),
-//       uberEatsPrice = $uberEatsPrice.val(),
-//       webOrderPrice = $webOrderPrice.val();
-//     $addfooditemerr.text("");
-//     $addfooditemerr.hide();
-//     if (foodname == "") {
-//       $addfooditemerr.text("* Food Name cannot be left blank");
-//       $addfooditemerr.show();
-//       $foodname.focus();
-//       return false;
-//     }
-//     if (regPrice == "") {
-//       $addfooditemerr.text("* Food regular price cannot be left blank");
-//       $addfooditemerr.show();
-//       $regPrice.focus();
-//       return false;
-//     } else {
-//       if (isNaN(regPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $regPrice.focus();
-//         return false;
-//       }
-//     }
-//     if (takeawayPrice == "") {
-//       $addfooditemerr.text("* Food takeaway price cannot be left blank");
-//       $addfooditemerr.show();
-//       $takeawayPrice.focus();
-//       return false;
-//     } else {
-//       if (isNaN(takeawayPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $takeawayPrice.focus();
-//         return false;
-//       }
-//     }
-//     if (uberEatsPrice == "") {
-//       $addfooditemerr.text("* Food uber eats price cannot be left blank");
-//       $addfooditemerr.show();
-//       $uberEatsPrice.focus();
-//       return false;
-//     }  else {
-//       if (isNaN(uberEatsPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $uberEatsPrice.focus();
-//         return false;
-//       }
-//     }
-//     if (webOrderPrice == "") {
-//       $addfooditemerr.text("* Food web order price cannot be left blank");
-//       $addfooditemerr.show();
-//       $webOrderPrice.focus();
-//       return false;
-//     } else {
-//       if (isNaN(webOrderPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $webOrderPrice.focus();
-//         return false;
-//       }
-//     }
-//     $("#addfooditemsubmit").closest("form").submit();
-//     // return false;
-//   });
+    $(document).on("click", "#addfooditemsubmit", (e)=>{
+    e.preventDefault();
+    // alert("Form Submission Prevented " + $("#addfooditemsubmit").closest("form"));
+    // return false;
+    const
+      $foodname = $("#foodname"),
+      $regPrice = $("#regPrice"),
+      $takeawayPrice = $("#takeawayPrice"),
+      $uberEatsPrice = $("#uberEatsPrice"),
+      $webOrderPrice = $("#webOrderPrice"),
+      $addfooditemerr = $("#addfooditemerr");
+    var
+      foodname = $foodname.val(),
+      regPrice = $regPrice.val(),
+      takeawayPrice = $takeawayPrice.val(),
+      uberEatsPrice = $uberEatsPrice.val(),
+      webOrderPrice = $webOrderPrice.val();
+    $addfooditemerr.text("");
+    $addfooditemerr.hide();
+    if (foodname == "") {
+      $addfooditemerr.text("* Food Name cannot be left blank");
+      $addfooditemerr.show();
+      $foodname.focus();
+      return false;
+    }
+    if (regPrice == "") {
+      $addfooditemerr.text("* Food regular price cannot be left blank");
+      $addfooditemerr.show();
+      $regPrice.focus();
+      return false;
+    } else {
+      if (isNaN(regPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $regPrice.focus();
+        return false;
+      }
+    }
+    if (takeawayPrice == "") {
+      $addfooditemerr.text("* Food takeaway price cannot be left blank");
+      $addfooditemerr.show();
+      $takeawayPrice.focus();
+      return false;
+    } else {
+      if (isNaN(takeawayPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $takeawayPrice.focus();
+        return false;
+      }
+    }
+    if (uberEatsPrice == "") {
+      $addfooditemerr.text("* Food uber eats price cannot be left blank");
+      $addfooditemerr.show();
+      $uberEatsPrice.focus();
+      return false;
+    }  else {
+      if (isNaN(uberEatsPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $uberEatsPrice.focus();
+        return false;
+      }
+    }
+    if (webOrderPrice == "") {
+      $addfooditemerr.text("* Food web order price cannot be left blank");
+      $addfooditemerr.show();
+      $webOrderPrice.focus();
+      return false;
+    } else {
+      if (isNaN(webOrderPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $webOrderPrice.focus();
+        return false;
+      }
+    }
+    $("#addfooditemsubmit").closest("form").submit();
+    // return false;
+  });
 document.getElementById("isoffer").addEventListener("change", function () {
     //document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
 
@@ -1023,124 +968,6 @@ document.getElementById("isoffer").addEventListener("change", function () {
     }
 });
 </script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-<script>
-$(document).ready(function () {
-    // Initial setup
-    handleRecipeVisibility();
-
-    // On toggle change
-    $('#recipe_mode_toggle').change(function () {
-        handleRecipeVisibility();
-    });
-
-    // On cuisine type change
-    $('select[name="cusine_type"]').change(function () {
-        handleRecipeVisibility();
-    });
-
-    function handleRecipeVisibility() {
-        const isToggleOn = $('#recipe_mode_toggle').prop('checked');
-        const cuisineType = $('select[name="cusine_type"]').val();
-        $('#recipeMode').val('1');
-
-        if (isToggleOn && cuisineType !== '3') {
-            $('#recipe_mode, #recipeBox, #addMore').show();
-            $('#recipeMode').val('1');
-            $('.variantsPanel').show();
-            $('.productprices').find('input').prop('disabled', true).end().hide();
-            $('#serving_weightage').hide();
-        } else {
-            $('#recipe_mode, #recipeBox, #addMore').hide();
-            $('.variantsPanel').hide();
-            $('#recipeMode').val('0');
-            $('.productprices').find('input').prop('disabled', false).end().show();
-            $('#serving_weightage').show();
-        }
-    }
-});
-
-</script>
-<script>
-$(document).ready(function () {
-    // Define baseurl
-    var baseurl = '<?php echo base_url(); ?>';
-
-    // Handle form submission
-    $('#addFoodItemForm').on('submit', function (e) {
-        e.preventDefault(); // Prevent default form submission
-
-        // Get form data
-        var formData = new FormData(this);
-
-        // Debugging: Log form submission
-        console.log('Form submitted to: ' + $(this).attr('action'));
-
-        // Perform AJAX submission
-        $.ajax({
-            url: $(this).attr('action'),
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log('Response received: ', response); // Debugging: Log raw response
-                try {
-                    var result = JSON.parse(response);
-                    console.log('Parsed result: ', result); // Debugging: Log parsed result
-
-                    if (result.status === 'success') {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: result.message || 'Food item saved successfully!',
-                            confirmButtonText: 'OK'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = baseurl + 'itemmanage/item_food/index';
-                            }
-                        });
-                    } else {
-                        // Handle server-side validation errors
-                        var errorMessage = result.message || 'Please correct the form errors.';
-                        if (result.errors && result.errors.length > 0) {
-                            errorMessage = result.errors.map(function (err) {
-                                return err.message;
-                            }).join('\n');
-                        }
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Validation Error',
-                            text: errorMessage,
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                } catch (e) {
-                    console.error('Error parsing response: ', e); // Debugging: Log parsing error
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'An unexpected error occurred. Please try again.',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error('AJAX error: ', status, error); // Debugging: Log AJAX error
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'An error occurred while submitting the form: ' + error,
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
-    });
-});
-</script>
-
 <style>
     .form-group {
     margin-bottom: 12px;

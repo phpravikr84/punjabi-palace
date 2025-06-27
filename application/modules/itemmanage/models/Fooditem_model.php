@@ -1028,7 +1028,15 @@ class Fooditem_model extends CI_Model {
 		return $waste;
 	}
 
-
+	public function get_subcategories_by_parent_id($parent_id) {
+        $this->db->select('CategoryID, Name');
+        $this->db->from('item_category');
+        $this->db->where('parentid', $parent_id);
+        $this->db->where('CategoryIsActive', 1);
+        $this->db->order_by('Name', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
 
 
 }

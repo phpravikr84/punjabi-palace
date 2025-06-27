@@ -17,6 +17,14 @@ if (!empty($addonsinfo)) {
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
 <div class="row">
+    <!-- Button area -->
+    <div class="col-sm-12 mb-3">
+        <div class="d-flex justify-content-start">
+            <a href="<?php echo base_url('itemmanage/menu_addons/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Main Modifiers Listing'; ?></a>
+            <a href="<?php echo base_url('itemmanage/menu_addons/create'); ?>" class="btn btn-success"><?php echo 'Create Modifiers'; ?></a>
+        </div>
+    </div>
+
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd lobidrag">
             <div class="panel-heading">

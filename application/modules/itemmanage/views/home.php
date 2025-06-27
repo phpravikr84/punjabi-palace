@@ -1,7 +1,6 @@
 <div class="row">
     <!--  table area -->
     <div class="col-sm-12">
-
         <div class="panel panel-default thumbnail"> 
             <div class="panel-body">
                 <table width="100%" class="datatable table table-striped table-bordered table-hover">
@@ -9,7 +8,7 @@
                         <tr>
                             <th><?php echo display('serial') ?></th>
                             <th><?php echo display('image') ?></th>
-                            <th><?php echo display('parent_menu') ?></th> 
+                            <th><?php echo 'Group Name' ?></th> 
                             <th><?php echo display('category_name') ?></th>
                             <th><?php echo display('status') ?></th>
                             <th><?php echo display('action') ?></th> 

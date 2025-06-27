@@ -272,5 +272,36 @@ public function count_category()
         }
         return false;
 	}
-    
+	
+	public function allgroups_dropdown(){
+
+        $this->db->select('*');
+        $this->db->from('item_category');
+        $this->db->where('parentid', 0);
+        $parent = $this->db->get();
+        $categories = $parent->result();
+        // $i=0;
+        // foreach($categories as $p_cat){
+			
+        //     $categories[$i]->sub = $this->sub_categories($p_cat->CategoryID);
+
+		// 	$scs=0;
+		// 	foreach ($categories[$i]->sub as $scat) {
+		// 		$categories[$i]->sub[$scs]->sub = $this->sub_categories($scat->CategoryID);
+		// 		$scs++;
+		// 	}
+			
+        //     $i++;
+        // }
+        return $categories;
+    }
+
+
+	public function update_category($id, $data)
+	{
+		$this->db->where('CategoryID', $id);
+		return $this->db->update('item_category', $data);
+	}
+
+
 }
