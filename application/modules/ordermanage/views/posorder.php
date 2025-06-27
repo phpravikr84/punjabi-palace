@@ -1280,7 +1280,7 @@ foreach ($scan as $file) {
                                             <?php if ($currency->position == 2) {
                                               echo $currency->curr_icon;
                                             } ?></td>
-                                          <td scope="row"><a class="btn btn-info btn-sm btnleftalign" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'add')"><i class="fa fa-plus" aria-hidden="true"></i></a> <span id="productionsetting-<?php echo $item['pid'] . '-' . $item['sizeid'] ?>"> <?php echo $item['qty']; ?> </span> <a class="btn btn-danger btn-sm btnrightalign" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'del')"><i class="fa fa-minus" aria-hidden="true"></i></a></td>
+                                          <td scope="row"><a class="btn btn-danger btn-sm btnrightalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'del')"><i class="fa fa-minus" aria-hidden="true"></i></a> <span id="productionsetting-<?php echo $item['pid'] . '-' . $item['sizeid'] ?>"> <?php echo $item['qty']; ?> </span> <a class="btn btn-info btn-sm btnleftalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'add')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
                                           <td width=""><?php if ($currency->position == 1) {
                                                           echo $currency->curr_icon;
                                                         } ?>
@@ -1288,7 +1288,7 @@ foreach ($scan as $file) {
                                             <?php if ($currency->position == 2) {
                                               echo $currency->curr_icon;
                                             } ?></td>
-                                          <td width:"80"=""><a class="btn btn-danger btn-sm btnrightalign" onclick="removecart('<?php echo $item['rowid']; ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                          <td width="80"><a class="btn btn-danger btn-sm btnrightalign" onclick="removecart('<?php echo $item['rowid']; ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                         </tr>
                                       <?php }
                                       $itemtotal = $subtotal;
