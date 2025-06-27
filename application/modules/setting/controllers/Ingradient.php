@@ -779,7 +779,7 @@ class Ingradient extends MX_Controller {
 	//Get Convertion Ratio ajax call
 	public function get_conversion_ratio($pack_unit, $consumption_unit) {
         if ($pack_unit && $consumption_unit) {
-            $ratio = $this->Settings_model->get_conversion_ratio($pack_unit, $consumption_unit);
+            $ratio = $this->ingradient_model->get_conversion_ratio($pack_unit, $consumption_unit);
             echo $ratio !== null ? $ratio : '';
         } else {
             echo '';

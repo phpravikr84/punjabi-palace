@@ -8,6 +8,7 @@ $(document).ready(function () {
     submitBtn.prop('disabled', false); // enable submit
     open_balance_div.hide(); // Hide open balance div by default
     open_balance_date_div.hide(); // Hide open balance date div by default
+    fetchConversionRatioEdit();
     function initAutocomplete(element) {
         element.autocomplete({
             source: function (request, response) {
@@ -126,7 +127,7 @@ $(document).ready(function () {
             }
 
             if (!convtRatio || isNaN(convtRatio) || convtRatio === 0) {
-                alert('Invalid conversion ratio');
+                //alert('Invalid conversion ratio');
                 $('#cost_perunit').val('');
                 return;
             }
@@ -161,14 +162,70 @@ $(document).ready(function () {
         }
     }
 
+
+    //Get Convertion Ratio
+    function fetchConversionRatio() {
+        var pack_unit = $('#pack_unit').val();
+        var consumption_unit = $('#consumtion_unit').val();
+        var getConvertUrl =  $('#chkConvertR').val();
+        console.log(getConvertUrl + '/' + pack_unit + '/' + consumption_unit);
+         var csrf = $('#csrfhashresarvation').val();
+        if (pack_unit && consumption_unit) {
+            $.ajax({
+                url: getConvertUrl + '/' + pack_unit + '/' + consumption_unit,
+                type: "GET",
+                  data: {
+                        csrf_test_name: csrf
+                    },
+                success: function (response) {
+                    $('#convt_ratio').val(response);
+                },
+                error: function () {
+                    $('#convt_ratio').val('');
+                }
+            });
+        }
+    }
+
+    function fetchConversionRatioEdit() {
+        var pack_unit = $('#pack_unit_edit').val();
+        var consumption_unit = $('#consumtion_unit_edit').val();
+        var getConvertUrl =  $('#chkConvertR').val();
+        console.log(getConvertUrl + '/' + pack_unit + '/' + consumption_unit);
+         var csrf = $('#csrfhashresarvation').val();
+        if (pack_unit && consumption_unit) {
+            $.ajax({
+                url: getConvertUrl + '/' + pack_unit + '/' + consumption_unit,
+                type: "GET",
+                  data: {
+                        csrf_test_name: csrf
+                    },
+                success: function (response) {
+                    $('#convt_ratio_edit').val(response);
+                },
+                error: function () {
+                    $('#convt_ratio_edit').val('');
+                }
+            });
+        }
+    }
+
+
        // Initialize Select2
    
        // Bind change event AFTER initialization
        $('#consumtion_unit').on('change', function () {
            calculateCostPerUnit();
+           fetchConversionRatio();
        });
+       $('#pack_unit').on('change', function () {
+           calculateCostPerUnit();
+           fetchConversionRatio();
+       });
+
        $('#pack_size').on('change', function () {
            calculateCostPerUnit();
+            fetchConversionRatio();
        });
        $('#convt_ratio').on('change', function () {
            calculateCostPerUnit();
@@ -184,6 +241,11 @@ $(document).ready(function () {
     });
     $('#consumtion_unit_edit').on('change', function () {
         calculateCostPerUnit();
+        fetchConversionRatioEdit();
+    });
+    $('#pack_unit_edit').on('change', function () {
+        calculateCostPerUnit();
+        fetchConversionRatioEdit();
     });
     $('#convt_ratio_edit').on('change', function () {
         calculateCostPerUnit();
@@ -214,31 +276,4 @@ $(document).ready(function () {
         // Refresh the window when the modal is fully hidden
         window.location.reload();
     });
-});
-
-//Convertion ratio update when pack size and consumption unit change
-$(document).ready(function () {
-    function fetchConversionRatio() {
-        var pack_unit = $('#pack_unit').val();
-        var consumption_unit = $('#consumption_unit').val();
-        var getConvertUrl =  $('#chkConvertR').val();
-         var csrf = $('#csrfhashresarvation').val();
-        if (pack_unit && consumption_unit) {
-            $.ajax({
-                url: getConvertUrl + '/' + pack_unit + '/' + consumption_unit,
-                type: "GET",
-                  data: {
-                        csrf_test_name: csrf
-                    },
-                success: function (response) {
-                    $('#convt_ratio').val(response);
-                },
-                error: function () {
-                    $('#convt_ratio').val('');
-                }
-            });
-        }
-    }
-
-    $('#pack_unit, #consumption_unit').change(fetchConversionRatio);
 });

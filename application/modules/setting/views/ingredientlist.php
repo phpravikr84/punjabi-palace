@@ -25,7 +25,7 @@
                                 <?php echo form_hidden('id', (!empty($intinfo->id) ? $intinfo->id : null)); ?>
                                 <input type="hidden" name="getIngrItem" id="getIngrItem" value="<?php echo base_url('setting/ingradient/search_ingredient'); ?>"/>
                                 <input type="hidden" name="chkIngredient" id="chkIngredient" value="<?php echo base_url('setting/ingradient/check_ingredient_exist'); ?>"/>
-                                <input type="hidden" name="getConvertRatio" id="chkConvertR" value="<?php echo base_url('/setting/ingradient//get_conversion_ratio'); ?>" />
+                                <input type="hidden" name="getConvertRatio" id="chkConvertR" value="<?php echo base_url('setting/ingradient/get_conversion_ratio'); ?>" />
                                 <div class="row">
                                 <!-- Brands -- Added--> 
                                 <div class="col-md-12">
@@ -68,7 +68,7 @@
                                             <label><?php echo 'Price Per Purchase Unit'; ?> *</label>
                                             <input name="purchase_price" id="purchase_price" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="display:none;">
                                             <label><?php echo 'Cost Per Consumption Unit'; ?> *</label>
                                             <input name="cost_perunit" id="cost_perunit" class="form-control" type="text" placeholder="Cost Per Unit" value="">
                                         </div>
@@ -123,9 +123,9 @@
                                             echo form_dropdown('consumption_unit', $unitdropdown, (!empty($intinfo->id) ? $intinfo->id : null), 'class="form-control consumtion_unit" id="consumtion_unit"');
                                             ?>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="display:none;">
                                             <label><?php echo 'Conversation Ratio'; ?> *</label>
-                                            <input type="text" class="form-control" id="convt_ratio" />
+                                            <input type="text" name="convt_ratio" class="form-control" id="convt_ratio" />
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo display('status'); ?> *</label>
