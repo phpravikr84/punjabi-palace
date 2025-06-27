@@ -574,21 +574,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group" style="padding-top:15px;">
-                                <label class="control-label">Enable Variants</label><br>
+                        <div class="col-md-6 text-left" style="padding-top:15px;">
+                            
+                        </div>
+                        <div class="col-md-6" style="padding-top:15px;">
+                            <small><strong style="color: #ff784a; font-weight:650;">Note:</strong> Enable to attach variants with the food</small>
+                            <div class="form-group">
+                                <label class="control-label variant-act-toggle-swtch">Variants are <strong class="text-success">Enabled</strong></label><br>
                                 <label class="switch">
                                     <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" checked>
                                     <div class="slider"></div>
                                 </label>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
-                            <small>Note: Attach Ingredients with the Food On/Off</small>
-                        </div> -->
                     </div>
                     <!-- Variants Panel -->
-                    <ul class="list-group list-group-flush" style="margin-top:10px;">
+                    <!-- <ul class="list-group list-group-flush" style="margin-top:10px;">
                         <li class="list-group-item">
                                     <label class="switch ">
                             <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="default">
@@ -597,7 +598,7 @@
                             <strong>Recipe Mode (Off/On)</strong>
                         </li>
                     </ul>
-                    <input type="hidden" name="recipeMode" id="recipeMode">
+                    <input type="hidden" name="recipeMode" id="recipeMode"> -->
 
                     <div class="panel panel-default variantsPanel">
                         <div class="panel-heading" role="tab" id="headingVariants">
@@ -1205,6 +1206,25 @@ $(document).ready(function () {
                 });
             }
         });
+    });
+    let varSwtch = $("#recipe_mode_toggle");
+    let varSwtchLabel = $(".variant-act-toggle-swtch");
+    // Check if the switch is checked
+    if (varSwtch.is(':checked')) {
+        // If checked, show the recipe mode section
+        varSwtchLabel.html(`Variants are <strong class="text-success">Enabled</strong>`);
+    } else {
+        // If not checked, hide the recipe mode section
+        varSwtchLabel.html(`Variants are <strong class="text-danger">Disabled</strong>`);
+    }
+    varSwtch.on('change', function () {
+        if ($(this).is(':checked')) {
+            // If checked, show the recipe mode section
+            varSwtchLabel.html(`Variants are <strong class="text-success">Enabled</strong>`);
+        } else {
+            // If not checked, hide the recipe mode section
+            varSwtchLabel.html(`Variants are <strong class="text-danger">Disabled</strong>`);
+        }
     });
 });
 </script>
