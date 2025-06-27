@@ -8,6 +8,7 @@ $(document).ready(function () {
     submitBtn.prop('disabled', false); // enable submit
     open_balance_div.hide(); // Hide open balance div by default
     open_balance_date_div.hide(); // Hide open balance date div by default
+    fetchConversionRatioEdit();
     function initAutocomplete(element) {
         element.autocomplete({
             source: function (request, response) {
@@ -126,7 +127,7 @@ $(document).ready(function () {
             }
 
             if (!convtRatio || isNaN(convtRatio) || convtRatio === 0) {
-                alert('Invalid conversion ratio');
+                //alert('Invalid conversion ratio');
                 $('#cost_perunit').val('');
                 return;
             }
@@ -161,14 +162,70 @@ $(document).ready(function () {
         }
     }
 
+
+    //Get Convertion Ratio
+    function fetchConversionRatio() {
+        var pack_unit = $('#pack_unit').val();
+        var consumption_unit = $('#consumtion_unit').val();
+        var getConvertUrl =  $('#chkConvertR').val();
+        console.log(getConvertUrl + '/' + pack_unit + '/' + consumption_unit);
+         var csrf = $('#csrfhashresarvation').val();
+        if (pack_unit && consumption_unit) {
+            $.ajax({
+                url: getConvertUrl + '/' + pack_unit + '/' + consumption_unit,
+                type: "GET",
+                  data: {
+                        csrf_test_name: csrf
+                    },
+                success: function (response) {
+                    $('#convt_ratio').val(response);
+                },
+                error: function () {
+                    $('#convt_ratio').val('');
+                }
+            });
+        }
+    }
+
+    function fetchConversionRatioEdit() {
+        var pack_unit = $('#pack_unit_edit').val();
+        var consumption_unit = $('#consumtion_unit_edit').val();
+        var getConvertUrl =  $('#chkConvertR').val();
+        console.log(getConvertUrl + '/' + pack_unit + '/' + consumption_unit);
+         var csrf = $('#csrfhashresarvation').val();
+        if (pack_unit && consumption_unit) {
+            $.ajax({
+                url: getConvertUrl + '/' + pack_unit + '/' + consumption_unit,
+                type: "GET",
+                  data: {
+                        csrf_test_name: csrf
+                    },
+                success: function (response) {
+                    $('#convt_ratio_edit').val(response);
+                },
+                error: function () {
+                    $('#convt_ratio_edit').val('');
+                }
+            });
+        }
+    }
+
+
        // Initialize Select2
    
        // Bind change event AFTER initialization
        $('#consumtion_unit').on('change', function () {
            calculateCostPerUnit();
+           fetchConversionRatio();
        });
+       $('#pack_unit').on('change', function () {
+           calculateCostPerUnit();
+           fetchConversionRatio();
+       });
+
        $('#pack_size').on('change', function () {
            calculateCostPerUnit();
+            fetchConversionRatio();
        });
        $('#convt_ratio').on('change', function () {
            calculateCostPerUnit();
@@ -184,6 +241,11 @@ $(document).ready(function () {
     });
     $('#consumtion_unit_edit').on('change', function () {
         calculateCostPerUnit();
+        fetchConversionRatioEdit();
+    });
+    $('#pack_unit_edit').on('change', function () {
+        calculateCostPerUnit();
+        fetchConversionRatioEdit();
     });
     $('#convt_ratio_edit').on('change', function () {
         calculateCostPerUnit();
@@ -216,29 +278,72 @@ $(document).ready(function () {
     });
 });
 
-//Convertion ratio update when pack size and consumption unit change
-$(document).ready(function () {
-    function fetchConversionRatio() {
-        var pack_unit = $('#pack_unit').val();
-        var consumption_unit = $('#consumption_unit').val();
-        var getConvertUrl =  $('#chkConvertR').val();
-         var csrf = $('#csrfhashresarvation').val();
-        if (pack_unit && consumption_unit) {
-            $.ajax({
-                url: getConvertUrl + '/' + pack_unit + '/' + consumption_unit,
-                type: "GET",
-                  data: {
-                        csrf_test_name: csrf
-                    },
-                success: function (response) {
-                    $('#convt_ratio').val(response);
-                },
-                error: function () {
-                    $('#convt_ratio').val('');
-                }
-            });
-        }
+
+// Form validation js
+$(document).ready(function() {
+    // Include SweetAlert2 CDN
+    if (!window.Swal) {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+        document.head.appendChild(script);
     }
 
-    $('#pack_unit, #consumption_unit').change(fetchConversionRatio);
+    // Handle form submission
+    $('form').on('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        
+        var form = $(this);
+        var formData = form.serialize();
+        var actionUrl = form.attr('action');
+
+        $.ajax({
+            url: actionUrl,
+            type: 'POST',
+            data: formData,
+            dataType: 'json', // Expect JSON response
+            success: function(response) {
+                if (response.status === 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            //window.location.href = base_url + 'setting/ingradient/index';
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    // Show validation errors
+                    let errorMessage = '<ul>';
+                    if (response.errors) {
+                        $.each(response.errors, function(field, error) {
+                            errorMessage += '<li>' + error + '</li>';
+                        });
+                    } else {
+                        errorMessage += '<li>' + response.message + '</li>';
+                    }
+                    errorMessage += '</ul>';
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        html: errorMessage,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An unexpected error occurred. Please try again.',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
+
+    
 });

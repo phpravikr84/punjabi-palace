@@ -52,7 +52,7 @@
                                 <input name="purchase_price" id="purchase_price_edit" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="<?php echo (!empty($intinfo->purchase_price) ? $intinfo->purchase_price : '') ?>">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" style="display:none;">
                                 <label><?php echo 'Cost Per Unit'; ?> *</label>
                                 <input name="cost_perunit" id="cost_perunit_edit" class="form-control" type="text" placeholder="Cost Per Unit" value="<?php echo (!empty($intinfo->cost_perunit) ? $intinfo->cost_perunit : '') ?>">
                             </div>
@@ -78,7 +78,7 @@
                                 <?php
                                 $unit_with_blank = ['' => '-- Select --'] + $unitdropdown;
                                 if (empty($categories)) { $categories = array('' => '--Select--'); }
-                                echo form_dropdown('pack_unit', $unitdropdown, (!empty($intinfo->pack_unit) ? $intinfo->pack_unit : null), 'class="form-control pack_unit" id="pack_unit"');
+                                echo form_dropdown('pack_unit', $unitdropdown, (!empty($intinfo->pack_unit) ? $intinfo->pack_unit : null), 'class="form-control pack_unit" id="pack_unit_edit"');
                                 ?>
                             </div>
                             <div class="form-group">
@@ -88,15 +88,9 @@
                                 ?>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" style="display:none;">
                                 <label><?php echo 'Conversation Ratio'; ?> *</label>
-                                <select name="convt_ratio" class="form-control" id="convt_ratio_edit">
-                                    <option value="1000" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '1000') ? 'selected' : ''; ?>>1000</option>
-                                    <option value="100" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '100') ? 'selected' : ''; ?>>100</option>
-                                    <option value="12" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '12') ? 'selected' : ''; ?>>12</option>
-                                    <option value="10" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '10') ? 'selected' : ''; ?>>10</option>
-                                    <option value="1" <?php echo (!empty($intinfo->convt_ratio) && $intinfo->convt_ratio == '1') ? 'selected' : ''; ?>>1</option>
-                                </select>
+                                <input type="text" name="convt_ratio" class="form-control" id="convt_ratio_edit"  />
                             </div>
 
                             <div class="form-group">

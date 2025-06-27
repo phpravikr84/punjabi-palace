@@ -237,5 +237,19 @@ class Ingradient_model extends CI_Model {
 			->get()
 			->result();
 	}
+
+	public function get_conversion_ratio($primary_uom_id, $secondary_uom_id) {
+        $this->db->select('conversion_ratio');
+        $this->db->from('unit_conversion');
+        $this->db->where('primary_uom_id', $primary_uom_id);
+        $this->db->where('secondary_uom_id', $secondary_uom_id);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->conversion_ratio;
+        } else {
+            return null;
+        }
+    }
 		
 }

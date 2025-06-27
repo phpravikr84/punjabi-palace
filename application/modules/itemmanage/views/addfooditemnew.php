@@ -588,6 +588,17 @@
                         </div> -->
                     </div>
                     <!-- Variants Panel -->
+                    <ul class="list-group list-group-flush" style="margin-top:10px;">
+                        <li class="list-group-item">
+                                    <label class="switch ">
+                            <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="default">
+                            <span class="slider round"></span>
+                            </label>
+                            <strong>Recipe Mode (Off/On)</strong>
+                        </li>
+                    </ul>
+                    <input type="hidden" name="recipeMode" id="recipeMode">
+
                     <div class="panel panel-default variantsPanel">
                         <div class="panel-heading" role="tab" id="headingVariants">
                             <h5 class="panel-title">
