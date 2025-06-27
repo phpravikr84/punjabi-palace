@@ -46,7 +46,12 @@
   transform: translateX(20px);
 }
 </style>
-
+<?php 
+// echo "<pre>";
+// print_r($productinfo);
+// echo "</pre>"; 
+// echo "variants: ".$productinfo['variants'][0]->variantName;
+?>
 <div class="row">
     <!-- <pre>
         <?php ##print_r($productinfo); ?>
@@ -583,7 +588,7 @@
                             <div class="form-group">
                                 <label class="control-label variant-act-toggle-swtch">Variants are <strong class="text-success">Enabled</strong></label><br>
                                 <label class="switch">
-                                    <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle">
+                                    <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" <?php if(isset($productinfo) && !empty($productinfo['ProductsID']) && (!empty($productinfo['recipes']))): ?> checked <?php else: ?>  <?php endif; ?>>
                                     <div class="slider"></div>
                                 </label>
                             </div>

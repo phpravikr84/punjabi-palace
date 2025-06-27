@@ -218,14 +218,14 @@ if (count($modifiers) > 0):
         <div class="panel panel-default" id="modifiersPanel_<?=$mv->id;?>">
             <div class="panel-heading" role="tab" id="headingModifiers_<?=$mv->id;?>">
                 <h5 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers_<?=$mv->id;?>" aria-expanded="<?=(($mk==0)?'true':'false')?>" aria-controls="collapseModifiers" class="accordion-plus-toggle <?=(($mk==0)?'':'collapsed')?>">
+                    <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==0)?'true':'false')?>" aria-controls="collapseModifiers" class="accordion-plus-toggle <?=(($modGroupQty==0)?'':'collapsed')?>">
                         <?=$mv->name;?>
                         <br />
-                        <small class="modifier-set-sub-heading" <?php if($mk==0): ?>style="display:block !important;"<?php endif; ?>>Select the items for adding them into the cart</small>
+                        <small class="modifier-set-sub-heading" <?php if($modGroupQty==0): ?>style="display:block !important;"<?php endif; ?>>Select the items for adding them into the cart</small>
                     </a>
                 </h5>
             </div>
-            <div id="collapseModifiers_<?=$mv->id;?>" class="panel-collapse collapse <?=(($mk==0)?'in':'')?>" role="tabpanel" aria-labelledby="headingModifiers_<?=$mv->id;?>" aria-expanded="<?=(($mk==0)?'true':'false')?>" style="">
+            <div id="collapseModifiers_<?=$mv->id;?>" class="panel-collapse collapse <?=(($modGroupQty==0)?'in':'')?>" role="tabpanel" aria-labelledby="headingModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==0)?'true':'false')?>" style="">
                 <div class="panel-body">
                     <div class="mt-3">
                         <table class="table table-bordered">
