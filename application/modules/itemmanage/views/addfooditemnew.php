@@ -24,8 +24,7 @@
     <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
     <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
         <div class="text-right mb-3">
-            <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100">
-            <input type="hidden" name="recipeMode" id="recipeMode">
+            <!-- <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100"> -->
             <button type="submit" class="btn btn-primary w-100">Save Item</button>
         </div>
         <!-- First Panel - Add Form -->
@@ -529,6 +528,17 @@
                         </div>
                     </div>
                     <!-- Variants Panel -->
+                    <ul class="list-group list-group-flush" style="margin-top:10px;">
+                        <li class="list-group-item">
+                                    <label class="switch ">
+                            <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="default">
+                            <span class="slider round"></span>
+                            </label>
+                            <strong>Recipe Mode (Off/On)</strong>
+                        </li>
+                    </ul>
+                    <input type="hidden" name="recipeMode" id="recipeMode">
+
                     <div class="panel panel-default variantsPanel">
                         <div class="panel-heading" role="tab" id="headingVariants">
                             <h5 class="panel-title">
