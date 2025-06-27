@@ -468,7 +468,7 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
         var itemDetails = JSON.parse(response);
         itemname = itemDetails.ProductName;
         sizeid = itemDetails.variantid;
-        varientname = itemDetails.variantName;
+        varientname = `${itemDetails.variantName} <br><small class="text-muted">Free Item</small>`;
         // Now append the HTML with the fetched details
         // $("#addinvoice").append(varientHtml);
         $("#addinvoice").append(varientHtml);

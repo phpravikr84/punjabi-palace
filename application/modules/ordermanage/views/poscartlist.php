@@ -273,14 +273,17 @@ if ($cart = $this->cart->contents()) { ?>
             <?php echo $item['price']; ?>
           </td>
           <td scope="row">
+           <?php if($itemprice!=0): ?>
             <a class="btn btn-danger btn-sm btnrightalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid'] ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'del')"><i class="fa fa-minus" aria-hidden="true"></i></a>
+            <?php endif; ?>
             <span id="productionsetting-<?php echo $item['pid'] . '-' . $item['sizeid'] ?>"> <?php echo $item['qty']; ?> </span>
+            <?php if($itemprice!=0): ?>
             <a class="btn btn-info btn-sm btnleftalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid'] ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'add')"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            <?php endif; ?>
           </td>
           <td width="">
-            <?php echo $itemprice - $mypdiscount; ?>
+            <?php echo $itemprice - $mypdiscount; ?> 
           </td>
-
           <td width="80"><a class="btn btn-danger btn-sm btnrightalign" onclick="removecart('<?php echo $item['rowid']; ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
           </td>
         </tr>

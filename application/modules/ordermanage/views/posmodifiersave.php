@@ -67,6 +67,7 @@ $itemtotal = 0;
 $pvat = 0;
 $multiplletax = array();
 $this->load->model('ordermanage/order_model',  'ordermodel');
+$cartItemQty=0;
 if ($cart = $this->cart->contents()):
     $i = 0;
     $totalamount = 0;
@@ -77,6 +78,7 @@ if ($cart = $this->cart->contents()):
     foreach ($cart as $item) {
         $iteminfo = $this->ordermodel->getiteminfo($item['pid']);
         $itemprice = $item['price'] * $item['qty'];
+        $cartItemQty = $item['qty'];
         //Fetching add-on prices
         $this->db->select('SUM(add_ons.price) AS mod_total_price');
         $this->db->from('add_ons');
@@ -226,11 +228,13 @@ $promo_query = $this->db->get();
 $promo_get_food_id = $promo_get_food_qty = 0;
 if ($promo_query->num_rows() > 0) {
     $promo_item = $promo_query->row();
-    if ($promo_item->end_date >= date('Y-m-d')) {
-        $promo_get_food_id = $promo_item->get_food_id; // The food ID that is part of the promo
-        $promo_get_food_qty = $promo_item->get_qty; // The quantity of the food item in the promo
-        echo '<input type="hidden" name="promo_item_id" id="promo_item_id_'.$pid.'" value="' . $promo_get_food_id . '">';
-        echo '<input type="hidden" name="promo_item_qty" id="promo_item_qty_'.$pid.'" value="' . $promo_get_food_qty . '">';
+    if ($promo_item->buy_qty == $cartItemQty) {
+        if ($promo_item->end_date >= date('Y-m-d')) {
+            $promo_get_food_id = $promo_item->get_food_id; // The food ID that is part of the promo
+            $promo_get_food_qty = $promo_item->get_qty; // The quantity of the food item in the promo
+            echo '<input type="hidden" name="promo_item_id" id="promo_item_id_'.$pid.'" value="' . $promo_get_food_id . '">';
+            echo '<input type="hidden" name="promo_item_qty" id="promo_item_qty_'.$pid.'" value="' . $promo_get_food_qty . '">';
+        }
     }
     // If there is an active promo, display the promo details
     // echo '<div class="alert alert-info">';
@@ -245,4 +249,5 @@ if ($promo_query->num_rows() > 0) {
     $promo_get_food_id = 0;
     $promo_get_food_qty = 0;
 }
+echo '<input type="hidden" name="cartItemQty" id="cartItemQty_'.$pid.'" value="' . $cartItemQty . '">';
 ?>

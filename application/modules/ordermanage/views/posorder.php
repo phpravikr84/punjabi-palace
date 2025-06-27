@@ -1214,12 +1214,8 @@ foreach ($scan as $file) {
                                             // echo "Query: ".$this->db->last_query();
                                             ?>
                                             <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
-                                            <?php if (count($modifiers) > 0): ?>
-                                              <br />
-                                              <a class="" id="cartModToggle_<?=$item['pid'];?>" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
-                                                <!-- <small class="modCheck" id="cartModToggle_<?= $item['pid']; ?>">Choose Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small> -->
-                                                
-                                                <?php
+                                            <?php 
+                                              if (count($modifiers) > 0):
                                                 $this->db->select('add_ons.add_on_name, add_ons.price');
                                                 $this->db->from('add_ons');
                                                 $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
@@ -1237,6 +1233,15 @@ foreach ($scan as $file) {
                                                 $this->db->where('cart_selected_modifiers.is_active', 1);
                                                 $q2 = $this->db->get();
                                                 $selectedFoodsForCart = $q2->result();
+                                            ?>
+                                              <br />
+                                              <a class="" id="cartModToggle_<?=$item['pid'];?>" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
+                                              <?php 
+                                              if($q1->num_rows() <= 0 || $q2->num_rows() <= 0):
+                                              ?>
+                                              <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;" id="cartModToggle_<?= $item['pid']; ?>">Choose Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
+                                              <?php endif; ?>
+                                                <?php
 
                                                 // echo $this->db->last_query();
                                                 // echo "<pre>";
@@ -1280,7 +1285,14 @@ foreach ($scan as $file) {
                                             <?php if ($currency->position == 2) {
                                               echo $currency->curr_icon;
                                             } ?></td>
-                                          <td scope="row"><a class="btn btn-danger btn-sm btnrightalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'del')"><i class="fa fa-minus" aria-hidden="true"></i></a> <span id="productionsetting-<?php echo $item['pid'] . '-' . $item['sizeid'] ?>"> <?php echo $item['qty']; ?> </span> <a class="btn btn-info btn-sm btnleftalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'add')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
+                                          <td scope="row">
+                                            <?php if($itemprice!=0): ?>
+                                            <a class="btn btn-danger btn-sm btnrightalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'del')"><i class="fa fa-minus" aria-hidden="true"></i></a> 
+                                            <?php endif; ?>
+                                            <span id="productionsetting-<?php echo $item['pid'] . '-' . $item['sizeid'] ?>"> <?php echo $item['qty']; ?> </span> 
+                                            <?php if($itemprice!=0): ?>
+                                            <a class="btn btn-info btn-sm btnleftalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'add')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
+                                            <?php endif; ?>
                                           <td width=""><?php if ($currency->position == 1) {
                                                           echo $currency->curr_icon;
                                                         } ?>

@@ -2,6 +2,51 @@
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
 <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+</style>
+
 <div class="row">
     <!-- <pre>
         <?php ##print_r($productinfo); ?>
@@ -24,7 +69,7 @@
     <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
     <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
         <div class="text-right mb-3">
-            <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100">
+            <!-- <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100"> -->
             <input type="hidden" name="recipeMode" id="recipeMode">
             <button type="submit" class="btn btn-primary w-100">Save Item</button>
         </div>
@@ -527,6 +572,20 @@
                                     </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" style="padding-top:15px;">
+                                <label class="control-label">Enable Variants</label><br>
+                                <label class="switch">
+                                    <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" checked>
+                                    <div class="slider"></div>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <small>Note: Attach Ingredients with the Food On/Off</small>
+                        </div> -->
                     </div>
                     <!-- Variants Panel -->
                     <div class="panel panel-default variantsPanel">
@@ -1062,8 +1121,6 @@ $(document).ready(function () {
     }
 });
 
-</script>
-<script>
 $(document).ready(function () {
     // Define baseurl
     var baseurl = '<?php echo base_url(); ?>';

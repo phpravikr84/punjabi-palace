@@ -44,7 +44,7 @@ if ($cart = $this->cart->contents()){
             </td>
             <td>
                 <input name="sizeid" type="hidden" id="sizeid_<?php echo "1"; ?>" value="<?php echo $selectedVarientId; ?>" />
-                <input name="size" type="hidden" value="<?php echo $selectedVarientName; ?>" id="size_<?php echo 1; ?>" />
+                <input name="size" type="hidden" value="<?php echo htmlentities($selectedVarientName); ?>" id="size_<?php echo 1; ?>" />
                 <input name="catid" type="hidden" value="<?php echo (!empty($catid) ? $catid : null) ?>" id="catid" />
                 <input name="totalvarient" type="hidden" value="<?php echo $totalvarient; ?>" id="totalvarient" />
                 <input name="customqty" type="hidden" value="<?php echo $selectedItemQty; ?>" id="customqty" />
