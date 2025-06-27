@@ -413,7 +413,7 @@
 							echo 'Edit Category';
 							break;
 						case 'edit_food':
-							echo 'Edit Food';
+							echo 'Edit Item';
 							break;
 						case 'edit_modifiers':
 							echo 'Edit Modifiers';

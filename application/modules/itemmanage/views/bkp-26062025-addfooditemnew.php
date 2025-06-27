@@ -1,37 +1,23 @@
+
 <script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_new_script.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
-<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 <div class="row">
     <!-- <pre>
         <?php ##print_r($productinfo); ?>
     </pre> -->
-    <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_food/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Manage Item'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_food/create_new'); ?>" class="btn btn-success"><?php echo 'Create Item'; ?></a>
-        </div>
-    </div>
-  
-    <?php
-        $action_url = isset($id) && $id ? 'itemmanage/item_food/create_new/' . $id : 'itemmanage/item_food/create_new';
-        echo form_open_multipart($action_url, ['id' => 'addFoodItemForm']);
-    ?>
+    <?php echo form_open_multipart("itemmanage/item_food/create_new") ?>
     <?php echo form_hidden('id',$this->session->userdata('id'));?>
     <?php echo form_hidden('ProductsID', (isset($productinfo) && !empty($productinfo['ProductsID'])?$productinfo['ProductsID']:null)) ?>
     <input name="bigimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['bigthumb'])?$productinfo['bigthumb']:null) ?>" />
     <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
     <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
         <div class="text-right mb-3">
-            <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100">
-            <input type="hidden" name="recipeMode" id="recipeMode">
-            <button type="submit" class="btn btn-primary w-100">Save Item</button>
+            <button type="submit" class="btn btn-primary w-100">Save Food Item</button>
         </div>
         <!-- First Panel - Add Form -->
         <div class="col-md-5">
             <div class="card">
-                <div class="card-header">Add Item</div>
+                <div class="card-header">Add Food Item</div>
                 <div class="card-body form-panel">
                     <div class="row">
                         <div class="col-md-6">
@@ -59,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Name</label>
+                                <label>Food Name</label>
                                 <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (isset($productinfo) && !empty($productinfo['ProductName'])?$productinfo['ProductName']:null) ?>" required="">
                             </div>
                         </div>
@@ -93,7 +79,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Type</label>
+                                <label>Food Type</label>
                                 <div class="d-flex gap-4">
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" name="food_type" value="1" id="veg"
@@ -423,7 +409,7 @@
         <!-- Second Panel - Vertical Tabs -->
         <div class="col-md-7">
             <div class="card">
-                <div class="card-header">Item Details</div>
+                <div class="card-header">Food Details</div>
                 <div class="card-body">
                     <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
                     <!-- Categories Panel -->
@@ -932,86 +918,86 @@
 }
 </style>
 <script type="text/javascript">
-//     $(document).on("click", "#addfooditemsubmit", (e)=>{
-//     e.preventDefault();
-//     // alert("Form Submission Prevented " + $("#addfooditemsubmit").closest("form"));
-//     // return false;
-//     const
-//       $foodname = $("#foodname"),
-//       $regPrice = $("#regPrice"),
-//       $takeawayPrice = $("#takeawayPrice"),
-//       $uberEatsPrice = $("#uberEatsPrice"),
-//       $webOrderPrice = $("#webOrderPrice"),
-//       $addfooditemerr = $("#addfooditemerr");
-//     var
-//       foodname = $foodname.val(),
-//       regPrice = $regPrice.val(),
-//       takeawayPrice = $takeawayPrice.val(),
-//       uberEatsPrice = $uberEatsPrice.val(),
-//       webOrderPrice = $webOrderPrice.val();
-//     $addfooditemerr.text("");
-//     $addfooditemerr.hide();
-//     if (foodname == "") {
-//       $addfooditemerr.text("* Food Name cannot be left blank");
-//       $addfooditemerr.show();
-//       $foodname.focus();
-//       return false;
-//     }
-//     if (regPrice == "") {
-//       $addfooditemerr.text("* Food regular price cannot be left blank");
-//       $addfooditemerr.show();
-//       $regPrice.focus();
-//       return false;
-//     } else {
-//       if (isNaN(regPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $regPrice.focus();
-//         return false;
-//       }
-//     }
-//     if (takeawayPrice == "") {
-//       $addfooditemerr.text("* Food takeaway price cannot be left blank");
-//       $addfooditemerr.show();
-//       $takeawayPrice.focus();
-//       return false;
-//     } else {
-//       if (isNaN(takeawayPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $takeawayPrice.focus();
-//         return false;
-//       }
-//     }
-//     if (uberEatsPrice == "") {
-//       $addfooditemerr.text("* Food uber eats price cannot be left blank");
-//       $addfooditemerr.show();
-//       $uberEatsPrice.focus();
-//       return false;
-//     }  else {
-//       if (isNaN(uberEatsPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $uberEatsPrice.focus();
-//         return false;
-//       }
-//     }
-//     if (webOrderPrice == "") {
-//       $addfooditemerr.text("* Food web order price cannot be left blank");
-//       $addfooditemerr.show();
-//       $webOrderPrice.focus();
-//       return false;
-//     } else {
-//       if (isNaN(webOrderPrice)) {
-//         $addfooditemerr.text("* Please enter a valid amount");
-//         $addfooditemerr.show();
-//         $webOrderPrice.focus();
-//         return false;
-//       }
-//     }
-//     $("#addfooditemsubmit").closest("form").submit();
-//     // return false;
-//   });
+    $(document).on("click", "#addfooditemsubmit", (e)=>{
+    e.preventDefault();
+    // alert("Form Submission Prevented " + $("#addfooditemsubmit").closest("form"));
+    // return false;
+    const
+      $foodname = $("#foodname"),
+      $regPrice = $("#regPrice"),
+      $takeawayPrice = $("#takeawayPrice"),
+      $uberEatsPrice = $("#uberEatsPrice"),
+      $webOrderPrice = $("#webOrderPrice"),
+      $addfooditemerr = $("#addfooditemerr");
+    var
+      foodname = $foodname.val(),
+      regPrice = $regPrice.val(),
+      takeawayPrice = $takeawayPrice.val(),
+      uberEatsPrice = $uberEatsPrice.val(),
+      webOrderPrice = $webOrderPrice.val();
+    $addfooditemerr.text("");
+    $addfooditemerr.hide();
+    if (foodname == "") {
+      $addfooditemerr.text("* Food Name cannot be left blank");
+      $addfooditemerr.show();
+      $foodname.focus();
+      return false;
+    }
+    if (regPrice == "") {
+      $addfooditemerr.text("* Food regular price cannot be left blank");
+      $addfooditemerr.show();
+      $regPrice.focus();
+      return false;
+    } else {
+      if (isNaN(regPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $regPrice.focus();
+        return false;
+      }
+    }
+    if (takeawayPrice == "") {
+      $addfooditemerr.text("* Food takeaway price cannot be left blank");
+      $addfooditemerr.show();
+      $takeawayPrice.focus();
+      return false;
+    } else {
+      if (isNaN(takeawayPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $takeawayPrice.focus();
+        return false;
+      }
+    }
+    if (uberEatsPrice == "") {
+      $addfooditemerr.text("* Food uber eats price cannot be left blank");
+      $addfooditemerr.show();
+      $uberEatsPrice.focus();
+      return false;
+    }  else {
+      if (isNaN(uberEatsPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $uberEatsPrice.focus();
+        return false;
+      }
+    }
+    if (webOrderPrice == "") {
+      $addfooditemerr.text("* Food web order price cannot be left blank");
+      $addfooditemerr.show();
+      $webOrderPrice.focus();
+      return false;
+    } else {
+      if (isNaN(webOrderPrice)) {
+        $addfooditemerr.text("* Please enter a valid amount");
+        $addfooditemerr.show();
+        $webOrderPrice.focus();
+        return false;
+      }
+    }
+    $("#addfooditemsubmit").closest("form").submit();
+    // return false;
+  });
 document.getElementById("isoffer").addEventListener("change", function () {
     //document.getElementById("offeractive").classList.toggle("d-none", !this.checked);
 
@@ -1023,124 +1009,6 @@ document.getElementById("isoffer").addEventListener("change", function () {
     }
 });
 </script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-<script>
-$(document).ready(function () {
-    // Initial setup
-    handleRecipeVisibility();
-
-    // On toggle change
-    $('#recipe_mode_toggle').change(function () {
-        handleRecipeVisibility();
-    });
-
-    // On cuisine type change
-    $('select[name="cusine_type"]').change(function () {
-        handleRecipeVisibility();
-    });
-
-    function handleRecipeVisibility() {
-        const isToggleOn = $('#recipe_mode_toggle').prop('checked');
-        const cuisineType = $('select[name="cusine_type"]').val();
-        $('#recipeMode').val('1');
-
-        if (isToggleOn && cuisineType !== '3') {
-            $('#recipe_mode, #recipeBox, #addMore').show();
-            $('#recipeMode').val('1');
-            $('.variantsPanel').show();
-            $('.productprices').find('input').prop('disabled', true).end().hide();
-            $('#serving_weightage').hide();
-        } else {
-            $('#recipe_mode, #recipeBox, #addMore').hide();
-            $('.variantsPanel').hide();
-            $('#recipeMode').val('0');
-            $('.productprices').find('input').prop('disabled', false).end().show();
-            $('#serving_weightage').show();
-        }
-    }
-});
-
-</script>
-<script>
-$(document).ready(function () {
-    // Define baseurl
-    var baseurl = '<?php echo base_url(); ?>';
-
-    // Handle form submission
-    $('#addFoodItemForm').on('submit', function (e) {
-        e.preventDefault(); // Prevent default form submission
-
-        // Get form data
-        var formData = new FormData(this);
-
-        // Debugging: Log form submission
-        console.log('Form submitted to: ' + $(this).attr('action'));
-
-        // Perform AJAX submission
-        $.ajax({
-            url: $(this).attr('action'),
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log('Response received: ', response); // Debugging: Log raw response
-                try {
-                    var result = JSON.parse(response);
-                    console.log('Parsed result: ', result); // Debugging: Log parsed result
-
-                    if (result.status === 'success') {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: result.message || 'Food item saved successfully!',
-                            confirmButtonText: 'OK'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = baseurl + 'itemmanage/item_food/index';
-                            }
-                        });
-                    } else {
-                        // Handle server-side validation errors
-                        var errorMessage = result.message || 'Please correct the form errors.';
-                        if (result.errors && result.errors.length > 0) {
-                            errorMessage = result.errors.map(function (err) {
-                                return err.message;
-                            }).join('\n');
-                        }
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Validation Error',
-                            text: errorMessage,
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                } catch (e) {
-                    console.error('Error parsing response: ', e); // Debugging: Log parsing error
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'An unexpected error occurred. Please try again.',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error('AJAX error: ', status, error); // Debugging: Log AJAX error
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'An error occurred while submitting the form: ' + error,
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
-    });
-});
-</script>
-
 <style>
     .form-group {
     margin-bottom: 12px;
