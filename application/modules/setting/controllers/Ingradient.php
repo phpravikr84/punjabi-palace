@@ -156,113 +156,301 @@ class Ingradient extends MX_Controller {
  
     // }
 
-	public function create($id = null)
-	{
-		$this->permission->method('setting', ($id ? 'update' : 'create'))->redirect();
+	// public function create($id = null)
+	// {
+	// 	$this->permission->method('setting', ($id ? 'update' : 'create'))->redirect();
 
-		$data['title'] = $id ? display('update_ingredient') : display('add_ingredient');
+	// 	$data['title'] = $id ? display('update_ingredient') : display('add_ingredient');
 
-		$this->form_validation->set_rules('ingredient_name', display('ingredient_name'), 'required|max_length[50]');
-		$this->form_validation->set_rules('unitid', 'Purchase Unit', 'required');
-		$this->form_validation->set_rules('consumption_unit', 'Consumption Unit', 'required');
-		$this->form_validation->set_rules('is_active', display('is_active'), 'required');
+	// 	$this->form_validation->set_rules('ingredient_name', display('ingredient_name'), 'required|max_length[50]');
+	// 	$this->form_validation->set_rules('pack_size', 'Pack Size', 'required');
+	// 	$this->form_validation->set_rules('unitid', 'Purchase Unit', 'required');
+	// 	$this->form_validation->set_rules('consumption_unit', 'Consumption Unit', 'required');
+	// 	$this->form_validation->set_rules('pack_unit', 'Pack Unit', 'required');
+	// 	$this->form_validation->set_rules('is_active', display('is_active'), 'required');
 
-		$postData = [
-			'id'                => $this->input->post('id'),
-			'ingredient_name'   => $this->input->post('ingredient_name', true),
-			'purchase_price'    => $this->input->post('purchase_price', true),
-			'cost_perunit'      => $this->input->post('cost_perunit', true),
-			'min_stock'         => $this->input->post('min_stock', true),
-			'uom_id'     		=> $this->input->post('unitid', true),
-			'consumption_unit'  => $this->input->post('consumption_unit', true),
-			'convt_ratio'       => $this->input->post('convt_ratio', true),
-			'is_active'         => $this->input->post('is_active', true),
-			'brand_id'        => $this->input->post('brand_id', true),
-			'pack_unit'         => $this->input->post('pack_unit', true),
-			'pack_size'			=> $this->input->post('pack_size', true),
-		];
+	// 	$postData = [
+	// 		'id'                => $this->input->post('id'),
+	// 		'ingredient_name'   => $this->input->post('ingredient_name', true),
+	// 		'purchase_price'    => $this->input->post('purchase_price', true),
+	// 		'cost_perunit'      => $this->input->post('cost_perunit', true),
+	// 		'min_stock'         => $this->input->post('min_stock', true),
+	// 		'uom_id'     		=> $this->input->post('unitid', true),
+	// 		'consumption_unit'  => $this->input->post('consumption_unit', true),
+	// 		'convt_ratio'       => $this->input->post('convt_ratio', true),
+	// 		'is_active'         => $this->input->post('is_active', true),
+	// 		'brand_id'        => $this->input->post('brand_id', true),
+	// 		'pack_unit'         => $this->input->post('pack_unit', true),
+	// 		'pack_size'			=> $this->input->post('pack_size', true),
+	// 	];
 
-		$data['intinfo'] = "";
-		$data['units'] = (object) $postData;
+	// 	$data['intinfo'] = "";
+	// 	$data['units'] = (object) $postData;
 
 
-		if ($this->form_validation->run()) {
-			if (empty($postData['id'])) {
-				$logData = [
-					'action_page' => "Ingredient List",
-					'action_done' => "Insert Data",
-					'remarks'     => "New Ingredient Created",
-					'user_name'   => $this->session->userdata('fullname'),
-					'entry_date'  => date('Y-m-d H:i:s'),
-				];
+	// 	if ($this->form_validation->run()) {
+	// 		if (empty($postData['id'])) {
+	// 			$logData = [
+	// 				'action_page' => "Ingredient List",
+	// 				'action_done' => "Insert Data",
+	// 				'remarks'     => "New Ingredient Created",
+	// 				'user_name'   => $this->session->userdata('fullname'),
+	// 				'entry_date'  => date('Y-m-d H:i:s'),
+	// 			];
 
-				if ($this->ingradient_model->unit_ingredient($postData)) {
-					$ingredient_id = $this->db->insert_id();
-					$this->logs_model->log_recorded($logData);
-					$this->_update_cache();
-					//Check if opening balance and opening date is in post
-					$opening_balance = $this->input->post('opening_balance', true);
-					$opening_date = $this->input->post('opening_date', true);
+	// 			if ($this->ingradient_model->unit_ingredient($postData)) {
+	// 				$ingredient_id = $this->db->insert_id();
+	// 				$this->logs_model->log_recorded($logData);
+	// 				$this->_update_cache();
+	// 				//Check if opening balance and opening date is in post
+	// 				$opening_balance = $this->input->post('opening_balance', true);
+	// 				$opening_date = $this->input->post('opening_date', true);
 
-					if (!empty($opening_balance) && !empty($opening_date)) {
-						//Update also stock in ingredients table as opening balance
-						$opening_balance = get_quantity_consumption_unit($ingredient_id, $this->input->post('opening_balance', true));
-						$openstockData = array(
-							'ingredient_name'    => $this->input->post('ingredient_name', true),
-							'ingredient_id'       => $ingredient_id,
-							'purchase_price'     => $this->input->post('purchase_price', true),
-							//'opening_balance'    => $this->input->post('opening_balance', true),
-							'opening_balance'    => $opening_balance,
-							'opening_date'       => date('Y-m-d', strtotime($this->input->post('opening_date', true))), // fixed typo & brackets
-							'is_active'          => 1
-						);
+	// 				if (!empty($opening_balance) && !empty($opening_date)) {
+	// 					//Update also stock in ingredients table as opening balance
+	// 					$opening_balance = get_quantity_consumption_unit($ingredient_id, $this->input->post('opening_balance', true));
+	// 					$openstockData = array(
+	// 						'ingredient_name'    => $this->input->post('ingredient_name', true),
+	// 						'ingredient_id'       => $ingredient_id,
+	// 						'purchase_price'     => $this->input->post('purchase_price', true),
+	// 						//'opening_balance'    => $this->input->post('opening_balance', true),
+	// 						'opening_balance'    => $opening_balance,
+	// 						'opening_date'       => date('Y-m-d', strtotime($this->input->post('opening_date', true))), // fixed typo & brackets
+	// 						'is_active'          => 1
+	// 					);
 						
-						$this->ingradient_model->ingredient_opening_stock($openstockData);
+	// 					$this->ingradient_model->ingredient_opening_stock($openstockData);
 
-						//Update stock in ingredients table
-						$this->ingradient_model->update_ingredient(array(
-							'id' => $ingredient_id,
-							'stock_qty' => $opening_balance,
-						));
+	// 					//Update stock in ingredients table
+	// 					$this->ingradient_model->update_ingredient(array(
+	// 						'id' => $ingredient_id,
+	// 						'stock_qty' => $opening_balance,
+	// 					));
 						
-					}
+	// 				}
 
 					
 
-					$this->session->set_flashdata('message', display('save_successfully'));
-				} else {
-					$this->session->set_flashdata('exception', display('please_try_again'));
-				}
-			} else {
-				$logData = [
-					'action_page' => "Ingredient List",
-					'action_done' => "Update Data",
-					'remarks'     => "Ingredient Updated",
-					'user_name'   => $this->session->userdata('fullname'),
-					'entry_date'  => date('Y-m-d H:i:s'),
-				];
+	// 				$this->session->set_flashdata('message', display('save_successfully'));
+	// 			} else {
+	// 				$this->session->set_flashdata('exception', display('please_try_again'));
+	// 			}
+	// 		} else {
+	// 			$logData = [
+	// 				'action_page' => "Ingredient List",
+	// 				'action_done' => "Update Data",
+	// 				'remarks'     => "Ingredient Updated",
+	// 				'user_name'   => $this->session->userdata('fullname'),
+	// 				'entry_date'  => date('Y-m-d H:i:s'),
+	// 			];
 
-				if ($this->ingradient_model->update_ingredient($postData)) {
-					$this->logs_model->log_recorded($logData);
-					$this->_update_cache();
-					$this->session->set_flashdata('message', display('update_successfully'));
-				} else {
-					$this->session->set_flashdata('exception', display('please_try_again'));
-				}
-			}
-			redirect("setting/ingradient/index");
-		} else {
-			if (!empty($id)) {
-				$data['intinfo'] = $this->ingradient_model->findById($id);
-			}
-					//Add brands list
-			$data['brands'] = $this->ingradient_model->get_all_brands();
+	// 			if ($this->ingradient_model->update_ingredient($postData)) {
+	// 				$this->logs_model->log_recorded($logData);
+	// 				$this->_update_cache();
+	// 				$this->session->set_flashdata('message', display('update_successfully'));
+	// 			} else {
+	// 				$this->session->set_flashdata('exception', display('please_try_again'));
+	// 			}
+	// 		}
+	// 		redirect("setting/ingradient/index");
+	// 	} else {
+	// 		if (!empty($id)) {
+	// 			$data['intinfo'] = $this->ingradient_model->findById($id);
+	// 		}
+	// 				//Add brands list
+	// 		$data['brands'] = $this->ingradient_model->get_all_brands();
 
-			$data['module'] = "setting";
-			$data['page'] = "ingredientlist";
-			echo Modules::run('template/layout', $data);
-		}
-	}
+	// 		$data['module'] = "setting";
+	// 		$data['page'] = "ingredientlist";
+	// 		echo Modules::run('template/layout', $data);
+	// 	}
+	// }
+
+	public function create($id = null)
+    {
+        $this->permission->method('setting', ($id ? 'update' : 'create'))->redirect();
+        
+        // Set JSON response header
+        if ($this->input->is_ajax_request()) {
+            header('Content-Type: application/json');
+        }
+
+        $data['title'] = $id ? display('update_ingredient') : display('add_ingredient');
+
+        $this->form_validation->set_rules('ingredient_name', display('ingredient_name'), 'required|max_length[50]');
+        $this->form_validation->set_rules('pack_size', 'Pack Size', 'required');
+        $this->form_validation->set_rules('unitid', 'Purchase Unit', 'required');
+        $this->form_validation->set_rules('consumption_unit', 'Consumption Unit', 'required');
+        $this->form_validation->set_rules('pack_unit', 'Pack Unit', 'required');
+        $this->form_validation->set_rules('is_active', display('is_active'), 'required');
+
+        $postData = [
+            'id'                => $this->input->post('id'),
+            'ingredient_name'   => $this->input->post('ingredient_name', true),
+            'purchase_price'    => $this->input->post('purchase_price', true),
+            'cost_perunit'      => $this->input->post('cost_perunit', true),
+            'min_stock'         => $this->input->post('min_stock', true),
+            'uom_id'            => $this->input->post('unitid', true),
+            'consumption_unit'  => $this->input->post('consumption_unit', true),
+            'convt_ratio'       => $this->input->post('convt_ratio', true),
+            'is_active'         => $this->input->post('is_active', true),
+            'brand_id'         => $this->input->post('brand_id', true),
+            'pack_unit'         => $this->input->post('pack_unit', true),
+            'pack_size'         => $this->input->post('pack_size', true),
+        ];
+
+        if ($this->form_validation->run()) {
+            if ($this->input->is_ajax_request()) {
+                if (empty($postData['id'])) {
+                    $logData = [
+                        'action_page' => "Ingredient List",
+                        'action_done' => "Insert Data",
+                        'remarks'     => "New Ingredient Created",
+                        'user_name'   => $this->session->userdata('fullname'),
+                        'entry_date'  => date('Y-m-d H:i:s'),
+                    ];
+
+                    if ($this->ingradient_model->unit_ingredient($postData)) {
+                        $ingredient_id = $this->db->insert_id();
+                        $this->logs_model->log_recorded($logData);
+                        $this->_update_cache();
+                        
+                        $opening_balance = $this->input->post('opening_balance', true);
+                        $opening_date = $this->input->post('opening_date', true);
+
+                        if (!empty($opening_balance) && !empty($opening_date)) {
+                            $opening_balance = get_quantity_consumption_unit($ingredient_id, $this->input->post('opening_balance', true));
+                            $openstockData = array(
+                                'ingredient_name'    => $this->input->post('ingredient_name', true),
+                                'ingredient_id'      => $ingredient_id,
+                                'purchase_price'     => $this->input->post('purchase_price', true),
+                                'opening_balance'    => $opening_balance,
+                                'opening_date'       => date('Y-m-d', strtotime($this->input->post('opening_date', true))),
+                                'is_active'          => 1
+                            );
+                            
+                            $this->ingradient_model->ingredient_opening_stock($openstockData);
+                            $this->ingradient_model->update_ingredient(array(
+                                'id' => $ingredient_id,
+                                'stock_qty' => $opening_balance,
+                            ));
+                        }
+
+                        echo json_encode([
+                            'status' => 'success',
+                            'message' => display('save_successfully')
+                        ]);
+                        return;
+                    } else {
+                        echo json_encode([
+                            'status' => 'error',
+                            'message' => display('please_try_again')
+                        ]);
+                        return;
+                    }
+                } else {
+                    $logData = [
+                        'action_page' => "Ingredient List",
+                        'action_done' => "Update Data",
+                        'remarks'     => "Ingredient Updated",
+                        'user_name'   => $this->session->userdata('fullname'),
+                        'entry_date'  => date('Y-m-d H:i:s'),
+                    ];
+
+                    if ($this->ingradient_model->update_ingredient($postData)) {
+                        $this->logs_model->log_recorded($logData);
+                        $this->_update_cache();
+                        echo json_encode([
+                            'status' => 'success',
+                            'message' => display('update_successfully')
+                        ]);
+                        return;
+                    } else {
+                        echo json_encode([
+                            'status' => 'error',
+                            'message' => display('please_try_again')
+                        ]);
+                        return;
+                    }
+                }
+            } else {
+                // Handle non-AJAX request as before
+                if (empty($postData['id'])) {
+                    $logData = [
+                        'action_page' => "Ingredient List",
+                        'action_done' => "Insert Data",
+                        'remarks'     => "New Ingredient Created",
+                        'user_name'   => $this->session->userdata('fullname'),
+                        'entry_date'  => date('Y-m-d H:i:s'),
+                    ];
+
+                    if ($this->ingradient_model->unit_ingredient($postData)) {
+                        $ingredient_id = $this->db->insert_id();
+                        $this->logs_model->log_recorded($logData);
+                        $this->_update_cache();
+                        $opening_balance = $this->input->post('opening_balance', true);
+                        $opening_date = $this->input->post('opening_date', true);
+
+                        if (!empty($opening_balance) && !empty($opening_date)) {
+                            $opening_balance = get_quantity_consumption_unit($ingredient_id, $this->input->post('opening_balance', true));
+                            $openstockData = array(
+                                'ingredient_name'    => $this->input->post('ingredient_name', true),
+                                'ingredient_id'      => $ingredient_id,
+                                'purchase_price'     => $this->input->post('purchase_price', true),
+                                'opening_balance'    => $opening_balance,
+                                'opening_date'       => date('Y-m-d', strtotime($this->input->post('opening_date', true))),
+                                'is_active'          => 1
+                            );
+                            
+                            $this->ingradient_model->ingredient_opening_stock($openstockData);
+                            $this->ingradient_model->update_ingredient(array(
+                                'id' => $ingredient_id,
+                              'stock_qty' => $opening_balance,
+                            ));
+                        }
+
+                        $this->session->set_flashdata('message', display('save_successfully'));
+                    } else {
+                        $this->session->set_flashdata('exception', display('please_try_again'));
+                    }
+                } else {
+                    $logData = [
+                        'action_page' => "Ingredient List",
+                        'action_done' => "Update Data",
+                        'remarks'     => "Ingredient Updated",
+                        'user_name'   => $this->session->userdata('fullname'),
+                        'entry_date'  => date('Y-m-d H:i:s'),
+                    ];
+
+                    if ($this->ingradient_model->update_ingredient($postData)) {
+                        $this->logs_model->log_recorded($logData);
+                        $this->_update_cache();
+                        $this->session->set_flashdata('message', display('update_successfully'));
+                    } else {
+                        $this->session->set_flashdata('exception', display('please_try_again'));
+                    }
+                }
+                redirect("setting/ingradient/index");
+            }
+        } else {
+            if ($this->input->is_ajax_request()) {
+                $errors = $this->form_validation->error_array();
+                echo json_encode([
+                    'status' => 'error',
+                    'errors' => $errors
+                ]);
+                return;
+            }
+
+            if (!empty($id)) {
+                $data['intinfo'] = $this->ingradient_model->findById($id);
+            }
+            $data['brands'] = $this->ingradient_model->get_all_brands();
+            $data['module'] = "setting";
+            $data['page'] = "ingredientlist";
+            echo Modules::run('template/layout', $data);
+        }
+    }
 
 	private function _update_cache()
 	{

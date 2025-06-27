@@ -69,17 +69,17 @@
                                             <input name="purchase_price" id="purchase_price" class="form-control purchase_price" type="text" placeholder="Purchase Price" value="">
                                         </div>
                                         <div class="form-group" style="display:none;">
-                                            <label><?php echo 'Cost Per Consumption Unit'; ?> *</label>
+                                            <label><?php echo 'Cost Per Consumption Unit'; ?> </label>
                                             <input name="cost_perunit" id="cost_perunit" class="form-control" type="text" placeholder="Cost Per Unit" value="">
                                         </div>
                                         <div class="form-group">
-                                            <label><?php echo display('stock_limit'); ?> *<br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
+                                            <label><?php echo display('stock_limit'); ?> <br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
                                             Consumption unit stock limit.
                                 </em>)</label>
                                             <input name="min_stock" class="form-control" type="text" placeholder="<?php echo display('stock_limit'); ?>" value="">
                                         </div>
                                         <div class="form-group open_balance_div">
-                                            <label><?php echo display('opening_balance'); ?> *<br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
+                                            <label><?php echo display('opening_balance'); ?> <br/>(<em style="font-size: 10px; font-weight: bold; padding: 2px 5px; background-color: yellow; animation: highlightBlink 1s infinite alternate;">
                                             Consumption unit stock limit.
                                 </em>)</label>
                                             <input 
@@ -90,7 +90,6 @@
                                                 value=""
                                                 step="0.01"
                                                 min="0"
-                                                required
                                             >
                                         </div>
 
@@ -124,7 +123,7 @@
                                             ?>
                                         </div>
                                         <div class="form-group" style="display:none;">
-                                            <label><?php echo 'Conversation Ratio'; ?> *</label>
+                                            <label><?php echo 'Conversation Ratio'; ?> </label>
                                             <input type="text" name="convt_ratio" class="form-control" id="convt_ratio" />
                                         </div>
                                         <div class="form-group">

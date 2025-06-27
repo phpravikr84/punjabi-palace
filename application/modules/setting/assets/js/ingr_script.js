@@ -277,3 +277,73 @@ $(document).ready(function () {
         window.location.reload();
     });
 });
+
+
+// Form validation js
+$(document).ready(function() {
+    // Include SweetAlert2 CDN
+    if (!window.Swal) {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+        document.head.appendChild(script);
+    }
+
+    // Handle form submission
+    $('form').on('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+        
+        var form = $(this);
+        var formData = form.serialize();
+        var actionUrl = form.attr('action');
+
+        $.ajax({
+            url: actionUrl,
+            type: 'POST',
+            data: formData,
+            dataType: 'json', // Expect JSON response
+            success: function(response) {
+                if (response.status === 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            //window.location.href = base_url + 'setting/ingradient/index';
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    // Show validation errors
+                    let errorMessage = '<ul>';
+                    if (response.errors) {
+                        $.each(response.errors, function(field, error) {
+                            errorMessage += '<li>' + error + '</li>';
+                        });
+                    } else {
+                        errorMessage += '<li>' + response.message + '</li>';
+                    }
+                    errorMessage += '</ul>';
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        html: errorMessage,
+                        confirmButtonText: 'OK'
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An unexpected error occurred. Please try again.',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
+
+    
+});
