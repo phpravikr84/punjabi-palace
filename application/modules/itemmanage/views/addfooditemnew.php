@@ -393,12 +393,12 @@
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Dine In)</label>
-                            <input type="text" name="price[]" class="form-control" id="pr_variant_price" value="<?= htmlspecialchars($variant->price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="price[]" class="form-control" id="pr_variant_price" value="<?= htmlspecialchars($variant->price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Takeaway)</label>
-                            <input type="text" name="takeaway_price[]" class="form-control" id="pr_takeaway_price" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="takeaway_price[]" class="form-control" id="pr_takeaway_price" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-2">
@@ -407,17 +407,17 @@
 
                         <div class="col-md-4 mb-3">
                             <label>Ubereats</label>
-                            <input type="text" name="uber_eats_price[]" class="form-control" id="pr_uber_eats_price" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="uber_eats_price[]" class="form-control" id="pr_uber_eats_price" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Doordash</label>
-                            <input type="text" name="doordash_price[]" class="form-control" id="pr_doordash_price" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="doordash_price[]" class="form-control" id="pr_doordash_price" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Weborder</label>
-                            <input type="text" name="weborder_price[]" class="form-control" id="pr_weborder_price" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="weborder_price[]" class="form-control" id="pr_weborder_price" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
                     </div>
                     <?php endforeach; ?>
