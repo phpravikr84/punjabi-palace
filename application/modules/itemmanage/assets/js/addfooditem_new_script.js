@@ -199,8 +199,8 @@ $(document).ready(function(){
                 $(this).closest(".variant-rowedit").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
                 $(this).closest(".variant-rowedit").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
 
-                $(this).closest(".variant-rowedit").find("input[name^='recipe_costprice_']").attr("id", variantName + "_recipe_costprice");
-                $(this).closest(".variant-rowedit").find("input[name^='recipe_usedqty_']").attr("id", variantName + "_recipe_usedqty");
+                $(this).closest(".variant-rowedit").find("input[name^='recipe_costprice_']").attr("id", "recipe_costprice_" +  variantName);
+                $(this).closest(".variant-rowedit").find("input[name^='recipe_usedqty_']").attr("id", "recipe_usedqty_" +  variantName);
 
 
 
@@ -211,8 +211,8 @@ $(document).ready(function(){
                 $(this).closest(".variant-row").find("input[name='doordash_price[]']").attr("id", variantName + "_doordash_price");
                 $(this).closest(".variant-row").find("input[name='weborder_price[]']").attr("id", variantName + "_weborder_price");
 
-                $(this).closest(".variant-row").find("input[name^='recipe_costprice_']").attr("id", variantName + "_recipe_costprice");
-                $(this).closest(".variant-row").find("input[name^='recipe_usedqty_']").attr("id", variantName + "_recipe_usedqty");
+                $(this).closest(".variant-row").find("input[name^='recipe_costprice_']").attr("id", "recipe_costprice_" + variantName);
+                $(this).closest(".variant-row").find("input[name^='recipe_usedqty_']").attr("id", "recipe_usedqty_" + variantName);
 
             }
         });
@@ -758,9 +758,9 @@ function calprice(rowId){
     else{
         //alert('Row ID Else condition :'+rowId);
         var toatalval = $('#unit-total_'+rowId).val();
-        //alert('Total Value:' + toatalval);
+       
         var qty = $('#product_quantity_'+rowId).val();
-        //alert('Quantity:' + qty);
+       
         var totalval = parseFloat(toatalval);
         if (isNaN(totalval) || totalval <= 0) {
             totalval = 0;
@@ -770,6 +770,8 @@ function calprice(rowId){
         if (isNaN(qty) || qty <= 0) {
             qty = 0;
         }
+         console.log('Total Value:' + toatalval);
+          console.log('Quantity:' + qty);
         var nitcost=parseFloat(toatalval)*parseFloat(qty);
         console.log('Nit Cost :', nitcost);
         $('#product_price_'+rowId).val(parseFloat(nitcost).toFixed(3));
@@ -874,12 +876,12 @@ function checkproduct_list(ingredientId, sl) {
             var obj = JSON.parse(data);
             console.log('parsed:', obj);
     
-            if (obj && obj.length > 0 && obj[0].cost_perunit > 0) {
+            if (obj && obj.length > 0 && obj[0].cost_perunit_price > 0) {
                 //$('#product_quantity_' + sl).removeAttr('readonly'); cost_perunit
                 //$('#unit-total_' + sl).val(obj[0].cost_perunit_price);
-                $('#unit-total_' + sl).val(obj[0].cost_perunit);
+                $('#unit-total_' + sl).val(obj[0].cost_perunit_price);
             } else {
-                $('#unit-total_' + sl).val('');
+                $('#unit-total_' + sl).val(0);
                 //$('#product_quantity_' + sl).prop('readonly', true);
             }
         }

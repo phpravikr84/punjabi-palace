@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Name</label>
+                                <label>Item Name*</label>
                                 <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (isset($productinfo) && !empty($productinfo['ProductName'])?$productinfo['ProductName']:null) ?>" required="">
                             </div>
                         </div>
@@ -144,7 +144,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Type</label>
+                                <label>Item Type*</label>
                                 <div class="d-flex gap-4">
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" name="food_type" value="1" id="veg"
