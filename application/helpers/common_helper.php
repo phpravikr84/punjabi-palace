@@ -1038,6 +1038,35 @@ if (!function_exists('get_user_detail')) {
     }
 }
 
+//Get Setting Table value
+/**
+ * Get setting value from the database
+ *
+ * @param string $key
+ * @return string|null
+ */
+if (!function_exists('get_setting_value')) {
+    function get_setting_value($column_name)
+    {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        $CI->db->select($column_name);
+        $CI->db->from('common_setting');
+        $CI->db->limit(1);
+        $query = $CI->db->get();
+
+        if ($query->num_rows() === 1) {
+            return $query->row()->$column_name;
+        }
+
+        return null;
+    }
+}
+
+
+
+
 
 
 

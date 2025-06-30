@@ -579,6 +579,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Recipe Module Web Setting -->
+                    <?php
+                        $flag = get_setting_value('recipe_feature_flag');
+                        if ($flag === '1') { // compare as string
+                    ?>
                     <div class="row">
                         <div class="col-md-6 text-left" style="padding-top:15px;">
                             
@@ -891,7 +897,7 @@
                         <?php } ?>
                     </div>
                     <!-- Recipes Panel -->
-                   
+                   <?php } ?>
                     <!-- Modifiers Panel -->
                     <div class="panel panel-default" id="modifiersPanel">
                         <div class="panel-heading" role="tab" id="headingModifiers">
