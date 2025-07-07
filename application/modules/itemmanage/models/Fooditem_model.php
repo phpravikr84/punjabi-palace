@@ -1038,5 +1038,12 @@ class Fooditem_model extends CI_Model {
         return $query->result();
     }
 
+	public function check_production_exists($foodid) {
+		$this->db->where('foodid', $foodid);
+		$query = $this->db->get('production_details');
+		return $query->num_rows() > 0;
+	}
+
+
 
 }

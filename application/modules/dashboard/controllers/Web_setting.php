@@ -97,6 +97,7 @@ class Web_setting extends MX_Controller {
 			'ismembership'=> $this->input->post('membershipenable',true),
 			'phone_optional'      => $this->input->post('phone2', false),
 			'web_onoff'      => $this->input->post('websiteonoff', false),
+			'recipe_feature_flag'  => $this->input->post('recipe_feature_flag', false),
 			'address' 	  => $this->input->post('address',true),
 			'powerbytxt'  => $this->input->post('power_text', false),
 			'backgroundcolorqr'  => $this->input->post('headercolor', true),

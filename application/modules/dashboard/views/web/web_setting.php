@@ -74,8 +74,23 @@
                               </select>
                         </div>
                     </div>
+
+                    <?php
+                        $recipe_flag = get_setting_value('recipe_feature_flag'); // returns '0' or '1'
+                    ?>
                     <div class="form-group row">
-                        <label for="membershipenable" class="col-xs-3 col-form-label"><?php echo display('membershipenable') ?></label>
+                        <label for="recipe_feature_flag" class="col-xs-3 col-form-label"><?php echo 'Recipe Feature' ?></label>
+                        <div class="col-sm-9 customesl">
+                            <select name="recipe_feature_flag" class="form-control">
+                                <option value=""><?php echo display('select_option') ?></option>
+                                <option value="1" <?php if($recipe_flag === '1'){ echo "selected"; } ?>><?php echo 'Enabled'; ?></option>
+                                <option value="0" <?php if($recipe_flag === '0'){ echo "selected"; } ?>><?php echo 'Disabled'; ?></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="membershipenable" class="col-xs-3 col-form-label"><?php echo 'Membership Enable'; ?></label>
                         <div class="col-sm-9 customesl">
                             <select name="membershipenable" class="form-control">
                                 <option value=""><?php echo display('select_option') ?></option>

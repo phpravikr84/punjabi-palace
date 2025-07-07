@@ -73,6 +73,7 @@
     <input name="bigimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['bigthumb'])?$productinfo['bigthumb']:null) ?>" />
     <input name="mediumimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['medium_thumb'])?$productinfo['medium_thumb']:null) ?>" />
     <input name="smallimage" type="hidden" value="<?php echo (isset($productinfo) && !empty($productinfo['small_thumb'])?$productinfo['small_thumb']:null) ?>" />
+    <input type="hidden" name="foodItemCheck" id="foodItemCheck" value="<?php echo base_url('itemmanage/item_food/check_food_production'); ?>" />
         <div class="text-right mb-3">
             <!-- <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" class="mr-3" checked data-toggle="toggle" data-onstyle="success" data-width="100"> -->
             <input type="hidden" name="recipeMode" id="recipeMode">
@@ -109,7 +110,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Name</label>
+                                <label>Item Name*</label>
                                 <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname"  value="<?php echo (isset($productinfo) && !empty($productinfo['ProductName'])?$productinfo['ProductName']:null) ?>" required="">
                             </div>
                         </div>
@@ -143,7 +144,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Item Type</label>
+                                <label>Item Type*</label>
                                 <div class="d-flex gap-4">
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" name="food_type" value="1" id="veg"
@@ -392,12 +393,12 @@
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Dine In)</label>
-                            <input type="text" name="price[]" class="form-control" id="pr_variant_price" value="<?= htmlspecialchars($variant->price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="price[]" class="form-control" id="pr_variant_price" value="<?= htmlspecialchars($variant->price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-3">
                             <label>Sale Price (Takeaway)</label>
-                            <input type="text" name="takeaway_price[]" class="form-control" id="pr_takeaway_price" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="takeaway_price[]" class="form-control" id="pr_takeaway_price" value="<?= htmlspecialchars($variant->takeaway_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-12 mb-2">
@@ -406,17 +407,17 @@
 
                         <div class="col-md-4 mb-3">
                             <label>Ubereats</label>
-                            <input type="text" name="uber_eats_price[]" class="form-control" id="pr_uber_eats_price" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="uber_eats_price[]" class="form-control" id="pr_uber_eats_price" value="<?= htmlspecialchars($variant->uber_eats_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Doordash</label>
-                            <input type="text" name="doordash_price[]" class="form-control" id="pr_doordash_price" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="doordash_price[]" class="form-control" id="pr_doordash_price" value="<?= htmlspecialchars($variant->doordash_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label>Weborder</label>
-                            <input type="text" name="weborder_price[]" class="form-control" id="pr_weborder_price" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
+                            <input type="number" step="0.01" min="0" name="weborder_price[]" class="form-control" id="pr_weborder_price" value="<?= htmlspecialchars($variant->web_order_price ?? ''); ?>"><br/><span class="product-price-comparison"></span>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -578,6 +579,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Recipe Module Web Setting -->
+                    <?php
+                        $flag = get_setting_value('recipe_feature_flag');
+                        if ($flag === '1') { // compare as string
+                    ?>
                     <div class="row">
                         <div class="col-md-6 text-left" style="padding-top:15px;">
                             
@@ -890,7 +897,7 @@
                         <?php } ?>
                     </div>
                     <!-- Recipes Panel -->
-                   
+                   <?php } ?>
                     <!-- Modifiers Panel -->
                     <div class="panel panel-default" id="modifiersPanel">
                         <div class="panel-heading" role="tab" id="headingModifiers">
@@ -1128,6 +1135,9 @@ $(document).ready(function () {
             $('.variantsPanel').show();
             $('.productprices').find('input').prop('disabled', true).end().hide();
             $('#serving_weightage').hide();
+
+            // Check this item is not recipe type
+            
         } else {
             $('#recipe_mode, #recipeBox, #addMore').hide();
             $('.variantsPanel').hide();

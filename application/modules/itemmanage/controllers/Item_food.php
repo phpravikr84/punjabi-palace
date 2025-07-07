@@ -3893,5 +3893,18 @@ class Item_food extends MX_Controller
         $this->db->select('*')->from('menu'); // adjust table name if needed
         return $this->db->get()->result();
     }
+
+	public function check_food_production($foodid) {
+		
+		
+		if (!is_numeric($foodid)) {
+			echo json_encode(['exists' => false]);
+			return;
+		}
+
+		$exists = $this->fooditem_model->check_production_exists($foodid);
+		echo json_encode(['exists' => $exists]);
+	}
+
 	
 }
