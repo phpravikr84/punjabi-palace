@@ -17,13 +17,27 @@ if ($cart = $this->cart->contents()){
 }
 // echo "<br>pid: ".$pid;
 // echo "<br>Selected Item Name: ".$selectedItemName;
+//get the 'recipe_feature_flag' value from the database, table 'common_setting'
+$this->db->select('recipe_feature_flag');
+$this->db->from('common_setting');
+$query = $this->db->get();
+$recipe_feature_flag = $query->row()->recipe_feature_flag;
+// echo "<br>recipe_feature_flag: ".$recipe_feature_flag;
+$variantOn=true;
+if ($recipe_feature_flag == 1) {
+    $variantOn=true;
+} else {
+    $variantOn=false;
+}
 ?>
 <div id="posSelectPurchaseTable">
 <table class="table table-bordered table-hover bg-white" id="purchaseTable">
     <thead>
         <tr>
             <th class="text-center"><?php echo display('item_information') ?></th>
+            <?php if($variantOn): ?>
             <th class="text-center"><?php echo display('size') ?></th>
+            <?php endif; ?>
             <th class="text-center wp_100"><?php echo display('qty') ?></th>
             <th class="text-center wp_120"><?php echo display('price') ?></th>
         </tr>
@@ -42,6 +56,7 @@ if ($cart = $this->cart->contents()){
                 } 
                 ?>
             </td>
+            <?php if($variantOn): ?>
             <td>
                 <input name="sizeid" type="hidden" id="sizeid_<?php echo "1"; ?>" value="<?php echo $selectedVarientId; ?>" />
                 <input name="size" type="hidden" value="<?php echo htmlentities($selectedVarientName); ?>" id="size_<?php echo 1; ?>" />
@@ -56,6 +71,7 @@ if ($cart = $this->cart->contents()){
                     <?php } ?>
                 </select>
             </td>
+            <?php endif; ?>
             <td>
                 <input type="number" name="itemqty" id="itemqty_<?php echo "1"; ?>" class="form-control text-right" value="<?=$selectedItemQty;?>" min="1" />
             </td>
@@ -218,14 +234,14 @@ if (count($modifiers) > 0):
         <div class="panel panel-default" id="modifiersPanel_<?=$mv->id;?>">
             <div class="panel-heading" role="tab" id="headingModifiers_<?=$mv->id;?>">
                 <h5 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==0)?'true':'false')?>" aria-controls="collapseModifiers" class="accordion-plus-toggle <?=(($modGroupQty==0)?'':'collapsed')?>">
+                    <a role="button" data-toggle="collapse" data-parent="#foodAccordion" href="#collapseModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==1)?'true':'false')?>" aria-controls="collapseModifiers" class="accordion-plus-toggle <?=(($modGroupQty==1)?'':'collapsed')?>">
                         <?=$mv->name;?>
                         <br />
-                        <small class="modifier-set-sub-heading" <?php if($modGroupQty==0): ?>style="display:block !important;"<?php endif; ?>>Select the items for adding them into the cart</small>
+                        <small class="modifier-set-sub-heading" <?php if($modGroupQty==1): ?>style="display:block !important;"<?php endif; ?>>Select the items for adding them into the cart</small>
                     </a>
                 </h5>
             </div>
-            <div id="collapseModifiers_<?=$mv->id;?>" class="panel-collapse collapse <?=(($modGroupQty==0)?'in':'')?>" role="tabpanel" aria-labelledby="headingModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==0)?'true':'false')?>" style="">
+            <div id="collapseModifiers_<?=$mv->id;?>" class="panel-collapse collapse <?=(($modGroupQty==1)?'in':'')?>" role="tabpanel" aria-labelledby="headingModifiers_<?=$mv->id;?>" aria-expanded="<?=(($modGroupQty==1)?'true':'false')?>" style="">
                 <div class="panel-body">
                     <div class="mt-3">
                         <table class="table table-bordered">

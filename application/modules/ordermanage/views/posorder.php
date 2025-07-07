@@ -1235,7 +1235,7 @@ foreach ($scan as $file) {
                                                 $selectedFoodsForCart = $q2->result();
                                             ?>
                                               <br />
-                                              <a class="" id="cartModToggle_<?=$item['pid'];?>" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
+                                              <a id="cartModToggle_<?=$item['pid'];?>" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
                                               <?php 
                                               if($q1->num_rows() <= 0 || $q2->num_rows() <= 0):
                                               ?>

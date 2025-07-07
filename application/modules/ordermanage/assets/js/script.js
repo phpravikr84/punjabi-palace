@@ -158,7 +158,8 @@ function posupdatecart(id, pid, vid, qty, status) {
       var productionsetting = $("#production_setting").val();
       if (productionsetting == 1) {
         var checkqty = qty + 1;
-        var checkvalue = checkproduction(pid, vid, checkqty);
+        // var checkvalue = checkproduction(pid, vid, checkqty);
+        var checkvalue = true;
 
         if (checkvalue == false) {
           return false;
@@ -486,7 +487,8 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
               var checkqty = qty;
             }
 
-            var checkvalue = checkproduction(pid, sizeid, checkqty);
+            // var checkvalue = checkproduction(pid, sizeid, checkqty);
+            var checkvalue = true;
 
             if (checkvalue == false) {
               return false;
@@ -545,7 +547,8 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
               var checkqty = qty;
             }
 
-            var checkvalue = checkproduction(pid, sizeid, checkqty);
+            // var checkvalue = checkproduction(pid, sizeid, checkqty);
+            var checkvalue = true;
             if (checkvalue == false) {
               return false;
             }
@@ -651,7 +654,8 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
         var checkqty = qty;
       }
 
-      var checkvalue = checkproduction(pid, sizeid, checkqty);
+      // var checkvalue = checkproduction(pid, sizeid, checkqty);
+      var checkvalue = true;
 
       if (checkvalue == false) {
         return false;
@@ -710,7 +714,8 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
         var checkqty = qty;
       }
 
-      var checkvalue = checkproduction(pid, sizeid, checkqty);
+      // var checkvalue = checkproduction(pid, sizeid, checkqty);
+      var checkvalue = true;
       if (checkvalue == false) {
         return false;
       }
@@ -1428,7 +1433,8 @@ $("body").on("click", ".update_select_product", function (e) {
         var checkqty = qty;
       }
 
-      var checkvalue = checkproduction(pid, sizeid, checkqty);
+      // var checkvalue = checkproduction(pid, sizeid, checkqty);
+      var checkvalue = true;
 
       if (checkvalue == false) {
         return false;

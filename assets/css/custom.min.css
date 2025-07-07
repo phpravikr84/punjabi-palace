@@ -5705,11 +5705,10 @@ pre .arg {
     cursor: pointer;
     border: 1px solid #bfbfbf;
     border-radius: 8px;
-    height: 18rem; /* Adjust this percentage according to your layout */
+    height: 22rem; /* Adjust this percentage according to your layout */
 }
 .product-panel .panel-body {
     padding: 8px;
-    
     border-radius: 8px;
 }
 .product-panel img {

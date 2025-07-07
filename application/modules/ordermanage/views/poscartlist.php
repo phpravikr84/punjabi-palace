@@ -10,6 +10,9 @@ $this->load->model('ordermanage/order_model',  'ordermodel');
 // echo "<pre>";
 // print_r($modifiers);
 // echo "</pre>";
+if ((!isset($modifiers)) && !is_array($modifiers)) {
+    $modifiers = [];
+}
 if ($cart = $this->cart->contents()) { ?>
 <div class="div" id="modifierContent" style="display: none;">
       <?php 
@@ -282,7 +285,7 @@ if ($cart = $this->cart->contents()) { ?>
             <?php endif; ?>
           </td>
           <td width="">
-            <?php echo $itemprice - $mypdiscount; ?> 
+            <?php echo $itemprice - $mypdiscount; ?>  
           </td>
           <td width="80"><a class="btn btn-danger btn-sm btnrightalign" onclick="removecart('<?php echo $item['rowid']; ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
           </td>

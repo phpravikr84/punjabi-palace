@@ -288,7 +288,8 @@
               }
 
             //   var checkvalue = checkproduction(pid, sizeid, checkqty);
-              var checkvalue = checkproductionOrder(pid, sizeid, checkqty);
+            //   var checkvalue = checkproductionOrder(pid, sizeid, checkqty);
+              var checkvalue = true;
 
               if (checkvalue == false) {
                   return false;
@@ -582,6 +583,22 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                 return false;
             }
         } else {
+            if(!posaddonsfoodtocart(pid,1))
+            {
+                // alert("Error adding this item to the cart!");
+                swal({
+                    title: "Error adding this item to the cart!",
+                    text: "Please try again.",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                });
+                return false;
+            }
+        }
+    } else {
+        if (promoqty==0) {
+            removecart(tr_row_id);
             if(!posaddonsfoodtocart(pid,1))
             {
                 // alert("Error adding this item to the cart!");
