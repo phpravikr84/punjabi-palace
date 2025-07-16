@@ -673,6 +673,135 @@ class Order extends MX_Controller
 		$data['page']   = "updateorderlist";
 		$this->load->view('ordermanage/updateorderlist', $data);
 	}
+	// public function posaddtocart()
+	// {
+	// 	$this->permission->method('ordermanage', 'read')->redirect();
+	// 	$catid = $this->input->post('catid');
+	// 	$pid = $this->input->post('pid');
+	// 	$sizeid = $this->input->post('sizeid');
+	// 	$isgroup = $this->input->post('isgroup', true);
+	// 	$myid = $catid . $pid . $sizeid;
+	// 	$itemname = $this->input->post('itemname', true);
+	// 	$size = $this->input->post('varientname', true);
+	// 	$qty = $this->input->post('qty', true);
+	// 	$price = $this->input->post('price', true);
+	// 	$addonsid = $this->input->post('addonsid', true);
+	// 	$allprice = $this->input->post('allprice', true);
+	// 	$adonsunitprice = $this->input->post('adonsunitprice', true);
+	// 	$adonsqty = $this->input->post('adonsqty', true);
+	// 	$adonsname = $this->input->post('adonsname', true);
+	// 	$cart = $this->cart->contents();
+	// 	$n = 0;
+	// 	if (empty($isgroup)) {
+	// 		$isgroup1 = 0;
+	// 	} else {
+	// 		$isgroup1 = $this->input->post('isgroup', true);
+	// 	}
+	// 	$new_str = str_replace(',', '0', $addonsid);
+	// 	$new_str2 = str_replace(',', '0', $adonsqty);
+	// 	$uaid = $pid . $new_str . $sizeid;
+	// 	if (!empty($addonsid)) {
+	// 		$joinid = trim($addonsid, ',');
+	// 		//$uaid=(int)$joinid.mt_rand(1, time());
+	// 		$cartexist = $this->cart->contents();
+	// 		if (!empty($cartexist)) {
+	// 			$adonsarray = explode(',', $addonsid);
+	// 			$adonsqtyarray = explode(',', $adonsqty);
+	// 			$adonspricearray = explode(',', $adonsunitprice);
+
+	// 			$adqty = array();
+	// 			$adprice = array();
+	// 			foreach ($cartexist as $cartinfo) {
+	// 				if (($cartinfo['id'] == $myid . $uaid) && (strpos($cartinfo['size'], 'Free Item') === false)) {
+	// 					$adqty = explode(',', $cartinfo['addonsqty']);
+	// 					$adprice = explode(',', $cartinfo['addonupr']);
+	// 				}
+	// 			}
+	// 			$x = 0;
+	// 			$finaladdonsqty = '';
+	// 			$finaladdonspr = 0;
+	// 			foreach ($adonsarray as $singleaddons) {
+	// 				$singleaddons;
+	// 				$totalaqty = $adonsqtyarray[$x] + $adqty[$x];
+	// 				$finaladdonsqty .= $totalaqty . ',';
+	// 				$totalaprice = $totalaqty * $adonspricearray[$x];
+	// 				$finaladdonspr = $totalaprice + $finaladdonspr;
+	// 				$x++;
+	// 			}
+
+	// 			if (!empty($adonsarray)) {
+	// 				$aids = $addonsid;
+	// 				$aqty = trim($finaladdonsqty, ',');
+	// 				$aname = $adonsname;
+	// 				$aprice = $adonsunitprice;
+	// 				$atprice = $finaladdonspr;
+	// 				$grandtotal = $price;
+	// 			} else {
+	// 				$aids = $addonsid;
+	// 				$aqty = $adonsqty;
+	// 				$aname = $adonsname;
+	// 				$aprice = $adonsunitprice;
+	// 				$atprice = $allprice;
+	// 				$grandtotal = $price;
+	// 			}
+	// 		} else {
+	// 			$aids = $addonsid;
+	// 			$aqty = $adonsqty;
+	// 			$aname = $adonsname;
+	// 			$aprice = $adonsunitprice;
+	// 			$atprice = $allprice;
+	// 			$grandtotal = $price;
+	// 		}
+	// 	} else {
+	// 		$grandtotal = $price;
+	// 		$aids = '';
+	// 		$aqty = '';
+	// 		$aname = '';
+	// 		$aprice = '';
+	// 		$atprice = '0';
+	// 	}
+	// 	$myid = $catid . $pid . $sizeid . $uaid;
+	// 	$data_items = array(
+	// 		'id'      	=> $myid,
+	// 		'pid'     	=> $pid,
+	// 		'name'    	=> $itemname,
+	// 		'sizeid'    	=> $sizeid,
+	// 		'isgroup'    => $isgroup1,
+	// 		'size'    	=> $size,
+	// 		'qty'     	=> $qty,
+	// 		'price'   	=> $grandtotal,
+	// 		'addonsuid'  => $uaid,
+	// 		'addonsid'   => $aids,
+	// 		'addonname'  => $aname,
+	// 		'addonupr'   => $aprice,
+	// 		'addontpr'   => $atprice,
+	// 		'addonsqty'  => $aqty,
+	// 		'itemnote'	=> ""
+	// 	);
+
+
+	// 	$this->cart->insert($data_items);
+	// 	$settinginfo = $this->order_model->settinginfo();
+
+	// 	//Fetching modifier groups information from the database
+	// 	$this->db->select('modifier_groups.*,menu_add_on.*');
+	// 	$this->db->from('modifier_groups');
+	// 	$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+	// 	$this->db->where('menu_add_on.menu_id', $pid);
+	// 	$this->db->where('menu_add_on.is_active', 1);
+	// 	$query = $this->db->get();
+	// 	$modifiers = $query->result();
+
+
+	// 	$data['settinginfo'] = $settinginfo;
+	// 	$data['modifiers'] = $modifiers;
+	// 	$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+	// 	$data['taxinfos'] = $this->taxchecking();
+	// 	$data['module'] = "ordermanage";
+	// 	$data['page']   = "poscartlist";
+	// 	$this->load->view('ordermanage/poscartlist', $data);
+	// }
+
 	public function posaddtocart()
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
@@ -690,60 +819,55 @@ class Order extends MX_Controller
 		$adonsunitprice = $this->input->post('adonsunitprice', true);
 		$adonsqty = $this->input->post('adonsqty', true);
 		$adonsname = $this->input->post('adonsname', true);
+
 		$cart = $this->cart->contents();
-		$n = 0;
 		if (empty($isgroup)) {
 			$isgroup1 = 0;
 		} else {
 			$isgroup1 = $this->input->post('isgroup', true);
 		}
+
 		$new_str = str_replace(',', '0', $addonsid);
-		$new_str2 = str_replace(',', '0', $adonsqty);
 		$uaid = $pid . $new_str . $sizeid;
+
+		$finaladdonsqty = '';
+		$finaladdonspr = 0;
+
 		if (!empty($addonsid)) {
 			$joinid = trim($addonsid, ',');
-			//$uaid=(int)$joinid.mt_rand(1, time());
 			$cartexist = $this->cart->contents();
+
 			if (!empty($cartexist)) {
 				$adonsarray = explode(',', $addonsid);
 				$adonsqtyarray = explode(',', $adonsqty);
 				$adonspricearray = explode(',', $adonsunitprice);
 
-				$adqty = array();
-				$adprice = array();
+				$adqty = array_fill(0, count($adonsarray), 0);
+				$adprice = array_fill(0, count($adonsarray), 0);
+
 				foreach ($cartexist as $cartinfo) {
-					if ($cartinfo['id'] == $myid . $uaid) {
+					// Only merge if not a Free Item
+					if (($cartinfo['id'] == $myid . $uaid) && strpos($cartinfo['size'], 'Free Item') === false) {
 						$adqty = explode(',', $cartinfo['addonsqty']);
 						$adprice = explode(',', $cartinfo['addonupr']);
+						$qty += $cartinfo['qty']; // Merge quantity
+						break;
 					}
 				}
-				$x = 0;
-				$finaladdonsqty = '';
-				$finaladdonspr = 0;
-				foreach ($adonsarray as $singleaddons) {
-					$singleaddons;
-					$totalaqty = $adonsqtyarray[$x] + $adqty[$x];
+
+				for ($x = 0; $x < count($adonsarray); $x++) {
+					$totalaqty = $adonsqtyarray[$x] + (isset($adqty[$x]) ? $adqty[$x] : 0);
 					$finaladdonsqty .= $totalaqty . ',';
 					$totalaprice = $totalaqty * $adonspricearray[$x];
-					$finaladdonspr = $totalaprice + $finaladdonspr;
-					$x++;
+					$finaladdonspr += $totalaprice;
 				}
 
-				if (!empty($adonsarray)) {
-					$aids = $addonsid;
-					$aqty = trim($finaladdonsqty, ',');
-					$aname = $adonsname;
-					$aprice = $adonsunitprice;
-					$atprice = $finaladdonspr;
-					$grandtotal = $price;
-				} else {
-					$aids = $addonsid;
-					$aqty = $adonsqty;
-					$aname = $adonsname;
-					$aprice = $adonsunitprice;
-					$atprice = $allprice;
-					$grandtotal = $price;
-				}
+				$aids = $addonsid;
+				$aqty = trim($finaladdonsqty, ',');
+				$aname = $adonsname;
+				$aprice = $adonsunitprice;
+				$atprice = $finaladdonspr;
+				$grandtotal = $price;
 			} else {
 				$aids = $addonsid;
 				$aqty = $adonsqty;
@@ -760,30 +884,34 @@ class Order extends MX_Controller
 			$aprice = '';
 			$atprice = '0';
 		}
-		$myid = $catid . $pid . $sizeid . $uaid;
+
+		// Force separate cart item if "Free Item"
+		if (strpos($size, 'Free Item') !== false) {
+			$myid .= '_' . uniqid(); // ensures cart row ID is always unique
+		}
+
 		$data_items = array(
-			'id'      	=> $myid,
-			'pid'     	=> $pid,
-			'name'    	=> $itemname,
-			'sizeid'    	=> $sizeid,
+			'id'         => $myid,
+			'pid'        => $pid,
+			'name'       => $itemname,
+			'sizeid'     => $sizeid,
 			'isgroup'    => $isgroup1,
-			'size'    	=> $size,
-			'qty'     	=> $qty,
-			'price'   	=> $grandtotal,
+			'size'       => $size,
+			'qty'        => $qty,
+			'price'      => $grandtotal,
 			'addonsuid'  => $uaid,
 			'addonsid'   => $aids,
 			'addonname'  => $aname,
 			'addonupr'   => $aprice,
 			'addontpr'   => $atprice,
 			'addonsqty'  => $aqty,
-			'itemnote'	=> ""
+			'itemnote'   => ""
 		);
 
-
 		$this->cart->insert($data_items);
+
 		$settinginfo = $this->order_model->settinginfo();
 
-		//Fetching modifier groups information from the database
 		$this->db->select('modifier_groups.*,menu_add_on.*');
 		$this->db->from('modifier_groups');
 		$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
@@ -791,7 +919,6 @@ class Order extends MX_Controller
 		$this->db->where('menu_add_on.is_active', 1);
 		$query = $this->db->get();
 		$modifiers = $query->result();
-
 
 		$data['settinginfo'] = $settinginfo;
 		$data['modifiers'] = $modifiers;
@@ -801,6 +928,8 @@ class Order extends MX_Controller
 		$data['page']   = "poscartlist";
 		$this->load->view('ordermanage/poscartlist', $data);
 	}
+
+
 	public function cartupdate()
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();

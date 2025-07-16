@@ -56,14 +56,13 @@ if ($recipe_feature_flag == 1) {
                 } 
                 ?>
             </td>
-            <?php if($variantOn): ?>
-            <td>
+            <td <?php if(!$variantOn): ?>style="display:none;"<?php endif; ?>>
                 <input name="sizeid" type="hidden" id="sizeid_<?php echo "1"; ?>" value="<?php echo $selectedVarientId; ?>" />
                 <input name="size" type="hidden" value="<?php echo htmlentities($selectedVarientName); ?>" id="size_<?php echo 1; ?>" />
                 <input name="catid" type="hidden" value="<?php echo (!empty($catid) ? $catid : null) ?>" id="catid" />
                 <input name="totalvarient" type="hidden" value="<?php echo $totalvarient; ?>" id="totalvarient" />
                 <input name="customqty" type="hidden" value="<?php echo $selectedItemQty; ?>" id="customqty" />
-                <select name="varientinfo" class="form-control" required id="varientinfo" <?php if(count($varientlist)==1): ?> disabled <?php endif;?>>
+                <select name="varientinfo" class="form-control" required id="varientinfo" <?php if(count($varientlist)==1): ?> disabled <?php endif;?> <?php if(!$variantOn): ?>style="display:none;"<?php endif; ?>>
                     <?php foreach ($varientlist as $thisvarient) { ?>
                         <option <?php if(count($varientlist)==1): ?> disabled aria-readonly="true" <?php endif;?> value="<?php echo $thisvarient->variantid; ?>" data-title="<?php echo $thisvarient->variantName; ?>" data-price="<?php echo $thisvarient->price; ?>" <?php if ($selectedVarientId == $thisvarient->variantid) {
                                                                                                                                                                                         echo "selected";
@@ -71,7 +70,6 @@ if ($recipe_feature_flag == 1) {
                     <?php } ?>
                 </select>
             </td>
-            <?php endif; ?>
             <td>
                 <input type="number" name="itemqty" id="itemqty_<?php echo "1"; ?>" class="form-control text-right" value="<?=$selectedItemQty;?>" min="1" />
             </td>

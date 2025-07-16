@@ -205,7 +205,7 @@ if ($this->session->flashdata('exception')) { ?>
 </div>
 <div class="form-group row">
     <div class="col-sm-12 col-md-12 text-right">
-        <button type="submit" class="btn btn-success" name="promo_submit_btn" id="promo_submit_btn"><?php echo 'Submit'; ?></button>
+        <button type="submit" class="btn btn-success" name="promo_submit_btn" id="promo_submit_btn"><?php echo ($isUpdate)? '<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Update' :'<i class="fa fa-upload" aria-hidden="true"></i>&nbsp;Submit'; ?></button>
     </div>
 </div>
             <?php echo form_close(); ?>

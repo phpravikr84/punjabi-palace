@@ -627,6 +627,7 @@ class Item_food extends MX_Controller
 				if ($this->fooditem_model->promo_food_update($this->input->post('ProductsID'),$postData)) {
 					$this->logs_model->log_recorded($logData);
 					$this->session->set_flashdata('message', display('update_successfully'));
+					redirect('itemmanage/item_food/promo_list');
 				} else {
 					$this->session->set_flashdata('exception',  display('please_try_again'));
 				}

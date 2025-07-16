@@ -1,8 +1,18 @@
 <div id="posSelectPurchaseTable">
 <?php 
 // echo "<pre>";
-// print_r($item);
+// print_r($this->cart->contents());
 // echo "</pre><br />";
+
+// foreach ($this->cart->contents() as $item) {
+//     if (!(strpos($item['size'], 'Free Item'))) {
+//         echo "<br>Free Item: <br />";
+//         echo "Name: ".$item['name']."<br /> pid: ".$item['pid']."<br /> rowid: ".$item['rowid'];
+//         break;
+//     }
+    
+// }
+
 $tr_row_id="";
 if ($cart = $this->cart->contents()) 
 {
@@ -17,6 +27,7 @@ $this->db->select('cart_selected_modifiers.*');
 $this->db->from('cart_selected_modifiers');
 $this->db->where('cart_selected_modifiers.menu_id',$pid);
 $this->db->where('cart_selected_modifiers.is_active',1);
+$this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
 $q2 = $this->db->get();
 $selectedMods = $q2->result();
 // echo "tr_row_id: ".$tr_row_id;
@@ -25,12 +36,25 @@ $selectedMods = $q2->result();
 // echo "</pre>";
 // echo $item->ProductName;
 // exit();
+//get the 'recipe_feature_flag' value from the database, table 'common_setting'
+$this->db->select('recipe_feature_flag');
+$this->db->from('common_setting');
+$query = $this->db->get();
+$recipe_feature_flag = $query->row()->recipe_feature_flag;
+$variantOn=true;
+if ($recipe_feature_flag == 1) {
+    $variantOn=true;
+} else {
+    $variantOn=false;
+}
 ?>
 <table class="table table-bordered table-hover bg-white" id="purchaseTable">
     <thead>
         <tr>
             <th class="text-center"><?php echo display('item_information') ?></th>
+            <?php if($variantOn): ?>
             <th class="text-center"><?php echo display('size') ?></th>
+            <?php endif; ?>
             <th class="text-center wp_100"><?php echo display('qty') ?></th>
             <th class="text-center wp_120"><?php echo display('price') ?></th>
         </tr>
@@ -42,25 +66,29 @@ $selectedMods = $q2->result();
                                                                                             if (!empty($item->component)) {
                                                                                                 echo " (" . $item->component . ")";
                                                                                             } ?>" />
-                <?php echo $item->ProductName;
-                if (!empty($item->component)) {
-                    echo " (" . $item->component . ")";
-                } ?>
+                <?php 
+                    echo $item->ProductName;
+                    if (!empty($item->component)) {
+                        echo " (" . $item->component . ")";
+                    }
+                ?>
             </td>
-            <td>
+            
+            <td <?php if(!$variantOn): ?>style="display:none;"<?php endif; ?>>
                 <input name="sizeid" type="hidden" id="sizeid_<?php echo "1"; ?>" value="<?php echo $item->variantid; ?>" />
                 <input name="size" type="hidden" value="<?php echo $item->variantName; ?>" id="size_<?php echo 1; ?>" />
                 <input name="catid" type="hidden" value="<?php echo (!empty($catid) ? $catid : null) ?>" id="catid" />
                 <input name="totalvarient" type="hidden" value="<?php echo $totalvarient; ?>" id="totalvarient" />
                 <input name="customqty" type="hidden" value="<?php echo $customqty; ?>" id="customqty" />
-                <select name="varientinfo" class="form-control" required id="varientinfo" <?php if(count($varientlist)==1): ?> disabled <?php endif;?>>
-                    <?php foreach ($varientlist as $thisvarient) { ?>
+                <select name="varientinfo" class="form-control" required id="varientinfo" <?php if(count($varientlist)==1): ?> disabled <?php endif;?> <?php if(!$variantOn): ?>style="display:none;"<?php endif; ?>>
+                    <?php foreach ($varientlist as $thisvarient): ?>
                         <option <?php if(count($varientlist)==1): ?> disabled aria-readonly="true" <?php endif;?> value="<?php echo $thisvarient->variantid; ?>" data-title="<?php echo $thisvarient->variantName; ?>" data-price="<?php echo $thisvarient->price; ?>" <?php if ($item->variantid == $thisvarient->variantid) {
                                                                                                                                                                                         echo "selected";
                                                                                                                                                                                     } ?>><?php echo $thisvarient->variantName; ?></option>
-                    <?php } ?>
+                    <?php endforeach; ?>
                 </select>
             </td>
+            
             <td>
                 <input type="number" name="itemqty" id="itemqty_<?php echo "1"; ?>" class="form-control text-right" value="1" min="1" />
             </td>

@@ -12,10 +12,101 @@ if (!empty($addonsinfo)) {
         $modifier_setting = $group->min_selection;
     }
 }
+$this->db->select('recipe_feature_flag');
+$this->db->from('common_setting');
+$query = $this->db->get();
+$recipe_feature_flag = $query->row()->recipe_feature_flag;
+$variantOn=true;
+if ($recipe_feature_flag == 1) {
+    $variantOn=true;
+} else {
+    $variantOn=false;
+}
 ?>
-<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<!-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script> -->
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+.switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    width: 100%;
+}
+legend {
+    /* padding: 0 10px; */
+    font-weight: bold;
+    color: #333;
+    border-bottom: none !important;
+    width: auto !important;
+    border: 1px solid #000;
+    background: #e1e1e1;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.3rem !important;
+}
+.fldsetCol {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.modifier-row label {
+    font-size: 1.4rem;
+}
+.viewModifiers {
+    background-color: #e3e3e3;
+    color: #333;
+    border: solid 1px #e3e3e3;
+}
+.viewModifiers:hover {
+    background-color: #fff;
+    color: #333;
+    border: solid 1px #e3e3e3;
+}
+</style>
 <div class="row">
     <!-- Button area -->
     <div class="col-sm-12 mb-3">
@@ -39,17 +130,36 @@ if (!empty($addonsinfo)) {
                 <?php echo form_hidden('group_id',  (!empty($group_id) ? $group_id : null)); ?>
                 <input type="hidden" name="getModifierItem" id="getModifierItem" value="<?php echo base_url('itemmanage/menu_addons/search_modifiers'); ?>"/>
                 <input type="hidden" name="getModifierIngredientItem" id="getModifierIngredientItem" value="<?php echo base_url('itemmanage/menu_addons/get_modifier_details'); ?>"/>
-                <div class="row">
+                <div class="row modifiersetname">
                     <!-- Modifier Set Name -->
-                    <div class="col-lg-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group row modifiersetname">
-                            <label for="modifiersetname" class="col-sm-4 col-form-label"><?php echo 'Modifier Set Name'; ?> *</label>
-                            <div class="col-sm-8">
+                            <div class="col-sm-5 col-md-5 text-right">
+                                <label for="modifiersetname" class="col-form-label"><?php echo 'Modifier Set Name'; ?> *</label>
+                            </div>
+                            <div class="col-sm-7 col-md-7 text-left">
                                 <input name="modifiersetname" class="form-control" type="text" placeholder="<?php echo 'Modifier Set Name'; ?>" id="modifiersetname" value="<?php echo (!empty($group_name) ? $group_name : ''); ?>" required />
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group row mt-4 modifiersetname">
+                            <div class="col-sm-7 col-md-7 text-right">
+                                <label for="modifier_setting" class="col-form-label"><?php echo 'Atleast One Modifier Required?'; ?> *</label>
+                            </div>
+                            <div class="col-sm-5 col-md-5 text-left pt-3">
+                                <div class="form-group" style="margin-bottom: -3px;margin-top: 7px;">
+                                    <label class="switch">
+                                        <input type="checkbox" name="modifier_setting" id="modifier_setting" class="form-check-input" data-toggle="toggle" data-style="mr-1" <?php echo (!empty($modifier_setting) && $modifier_setting==1) ?  'checked' : ''; ?>>
+                                        <div class="slider"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 fldsetCol">
+                    <fieldset>
+                        <legend><?php echo 'Modifier Items'; ?></legend>
                      <!-- Modifier Fields -->
                     <div class="col-lg-12 modifier-container sortable">
                         <?php if (!empty($addons)) {
@@ -108,8 +218,8 @@ if (!empty($addonsinfo)) {
                             ?>
          
 
-                                <div class="form-group col-md-2">
-                                    <label>Is Complementary</label>
+                                <div class="form-group col-md-4">
+                                    <label>Complementary?</label>
                                     <input type="checkbox" name="complementary[]" class="form-check-input isComplementary" <?php echo $addon->is_comp==1 ? 'checked' : ''; ?>/>
                                 </div>
 
@@ -164,19 +274,19 @@ if (!empty($addonsinfo)) {
                                     <input type="text" name="consumption_unit[]" class="form-control consumptionunit" readonly/>
                                 </div>
 
-                                <div class="form-group col-md-2">
-                                    <label>Is Complementary</label>
+                                <div class="form-group col-md-4" style="margin-top: 25px;">
+                                    <label>Complementary?</label>
                                     <input type="checkbox" name="complementary[]" class="form-check-input isComplementary" />
                                 </div>
-
+                                <?php if($variantOn): ?>
                                 <div class="form-group col-md-2">
                                     <button type="button" class="btn btn-success mt-4 viewModifiers" style="margin-top:20px;">View Recipe</button>
                                 </div>
-
+                                <?php endif; ?>
 
                                 <div class="form-group col-md-2" style="display:none;">
                                     <label>Status</label>
-                                    <select name="status[]" class="form-control">
+                                    <select name="status[]" class="form-control"> 
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
@@ -193,30 +303,30 @@ if (!empty($addonsinfo)) {
                     </div>
 
                     <!-- "Add Modifiers" Button -->
-                    <div class="col-lg-12 text-left mt-2">
-                        <button type="button" class="btn btn-success add-row"><?php echo 'Add Modifiers'; ?></button>
+                    <div class="col-lg-12 text-right mt-2">
+                        <button type="button" class="btn btn-success add-row"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;<?php echo 'Add more items'; ?></button>
                     </div>
-
+                    </fieldset>
+                    </div>
                     <!-- Settings Section -->
-                    <div class="col-lg-12 mt-5 modifiersettings">
+                    <!-- <div class="col-lg-12 mt-5 modifiersettings">
                         <h5 class="border-bottom pb-2">Settings</h5>
                         <div class="form-group row mt-4">
-                            <label for="modifier_setting" class="col-sm-4 col-form-label"><?php echo 'Customer can select one modifier'; ?> *</label>
+                            <label for="modifier_setting" class="col-sm-4 col-form-label"><?php ##echo 'Customer can select one modifier'; ?> *</label>
                             <div class="col-sm-8">
-                                <!-- Bootstrap 5 Switch -->
                                 <div class="form-check form-switch">
-                                    <input id="modifier_setting" name="modifier_setting" class="form-check-input" type="checkbox" data-toggle="toggle" data-style="mr-1" <?php echo (!empty($modifier_setting) && $modifier_setting==1) ?  'checked' : ''; ?>>
+                                    <input id="modifier_setting" name="modifier_setting" class="form-check-input" type="checkbox" data-toggle="toggle" data-style="mr-1" <?php ##echo (!empty($modifier_setting) && $modifier_setting==1) ?  'checked' : ''; ?>>
                                     <label for="modifier_setting" class="form-check-label"></label>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Submit & Reset Buttons -->
                     <div class="col-lg-12">
                         <div class="form-group text-right mt-3">
                             <button type="reset" class="btn btn-primary"><?php echo display('reset'); ?></button>
-                            <button type="submit" class="btn btn-success"><?php echo isset($group_id) && !empty($group_id) ? 'Update' : display('Add'); ?></button>
+                            <button type="submit" class="btn btn-success"><?php echo isset($group_id) && !empty($group_id) ? '<i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Update' : '<i class="fa fa-upload" aria-hidden="true"></i>&nbsp;Submit'; ?></button>
                         </div>
                     </div>
                 </div>
@@ -242,8 +352,8 @@ if (!empty($addonsinfo)) {
         color: #d3d3d3;
     }
     .modifiersetname {
-        border-bottom: 1px solid #e5e5e5;
-        padding-bottom: 15px;
+        /* border-bottom: 1px solid #e5e5e5; */
+        padding-bottom: 20px;
     }
     .remove-row {
         margin-top: 21px !important;

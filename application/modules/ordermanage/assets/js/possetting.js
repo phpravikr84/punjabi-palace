@@ -720,8 +720,8 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                 console.log("Subtotal: "+parseFloat(total));
                 console.log("existiing price: "+$("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
                 
-                $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
-                $(".page-loader-wrapper").hide();
+                //The following line was used for updating the total price in the cart, but the logic is not correct as it always sets the cart total to the first item.
+                // $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
                 if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
                     // Add the promo item to the cart
                     isPromoFreeItem = true;
@@ -730,6 +730,8 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                     $('#promo_item_id_'+pid).remove();
                     $('#promo_item_qty_'+pid).remove();
                 }
+                // window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice";
+                $(".page-loader-wrapper").hide();
             }
         });
     }, 2000);

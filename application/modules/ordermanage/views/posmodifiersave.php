@@ -8,6 +8,7 @@ $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=ad
 $this->db->where('cart_selected_modifiers.menu_id',$pid);
 $this->db->where('cart_selected_modifiers.foods_or_mods', 2);
 $this->db->where('cart_selected_modifiers.is_active', 1);
+$this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
 $q1 = $this->db->get();
 $selectedModsForCart = $q1->result();
 $this->db->select('item_foods.ProductName AS food_name');
@@ -16,6 +17,7 @@ $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=it
 $this->db->where('cart_selected_modifiers.menu_id',$pid);
 $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
 $this->db->where('cart_selected_modifiers.is_active', 1);
+$this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
 $q2 = $this->db->get();
 $selectedFoodsForCart = $q2->result();
 // echo "<pre>";
@@ -85,6 +87,7 @@ if ($cart = $this->cart->contents()):
         $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
         $this->db->where('cart_selected_modifiers.menu_id', $item['pid']);
         $this->db->where('cart_selected_modifiers.is_active', 1);
+        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
         $q = $this->db->get();
         $modTotalPrice = $q->row();
         // echo "mod_total_price: ".$modTotalPrice->mod_total_price;
