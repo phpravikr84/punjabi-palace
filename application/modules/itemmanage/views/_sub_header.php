@@ -22,6 +22,16 @@
     </div>
 <?php endif; ?>
 
+<!-- Sub Category Sub Header -->
+<?php if (!empty($sub_header) && $sub_header == 'subcategory'): ?>
+    <div class="col-sm-12 mb-3">
+        <div class="d-flex justify-content-start">
+            <a href="<?php echo base_url('itemmanage/item_category/subcategory_list'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'SubCategory List'; ?></a>
+            <a href="<?php echo base_url('itemmanage/item_category/create_subcategory'); ?>" class="btn btn-success"><?php echo 'Create SubCategory'; ?></a>
+        </div>
+    </div>
+<?php endif; ?>
+
 <!-- Item Sub Header -->
 <?php if (!empty($sub_header) && $sub_header == 'item'): ?>
      <div class="col-sm-12 mb-3" style="border-bottom: 1px solid #ddd; padding-bottom: 10px;">

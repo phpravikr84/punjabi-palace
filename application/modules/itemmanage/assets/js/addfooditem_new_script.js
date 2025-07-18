@@ -1383,7 +1383,7 @@ $(document).ready(function () {
 //New Category Dropdown ajax
 $(document).ready(function() {
       // Initialize Select2 for all dropdowns
-
+    var getSubcategoriesUrl = $('#getSubcategoriesUrl').val();
 
     // Handle parent category change
     $('#parent_category').change(function() {
@@ -1396,7 +1396,7 @@ $(document).ready(function() {
         // $('#grandchild_category_container').hide();
         // $('#child_category').empty().append('<option value="">Select Subcategory</option>');
         // $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
-        var getSubcategoriesUrl = $('#getSubcategoriesUrl').val();
+       
 
         var csrf = $('#csrfhashresarvation').val();
 
@@ -1417,7 +1417,7 @@ $(document).ready(function() {
     // Handle child category change
     $('#child_category').change(function() {
         var parent_id = $(this).val();
-        $('#grandchild_category_container').hide();
+        $('#grandchild_category_container').show();
         $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
         var csrf = $('#csrfhashresarvation').val();
         if (parent_id) {
@@ -1473,5 +1473,23 @@ $(document).ready(function() {
 //         });
 //     }
 // });
+
+// Weborder price
+$(document).ready(function() {
+    $(document).on('focus', '.pr_uber_eats_price', function() {
+        var value = $(this).val();
+        console.log('Uber Eats Price:', value);
+        var container = $(this).closest('.productprices');
+        
+        // Only update if value is not empty
+        if (value !== '') {
+            container.find('.pr_doordash_price').val(value);
+            container.find('.pr_weborder_price').val(value);
+        }
+    });
+});
+
+
+
 
 

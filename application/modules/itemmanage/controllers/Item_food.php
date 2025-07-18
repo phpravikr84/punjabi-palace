@@ -3908,7 +3908,7 @@ class Item_food extends MX_Controller
         $subcategories = $this->fooditem_model->get_subcategories_by_parent_id($parent_id);
 
         // Build HTML options for the select box
-        $ $options = '<option value="">Select Subcategory</option>';
+    	$options = '<option value="">Select Subcategory</option>';
         if (!empty($subcategories)) {
             foreach ($subcategories as $subcategory) {
                 $options .= '<option value="' . $subcategory->CategoryID . '">' . htmlspecialchars($subcategory->Name) . '</option>';

@@ -542,7 +542,7 @@
                                             <!-- Child Category Dropdown -->
                                             <div class="mb-3" id="child_category_container" style="display: <?php echo $selected_child ? 'block' : 'none'; ?>;">
                                                 <label class="form-label fw-bold">Category</label>
-                                                <select id="child_category" name="CategoryID[child]" class="form-control selectcategories" multiple data-group-id="<?php echo $category->CategoryID; ?>">
+                                                <select id="child_category" name="CategoryID[child]" class="form-control selectcategories" data-group-id="<?php echo $category->CategoryID; ?>">
                                                     <option value="0">Select Category</option>
                                                     <?php if ($selected_child) { 
                                                         $child_categories = sub_categories_by_parent_id($selected_parent);

@@ -303,5 +303,123 @@ public function count_category()
 		return $this->db->update('item_category', $data);
 	}
 
+	/**
+	 * Delete a category by ID
+	 */
+	public function delete_category($id) {
+        $this->db->where('CategoryID', $id);
+        return $this->db->delete('item_category');
+    }
+
+	/**
+	 *  Subcategories function
+	 */
+	  // Fetch parent categories for dropdown (used in create/edit form)
+     // Fetch parent categories for dropdown (used in create/edit form)
+    public function get_parent_categories_for_dropdown() {
+        $query = $this->db->query("
+            SELECT * FROM item_category WHERE parentid IN ( SELECT CategoryID FROM item_category WHERE parentid = 0 GROUP BY CategoryID )
+        ");
+        return $query->result();
+    }
+
+    // Fetch subcategories with first category name for listing
+    public function get_subcategories_for_listing($limit = null, $start = null)
+	{
+		$allCategories = $this->db->get('item_category')->result_array();
+
+		$topLevelIds = [];
+		$firstChildren = [];
+		$secondChildren = [];
+
+		// Step 1: Get top-level CategoryIDs
+		foreach ($allCategories as $cat) {
+			if ($cat['parentid'] == 0) {
+				$topLevelIds[] = $cat['CategoryID'];
+			}
+		}
+
+		// Step 2: Get first-level children (whose parent is in topLevel)
+		foreach ($allCategories as $cat) {
+			if (in_array($cat['parentid'], $topLevelIds)) {
+				$firstChildren[$cat['CategoryID']] = $cat;
+				$firstChildren[$cat['CategoryID']]['Subcategories'] = []; // initialize subcategory array
+			}
+		}
+
+		// Step 3: Get second-level children and group under their parent
+		foreach ($allCategories as $cat) {
+			$parentId = $cat['parentid'];
+			if (isset($firstChildren[$parentId])) {
+				$firstChildren[$parentId]['Subcategories'][] = $cat;
+			}
+		}
+
+    // Return grouped list (re-indexed)
+    	return array_values($firstChildren);
+	}
+
+
+	/**
+	 * Read categories with pagination and optional conditions
+	 */
+	// Find category with its subcategories
+    // Find category with its subcategories (renamed to avoid conflict)
+    public function findCategoryWithSubcategories($id) {
+        $category = $this->findById($id);
+        if ($category) {
+            $category->sub = $this->db->select('*')
+                ->from($this->table)
+                ->where('parentid', $id)
+                ->get()
+                ->result();
+        }
+        return $category;
+    }
+
+    // Existing findByIdWithSubcatRow (as per your code)
+    public function findByIdWithSubcatRowNew($id = null) {
+        if ($id === null) {
+            return null;
+        }
+        $subcategory = $this->db->select("*")
+            ->from($this->table)
+            ->where("CategoryID", $id)
+            ->get()
+            ->row_array();
+        if (!$subcategory) {
+            return null;
+        }
+        $parent = $this->db->select("*")
+            ->from($this->table)
+            ->where("CategoryID", $subcategory['parentid'])
+            ->get()
+            ->row_array();
+        if (!$parent) {
+            return null;
+        }
+        $subcategories = $this->db->select("*")
+            ->from($this->table)
+            ->where("parentid", $subcategory['parentid'])
+            ->get()
+            ->result_array();
+        $parent['sub'] = $subcategories;
+        return json_decode(json_encode($parent));
+    }
+
+
+	public function read_category_first($limit = null, $start = null, $condition = []) {
+        $this->db->select('*');
+        $this->db->from('item_category');
+        if (!empty($condition)) {
+            $this->db->where($condition);
+        }
+        if ($limit !== null && $start !== null) {
+            $this->db->limit($limit, $start);
+        }
+        $this->db->order_by('CategoryID', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
 
 }
