@@ -22,6 +22,9 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
 }
 ?>
 <div class="row">
+    <?php if ($sub_header == 'meal_deals'): ?>
+    <?php $this->load->view('_sub_header'); ?>
+    <?php endif; ?>
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd">
             <div class="panel-heading">

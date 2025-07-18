@@ -57,13 +57,9 @@
         <?php ##print_r($productinfo); ?>
     </pre> -->
     <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_food/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Manage Item'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_food/create_new'); ?>" class="btn btn-success"><?php echo 'Create Item'; ?></a>
-        </div>
-    </div>
-  
+        <?php if ($sub_header == 'item'): ?>
+            <?php $this->load->view('_sub_header'); ?>
+        <?php endif; ?>
     <?php
         $action_url = isset($id) && $id ? 'itemmanage/item_food/create_new/' . $id : 'itemmanage/item_food/create_new';
         echo form_open_multipart($action_url, ['id' => 'addFoodItemForm']);
@@ -85,7 +81,7 @@
                 <div class="card-header">Add Item</div>
                 <div class="card-body form-panel">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="display:none;">
                             <div class="form-group">
                                 <label>Cusine Type</label>
                                 <select name="cusine_type" class="form-control" required="">
@@ -95,7 +91,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="display:none;">
                             <div class="form-group">
                                 <label>Kitchen Name</label>
                                 <select name="kitchen" class="form-control" required="">
@@ -590,9 +586,9 @@
                             
                         </div>
                         <div class="col-md-6" style="padding-top:15px;">
-                            <small><strong style="color: #ff784a; font-weight:650;">Note:</strong> Enable to attach variants with the food</small>
+                            <!-- <small><strong style="color: #ff784a; font-weight:650;">Note:</strong> Enable to attach recipe with the food</small> -->
                             <div class="form-group">
-                                <label class="control-label variant-act-toggle-swtch">Variants are <strong class="text-success">Enabled</strong></label><br>
+                                <label class="control-label variant-act-toggle-swtch">Attach Recipe <strong class="text-success">Enabled</strong></label><br>
                                 <label class="switch">
                                     <input type="checkbox" name="recipe_mode_toggle" id="recipe_mode_toggle" <?php if(isset($productinfo) && !empty($productinfo['ProductsID']) && (!empty($productinfo['recipes']))): ?> checked <?php else: ?>  <?php endif; ?>>
                                     <div class="slider"></div>
@@ -1227,18 +1223,18 @@ $(document).ready(function () {
     // Check if the switch is checked
     if (varSwtch.is(':checked')) {
         // If checked, show the recipe mode section
-        varSwtchLabel.html(`Variants are <strong class="text-success">Enabled</strong>`);
+        varSwtchLabel.html(`Attach Recipe <strong class="text-success">Enabled</strong>`);
     } else {
         // If not checked, hide the recipe mode section
-        varSwtchLabel.html(`Variants are <strong class="text-danger">Disabled</strong>`);
+        varSwtchLabel.html(`Attach Recipe <strong class="text-danger">Disabled</strong>`);
     }
     varSwtch.on('change', function () {
         if ($(this).is(':checked')) {
             // If checked, show the recipe mode section
-            varSwtchLabel.html(`Variants are <strong class="text-success">Enabled</strong>`);
+            varSwtchLabel.html(`Attach Recipe <strong class="text-success">Enabled</strong>`);
         } else {
             // If not checked, hide the recipe mode section
-            varSwtchLabel.html(`Variants are <strong class="text-danger">Disabled</strong>`);
+            varSwtchLabel.html(`Attach Recipe <strong class="text-danger">Disabled</strong>`);
         }
     });
 });

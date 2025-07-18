@@ -185,7 +185,7 @@ class Addons_model extends CI_Model {
 
 	public function findModifierGroupsById($id = null)
 	{ 
-		return $this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, add_ons.*")
+		return $this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, add_ons.*, add_ons.modifier_set_id")
 			->from('modifier_groups')
 			->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left')
 			->where('modifier_groups.id', $id)

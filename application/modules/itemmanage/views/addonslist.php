@@ -1,11 +1,8 @@
 <div class="row">
     <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/menu_addons/index'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Main Modifiers Listing'; ?></a>
-            <a href="<?php echo base_url('itemmanage/menu_addons/create'); ?>" class="btn btn-success"><?php echo 'Create Modifiers'; ?></a>
-        </div>
-    </div>
+    <?php if ($sub_header == 'modifiers'): ?>
+        <?php $this->load->view('_sub_header'); ?>
+    <?php endif; ?>
 
     <!--  table area -->
     <div class="col-sm-12">

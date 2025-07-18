@@ -36,16 +36,7 @@
                                         <td><?php echo $sl; ?></td>
                                         <td><?php echo $parentname; ?></td>
                                         <td><?php echo $category->Name; ?></td>
-                                        <td>
-                                            <?php //echo $category->CategoryIsActive == 1 ? display('active') : display('inactive'); ?>
-                                            <a href="#" class="toggle-status" data-url="<?= generate_toggle_url('item_category', 'CategoryIsActive', 'CategoryID', $category->CategoryID) ?>">
-                                                <?php if ($category->CategoryIsActive == 1): ?>
-                                                    <i class="fa fa-lg fa-eye text-primary"></i>
-                                                <?php else: ?>
-                                                    <i class="fa fa-lg fa-eye-slash text-muted"></i>
-                                                <?php endif; ?>
-                                            </a>
-                                        </td>
+                                        <td><?php echo $category->CategoryIsActive == 1 ? display('active') : display('inactive'); ?></td>
                                         <td class="center">
                                             <?php if ($this->permission->method('itemmanage', 'update')->access()): ?>
                                                 <a href="<?php echo base_url("itemmanage/item_category/create_category/$category->parentid") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="<?php echo display('update')?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -65,29 +56,4 @@
             </div>
         </div>
     </div>
-</div><script>
-$(document).ready(function() {
-   //Change status toggle
-    $(document).on('click', '.toggle-status', function(e) {
-        e.preventDefault();
-
-        const url = $(this).data('url');
-
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if (res.status === 'success') {
-                    location.reload(); // or toggle icon dynamically here
-                } else {
-                    alert('Toggle failed.');
-                }
-            },
-            error: function() {
-                alert('AJAX error occurred.');
-            }
-        });
-    });
-});
-</script>
+</div>

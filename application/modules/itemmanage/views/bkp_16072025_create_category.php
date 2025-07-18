@@ -1,50 +1,36 @@
 <div class="row">
-     <!-- Button area -->
-    <?php if ($sub_header == 'group'): ?>
+    <!-- Button area -->
+    <?php if ($sub_header == 'category'): ?>
     <?php $this->load->view('_sub_header'); ?>
     <?php endif; ?>
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd lobidrag">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <h4><?php echo 'Create Group'; ?></h4>
-                    <!-- <small style="font-size:0.7em; font-weight:400">(Note: This form is for creating a group. Use the Category form to create a category with parent group selection.)</small> -->
+                    <h4><?php echo (!empty($title) ? $title : 'Create Category'); ?></h4>
+                    <small style="font-size:0.7em; font-weight:400">(Note: Select a group only if this item is a sub-category. If it's a main category, check the "Is Parent Category" box and this field will be disabled.)</small>
                 </div>
             </div>
             <div class="panel-body">
-                <?php echo form_open_multipart("itemmanage/item_category/create_group"); ?>
+                <?php echo form_open_multipart("itemmanage/item_category/create_category"); ?>
 
                 <?php echo form_hidden('id', $this->session->userdata('id')); ?>
                 <?php echo form_hidden('CategoryID', (!empty($categoryinfo->CategoryID) ? $categoryinfo->CategoryID : null)); ?>
-                <?php echo form_hidden('type', 'group'); ?>
+                <?php echo form_hidden('type', 'category'); ?>
 
                 <!-- Parent Category (Multiple Select) -->
-                <div class="form-group row border-bottom pb-2" id="GroupContainer" style="display: none;">
+                <div class="form-group row border-bottom pb-2" id="GroupContainer">
                     <label for="Parentcategory" class="col-sm-2 col-form-label">Group</label>
                     <div class="col-sm-8">
                         <select name="Parentcategory[]" id="Parentcategory" class="form-control select2">
                             <option value="">Select</option>
-                            <?php foreach ($categories as $category) { ?>
+                            <?php foreach ($groups as $category) { ?>
                                 <option value="<?php echo $category->CategoryID; ?>" 
                                     <?php if (!empty($categoryinfo) && in_array($category->CategoryID, explode(',', $categoryinfo->CategoryID))) echo "selected"; ?>>
                                     <?php echo $category->Name; ?>
                                 </option>
-                                <?php if (!empty($category->sub)) {
-                                    foreach ($category->sub as $subcat) { ?>
-                                        <option value="<?php echo $subcat->CategoryID; ?>" 
-                                            <?php if (!empty($categoryinfo) && in_array($subcat->CategoryID, explode(',', $categoryinfo->CategoryID))) echo "selected"; ?>>
-                                            —<?php echo $subcat->Name; ?>
-                                        </option>
-                                <?php }
-                                }
-                            } ?>
+                            <?php } ?>
                         </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <input name="is_parent_cat" class="form-check-input" type="checkbox"
-                            placeholder="Is Group" id="is_parent_cat"
-                            value="<?php echo !empty($categoryinfo->is_parent_cat) ? $categoryinfo->is_parent_cat : ''; ?>" checked>
-                        <label for="is_parent_cat">Is Group</label>
                     </div>
                 </div>
 
@@ -54,17 +40,17 @@
                         <?php if(!empty($categoryinfo->sub)) { $i=1; ?>
                             <?php foreach($categoryinfo->sub as $sub) { ?>
                                 <div class="category-row row border-bottom pb-2 align-items-end gx-2">
-                                    <!-- Group Name -->
+                                    <!-- Category Name -->
                                     <div class="col-lg-3 col-md-6">
                                         <div class="form-group">
-                                            <label for="categoryname" class="category-label">Group Name *
-                                            <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Enter the group name.">
+                                            <label for="categoryname" class="category-label">Category Name *
+                                            <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Is it a subcategory? Please choose Parent Category also.">
                                                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                                             </a>
-                                        </label>
+                                            </label>
                                             <input name="subCategoryId[]" type="hidden" value="<?php echo $sub->CategoryID; ?>"/>
                                             <input name="categoryname[]" class="form-control category-input" type="text" 
-                                                placeholder="Group Name" 
+                                                placeholder="Category Name" 
                                                 value="<?php echo $sub->Name; ?>" required>
                                         </div>
                                     </div>
@@ -135,19 +121,19 @@
                         <?php } ?>
                     <?php } else { ?>
                         <div class="category-row row g-2 align-items-end mb-5">
-                            <!-- Group Name -->
+                            <!-- Category Name -->
                             <div class="col-lg-3 col-md-6">
-                                <label for="categoryname" class="category-label">Group Name *
-                                <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Enter the group name.">
+                                <label for="categoryname" class="category-label">Category Name *
+                                <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Is it a subcategory? Please choose Parent Category also.">
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                                 </a>
                                 </label>
                                 <input name="categoryname[]" class="form-control category-input" type="text" 
-                                    placeholder="Group Name" required>
+                                    placeholder="Category Name" required>
                             </div>
 
                             <!-- Is Offer Checkbox -->
-                            <div class="col-lg-1 col-md-6 offer-checkbox">
+                            <div class="col-lg-1 col-md-6">
                                 <div class="form-check row">
                                     <label class="form-check-label col-lg-6 col-md-4" for="isoffer"><?php echo display('is_offer'); ?></label>
                                     <input class="form-check-input col-lg-6 col-md-8" type="checkbox" name="isoffer[]" id="isoffer_1" value="1"
@@ -213,7 +199,7 @@
                     }
                 ?>
                 <div class="form-group text-left border-bottom pb-2" <?php echo $hideHtmlElement; ?> >
-                    <button type="button" id="addCategory" class="btn btn-info"> <?php echo 'Add Group'; ?> </button>
+                    <button type="button" id="addCategory" class="btn btn-info"> <?php echo display('add_category'); ?> </button>
                 </div>
 
                 <div class="form-group text-right">
@@ -300,11 +286,9 @@
         border-radius: 0.25rem;
         transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
-    .offer-checkbox{
-        display:none;
-    }
 </style>
 
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 $(document).ready(function () {
     let categoryIndex = 1; // Counter for unique IDs
@@ -318,19 +302,17 @@ $(document).ready(function () {
         tags: true
     });
 
-    // Disable Parentcategory select when is_parent_cat is checked
-    var $select = $('#Parentcategory');
-    $select.prop('disabled', true);
-    $('#is_parent_cat').on('change', function () {
-        if ($(this).is(':checked')) {
-            $select.prop('disabled', true);
-        } else {
-            $select.prop('disabled', false);
-        }
-        $select.select2();
-    });
+    // Display validation errors with SweetAlert
+    <?php if (!empty($validation_errors)) { ?>
+        var errors = <?php echo json_encode($validation_errors); ?>;
+        var errorMessage = '';
+        $.each(errors, function(key, value) {
+            errorMessage += value + '<br>';
+        });
+        swal("Validation Error", errorMessage, "error");
+    <?php } ?>
 
-    // Add new group row
+    // Add new category row
     $("#addCategory").click(function () {
         var newRow = $(".category-row:first").clone();
         newRow.hide().appendTo("#categoryContainer").fadeIn(300);
@@ -363,11 +345,11 @@ $(document).ready(function () {
         });
 
         // Set label and placeholder for new row
-        newRow.find('.category-label').text('Group Name *');
-        newRow.find('.category-input').attr('placeholder', 'Group Name');
+        newRow.find('.category-label').text('Category Name *');
+        newRow.find('.category-input').attr('placeholder', 'Category Name');
     });
 
-    // Remove group row
+    // Remove category row
     $(document).on("click", ".remove-category", function () {
         if ($(".category-row").length > 1) {
             $(this).closest(".category-row").fadeOut(300, function () {
@@ -376,31 +358,44 @@ $(document).ready(function () {
         }
     });
 
-    // Remove edit group
+    // Remove edit category
     $(document).on("click", ".remove-editcategory", function () {
         var categoryid = this.id;
         var rowElement = $(this).closest(".category-row");
-        var confirmDelete = confirm("Are you sure you want to delete this group?");
+        var confirmDelete = confirm("Are you sure you want to delete this category?");
         if (confirmDelete) {
             deleteAdonsInfo(categoryid, rowElement);
         }
     });
 
-    // Validate unique group names
+    // Validate form before submission
     $("#saveButton").click(function (e) {
         let values = [];
         let isUnique = true;
+        let errors = [];
+
+        // Check category names
         $(".category-input").each(function () {
             let val = $(this).val().trim();
-            if (val && values.includes(val)) {
+            if (!val) {
+                errors.push("Category name cannot be empty.");
+            } else if (values.includes(val)) {
                 isUnique = false;
-                return false;
+                errors.push("Category names must be unique: " + val);
             }
             values.push(val);
         });
-        if (!isUnique) {
-            alert("Group names must be unique!");
+
+        // Check parent category selection
+        let parentCategory = $('#Parentcategory').val();
+        if (!parentCategory || parentCategory.length === 0) {
+            errors.push("Please select a group.");
+        }
+
+        if (errors.length > 0 || !isUnique) {
             e.preventDefault();
+            let errorMessage = errors.join('! ');
+            swal("Validation Error", errorMessage, "error");
         }
     });
 
@@ -421,11 +416,11 @@ $(document).ready(function () {
         }
     });
 
-    // Initialize form state for Group view
-    $('#GroupContainer').hide();
-    //$('#categoryContainer').show();
-    $('.category-label').text('Group Name *');
-    $('.category-input').attr('placeholder', 'Group Name');
+    // Initialize form state for Category view
+    $('#GroupContainer').show();
+    $('#categoryContainer').show();
+    $('.category-label').text('Category Name *');
+    $('.category-input').attr('placeholder', 'Category Name');
 });
 
 function deleteAdonsInfo(id, rowElement) {
@@ -436,13 +431,13 @@ function deleteAdonsInfo(id, rowElement) {
         url: myurl,
         data: { id: id, csrf_test_name: csrf },
         success: function(response) {
-            alert("Group deleted successfully!");
+            swal("Success", "Category deleted successfully!", "success");
             rowElement.fadeOut(300, function () {
                 $(this).remove();
             });
         },
         error: function(xhr, status, error) {
-            alert("Error: Unable to delete the group. Please try again.");
+            swal("Error", "Unable to delete the category. Please try again.", "error");
         }
     });
 }

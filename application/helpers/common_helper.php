@@ -1064,6 +1064,111 @@ if (!function_exists('get_setting_value')) {
     }
 }
 
+/**
+ *  Get menu prices based on menu ID
+ *  This function retrieves the prices of a menu item based on its production details.
+ */
+if (!function_exists('get_menu_prices')) {
+    function get_menu_prices($menuid) {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        // Get production records for the given menuid
+        $CI->db->select('is_bom, itemvid');
+        $CI->db->from('production');
+        $CI->db->where('itemid', $menuid);
+        $query = $CI->db->get();
+
+        if ($query->num_rows() == 0) {
+            return null; // No production found
+        }
+
+        $results = $query->result();
+        $variantIds = [];
+
+        foreach ($results as $row) {
+            if (!empty($row->itemvid)) {
+                $variantIds[] = $row->itemvid;
+            }
+        }
+
+        if (empty($variantIds)) {
+            return null;
+        }
+
+        // Get all price types for matched variants
+        $CI->db->select('variantid, price, takeaway_price, uber_eats_price, doordash_price, web_order_price, recipe_cost, recipe_weightage');
+        $CI->db->from('variant');
+        $CI->db->where('menuid', $menuid);
+        $CI->db->where_in('variantid', $variantIds);
+        $variants = $CI->db->get()->result_array();
+
+        return !empty($variants) ? $variants : null;
+    }
+}
+
+/**
+ * Get Category Name by ID
+ */
+if (!function_exists('get_category_name')) {
+    /**
+     * Get category name by CategoryID
+     *
+     * @param int $categoryID
+     * @return string|null
+     */
+    function get_category_name($categoryID) {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        $CI->db->select('Name');
+        $CI->db->from('item_category');
+        $CI->db->where('CategoryID', $categoryID);
+        $query = $CI->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->Name;
+        }
+
+        return null; // Not found
+    }
+}
+
+/**
+ * Get Variant Name by ID
+ */
+if (!function_exists('get_variant_first_letter')) {
+    function get_variant_first_letter($variantid) {
+        $CI =& get_instance();
+        $CI->load->database();
+
+        $CI->db->select('variantName');
+        $CI->db->from('variant');
+        $CI->db->where('variantid', $variantid);
+        $query = $CI->db->get();
+
+        if ($query->num_rows() > 0) {
+            $variantName = $query->row()->variantName;
+            return strtoupper(substr(trim($variantName), 0, 1));
+        }
+
+        return ''; // Return empty string if not found
+    }
+}
+
+/**
+ * Common function to Active and Inactive a record
+ */
+  if (!function_exists('generate_toggle_url')) {
+    function generate_toggle_url($table, $column, $pk_column, $id) {
+        return base_url("itemmanage/item_food/toggle_status/$table/$column/$pk_column/$id");
+    }
+}
+
+
+
+
+
 
 
 

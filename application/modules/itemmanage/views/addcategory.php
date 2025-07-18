@@ -1,11 +1,8 @@
 <div class="row">
       <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_category/category_list'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Main List'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_category/create_category'); ?>" class="btn btn-success"><?php echo 'Create Category'; ?></a>
-        </div>
-    </div>
+    <?php if ($sub_header == 'category'): ?>
+    <?php $this->load->view('_sub_header'); ?>
+    <?php endif; ?>
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd lobidrag">
             <div class="panel-heading">

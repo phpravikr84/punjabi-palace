@@ -47,6 +47,7 @@ class Menu_addons extends MX_Controller {
         /* ends of bootstrap */
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$data['sub_header'] = 'modifiers';
         $data["addonslist"] = $this->addons_model->read_modified_groups_addons($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 		$data['pagenum']=$page;
@@ -61,29 +62,257 @@ class Menu_addons extends MX_Controller {
         echo Modules::run('template/layout', $data); 
     }
 	
+	// public function create($id = null)
+	// {
+	// 	$this->permission->method('itemmanage', 'create')->redirect();
+
+	// 	$data['title'] = empty($id) ? 'Add Modifiers' : 'Update Modifiers';
+
+	// 	if (!empty($id)) {
+	// 		$data['group_id'] = $id;
+	// 	}
+
+	// 	// Validation Rules
+	// 	$this->form_validation->set_rules('modifiersetname', 'Modifier Set Name', 'required|max_length[100]');
+	// 	$this->form_validation->set_rules('addonsname[]', 'Modifier Name', 'required');
+	// 	$this->form_validation->set_rules('status[]', 'Status', 'required|in_list[0,1]');
+
+	// 	if ($this->form_validation->run() === true) {
+
+	// 		$arrangedData = $this->arrangeModifierData($this->input->post());
+	// 		echo '<pre>'; 
+	// 		print_r($arrangedData);
+	// 		echo '</pre>';
+	// 		exit;
+	// 		$groupid = $this->input->post('group_id', true);
+
+	// 		$modifierData = [
+	// 			'name'          => $this->db->escape_str($this->input->post('modifiersetname', true)),
+	// 			'description'   => $this->db->escape_str($this->input->post('description', true)),
+	// 			'is_required'   => $this->input->post('modifier_setting') ? 1 : 0,
+	// 			'min_selection' => $this->input->post('modifier_setting') ? 1 : 0,
+	// 			'updated_at'    => date('Y-m-d H:i:s'),
+	// 		];
+
+	// 		$this->db->trans_start();
+
+	// 		// Insert or Update Modifier Set
+	// 		if (empty($groupid)) {
+	// 			$modifierData['created_at'] = date('Y-m-d H:i:s');
+	// 			$this->db->insert('modifier_groups', $modifierData);
+	// 			$modifier_set_id = $this->db->insert_id();
+	// 			$action = "created";
+	// 		} else {
+	// 			$this->db->where('id', $groupid)->update('modifier_groups', $modifierData);
+	// 			$modifier_set_id = $groupid;
+	// 			$action = "updated";
+	// 		}
+
+	// 		// Delete add-ons that were removed during edit
+	// 		if (!empty($groupid)) {
+	// 			$existingAddonIDs = array_column($arrangedData['food_menu'], 'modifier_id');
+	// 			$this->db->where('modifier_set_id', $groupid);
+	// 			if (!empty($existingAddonIDs)) {
+	// 				$this->db->where_not_in('modifier_id', $existingAddonIDs);
+	// 			}
+	// 			$this->db->delete('add_ons');
+	// 		}
+
+	// 		// Process Add-ons
+	// 		foreach ($arrangedData['food_menu'] as $addon) {
+
+	// 			// Check if add-on already exists
+	// 			$this->db->where([
+	// 				'modifier_set_id' => $modifier_set_id,
+	// 				'modifier_id'     => $addon['modifier_id'],
+	// 			]);
+	// 			$exists = $this->db->get('add_ons')->row();
+
+	// 			$addonData = [
+	// 				'modifier_set_id' => $modifier_set_id,
+	// 				'add_on_name'     => $this->db->escape_str($addon['addon_name']),
+	// 				'price'           => isset($addon['addonsprice']) ? $addon['addonsprice'] : 0,
+	// 				'minqty'          => isset($addon['min_qty']) ? intval($addon['min_qty']) : 0,
+	// 				'maxqty'          => isset($addon['max_qty']) ? intval($addon['max_qty']) : 0,
+	// 				'is_comp'         => isset($addon['complementary']) ? 1 : 0,
+	// 				'modifier_id'     => $addon['modifier_id'],
+	// 				'is_food_item'    => $this->addons_model->check_id_existence($addon['modifier_id']),
+	// 				'is_active'       => $addon['status'],
+	// 			];
+
+	// 			if ($exists) {
+	// 				// Update existing add-on
+	// 				$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
+	// 				$addonid = $exists->id;
+	// 			} else {
+	// 				// Insert new add-on
+	// 				$this->db->insert('add_ons', $addonData);
+	// 				$addonid = $this->db->insert_id();
+	// 			}
+
+	// 			// Clean old ingredients
+	// 			$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
+
+	// 			// Insert ingredients if present
+	// 			if (!empty($addon['ingredients'])) {
+	// 				foreach ($addon['ingredients'] as $ingredient) {
+	// 					$ingrData = [
+	// 						'add_on_id'             => $addonid,
+	// 						'modifier_set_id'       => $modifier_set_id,
+	// 						'modifier_foodid'       => $ingredient['food_id'],
+	// 						'modifier_ingr_id'      => $ingredient['ingredient_id'],
+	// 						'modifier_ingr_qty'     => $ingredient['quantity'],
+	// 						'modifier_ingr_adj_qty' => $ingredient['adjusted_qty'],
+	// 						'modifier_ingr_unitname'=> $ingredient['unit_name'],
+	// 						'modifier_ingr_unitid'  => $ingredient['unit_id'],
+	// 						'created_at'            => date('Y-m-d H:i:s'),
+	// 						'updated_at'            => date('Y-m-d H:i:s'),
+	// 					];
+	// 					$this->db->insert('add_on_ingr_dtls', $ingrData);
+	// 				}
+	// 			}
+	// 		}
+
+	// 		// Process Standalone Ingredients
+	// 		if (!empty($arrangedData['ingredients'])) {
+	// 			foreach ($arrangedData['ingredients'] as $ingredient) {
+
+	// 				// Check if add-on exists
+	// 				$this->db->where([
+	// 					'modifier_set_id' => $modifier_set_id,
+	// 					'modifier_id'     => $ingredient['modifier_id'],
+	// 				]);
+	// 				$exists = $this->db->get('add_ons')->row();
+
+	// 				$addonData = [
+	// 					'modifier_set_id' => $modifier_set_id,
+	// 					'add_on_name'     => $this->db->escape_str($ingredient['addon_name']),
+	// 					'price'           => isset($ingredient['addonsprice']) ? $ingredient['addonsprice'] : 0,
+	// 					'minqty'          => isset($ingredient['min_qty']) ? intval($ingredient['min_qty']) : 0,
+	// 					'maxqty'          => isset($ingredient['max_qty']) ? intval($ingredient['max_qty']) : 0,
+	// 					'is_comp'         => isset($ingredient['complementary']) && $ingredient['complementary'] == 'on' ? 1 : 0,
+	// 					'modifier_id'     => $ingredient['modifier_id'],
+	// 					'is_food_item'    => $this->addons_model->check_id_existence($ingredient['modifier_id']),
+	// 					'is_active'       => 1,
+	// 				];
+
+	// 				if ($exists) {
+	// 					// Update if exists
+	// 					$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
+	// 					$addonid = $exists->id;
+	// 				} else {
+	// 					// Insert if new
+	// 					$this->db->insert('add_ons', $addonData);
+	// 					$addonid = $this->db->insert_id();
+	// 				}
+
+	// 				// Clean existing ingredients for this add-on
+	// 				$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
+
+	// 				// Insert new ingredient details
+	// 				$ingrData = [
+	// 					'add_on_id'             => $addonid,
+	// 					'modifier_set_id'       => $modifier_set_id,
+	// 					'modifier_ingr_id'      => $ingredient['modifier_id'],  // depends on schema
+	// 					'modifier_ingr_qty'     => $ingredient['consumption'],
+	// 					'modifier_ingr_adj_qty' => $ingredient['consumption'],
+	// 					'modifier_ingr_unitname'=> $ingredient['unit'],
+	// 					'modifier_ingr_unitid'  => $ingredient['unit_id'],
+	// 					'created_at'            => date('Y-m-d H:i:s'),
+	// 					'updated_at'            => date('Y-m-d H:i:s'),
+	// 				];
+	// 				$this->db->insert('add_on_ingr_dtls', $ingrData);
+	// 			}
+	// 		}
+
+	// 		// Process Standalone Flavours
+	// 		if (!empty($arrangedData['flavours'])) {
+	// 			foreach ($arrangedData['flavours'] as $flavour) {
+
+	// 				// Check if add-on exists
+	// 				$this->db->where([
+	// 					'modifier_set_id' => $modifier_set_id,
+	// 					'add_on_name'     => $flavour['modifier_id'],
+	// 				]);
+	// 				$exists = $this->db->get('add_ons')->row();
+
+	// 				$addonData = [
+	// 					'modifier_set_id' => $modifier_set_id,
+	// 					'add_on_name'     => $this->db->escape_str($flavour['addon_name']),
+	// 					'price'           => isset($flavour['addonsprice']) ? $flavour['addonsprice'] : 0,
+	// 					'minqty'          => isset($flavour['min_qty']) ? intval($flavour['min_qty']) : 0,
+	// 					'maxqty'          => isset($flavour['max_qty']) ? intval($flavour['max_qty']) : 0,
+	// 					'is_comp'         => isset($flavour['complementary']) && $flavour['complementary'] == 'on' ? 1 : 0,
+	// 					'modifier_id'     => $flavour['modifier_id'],
+	// 					'is_food_item'    => $this->addons_model->check_id_existence($flavour['modifier_id']),
+	// 					'is_active'       => 1,
+	// 				];
+
+	// 				if ($exists) {
+	// 					// Update if exists
+	// 					$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
+	// 					$addonid = $exists->id;
+	// 				} else {
+	// 					// Insert if new
+	// 					$this->db->insert('add_ons', $addonData);
+	// 					$addonid = $this->db->insert_id();
+	// 				}
+	// 			}
+	// 		}
+
+
+	// 		$this->db->trans_complete();
+
+	// 		if ($this->db->trans_status() === FALSE) {
+	// 			$this->session->set_flashdata('exception', 'Something went wrong, please try again.');
+	// 		} else {
+	// 			$this->session->set_flashdata('message', "Modifier Set {$action} successfully.");
+	// 		}
+
+	// 		redirect('itemmanage/menu_addons');
+
+	// 	} else {
+	// 		// Validation failed or first page load
+	// 		if (!empty($id)) {
+	// 			$data['title'] = 'Update Modifiers';
+	// 			$modifiedGroups = $this->addons_model->findModifierGroupsById($id);
+	// 			$data['addonsinfo'] = $this->singleObjectArray($modifiedGroups);
+	// 		}
+	// 		$data['module'] = "itemmanage";
+	// 		$data['sub_header'] = 'modifiers';
+	// 		$data['page'] = "addonscreate";
+	// 		$this->load->view('template/layout', $data);
+	// 	}
+	// }
+
 	public function create($id = null)
 	{
 		$this->permission->method('itemmanage', 'create')->redirect();
 
 		$data['title'] = empty($id) ? 'Add Modifiers' : 'Update Modifiers';
-
 		if (!empty($id)) {
 			$data['group_id'] = $id;
 		}
 
-		// Validation Rules
+		// Validation
 		$this->form_validation->set_rules('modifiersetname', 'Modifier Set Name', 'required|max_length[100]');
 		$this->form_validation->set_rules('addonsname[]', 'Modifier Name', 'required');
 		$this->form_validation->set_rules('status[]', 'Status', 'required|in_list[0,1]');
 
 		if ($this->form_validation->run() === true) {
 
+			// echo '<pre>';
+			// print_r($this->input->post());
+			// echo '</pre>';
+			// exit;
+
 			$arrangedData = $this->arrangeModifierData($this->input->post());
-			// echo '<pre>'; 
+			$groupid = $this->input->post('group_id', true);
+
+			// echo '<pre>';
 			// print_r($arrangedData);
 			// echo '</pre>';
 			// exit;
-			$groupid = $this->input->post('group_id', true);
 
 			$modifierData = [
 				'name'          => $this->db->escape_str($this->input->post('modifiersetname', true)),
@@ -95,7 +324,7 @@ class Menu_addons extends MX_Controller {
 
 			$this->db->trans_start();
 
-			// Insert or Update Modifier Set
+			// Create or Update Modifier Set
 			if (empty($groupid)) {
 				$modifierData['created_at'] = date('Y-m-d H:i:s');
 				$this->db->insert('modifier_groups', $modifierData);
@@ -107,7 +336,7 @@ class Menu_addons extends MX_Controller {
 				$action = "updated";
 			}
 
-			// Delete add-ons that were removed during edit
+			// Delete removed add-ons
 			if (!empty($groupid)) {
 				$existingAddonIDs = array_column($arrangedData['food_menu'], 'modifier_id');
 				$this->db->where('modifier_set_id', $groupid);
@@ -117,10 +346,11 @@ class Menu_addons extends MX_Controller {
 				$this->db->delete('add_ons');
 			}
 
-			// Process Add-ons
+			// Handle Add-ons
 			foreach ($arrangedData['food_menu'] as $addon) {
+	
+				$addon['modifier_id'] = $addon['modifier_id'] == 0 ? $modifier_set_id : $addon['modifier_id'];
 
-				// Check if add-on already exists
 				$this->db->where([
 					'modifier_set_id' => $modifier_set_id,
 					'modifier_id'     => $addon['modifier_id'],
@@ -133,29 +363,26 @@ class Menu_addons extends MX_Controller {
 					'price'           => isset($addon['addonsprice']) ? $addon['addonsprice'] : 0,
 					'minqty'          => isset($addon['min_qty']) ? intval($addon['min_qty']) : 0,
 					'maxqty'          => isset($addon['max_qty']) ? intval($addon['max_qty']) : 0,
-					'is_comp'         => isset($addon['complementary']) ? 1 : 0,
+					'is_comp'         => !empty($addon['complementary']) ? 1 : 0,
 					'modifier_id'     => $addon['modifier_id'],
 					'is_food_item'    => $this->addons_model->check_id_existence($addon['modifier_id']),
 					'is_active'       => $addon['status'],
 				];
 
 				if ($exists) {
-					// Update existing add-on
 					$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
-					$addonid = $exists->id;
+					$addonid = $exists->add_on_id;
 				} else {
-					// Insert new add-on
 					$this->db->insert('add_ons', $addonData);
 					$addonid = $this->db->insert_id();
 				}
 
-				// Clean old ingredients
 				$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
 
-				// Insert ingredients if present
 				if (!empty($addon['ingredients'])) {
+						
 					foreach ($addon['ingredients'] as $ingredient) {
-						$ingrData = [
+						$this->db->insert('add_on_ingr_dtls', [
 							'add_on_id'             => $addonid,
 							'modifier_set_id'       => $modifier_set_id,
 							'modifier_foodid'       => $ingredient['food_id'],
@@ -166,17 +393,15 @@ class Menu_addons extends MX_Controller {
 							'modifier_ingr_unitid'  => $ingredient['unit_id'],
 							'created_at'            => date('Y-m-d H:i:s'),
 							'updated_at'            => date('Y-m-d H:i:s'),
-						];
-						$this->db->insert('add_on_ingr_dtls', $ingrData);
+						]);
 					}
 				}
 			}
 
-			// Process Standalone Ingredients
+			// Standalone Ingredients
 			if (!empty($arrangedData['ingredients'])) {
-				foreach ($arrangedData['ingredients'] as $ingredient) {
 
-					// Check if add-on exists
+				foreach ($arrangedData['ingredients'] as $ingredient) {
 					$this->db->where([
 						'modifier_set_id' => $modifier_set_id,
 						'modifier_id'     => $ingredient['modifier_id'],
@@ -186,75 +411,106 @@ class Menu_addons extends MX_Controller {
 					$addonData = [
 						'modifier_set_id' => $modifier_set_id,
 						'add_on_name'     => $this->db->escape_str($ingredient['addon_name']),
-						'price'           => isset($ingredient['addonsprice']) ? $ingredient['addonsprice'] : 0,
-						'minqty'          => isset($ingredient['min_qty']) ? intval($ingredient['min_qty']) : 0,
-						'maxqty'          => isset($ingredient['max_qty']) ? intval($ingredient['max_qty']) : 0,
-						'is_comp'         => isset($ingredient['complementary']) && $ingredient['complementary'] == 'on' ? 1 : 0,
+						'price'           => $ingredient['addonsprice'] ?? 0,
+						'minqty'          => intval($ingredient['min_qty'] ?? 0),
+						'maxqty'          => intval($ingredient['max_qty'] ?? 0),
+						'is_comp'         => !empty($ingredient['complementary']) ? 1 : 0,
 						'modifier_id'     => $ingredient['modifier_id'],
 						'is_food_item'    => $this->addons_model->check_id_existence($ingredient['modifier_id']),
 						'is_active'       => 1,
 					];
 
 					if ($exists) {
-						// Update if exists
 						$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
-						$addonid = $exists->id;
+						$addonid = $exists->add_on_id;
 					} else {
-						// Insert if new
 						$this->db->insert('add_ons', $addonData);
 						$addonid = $this->db->insert_id();
 					}
 
-					// Clean existing ingredients for this add-on
 					$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
 
-					// Insert new ingredient details
-					$ingrData = [
+					$this->db->insert('add_on_ingr_dtls', [
 						'add_on_id'             => $addonid,
 						'modifier_set_id'       => $modifier_set_id,
-						'modifier_ingr_id'      => $ingredient['modifier_id'],  // depends on schema
+						'modifier_ingr_id'      => $ingredient['modifier_id'],
 						'modifier_ingr_qty'     => $ingredient['consumption'],
 						'modifier_ingr_adj_qty' => $ingredient['consumption'],
 						'modifier_ingr_unitname'=> $ingredient['unit'],
 						'modifier_ingr_unitid'  => $ingredient['unit_id'],
 						'created_at'            => date('Y-m-d H:i:s'),
 						'updated_at'            => date('Y-m-d H:i:s'),
-					];
-					$this->db->insert('add_on_ingr_dtls', $ingrData);
+					]);
 				}
 			}
 
-			// Process Standalone Flavours
+			// Standalone Flavours
 			if (!empty($arrangedData['flavours'])) {
-				foreach ($arrangedData['flavours'] as $flavour) {
 
-					// Check if add-on exists
-					$this->db->where([
-						'modifier_set_id' => $modifier_set_id,
-						'modifier_id'     => $flavour['modifier_id'],
-					]);
+				foreach ($arrangedData['flavours'] as $flavour) {
+					$modifier_id = $flavour['modifier_id'] == 0 ? $modifier_set_id : $flavour['modifier_id'];
+
+					$this->db->where('add_on_name', $flavour['addon_name']);
+					$this->db->where('add_on_id', $modifier_id);
+					$this->db->where('is_food_item', 0);
 					$exists = $this->db->get('add_ons')->row();
 
-					$addonData = [
-						'modifier_set_id' => $modifier_set_id,
-						'add_on_name'     => $this->db->escape_str($flavour['addon_name']),
-						'price'           => isset($flavour['addonsprice']) ? $flavour['addonsprice'] : 0,
-						'minqty'          => isset($flavour['min_qty']) ? intval($flavour['min_qty']) : 0,
-						'maxqty'          => isset($flavour['max_qty']) ? intval($flavour['max_qty']) : 0,
-						'is_comp'         => isset($flavour['complementary']) && $flavour['complementary'] == 'on' ? 1 : 0,
-						'modifier_id'     => $flavour['modifier_id'],
-						'is_food_item'    => $this->addons_model->check_id_existence($flavour['modifier_id']),
-						'is_active'       => 1,
-					];
-
 					if ($exists) {
-						// Update if exists
+						$addonData = [
+							'add_on_name'     => $this->db->escape_str($flavour['addon_name']),
+							'price'           => $flavour['addonsprice'] ?? 0,
+							'minqty'          => intval($flavour['min_qty'] ?? 0),
+							'maxqty'          => intval($flavour['max_qty'] ?? 0),
+							'is_comp'         => !empty($flavour['complementary']) ? 1 : 0,
+							'is_active'       => 1,
+						];
+
 						$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
-						$addonid = $exists->id;
 					} else {
-						// Insert if new
+						
+						$addonData = [
+							'modifier_set_id' => $modifier_set_id,
+							'add_on_name'     => $this->db->escape_str($flavour['addon_name']),
+							'price'           => $flavour['addonsprice'] ?? 0,
+							'minqty'          => intval($flavour['min_qty'] ?? 0),
+							'maxqty'          => intval($flavour['max_qty'] ?? 0),
+							'is_comp'         => !empty($flavour['complementary']) ? 1 : 0,
+							'is_active'       => 1,
+						];
+
 						$this->db->insert('add_ons', $addonData);
-						$addonid = $this->db->insert_id();
+					}
+				}
+			}
+
+
+			// Fallback: If all main addon types are empty, update existing addons based on add_on_id
+			if (
+				empty($arrangedData['ingredients']) &&
+				empty($arrangedData['flavours']) &&
+				empty($arrangedData['food_menu']) &&
+				!empty($arrangedData['add_on_id'])
+			) {
+
+				foreach ($arrangedData['add_on_id'] as $addon) {
+					if (!empty($addon['modifier_id']) && !empty($addon['addon_name'])) {
+						$this->db->where('add_on_id', $addon['modifier_id']);
+						$this->db->where('add_on_name', $addon['addon_name']);
+						$exists = $this->db->get('add_ons')->row();
+
+						$addonData = [
+							'modifier_set_id' => $modifier_set_id,
+							'add_on_name'     => $this->db->escape_str($addon['addon_name']),
+							'price'           => isset($addon['addonsprice']) ? $addon['addonsprice'] : 0,
+							'minqty'          => isset($addon['min_qty']) ? intval($addon['min_qty']) : 0,
+							'maxqty'          => isset($addon['max_qty']) ? intval($addon['max_qty']) : 0,
+							'is_comp'         => !empty($addon['complementary']) ? 1 : 0,
+							'is_active'       => 1,
+						];
+
+						if ($exists) {
+							$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
+						}
 					}
 				}
 			}
@@ -269,20 +525,27 @@ class Menu_addons extends MX_Controller {
 			}
 
 			redirect('itemmanage/menu_addons');
-
 		} else {
-			// Validation failed or first page load
+			// Validation or first load
 			if (!empty($id)) {
 				$data['title'] = 'Update Modifiers';
 				$modifiedGroups = $this->addons_model->findModifierGroupsById($id);
+				// echo '<pre>';
+				// print_r($modifiedGroups);
+				// echo '</pre>';
+				// exit;
 				$data['addonsinfo'] = $this->singleObjectArray($modifiedGroups);
+				// echo '<pre>';
+				// print_r($data['addonsinfo']);
+				// echo '</pre>';
+				// exit;
 			}
 			$data['module'] = "itemmanage";
+			$data['sub_header'] = 'modifiers';
 			$data['page'] = "addonscreate";
 			$this->load->view('template/layout', $data);
 		}
 	}
-
 
 
 
@@ -580,6 +843,10 @@ class Menu_addons extends MX_Controller {
 					
 					// Remove group_id before adding to addons
 					$addon = clone $item;
+					// echo '<pre>';
+					// print_r($addon);
+					// echo '</pre>';
+					// exit;
 					unset($addon->group_id);
 					unset($addon->name);
 					unset($addon->min_selection);
@@ -833,7 +1100,8 @@ class Menu_addons extends MX_Controller {
 	
 					}
 	
-				} elseif (empty($addonId) && !empty($addonName)) {
+				//} elseif (empty($addonId) && !empty($addonName)) {
+				} elseif (!empty($addonName)) {
 	
 					// New record with no existing addon_id but valid addon_name — treat as new flavour.
 					$result['flavours'][] = [

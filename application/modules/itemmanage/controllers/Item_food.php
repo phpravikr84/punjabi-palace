@@ -57,11 +57,16 @@ class Item_food extends MX_Controller
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 		$data["fooditemslist"] = $this->fooditem_model->read_fooditem($config["per_page"], $page);
+		// echo '<pre>';
+		// print_r($data["fooditemslist"]);
+		// echo '</pre>';
+		// exit;
 		$data['pagenum'] = $page;
 		$data["links"] = $this->pagination->create_links();
 		#
 		#pagination ends
-		#   
+		#
+		$data['sub_header'] = 'item';
 		$data['module'] = "itemmanage";
 		$data['page']   = "fooditemlist";
 		echo Modules::run('template/layout', $data);
@@ -106,9 +111,10 @@ class Item_food extends MX_Controller
 		$data["links"] = $this->pagination->create_links();
 		#
 		#pagination ends
-		#   
+		#
+		$data['sub_header'] = 'meal_deals';
 		$data['module'] = "itemmanage";
-		$data['page']   = "fooditemlist";
+		$data['page']   = "promofooditemlist";
 		echo Modules::run('template/layout', $data);
 	}
 
@@ -390,6 +396,7 @@ class Item_food extends MX_Controller
 			$data['categories']   =  $this->category_model->allcategory_dropdown();
 			$data['allkitchen']   =  $this->fooditem_model->allkitchen();
 			$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+			
 			$data['module'] = "itemmanage";
 			$data['page']   = "addfooditem";
 			echo Modules::run('template/layout', $data);
@@ -644,6 +651,8 @@ class Item_food extends MX_Controller
 			// $data['allkitchen']  =  $this->fooditem_model->allkitchen();
 			$data['food_list']   =  $this->fooditem_model->read_fooditem();
 			// $data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+			
+			$data['sub_header'] = 'promos';
 			$data['module'] = "itemmanage";
 			$data['page']   = "addpromofood";
 			echo Modules::run('template/layout', $data);
@@ -710,7 +719,8 @@ class Item_food extends MX_Controller
 		$data["links"] = $this->pagination->create_links();
 		#
 		#pagination ends
-		#   
+		# 
+		$data['sub_header'] = 'promos';
 		$data['module'] = "itemmanage";
 		$data['page']   = "promo_list";
 		echo Modules::run('template/layout', $data);
@@ -2021,6 +2031,7 @@ class Item_food extends MX_Controller
 			$data['categories']   =  $this->category_model->allcategory_dropdown();
 			$data['allkitchen']   =  $this->fooditem_model->allkitchen();
 			$data['todaymenu']   =  $this->todaymenu_model->read_menulist();
+			$data['sub_header'] = 'meal_deals';
 			$data['module'] = "itemmanage";
 			$data['page']   = "addgroupitem";
 			$data["addonslist"] = $this->fooditem_model->read_modified_groups_addons($config["per_page"], $page);
@@ -3150,6 +3161,10 @@ class Item_food extends MX_Controller
 
         // Check if the request is a form submission (POST)
         if ($this->input->method() === 'post') {
+			// echo '<pre>';
+			// print_r($this->input->post());
+			// echo '</pre>';
+			// exit;
 			  // Price Validation for Arrays
             $cusine_type = $this->input->post('cusine_type', true);
             $recipeMode = $this->input->post('recipeMode', true);
@@ -3317,11 +3332,27 @@ class Item_food extends MX_Controller
             }, (array)$this->input->post('CategoryID', true))));
             $categoryIds = implode(',', $categoryIds);
 
+			// echo $categoryIds;
+			// exit;
+
+			//Extract value from $categoryIds like (1,2,3) to array
+			$groupId = $catId = $subCatId = null;
+			if (!empty($categoryIds)) {
+				$parts = explode(',', $categoryIds);
+
+				$groupId = isset($parts[0]) ? (int)$parts[0] : null;
+				$catId = isset($parts[1]) ? (int)$parts[1] : null;
+				$subCatId = isset($parts[2]) ? (int)$parts[2] : null;
+			}
+
             // Common Data
             $savedid = $this->session->userdata('id');
             $postData = [
                 'ProductsID' => $this->input->post('ProductsID', true),
-                'CategoryID' => $categoryIds,
+				'GroupID' => $groupId,
+				'CategoryID' => $catId,
+				'subCategoryID' => $subCatId,
+                //'CategoryID' => $categoryIds,
                 'ProductName' => $this->input->post('foodname', true),
                 'component' => $this->input->post('component', true),
                 'menutype' => $alltmtype,
@@ -3592,6 +3623,7 @@ class Item_food extends MX_Controller
         $data['ingrdientslist'] = $this->fooditem_model->ingrediantlist();
         $data['addonslist'] = $this->fooditem_model->read_modified_groups_addons($config['per_page'], $page ?? 0);
         $data['module'] = 'itemmanage';
+		$data['sub_header'] = 'item';
         $data['page'] = 'addfooditemnew';
         echo Modules::run('template/layout', $data);
     }
@@ -3907,5 +3939,30 @@ class Item_food extends MX_Controller
 		echo json_encode(['exists' => $exists]);
 	}
 
+	/**
+	 * Get Ajax call for change status
+	 * @param string $table
+	 * 
+	 */
+	public function toggle_status($table, $column, $pk_column, $id) {
+
+		// Sanitize inputs
+		$table = $this->db->escape_str($table);
+		$column = $this->db->escape_str($column);
+		$pk_column = $this->db->escape_str($pk_column);
+
+		$row = $this->db->get_where($table, [$pk_column => $id])->row();
+
+		if ($row && isset($row->$column)) {
+			$currentStatus = $row->$column;
+			$newStatus = ($currentStatus == 1) ? 0 : 1;
+
+			$this->db->where($pk_column, $id)->update($table, [$column => $newStatus]);
+
+			echo json_encode(['status' => 'success', 'new_value' => $newStatus]);
+		} else {
+			echo json_encode(['status' => 'error']);
+		}
+	}
 	
 }

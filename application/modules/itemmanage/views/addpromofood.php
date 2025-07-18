@@ -45,6 +45,9 @@ if ($this->session->flashdata('exception')) { ?>
     </div>
 <?php } ?>
 <div class="row">
+    <?php if ($sub_header == 'promos'): ?>
+    <?php $this->load->view('_sub_header'); ?>
+    <?php endif; ?>
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd">
             <div class="panel-heading">

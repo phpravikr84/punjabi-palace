@@ -66,12 +66,12 @@
 				);
 				$HmvcMenu2["promotions"] = array(
 					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
-					"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
+					//"add_group_item" => array("controller" => "item_food","method" => "addgroupfood","permission" => "read"),
 					"deal_list" => array("controller" => "item_food","method" => "promo_index","permission" => "read"),
 				);
 				$HmvcMenu2["promo"] = array(
 					"icon" => "<i class='ti-bag' aria-hidden='true'></i>",
-					"add_promo_item" => array("controller" => "item_food","method" => "addpromofood","permission" => "read"),
+					//"add_promo_item" => array("controller" => "item_food","method" => "addpromofood","permission" => "read"),
 					"promo_list" => array("controller" => "item_food","method" => "promo_list","permission" => "read"),
 				);
 
@@ -358,7 +358,7 @@
 							break;
 						case 'deal_list':
 							// echo 'Add Combo Food Item';
-							echo 'List Meal Deal';
+							echo 'Edit Meal Deal';
 							break;
 						case 'add_promo_item':
 							// echo 'Add Combo Food Item';
@@ -366,7 +366,7 @@
 							break;
 						case 'promo_list':
 							// echo 'Add Combo Food Item';
-							echo 'Promo List';
+							echo 'Edit Promo';
 							break;
 						
 						case 'production_setting':

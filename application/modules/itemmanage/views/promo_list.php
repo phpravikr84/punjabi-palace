@@ -31,6 +31,9 @@ if ($this->session->flashdata('message')) {
     </div>
 <?php } ?>
 <div class="row">
+    <?php if ($sub_header == 'promos'): ?>
+    <?php $this->load->view('_sub_header'); ?>
+    <?php endif; ?>
     <!--  table area -->
     <div class="col-sm-12">
 

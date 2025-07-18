@@ -1,12 +1,8 @@
 <div class="row">
     <!-- Button area -->
-    <div class="col-sm-12 mb-3">
-        <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_category/category_list'); ?>" class="btn btn Boarding pass
-            btn-primary me-2" style="margin-right:10px;"><?php echo 'Main List'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_category/create_category'); ?>" class="btn btn-success"><?php echo 'Create Category'; ?></a>
-        </div>
-    </div>
+    <?php if ($sub_header == 'category'): ?>
+    <?php $this->load->view('_sub_header'); ?>
+    <?php endif; ?>
     <div class="col-sm-12 col-md-12">
         <div class="panel panel-bd lobidrag">
             <div class="panel-heading">
@@ -22,193 +18,172 @@
                 <?php echo form_hidden('CategoryID', (!empty($categoryinfo->CategoryID) ? $categoryinfo->CategoryID : null)); ?>
                 <?php echo form_hidden('type', 'category'); ?>
 
-                <!-- Parent Category (Multiple Select) -->
-                <div class="form-group row border-bottom pb-2" id="GroupContainer">
-                    <label for="Parentcategory" class="col-sm-2 col-form-label">Group</label>
-                    <div class="col-sm-8">
-                        <select name="Parentcategory[]" id="Parentcategory" class="form-control select2">
-                            <option value="">Select</option>
-                            <?php foreach ($groups as $category) { ?>
-                                <option value="<?php echo $category->CategoryID; ?>" 
-                                    <?php if (!empty($categoryinfo) && in_array($category->CategoryID, explode(',', $categoryinfo->CategoryID))) echo "selected"; ?>>
-                                    <?php echo $category->Name; ?>
-                                </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-
                 <!-- Dynamic Category Fields -->
                 <div id="categoryContainer">
-                    <?php if(!empty($categoryinfo)) { ?>
-                        <?php if(!empty($categoryinfo->sub)) { $i=1; ?>
-                            <?php foreach($categoryinfo->sub as $sub) { ?>
-                                <div class="category-row row border-bottom pb-2 align-items-end gx-2">
-                                    <!-- Category Name -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="form-group">
-                                            <label for="categoryname" class="category-label">Category Name *
-                                            <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Is it a subcategory? Please choose Parent Category also.">
-                                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                            </a>
-                                            </label>
-                                            <input name="subCategoryId[]" type="hidden" value="<?php echo $sub->CategoryID; ?>"/>
-                                            <input name="categoryname[]" class="form-control category-input" type="text" 
-                                                placeholder="Category Name" 
-                                                value="<?php echo $sub->Name; ?>" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Is Offer Checkbox -->
-                                    <div class="col-lg-1 col-md-6">
-                                        <div class="form-group d-flex align-items-center">
-                                            <label class="me-2 mb-0" for="isoffer"><?php echo display('is_offer'); ?></label>
-                                            <input class="form-check-input" type="checkbox" name="isoffer[]" id="isoffer_<?php echo $i; ?>" value="1"
-                                                <?php if (!empty($sub) && $sub->isoffer == 1) echo 'checked'; ?>>
-                                                <?php if (!empty($sub) && $sub->isoffer == 1){ ?>
-                                                        <input type="hidden" name="offer[]" value="1" id="offer_<?php echo $i; ?>"> 
-                                                    <?php } else { ?>
-                                                        <input type="hidden" name="offer[]" value="0" id="offer_<?php echo $i; ?>"> 
-                                                   <?php } ?>
-                                        </div>
-                                    </div>
-
-                                    <!-- Offer Dates Section -->
-                                    <div class="col-lg-5 col-md-12" id="offeractive_<?php echo $i; ?>"
-                                        style="<?php if (!empty($sub)) {
-                                                    echo ($sub->isoffer == 1) ? '' : 'display: none;';
-                                                } else {
-                                                    echo 'display: none;';
-                                                } ?>">
-                                        <div class="row gx-2">
-                                            <div class="col-md-4">
-                                                <label for="offerpercentage"><?php echo 'Percentage (%)'; ?></label>
-                                                <input name="offerpercentage[]" class="form-control" type="text"
-                                                    placeholder="<?php echo 'Offer Percentage'; ?>" id="offerpercentage"
-                                                    value="<?php echo !empty($sub->offerpercentage) ? $sub->offerpercentage : ''; ?>">
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label for="offerstartdate"><?php echo display('offerdate'); ?></label>
-                                                <input name="offerstartdate[]" class="form-control datepicker" type="text"
-                                                    placeholder="<?php echo display('offerdate'); ?>" id="offerstartdate_<?php echo $i; ?>"
-                                                    value="<?php echo !empty($sub->offerstartdate) ? $sub->offerstartdate : ''; ?>">
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label for="offerendate"><?php echo display('offerenddate'); ?></label>
-                                                <input name="offerendate[]" class="form-control datepicker" type="text"
-                                                    placeholder="<?php echo display('offerenddate'); ?>" id="offerendate_<?php echo $i; ?>"
-                                                    value="<?php echo !empty($sub->offerendate) ? $sub->offerendate : ''; ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Status -->
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="status"><?php echo display('status'); ?></label>
-                                            <select name="status[]" class="form-control-100">
-                                                <option value="1" <?php echo $sub->CategoryIsActive==1 ? 'selected' : ''; ?>><?php echo display('active'); ?></option>
-                                                <option value="0" <?php echo $sub->CategoryIsActive==0 ? 'selected' : ''; ?>><?php echo display('inactive'); ?></option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!-- Remove Button -->
-                                    <div class="col-md-1">
-                                        <button type="button" id="<?php echo !empty($sub->CategoryID) ? $sub->CategoryID : 0; ?>" 
-                                            class="btn btn-danger remove-editcategory w-100">×</button>
+                    <?php $categoryIndex = 1; ?>
+                    <?php if (!empty($categoryinfo->sub)) { ?>
+                        <?php foreach ($categoryinfo->sub as $sub) { ?>
+                            <div class="category-row row mb-3 align-items-end border-bottom pb-3">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="Parentcategory_<?php echo $categoryIndex; ?>">Group *</label>
+                                        <select name="Parentcategory[]" id="Parentcategory_<?php echo $categoryIndex; ?>" class="form-control select2" required>
+                                            <option value="">Select Group</option>
+                                            <?php foreach ($groups as $category) { ?>
+                                                <option value="<?php echo $category->CategoryID; ?>" 
+                                                    <?php if (!empty($sub->parentid) && $sub->parentid == $category->CategoryID) echo "selected"; ?>>
+                                                    <?php echo $category->Name; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
-                            <?php $i++; } ?>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="category-label">Category Name *</label>
+                                        <input name="subCategoryId[]" type="hidden" value="<?php echo $sub->CategoryID; ?>">
+                                        <input name="categoryname[]" class="form-control category-input" type="text" 
+                                            placeholder="Category Name" value="<?php echo $sub->Name; ?>" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="isoffer[]" 
+                                                id="isoffer_<?php echo $categoryIndex; ?>" value="1"
+                                                <?php echo $sub->isoffer == 1 ? 'checked' : ''; ?>>
+                                            <label class="form-check-label" for="isoffer_<?php echo $categoryIndex; ?>">
+                                                <?php echo display('is_offer'); ?>
+                                            </label>
+                                            <input type="hidden" name="offer[]" value="<?php echo $sub->isoffer == 1 ? '1' : '0'; ?>" 
+                                                id="offer_<?php echo $categoryIndex; ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 offer-section" id="offeractive_<?php echo $categoryIndex; ?>" 
+                                    style="<?php echo $sub->isoffer == 1 ? '' : 'display: none;'; ?>">
+                                    <div class="row g-2">
+                                        <div class="col-md-4">
+                                            <label>Percentage (%)</label>
+                                            <input name="offerpercentage[]" class="form-control" type="number" 
+                                                placeholder="Offer Percentage" value="<?php echo $sub->offerpercentage; ?>">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label><?php echo display('offerdate'); ?></label>
+                                            <input name="offerstartdate[]" class="form-control datepicker" type="text"
+                                                placeholder="<?php echo display('offerdate'); ?>" 
+                                                id="offerstartdate_<?php echo $categoryIndex; ?>"
+                                                value="<?php echo $sub->offerstartdate; ?>">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label><?php echo display('offerenddate'); ?></label>
+                                            <input name="offerendate[]" class="form-control datepicker" type="text"
+                                                placeholder="<?php echo display('offerenddate'); ?>" 
+                                                id="offerendate_<?php echo $categoryIndex; ?>"
+                                                value="<?php echo $sub->offerendate; ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1" style="display:none;">
+                                    <div class="form-group">
+                                        <label><?php echo display('status'); ?></label>
+                                        <select name="status[]" class="form-control">
+                                            <option value="1" <?php echo $sub->CategoryIsActive == 1 ? 'selected' : ''; ?>>
+                                                <?php echo display('active'); ?>
+                                            </option>
+                                            <option value="0" <?php echo $sub->CategoryIsActive == 0 ? 'selected' : ''; ?>>
+                                                <?php echo display('inactive'); ?>
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-danger btn-sm remove-category" 
+                                        data-id="<?php echo $sub->CategoryID; ?>">×</button>
+                                </div>
+                            </div>
+                            <?php $categoryIndex++; ?>
                         <?php } ?>
                     <?php } else { ?>
-                        <div class="category-row row g-2 align-items-end mb-5">
-                            <!-- Category Name -->
-                            <div class="col-lg-3 col-md-6">
-                                <label for="categoryname" class="category-label">Category Name *
-                                <a class="parentcattooltips" data-toggle="tooltip" data-placement="top" title="Is it a subcategory? Please choose Parent Category also.">
-                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                                </a>
-                                </label>
-                                <input name="categoryname[]" class="form-control category-input" type="text" 
-                                    placeholder="Category Name" required>
-                            </div>
-
-                            <!-- Is Offer Checkbox -->
-                            <div class="col-lg-1 col-md-6">
-                                <div class="form-check row">
-                                    <label class="form-check-label col-lg-6 col-md-4" for="isoffer"><?php echo display('is_offer'); ?></label>
-                                    <input class="form-check-input col-lg-6 col-md-8" type="checkbox" name="isoffer[]" id="isoffer_1" value="1"
-                                        <?php if (!empty($categoryinfo) && $categoryinfo->isoffer == 1) echo 'checked'; ?>>
-                                        <input type="hidden" name="offer[]" value="0" id="offer_1"> 
+                        <div class="category-row row mb-3 align-items-end border-bottom pb-3">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Parentcategory_1">Group *</label>
+                                    <select name="Parentcategory[]" id="Parentcategory_1" class="form-control select2">
+                                        <option value="">Select Group</option>
+                                        <?php foreach ($groups as $category) { ?>
+                                            <option value="<?php echo $category->CategoryID; ?>">
+                                                <?php echo $category->Name; ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
-
-                            <!-- Offer Dates Section -->
-                            <div class="col-lg-5 col-md-12" id="offeractive_1"
-                                class="<?php if (!empty($categoryinfo)) {
-                                    echo ($categoryinfo->isoffer == 1) ? '' : 'd-none';
-                                } else {
-                                    echo 'd-none';
-                                } ?>">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="category-label">Category Name *</label>
+                                    <input name="categoryname[]" class="form-control category-input" type="text" 
+                                        placeholder="Category Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="isoffer[]" 
+                                            id="isoffer_1" value="1">
+                                        <label class="form-check-label" for="isoffer_1"><?php echo display('is_offer'); ?></label>
+                                        <input type="hidden" name="offer[]" value="0" id="offer_1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 offer-section" id="offeractive_1" style="display: none;">
                                 <div class="row g-2">
                                     <div class="col-md-4">
-                                        <label for="offerpercentage"><?php echo 'Percentage (%)'; ?></label>
-                                        <input name="offerpercentage[]" class="form-control" type="text"
-                                            placeholder="<?php echo 'Offer Percentage'; ?>" id="offerpercentage"
-                                            value="<?php echo !empty($categoryinfo->offerpercentage) ? $categoryinfo->offerpercentage : ''; ?>">
+                                        <label>Percentage (%)</label>
+                                        <input name="offerpercentage[]" class="form-control" type="number" 
+                                            placeholder="Offer Percentage">
                                     </div>
-
                                     <div class="col-md-4">
-                                        <label for="offerstartdate"><?php echo display('offerdate'); ?></label>
+                                        <label><?php echo display('offerdate'); ?></label>
                                         <input name="offerstartdate[]" class="form-control datepicker" type="text"
-                                            placeholder="<?php echo display('offerdate'); ?>" id="offerstartdate_1"
-                                            value="<?php echo !empty($categoryinfo->offerstartdate) ? $categoryinfo->offerstartdate : ''; ?>">
+                                            placeholder="<?php echo display('offerdate'); ?>" id="offerstartdate_1">
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="offerendate"><?php echo display('offerenddate'); ?></label>
+                                        <label><?php echo display('offerenddate'); ?></label>
                                         <input name="offerendate[]" class="form-control datepicker" type="text"
-                                            placeholder="<?php echo display('offerenddate'); ?>" id="offerendate_1"
-                                            value="<?php echo !empty($categoryinfo->offerendate) ? $categoryinfo->offerendate : ''; ?>">
+                                            placeholder="<?php echo display('offerenddate'); ?>" id="offerendate_1">
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Status -->
-                            <div class="col-lg-2 col-md-6">
-                                <label for="status"><?php echo display('status'); ?></label>
-                                <select name="status[]" class="form-control-100">
-                                    <option value="1" selected><?php echo display('active'); ?></option>
-                                    <option value="0"><?php echo display('inactive'); ?></option>
-                                </select>
+                            <div class="col-md-1" style="display:none;">
+                                <div class="form-group">
+                                    <label><?php echo display('status'); ?></label>
+                                    <select name="status[]" class="form-control">
+                                        <option value="1" selected><?php echo display('active'); ?></option>
+                                        <option value="0"><?php echo display('inactive'); ?></option>
+                                    </select>
+                                </div>
                             </div>
-
-                            <!-- Remove Button -->
-                            <div class="col-lg-1 col-md-6">
-                                <button type="button" class="btn btn-danger mt-4 remove-category">×</button>
+                            <div class="col-md-1">
+                                <button type="button" class="btn btn-danger btn-sm remove-category">×</button>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
 
-                <!-- Hide this button on Edit Category -->
-                <?php if(!empty($categoryinfo->CategoryID)) {
-                        $hideHtmlElement = 'style="display:none;"';
-                        $TextBtn = 'Update';
-                    } else {
-                        $hideHtmlElement = '';
-                        $TextBtn = 'Save';
-                    }
-                ?>
-                <div class="form-group text-left border-bottom pb-2" <?php echo $hideHtmlElement; ?> >
-                    <button type="button" id="addCategory" class="btn btn-info"> <?php echo display('add_category'); ?> </button>
+                <div class="form-group row mb-3" <?php echo !empty($categoryinfo->CategoryID) ? 'style="display:none;"' : ''; ?>>
+                    <div class="col-sm-12">
+                        <button type="button" id="addCategory" class="btn btn-info"><?php echo display('add_category'); ?></button>
+                    </div>
                 </div>
 
-                <div class="form-group text-right">
-                    <button type="reset" class="btn btn-primary" <?php echo $hideHtmlElement; ?>> <?php echo display('reset'); ?> </button>
-                    <button type="submit" id="saveButton" class="btn btn-success"> <?php echo $TextBtn; ?> </button>
+                <div class="form-group row">
+                    <div class="col-sm-12 text-right">
+                        <button type="reset" class="btn btn-secondary"><?php echo display('reset'); ?></button>
+                        <button type="submit" class="btn btn-success">
+                            <?php echo !empty($categoryinfo->CategoryID) ? 'Update' : 'Save'; ?>
+                        </button>
+                    </div>
                 </div>
 
                 <?php echo form_close(); ?>
@@ -222,62 +197,7 @@
         margin-top: 21px !important;
     }
     .parentcattooltips { margin-top: 10px; }
-    .select2-container--default.select2-container--disabled .select2-selection--single {
-        background-color: #e9ecef;
-        cursor: not-allowed;
-    }
-    .select2-container {
-        min-width: 300px;
-    }
-    .select2-results__option {
-        padding-right: 20px;
-        vertical-align: middle;
-    }
-    .select2-results__option:before {
-        content: "";
-        display: inline-block;
-        position: relative;
-        height: 20px;
-        width: 20px;
-        border: 2px solid #e9e9e9;
-        border-radius: 4px;
-        background-color: #fff;
-        margin-right: 20px;
-        vertical-align: middle;
-    }
-    .select2-results__option[aria-selected=true]:before {
-        font-family: fontAwesome;
-        content: "\f00c";
-        color: #fff;
-        background-color: #f77750;
-        border: 0;
-        display: inline-block;
-        padding-left: 3px;
-    }
-    .select2-container--default .select2-results__option[aria-selected=true] {
-        background-color: #fff;
-    }
-    .select2-container--default .select2-results__option--highlighted[aria-selected] {
-        background-color: #eaeaeb;
-        color: #272727;
-    }
-    .select2-container--default .select2-selection--multiple {
-        margin-bottom: 10px;
-    }
-    .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
-        border-radius: 4px;
-    }
-    .select2-container--default.select2-container--focus .select2-selection--multiple {
-        border-color: #f77750;
-        border-width: 2px;
-    }
-    .select2-container--default .select2-selection--multiple {
-        border-width: 2px;
-    }
-    .select2-container--open .select2-dropdown--below {
-        border-radius: 6px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
+   
     .form-control-100 {
         display: block;
         width: 100px;
@@ -295,154 +215,227 @@
 <script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 $(document).ready(function () {
-    let categoryIndex = 1; // Counter for unique IDs
+    let categoryIndex = <?php echo $categoryIndex; ?>;
 
-    // Initialize Select2
-    $('#Parentcategory').select2({
+    // Initialize Select2 for all group dropdowns
+    $('.select2').select2({
         placeholder: "Select Group",
-        allowClear: true,
-        closeOnSelect: false,
-        allowHtml: true,
-        tags: true
-    });
-
-    // Display validation errors with SweetAlert
-    <?php if (!empty($validation_errors)) { ?>
-        var errors = <?php echo json_encode($validation_errors); ?>;
-        var errorMessage = '';
-        $.each(errors, function(key, value) {
-            errorMessage += value + '<br>';
-        });
-        swal("Validation Error", errorMessage, "error");
-    <?php } ?>
-
-    // Add new category row
-    $("#addCategory").click(function () {
-        var newRow = $(".category-row:first").clone();
-        newRow.hide().appendTo("#categoryContainer").fadeIn(300);
-        newRow.find("input[type='text']").val("");
-        newRow.find("input[type='checkbox']").prop("checked", false);
-        newRow.find("select").val("1");
-        categoryIndex++;
-        newRow.find("[id^='isoffer']").each(function () {
-            const newId = 'isoffer_' + categoryIndex;
-            $(this).attr('id', newId);
-        });
-        newRow.find("[id^='offer']").each(function () {
-            const newId = 'offer_' + categoryIndex;
-            $(this).attr('id', newId);
-        });
-        newRow.find("[id^='offeractive']").each(function () {
-            const newId = 'offeractive_' + categoryIndex;
-            $(this).attr('id', newId).hide();
-        });
-        newRow.find("[id^='offerstartdate']").each(function () {
-            const newId = 'offerstartdate_' + categoryIndex;
-            $(this).attr('id', newId);
-        });
-        newRow.find("[id^='offerendate']").each(function () {
-            const newId = 'offerendate_' + categoryIndex;
-            $(this).attr('id', newId);
-        });
-        newRow.find(".datepicker").removeClass("hasDatepicker").datepicker({
-            dateFormat: 'dd-mm-yy'
-        });
-
-        // Set label and placeholder for new row
-        newRow.find('.category-label').text('Category Name *');
-        newRow.find('.category-input').attr('placeholder', 'Category Name');
-    });
-
-    // Remove category row
-    $(document).on("click", ".remove-category", function () {
-        if ($(".category-row").length > 1) {
-            $(this).closest(".category-row").fadeOut(300, function () {
-                $(this).remove();
-            });
-        }
-    });
-
-    // Remove edit category
-    $(document).on("click", ".remove-editcategory", function () {
-        var categoryid = this.id;
-        var rowElement = $(this).closest(".category-row");
-        var confirmDelete = confirm("Are you sure you want to delete this category?");
-        if (confirmDelete) {
-            deleteAdonsInfo(categoryid, rowElement);
-        }
-    });
-
-    // Validate form before submission
-    $("#saveButton").click(function (e) {
-        let values = [];
-        let isUnique = true;
-        let errors = [];
-
-        // Check category names
-        $(".category-input").each(function () {
-            let val = $(this).val().trim();
-            if (!val) {
-                errors.push("Category name cannot be empty.");
-            } else if (values.includes(val)) {
-                isUnique = false;
-                errors.push("Category names must be unique: " + val);
-            }
-            values.push(val);
-        });
-
-        // Check parent category selection
-        let parentCategory = $('#Parentcategory').val();
-        if (!parentCategory || parentCategory.length === 0) {
-            errors.push("Please select a group.");
-        }
-
-        if (errors.length > 0 || !isUnique) {
-            e.preventDefault();
-            let errorMessage = errors.join('! ');
-            swal("Validation Error", errorMessage, "error");
-        }
+        allowClear: true
     });
 
     // Initialize datepickers
     $('.datepicker').datepicker({
-        dateFormat: 'dd-mm-yy'
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true
     });
 
-    // Toggle offer fields visibility
-    $(document).on('change', '[id^=isoffer_]', function () {
-        var index = $(this).attr('id').split('_')[1];
-        if ($(this).is(':checked')) {
-            $('#offeractive_' + index).removeClass('d-none');
-            $('#offer_' + index).val('1');
-        } else {
-            $('#offeractive_' + index).addClass('d-none');
-            $('#offer_' + index).val('0');
-        }
-    });
+    // Show validation errors
+    $('#categoryForm').submit(function (e) {
+        let errors = [];
+        const categoryNames = new Set();
+        
+        $('.category-row').each(function(index) {
+            const categoryInput = $(this).find('.category-input').val().trim();
+            const groupSelect = $(this).find('.select2').val();
 
-    // Initialize form state for Category view
-    $('#GroupContainer').show();
-    $('#categoryContainer').show();
-    $('.category-label').text('Category Name *');
-    $('.category-input').attr('placeholder', 'Category Name');
-});
+            if (!categoryInput) {
+                errors.push(`Category name cannot be empty in row ${index + 1}`);
+            } else if (categoryNames.has(categoryInput)) {
+                errors.push(`Duplicate category name: ${categoryInput} in row ${index + 1}`);
+            } else {
+                categoryNames.add(categoryInput);
+            }
 
-function deleteAdonsInfo(id, rowElement) {
-    var myurl = baseurl + "itemmanage/item_category/delete_category/" + id;
-    var csrf = $('#csrfhashresarvation').val();
-    $.ajax({
-        type: "POST",
-        url: myurl,
-        data: { id: id, csrf_test_name: csrf },
-        success: function(response) {
-            swal("Success", "Category deleted successfully!", "success");
-            rowElement.fadeOut(300, function () {
-                $(this).remove();
+            if (!groupSelect) {
+                errors.push(`Please select a group for category in row ${index + 1}`);
+            }
+        });
+
+        if (errors.length > 0) {
+            e.preventDefault(); // Stop submission
+            swal({
+                title: "Validation Error",
+                html: errors.join('<br>'),
+                type: "error"
             });
-        },
-        error: function(xhr, status, error) {
-            swal("Error", "Unable to delete the category. Please try again.", "error");
         }
     });
-}
+
+
+    // Add new category row
+    $('#addCategory').on('click', function () {
+        try {
+            console.log('Adding new category row, index:', categoryIndex + 1);
+            categoryIndex++;
+            
+            // Clone the first category row
+            //const newRow = $('.category-row:first').clone(true, true);
+            var newRow = $(".category-row:first").clone();
+            
+            // Remove Select2 containers and destroy instances
+            newRow.find('.select2-container').remove();
+            // newRow.find('.select2').each(function() {
+            //     try {
+            //         $(this).select2('destroy');
+            //     } catch (e) {
+            //         console.warn('Select2 destroy failed:', e);
+            //     }
+            // });
+            // Clean up select2 safely before cloning
+            newRow.find('.select2').each(function () {
+                if ($.fn.select2 && $(this).data('select2')) {
+                    $(this).select2('destroy');
+                }
+            });
+
+            
+            // Reset all inputs and selects
+            newRow.find('input:not([type=checkbox])').val('');
+            newRow.find('input[type=checkbox]').prop('checked', false);
+            newRow.find('.offer-section').hide();
+            newRow.find('input[name="subCategoryId[]"]').remove();
+            newRow.find('select.select2').val(null); // Clear group select
+            newRow.find('select').val('1'); // Set status to Active
+            //newRow.find('.select2-hidden-accessible').remove(); // Remove hidden select2 elements
+            
+            // Update IDs
+            newRow.find('[id^=Parentcategory_]').attr('id', 'Parentcategory_' + categoryIndex);
+            newRow.find('[id^=isoffer_]').attr('id', 'isoffer_' + categoryIndex);
+            newRow.find('[id^=offer_]').attr('id', 'offer_' + categoryIndex).val('0');
+            newRow.find('[id^=offeractive_]').attr('id', 'offeractive_' + categoryIndex);
+            newRow.find('[id^=offerstartdate_]').attr('id', 'offerstartdate_' + categoryIndex).val('');
+            newRow.find('[id^=offerendate_]').attr('id', 'offerendate_' + categoryIndex).val('');
+            
+            newRow.find('.remove-category').removeAttr('data-id');
+            
+            // Append the new row
+            newRow.appendTo('#categoryContainer').hide().fadeIn(300);
+            
+            // Reinitialize Select2
+            newRow.find('.select2').select2({
+                placeholder: "Select Group",
+                allowClear: true
+            });
+            
+            // Reinitialize datepicker
+            newRow.find('.datepicker').removeClass('hasDatepicker').removeAttr('id').datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true
+            });
+            
+            console.log('New row added successfully, index:', categoryIndex);
+        } catch (error) {
+            console.error('Error adding category row:', error);
+            swal({
+                title: "Error",
+                text: "Failed to add new category row. Check console for details.",
+                type: "error"
+            });
+        }
+    });
+
+    // Remove category row
+    $(document).on('click', '.remove-category', function () {
+        const categoryId = $(this).data('id');
+        const row = $(this).closest('.category-row');
+        
+        if (categoryId) {
+            swal({
+                title: "Are you sure?",
+                text: "This will delete the category permanently!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.value) {
+                    deleteCategory(categoryId, row);
+                }
+            });
+        } else if ($('.category-row').length > 1) {
+            row.fadeOut(300, function() { $(this).remove(); });
+        }
+    });
+
+    // Toggle offer fields
+    $(document).on('change', '[id^=isoffer_]', function () {
+        const index = $(this).attr('id').split('_')[1];
+        const offerSection = $('#offeractive_' + index);
+        const offerInput = $('#offer_' + index);
+        
+        if ($(this).is(':checked')) {
+            offerSection.slideDown(300);
+            offerInput.val('1');
+        } else {
+            offerSection.slideUp(300);
+            offerInput.val('0');
+        }
+    });
+
+    // Form validation
+    $('#categoryForm').submit(function (e) {
+        let errors = [];
+        const categoryNames = new Set();
+        
+        $('.category-row').each(function(index) {
+            const categoryInput = $(this).find('.category-input').val().trim();
+            const groupSelect = $(this).find('.select2').val();
+            
+            if (!categoryInput) {
+                errors.push(`Category name cannot be empty in row ${index + 1}`);
+            } else if (categoryNames.has(categoryInput)) {
+                errors.push(`Duplicate category name: ${categoryInput} in row ${index + 1}`);
+            } else {
+                categoryNames.add(categoryInput);
+            }
+            
+            if (!groupSelect) {
+                errors.push(`Please select a group for category in row ${index + 1}`);
+            }
+        });
+
+        if (errors.length > 0) {
+            e.preventDefault();
+            swal({
+                title: "Validation Error",
+                html: errors.join('<br>'),
+                type: "error"
+            });
+        }
+    });
+
+    function deleteCategory(id, row) {
+        $.ajax({
+            url: '<?php echo base_url("itemmanage/item_category/delete_category/"); ?>' + id,
+            type: 'POST',
+            data: { csrf_test_name: $('#csrfhashresarvation').val() },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    swal({
+                        title: "Success",
+                        text: response.message,
+                        type: "success"
+                    });
+                    row.fadeOut(300, function() { $(this).remove(); });
+                } else {
+                    swal({
+                        title: "Error",
+                        text: response.message || "Failed to delete category",
+                        type: "error"
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+                swal({
+                    title: "Error",
+                    text: "Failed to delete category. Check console for details.",
+                    type: "error"
+                });
+            }
+        });
+    }
+});
 </script>
