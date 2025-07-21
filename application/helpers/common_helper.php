@@ -1170,6 +1170,10 @@ if (!function_exists('get_variant_first_letter')) {
  */
 if (!function_exists('get_item_code')) {
     function get_item_code($input) {
+        // Step 1: Remove any text within brackets (e.g., "(3 per serve)")
+        $input = preg_replace('/\([^)]+\)/', '', $input);
+
+        // Step 2: Split by 'or'
         $phrases = preg_split('/\s+or\s+/i', $input);
         $results = [];
         $counts = [];
