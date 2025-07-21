@@ -10,7 +10,7 @@
                 <table width="100%" class="datatable table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th><?php echo display('serial') ?></th>
+                            <th><?php echo 'Sl.' ?></th>
                             <th><?php echo 'Category Name' ?></th>
                             <th><?php echo 'Sub Category' ?></th>
                             <th><?php echo display('status') ?></th>
@@ -32,9 +32,6 @@
                                             <td><?php echo $sl++; ?></td>
                                             <td><?php echo $category['Name']; ?></td>
                                             <td><?php echo $subcategory['Name']; ?></td>
-                                            <td>
-                                                <?php echo ($subcategory['CategoryIsActive'] == 1) ? 'Active' : 'Inactive'; ?>
-                                            </td>
                                             <td>
                                                 <a href="#" class="toggle-status" data-url="<?= base_url('itemmanage/item_category/toggle_status/' . $subcategory['CategoryID']) ?>">
                                                     <?php if ($subcategory['CategoryIsActive'] == 1): ?>
@@ -68,14 +65,14 @@
 
 <script>
 $(document).ready(function() {
-    $('.datatable').DataTable({
-        "pageLength": 25,
-        "lengthMenu": [10, 25, 50, 100],
-        "ordering": true,
-        "columnDefs": [
-            { "targets": [0, 4], "orderable": false }
-        ]
-    });
+    // $('.datatable').DataTable({
+    //     "pageLength": 25,
+    //     "lengthMenu": [10, 25, 50, 100],
+    //     "ordering": true,
+    //     "columnDefs": [
+    //         { "targets": [0, 4], "orderable": false }
+    //     ]
+    // });
 
     $(document).on('click', '.toggle-status', function(e) {
         e.preventDefault();

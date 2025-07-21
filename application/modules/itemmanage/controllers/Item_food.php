@@ -3354,6 +3354,7 @@ class Item_food extends MX_Controller
 				'subCategoryID' => $subCatId,
                 //'CategoryID' => $categoryIds,
                 'ProductName' => $this->input->post('foodname', true),
+				'item_code' => get_item_code($this->input->post('foodname', true)),
                 'component' => $this->input->post('component', true),
                 'menutype' => $alltmtype,
                 'itemnotes' => $this->input->post('itemnotes', true),

@@ -1163,19 +1163,41 @@ if (!function_exists('get_variant_first_letter')) {
     function generate_toggle_url($table, $column, $pk_column, $id) {
         return base_url("itemmanage/item_food/toggle_status/$table/$column/$pk_column/$id");
     }
+  }
+
+/**
+ * convert a string to itemcode
+ */
+if (!function_exists('get_item_code')) {
+    function get_item_code($input) {
+        $phrases = preg_split('/\s+or\s+/i', $input);
+        $results = [];
+        $counts = [];
+
+        foreach ($phrases as $phrase) {
+            $words = preg_split('/\s+/', trim($phrase));
+            $acronym = '';
+
+            if (count($words) > 0) {
+                // First word: take first 2 letters
+                $acronym .= strtoupper(mb_substr($words[0], 0, 2));
+
+                // Remaining words: take first letter
+                for ($i = 1; $i < count($words); $i++) {
+                    $acronym .= strtoupper(mb_substr($words[$i], 0, 1));
+                }
+            }
+
+            // Handle duplicates
+            if (isset($counts[$acronym])) {
+                $counts[$acronym]++;
+                $results[] = $acronym . '_' . $counts[$acronym];
+            } else {
+                $counts[$acronym] = 1;
+                $results[] = $acronym;
+            }
+        }
+
+        return implode(', ', $results);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2025 at 07:44 AM
--- Server version: 10.4.28-MariaDB
+-- Generation Time: Jul 18, 2025 at 02:41 PM
+-- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accesslog` (
   `sl_no` bigint(20) NOT NULL,
-  `action_page` varchar(50) DEFAULT NULL,
-  `action_done` text DEFAULT NULL,
-  `remarks` text NOT NULL,
-  `user_name` varchar(50) DEFAULT NULL,
+  `action_page` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `action_done` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remarks` text COLLATE utf8_unicode_ci NOT NULL,
+  `user_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -569,7 +569,8 @@ INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user
 (526, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:16:57'),
 (527, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:24:55'),
 (528, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:37:24'),
-(529, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:46:56'),
+(529, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:46:56');
+INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user_name`, `entry_date`) VALUES
 (530, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 21:22:39'),
 (531, 'Ingredient List', 'Insert Data', 'New Ingredient Created', 'John Doe', '2025-03-24 15:01:47'),
 (532, 'Ingredient List', 'Insert Data', 'New Ingredient Created', 'John Doe', '2025-03-24 15:02:06'),
@@ -1110,7 +1111,8 @@ INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user
 (1067, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-20 21:26:35'),
 (1068, 'Order List', 'Insert Data', 'Order is Update', 'John Doe', '2025-05-20 21:26:47'),
 (1069, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:49:00'),
-(1070, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:53:19'),
+(1070, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:53:19');
+INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user_name`, `entry_date`) VALUES
 (1071, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:59:08'),
 (1072, 'Order List', 'Insert Data', 'Order is Update', 'John Doe', '2025-05-22 20:59:50'),
 (1073, 'Order List', 'Insert Data', 'Order is Update', 'John Doe', '2025-05-22 20:59:56'),
@@ -1276,7 +1278,20 @@ INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user
 (1233, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-09 20:34:12'),
 (1234, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 16:25:03'),
 (1235, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 21:40:49'),
-(1236, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 21:42:55');
+(1236, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 21:42:55'),
+(1237, 'Category List', 'Insert Data', 'Multiple categories created', 'John Doe', '2025-07-16 20:27:30'),
+(1238, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:28:46'),
+(1239, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:32:33'),
+(1240, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:35:10'),
+(1241, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:48:33'),
+(1242, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:52:51'),
+(1243, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:53:54'),
+(1244, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:54:21'),
+(1245, 'Category List', 'Update Data', 'Multiple categories updated', 'John Doe', '2025-07-16 20:54:46'),
+(1246, 'Category List', 'Insert Data', 'Multiple categories created', 'John Doe', '2025-07-18 18:38:11'),
+(1247, 'Category List', 'Insert Data', 'Multiple subcategories created', 'John Doe', '2025-07-18 19:49:28'),
+(1248, 'Category List', 'Insert Data', 'Multiple subcategories created', 'John Doe', '2025-07-18 20:54:13'),
+(1249, 'Category List', 'Update Data', 'Multiple subcategories updated', 'John Doe', '2025-07-18 20:56:22');
 
 -- --------------------------------------------------------
 
@@ -1288,7 +1303,7 @@ CREATE TABLE `acc_account_name` (
   `account_id` int(10) UNSIGNED NOT NULL,
   `account_name` varchar(255) NOT NULL,
   `account_type` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1297,20 +1312,20 @@ CREATE TABLE `acc_account_name` (
 --
 
 CREATE TABLE `acc_coa` (
-  `HeadCode` varchar(50) NOT NULL,
-  `HeadName` varchar(100) NOT NULL,
-  `PHeadName` varchar(50) NOT NULL,
+  `HeadCode` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `HeadName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `PHeadName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `HeadLevel` int(11) NOT NULL,
   `IsActive` tinyint(1) NOT NULL,
   `IsTransaction` tinyint(1) NOT NULL,
   `IsGL` tinyint(1) NOT NULL,
-  `HeadType` char(1) NOT NULL,
+  `HeadType` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `IsBudget` tinyint(1) NOT NULL,
   `IsDepreciation` tinyint(1) NOT NULL,
   `DepreciationRate` decimal(18,2) NOT NULL,
-  `CreateBy` varchar(50) NOT NULL,
+  `CreateBy` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `CreateDate` datetime NOT NULL,
-  `UpdateBy` varchar(50) NOT NULL,
+  `UpdateBy` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `UpdateDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1319,229 +1334,229 @@ CREATE TABLE `acc_coa` (
 --
 
 INSERT INTO `acc_coa` (`HeadCode`, `HeadName`, `PHeadName`, `HeadLevel`, `IsActive`, `IsTransaction`, `IsGL`, `HeadType`, `IsBudget`, `IsDepreciation`, `DepreciationRate`, `CreateBy`, `CreateDate`, `UpdateBy`, `UpdateDate`) VALUES
-('502020000001', '145454-HmIsahaq', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2018-12-17 15:10:19', '', '0000-00-00 00:00:00'),
-('4021403', 'AC', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:33:55', '', '0000-00-00 00:00:00'),
-('50202', 'Account Payable', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:50:43', '', '0000-00-00 00:00:00'),
-('10203', 'Account Receivable', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2013-09-18 15:29:35'),
-('1020201', 'Advance', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, 0.00, 'Zoherul', '2015-05-31 13:29:12', 'admin', '2015-12-31 16:46:32'),
-('102020103', 'Advance House Rent', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-10-02 16:55:38', 'admin', '2016-10-02 16:57:32'),
-('10202', 'Advance, Deposit And Pre-payments', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-12-31 16:46:24'),
-('4020602', 'Advertisement and Publicity', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:51:44', '', '0000-00-00 00:00:00'),
-('1010410', 'Air Cooler', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-05-23 12:13:55', '', '0000-00-00 00:00:00'),
-('4020603', 'AIT Against Advertisement', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:52:09', '', '0000-00-00 00:00:00'),
-('1', 'Assets', 'COA', 0, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('1010204', 'Attendance Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:49:31', '', '0000-00-00 00:00:00'),
-('40216', 'Audit Fee', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, 0.00, 'admin', '2017-07-18 12:54:30', '', '0000-00-00 00:00:00'),
-('4021002', 'Bank Charge', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:21:03', '', '0000-00-00 00:00:00'),
-('30203', 'Bank Interest', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, 0.00, 'Obaidul', '2015-01-03 14:49:54', 'admin', '2016-09-25 11:04:19'),
-('1010104', 'Book Shelf', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:46:11', '', '0000-00-00 00:00:00'),
-('1010407', 'Books and Journal', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:45:37', '', '0000-00-00 00:00:00'),
-('102010207', 'Brac Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-01-18 10:10:31', '', '0000-00-00 00:00:00'),
-('4020604', 'Business Development Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:52:29', '', '0000-00-00 00:00:00'),
-('4020606', 'Campaign Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:52:57', 'admin', '2016-09-19 14:52:48'),
-('4020502', 'Campus Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:46:53', 'admin', '2017-04-27 17:02:39'),
-('40212', 'Car Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:28:43', '', '0000-00-00 00:00:00'),
-('10201', 'Cash & Cash Equivalent', 'Current Asset', 2, 1, 0, 1, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:57:55'),
-('1020102', 'Cash At Bank', 'Cash & Cash Equivalent', 3, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-07-19 13:43:59', 'admin', '2015-10-15 15:32:42'),
-('1020101', 'Cash In Hand', 'Cash & Cash Equivalent', 3, 1, 1, 1, 'A', 0, 0, 0.00, '2', '2018-07-31 12:56:28', 'admin', '2016-05-23 12:05:43'),
-('30101', 'Cash Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2018-07-08 07:51:26', '', '0000-00-00 00:00:00'),
-('1010207', 'CCTV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:24', '', '0000-00-00 00:00:00'),
-('102020102', 'CEO Current A/C', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-09-25 11:54:54', '', '0000-00-00 00:00:00'),
-('102010206', 'City Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-01-18 10:09:32', '', '0000-00-00 00:00:00'),
-('1010101', 'Class Room Chair', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:45:29', '', '0000-00-00 00:00:00'),
-('4021407', 'Close Circuit Cemera', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:35:35', '', '0000-00-00 00:00:00'),
-('4020601', 'Commision on Admission', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:51:21', 'admin', '2016-09-19 14:42:54'),
-('1010206', 'Computer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:09', '', '0000-00-00 00:00:00'),
-('4021410', 'Computer (R)', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-03-24 12:38:52', 'Zoherul', '2016-03-24 12:41:40'),
-('1010102', 'Computer Table', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:45:44', '', '0000-00-00 00:00:00'),
-('301020401', 'Continuing Registration fee - UoL (Income)', 'Registration Fee (UOL) Income', 4, 1, 1, 0, 'I', 0, 0, 0.00, 'admin', '2015-10-15 17:40:40', '', '0000-00-00 00:00:00'),
-('4020904', 'Contratuall Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:34', '', '0000-00-00 00:00:00'),
-('403', 'Cost of Sale', 'Expence', 0, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-07-08 10:37:16', '', '0000-00-00 00:00:00'),
-('30102', 'Credit Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2018-07-08 07:51:34', '', '0000-00-00 00:00:00'),
-('4020709', 'Cultural Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'nasmud', '2017-04-29 12:45:10', '', '0000-00-00 00:00:00'),
-('102', 'Current Asset', 'Assets', 1, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-12-06 13:54:42', 'admin', '2018-07-07 11:23:00'),
-('502', 'Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, 0.00, 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
-('102030101', 'cusL-0001-Walkin', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2019-01-08 09:14:48', '', '2020-11-17 11:41:07'),
-('102030108', 'cusL-0002-Jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2021-08-25 14:12:02', '', '0000-00-00 00:00:00'),
-('102030109', 'cusL-0004-Kabir khan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '36', '2021-08-31 14:03:18', '', '0000-00-00 00:00:00'),
-('102030115', 'cusL-0005-jaman', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '53', '2023-07-03 15:50:20', '', '0000-00-00 00:00:00'),
-('102030116', 'cusL-0005-Ravi Kumar', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2025-01-24 18:48:16', '', '0000-00-00 00:00:00'),
-('102030110', 'cusL-0007-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '39', '2021-09-05 19:38:26', '', '0000-00-00 00:00:00'),
-('102030111', 'cusL-0008-kamal', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '40', '2021-09-19 11:53:13', '', '0000-00-00 00:00:00'),
-('102030112', 'cusL-0009-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '41', '2021-10-26 10:20:44', '', '0000-00-00 00:00:00'),
-('102030113', 'cusL-0010-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '42', '2021-10-26 10:23:52', '', '0000-00-00 00:00:00'),
-('102030117', 'cusL-0016-Customer', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '66', '2025-03-03 16:28:30', '', '0000-00-00 00:00:00'),
-('102030104', 'cusL-0018-jamildasd', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '20', '2021-01-05 14:14:11', '', '0000-00-00 00:00:00'),
-('102030114', 'cusL-0019- ', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '0', '2021-11-10 14:06:32', '', '0000-00-00 00:00:00'),
-('102030105', 'cusL-0021-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '25', '2021-01-31 14:17:07', '', '0000-00-00 00:00:00'),
-('102030106', 'cusL-0022-Saiful Hassan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '26', '2021-01-31 18:18:33', '', '0000-00-00 00:00:00'),
-('102030107', 'cusL-0023-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '27', '2021-02-03 10:12:50', '', '0000-00-00 00:00:00'),
-('1020301', 'Customer Receivable', 'Account Receivable', 3, 1, 0, 1, 'A', 0, 0, 0.00, '2', '2019-01-08 09:15:08', 'admin', '2018-07-07 12:31:42'),
-('40100002', 'cw-Chichawatni', 'Store Expenses', 2, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-08-02 16:30:41', '', '0000-00-00 00:00:00'),
-('1020202', 'Deposit', 'Advance, Deposit And Pre-payments', 3, 1, 0, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:40:42', '', '0000-00-00 00:00:00'),
-('4020605', 'Design & Printing Expense', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:55:00', '', '0000-00-00 00:00:00'),
-('4020404', 'Dish Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:58:21', '', '0000-00-00 00:00:00'),
-('40215', 'Dividend', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, 0.00, 'admin', '2016-09-25 14:07:55', '', '0000-00-00 00:00:00'),
-('4020403', 'Drinking Water Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:58:10', '', '0000-00-00 00:00:00'),
-('1010211', 'DSLR Camera', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:53:17', 'admin', '2016-01-02 16:23:25'),
-('102010205', 'Dutch-Bangla Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-01-18 09:49:13', '', '0000-00-00 00:00:00'),
-('502020000007', 'E3Y1WJMB-John Maria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 05:55:58', '', '0000-00-00 00:00:00'),
-('502020000010', 'E4Y91CAX-onlineorder', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-02-03 11:20:44', '', '0000-00-00 00:00:00'),
-('502020000004', 'E97E9SJT-Manik Hassan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-09 14:32:22', '', '0000-00-00 00:00:00'),
-('4020908', 'Earned Leave', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:38', '', '0000-00-00 00:00:00'),
-('502020000006', 'EBK2UPRA-John Carlos', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 05:51:09', '', '0000-00-00 00:00:00'),
-('4020607', 'Education Fair Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:53:42', '', '0000-00-00 00:00:00'),
-('502020000011', 'EK9BYZVY-test sdafdssdfds', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-02-24 14:07:53', '', '0000-00-00 00:00:00'),
-('1010602', 'Electric Equipment', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:44:51', '', '0000-00-00 00:00:00'),
-('1010203', 'Electric Kettle', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:49:07', '', '0000-00-00 00:00:00'),
-('10106', 'Electrical Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:43:44', '', '0000-00-00 00:00:00'),
-('4020407', 'Electricity Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:59:31', '', '0000-00-00 00:00:00'),
-('10202010501', 'employ', 'Salary', 5, 1, 0, 0, 'A', 0, 0, 0.00, 'admin', '2018-07-05 11:47:10', '', '0000-00-00 00:00:00'),
-('405', 'Entertainment', 'Expense', 1, 1, 1, 0, 'E', 1, 1, 1.00, '2', '2020-01-18 07:49:00', '', '0000-00-00 00:00:00'),
-('502020000012', 'ENVBUZKE-kabirkhan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2020-10-12 10:57:33', '', '0000-00-00 00:00:00'),
-('502020000002', 'EQLAJFUW-AinalHaque', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2018-12-17 15:08:43', '', '0000-00-00 00:00:00'),
-('2', 'Equity', 'COA', 0, 1, 0, 0, 'L', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('502020000009', 'EU3APTYY-JohnDoe', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 06:02:46', '', '0000-00-00 00:00:00'),
-('502020000005', 'EW9PM201-test emp', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-09 14:38:15', '', '0000-00-00 00:00:00'),
-('502020000008', 'EXL9WSCL-Mitchel Santner', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 05:58:55', '', '0000-00-00 00:00:00'),
-('4', 'Expense', 'COA', 0, 1, 0, 0, 'E', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('502020000003', 'EY2T1OWA-jahangirAhmad', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2018-12-17 15:11:13', '', '0000-00-00 00:00:00'),
-('502020000013', 'EZR0A9IB-DiMaria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2021-11-14 10:54:22', '', '0000-00-00 00:00:00'),
-('4020903', 'Faculty,Staff Salary & Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:21', '', '0000-00-00 00:00:00'),
-('4021404', 'Fax Machine', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:34:15', '', '0000-00-00 00:00:00'),
-('4020905', 'Festival & Incentive Bonus', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:48', '', '0000-00-00 00:00:00'),
-('1010103', 'File Cabinet', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:46:02', '', '0000-00-00 00:00:00'),
-('40210', 'Financial Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-08-20 12:24:31', 'admin', '2015-10-15 19:20:36'),
-('1010403', 'Fire Extingushier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:39:32', '', '0000-00-00 00:00:00'),
-('4021408', 'Furniture', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:35:47', '', '0000-00-00 00:00:00'),
-('10101', 'Furniture & Fixturers', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'anwarul', '2013-08-20 16:18:15', 'anwarul', '2013-08-21 13:35:40'),
-('4020406', 'Gas Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:59:20', '', '0000-00-00 00:00:00'),
-('20201', 'General Reserve', 'Reserve & Surplus', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-25 14:07:12', 'admin', '2016-10-02 17:48:49'),
-('10105', 'Generator', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, 0.00, 'Zoherul', '2016-02-27 16:02:35', 'admin', '2016-05-23 12:05:18'),
-('4021414', 'Generator Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-06-16 10:21:05', '', '0000-00-00 00:00:00'),
-('40213', 'Generator Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:29:29', '', '0000-00-00 00:00:00'),
-('10103', 'Groceries and Cutleries', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, 0.00, '2', '2018-07-12 10:02:55', '', '0000-00-00 00:00:00'),
-('1010408', 'Gym Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:46:03', '', '0000-00-00 00:00:00'),
-('4020907', 'Honorarium', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:26', '', '0000-00-00 00:00:00'),
-('40205', 'House Rent', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-08-24 10:26:56', '', '0000-00-00 00:00:00'),
-('40100001', 'HP-Hasilpur', 'Academic Expenses', 2, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-07-29 03:44:23', '', '0000-00-00 00:00:00'),
-('4020702', 'HR Recruitment Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-09-25 12:55:49', '', '0000-00-00 00:00:00'),
-('4020703', 'Incentive on Admission', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-09-25 12:56:09', '', '0000-00-00 00:00:00'),
-('3', 'Income', 'COA', 0, 1, 0, 0, 'I', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('5020302', 'Income Tax Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2016-09-19 11:18:17', 'admin', '2016-09-28 13:18:35'),
-('102020302', 'Insurance Premium', 'Prepayment', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-09-19 13:10:57', '', '0000-00-00 00:00:00'),
-('4021001', 'Interest on Loan', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:20:53', 'admin', '2016-09-19 14:53:34'),
-('4020401', 'Internet Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:56:55', 'admin', '2015-10-15 18:57:32'),
-('10107', 'Inventory', 'Non Current Assets', 1, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-07-07 15:21:58', '', '0000-00-00 00:00:00'),
-('102010309', 'iyzico', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:32:35', '', '0000-00-00 00:00:00'),
-('10205010101', 'Jahangir', 'Hasan', 1, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-07-07 10:40:56', '', '0000-00-00 00:00:00'),
-('1010210', 'LCD TV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:52:27', '', '0000-00-00 00:00:00'),
-('30103', 'Lease Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2018-07-08 07:51:52', '', '0000-00-00 00:00:00'),
-('5', 'Liabilities', 'COA', 0, 1, 0, 0, 'L', 0, 0, 0.00, 'admin', '2013-07-04 12:32:07', 'admin', '2015-10-15 19:46:54'),
-('50203', 'Liabilities for Expenses', 'Current Liabilities', 2, 1, 0, 0, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:50:59', '', '0000-00-00 00:00:00'),
-('4020707', 'Library Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2017-01-10 15:34:54', '', '0000-00-00 00:00:00'),
-('4021409', 'Lift', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:36:12', '', '0000-00-00 00:00:00'),
-('50101', 'Long Term Borrowing', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2013-07-04 12:32:26', 'admin', '2015-10-15 19:47:40'),
-('4020608', 'Marketing & Promotion Exp.', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:53:59', '', '0000-00-00 00:00:00'),
-('4020901', 'Medical Allowance', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:11:33', '', '0000-00-00 00:00:00'),
-('1010411', 'Metal Ditector', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'Zoherul', '2016-08-22 10:55:22', '', '0000-00-00 00:00:00'),
-('4021413', 'Micro Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-05-12 14:53:51', '', '0000-00-00 00:00:00'),
-('30202', 'Miscellaneous (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, 0.00, 'anwarul', '2014-02-06 15:26:31', 'admin', '2016-09-25 11:04:35'),
-('4020909', 'Miscellaneous Benifit', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:53', '', '0000-00-00 00:00:00'),
-('4020701', 'Miscellaneous Exp', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-09-25 12:54:39', '', '0000-00-00 00:00:00'),
-('40207', 'Miscellaneous Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2014-04-26 16:49:56', 'admin', '2016-09-25 12:54:19'),
-('1010401', 'Mobile Phone', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-01-29 10:43:30', '', '0000-00-00 00:00:00'),
-('102020101', 'Mr Ashiqur Rahman', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-12-31 16:47:23', 'admin', '2016-09-25 11:55:13'),
-('1010212', 'Network Accessories', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-01-02 16:23:32', '', '0000-00-00 00:00:00'),
-('102020106', 'new head dfhgfh', 'Advance', 3, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2020-01-16 06:25:10', '', '0000-00-00 00:00:00'),
-('4020408', 'News Paper Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-01-02 15:55:57', '', '0000-00-00 00:00:00'),
-('101', 'Non Current Assets', 'Assets', 1, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:29:11'),
-('501', 'Non Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, 0.00, 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
-('406', 'Office Accessories', 'Expense', 1, 1, 1, 0, 'E', 1, 1, 1.00, '2', '2020-01-18 07:51:32', '', '0000-00-00 00:00:00'),
-('1010404', 'Office Decoration', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:40:02', '', '0000-00-00 00:00:00'),
-('10102', 'Office Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'anwarul', '2013-12-06 18:08:00', 'admin', '2015-10-15 15:48:21'),
-('4021401', 'Office Repair & Maintenance', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:33:15', '', '0000-00-00 00:00:00'),
-('30201', 'Office Stationary (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, 0.00, 'anwarul', '2013-07-17 15:21:06', 'admin', '2016-09-25 11:04:50'),
-('1020103', 'Online Payment', 'Cash & Cash Equivalent', 2, 1, 0, 1, 'A', 0, 0, 0.00, '2', '2020-10-18 14:26:41', '', '0000-00-00 00:00:00'),
-('102010308', 'Orange Money payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:32:11', '', '0000-00-00 00:00:00'),
-('402', 'Other Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, 0.00, '2', '2018-07-07 14:00:16', 'admin', '2015-10-15 18:37:42'),
-('302', 'Other Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, 0.00, '2', '2018-07-07 13:40:57', 'admin', '2016-09-25 11:04:09'),
-('40211', 'Others (Non Academic Expenses)', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'Obaidul', '2014-12-03 16:05:42', 'admin', '2015-10-15 19:22:09'),
-('30205', 'Others (Non-Academic Income)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, 0.00, 'admin', '2015-10-15 17:23:49', 'admin', '2015-10-15 17:57:52'),
-('10104', 'Others Assets', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'admin', '2016-01-29 10:43:16', '', '0000-00-00 00:00:00'),
-('4020910', 'Outstanding Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-04-24 11:56:50', '', '0000-00-00 00:00:00'),
-('4021405', 'Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:34:31', '', '0000-00-00 00:00:00'),
-('4021412', 'PABX-Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-04-24 14:40:18', '', '0000-00-00 00:00:00'),
-('4020902', 'Part-time Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:06', '', '0000-00-00 00:00:00'),
-('102010301', 'Paypal', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:27:41', '', '0000-00-00 00:00:00'),
-('102010306', 'Paystack Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:30:55', '', '0000-00-00 00:00:00'),
-('102010307', 'Paytm Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:31:23', '', '0000-00-00 00:00:00'),
-('1010202', 'Photocopy & Fax Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:47:27', 'admin', '2016-05-23 12:14:40'),
-('4021411', 'Photocopy Machine Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-04-24 12:40:02', 'admin', '2017-04-27 17:03:17'),
-('3020503', 'Practical Fee', 'Others (Non-Academic Income)', 3, 1, 1, 1, 'I', 0, 0, 0.00, 'admin', '2017-07-22 18:00:37', '', '0000-00-00 00:00:00'),
-('1020203', 'Prepayment', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:40:51', 'admin', '2015-12-31 16:49:58'),
-('1010201', 'Printer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:47:15', '', '0000-00-00 00:00:00'),
-('407', 'Product Purchase', 'Expense', 0, 1, 0, 0, 'E', 0, 0, 0.00, '2', '2020-01-23 07:09:10', '', '0000-00-00 00:00:00'),
-('3020502', 'Professional Training Course(Oracal-1)', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, 0.00, 'nasim', '2017-06-22 13:28:05', '', '0000-00-00 00:00:00'),
-('30207', 'Professional Training Course(Oracal)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, 0.00, 'nasim', '2017-06-22 13:24:16', 'nasim', '2017-06-22 13:25:56'),
-('1010208', 'Projector', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:44', '', '0000-00-00 00:00:00'),
-('40206', 'Promonational Expense', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-07-11 13:48:57', 'anwarul', '2013-07-17 14:23:03'),
-('40214', 'Repair and Maintenance', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:32:46', '', '0000-00-00 00:00:00'),
-('202', 'Reserve & Surplus', 'Equity', 1, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2016-09-25 14:06:34', 'admin', '2016-10-02 17:48:57'),
-('20102', 'Retained Earnings', 'Share Holders Equity', 2, 1, 1, 1, 'L', 0, 0, 0.00, 'admin', '2016-05-23 11:20:40', 'admin', '2016-09-25 14:05:06'),
-('4020708', 'River Cruse', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2017-04-24 15:35:25', '', '0000-00-00 00:00:00'),
-('102010311', 'RMA PAYMENT GATEWAY', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:33:12', '', '0000-00-00 00:00:00'),
-('102020105', 'Salary', 'Advance', 4, 1, 0, 0, 'A', 0, 0, 0.00, 'admin', '2018-07-05 11:46:44', '', '0000-00-00 00:00:00'),
-('40209', 'Salary & Allowances', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-12-12 11:22:58', '', '0000-00-00 00:00:00'),
-('404', 'Sale Discount', 'Expense', 1, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-07-19 10:15:11', '', '0000-00-00 00:00:00'),
-('303', 'Sale Income', 'Income', 0, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2020-01-23 06:58:20', '', '0000-00-00 00:00:00'),
-('1010406', 'Security Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:41:30', '', '0000-00-00 00:00:00'),
-('30104', 'Service Charge Income', 'Store Income', 1, 1, 1, 0, 'I', 0, 0, 0.00, '2', '2020-12-30 11:23:32', '', '0000-00-00 00:00:00'),
-('20101', 'Share Capital', 'Share Holders Equity', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'anwarul', '2013-12-08 19:37:32', 'admin', '2015-10-15 19:45:35'),
-('201', 'Share Holders Equity', 'Equity', 1, 1, 0, 0, 'L', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-10-15 19:43:51'),
-('50201', 'Short Term Borrowing', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:50:30', '', '0000-00-00 00:00:00'),
-('102010310', 'SIPS Office', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:32:54', '', '0000-00-00 00:00:00'),
-('4020906', 'Special Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:13', '', '0000-00-00 00:00:00'),
-('50102', 'Sponsors Loan', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:48:02', '', '0000-00-00 00:00:00'),
-('4020706', 'Sports Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'nasmud', '2016-11-09 13:16:53', '', '0000-00-00 00:00:00'),
-('102010304', 'Square Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:29:32', '', '0000-00-00 00:00:00'),
-('102010302', 'SSLCommerz', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:28:06', '', '0000-00-00 00:00:00'),
-('401', 'Store Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, 0.00, '2', '2018-07-07 13:38:59', 'admin', '2015-10-15 17:58:46'),
-('301', 'Store Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, 0.00, '2', '2018-07-07 13:40:37', 'admin', '2015-09-17 17:00:02'),
-('102010305', 'Stripe Payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:29:59', '', '0000-00-00 00:00:00'),
-('3020501', 'Students Info. Correction Fee', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, 0.00, 'admin', '2015-10-15 17:24:45', '', '0000-00-00 00:00:00'),
-('1010601', 'Sub Station', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:44:11', '', '0000-00-00 00:00:00'),
-('502020501', 'sup_002-Kamal Hossain', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-01-18 10:49:49', '', '0000-00-00 00:00:00'),
-('502020505', 'sup_002-Mohan Store', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2025-01-27 11:02:03', '', '0000-00-00 00:00:00'),
-('502020506', 'sup_002-Patza', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2025-03-11 21:21:48', '', '0000-00-00 00:00:00'),
-('502020504', 'sup_002-Supplier_1', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-09-08 14:26:40', '', '0000-00-00 00:00:00'),
-('502020502', 'sup_003-Maruf', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-01-18 10:56:31', '', '0000-00-00 00:00:00'),
-('502020507', 'sup_003-Rizvi', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2025-05-09 20:52:32', '', '0000-00-00 00:00:00'),
-('502020503', 'sup_004-Saiful', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-01-18 10:57:04', '2', '2020-01-21 13:10:59'),
-('5020205', 'Suppliers', 'Account Payable', 3, 1, 0, 1, 'L', 0, 0, 0.00, '2', '2018-12-15 06:50:12', '', '0000-00-00 00:00:00'),
-('4020704', 'TB Care Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-10-08 13:03:04', '', '0000-00-00 00:00:00'),
-('4020501', 'TDS on House Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:44:07', 'admin', '2016-09-19 14:40:16'),
-('502030201', 'TDS Payable House Rent', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-19 11:19:42', 'admin', '2016-09-28 13:19:37'),
-('502030203', 'TDS Payable on Advertisement Bill', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-28 13:20:51', '', '0000-00-00 00:00:00'),
-('502030202', 'TDS Payable on Salary', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-28 13:20:17', '', '0000-00-00 00:00:00'),
-('4021402', 'Tea Kettle', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:33:45', '', '0000-00-00 00:00:00'),
-('4020402', 'Telephone Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:57:59', '', '0000-00-00 00:00:00'),
-('1010209', 'Telephone Set & PABX', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:57', 'admin', '2016-10-02 17:10:40'),
-('102020104', 'Test', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2018-07-05 11:42:48', '', '0000-00-00 00:00:00'),
-('40203', 'Travelling & Conveyance', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, 0.00, 'admin', '2013-07-08 16:22:06', 'admin', '2015-10-15 18:45:13'),
-('4021406', 'TV', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:35:07', '', '0000-00-00 00:00:00'),
-('102010303', 'Two Checkout', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:28:29', '', '0000-00-00 00:00:00'),
-('1010205', 'UPS', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:50:38', '', '0000-00-00 00:00:00'),
-('40204', 'Utility Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-07-11 16:20:24', 'admin', '2016-01-02 15:55:22'),
-('4020503', 'VAT on House Rent Exp', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:49:22', 'admin', '2016-09-25 14:00:52'),
-('5020301', 'VAT Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:51:11', 'admin', '2016-09-28 13:23:53'),
-('502030101', 'VAT- TAX', 'VAT Payable', 3, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-12-30 10:58:49', '', '0000-00-00 00:00:00'),
-('1010409', 'Vehicle A/C', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'Zoherul', '2016-05-12 12:13:21', '', '0000-00-00 00:00:00'),
-('1010405', 'Voltage Stablizer', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:40:59', '', '0000-00-00 00:00:00'),
-('1010105', 'Waiting Sofa - Steel', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:46:29', '', '0000-00-00 00:00:00'),
-('4020405', 'WASA Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:58:51', '', '0000-00-00 00:00:00'),
-('1010402', 'Water Purifier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-01-29 11:14:11', '', '0000-00-00 00:00:00'),
-('4020705', 'Website Development Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-10-15 12:42:47', '', '0000-00-00 00:00:00');
+('502020000001', '145454-HmIsahaq', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2018-12-17 15:10:19', '', '0000-00-00 00:00:00'),
+('4021403', 'AC', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:33:55', '', '0000-00-00 00:00:00'),
+('50202', 'Account Payable', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:50:43', '', '0000-00-00 00:00:00'),
+('10203', 'Account Receivable', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2013-09-18 15:29:35'),
+('1020201', 'Advance', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, '0.00', 'Zoherul', '2015-05-31 13:29:12', 'admin', '2015-12-31 16:46:32'),
+('102020103', 'Advance House Rent', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-10-02 16:55:38', 'admin', '2016-10-02 16:57:32'),
+('10202', 'Advance, Deposit And Pre-payments', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-12-31 16:46:24'),
+('4020602', 'Advertisement and Publicity', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:51:44', '', '0000-00-00 00:00:00'),
+('1010410', 'Air Cooler', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-05-23 12:13:55', '', '0000-00-00 00:00:00'),
+('4020603', 'AIT Against Advertisement', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:52:09', '', '0000-00-00 00:00:00'),
+('1', 'Assets', 'COA', 0, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('1010204', 'Attendance Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:49:31', '', '0000-00-00 00:00:00'),
+('40216', 'Audit Fee', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, '0.00', 'admin', '2017-07-18 12:54:30', '', '0000-00-00 00:00:00'),
+('4021002', 'Bank Charge', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:21:03', '', '0000-00-00 00:00:00'),
+('30203', 'Bank Interest', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, '0.00', 'Obaidul', '2015-01-03 14:49:54', 'admin', '2016-09-25 11:04:19'),
+('1010104', 'Book Shelf', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:46:11', '', '0000-00-00 00:00:00'),
+('1010407', 'Books and Journal', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:45:37', '', '0000-00-00 00:00:00'),
+('102010207', 'Brac Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-01-18 10:10:31', '', '0000-00-00 00:00:00'),
+('4020604', 'Business Development Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:52:29', '', '0000-00-00 00:00:00'),
+('4020606', 'Campaign Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:52:57', 'admin', '2016-09-19 14:52:48'),
+('4020502', 'Campus Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:46:53', 'admin', '2017-04-27 17:02:39'),
+('40212', 'Car Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:28:43', '', '0000-00-00 00:00:00'),
+('10201', 'Cash & Cash Equivalent', 'Current Asset', 2, 1, 0, 1, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:57:55'),
+('1020102', 'Cash At Bank', 'Cash & Cash Equivalent', 3, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-07-19 13:43:59', 'admin', '2015-10-15 15:32:42'),
+('1020101', 'Cash In Hand', 'Cash & Cash Equivalent', 3, 1, 1, 1, 'A', 0, 0, '0.00', '2', '2018-07-31 12:56:28', 'admin', '2016-05-23 12:05:43'),
+('30101', 'Cash Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2018-07-08 07:51:26', '', '0000-00-00 00:00:00'),
+('1010207', 'CCTV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:24', '', '0000-00-00 00:00:00'),
+('102020102', 'CEO Current A/C', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-09-25 11:54:54', '', '0000-00-00 00:00:00'),
+('102010206', 'City Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-01-18 10:09:32', '', '0000-00-00 00:00:00'),
+('1010101', 'Class Room Chair', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:45:29', '', '0000-00-00 00:00:00'),
+('4021407', 'Close Circuit Cemera', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:35:35', '', '0000-00-00 00:00:00'),
+('4020601', 'Commision on Admission', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:51:21', 'admin', '2016-09-19 14:42:54'),
+('1010206', 'Computer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:09', '', '0000-00-00 00:00:00'),
+('4021410', 'Computer (R)', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-03-24 12:38:52', 'Zoherul', '2016-03-24 12:41:40'),
+('1010102', 'Computer Table', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:45:44', '', '0000-00-00 00:00:00'),
+('301020401', 'Continuing Registration fee - UoL (Income)', 'Registration Fee (UOL) Income', 4, 1, 1, 0, 'I', 0, 0, '0.00', 'admin', '2015-10-15 17:40:40', '', '0000-00-00 00:00:00'),
+('4020904', 'Contratuall Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:34', '', '0000-00-00 00:00:00'),
+('403', 'Cost of Sale', 'Expence', 0, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-07-08 10:37:16', '', '0000-00-00 00:00:00'),
+('30102', 'Credit Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2018-07-08 07:51:34', '', '0000-00-00 00:00:00'),
+('4020709', 'Cultural Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'nasmud', '2017-04-29 12:45:10', '', '0000-00-00 00:00:00'),
+('102', 'Current Asset', 'Assets', 1, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-12-06 13:54:42', 'admin', '2018-07-07 11:23:00'),
+('502', 'Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, '0.00', 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
+('102030101', 'cusL-0001-Walkin', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2019-01-08 09:14:48', '', '2020-11-17 11:41:07'),
+('102030108', 'cusL-0002-Jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2021-08-25 14:12:02', '', '0000-00-00 00:00:00'),
+('102030109', 'cusL-0004-Kabir khan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '36', '2021-08-31 14:03:18', '', '0000-00-00 00:00:00'),
+('102030115', 'cusL-0005-jaman', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '53', '2023-07-03 15:50:20', '', '0000-00-00 00:00:00'),
+('102030116', 'cusL-0005-Ravi Kumar', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2025-01-24 18:48:16', '', '0000-00-00 00:00:00'),
+('102030110', 'cusL-0007-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '39', '2021-09-05 19:38:26', '', '0000-00-00 00:00:00'),
+('102030111', 'cusL-0008-kamal', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '40', '2021-09-19 11:53:13', '', '0000-00-00 00:00:00'),
+('102030112', 'cusL-0009-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '41', '2021-10-26 10:20:44', '', '0000-00-00 00:00:00'),
+('102030113', 'cusL-0010-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '42', '2021-10-26 10:23:52', '', '0000-00-00 00:00:00'),
+('102030117', 'cusL-0016-Customer', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '66', '2025-03-03 16:28:30', '', '0000-00-00 00:00:00'),
+('102030104', 'cusL-0018-jamildasd', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '20', '2021-01-05 14:14:11', '', '0000-00-00 00:00:00'),
+('102030114', 'cusL-0019- ', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '0', '2021-11-10 14:06:32', '', '0000-00-00 00:00:00'),
+('102030105', 'cusL-0021-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '25', '2021-01-31 14:17:07', '', '0000-00-00 00:00:00'),
+('102030106', 'cusL-0022-Saiful Hassan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '26', '2021-01-31 18:18:33', '', '0000-00-00 00:00:00'),
+('102030107', 'cusL-0023-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '27', '2021-02-03 10:12:50', '', '0000-00-00 00:00:00'),
+('1020301', 'Customer Receivable', 'Account Receivable', 3, 1, 0, 1, 'A', 0, 0, '0.00', '2', '2019-01-08 09:15:08', 'admin', '2018-07-07 12:31:42'),
+('40100002', 'cw-Chichawatni', 'Store Expenses', 2, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-08-02 16:30:41', '', '0000-00-00 00:00:00'),
+('1020202', 'Deposit', 'Advance, Deposit And Pre-payments', 3, 1, 0, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:40:42', '', '0000-00-00 00:00:00'),
+('4020605', 'Design & Printing Expense', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:55:00', '', '0000-00-00 00:00:00'),
+('4020404', 'Dish Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:58:21', '', '0000-00-00 00:00:00'),
+('40215', 'Dividend', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, '0.00', 'admin', '2016-09-25 14:07:55', '', '0000-00-00 00:00:00'),
+('4020403', 'Drinking Water Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:58:10', '', '0000-00-00 00:00:00'),
+('1010211', 'DSLR Camera', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:53:17', 'admin', '2016-01-02 16:23:25'),
+('102010205', 'Dutch-Bangla Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-01-18 09:49:13', '', '0000-00-00 00:00:00'),
+('502020000007', 'E3Y1WJMB-John Maria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 05:55:58', '', '0000-00-00 00:00:00'),
+('502020000010', 'E4Y91CAX-onlineorder', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-02-03 11:20:44', '', '0000-00-00 00:00:00'),
+('502020000004', 'E97E9SJT-Manik Hassan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-09 14:32:22', '', '0000-00-00 00:00:00'),
+('4020908', 'Earned Leave', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:38', '', '0000-00-00 00:00:00'),
+('502020000006', 'EBK2UPRA-John Carlos', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 05:51:09', '', '0000-00-00 00:00:00'),
+('4020607', 'Education Fair Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:53:42', '', '0000-00-00 00:00:00'),
+('502020000011', 'EK9BYZVY-test sdafdssdfds', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-02-24 14:07:53', '', '0000-00-00 00:00:00'),
+('1010602', 'Electric Equipment', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:44:51', '', '0000-00-00 00:00:00'),
+('1010203', 'Electric Kettle', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:49:07', '', '0000-00-00 00:00:00'),
+('10106', 'Electrical Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:43:44', '', '0000-00-00 00:00:00'),
+('4020407', 'Electricity Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:59:31', '', '0000-00-00 00:00:00'),
+('10202010501', 'employ', 'Salary', 5, 1, 0, 0, 'A', 0, 0, '0.00', 'admin', '2018-07-05 11:47:10', '', '0000-00-00 00:00:00'),
+('405', 'Entertainment', 'Expense', 1, 1, 1, 0, 'E', 1, 1, '1.00', '2', '2020-01-18 07:49:00', '', '0000-00-00 00:00:00'),
+('502020000012', 'ENVBUZKE-kabirkhan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2020-10-12 10:57:33', '', '0000-00-00 00:00:00'),
+('502020000002', 'EQLAJFUW-AinalHaque', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2018-12-17 15:08:43', '', '0000-00-00 00:00:00'),
+('2', 'Equity', 'COA', 0, 1, 0, 0, 'L', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('502020000009', 'EU3APTYY-JohnDoe', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 06:02:46', '', '0000-00-00 00:00:00'),
+('502020000005', 'EW9PM201-test emp', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-09 14:38:15', '', '0000-00-00 00:00:00'),
+('502020000008', 'EXL9WSCL-Mitchel Santner', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 05:58:55', '', '0000-00-00 00:00:00'),
+('4', 'Expense', 'COA', 0, 1, 0, 0, 'E', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('502020000003', 'EY2T1OWA-jahangirAhmad', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2018-12-17 15:11:13', '', '0000-00-00 00:00:00'),
+('502020000013', 'EZR0A9IB-DiMaria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2021-11-14 10:54:22', '', '0000-00-00 00:00:00'),
+('4020903', 'Faculty,Staff Salary & Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:21', '', '0000-00-00 00:00:00'),
+('4021404', 'Fax Machine', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:34:15', '', '0000-00-00 00:00:00'),
+('4020905', 'Festival & Incentive Bonus', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:48', '', '0000-00-00 00:00:00'),
+('1010103', 'File Cabinet', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:46:02', '', '0000-00-00 00:00:00'),
+('40210', 'Financial Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-08-20 12:24:31', 'admin', '2015-10-15 19:20:36'),
+('1010403', 'Fire Extingushier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:39:32', '', '0000-00-00 00:00:00'),
+('4021408', 'Furniture', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:35:47', '', '0000-00-00 00:00:00'),
+('10101', 'Furniture & Fixturers', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'anwarul', '2013-08-20 16:18:15', 'anwarul', '2013-08-21 13:35:40'),
+('4020406', 'Gas Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:59:20', '', '0000-00-00 00:00:00'),
+('20201', 'General Reserve', 'Reserve & Surplus', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-25 14:07:12', 'admin', '2016-10-02 17:48:49'),
+('10105', 'Generator', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, '0.00', 'Zoherul', '2016-02-27 16:02:35', 'admin', '2016-05-23 12:05:18'),
+('4021414', 'Generator Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-06-16 10:21:05', '', '0000-00-00 00:00:00'),
+('40213', 'Generator Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:29:29', '', '0000-00-00 00:00:00'),
+('10103', 'Groceries and Cutleries', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, '0.00', '2', '2018-07-12 10:02:55', '', '0000-00-00 00:00:00'),
+('1010408', 'Gym Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:46:03', '', '0000-00-00 00:00:00'),
+('4020907', 'Honorarium', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:26', '', '0000-00-00 00:00:00'),
+('40205', 'House Rent', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-08-24 10:26:56', '', '0000-00-00 00:00:00'),
+('40100001', 'HP-Hasilpur', 'Academic Expenses', 2, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-07-29 03:44:23', '', '0000-00-00 00:00:00'),
+('4020702', 'HR Recruitment Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-09-25 12:55:49', '', '0000-00-00 00:00:00'),
+('4020703', 'Incentive on Admission', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-09-25 12:56:09', '', '0000-00-00 00:00:00'),
+('3', 'Income', 'COA', 0, 1, 0, 0, 'I', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('5020302', 'Income Tax Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2016-09-19 11:18:17', 'admin', '2016-09-28 13:18:35'),
+('102020302', 'Insurance Premium', 'Prepayment', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-09-19 13:10:57', '', '0000-00-00 00:00:00'),
+('4021001', 'Interest on Loan', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:20:53', 'admin', '2016-09-19 14:53:34'),
+('4020401', 'Internet Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:56:55', 'admin', '2015-10-15 18:57:32'),
+('10107', 'Inventory', 'Non Current Assets', 1, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-07-07 15:21:58', '', '0000-00-00 00:00:00'),
+('102010309', 'iyzico', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:32:35', '', '0000-00-00 00:00:00'),
+('10205010101', 'Jahangir', 'Hasan', 1, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-07-07 10:40:56', '', '0000-00-00 00:00:00'),
+('1010210', 'LCD TV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:52:27', '', '0000-00-00 00:00:00'),
+('30103', 'Lease Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2018-07-08 07:51:52', '', '0000-00-00 00:00:00'),
+('5', 'Liabilities', 'COA', 0, 1, 0, 0, 'L', 0, 0, '0.00', 'admin', '2013-07-04 12:32:07', 'admin', '2015-10-15 19:46:54'),
+('50203', 'Liabilities for Expenses', 'Current Liabilities', 2, 1, 0, 0, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:50:59', '', '0000-00-00 00:00:00'),
+('4020707', 'Library Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2017-01-10 15:34:54', '', '0000-00-00 00:00:00'),
+('4021409', 'Lift', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:36:12', '', '0000-00-00 00:00:00'),
+('50101', 'Long Term Borrowing', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2013-07-04 12:32:26', 'admin', '2015-10-15 19:47:40'),
+('4020608', 'Marketing & Promotion Exp.', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:53:59', '', '0000-00-00 00:00:00'),
+('4020901', 'Medical Allowance', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:11:33', '', '0000-00-00 00:00:00'),
+('1010411', 'Metal Ditector', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'Zoherul', '2016-08-22 10:55:22', '', '0000-00-00 00:00:00'),
+('4021413', 'Micro Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-05-12 14:53:51', '', '0000-00-00 00:00:00'),
+('30202', 'Miscellaneous (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, '0.00', 'anwarul', '2014-02-06 15:26:31', 'admin', '2016-09-25 11:04:35'),
+('4020909', 'Miscellaneous Benifit', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:53', '', '0000-00-00 00:00:00'),
+('4020701', 'Miscellaneous Exp', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-09-25 12:54:39', '', '0000-00-00 00:00:00'),
+('40207', 'Miscellaneous Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2014-04-26 16:49:56', 'admin', '2016-09-25 12:54:19'),
+('1010401', 'Mobile Phone', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-01-29 10:43:30', '', '0000-00-00 00:00:00'),
+('102020101', 'Mr Ashiqur Rahman', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-12-31 16:47:23', 'admin', '2016-09-25 11:55:13'),
+('1010212', 'Network Accessories', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-01-02 16:23:32', '', '0000-00-00 00:00:00'),
+('102020106', 'new head dfhgfh', 'Advance', 3, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2020-01-16 06:25:10', '', '0000-00-00 00:00:00'),
+('4020408', 'News Paper Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-01-02 15:55:57', '', '0000-00-00 00:00:00'),
+('101', 'Non Current Assets', 'Assets', 1, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:29:11'),
+('501', 'Non Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, '0.00', 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
+('406', 'Office Accessories', 'Expense', 1, 1, 1, 0, 'E', 1, 1, '1.00', '2', '2020-01-18 07:51:32', '', '0000-00-00 00:00:00'),
+('1010404', 'Office Decoration', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:40:02', '', '0000-00-00 00:00:00'),
+('10102', 'Office Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'anwarul', '2013-12-06 18:08:00', 'admin', '2015-10-15 15:48:21'),
+('4021401', 'Office Repair & Maintenance', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:33:15', '', '0000-00-00 00:00:00'),
+('30201', 'Office Stationary (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, '0.00', 'anwarul', '2013-07-17 15:21:06', 'admin', '2016-09-25 11:04:50'),
+('1020103', 'Online Payment', 'Cash & Cash Equivalent', 2, 1, 0, 1, 'A', 0, 0, '0.00', '2', '2020-10-18 14:26:41', '', '0000-00-00 00:00:00'),
+('102010308', 'Orange Money payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:32:11', '', '0000-00-00 00:00:00'),
+('402', 'Other Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, '0.00', '2', '2018-07-07 14:00:16', 'admin', '2015-10-15 18:37:42'),
+('302', 'Other Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, '0.00', '2', '2018-07-07 13:40:57', 'admin', '2016-09-25 11:04:09'),
+('40211', 'Others (Non Academic Expenses)', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'Obaidul', '2014-12-03 16:05:42', 'admin', '2015-10-15 19:22:09'),
+('30205', 'Others (Non-Academic Income)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, '0.00', 'admin', '2015-10-15 17:23:49', 'admin', '2015-10-15 17:57:52'),
+('10104', 'Others Assets', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'admin', '2016-01-29 10:43:16', '', '0000-00-00 00:00:00'),
+('4020910', 'Outstanding Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-04-24 11:56:50', '', '0000-00-00 00:00:00'),
+('4021405', 'Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:34:31', '', '0000-00-00 00:00:00'),
+('4021412', 'PABX-Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-04-24 14:40:18', '', '0000-00-00 00:00:00'),
+('4020902', 'Part-time Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:06', '', '0000-00-00 00:00:00'),
+('102010301', 'Paypal', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:27:41', '', '0000-00-00 00:00:00'),
+('102010306', 'Paystack Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:30:55', '', '0000-00-00 00:00:00'),
+('102010307', 'Paytm Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:31:23', '', '0000-00-00 00:00:00'),
+('1010202', 'Photocopy & Fax Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:47:27', 'admin', '2016-05-23 12:14:40'),
+('4021411', 'Photocopy Machine Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-04-24 12:40:02', 'admin', '2017-04-27 17:03:17'),
+('3020503', 'Practical Fee', 'Others (Non-Academic Income)', 3, 1, 1, 1, 'I', 0, 0, '0.00', 'admin', '2017-07-22 18:00:37', '', '0000-00-00 00:00:00'),
+('1020203', 'Prepayment', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:40:51', 'admin', '2015-12-31 16:49:58'),
+('1010201', 'Printer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:47:15', '', '0000-00-00 00:00:00'),
+('407', 'Product Purchase', 'Expense', 0, 1, 0, 0, 'E', 0, 0, '0.00', '2', '2020-01-23 07:09:10', '', '0000-00-00 00:00:00'),
+('3020502', 'Professional Training Course(Oracal-1)', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, '0.00', 'nasim', '2017-06-22 13:28:05', '', '0000-00-00 00:00:00'),
+('30207', 'Professional Training Course(Oracal)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, '0.00', 'nasim', '2017-06-22 13:24:16', 'nasim', '2017-06-22 13:25:56'),
+('1010208', 'Projector', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:44', '', '0000-00-00 00:00:00'),
+('40206', 'Promonational Expense', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-07-11 13:48:57', 'anwarul', '2013-07-17 14:23:03'),
+('40214', 'Repair and Maintenance', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:32:46', '', '0000-00-00 00:00:00'),
+('202', 'Reserve & Surplus', 'Equity', 1, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2016-09-25 14:06:34', 'admin', '2016-10-02 17:48:57'),
+('20102', 'Retained Earnings', 'Share Holders Equity', 2, 1, 1, 1, 'L', 0, 0, '0.00', 'admin', '2016-05-23 11:20:40', 'admin', '2016-09-25 14:05:06'),
+('4020708', 'River Cruse', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2017-04-24 15:35:25', '', '0000-00-00 00:00:00'),
+('102010311', 'RMA PAYMENT GATEWAY', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:33:12', '', '0000-00-00 00:00:00'),
+('102020105', 'Salary', 'Advance', 4, 1, 0, 0, 'A', 0, 0, '0.00', 'admin', '2018-07-05 11:46:44', '', '0000-00-00 00:00:00'),
+('40209', 'Salary & Allowances', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-12-12 11:22:58', '', '0000-00-00 00:00:00'),
+('404', 'Sale Discount', 'Expense', 1, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-07-19 10:15:11', '', '0000-00-00 00:00:00'),
+('303', 'Sale Income', 'Income', 0, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2020-01-23 06:58:20', '', '0000-00-00 00:00:00'),
+('1010406', 'Security Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:41:30', '', '0000-00-00 00:00:00'),
+('30104', 'Service Charge Income', 'Store Income', 1, 1, 1, 0, 'I', 0, 0, '0.00', '2', '2020-12-30 11:23:32', '', '0000-00-00 00:00:00'),
+('20101', 'Share Capital', 'Share Holders Equity', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'anwarul', '2013-12-08 19:37:32', 'admin', '2015-10-15 19:45:35'),
+('201', 'Share Holders Equity', 'Equity', 1, 1, 0, 0, 'L', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-10-15 19:43:51'),
+('50201', 'Short Term Borrowing', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:50:30', '', '0000-00-00 00:00:00'),
+('102010310', 'SIPS Office', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:32:54', '', '0000-00-00 00:00:00'),
+('4020906', 'Special Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:13', '', '0000-00-00 00:00:00'),
+('50102', 'Sponsors Loan', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:48:02', '', '0000-00-00 00:00:00'),
+('4020706', 'Sports Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'nasmud', '2016-11-09 13:16:53', '', '0000-00-00 00:00:00'),
+('102010304', 'Square Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:29:32', '', '0000-00-00 00:00:00'),
+('102010302', 'SSLCommerz', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:28:06', '', '0000-00-00 00:00:00'),
+('401', 'Store Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, '0.00', '2', '2018-07-07 13:38:59', 'admin', '2015-10-15 17:58:46'),
+('301', 'Store Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, '0.00', '2', '2018-07-07 13:40:37', 'admin', '2015-09-17 17:00:02'),
+('102010305', 'Stripe Payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:29:59', '', '0000-00-00 00:00:00'),
+('3020501', 'Students Info. Correction Fee', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, '0.00', 'admin', '2015-10-15 17:24:45', '', '0000-00-00 00:00:00'),
+('1010601', 'Sub Station', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:44:11', '', '0000-00-00 00:00:00'),
+('502020501', 'sup_002-Kamal Hossain', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-01-18 10:49:49', '', '0000-00-00 00:00:00'),
+('502020505', 'sup_002-Mohan Store', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2025-01-27 11:02:03', '', '0000-00-00 00:00:00'),
+('502020506', 'sup_002-Patza', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2025-03-11 21:21:48', '', '0000-00-00 00:00:00'),
+('502020504', 'sup_002-Supplier_1', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-09-08 14:26:40', '', '0000-00-00 00:00:00'),
+('502020502', 'sup_003-Maruf', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-01-18 10:56:31', '', '0000-00-00 00:00:00'),
+('502020507', 'sup_003-Rizvi', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2025-05-09 20:52:32', '', '0000-00-00 00:00:00'),
+('502020503', 'sup_004-Saiful', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-01-18 10:57:04', '2', '2020-01-21 13:10:59'),
+('5020205', 'Suppliers', 'Account Payable', 3, 1, 0, 1, 'L', 0, 0, '0.00', '2', '2018-12-15 06:50:12', '', '0000-00-00 00:00:00'),
+('4020704', 'TB Care Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-10-08 13:03:04', '', '0000-00-00 00:00:00'),
+('4020501', 'TDS on House Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:44:07', 'admin', '2016-09-19 14:40:16'),
+('502030201', 'TDS Payable House Rent', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-19 11:19:42', 'admin', '2016-09-28 13:19:37'),
+('502030203', 'TDS Payable on Advertisement Bill', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-28 13:20:51', '', '0000-00-00 00:00:00'),
+('502030202', 'TDS Payable on Salary', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-28 13:20:17', '', '0000-00-00 00:00:00'),
+('4021402', 'Tea Kettle', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:33:45', '', '0000-00-00 00:00:00'),
+('4020402', 'Telephone Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:57:59', '', '0000-00-00 00:00:00'),
+('1010209', 'Telephone Set & PABX', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:57', 'admin', '2016-10-02 17:10:40'),
+('102020104', 'Test', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2018-07-05 11:42:48', '', '0000-00-00 00:00:00'),
+('40203', 'Travelling & Conveyance', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, '0.00', 'admin', '2013-07-08 16:22:06', 'admin', '2015-10-15 18:45:13'),
+('4021406', 'TV', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:35:07', '', '0000-00-00 00:00:00'),
+('102010303', 'Two Checkout', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:28:29', '', '0000-00-00 00:00:00'),
+('1010205', 'UPS', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:50:38', '', '0000-00-00 00:00:00'),
+('40204', 'Utility Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-07-11 16:20:24', 'admin', '2016-01-02 15:55:22'),
+('4020503', 'VAT on House Rent Exp', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:49:22', 'admin', '2016-09-25 14:00:52'),
+('5020301', 'VAT Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:51:11', 'admin', '2016-09-28 13:23:53'),
+('502030101', 'VAT- TAX', 'VAT Payable', 3, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-12-30 10:58:49', '', '0000-00-00 00:00:00'),
+('1010409', 'Vehicle A/C', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'Zoherul', '2016-05-12 12:13:21', '', '0000-00-00 00:00:00'),
+('1010405', 'Voltage Stablizer', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:40:59', '', '0000-00-00 00:00:00'),
+('1010105', 'Waiting Sofa - Steel', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:46:29', '', '0000-00-00 00:00:00'),
+('4020405', 'WASA Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:58:51', '', '0000-00-00 00:00:00'),
+('1010402', 'Water Purifier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-01-29 11:14:11', '', '0000-00-00 00:00:00'),
+('4020705', 'Website Development Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-10-15 12:42:47', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1551,8 +1566,8 @@ INSERT INTO `acc_coa` (`HeadCode`, `HeadName`, `PHeadName`, `HeadLevel`, `IsActi
 
 CREATE TABLE `acc_customer_income` (
   `ID` int(11) NOT NULL,
-  `Customer_Id` varchar(50) NOT NULL,
-  `VNo` varchar(50) NOT NULL,
+  `Customer_Id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `VNo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Date` date NOT NULL,
   `Amount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1565,11 +1580,11 @@ CREATE TABLE `acc_customer_income` (
 
 CREATE TABLE `acc_glsummarybalance` (
   `ID` int(11) NOT NULL,
-  `COAID` varchar(50) DEFAULT NULL,
+  `COAID` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Debit` decimal(18,2) DEFAULT NULL,
   `Credit` decimal(18,2) DEFAULT NULL,
   `FYear` int(11) DEFAULT NULL,
-  `CreateBy` varchar(50) DEFAULT NULL,
+  `CreateBy` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CreateDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1581,17 +1596,17 @@ CREATE TABLE `acc_glsummarybalance` (
 
 CREATE TABLE `acc_income_expence` (
   `ID` int(11) NOT NULL,
-  `VNo` varchar(50) NOT NULL,
-  `Student_Id` varchar(50) NOT NULL,
+  `VNo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Student_Id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Date` date NOT NULL,
-  `Paymode` varchar(50) NOT NULL,
-  `Perpose` varchar(50) NOT NULL,
-  `Narration` text NOT NULL,
+  `Paymode` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Perpose` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Narration` text COLLATE utf8_unicode_ci NOT NULL,
   `StoreID` int(11) NOT NULL,
-  `COAID` varchar(50) NOT NULL,
+  `COAID` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Amount` decimal(10,2) NOT NULL,
   `IsApprove` tinyint(4) NOT NULL,
-  `CreateBy` varchar(50) NOT NULL,
+  `CreateBy` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `CreateDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1602,8 +1617,8 @@ CREATE TABLE `acc_income_expence` (
 --
 
 CREATE TABLE `acc_temp` (
-  `COAID` varchar(50) NOT NULL,
-  `Name` varchar(50) NOT NULL,
+  `COAID` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Debit` decimal(18,2) NOT NULL,
   `Credit` decimal(18,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1616,334 +1631,21 @@ CREATE TABLE `acc_temp` (
 
 CREATE TABLE `acc_transaction` (
   `ID` int(11) NOT NULL,
-  `VNo` varchar(50) DEFAULT NULL,
-  `Vtype` varchar(50) DEFAULT NULL,
+  `VNo` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Vtype` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `VDate` date DEFAULT NULL,
-  `COAID` varchar(50) DEFAULT NULL,
-  `Narration` text DEFAULT NULL,
+  `COAID` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Narration` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `Debit` decimal(18,2) DEFAULT NULL,
   `Credit` decimal(18,2) DEFAULT NULL,
   `StoreID` int(11) NOT NULL,
-  `IsPosted` char(10) DEFAULT NULL,
-  `CreateBy` varchar(50) DEFAULT NULL,
+  `IsPosted` char(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `CreateBy` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CreateDate` datetime DEFAULT NULL,
-  `UpdateBy` varchar(50) DEFAULT NULL,
+  `UpdateBy` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UpdateDate` datetime DEFAULT NULL,
-  `IsAppove` char(10) DEFAULT NULL
+  `IsAppove` char(10) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `acc_transaction`
---
-
-INSERT INTO `acc_transaction` (`ID`, `VNo`, `Vtype`, `VDate`, `COAID`, `Narration`, `Debit`, `Credit`, `StoreID`, `IsPosted`, `CreateBy`, `CreateDate`, `UpdateBy`, `UpdateDate`, `IsAppove`) VALUES
-(1, 'Sale0001', 'Sales Products', '2025-05-20', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 3.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(2, '0001', 'CIV', '2025-05-20', '102030101', 'Customer debit for Product Invoice#0001', 2.70, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(3, '0001', 'CIV', '2025-05-20', '10107', 'Inventory Credit for Product Invoice#0001', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(4, '0001', 'CIV', '2025-05-20', '102030101', 'Customer Credit for Product Invoice#0001', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(5, 'Sale0001', 'Sales Products', '2025-05-20', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(6, 'Sale0001', 'Sales Products', '2025-05-20', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 0.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(7, '0001', 'CIV', '2025-05-20', '102030101', 'Customer debit for Product Invoice#0001', 2.70, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(8, '0001', 'CIV', '2025-05-20', '10107', 'Inventory Credit for Product Invoice#0001', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(9, '0001', 'CIV', '2025-05-20', '102030101', 'Customer Credit for Product Invoice#0001', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(10, 'Sale0001', 'Sales Products', '2025-05-20', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(11, 'Invoice No', 'PO', '2025-05-20', '10107', 'PO Receive Receive No 20250520191801', 77.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(12, 'Invoice No', 'PO', '2025-05-20', '502020506', 'PO received For PO No.Invoice No Receive No.20250520191801', 0.00, 77.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(13, 'Invoice No', 'Purchase', '2025-05-20', '407', 'Company Credit For  502020506', 77.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(14, 'Invoice No', 'PO', '2025-05-20', '502020506', 'Paid For PO No.Invoice No Receive No.20250520191801', 77.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(15, 'Invoice No', 'PO', '2025-05-20', '1020101', 'Paid For PO No.Invoice No Receive No.20250520191801', 0.00, 77.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(16, 'Sale0002', 'Sales Products', '2025-05-20', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 3.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(17, '0002', 'CIV', '2025-05-20', '102030101', 'Customer debit for Product Invoice#0002', 2.70, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(18, '0002', 'CIV', '2025-05-20', '10107', 'Inventory Credit for Product Invoice#0002', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(19, '0002', 'CIV', '2025-05-20', '102030101', 'Customer Credit for Product Invoice#0002', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(20, 'Sale0002', 'Sales Products', '2025-05-20', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 2.70, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(21, 'Sale0003', 'Sales Products', '2025-05-20', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 6.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(22, '0003', 'CIV', '2025-05-20', '102030101', 'Customer debit for Product Invoice#0003', 5.40, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(23, '0003', 'CIV', '2025-05-20', '10107', 'Inventory Credit for Product Invoice#0003', 0.00, 5.40, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(24, '0003', 'CIV', '2025-05-20', '102030101', 'Customer Credit for Product Invoice#0003', 0.00, 5.40, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(25, 'Sale0003', 'Sales Products', '2025-05-20', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 5.40, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(26, 'INV2', 'PO', '2025-05-20', '10107', 'PO Receive Receive No 20250520211055', 137.83, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(27, 'INV2', 'PO', '2025-05-20', '502020506', 'PO received For PO No.INV2 Receive No.20250520211055', 0.00, 137.83, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(28, 'INV2', 'Purchase', '2025-05-20', '407', 'Company Credit For  502020506', 137.83, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(29, 'INV2', 'PO', '2025-05-20', '502020506', 'Paid For PO No.INV2 Receive No.20250520211055', 137.83, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(30, 'INV2', 'PO', '2025-05-20', '1020101', 'Paid For PO No.INV2 Receive No.20250520211055', 0.00, 137.83, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(31, 'INV3', 'PO', '2025-05-20', '10107', 'PO Receive Receive No 20250520211219', 305.25, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(32, 'INV3', 'PO', '2025-05-20', '502020507', 'PO received For PO No.INV3 Receive No.20250520211219', 0.00, 305.25, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(33, 'INV3', 'Purchase', '2025-05-20', '407', 'Company Credit For  502020507', 305.25, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(34, 'INV3', 'PO', '2025-05-20', '502020507', 'Paid For PO No.INV3 Receive No.20250520211219', 305.25, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(35, 'INV3', 'PO', '2025-05-20', '1020101', 'Paid For PO No.INV3 Receive No.20250520211219', 0.00, 305.25, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(36, 'INV4', 'PO', '2025-05-20', '10107', 'PO Receive Receive No 20250520212206', 277.75, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(37, 'INV4', 'PO', '2025-05-20', '502020506', 'PO received For PO No.INV4 Receive No.20250520212206', 0.00, 277.75, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(38, 'INV4', 'Purchase', '2025-05-20', '407', 'Company Credit For  502020506', 277.75, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(39, 'INV4', 'PO', '2025-05-20', '502020506', 'Paid For PO No.INV4 Receive No.20250520212206', 277.75, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(40, 'INV4', 'PO', '2025-05-20', '1020101', 'Paid For PO No.INV4 Receive No.20250520212206', 0.00, 277.75, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(41, 'Sale0004', 'Sales Products', '2025-05-20', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 2.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(42, '0004', 'CIV', '2025-05-20', '102030101', 'Customer debit for Product Invoice#0004', 1.80, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(43, '0004', 'CIV', '2025-05-20', '10107', 'Inventory Credit for Product Invoice#0004', 0.00, 1.80, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(44, '0004', 'CIV', '2025-05-20', '102030101', 'Customer Credit for Product Invoice#0004', 0.00, 1.80, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(45, 'Sale0004', 'Sales Products', '2025-05-20', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 1.80, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(46, 'Sale0005', 'Sales Products', '2025-05-20', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 6.00, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(47, '0005', 'CIV', '2025-05-20', '102030101', 'Customer debit for Product Invoice#0005', 5.40, 0.00, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(48, '0005', 'CIV', '2025-05-20', '10107', 'Inventory Credit for Product Invoice#0005', 0.00, 5.40, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(49, '0005', 'CIV', '2025-05-20', '102030101', 'Customer Credit for Product Invoice#0005', 0.00, 5.40, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(50, 'Sale0005', 'Sales Products', '2025-05-20', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 5.40, 0, '1', '2', '2025-05-20 00:00:00', NULL, NULL, '1'),
-(51, 'Sale0008', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online payment-RK', 35.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(52, '0008', 'CIV', '2025-05-22', NULL, 'Customer debit for Product Invoice#0008', 31.50, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(53, '0008', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0008', 0.00, 31.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(54, '0008', 'CIV', '2025-05-22', NULL, 'Customer Credit for Product Invoice#0008', 0.00, 31.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(55, 'Sale0008', 'Sales Products', '2025-05-22', '303', 'Sale Income For -RK', 0.00, 31.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(56, 'Sale0007', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 30.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(57, '0007', 'CIV', '2025-05-22', '102030101', 'Customer debit for Product Invoice#0007', 27.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(58, '0007', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0007', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(59, '0007', 'CIV', '2025-05-22', '102030101', 'Customer Credit for Product Invoice#0007', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(60, 'Sale0007', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(61, 'Sale0006', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 15.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(62, '0006', 'CIV', '2025-05-22', '102030116', 'Customer debit for Product Invoice#0006', 13.50, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(63, '0006', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0006', 0.00, 13.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(64, '0006', 'CIV', '2025-05-22', '102030116', 'Customer Credit for Product Invoice#0006', 0.00, 13.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(65, 'Sale0006', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 13.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(66, 'Sale0009', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 50.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(67, '0009', 'CIV', '2025-05-22', '102030101', 'Customer debit for Product Invoice#0009', 45.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(68, '0009', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0009', 0.00, 45.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(69, '0009', 'CIV', '2025-05-22', '102030101', 'Customer Credit for Product Invoice#0009', 0.00, 45.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(70, 'Sale0009', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 45.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(71, 'Sale0012', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online payment-RK', 50.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(72, '0012', 'CIV', '2025-05-22', NULL, 'Customer debit for Product Invoice#0012', 45.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(73, '0012', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0012', 0.00, 45.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(74, '0012', 'CIV', '2025-05-22', NULL, 'Customer Credit for Product Invoice#0012', 0.00, 45.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(75, 'Sale0012', 'Sales Products', '2025-05-22', '303', 'Sale Income For -RK', 0.00, 45.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(76, 'Sale0010', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 150.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(77, '0010', 'CIV', '2025-05-22', '102030101', 'Customer debit for Product Invoice#0010', 135.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(78, '0010', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0010', 0.00, 135.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(79, '0010', 'CIV', '2025-05-22', '102030101', 'Customer Credit for Product Invoice#0010', 0.00, 135.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(80, 'Sale0010', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 135.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(81, 'Sale0011', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online payment-RK', 90.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(82, '0011', 'CIV', '2025-05-22', NULL, 'Customer debit for Product Invoice#0011', 81.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(83, '0011', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0011', 0.00, 81.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(84, '0011', 'CIV', '2025-05-22', NULL, 'Customer Credit for Product Invoice#0011', 0.00, 81.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(85, 'Sale0011', 'Sales Products', '2025-05-22', '303', 'Sale Income For -RK', 0.00, 81.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(86, 'Sale0013', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online payment-RK', 30.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(87, '0013', 'CIV', '2025-05-22', NULL, 'Customer debit for Product Invoice#0013', 27.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(88, '0013', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0013', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(89, '0013', 'CIV', '2025-05-22', NULL, 'Customer Credit for Product Invoice#0013', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(90, 'Sale0013', 'Sales Products', '2025-05-22', '303', 'Sale Income For -RK', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(91, 'Sale0014', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 30.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(92, '0014', 'CIV', '2025-05-22', '102030116', 'Customer debit for Product Invoice#0014', 27.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(93, '0014', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0014', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(94, '0014', 'CIV', '2025-05-22', '102030116', 'Customer Credit for Product Invoice#0014', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(95, 'Sale0014', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(96, 'Sale0015', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 25.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(97, '0015', 'CIV', '2025-05-22', '102030116', 'Customer debit for Product Invoice#0015', 22.50, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(98, '0015', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0015', 0.00, 22.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(99, '0015', 'CIV', '2025-05-22', '102030116', 'Customer Credit for Product Invoice#0015', 0.00, 22.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(100, 'Sale0015', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 22.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(101, 'Sale0016', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 30.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(102, '0016', 'CIV', '2025-05-22', '102030101', 'Customer debit for Product Invoice#0016', 27.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(103, '0016', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0016', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(104, '0016', 'CIV', '2025-05-22', '102030101', 'Customer Credit for Product Invoice#0016', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(105, 'Sale0016', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 27.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(106, 'Sale0017', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 13.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(107, '0017', 'CIV', '2025-05-22', '102030101', 'Customer debit for Product Invoice#0017', 11.70, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(108, '0017', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0017', 0.00, 11.70, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(109, '0017', 'CIV', '2025-05-22', '102030101', 'Customer Credit for Product Invoice#0017', 0.00, 11.70, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(110, 'Sale0017', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 11.70, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(111, 'Sale0021', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 60.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(112, '0021', 'CIV', '2025-05-22', '102030101', 'Customer debit for Product Invoice#0021', 54.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(113, '0021', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0021', 0.00, 54.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(114, '0021', 'CIV', '2025-05-22', '102030101', 'Customer Credit for Product Invoice#0021', 0.00, 54.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(115, 'Sale0021', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 54.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(116, 'Sale0023', 'Sales Products', '2025-05-23', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 30.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(117, '0023', 'CIV', '2025-05-23', '102030101', 'Customer debit for Product Invoice#0023', 27.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(118, '0023', 'CIV', '2025-05-23', '10107', 'Inventory Credit for Product Invoice#0023', 0.00, 27.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(119, '0023', 'CIV', '2025-05-23', '102030101', 'Customer Credit for Product Invoice#0023', 0.00, 27.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(120, 'Sale0023', 'Sales Products', '2025-05-23', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 27.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(121, 'Sale0025', 'Sales Products', '2025-05-23', '1020101', 'Sale Income For Online payment-RK', 15.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(122, '0025', 'CIV', '2025-05-23', NULL, 'Customer debit for Product Invoice#0025', 13.50, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(123, '0025', 'CIV', '2025-05-23', '10107', 'Inventory Credit for Product Invoice#0025', 0.00, 13.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(124, '0025', 'CIV', '2025-05-23', NULL, 'Customer Credit for Product Invoice#0025', 0.00, 13.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(125, 'Sale0025', 'Sales Products', '2025-05-23', '303', 'Sale Income For -RK', 0.00, 13.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(126, 'Sale0024', 'Sales Products', '2025-05-23', '1020101', 'Sale Income For Online paymentcusL-0006-John Doe', 12.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(127, '0024', 'CIV', '2025-05-23', NULL, 'Customer debit for Product Invoice#0024', 10.80, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(128, '0024', 'CIV', '2025-05-23', '10107', 'Inventory Credit for Product Invoice#0024', 0.00, 10.80, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(129, '0024', 'CIV', '2025-05-23', NULL, 'Customer Credit for Product Invoice#0024', 0.00, 10.80, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(130, 'Sale0024', 'Sales Products', '2025-05-23', '303', 'Sale Income For cusL-0006-John Doe', 0.00, 10.80, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(131, 'Sale0022', 'Sales Products', '2025-05-23', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 25.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(132, '0022', 'CIV', '2025-05-23', '102030101', 'Customer debit for Product Invoice#0022', 22.50, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(133, '0022', 'CIV', '2025-05-23', '10107', 'Inventory Credit for Product Invoice#0022', 0.00, 22.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(134, '0022', 'CIV', '2025-05-23', '102030101', 'Customer Credit for Product Invoice#0022', 0.00, 22.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(135, 'Sale0022', 'Sales Products', '2025-05-23', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 22.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(136, 'Sale0022', 'Sales Products', '2025-05-23', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 25.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(137, '0022', 'CIV', '2025-05-23', '102030101', 'Customer debit for Product Invoice#0022', 22.50, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(138, '0022', 'CIV', '2025-05-23', '10107', 'Inventory Credit for Product Invoice#0022', 0.00, 22.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(139, '0022', 'CIV', '2025-05-23', '102030101', 'Customer Credit for Product Invoice#0022', 0.00, 22.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(140, 'Sale0022', 'Sales Products', '2025-05-23', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 22.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(141, 'Sale0026', 'Sales Products', '2025-05-23', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 15.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(142, '0026', 'CIV', '2025-05-23', '102030116', 'Customer debit for Product Invoice#0026', 13.50, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(143, '0026', 'CIV', '2025-05-23', '10107', 'Inventory Credit for Product Invoice#0026', 0.00, 13.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(144, '0026', 'CIV', '2025-05-23', '102030116', 'Customer Credit for Product Invoice#0026', 0.00, 13.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(145, 'Sale0026', 'Sales Products', '2025-05-23', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 13.50, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(146, 'Sale0027', 'Sales Products', '2025-05-23', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 20.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(147, '0027', 'CIV', '2025-05-23', '102030116', 'Customer debit for Product Invoice#0027', 18.00, 0.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(148, '0027', 'CIV', '2025-05-23', '10107', 'Inventory Credit for Product Invoice#0027', 0.00, 18.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(149, '0027', 'CIV', '2025-05-23', '102030116', 'Customer Credit for Product Invoice#0027', 0.00, 18.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(150, 'Sale0027', 'Sales Products', '2025-05-23', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 18.00, 0, '1', '2', '2025-05-23 00:00:00', NULL, NULL, '1'),
-(151, 'Sale0020', 'Sales Products', '2025-05-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 45.00, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(152, '0020', 'CIV', '2025-05-22', '102030101', 'Customer debit for Product Invoice#0020', 40.50, 0.00, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(153, '0020', 'CIV', '2025-05-22', '10107', 'Inventory Credit for Product Invoice#0020', 0.00, 40.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(154, '0020', 'CIV', '2025-05-22', '102030101', 'Customer Credit for Product Invoice#0020', 0.00, 40.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(155, 'Sale0020', 'Sales Products', '2025-05-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 40.50, 0, '1', '2', '2025-05-22 00:00:00', NULL, NULL, '1'),
-(156, 'INV5', 'PO', '2025-06-03', '10107', 'PO Receive Receive No 20250603171825', 52.25, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(157, 'INV5', 'PO', '2025-06-03', '502020507', 'PO received For PO No.INV5 Receive No.20250603171825', 0.00, 52.25, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(158, 'INV5', 'Purchase', '2025-06-03', '407', 'Company Credit For  502020507', 52.25, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(159, 'INV5', 'PO', '2025-06-03', '502020507', 'Paid For PO No.INV5 Receive No.20250603171825', 52.25, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(160, 'INV5', 'PO', '2025-06-03', '1020101', 'Paid For PO No.INV5 Receive No.20250603171825', 0.00, 52.25, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(161, 'INV6', 'PO', '2025-06-03', '10107', 'PO Receive Receive No 20250603185838', 31.35, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(162, 'INV6', 'PO', '2025-06-03', '502020507', 'PO received For PO No.INV6 Receive No.20250603185838', 0.00, 31.35, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(163, 'INV6', 'Purchase', '2025-06-03', '407', 'Company Credit For  502020507', 31.35, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(164, 'INV6', 'PO', '2025-06-03', '502020507', 'Paid For PO No.INV6 Receive No.20250603185838', 31.35, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(165, 'INV6', 'PO', '2025-06-03', '1020101', 'Paid For PO No.INV6 Receive No.20250603185838', 0.00, 31.35, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(166, 'Sale0028', 'Sales Products', '2025-06-03', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 3.00, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(167, '0028', 'CIV', '2025-06-03', '102030101', 'Customer debit for Product Invoice#0028', 2.70, 0.00, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(168, '0028', 'CIV', '2025-06-03', '10107', 'Inventory Credit for Product Invoice#0028', 0.00, 2.70, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(169, '0028', 'CIV', '2025-06-03', '102030101', 'Customer Credit for Product Invoice#0028', 0.00, 2.70, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(170, 'Sale0028', 'Sales Products', '2025-06-03', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 2.70, 0, '1', '2', '2025-06-03 00:00:00', NULL, NULL, '1'),
-(171, 'INV6', 'PO', '2025-06-03', '502020507', 'P Return For INV6', 9.50, 0.00, 0, '1', '2', '2025-06-03 21:20:25', NULL, NULL, '1'),
-(172, 'INV6', 'PO', '2025-06-03', '10107', 'Purchase Return For PO NoINV6', 0.00, 9.50, 0, '1', '2', '2025-06-03 21:20:25', NULL, NULL, '1'),
-(173, 'Sale0029', 'Sales Products', '2025-06-06', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(174, '0029', 'CIV', '2025-06-06', '102030101', 'Customer debit for Product Invoice#0029', 4.50, 0.00, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(175, '0029', 'CIV', '2025-06-06', '10107', 'Inventory Credit for Product Invoice#0029', 0.00, 4.50, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(176, '0029', 'CIV', '2025-06-06', '102030101', 'Customer Credit for Product Invoice#0029', 0.00, 4.50, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(177, 'Sale0029', 'Sales Products', '2025-06-06', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(178, 'Sale0030', 'Sales Products', '2025-06-06', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 5.00, 0.00, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(179, '0030', 'CIV', '2025-06-06', '102030116', 'Customer debit for Product Invoice#0030', 4.50, 0.00, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(180, '0030', 'CIV', '2025-06-06', '10107', 'Inventory Credit for Product Invoice#0030', 0.00, 4.50, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(181, '0030', 'CIV', '2025-06-06', '102030116', 'Customer Credit for Product Invoice#0030', 0.00, 4.50, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(182, 'Sale0030', 'Sales Products', '2025-06-06', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 4.50, 0, '1', '2', '2025-06-06 00:00:00', NULL, NULL, '1'),
-(183, 'Sale0033', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 5.00, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(184, '0033', 'CIV', '2025-06-09', '102030116', 'Customer debit for Product Invoice#0033', 4.50, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(185, '0033', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0033', 0.00, 4.50, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(186, '0033', 'CIV', '2025-06-09', '102030116', 'Customer Credit for Product Invoice#0033', 0.00, 4.50, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(187, 'Sale0033', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 4.50, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(188, 'Sale0032', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(189, '0032', 'CIV', '2025-06-09', '102030116', 'Customer debit for Product Invoice#0032', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(190, '0032', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0032', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(191, '0032', 'CIV', '2025-06-09', '102030116', 'Customer Credit for Product Invoice#0032', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(192, 'Sale0032', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(193, 'Sale0034', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(194, '0034', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0034', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(195, '0034', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0034', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(196, '0034', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0034', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(197, 'Sale0034', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(198, 'Sale0035', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(199, '0035', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0035', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(200, '0035', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0035', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(201, '0035', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0035', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(202, 'Sale0035', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(203, 'Sale0036', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(204, '0036', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0036', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(205, '0036', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0036', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(206, '0036', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0036', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(207, 'Sale0036', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(208, 'Sale0040', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(209, '0040', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0040', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(210, '0040', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0040', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(211, '0040', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0040', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(212, 'Sale0040', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(213, 'Sale0039', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(214, '0039', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0039', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(215, '0039', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0039', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(216, '0039', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0039', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(217, 'Sale0039', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(218, 'Sale0038', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(219, '0038', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0038', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(220, '0038', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0038', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(221, '0038', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0038', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(222, 'Sale0038', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(223, 'Sale0037', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 5.00, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(224, '0037', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0037', 4.50, 0.00, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(225, '0037', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0037', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(226, '0037', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0037', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(227, 'Sale0037', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 4.50, 0, '1', '168', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(228, 'Sale0041', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 7.00, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(229, '0041', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0041', 6.30, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(230, '0041', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0041', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(231, '0041', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0041', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(232, 'Sale0041', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(233, 'Sale0044', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 2.00, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(234, '0044', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0044', 1.80, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(235, '0044', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0044', 0.00, 1.80, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(236, '0044', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0044', 0.00, 1.80, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(237, 'Sale0044', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 1.80, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(238, 'Sale0043', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 7.00, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(239, '0043', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0043', 6.30, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(240, '0043', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0043', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(241, '0043', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0043', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(242, 'Sale0043', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(243, 'Sale0042', 'Sales Products', '2025-06-09', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 7.00, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(244, '0042', 'CIV', '2025-06-09', '102030101', 'Customer debit for Product Invoice#0042', 6.30, 0.00, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(245, '0042', 'CIV', '2025-06-09', '10107', 'Inventory Credit for Product Invoice#0042', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(246, '0042', 'CIV', '2025-06-09', '102030101', 'Customer Credit for Product Invoice#0042', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(247, 'Sale0042', 'Sales Products', '2025-06-09', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 6.30, 0, '1', '2', '2025-06-09 00:00:00', NULL, NULL, '1'),
-(248, 'Sale0045', 'Sales Products', '2025-06-10', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 7.00, 0.00, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(249, '0045', 'CIV', '2025-06-10', '102030101', 'Customer debit for Product Invoice#0045', 6.30, 0.00, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(250, '0045', 'CIV', '2025-06-10', '10107', 'Inventory Credit for Product Invoice#0045', 0.00, 6.30, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(251, '0045', 'CIV', '2025-06-10', '102030101', 'Customer Credit for Product Invoice#0045', 0.00, 6.30, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(252, 'Sale0045', 'Sales Products', '2025-06-10', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 6.30, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(253, 'Sale0046', 'Sales Products', '2025-06-10', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 7.00, 0.00, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(254, '0046', 'CIV', '2025-06-10', '102030101', 'Customer debit for Product Invoice#0046', 6.30, 0.00, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(255, '0046', 'CIV', '2025-06-10', '10107', 'Inventory Credit for Product Invoice#0046', 0.00, 6.30, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(256, '0046', 'CIV', '2025-06-10', '102030101', 'Customer Credit for Product Invoice#0046', 0.00, 6.30, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(257, 'Sale0046', 'Sales Products', '2025-06-10', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 6.30, 0, '1', '189', '2025-06-10 00:00:00', NULL, NULL, '1'),
-(258, 'Sale0047', 'Sales Products', '2025-06-11', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 2.00, 0.00, 0, '1', '189', '2025-06-11 00:00:00', NULL, NULL, '1'),
-(259, '0047', 'CIV', '2025-06-11', '102030116', 'Customer debit for Product Invoice#0047', 1.80, 0.00, 0, '1', '189', '2025-06-11 00:00:00', NULL, NULL, '1'),
-(260, '0047', 'CIV', '2025-06-11', '10107', 'Inventory Credit for Product Invoice#0047', 0.00, 1.80, 0, '1', '189', '2025-06-11 00:00:00', NULL, NULL, '1'),
-(261, '0047', 'CIV', '2025-06-11', '102030116', 'Customer Credit for Product Invoice#0047', 0.00, 1.80, 0, '1', '189', '2025-06-11 00:00:00', NULL, NULL, '1'),
-(262, 'Sale0047', 'Sales Products', '2025-06-11', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 1.80, 0, '1', '189', '2025-06-11 00:00:00', NULL, NULL, '1'),
-(263, 'Sale0048', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0006-John Doe', 6.30, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(264, '0048', 'CIV', '2025-06-12', NULL, 'Customer debit for Product Invoice#0048', 5.60, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(265, '0048', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0048', 0.00, 5.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(266, '0048', 'CIV', '2025-06-12', NULL, 'Customer Credit for Product Invoice#0048', 0.00, 5.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(267, 'Sale0048', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0006-John Doe', 0.00, 5.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(268, 'Sale0049', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 1.80, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(269, '0049', 'CIV', '2025-06-12', '102030101', 'Customer debit for Product Invoice#0049', 1.60, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(270, '0049', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0049', 0.00, 1.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(271, '0049', 'CIV', '2025-06-12', '102030101', 'Customer Credit for Product Invoice#0049', 0.00, 1.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(272, 'Sale0049', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 1.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(273, 'Sale0050', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 8.91, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(274, '0050', 'CIV', '2025-06-12', '102030101', 'Customer debit for Product Invoice#0050', 7.92, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(275, '0050', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0050', 0.00, 7.92, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(276, '0050', 'CIV', '2025-06-12', '102030101', 'Customer Credit for Product Invoice#0050', 0.00, 7.92, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(277, 'Sale0050', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 7.92, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(278, 'Sale0051', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 5.67, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(279, '0051', 'CIV', '2025-06-12', '102030116', 'Customer debit for Product Invoice#0051', 5.04, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(280, '0051', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0051', 0.00, 5.04, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(281, '0051', 'CIV', '2025-06-12', '102030116', 'Customer Credit for Product Invoice#0051', 0.00, 5.04, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(282, 'Sale0051', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 5.04, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(283, 'Sale0052', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 5.67, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(284, '0052', 'CIV', '2025-06-12', '102030116', 'Customer debit for Product Invoice#0052', 5.04, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(285, '0052', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0052', 0.00, 5.04, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(286, '0052', 'CIV', '2025-06-12', '102030116', 'Customer Credit for Product Invoice#0052', 0.00, 5.04, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(287, 'Sale0052', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 5.04, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(288, 'Sale0053', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 6.30, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(289, '0053', 'CIV', '2025-06-12', '102030116', 'Customer debit for Product Invoice#0053', 5.60, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(290, '0053', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0053', 0.00, 5.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(291, '0053', 'CIV', '2025-06-12', '102030116', 'Customer Credit for Product Invoice#0053', 0.00, 5.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(292, 'Sale0053', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 5.60, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(293, 'Sale0054', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 1.62, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(294, '0054', 'CIV', '2025-06-12', '102030116', 'Customer debit for Product Invoice#0054', 1.44, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(295, '0054', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0054', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(296, '0054', 'CIV', '2025-06-12', '102030116', 'Customer Credit for Product Invoice#0054', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(297, 'Sale0054', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(298, 'Sale0055', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 1.62, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(299, '0055', 'CIV', '2025-06-12', '102030116', 'Customer debit for Product Invoice#0055', 1.44, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(300, '0055', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0055', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(301, '0055', 'CIV', '2025-06-12', '102030116', 'Customer Credit for Product Invoice#0055', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(302, 'Sale0055', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(303, 'Sale0056', 'Sales Products', '2025-06-12', '1020101', 'Sale Income For Online paymentcusL-0005-Ravi Kumar', 1.62, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(304, '0056', 'CIV', '2025-06-12', '102030116', 'Customer debit for Product Invoice#0056', 1.44, 0.00, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(305, '0056', 'CIV', '2025-06-12', '10107', 'Inventory Credit for Product Invoice#0056', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(306, '0056', 'CIV', '2025-06-12', '102030116', 'Customer Credit for Product Invoice#0056', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1'),
-(307, 'Sale0056', 'Sales Products', '2025-06-12', '303', 'Sale Income For cusL-0005-Ravi Kumar', 0.00, 1.44, 0, '1', '168', '2025-06-12 00:00:00', NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -1959,7 +1661,7 @@ CREATE TABLE `acn_account_transaction` (
   `tran_date` date NOT NULL,
   `payment_id` int(11) NOT NULL,
   `create_by_id` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1970,7 +1672,7 @@ CREATE TABLE `acn_account_transaction` (
 CREATE TABLE `add_ons` (
   `add_on_id` int(11) NOT NULL,
   `modifier_set_id` int(20) NOT NULL,
-  `add_on_name` varchar(200) NOT NULL,
+  `add_on_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `minqty` int(11) NOT NULL DEFAULT 0,
   `maxqty` int(11) NOT NULL DEFAULT 0,
@@ -1980,26 +1682,6 @@ CREATE TABLE `add_ons` (
   `sort_order` int(20) NOT NULL DEFAULT 0,
   `is_active` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `add_ons`
---
-
-INSERT INTO `add_ons` (`add_on_id`, `modifier_set_id`, `add_on_name`, `price`, `minqty`, `maxqty`, `is_comp`, `modifier_id`, `is_food_item`, `sort_order`, `is_active`) VALUES
-(4, 41, 'Chilli Pickle 1 Kg', 0.00, 0, 0, 0, 28, 2, 0, 1),
-(5, 41, 'Nanak Ghee 10 Liter', 0.00, 0, 0, 0, 6, 2, 0, 1),
-(6, 41, 'Chick Pea 400 gm', 0.00, 0, 0, 0, 82, 2, 0, 1),
-(7, 41, 'spicy', 0.00, 0, 0, 0, 0, 0, 0, 1),
-(8, 42, 'Akash Ghee', 0.00, 0, 0, 0, 183, 2, 0, 1),
-(9, 42, 'Amul Milk', 0.00, 0, 0, 0, 175, 2, 0, 1),
-(10, 42, 'Anardana 100 gms', 0.00, 0, 0, 0, 23, 2, 0, 1),
-(11, 43, 'Veg Briyani', 0.00, 0, 0, 0, 35, 1, 0, 1),
-(15, 43, 'Bay Leaves 100 gms', 0.00, 0, 0, 0, 94, 2, 0, 1),
-(16, 43, 'Baking Powder 2.5 Kg', 0.00, 0, 0, 0, 15, 2, 0, 1),
-(17, 43, 'Akash Ghee', 0.00, 0, 0, 0, 183, 2, 0, 1),
-(18, 43, 'Tangy', 0.00, 0, 0, 0, 0, 0, 0, 1),
-(19, 44, 'Aamchur Powder 100gm', 0.00, 0, 0, 0, 47, 2, 0, 1),
-(20, 44, 'Akash Ghee', 0.00, 0, 0, 0, 183, 2, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2019,33 +1701,7 @@ CREATE TABLE `add_on_ingr_dtls` (
   `modifier_ingr_unitid` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `add_on_ingr_dtls`
---
-
-INSERT INTO `add_on_ingr_dtls` (`id`, `add_on_id`, `modifier_set_id`, `modifier_foodid`, `modifier_ingr_id`, `modifier_ingr_qty`, `modifier_ingr_adj_qty`, `modifier_ingr_unitname`, `modifier_ingr_unitid`, `created_at`, `updated_at`) VALUES
-(1, 1, 41, 0, 28, 0.00, 0.00, 'grm.', 3, '2025-05-23 15:54:33', '2025-05-23 15:54:33'),
-(2, 2, 41, 0, 28, 0.00, 0.00, 'grm.', 3, '2025-06-26 09:14:20', '2025-06-26 09:14:20'),
-(3, 3, 41, 0, 6, 100.00, 100.00, 'ML', 11, '2025-06-26 09:14:20', '2025-06-26 09:14:20'),
-(4, 4, 41, 0, 28, 0.00, 0.00, 'grm.', 3, '2025-06-26 09:15:13', '2025-06-26 09:15:13'),
-(5, 5, 41, 0, 6, 100.00, 100.00, 'ML', 11, '2025-06-26 09:15:13', '2025-06-26 09:15:13'),
-(6, 6, 41, 0, 82, 0.00, 0.00, 'gm.', 3, '2025-06-26 09:15:13', '2025-06-26 09:15:13'),
-(7, 8, 42, 0, 183, 0.00, 0.00, 'ML', 11, '2025-06-26 09:17:23', '2025-06-26 09:17:23'),
-(8, 9, 42, 0, 175, 0.00, 0.00, 'gm.', 3, '2025-06-26 09:17:23', '2025-06-26 09:17:23'),
-(9, 10, 42, 0, 23, 20.00, 20.00, 'gm.', 3, '2025-06-26 09:17:23', '2025-06-26 09:17:23'),
-(10, 11, 43, 35, 19, 50.00, 30.00, 'grm.', 3, '2025-06-26 10:32:39', '2025-06-26 10:32:39'),
-(11, 11, 43, 35, 68, 250.00, 150.00, 'grm.', 3, '2025-06-26 10:32:39', '2025-06-26 10:32:39'),
-(12, 11, 43, 35, 19, 100.00, 60.00, 'grm.', 3, '2025-06-26 10:32:39', '2025-06-26 10:32:39'),
-(13, 11, 43, 35, 68, 350.00, 210.00, 'grm.', 3, '2025-06-26 10:32:39', '2025-06-26 10:32:39'),
-(14, 12, 43, 0, 15, 0.00, 0.00, 'gm.', 3, '2025-06-26 10:32:39', '2025-06-26 10:32:39'),
-(15, 13, 43, 0, 94, 0.00, 0.00, 'gm.', 3, '2025-06-26 10:32:39', '2025-06-26 10:32:39'),
-(16, 15, 43, 0, 94, 0.00, 0.00, 'gm.', 3, '2025-06-26 10:34:13', '2025-06-26 10:34:13'),
-(17, 16, 43, 0, 15, 0.00, 0.00, 'gm.', 3, '2025-06-26 10:34:13', '2025-06-26 10:34:13'),
-(18, 17, 43, 0, 183, 0.00, 0.00, 'ML', 11, '2025-06-26 10:34:13', '2025-06-26 10:34:13'),
-(19, 19, 44, 0, 47, 10.00, 10.00, 'gm.', 3, '2025-07-15 10:14:30', '2025-07-15 10:14:30'),
-(20, 20, 44, 0, 183, 15.00, 15.00, 'ML', 11, '2025-07-15 10:14:30', '2025-07-15 10:14:30');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2061,7 +1717,7 @@ CREATE TABLE `award` (
   `date` date NOT NULL,
   `employee_id` varchar(30) NOT NULL,
   `awarded_by` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2079,7 +1735,7 @@ CREATE TABLE `bank_summary` (
   `cr` float DEFAULT NULL,
   `ammount` float DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2109,69 +1765,6 @@ CREATE TABLE `bill` (
   `update_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `bill`
---
-
-INSERT INTO `bill` (`bill_id`, `customer_id`, `order_id`, `total_amount`, `discount`, `service_charge`, `shipping_type`, `delivarydate`, `VAT`, `bill_amount`, `bill_date`, `bill_time`, `create_at`, `bill_status`, `payment_method_id`, `create_by`, `create_date`, `update_by`, `update_date`) VALUES
-(1, 1, 1, 3, 0, 0, NULL, NULL, 0.3, 3, '2025-05-20', '17:51:45', '2025-05-20 19:13:10', 1, 4, 2, '2025-05-20', 0, '0000-00-00'),
-(2, 1, 2, 3, 0, 0, NULL, NULL, 0.3, 3, '2025-05-20', '19:19:12', '2025-05-20 19:19:40', 1, 4, 2, '2025-05-20', 0, '0000-00-00'),
-(3, 1, 3, 6, 0, 0, NULL, NULL, 0.6, 6, '2025-05-20', '19:22:14', '2025-05-20 19:22:31', 1, 4, 2, '2025-05-20', 0, '0000-00-00'),
-(4, 1, 4, 2, 0, 0, NULL, NULL, 0.2, 2, '2025-05-20', '21:22:36', '2025-05-20 21:22:47', 1, 4, 2, '2025-05-20', 0, '0000-00-00'),
-(5, 1, 5, 6, 0, 0, NULL, NULL, 0.6, 6, '2025-05-20', '21:26:36', '2025-05-20 21:26:47', 1, 4, 2, '2025-05-20', 0, '0000-00-00'),
-(6, 54, 6, 15, 0, 0, NULL, NULL, 1.5, 15, '2025-05-22', '20:49:02', '2025-05-22 21:00:03', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(7, 1, 7, 30, 0, 0, NULL, NULL, 3, 30, '2025-05-22', '20:53:20', '2025-05-22 20:59:56', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(8, 55, 8, 35, 0, 0, NULL, NULL, 3.5, 35, '2025-05-22', '20:59:09', '2025-05-22 20:59:49', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(9, 1, 9, 50, 0, 0, NULL, NULL, 5, 50, '2025-05-22', '21:06:04', '2025-05-22 21:06:40', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(10, 1, 10, 150, 0, 0, NULL, NULL, 15, 150, '2025-05-22', '21:19:47', '2025-05-22 21:24:39', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(11, 55, 11, 90, 0, 0, NULL, NULL, 9, 90, '2025-05-22', '21:21:36', '2025-05-22 21:24:45', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(12, 55, 12, 50, 0, 0, NULL, NULL, 5, 50, '2025-05-22', '21:24:01', '2025-05-22 21:24:33', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(13, 55, 13, 30, 0, 0, NULL, NULL, 3, 30, '2025-05-22', '21:25:14', '2025-05-22 21:38:03', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(14, 54, 14, 30, 0, 0, NULL, NULL, 3, 30, '2025-05-22', '21:39:10', '2025-05-22 21:43:10', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(15, 54, 15, 25, 0, 0, NULL, NULL, 2.5, 25, '2025-05-22', '21:39:58', '2025-05-22 21:43:15', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(16, 1, 16, 30, 0, 0, NULL, NULL, 3, 30, '2025-05-22', '21:44:49', '2025-05-22 22:01:14', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(17, 1, 17, 13, 0, 0, NULL, NULL, 1.3, 13, '2025-05-22', '21:57:30', '2025-05-22 22:01:20', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(18, 55, 18, 13, 0, 0, NULL, NULL, 1.3, 13, '2025-05-22', '22:01:41', '1970-01-01 01:01:01', 0, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(19, 55, 19, 13, 0, 0, NULL, NULL, 1.3, 13, '2025-05-22', '22:04:01', '1970-01-01 01:01:01', 0, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(20, 1, 20, 45, 0, 0, NULL, NULL, 4.5, 45, '2025-05-22', '22:20:58', '2025-05-23 19:20:24', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(21, 1, 21, 60, 0, 0, NULL, NULL, 6, 60, '2025-05-22', '22:50:24', '2025-05-22 22:50:54', 1, 4, 2, '2025-05-22', 0, '0000-00-00'),
-(22, 1, 22, 25, 0, 0, NULL, NULL, 2.5, 25, '2025-05-23', '14:39:53', '2025-05-23 19:17:38', 1, 4, 2, '2025-05-23', 0, '0000-00-00'),
-(23, 1, 23, 30, 0, 0, NULL, NULL, 3, 30, '2025-05-23', '15:34:49', '2025-05-23 15:35:22', 1, 4, 2, '2025-05-23', 0, '0000-00-00'),
-(24, 56, 24, 12, 0, 0, NULL, NULL, 1.2, 12, '2025-05-23', '15:51:51', '2025-05-23 19:16:02', 1, 4, 2, '2025-05-23', 0, '0000-00-00'),
-(25, 55, 25, 15, 0, 0, NULL, NULL, 1.5, 15, '2025-05-23', '19:14:48', '2025-05-23 19:15:52', 1, 4, 2, '2025-05-23', 0, '0000-00-00'),
-(26, 54, 26, 15, 0, 0, NULL, NULL, 1.5, 15, '2025-05-23', '19:17:33', '2025-05-23 19:18:16', 1, 4, 2, '2025-05-23', 0, '0000-00-00'),
-(27, 54, 27, 20, 0, 0, NULL, NULL, 2, 20, '2025-05-23', '19:19:09', '2025-05-23 19:19:51', 1, 4, 2, '2025-05-23', 0, '0000-00-00'),
-(28, 1, 28, 3, 0, 0, NULL, NULL, 0.3, 3, '2025-06-03', '19:06:19', '2025-06-03 19:06:26', 1, 4, 2, '2025-06-03', 0, '0000-00-00'),
-(29, 1, 29, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-06', '15:46:58', '2025-06-06 15:49:02', 1, 4, 2, '2025-06-06', 0, '0000-00-00'),
-(30, 54, 30, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-06', '15:51:59', '2025-06-06 15:52:13', 1, 4, 2, '2025-06-06', 0, '0000-00-00'),
-(31, 1, 31, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-06', '21:41:13', '1970-01-01 01:01:01', 0, 4, 2, '2025-06-06', 0, '0000-00-00'),
-(32, 54, 32, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '18:25:14', '2025-06-09 20:58:59', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(33, 54, 33, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '18:41:57', '2025-06-09 18:42:08', 1, 4, 2, '2025-06-09', 0, '0000-00-00'),
-(34, 1, 34, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '18:42:57', '2025-06-09 20:59:05', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(35, 1, 35, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '18:44:36', '2025-06-09 20:59:11', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(36, 1, 36, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '18:49:24', '2025-06-09 20:59:17', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(37, 1, 37, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '19:05:51', '2025-06-09 22:30:57', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(38, 1, 38, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '21:35:35', '2025-06-09 22:30:53', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(39, 1, 39, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '22:22:09', '2025-06-09 22:30:48', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(40, 1, 40, 5, 0, 0, NULL, NULL, 0.5, 5, '2025-06-09', '22:29:22', '2025-06-09 22:30:42', 1, 4, 168, '2025-06-09', 0, '0000-00-00'),
-(41, 1, 41, 7, 0, 0, NULL, NULL, 0.7, 7, '2025-06-09', '22:31:53', '2025-06-09 22:32:19', 1, 4, 2, '2025-06-09', 0, '0000-00-00'),
-(42, 1, 42, 7, 0, 0, NULL, NULL, 0.7, 7, '2025-06-09', '22:38:18', '2025-06-09 23:18:23', 1, 4, 2, '2025-06-09', 0, '0000-00-00'),
-(43, 1, 43, 7, 0, 0, NULL, NULL, 0.7, 7, '2025-06-09', '22:42:58', '2025-06-09 23:18:17', 1, 4, 2, '2025-06-09', 0, '0000-00-00'),
-(44, 1, 44, 2, 0, 0, NULL, NULL, 0.2, 2, '2025-06-09', '22:43:53', '2025-06-09 23:18:07', 1, 4, 2, '2025-06-09', 0, '0000-00-00'),
-(45, 1, 45, 7, 0, 0, NULL, NULL, 0.7, 7, '2025-06-10', '14:02:58', '2025-06-11 18:37:07', 1, 4, 189, '2025-06-10', 0, '0000-00-00'),
-(46, 1, 46, 7, 0, 0, NULL, NULL, 0.7, 7, '2025-06-10', '14:31:16', '2025-06-11 18:37:17', 1, 4, 189, '2025-06-10', 0, '0000-00-00'),
-(47, 54, 47, 2, 0, 0, NULL, NULL, 0.2, 2, '2025-06-11', '18:27:45', '2025-06-11 18:37:25', 1, 4, 189, '2025-06-11', 0, '0000-00-00'),
-(48, 56, 48, 7, 0.7, 0, NULL, NULL, 0.7, 6.3, '2025-06-12', '14:14:53', '2025-06-12 22:44:54', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(49, 1, 49, 2, 0.2, 0, NULL, NULL, 0.2, 1.8, '2025-06-12', '14:41:58', '2025-06-12 22:45:01', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(50, 1, 50, 11, 2.09, 0, NULL, NULL, 0.99, 8.91, '2025-06-12', '19:44:53', '2025-06-12 22:45:07', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(51, 54, 51, 7, 1.33, 0, NULL, NULL, 0.63, 5.67, '2025-06-12', '21:07:01', '2025-06-12 22:45:12', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(52, 54, 52, 7, 1.33, 0, NULL, NULL, 0.63, 5.67, '2025-06-12', '21:25:34', '2025-06-12 22:45:19', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(53, 54, 53, 7, 0.7, 0, NULL, NULL, 0.7, 6.3, '2025-06-12', '21:28:41', '2025-06-12 22:45:25', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(54, 54, 54, 2, 0.38, 0, NULL, NULL, 0.18, 1.62, '2025-06-12', '22:10:29', '2025-06-12 22:45:31', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(55, 54, 55, 2, 0.38, 0, NULL, NULL, 0.18, 1.62, '2025-06-12', '22:10:58', '2025-06-12 22:45:37', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(56, 54, 56, 2, 0.38, 0, NULL, NULL, 0.18, 1.62, '2025-06-12', '22:44:37', '2025-06-12 22:45:43', 1, 4, 168, '2025-06-12', 0, '0000-00-00'),
-(57, 54, 57, 2, 0, 0, NULL, NULL, 0.2, 2, '2025-06-26', '18:39:36', '1970-01-01 01:01:01', 0, 4, 2, '2025-06-26', 0, '0000-00-00');
-
 -- --------------------------------------------------------
 
 --
@@ -2182,7 +1775,7 @@ CREATE TABLE `bill_card_payment` (
   `row_id` bigint(20) NOT NULL,
   `bill_id` bigint(20) NOT NULL,
   `multipay_id` int(11) DEFAULT NULL,
-  `card_no` varchar(200) DEFAULT NULL,
+  `card_no` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `terminal_name` int(11) NOT NULL,
   `bank_name` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2200,7 +1793,7 @@ CREATE TABLE `bkp_13062025_contact_data` (
   `phone` varchar(20) DEFAULT NULL,
   `text` varchar(350) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bkp_13062025_contact_data`
@@ -2221,7 +1814,7 @@ CREATE TABLE `bkp_13062025_tbl_seoption` (
   `title_slug` varchar(255) NOT NULL,
   `keywords` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_seoption`
@@ -2265,7 +1858,7 @@ CREATE TABLE `bkp_13062025_tbl_slider` (
   `delation_status` int(11) NOT NULL DEFAULT 0,
   `width` int(11) NOT NULL DEFAULT 0,
   `height` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_slider`
@@ -2303,7 +1896,7 @@ CREATE TABLE `bkp_13062025_tbl_slider_type` (
   `stype_id` int(11) NOT NULL,
   `STypeName` varchar(255) DEFAULT NULL,
   `delation_status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_slider_type`
@@ -2334,7 +1927,7 @@ CREATE TABLE `bkp_13062025_tbl_widget` (
   `widget_desc` text DEFAULT NULL,
   `widget_desc_full` text DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_widget`
@@ -2375,7 +1968,7 @@ CREATE TABLE `bkp_13062025_top_menu` (
   `parentid` int(11) NOT NULL,
   `entrydate` date NOT NULL,
   `isactive` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bkp_13062025_top_menu`
@@ -2407,7 +2000,7 @@ CREATE TABLE `brands` (
   `status` tinyint(1) DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `brands`
@@ -2434,19 +2027,19 @@ INSERT INTO `brands` (`id`, `brand_name`, `status`, `created_at`, `updated_at`) 
 
 CREATE TABLE `candidate_basic_info` (
   `can_id` varchar(20) NOT NULL,
-  `first_name` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `last_name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `email` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `phone` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `alter_phone` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `present_address` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `parmanent_address` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `first_name` varchar(11) CHARACTER SET latin1 NOT NULL,
+  `last_name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `email` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `phone` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `alter_phone` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `present_address` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `parmanent_address` varchar(100) CHARACTER SET latin1 NOT NULL,
   `picture` text DEFAULT NULL,
   `ssn` varchar(50) NOT NULL,
   `state` varchar(30) NOT NULL,
   `city` varchar(30) NOT NULL,
   `zip` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2457,12 +2050,12 @@ CREATE TABLE `candidate_basic_info` (
 CREATE TABLE `candidate_education_info` (
   `can_edu_id` int(11) NOT NULL,
   `can_id` varchar(30) NOT NULL,
-  `degree_name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `university_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `cgp` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `comments` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `sequencee` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `degree_name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `university_name` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `cgp` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `comments` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `sequencee` varchar(255) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2472,18 +2065,18 @@ CREATE TABLE `candidate_education_info` (
 
 CREATE TABLE `candidate_interview` (
   `can_int_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `job_adv_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `interview_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `interviewer_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `interview_marks` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `written_total_marks` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `mcq_total_marks` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `job_adv_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `interview_date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `interviewer_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `interview_marks` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `written_total_marks` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `mcq_total_marks` varchar(50) CHARACTER SET latin1 NOT NULL,
   `total_marks` varchar(30) NOT NULL,
-  `recommandation` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `selection` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `details` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `recommandation` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `selection` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `details` varchar(50) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2493,11 +2086,11 @@ CREATE TABLE `candidate_interview` (
 
 CREATE TABLE `candidate_selection` (
   `can_sel_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `pos_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `selection_terms` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `pos_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `selection_terms` varchar(50) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2507,11 +2100,11 @@ CREATE TABLE `candidate_selection` (
 
 CREATE TABLE `candidate_shortlist` (
   `can_short_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
   `job_adv_id` int(11) NOT NULL,
-  `date_of_shortlist` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `interview_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `date_of_shortlist` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `interview_date` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2521,13 +2114,13 @@ CREATE TABLE `candidate_shortlist` (
 
 CREATE TABLE `candidate_workexperience` (
   `can_workexp_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `company_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `working_period` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `duties` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `supervisor` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `sequencee` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `company_name` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `working_period` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `duties` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `supervisor` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `sequencee` varchar(10) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2545,7 +2138,7 @@ CREATE TABLE `cart_selected_modifiers` (
   `foods_or_mods` int(11) NOT NULL DEFAULT 2 COMMENT '1 = For Foods\r\n2 = For Mods',
   `is_active` int(11) NOT NULL DEFAULT 1 COMMENT '1=Active,0=Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart_selected_modifiers`
@@ -2593,7 +2186,7 @@ CREATE TABLE `common_setting` (
   `backgroundcolorqr` varchar(30) DEFAULT NULL,
   `qrheaderfontcolor` varchar(20) DEFAULT NULL,
   `recipe_feature_flag` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `common_setting`
@@ -2615,7 +2208,7 @@ CREATE TABLE `contact_data` (
   `phone` varchar(20) DEFAULT NULL,
   `text` varchar(350) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `contact_data`
@@ -2662,16 +2255,16 @@ CREATE TABLE `currency` (
   `curr_icon` varchar(50) NOT NULL,
   `position` int(11) NOT NULL DEFAULT 1 COMMENT '1=left.2=right',
   `curr_rate` decimal(10,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `currency`
 --
 
 INSERT INTO `currency` (`currencyid`, `currencyname`, `curr_icon`, `position`, `curr_rate`) VALUES
-(1, 'BDT', 'BDT', 2, 83.00),
-(2, 'USD', '$', 1, 1.00),
-(3, 'INR', 'Rs.', 1, 0.50);
+(1, 'BDT', 'BDT', 2, '83.00'),
+(2, 'USD', '$', 1, '1.00'),
+(3, 'INR', 'Rs.', 1, '0.50');
 
 -- --------------------------------------------------------
 
@@ -2681,16 +2274,16 @@ INSERT INTO `currency` (`currencyid`, `currencyname`, `curr_icon`, `position`, `
 
 CREATE TABLE `customer_info` (
   `customer_id` int(11) NOT NULL,
-  `cuntomer_no` varchar(120) NOT NULL,
+  `cuntomer_no` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `membership_type` int(11) DEFAULT NULL COMMENT '1=bronze,2=silver,3=gold,4=platinum,5vip',
-  `customer_name` varchar(150) NOT NULL,
-  `customer_email` varchar(100) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `customer_token` text DEFAULT NULL,
-  `customer_address` varchar(250) DEFAULT NULL,
-  `customer_phone` varchar(200) NOT NULL,
-  `customer_picture` varchar(255) DEFAULT NULL,
-  `favorite_delivery_address` varchar(200) DEFAULT NULL,
+  `customer_name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `customer_email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customer_token` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customer_address` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customer_phone` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `customer_picture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `favorite_delivery_address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `crdate` date DEFAULT NULL,
   `is_active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2741,8 +2334,8 @@ CREATE TABLE `customer_membership_map` (
 
 CREATE TABLE `customer_order` (
   `order_id` bigint(20) NOT NULL,
-  `saleinvoice` varchar(100) NOT NULL,
-  `marge_order_id` varchar(30) DEFAULT NULL,
+  `saleinvoice` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `marge_order_id` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
   `cutomertype` int(11) NOT NULL,
   `isthirdparty` int(11) NOT NULL DEFAULT 0 COMMENT '0=normal,1>all Third Party',
@@ -2753,11 +2346,11 @@ CREATE TABLE `customer_order` (
   `order_time` time NOT NULL,
   `cookedtime` time NOT NULL DEFAULT '00:15:00',
   `table_no` int(11) DEFAULT NULL,
-  `tokenno` varchar(30) DEFAULT NULL,
+  `tokenno` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `totalamount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `customerpaid` decimal(10,2) DEFAULT 0.00,
-  `customer_note` text DEFAULT NULL,
-  `anyreason` text DEFAULT NULL,
+  `customer_note` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `anyreason` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `order_status` tinyint(1) NOT NULL COMMENT '1=Pending, 2=Processing, 3=Ready, 4=Served,5=Cancel',
   `nofification` int(11) NOT NULL DEFAULT 0 COMMENT '0=unseen,1=seen',
   `orderacceptreject` int(11) DEFAULT NULL,
@@ -2768,69 +2361,6 @@ CREATE TABLE `customer_order` (
   `invoiceprint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `customer_order`
---
-
-INSERT INTO `customer_order` (`order_id`, `saleinvoice`, `marge_order_id`, `customer_id`, `cutomertype`, `isthirdparty`, `thirdpartyinvoiceid`, `waiter_id`, `kitchen`, `order_date`, `order_time`, `cookedtime`, `table_no`, `tokenno`, `totalamount`, `customerpaid`, `customer_note`, `anyreason`, `order_status`, `nofification`, `orderacceptreject`, `splitpay_status`, `isupdate`, `shipping_date`, `tokenprint`, `invoiceprint`) VALUES
-(1, '0001', NULL, 1, 4, 0, NULL, 177, NULL, '2025-05-20', '17:51:44', '00:15:00', 0, '01', 3.00, 0.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(2, '0002', NULL, 1, 4, 0, NULL, 177, NULL, '2025-05-20', '19:19:10', '00:15:00', 0, '02', 3.00, 3.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(3, '0003', NULL, 1, 4, 0, NULL, 177, NULL, '2025-05-20', '19:22:13', '00:15:00', 0, '03', 6.00, 6.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(4, '0004', NULL, 1, 4, 0, NULL, 177, NULL, '2025-05-20', '21:22:35', '00:15:00', 0, '04', 2.00, 2.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(5, '0005', NULL, 1, 4, 0, NULL, 177, NULL, '2025-05-20', '21:26:35', '00:15:00', 0, '05', 6.00, 6.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(6, '0006', NULL, 54, 4, 0, NULL, 177, NULL, '2025-05-22', '20:49:00', '00:15:00', 0, '01', 15.00, 15.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(7, '0007', NULL, 1, 4, 0, NULL, 177, NULL, '2025-05-22', '20:53:19', '00:15:00', 0, '02', 30.00, 30.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(8, '0008', NULL, 55, 4, 0, NULL, 168, NULL, '2025-05-22', '20:59:08', '00:15:00', 0, '03', 35.00, 35.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(9, '0009', NULL, 1, 4, 0, NULL, 168, NULL, '2025-05-22', '21:06:03', '00:15:00', 0, '04', 50.00, 50.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(10, '0010', NULL, 1, 4, 0, NULL, 177, NULL, '2025-05-22', '21:19:46', '00:15:00', 0, '05', 150.00, 150.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(11, '0011', NULL, 55, 4, 0, NULL, 168, NULL, '2025-05-22', '21:21:35', '00:15:00', 0, '06', 90.00, 90.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(12, '0012', NULL, 55, 4, 0, NULL, 168, NULL, '2025-05-22', '21:24:01', '00:15:00', 0, '07', 50.00, 50.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(13, '0013', NULL, 55, 4, 0, NULL, 168, NULL, '2025-05-22', '21:25:13', '00:15:00', 0, '08', 30.00, 30.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(14, '0014', NULL, 54, 4, 0, NULL, 168, NULL, '2025-05-22', '21:39:09', '00:15:00', 0, '09', 30.00, 30.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(15, '0015', NULL, 54, 4, 0, NULL, 168, NULL, '2025-05-22', '21:39:58', '00:15:00', 0, '10', 25.00, 25.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(16, '0016', NULL, 1, 4, 0, NULL, 168, NULL, '2025-05-22', '21:44:48', '00:15:00', 0, '11', 30.00, 30.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(17, '0017', NULL, 1, 4, 0, NULL, 168, NULL, '2025-05-22', '21:57:29', '00:15:00', 0, '12', 13.00, 13.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(18, '0018', NULL, 55, 4, 0, NULL, 168, NULL, '2025-05-22', '22:01:40', '00:15:00', 0, '13', 13.00, 0.00, '', NULL, 1, 0, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(19, '0019', NULL, 55, 4, 0, NULL, 168, NULL, '2025-05-22', '22:04:01', '00:15:00', 0, '14', 13.00, 0.00, '', NULL, 1, 0, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(20, '0020', NULL, 1, 4, 0, NULL, 168, NULL, '2025-05-22', '22:20:58', '00:15:00', 0, '15', 45.00, 45.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(21, '0021', NULL, 1, 4, 0, NULL, 168, NULL, '2025-05-22', '22:50:23', '00:15:00', 0, '16', 60.00, 60.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(22, '0022', NULL, 1, 4, 0, NULL, 168, NULL, '2025-05-23', '14:39:53', '00:15:00', 0, '01', 25.00, 25.00, '', NULL, 4, 0, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(23, '0023', NULL, 1, 4, 0, NULL, 168, NULL, '2025-05-23', '15:34:49', '00:15:00', 0, '02', 30.00, 30.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(24, '0024', NULL, 56, 4, 0, NULL, 168, NULL, '2025-05-23', '15:51:50', '00:15:00', 0, '03', 12.00, 12.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(25, '0025', NULL, 55, 1, 0, NULL, 168, NULL, '2025-05-23', '19:14:46', '00:15:00', 3, '04', 15.00, 15.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(26, '0026', NULL, 54, 1, 0, NULL, 168, NULL, '2025-05-23', '19:17:32', '00:15:00', 6, '05', 15.00, 15.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(27, '0027', NULL, 54, 1, 0, NULL, 168, NULL, '2025-05-23', '19:19:08', '00:15:00', 6, '06', 20.00, 20.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(28, '0028', NULL, 1, 4, 0, NULL, 166, NULL, '2025-06-03', '19:06:18', '00:15:00', 0, '01', 3.00, 3.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(29, '0029', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-06', '15:46:57', '00:15:00', 0, '01', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(30, '0030', NULL, 54, 1, 0, NULL, 168, NULL, '2025-06-06', '15:51:58', '00:15:00', 1, '02', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(31, '0031', NULL, 1, 1, 0, NULL, 165, NULL, '2025-06-06', '21:41:11', '00:15:00', 9, '03', 5.00, 0.00, '', NULL, 1, 0, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(32, '0032', NULL, 54, 4, 0, NULL, 168, NULL, '2025-06-09', '18:25:13', '00:15:00', 0, '01', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(33, '0033', NULL, 54, 4, 0, NULL, 166, NULL, '2025-06-09', '18:41:56', '00:15:00', 0, '02', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(34, '0034', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '18:42:56', '00:15:00', 0, '03', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(35, '0035', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '18:44:35', '00:15:00', 0, '04', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(36, '0036', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '18:49:23', '00:15:00', 0, '05', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(37, '0037', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '19:05:50', '00:15:00', 0, '06', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(38, '0038', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '21:35:34', '00:15:00', 0, '07', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(39, '0039', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '22:22:08', '00:15:00', 0, '08', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(40, '0040', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '22:29:21', '00:15:00', 0, '09', 5.00, 5.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(41, '0041', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '22:31:53', '00:15:00', 0, '10', 7.00, 7.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(42, '0042', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '22:38:17', '00:15:00', 0, '11', 7.00, 7.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(43, '0043', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '22:42:57', '00:15:00', 0, '12', 7.00, 7.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(44, '0044', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-09', '22:43:52', '00:15:00', 0, '13', 2.00, 2.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(45, '0045', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-10', '14:02:57', '00:15:00', 0, '01', 7.00, 7.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(46, '0046', NULL, 1, 4, 0, NULL, 168, NULL, '2025-06-10', '14:31:16', '00:15:00', 0, '02', 7.00, 7.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(47, '0047', NULL, 54, 4, 0, NULL, 0, NULL, '2025-06-11', '18:27:43', '00:15:00', 0, '01', 2.00, 2.00, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(48, '0048', NULL, 56, 4, 0, NULL, 0, NULL, '2025-06-12', '14:14:51', '00:15:00', 0, '01', 6.30, 6.30, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(49, '0049', NULL, 1, 4, 0, NULL, 0, NULL, '2025-06-12', '14:41:57', '00:15:00', 0, '02', 1.80, 1.80, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(50, '0050', NULL, 1, 4, 0, NULL, 0, NULL, '2025-06-12', '19:44:51', '00:15:00', 0, '03', 8.91, 8.91, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(51, '0051', NULL, 54, 1, 0, NULL, 166, NULL, '2025-06-12', '21:07:00', '00:15:00', 8, '04', 5.67, 5.67, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(52, '0052', NULL, 54, 1, 0, NULL, 0, NULL, '2025-06-12', '21:25:33', '00:15:00', 8, '05', 5.67, 5.67, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(53, '0053', NULL, 54, 1, 0, NULL, 168, NULL, '2025-06-12', '21:28:40', '00:15:00', 2, '06', 6.30, 6.30, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(54, '0054', NULL, 54, 1, 0, NULL, 168, NULL, '2025-06-12', '22:10:28', '00:15:00', 1, '07', 1.62, 1.62, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(55, '0055', NULL, 54, 1, 0, NULL, 168, NULL, '2025-06-12', '22:10:57', '00:15:00', 6, '08', 1.62, 1.62, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(56, '0056', NULL, 54, 1, 0, NULL, 168, NULL, '2025-06-12', '22:44:36', '00:15:00', 3, '09', 1.62, 1.62, '', NULL, 4, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
-(57, '0057', NULL, 54, 4, 0, NULL, 165, NULL, '2025-06-26', '18:39:36', '00:15:00', 0, '01', 2.00, 0.00, '', NULL, 1, 0, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -2839,7 +2369,7 @@ INSERT INTO `customer_order` (`order_id`, `saleinvoice`, `marge_order_id`, `cust
 
 CREATE TABLE `customer_type` (
   `customer_type_id` int(11) NOT NULL,
-  `customer_type` varchar(100) NOT NULL,
+  `customer_type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `ordering` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2866,7 +2396,7 @@ CREATE TABLE `custom_table` (
   `custom_data_type` int(11) NOT NULL,
   `custom_data` text NOT NULL,
   `employee_no` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `custom_table`
@@ -2887,7 +2417,7 @@ INSERT INTO `custom_table` (`custom_id`, `custom_field`, `custom_data_type`, `cu
 CREATE TABLE `days` (
   `day_id` int(11) NOT NULL,
   `day_name` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `days`
@@ -2914,7 +2444,7 @@ CREATE TABLE `delivery_charges` (
   `charge` double NOT NULL DEFAULT 0,
   `is_active` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Active\r\n0 = Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `delivery_charges`
@@ -2943,7 +2473,7 @@ CREATE TABLE `department` (
   `dept_id` int(11) NOT NULL,
   `department_name` varchar(100) NOT NULL,
   `parent_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `department`
@@ -2971,7 +2501,7 @@ INSERT INTO `department` (`dept_id`, `department_name`, `parent_id`) VALUES
 CREATE TABLE `duty_type` (
   `id` int(11) NOT NULL,
   `type_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `duty_type`
@@ -3000,7 +2530,7 @@ CREATE TABLE `email_config` (
   `sender` text NOT NULL,
   `api_key` varchar(250) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `email_config`
@@ -3023,7 +2553,7 @@ CREATE TABLE `employee_benifit` (
   `bnff_acural_date` date NOT NULL,
   `bnf_status` tinyint(4) NOT NULL,
   `employee_id` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -3104,7 +2634,7 @@ CREATE TABLE `employee_history` (
   `alt_em_contct` varchar(30) NOT NULL,
   `alt_emg_h_phone` varchar(30) NOT NULL,
   `alt_emg_w_phone` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `employee_history`
@@ -3134,14 +2664,14 @@ INSERT INTO `employee_history` (`emp_id`, `employee_no`, `pos_id`, `first_name`,
 
 CREATE TABLE `employee_performance` (
   `emp_per_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `note` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `date` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `note_by` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `number_of_star` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `status` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `updated_by` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `note` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `date` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `note_by` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `number_of_star` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `status` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `updated_by` varchar(50) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3151,14 +2681,14 @@ CREATE TABLE `employee_performance` (
 
 CREATE TABLE `employee_salary_payment` (
   `emp_sal_pay_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `total_salary` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `total_working_minutes` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `working_period` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `payment_due` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `payment_date` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `paid_by` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `total_salary` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `total_working_minutes` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `working_period` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `payment_due` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `payment_date` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `paid_by` varchar(50) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3168,15 +2698,15 @@ CREATE TABLE `employee_salary_payment` (
 
 CREATE TABLE `employee_salary_setup` (
   `e_s_s_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `employee_id` varchar(30) CHARACTER SET latin1 NOT NULL,
   `sal_type` varchar(30) NOT NULL,
-  `salary_type_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `salary_type_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `amount` varchar(30) CHARACTER SET latin1 NOT NULL,
   `create_date` date DEFAULT NULL,
   `update_date` datetime(6) DEFAULT NULL,
-  `update_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `update_id` varchar(30) CHARACTER SET latin1 NOT NULL,
   `gross_salary` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3186,8 +2716,8 @@ CREATE TABLE `employee_salary_setup` (
 
 CREATE TABLE `employee_sal_pay_type` (
   `emp_sal_pay_type_id` int(10) UNSIGNED NOT NULL,
-  `payment_period` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `payment_period` varchar(50) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3197,12 +2727,12 @@ CREATE TABLE `employee_sal_pay_type` (
 
 CREATE TABLE `emp_attendance` (
   `att_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `sign_in` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `sign_out` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `sign_in` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
+  `sign_out` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
   `staytime` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3216,7 +2746,7 @@ CREATE TABLE `expense` (
   `type` varchar(100) NOT NULL,
   `voucher_no` varchar(50) NOT NULL,
   `amount` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3227,7 +2757,7 @@ CREATE TABLE `expense` (
 CREATE TABLE `expense_item` (
   `id` int(11) NOT NULL,
   `expense_item_name` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3241,7 +2771,7 @@ CREATE TABLE `foodvariable` (
   `availtime` varchar(50) NOT NULL,
   `availday` varchar(30) NOT NULL,
   `is_active` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3252,7 +2782,7 @@ CREATE TABLE `foodvariable` (
 CREATE TABLE `gender` (
   `id` int(11) NOT NULL,
   `gender_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gender`
@@ -3271,20 +2801,20 @@ INSERT INTO `gender` (`id`, `gender_name`) VALUES
 
 CREATE TABLE `grand_loan` (
   `loan_id` int(11) NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `permission_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `loan_details` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `interest_rate` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `installment` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `installment_period` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `repayment_amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `date_of_approve` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `repayment_start_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `created_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `updated_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `loan_status` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `permission_by` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `loan_details` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `amount` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `interest_rate` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `installment` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `installment_period` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `repayment_amount` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `date_of_approve` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `repayment_start_date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `created_by` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `updated_by` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `loan_status` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3294,7 +2824,7 @@ CREATE TABLE `grand_loan` (
 
 CREATE TABLE `ingredients` (
   `id` int(11) NOT NULL,
-  `ingredient_name` varchar(250) NOT NULL,
+  `ingredient_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `purchase_price` decimal(10,2) DEFAULT NULL,
   `cost_perunit` decimal(10,4) DEFAULT NULL,
   `uom_id` int(11) NOT NULL,
@@ -3310,171 +2840,6 @@ CREATE TABLE `ingredients` (
   `pack_unit` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `ingredients`
---
-
-INSERT INTO `ingredients` (`id`, `ingredient_name`, `purchase_price`, `cost_perunit`, `uom_id`, `purchase_product`, `consumption_unit`, `pack_size`, `convt_ratio`, `stock_qty`, `min_stock`, `status`, `brand_id`, `is_active`, `pack_unit`) VALUES
-(1, 'Sliced Mushroom 410 gms', 3.50, 0.0085, 7, NULL, 3, 410.00, 1.0000, 2870.00, 5.00, 0, 0, 1, 3),
-(2, 'Two Fruit 700 gms', 6.00, 0.0086, 7, NULL, 3, 700.00, 1.0000, 3500.00, 5.00, 0, 0, 1, 3),
-(3, 'Mango Pulp 850 gms', 4.50, 0.0053, 7, NULL, 3, 850.00, 1.0000, 5100.00, 5.00, 0, 1, 1, 3),
-(4, 'Shezwan chutney 1 Kg', 10.90, 0.0109, 7, NULL, 3, 1.00, 1000.0000, 4000.00, 2.00, 0, 2, 1, 1),
-(5, 'Champignon 400 gms', 9.50, 0.0238, 7, NULL, 3, 400.00, 1.0000, 6400.00, 5.00, 0, 0, 1, 3),
-(6, 'Nanak Ghee 10 Liter', 98.00, 0.0098, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 2),
-(7, 'Restaurant Ghee 10 liter', 98.00, 0.0098, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 2),
-(8, 'Premium Ghee 10 liter', 108.00, 0.0108, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 2),
-(9, 'GRB Ghee 10 Liter', 141.00, 0.0141, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 2),
-(10, 'Rasmalai Bikano 1 Kg', 6.50, 0.0065, 7, NULL, 3, 1.00, 1000.0000, 77000.00, 10.00, 0, 0, 1, 1),
-(11, 'Sugar Coated fennel Seed indya 1 Kg', 8.50, 0.0085, 7, NULL, 3, 1.00, 1000.0000, 1000.00, 1.00, 0, 0, 1, 1),
-(12, 'Hing Powder mothers 100 gram', 4.25, 0.0425, 7, NULL, 3, 100.00, 1.0000, 500.00, 3.00, 0, 0, 1, 3),
-(13, 'Corn Flour 25 kg', 62.50, 0.0025, 7, NULL, 3, 25.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 1),
-(14, 'Corn Flour 1 kg', 3.25, 0.0032, 7, NULL, 3, 1.00, 1000.0000, 1200.00, 3.00, 0, 0, 1, 1),
-(15, 'Baking Powder 2.5 Kg', 45.50, 0.0182, 7, NULL, 3, 2.50, 1000.0000, 27500.00, 2.00, 0, 0, 1, 1),
-(16, 'Fried Onion mothers 1 Kg', 9.90, 0.0099, 7, NULL, 3, 1.00, 1000.0000, 3000.00, 2.00, 0, 0, 1, 1),
-(17, 'Tea Masala - mothers 100 gms', 3.50, 0.0350, 7, NULL, 3, 100.00, 1.0000, 0.00, 2.00, 0, 0, 1, 3),
-(18, 'Wagh Bakri Tea 1 Kg', 14.50, 0.0145, 7, NULL, 3, 1.00, 1000.0000, 2000.00, 2.00, 0, 0, 1, 1),
-(19, 'Biryani Masala shan 100gms', 2.75, 0.0275, 7, NULL, 3, 100.00, 1.0000, 350.00, 2.00, 0, 0, 1, 3),
-(20, 'Mint Leaves Dried 200g', 3.70, 0.0185, 7, NULL, 3, 200.00, 1.0000, 0.00, 2.00, 0, 0, 1, 3),
-(21, 'Tandoori Masala 50 gm', 1.75, 0.0350, 7, NULL, 3, 50.00, 1.0000, 50.00, 2.00, 0, 0, 1, 3),
-(22, 'Tandoori Paste 5 Liter', 24.50, 0.0049, 7, NULL, 11, 5.00, 1000.0000, 15000.00, 2.00, 0, 0, 1, 2),
-(23, 'Anardana 100 gms', 2.50, 0.0250, 7, NULL, 3, 100.00, 1.0000, 200.00, 2.00, 0, 0, 1, 3),
-(24, 'Chaat Masala 100g', 1.70, 0.0170, 7, NULL, 3, 100.00, 1.0000, 0.00, 2.00, 0, 0, 1, 3),
-(25, 'Mixed Pickle mothers 1 Kg', 6.33, 0.0063, 7, NULL, 3, 1.00, 1000.0000, 3000.00, 3.00, 0, 0, 1, 1),
-(26, 'Mix pickle 5 Kg', 20.00, 0.0040, 7, NULL, 3, 5.00, 1000.0000, 0.00, 2.00, 0, 0, 1, 1),
-(27, 'Lemon Pickle 1 Kg', 5.25, 0.0053, 7, NULL, 3, 1.00, 1000.0000, 2000.00, 2.00, 0, 0, 1, 1),
-(28, 'Chilli Pickle 1 Kg', 5.25, 0.0053, 7, NULL, 3, 1.00, 1000.0000, 6000.00, 2.00, 0, 0, 1, 1),
-(29, 'Food Colour (Orange & Red) 1 Kg', 18.50, 0.0185, 7, NULL, 3, 1.00, 1000.0000, 2000.00, 2.00, 0, 0, 1, 1),
-(30, 'Food Colour (Lemon Yellow) 1 Kg', 18.50, 0.0185, 7, NULL, 3, 1.00, 1000.0000, 1000.00, 1.00, 0, 0, 1, 1),
-(31, 'Mustard Oil 1 Ltr', 8.50, 0.0085, 2, NULL, 11, 1.00, 1000.0000, 4000.00, 4.00, 0, 0, 1, 2),
-(32, 'Mustard Oil 5 Ltr', 28.00, 0.0056, 7, NULL, 11, 5.00, 1000.0000, 5000.00, 1.00, 0, 0, 1, 2),
-(33, 'Rose water 250 ml', 3.20, 0.0128, 7, NULL, 11, 250.00, 1.0000, 2750.00, 1.00, 0, 3, 1, 11),
-(34, 'Light Soy Sauce 2 Liter', 4.50, 0.0022, 7, NULL, 11, 2.00, 1000.0000, 16000.00, 2.00, 0, 0, 1, 2),
-(35, 'Dark Soy Sauce 750 gms', 4.50, 0.0060, 7, NULL, 3, 750.00, 1.0000, 2250.00, 1.00, 0, 2, 1, 3),
-(36, 'Chilli Sauce 680 gms', 5.50, 0.0081, 7, NULL, 3, 680.00, 1.0000, 680.00, 2.00, 0, 2, 1, 3),
-(37, 'Rose Sharbet 800 ml', 4.90, 0.0061, 7, NULL, 11, 800.00, 1.0000, 3920.00, 2.00, 0, 4, 1, 11),
-(38, 'Tomato Sauce 4 Liter', 12.99, 0.0032, 7, NULL, 11, 4.00, 1000.0000, 24000.00, 2.00, 0, 0, 1, 2),
-(39, 'Roganjosh Paste mothers 5 Liter', 24.00, 0.0048, 7, NULL, 11, 5.00, 1000.0000, 35000.00, 2.00, 0, 0, 1, 2),
-(40, 'Sweet Mango Chutney mothers 5Lt', 22.00, 0.0044, 7, NULL, 11, 5.00, 1000.0000, 10000.00, 2.00, 0, 5, 1, 2),
-(41, 'Tamarind Chutney 5 liter', 22.00, 0.0044, 7, NULL, 11, 5.00, 1000.0000, 25000.00, 2.00, 0, 5, 1, 2),
-(42, 'Paani Puri Masala 50 gms', 1.60, 0.0320, 7, NULL, 3, 50.00, 1.0000, 100.00, 1.00, 0, 0, 1, 3),
-(43, 'Chana Masala MDH 500 gms', 13.50, 0.0270, 7, NULL, 3, 500.00, 1.0000, 0.00, 1.00, 0, 0, 1, 3),
-(44, 'Chana masala mothers 500gms', 12.50, 0.0250, 7, NULL, 3, 500.00, 1.0000, 6500.00, 1.00, 0, 0, 1, 3),
-(45, 'Chana Masala (MDH) 100gms', 2.50, 0.0250, 7, NULL, 3, 100.00, 1.0000, 0.00, 1.00, 0, 0, 1, 3),
-(46, 'Chana masala mothers 100 gm', 2.20, 0.0220, 7, NULL, 3, 100.00, 1.0000, 0.00, 1.00, 0, 0, 1, 3),
-(47, 'Aamchur Powder 100gm', 2.80, 0.0280, 7, NULL, 3, 100.00, 1.0000, 100.00, 1.00, 0, 0, 1, 3),
-(48, 'Turmeric Powder mothers 1 kg', 8.80, 0.0088, 7, NULL, 3, 1.00, 1000.0000, 2000.00, 2.00, 0, 0, 1, 1),
-(49, 'Ajwain 500 gms', 7.00, 0.0140, 7, NULL, 3, 500.00, 1.0000, 4345.00, 1.00, 0, 0, 1, 3),
-(50, 'Sheikh Kebab Masala 50 gms', 1.75, 0.0350, 7, NULL, 3, 50.00, 1.0000, 3100.00, 2.00, 0, 0, 1, 3),
-(51, 'Almond Flakes 4 kg', 6.99, 0.0017, 7, NULL, 3, 4.00, 1000.0000, 5.00, 1.00, 0, 0, 1, 1),
-(52, 'Shreded Coconut 1 kg', 6.99, 0.0070, 7, NULL, 3, 1.00, 1000.0000, 1500.00, 1.00, 0, 0, 1, 1),
-(53, 'Sultana Dried 1 kg pack', 7.50, 0.0075, 7, NULL, 3, 1.00, 1000.0000, 5000.00, 1.00, 0, 0, 1, 1),
-(54, 'Bread Crumbs 1kg', 8.50, 0.0085, 7, NULL, 3, 1.00, 1000.0000, 8000.00, 1.00, 0, 0, 1, 1),
-(55, 'Chilli Flakes 1 kg', 10.50, 0.0105, 7, NULL, 3, 1.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 1),
-(56, 'Black pepper Cracked 1 kg', 22.50, 0.0225, 7, NULL, 3, 1.00, 1000.0000, 1500.00, 1.00, 0, 0, 1, 1),
-(57, 'Chilli Powder 1 KG', 10.50, 0.0105, 7, NULL, 3, 1.00, 1000.0000, 1000.00, 1.00, 0, 0, 1, 1),
-(58, 'Salt 20 kg', 22.50, 0.0011, 7, NULL, 3, 20.00, 1000.0000, 20000.00, 1.00, 0, 0, 1, 1),
-(59, 'Toor Daal 1 Kg 5 5.5', 5.50, 0.0055, 7, NULL, 3, 1.00, 1000.0000, 5000.00, 1.00, 0, 0, 1, 1),
-(60, 'Broken Cashew 1 KG', 9.50, 0.0095, 7, NULL, 3, 1.00, 1000.0000, 21750.00, 1.00, 0, 0, 1, 1),
-(61, 'Garlic (Granules) 10 KG 3.5 8.2', 8.20, 0.0008, 7, NULL, 3, 10.00, 1000.0000, 35000.00, 2.00, 0, 0, 1, 1),
-(62, 'Plain flour 12 Kg', 12.15, 0.0010, 7, NULL, 3, 12.00, 1000.0000, 96000.00, 1.00, 0, 0, 1, 1),
-(63, 'Tomato Puree 3 Kg', 24.75, 0.0083, 7, NULL, 3, 3.00, 1000.0000, 87000.00, 2.00, 0, 0, 1, 1),
-(64, 'Vegetable Oil 20 Ltr', 7.52, 0.0004, 7, NULL, 11, 20.00, 1000.0000, 140000.00, 2.00, 0, 0, 1, 2),
-(65, 'Singh Ghee 10 Ltr', 85.00, 0.0085, 7, NULL, 11, 10.00, 1000.0000, 0.00, 2.00, 0, 0, 1, 2),
-(66, 'Singh Ghee 10 Ltr', 85.00, 0.0085, 7, NULL, 11, 10.00, 1000.0000, 0.00, 2.00, 0, 0, 1, 2),
-(67, 'Wheat flour 10 Kg', 19.80, 0.0020, 7, NULL, 3, 10.00, 1000.0000, 10000.00, 1.00, 0, 0, 1, 1),
-(68, 'Rice 20KG', 45.00, 0.0023, 7, NULL, 3, 20.00, 1000.0000, 206750.00, 2.00, 0, 0, 1, 1),
-(69, 'Besan Flour 25 Kg', 55.00, 0.0022, 7, NULL, 3, 25.00, 1000.0000, 24000.00, 1.00, 0, 0, 1, 1),
-(70, 'White Sugar 25 Kg', 40.00, 0.0016, 7, NULL, 3, 25.00, 1000.0000, 25000.00, 1.00, 0, 0, 1, 1),
-(71, 'Whole Cumin 10KG', 135.00, 0.0135, 7, NULL, 3, 10.00, 1000.0000, 4000.00, 1.00, 0, 0, 1, 1),
-(72, 'Moong Daal 1 Kg', 3.25, 0.0032, 7, NULL, 3, 1.00, 1000.0000, 2000.00, 1.00, 0, 0, 1, 1),
-(73, 'Chana Daal 1 Kg', 2.80, 0.0028, 7, NULL, 3, 1.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 1),
-(74, 'Black urad daal 1 Kg', 3.90, 0.0039, 7, NULL, 3, 1.00, 1000.0000, 2800.00, 1.00, 0, 0, 1, 1),
-(75, 'Massor daal 1 Kg', 3.80, 0.0038, 7, NULL, 3, 1.00, 1000.0000, 0.00, 0.00, 0, 0, 1, 1),
-(76, 'Rajma 1 Kg', 4.90, 0.0049, 1, NULL, 3, 1.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 1),
-(77, 'Plain pappad sleeve 20pc', 36.50, 1.8250, 7, NULL, 7, 20.00, 1.0000, 1600.00, 2.00, 0, 0, 1, 7),
-(78, 'Vindaloo Paste 5 Kg', 26.50, 0.0053, 7, NULL, 3, 5.00, 1000.0000, 90000.00, 1.00, 0, 0, 1, 1),
-(79, 'Kara coconut cream 1 Liter', 5.50, 0.0055, 7, NULL, 11, 1.00, 1000.0000, 12000.00, 1.00, 0, 0, 1, 2),
-(80, 'Vinegar 4 Liter', 6.50, 0.0016, 7, NULL, 11, 4.00, 1000.0000, 0.00, 1.00, 0, 0, 1, 2),
-(81, 'Lime Juice 1 Liter', 4.50, 0.0045, 7, NULL, 11, 1.00, 1000.0000, 7000.00, 1.00, 0, 0, 1, 2),
-(82, 'Chick Pea 400 gm', 1.10, 0.0028, 7, NULL, 3, 400.00, 1.0000, 4800.00, 1.00, 0, 0, 1, 3),
-(83, 'Soya Chaap 850 gms', 4.90, 0.0058, 7, NULL, 3, 850.00, 1.0000, 8500.00, 1.00, 0, 0, 1, 3),
-(84, 'Apricot can 800 gm', 5.50, 0.0069, 7, NULL, 3, 800.00, 1.0000, 4000.00, 1.00, 0, 0, 1, 3),
-(85, 'Dry Yeast 500 gm', 5.25, 0.0105, 7, NULL, 3, 500.00, 1.0000, 300.00, 1.00, 0, 0, 1, 3),
-(86, 'Mint Chutney 200 ml', 3.50, 0.0175, 7, NULL, 11, 200.00, 1.0000, 0.00, 1.00, 0, 0, 1, 11),
-(87, 'Degi Mirch kashmiri mothers 1 Kg', 19.50, 0.0195, 7, NULL, 3, 1.00, 1000.0000, 1000.00, 1.00, 0, 0, 1, 1),
-(88, 'Sweet Paprica 1 Kg', 8.50, 8.5000, 7, NULL, 3, 1.00, 1.0000, 0.00, 1.00, 0, 0, 1, 1),
-(89, 'Garam masala mothers 1 Kg', 13.50, 0.0135, 7, NULL, 3, 1.00, 1000.0000, 1000.00, 1.00, 0, 0, 1, 1),
-(90, 'Rice Flour 1 Kg', 2.35, 0.0024, 7, NULL, 3, 1.00, 1000.0000, 1000.00, 1.00, 0, 0, 1, 1),
-(91, 'Suji 1 Kg', 3.65, 0.0037, 7, NULL, 3, 1.00, 1000.0000, 2000.00, 1.00, 0, 0, 1, 1),
-(92, 'Milk Powder 1 Kg', 12.00, 0.0120, 7, NULL, 3, 1.00, 1000.0000, 1000.00, 1.00, 0, 0, 1, 1),
-(93, 'Cinnamon Powder 1 Kg', 17.50, 0.0175, 7, NULL, 3, 1.00, 1000.0000, 500.00, 1.00, 0, 0, 1, 1),
-(94, 'Bay Leaves 100 gms', 2.20, 0.0220, 7, NULL, 3, 100.00, 1.0000, 100.00, 1.00, 0, 0, 1, 3),
-(95, 'Mustard Seads 200 Gms Pack', 3.00, 0.0150, 7, NULL, 3, 200.00, 1.0000, 360.00, 1.00, 0, 0, 1, 3),
-(96, 'Black Salt 200 Gms Pack', 2.20, 0.0110, 7, NULL, 3, 200.00, 1.0000, 400.00, 1.00, 0, 0, 1, 3),
-(97, 'Kitchen King Masala 100 Gm', 1.68, 0.0168, 7, NULL, 3, 100.00, 1.0000, 0.00, 1.00, 0, 0, 1, 3),
-(98, 'Meat masala 100 gm', 1.68, 0.0168, 7, NULL, 3, 100.00, 1.0000, 0.00, 1.00, 0, 0, 1, 3),
-(99, 'Meat masala mothers 100 Gm', 1.25, 0.0125, 7, NULL, 3, 100.00, 1.0000, 0.00, 1.00, 0, 0, 1, 3),
-(100, 'Kasoori Methi 1 Kg', 16.50, 0.0165, 7, NULL, 3, 1.00, 1000.0000, 9000.00, 1.00, 0, 0, 1, 1),
-(101, 'Egg Yellow 12 pcs', 9.00, 0.7500, 7, NULL, 7, 12.00, 1.0000, 24.00, 1.00, 0, 0, 1, 7),
-(124, 'Coca Cola 500 ml', 6.00, 6.0000, 7, 33, NULL, 1.00, 1.0000, 0.00, 2.00, 1, NULL, 1, 7),
-(125, 'Machayi chow 500 gm', 10.00, 0.0200, 7, NULL, 3, 500.00, 1.0000, 0.00, 2.00, 0, 2, 1, 3),
-(127, 'Raw Fish 1 Kg', 250.00, 0.2500, 1, NULL, 3, 1.00, 1000.0000, 10000.00, 2.00, 0, 2, 1, 1),
-(128, 'Yogurt 500 ml', 20.00, 0.0400, 7, NULL, 11, 500.00, 1.0000, 5000.00, 2.00, 0, 0, 1, 11),
-(130, 'Coca Cola 500 ml', 5.00, NULL, 7, 36, NULL, 1.00, 1.0000, 20.00, 2.00, 1, NULL, 1, 7),
-(131, 'Limca 500 Ml', 12.00, NULL, 7, 37, NULL, 1.00, 1.0000, 27.00, 2.00, 1, NULL, 1, 7),
-(132, 'Red Bull 500 ML', 25.00, NULL, 7, 38, NULL, 1.00, 1.0000, 39.00, 1.00, 1, NULL, 1, 7),
-(133, 'Lehar Cold Drink 500 ML', 20.00, NULL, 7, 39, NULL, 1.00, 1.0000, 20.00, 10.00, 1, NULL, 1, 7),
-(134, 'Maaza Cold Drink 1000 ML', 22.00, NULL, 7, 40, NULL, 1.00, 1.0000, 25.00, 5.00, 1, NULL, 1, 7),
-(135, 'Coke 500 ML', 11.00, NULL, 7, 41, NULL, 1.00, 1.0000, 8.00, 1.00, 1, NULL, 1, 7),
-(136, 'IceBerg Drink 250 ML Bottle', 11.00, NULL, 7, 42, NULL, 1.00, 1.0000, 18.00, 2.00, 1, NULL, 1, 7),
-(137, 'Liqu500t', 10.00, NULL, 7, 43, NULL, 1.00, 1.0000, 15.00, 2.00, 1, NULL, 1, 7),
-(138, 'Sting Cold Drink 500 ML', 15.00, NULL, 7, 45, NULL, 1.00, 1.0000, 40.00, 2.00, 1, NULL, 1, 7),
-(139, 'Lassi 500 ML', 20.00, NULL, 7, 46, NULL, 1.00, 1.0000, 19.00, 2.00, 1, NULL, 1, 7),
-(140, 'Soft Drink 1000 ML', 22.00, NULL, 7, 47, NULL, 1.00, 1.0000, 20.00, 1.00, 1, NULL, 1, 7),
-(141, 'Tawa Roti', 2.00, NULL, 7, 48, NULL, 1.00, 1.0000, 40.00, 5.00, 1, NULL, 1, 7),
-(142, 'Icecream Block 500 gram ', 10.00, NULL, 7, 49, NULL, 500.00, 1.0000, 5.00, 2.00, 1, NULL, 1, 7),
-(143, 'Product 250 ml', 30.00, NULL, 7, 50, NULL, 250.00, 1.0000, 20.00, 10.00, 1, NULL, 1, 7),
-(144, 'Sliced Mushroom', 3.00, NULL, 7, NULL, NULL, 410.00, 1.0000, 2870.00, 1.00, 0, NULL, 1, NULL),
-(145, 'Two Fruit', 4.00, NULL, 7, NULL, NULL, 700.00, 1.0000, 0.00, 1.00, 0, NULL, 1, NULL),
-(146, 'Mango Pulp', 4.50, NULL, 7, NULL, NULL, 850.00, 1.0000, 10200.00, 1.00, 0, 1, 1, NULL),
-(147, 'Shezwan chutney', 8.90, NULL, 7, NULL, NULL, 1.00, 1000.0000, 3000.00, 1.00, 0, 2, 1, NULL),
-(148, 'Champignon', 1.75, NULL, 7, NULL, NULL, 400.00, 1.0000, 6400.00, 1.00, 0, NULL, 1, NULL),
-(149, 'Nanak Ghee', 98.00, NULL, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, NULL, 1, NULL),
-(150, 'restaurant ghee', 98.00, NULL, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, NULL, 1, NULL),
-(151, 'premium ghee', 108.00, NULL, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, NULL, 1, NULL),
-(152, 'grb ghee', 141.00, NULL, 7, NULL, 11, 10.00, 1000.0000, 0.00, 1.00, 0, NULL, 1, NULL),
-(153, 'rasmalai bikano', 6.50, NULL, 7, NULL, NULL, 1.00, 1000.0000, 82000.00, 1.00, 0, NULL, 1, NULL),
-(154, 'Sugar Coated fennel Seed indya', 8.50, NULL, 7, NULL, NULL, 1.00, 1000.0000, 2000.00, 1.00, 0, NULL, 1, NULL),
-(155, 'Hing Powder mothers', 4.75, NULL, 7, NULL, NULL, 100.00, 1.0000, 350.00, 1.00, 0, NULL, 1, NULL),
-(156, 'Corn Flour', 62.50, NULL, 7, NULL, NULL, 25.00, 1000.0000, 0.00, 1.00, 0, NULL, 1, NULL),
-(157, 'Baking Powder', 27.50, NULL, 7, NULL, NULL, 2.50, 1000.0000, 5000.00, 1.00, 0, NULL, 1, NULL),
-(158, 'Fried Onion mothers', 9.90, NULL, 7, NULL, NULL, 1.00, 1000.0000, 4000.00, 1.00, 0, NULL, 1, NULL),
-(159, 'Tea Masala - mothers', 2.50, NULL, 7, NULL, NULL, 100.00, 1.0000, 0.00, 1.00, 0, NULL, 1, NULL),
-(160, 'Wagh Bakri Tea', 14.50, NULL, 7, NULL, NULL, 1.00, 1000.0000, 1000.00, 1.00, 0, NULL, 1, NULL),
-(161, 'Biryani Masala shan', 1.75, NULL, 7, NULL, NULL, 100.00, 1.0000, 3600.00, 1.00, 0, NULL, 1, NULL),
-(162, 'Mint Leaves Dried', 3.70, NULL, 7, NULL, NULL, 200.00, 1.0000, 200.00, 1.00, 0, NULL, 1, NULL),
-(163, 'Boondi raita', 7.90, NULL, 7, NULL, NULL, 1.00, 1000.0000, 1000.00, 1.00, 0, NULL, 1, NULL),
-(164, 'Tandoori Masala', 1.75, NULL, 7, NULL, NULL, 50.00, 1.0000, 250.00, 1.00, 0, NULL, 1, NULL),
-(165, 'Tandoori Paste', 24.50, NULL, 7, NULL, 11, 5.00, 1000.0000, 15000.00, 1.00, 0, NULL, 1, NULL),
-(166, 'Anardana', 2.50, NULL, 7, NULL, NULL, 100.00, 1.0000, 1000.00, 1.00, 0, NULL, 1, NULL),
-(167, 'Sliced Mushroom New', 3.00, NULL, 7, NULL, NULL, 410.00, 1.0000, 2870.00, 1.00, 0, NULL, 1, NULL),
-(168, 'Rasna Juice Powder', 3.00, NULL, 7, NULL, 3, 410.00, 1.0000, 2870.00, 1.00, 0, NULL, 1, 3),
-(169, 'Fruity Juice Powder', 3.00, NULL, 7, NULL, 3, 610.00, 1.0000, 5490.00, 1.00, 0, NULL, 1, 3),
-(170, 'Hamdard Juice Powder', 3.00, NULL, 7, NULL, 3, 610.00, 1.0000, 5490.00, 1.00, 0, 6, 1, 3),
-(171, 'Tooty Fruity Juice Powder', 3.00, NULL, 7, NULL, 3, 610.00, 1.0000, 5490.00, 1.00, 0, 6, 1, 3),
-(172, 'Maaza Juice Powder', 3.00, NULL, 7, NULL, 3, 610.00, 1.0000, 5490.00, 1.00, 0, 6, 1, 3),
-(173, 'Fanta Juice Powder', 3.00, NULL, 7, NULL, 3, 610.00, 1.0000, 5490.00, 1.00, 0, 6, 1, 3),
-(174, 'Papaya Powder', 7.00, 0.0330, 7, NULL, 3, 210.00, 1.0000, 1890.00, 1.00, 0, 7, 1, 3),
-(175, 'Amul Milk', 9.00, 0.0180, 7, NULL, 3, 500.00, 1.0000, 4498.00, 1.00, 0, 8, 1, 3),
-(176, 'Thackar Dairy Milk', 10.00, 0.0000, 7, NULL, 7, 500.00, 1000.0000, 2500000.00, 1.00, 0, 9, 1, 11),
-(177, 'Mother Dairy Milk', 10.00, 0.0200, 7, NULL, 7, 500.00, 1.0000, 2500.00, 1.00, 0, 10, 1, 11),
-(178, 'Bikaram Chole', 10.00, 0.0200, 1, NULL, NULL, 500.00, 1.0000, 2500.00, 1.00, 0, 10, 1, NULL),
-(179, 'ChandanChole', 10.00, 0.0200, 1, NULL, 1, 500.00, 1.0000, 2500.00, 1.00, 0, 10, 1, NULL),
-(180, 'NandanChole', 10.00, 0.0200, 1, NULL, 1, 500.00, 1.0000, 2500.00, 1.00, 0, 10, 1, 3),
-(181, 'Raja Chole', 10.00, 0.0200, 1, NULL, 1, 500.00, 1.0000, 2500.00, 1.00, 0, 10, 1, 3),
-(182, 'Nisha Bhujia', 10.00, 0.0400, 2, NULL, NULL, 250.00, 1.0000, 1250.00, 1.00, 0, 10, 1, 2),
-(183, 'Akash Ghee', 90.00, 9.0000, 2, NULL, 11, 10.00, 1.0000, 150.00, 2.00, 0, 11, 1, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -3483,144 +2848,13 @@ INSERT INTO `ingredients` (`id`, `ingredient_name`, `purchase_price`, `cost_peru
 
 CREATE TABLE `ingredients_opening_stock` (
   `id` int(11) NOT NULL,
-  `ingredient_name` varchar(250) NOT NULL,
+  `ingredient_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `ingredient_id` int(11) NOT NULL,
   `purchase_price` decimal(10,2) DEFAULT NULL,
   `opening_balance` decimal(10,2) DEFAULT 0.00 COMMENT 'As per consumption unit (Lower Unit) & inserted in higher unit',
   `opening_date` date DEFAULT curdate(),
   `is_active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `ingredients_opening_stock`
---
-
-INSERT INTO `ingredients_opening_stock` (`id`, `ingredient_name`, `ingredient_id`, `purchase_price`, `opening_balance`, `opening_date`, `is_active`) VALUES
-(1, 'Sliced Mushroom', 1, 3.00, 2870.00, '2025-04-16', 1),
-(2, 'Two Fruit', 2, 4.00, 3500.00, '2025-04-16', 1),
-(3, 'Mango Pulp', 3, 4.50, 5100.00, '2025-04-16', 1),
-(4, 'Shezwan chutney', 4, 8.90, 4000.00, '2025-04-16', 1),
-(5, 'Champignon', 5, 1.75, 6400.00, '2025-04-16', 1),
-(6, 'Rasmalai Bikano', 10, 6.50, 77000.00, '2025-04-16', 1),
-(7, 'Sugar Coated fennel Seed indya', 11, 8.50, 1000.00, '2025-04-16', 1),
-(8, 'Hing Powder mothers', 12, 4.75, 500.00, '2025-04-16', 1),
-(9, 'Corn Flour 1 kg', 14, 3.25, 1200.00, '2025-04-16', 1),
-(10, 'Baking Powder', 15, 27.50, 10000.00, '2025-04-16', 1),
-(11, 'Fried Onion mothers', 16, 9.90, 3000.00, '2025-04-16', 1),
-(12, 'Wagh Bakri Tea', 18, 14.50, 2000.00, '2025-04-22', 1),
-(13, 'Tandoori Masala 50 gm', 21, 1.75, 50.00, '2025-04-22', 1),
-(14, 'Tandoori Paste', 22, 24.50, 15000.00, '2025-04-22', 1),
-(15, 'Anardana 100 gms', 23, 2.50, 2700.00, '2025-04-22', 1),
-(16, 'Mixed Pickle mothers 1 Kg', 25, 6.33, 3000.00, '2025-04-22', 1),
-(17, 'Lemon Pickle 1 Kg', 27, 5.25, 2000.00, '2025-04-22', 1),
-(18, 'Chilli Pickle 1 Kg', 28, 5.25, 6000.00, '2025-04-22', 1),
-(19, 'Food Colour (Orange & Red) 1 Kg', 29, 18.50, 2000.00, '2025-04-22', 1),
-(20, 'Food Colour (Lemon Yellow) 1 Kg', 30, 18.50, 1000.00, '2025-04-22', 1),
-(21, 'Mustard Oil 1 Ltr', 31, 6.50, 4000.00, '2025-04-22', 1),
-(22, 'Mustard Oil 5 Ltr', 32, 28.00, 5000.00, '2025-04-22', 1),
-(23, 'Rose water 250 ml', 33, 3.20, 2750.00, '2025-04-22', 1),
-(24, 'Light Soy Sauce 2 Liter', 34, 4.50, 16000.00, '2025-04-22', 1),
-(25, 'Dark Soy Sauce 750 gms', 35, 4.50, 2250.00, '2025-04-22', 1),
-(26, 'Chilli Sauce 680 gms', 36, 5.50, 680.00, '2025-04-22', 1),
-(27, 'Rose Sharbet 800 ml', 37, 4.90, 3920.00, '2025-04-22', 1),
-(28, 'Tomato Sauce 4 Liter', 38, 12.99, 24000.00, '2025-04-22', 1),
-(29, 'Roganjosh Paste mothers 5 Liter', 39, 24.00, 35000.00, '2025-04-22', 1),
-(30, 'Sweet Mango Chutney mothers 5Lt', 40, 22.00, 10000.00, '2025-04-22', 1),
-(31, 'Tamarind Chutney', 41, 22.00, 25000.00, '2025-04-22', 1),
-(32, 'Paani Puri Masala 50 gms', 42, 1.60, 100.00, '2025-04-22', 1),
-(33, 'Chana masala mothers 500gms', 44, 11.50, 3500.00, '2025-04-22', 1),
-(34, 'Aamchur Powder 100gm', 47, 2.80, 100.00, '2025-04-22', 1),
-(35, 'Turmeric Powder mothers 1 kg', 48, 8.80, 2000.00, '2025-04-22', 1),
-(36, 'Ajwain 500 gms', 49, 6.00, 750.00, '2025-04-22', 1),
-(37, 'Sheikh Kebab Masala 50 gms', 50, 1.75, 3100.00, '2025-04-22', 1),
-(38, 'Almond Flakes 4 kg', 51, 6.99, 6000.00, '2025-04-22', 1),
-(39, 'Shreded Coconut 1 kg', 52, 6.99, 1500.00, '2025-04-22', 1),
-(40, 'Sultana Dried 1 kg pack', 53, 7.50, 5000.00, '2025-04-22', 1),
-(41, 'Bread Crumbs 1kg', 54, 8.50, 8000.00, '2025-04-22', 1),
-(42, 'Black pepper Cracked 1 kg', 56, 22.50, 1500.00, '2025-04-22', 1),
-(43, 'Chilli Powder 1 KG', 57, 10.50, 1000.00, '2025-04-22', 1),
-(44, 'Salt 20 kg', 58, 22.50, 20000.00, '2025-04-22', 1),
-(45, 'Toor Daal 1 Kg 5 5.5', 59, 5.50, 5000.00, '2025-04-22', 1),
-(46, 'Broken Cashew 1 KG', 60, 9.50, 10000.00, '2025-04-22', 1),
-(47, 'Garlic (Granules) 10 KG 3.5 8.2', 61, 8.20, 35000.00, '2025-04-22', 1),
-(48, 'Plain flour 12 Kg', 62, 12.15, 96000.00, '2025-04-22', 1),
-(49, 'Tomato Puree 3 Kg', 63, 24.75, 87000.00, '2025-04-22', 1),
-(50, 'Vegetable Oil 20 Ltr', 64, 7.52, 140000.00, '2025-04-22', 1),
-(51, 'Wheat flour 10 Kg', 67, 19.80, 10000.00, '2025-04-22', 1),
-(52, 'Rice 20KG', 68, 45.00, 110000.00, '2025-04-22', 1),
-(53, 'Besan Flour 25 Kg', 69, 55.00, 25000.00, '2025-04-22', 1),
-(54, 'White Sugar 25 Kg', 70, 40.00, 25000.00, '2025-04-22', 1),
-(55, 'Whole Cumin 10KG', 71, 135.00, 4000.00, '2025-04-22', 1),
-(56, 'Moong Daal 1 Kg', 72, 3.25, 2000.00, '2025-04-22', 1),
-(57, 'Black urad daal 1 Kg', 74, 3.90, 7000.00, '2025-04-22', 1),
-(58, 'Plain pappad sleeve 20pc', 77, 36.50, 1600.00, '2025-04-22', 1),
-(59, 'Vindaloo Paste 5 Kg', 78, 26.50, 90000.00, '2025-04-22', 1),
-(60, 'Kara coconut cream 1 Liter', 79, 5.50, 12000.00, '2025-04-22', 1),
-(61, 'Lime Juice 1 Liter', 81, 4.50, 7000.00, '2025-04-22', 1),
-(62, 'Chick Pea 400 gm', 82, 1.10, 3600.00, '2025-04-22', 1),
-(63, 'Soya Chaap 850 gms', 83, 4.90, 8500.00, '2025-04-22', 1),
-(64, 'Apricot can 800 gm', 84, 5.30, 4000.00, '2025-04-22', 1),
-(65, 'Dry Yeast 500 gm', 85, 5.25, 300.00, '2025-04-22', 1),
-(66, 'Degi Mirch kashmiri mothers 1 Kg', 87, 19.50, 1000.00, '2025-04-22', 1),
-(67, 'Garam masala mothers 1 Kg', 89, 13.50, 1000.00, '2025-04-22', 1),
-(68, 'Rice Flour 1 Kg', 90, 2.35, 1000.00, '2025-04-22', 1),
-(69, 'Suji 1 Kg', 91, 3.65, 2000.00, '2025-04-22', 1),
-(70, 'Milk Powder 1 Kg', 92, 10.00, 1000.00, '2025-04-22', 1),
-(71, 'Cinnamon Powder 1 Kg', 93, 17.50, 500.00, '2025-04-22', 1),
-(72, 'Bay Leaves 100 gms', 94, 2.20, 100.00, '2025-04-22', 1),
-(73, 'Mustard Seads 200 Gms Pack', 95, 3.00, 360.00, '2025-04-22', 1),
-(74, 'Black Salt 200 Gms Pack', 96, 2.20, 400.00, '2025-04-22', 1),
-(75, 'Kasoori Methi 1 Kg', 100, 16.50, 9000.00, '2025-04-22', 1),
-(76, 'Egg Yellow 12 pcs', 101, 8.00, 24.00, '2025-05-05', 1),
-(77, 'Raw Fish 1 Kg', 127, 250.00, 10000.00, '2025-05-20', 1),
-(78, 'Yogurt 500 ml', 128, 20.00, 5000.00, '2025-05-20', 1),
-(79, 'Coca Cola 500 ml', 130, 5.00, 20.00, '2025-05-20', 1),
-(80, 'Limca 500 Ml', 131, 12.00, 30.00, '2025-05-22', 1),
-(81, 'Red Bull 500 ML', 132, 25.00, 40.00, '2025-05-22', 1),
-(82, 'Lehar Cold Drink 500 ML', 133, 20.00, 25.00, '2025-05-22', 1),
-(83, 'Maaza Cold Drink 1000 ML', 134, 22.00, 25.00, '2025-05-22', 1),
-(84, 'Coke 500 ML', 135, 11.00, 10.00, '2025-05-22', 1),
-(85, 'IceBerg Drink 250 ML Bottle', 136, 11.00, 20.00, '2025-05-22', 1),
-(86, 'Liqu500t', 137, 10.00, 20.00, '2025-05-22', 1),
-(87, 'Sting Cold Drink 500 ML', 138, 15.00, 40.00, '2025-05-22', 1),
-(88, 'Lassi 500 ML', 139, 20.00, 20.00, '2025-05-23', 1),
-(89, 'Soft Drink 1000 ML', 140, 22.00, 20.00, '2025-05-23', 1),
-(90, 'Tawa Roti', 141, 2.00, 50.00, '2025-05-23', 1),
-(91, 'Icecream Block 500 gram ', 142, 10.00, 5.00, '2025-05-23', 1),
-(92, 'Product 250 ml', 143, 30.00, 20.00, '2025-05-26', 1),
-(93, 'Sliced Mushroom', 144, 3.00, 2870.00, '2025-05-28', 1),
-(94, 'Mango Pulp', 146, 4.50, 10200.00, '2025-05-30', 1),
-(95, 'Shezwan chutney', 147, 8.90, 3000.00, '2025-05-31', 1),
-(96, 'Champignon', 148, 1.75, 6400.00, '2025-06-01', 1),
-(97, 'rasmalai bikano', 153, 6.50, 82000.00, '2025-06-06', 1),
-(98, 'Sugar Coated fennel Seed indya', 154, 8.50, 2000.00, '2025-06-07', 1),
-(99, 'Hing Powder mothers', 155, 4.75, 350.00, '2025-06-08', 1),
-(100, 'Baking Powder', 157, 27.50, 5000.00, '2025-06-11', 1),
-(101, 'Fried Onion mothers', 158, 9.90, 4000.00, '2025-06-12', 1),
-(102, 'Wagh Bakri Tea', 160, 14.50, 1000.00, '2025-06-14', 1),
-(103, 'Biryani Masala shan', 161, 1.75, 3600.00, '2025-06-15', 1),
-(104, 'Mint Leaves Dried', 162, 3.70, 200.00, '2025-06-16', 1),
-(105, 'Boondi raita', 163, 7.90, 1000.00, '2025-06-17', 1),
-(106, 'Tandoori Masala', 164, 1.75, 250.00, '2025-06-18', 1),
-(107, 'Tandoori Paste', 165, 24.50, 15000.00, '2025-06-19', 1),
-(108, 'Anardana', 166, 2.50, 1000.00, '2025-06-20', 1),
-(109, 'Sliced Mushroom New', 167, 3.00, 2870.00, '2025-05-28', 1),
-(110, 'Rasna Juice Powder', 168, 3.00, 2870.00, '2025-05-28', 1),
-(111, 'Fruity Juice Powder', 169, 3.00, 5490.00, '2025-05-28', 1),
-(112, 'Hamdard Juice Powder', 170, 3.00, 5490.00, '2025-05-28', 1),
-(113, 'Tooty Fruity Juice Powder', 171, 3.00, 5490.00, '2025-05-28', 1),
-(114, 'Maaza Juice Powder', 172, 3.00, 5490.00, '2025-05-28', 1),
-(115, 'Fanta Juice Powder', 173, 3.00, 5490.00, '2025-05-28', 1),
-(116, 'Papaya Powder', 174, 7.00, 1890.00, '2025-05-28', 1),
-(117, 'Amul Milk', 175, 9.00, 4500.00, '2025-05-28', 1),
-(118, 'Thackar Dairy Milk', 176, 10.00, 2500000.00, '2025-05-28', 1),
-(119, 'Mother Dairy Milk', 177, 10.00, 2500.00, '2025-05-28', 1),
-(120, 'Bikaram Chole', 178, 10.00, 2500.00, '2025-05-28', 1),
-(121, 'ChandanChole', 179, 10.00, 2500.00, '2025-05-28', 1),
-(122, 'NandanChole', 180, 10.00, 2500.00, '2025-05-28', 1),
-(123, 'Raja Chole', 181, 10.00, 2500.00, '2025-05-28', 1),
-(124, 'Nisha Bhujia', 182, 10.00, 1250.00, '2025-05-28', 1),
-(125, 'Akash Ghee', 183, 90.00, 150.00, '2025-05-28', 1);
 
 -- --------------------------------------------------------
 
@@ -3644,53 +2878,7 @@ CREATE TABLE `ingredient_temp` (
   `saved_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ingredient_temp`
---
-
-INSERT INTO `ingredient_temp` (`id`, `ingredient_name`, `pack_size`, `pack_unit_id`, `purchase_price`, `purchase_unit_id`, `brand_id`, `opening_balance`, `opening_date`, `consumption_unit_id`, `convt_ratio`, `min_stock`, `saved_by`, `created_at`, `updated_at`) VALUES
-(1, 'Sliced Mushroom', 410, NULL, 3, 7, NULL, 7, '2025-05-28', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(2, 'Two Fruit', 700, NULL, 4, 7, NULL, NULL, '2025-05-29', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(3, 'Mango Pulp', 850, NULL, 4.5, 7, 1, 12, '2025-05-30', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(4, 'Shezwan chutney', 1, NULL, 8.9, 7, 2, 3, '2025-05-31', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(5, 'Champignon', 400, NULL, 1.75, 7, NULL, 16, '2025-06-01', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(6, 'Nanak Ghee', 10, NULL, 98, 7, NULL, NULL, '2025-06-02', 11, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(7, 'restaurant ghee', 10, NULL, 98, 7, NULL, NULL, '2025-06-03', 11, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(8, 'premium ghee', 10, NULL, 108, 7, NULL, NULL, '2025-06-04', 11, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(9, 'grb ghee', 10, NULL, 141, 7, NULL, NULL, '2025-06-05', 11, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(10, 'rasmalai bikano', 1, NULL, 6.5, 7, NULL, 82, '2025-06-06', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(11, 'Sugar Coated fennel Seed indya', 1, NULL, 8.5, 7, NULL, 2, '2025-06-07', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(12, 'Hing Powder mothers', 100, NULL, 4.75, 7, NULL, 3.5, '2025-06-08', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(13, 'Corn Flour', 25, NULL, 62.5, 7, NULL, NULL, '2025-06-09', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(14, 'Baking Powder', 2.5, NULL, 27.5, 7, NULL, 2, '2025-06-11', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(15, 'Fried Onion mothers', 1, NULL, 9.9, 7, NULL, 4, '2025-06-12', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(16, 'Tea Masala - mothers', 100, NULL, 2.5, 7, NULL, NULL, '2025-06-13', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(17, 'Wagh Bakri Tea', 1, NULL, 14.5, 7, NULL, 1, '2025-06-14', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(18, 'Biryani Masala shan', 100, NULL, 1.75, 7, NULL, 36, '2025-06-15', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(19, 'Mint Leaves Dried', 200, NULL, 3.7, 7, NULL, 1, '2025-06-16', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(20, 'Boondi raita', 1, NULL, 7.9, 7, NULL, 1, '2025-06-17', NULL, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(21, 'Tandoori Masala', 50, NULL, 1.75, 7, NULL, 5, '2025-06-18', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(22, 'Tandoori Paste', 5, NULL, 24.5, 7, NULL, 3, '2025-06-19', 11, 1000, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(23, 'Anardana', 100, NULL, 2.5, 7, NULL, 10, '2025-06-20', NULL, 1, NULL, NULL, '2025-05-28 15:09:19', '2025-05-28 15:09:19'),
-(24, 'Sliced Mushroom New', 410, NULL, 3, 7, NULL, 7, '2025-05-28', NULL, 1, NULL, NULL, '2025-05-28 15:12:18', '2025-05-28 15:12:18'),
-(25, 'Rasna Juice Powder', 410, 3, 3, 7, NULL, 7, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 15:32:29', '2025-05-28 15:32:29'),
-(26, 'Fruity Juice Powder', 610, 3, 3, 7, NULL, 9, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 16:04:26', '2025-05-28 16:04:26'),
-(27, 'Hamdard Juice Powder', 610, 3, 3, 7, 6, 9, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 16:07:17', '2025-05-28 16:07:17'),
-(28, 'Tooty Fruity Juice Powder', 610, 3, 3, 7, 6, 9, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 16:11:17', '2025-05-28 16:11:17'),
-(29, 'Maaza Juice Powder', 610, 3, 3, 7, 6, 9, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 16:14:17', '2025-05-28 16:14:17'),
-(30, 'Fanta Juice Powder', 610, 3, 3, 7, 6, 9, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 16:20:23', '2025-05-28 16:20:23'),
-(31, 'Papaya Powder', 210, 3, 7, 7, 7, 9, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 16:29:48', '2025-05-28 16:29:48'),
-(32, 'Amul Milk', 500, 3, 9, 7, 8, 9, '2025-05-28', 3, 1, NULL, NULL, '2025-05-28 16:31:18', '2025-05-28 16:31:18'),
-(33, 'Thackar Dairy Milk', 500, 11, 10, 7, 9, 5, '2025-05-28', 7, 1000, NULL, NULL, '2025-05-28 17:51:10', '2025-05-28 17:51:10'),
-(34, 'Mother Dairy Milk', 500, 11, 10, 7, 10, 5, '2025-05-28', 7, 1, NULL, NULL, '2025-05-28 17:54:10', '2025-05-28 17:54:10'),
-(35, 'Bikaram Chole', 500, NULL, 10, 1, 10, 5, '2025-05-28', NULL, 1, NULL, NULL, '2025-05-28 17:54:10', '2025-05-28 17:54:10'),
-(36, 'ChandanChole', 500, NULL, 10, 1, 10, 5, '2025-05-28', 1, 1, NULL, NULL, '2025-05-28 17:57:43', '2025-05-28 17:57:43'),
-(37, 'NandanChole', 500, 3, 10, 1, 10, 5, '2025-05-28', 1, 1, NULL, NULL, '2025-05-28 17:58:53', '2025-05-28 17:58:53'),
-(38, 'Raja Chole', 500, 3, 10, 1, 10, 5, '2025-05-28', 1, 1, NULL, NULL, '2025-05-28 19:24:57', '2025-05-28 19:24:57'),
-(39, 'Nisha Bhujia', 250, 2, 10, 2, 10, 5, '2025-05-28', NULL, 1, NULL, NULL, '2025-05-28 19:24:57', '2025-05-28 19:24:57'),
-(40, 'Akash Ghee', 10, 2, 90, 2, 11, 15, '2025-05-28', 11, 1, 2.00, NULL, '2025-05-28 21:58:40', '2025-05-28 21:58:40');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -3713,15 +2901,7 @@ CREATE TABLE `invprice_difference_notification` (
   `price_down` tinyint(10) NOT NULL DEFAULT 0,
   `price_diff_percentage` decimal(19,3) NOT NULL,
   `is_seen` tinyint(10) NOT NULL DEFAULT 10
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `invprice_difference_notification`
---
-
-INSERT INTO `invprice_difference_notification` (`notify_id`, `purchase_id`, `supplier_id`, `ingredient_id`, `last_purchase_id`, `last_supplier_id`, `last_unit`, `last_unit_price`, `current_unit_price`, `price_difference`, `price_up`, `price_down`, `price_diff_percentage`, `is_seen`) VALUES
-(1, 3, 2, 44, 2, 1, 1, 11.50, 12.500, 1.000, 1, 0, 8.696, 0),
-(2, 3, 2, 15, 2, 1, 1, 49.50, 45.500, -4.000, 0, 1, -8.081, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -3746,33 +2926,7 @@ CREATE TABLE `item_category` (
   `DateInserted` datetime NOT NULL DEFAULT '1970-01-01 00:00:01',
   `DateUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:01',
   `DateLocked` datetime NOT NULL DEFAULT '1970-01-01 00:00:01'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `item_category`
---
-
-INSERT INTO `item_category` (`CategoryID`, `Name`, `CategoryImage`, `Position`, `CategoryIsActive`, `offerstartdate`, `offerendate`, `isoffer`, `offerpercentage`, `parentid`, `UserIDInserted`, `UserIDUpdated`, `UserIDLocked`, `DateInserted`, `DateUpdated`, `DateLocked`) VALUES
-(1, 'Food Menu', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 12.35, 0, 2, 2, 2, '2025-03-17 15:28:04', '2025-03-17 15:28:04', '2025-03-17 15:28:04'),
-(2, 'Beverage', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 7.20, 0, 2, 2, 2, '2025-03-17 15:28:04', '2025-03-17 15:28:04', '2025-03-17 15:28:04'),
-(3, 'Starters', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 18.75, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(4, 'Tandoori Starters', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 23.10, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(5, 'Punjabi Palace Specials', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 11.55, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(6, 'Banquet', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 30.00, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(7, 'Mains', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 5.45, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(8, 'Biryani', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 16.80, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(9, 'Kids Meal', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 9.95, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(10, 'Desserts', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 14.60, 1, 2, 2, 2, '2025-03-17 15:31:11', '2025-04-30 21:06:40', '2025-03-17 15:31:11'),
-(11, 'Prawns or Fish', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 6.40, 7, 2, 2, 2, '2025-03-17 15:33:51', '2025-03-17 15:33:51', '2025-03-17 15:33:51'),
-(12, 'Chicken, Beef, Lamb or Vegetable', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 17.70, 7, 2, 2, 2, '2025-03-17 15:33:51', '2025-03-17 15:33:51', '2025-03-17 15:33:51'),
-(13, 'Tandoori Specials', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 20.50, 7, 2, 2, 2, '2025-03-17 15:33:51', '2025-03-17 15:33:51', '2025-03-17 15:33:51'),
-(14, 'Sides', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 3.90, 7, 2, 2, 2, '2025-03-17 15:33:51', '2025-03-17 15:33:51', '2025-03-17 15:33:51'),
-(15, 'Bread', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 8.80, 7, 2, 2, 2, '2025-03-17 15:33:51', '2025-03-17 15:33:51', '2025-03-17 15:33:51'),
-(16, 'Beer Selection', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 19.95, 2, 2, 2, 2, '2025-03-17 15:34:59', '2025-03-17 15:34:59', '2025-03-17 15:34:59'),
-(17, 'Spirits', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 15.25, 2, 2, 2, 2, '2025-03-17 15:34:59', '2025-03-17 15:34:59', '2025-03-17 15:34:59'),
-(18, 'Imported Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 10.65, 16, 2, 2, 2, '2025-03-17 15:35:39', '2025-03-17 15:35:39', '2025-03-17 15:35:39'),
-(19, 'Local Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 4.75, 16, 2, 2, 2, '2025-03-17 15:35:39', '2025-03-17 15:35:39', '2025-03-17 15:35:39'),
-(20, 'Cider', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 13.50, 16, 2, 2, 2, '2025-03-17 15:35:39', '2025-03-17 15:35:39', '2025-03-17 15:35:39');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3782,7 +2936,9 @@ INSERT INTO `item_category` (`CategoryID`, `Name`, `CategoryImage`, `Position`, 
 
 CREATE TABLE `item_foods` (
   `ProductsID` int(11) NOT NULL,
+  `GroupID` int(11) DEFAULT NULL,
   `CategoryID` varchar(155) NOT NULL,
+  `SubCategoryID` int(11) DEFAULT NULL,
   `ProductName` varchar(255) DEFAULT NULL,
   `ProductImage` varchar(200) DEFAULT NULL,
   `bigthumb` varchar(255) NOT NULL,
@@ -3817,30 +2973,7 @@ CREATE TABLE `item_foods` (
   `uomid` int(10) NOT NULL DEFAULT 0,
   `tax0` text DEFAULT NULL,
   `tax1` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `item_foods`
---
-
-INSERT INTO `item_foods` (`ProductsID`, `CategoryID`, `ProductName`, `ProductImage`, `bigthumb`, `medium_thumb`, `small_thumb`, `component`, `descrip`, `itemnotes`, `menutype`, `productvat`, `special`, `OffersRate`, `offerIsavailable`, `offerstartdate`, `offerendate`, `Position`, `kitchenid`, `isgroup`, `is_customqty`, `cookedtime`, `ProductsIsActive`, `UserIDInserted`, `UserIDUpdated`, `UserIDLocked`, `DateInserted`, `DateUpdated`, `DateLocked`, `cusine_type`, `is_bom`, `food_type`, `weightage`, `uomid`, `tax0`, `tax1`) VALUES
-(34, '7', 'Paneer Pakoda', 'application/modules/itemmanage/assets/images/C15.jpg', 'application/modules/itemmanage/assets/images/big/C15.jpg', 'application/modules/itemmanage/assets/images/medium/C15.jpg', 'application/modules/itemmanage/assets/images/small/C15.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-05-20', '2025-05-20', '2025-05-20', 1, 1, 1, 200.00, 3, NULL, NULL),
-(35, '7', 'Veg Briyani', 'application/modules/itemmanage/assets/images/202211051245413.jpg', 'application/modules/itemmanage/assets/images/big/202211051245413.jpg', 'application/modules/itemmanage/assets/images/medium/202211051245413.jpg', 'application/modules/itemmanage/assets/images/small/202211051245413.jpg', 'df', 'Testing', 'testing', '', 0.000, 0, 10, 1, '2025-06-11', '2025-06-14', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-06-12', '2025-06-12', '2025-06-12', 1, 1, 1, 300.00, 3, NULL, NULL),
-(36, '17', 'Coca Cola 500 ml', 'application/modules/itemmanage/assets/images/coco23.jpg', 'application/modules/itemmanage/assets/images/big/coco23.jpg', 'application/modules/itemmanage/assets/images/medium/coco23.jpg', 'application/modules/itemmanage/assets/images/small/coco23.jpg', 'test', 'Testing', 'test description', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-20', '2025-05-20', '2025-05-20', 3, 0, 1, 500.00, 11, NULL, NULL),
-(37, '17', 'Limca 500 Ml', 'application/modules/itemmanage/assets/images/coco26.jpg', 'application/modules/itemmanage/assets/images/big/coco26.jpg', 'application/modules/itemmanage/assets/images/medium/coco26.jpg', 'application/modules/itemmanage/assets/images/small/coco26.jpg', 'df', 'limca', 'lca', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(38, '17', 'Red Bull 500 ML', 'application/modules/itemmanage/assets/images/coco27.jpg', 'application/modules/itemmanage/assets/images/big/coco27.jpg', 'application/modules/itemmanage/assets/images/medium/coco27.jpg', 'application/modules/itemmanage/assets/images/small/coco27.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(39, '17', 'Lehar Cold Drink 500 ML', 'application/modules/itemmanage/assets/images/coco28.jpg', 'application/modules/itemmanage/assets/images/big/coco28.jpg', 'application/modules/itemmanage/assets/images/medium/coco28.jpg', 'application/modules/itemmanage/assets/images/small/coco28.jpg', 'testing', 'Testing', 'testing ', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(40, '17', 'Maaza Cold Drink 1000 ML', 'application/modules/itemmanage/assets/images/coco29.jpg', 'application/modules/itemmanage/assets/images/big/coco29.jpg', 'application/modules/itemmanage/assets/images/medium/coco29.jpg', 'application/modules/itemmanage/assets/images/small/coco29.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 1000.00, 11, NULL, NULL),
-(41, '17', 'Coke 500 ML', 'application/modules/itemmanage/assets/images/coco30.jpg', 'application/modules/itemmanage/assets/images/big/coco30.jpg', 'application/modules/itemmanage/assets/images/medium/coco30.jpg', 'application/modules/itemmanage/assets/images/small/coco30.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(42, '17', 'IceBerg Drink 250 ML Bottle', 'application/modules/itemmanage/assets/images/coco31.jpg', 'application/modules/itemmanage/assets/images/big/coco31.jpg', 'application/modules/itemmanage/assets/images/medium/coco31.jpg', 'application/modules/itemmanage/assets/images/small/coco31.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 250.00, 11, NULL, NULL),
-(43, '17', 'Liqu500t', 'application/modules/itemmanage/assets/images/coco32.jpg', 'application/modules/itemmanage/assets/images/big/coco32.jpg', 'application/modules/itemmanage/assets/images/medium/coco32.jpg', 'application/modules/itemmanage/assets/images/small/coco32.jpg', 'sf', 'st', 'sdfdssdfd', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(44, '7', 'Testing Food', 'application/modules/itemmanage/assets/images/D117.jpg', 'application/modules/itemmanage/assets/images/big/D117.jpg', 'application/modules/itemmanage/assets/images/medium/D117.jpg', 'application/modules/itemmanage/assets/images/small/D117.jpg', 'gf', 'Testing Food 1213t', 'testing Desc', '', 0.000, 0, 10, 1, '2025-06-11', '2025-06-14', NULL, 1, NULL, 0, '00:02:00', 1, 2, 2, 2, '2025-06-12', '2025-06-12', '2025-06-12', 1, 1, 1, 350.00, 3, NULL, NULL),
-(45, '17', 'Sting Cold Drink 500 ML', 'application/modules/itemmanage/assets/images/coco33.jpg', 'application/modules/itemmanage/assets/images/big/coco33.jpg', 'application/modules/itemmanage/assets/images/medium/coco33.jpg', 'application/modules/itemmanage/assets/images/small/coco33.jpg', 'testing', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 500.00, 11, NULL, NULL),
-(48, '7', 'Tawa Roti', 'application/modules/itemmanage/assets/images/tawa_roti2.png', 'application/modules/itemmanage/assets/images/big/tawa_roti2.png', 'application/modules/itemmanage/assets/images/medium/tawa_roti2.png', 'application/modules/itemmanage/assets/images/small/tawa_roti2.png', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-23', '2025-05-23', '2025-05-23', 3, 0, 1, 150.00, 3, NULL, NULL),
-(49, '10', 'Icecream Block 500 gram ', 'application/modules/itemmanage/assets/images/coco35.jpg', 'application/modules/itemmanage/assets/images/big/coco35.jpg', 'application/modules/itemmanage/assets/images/medium/coco35.jpg', 'application/modules/itemmanage/assets/images/small/coco35.jpg', 'test', 'testing', 'test', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 20.00, 3, NULL, NULL),
-(50, '16', 'Product 250 ml', '', '', '', '', '', 'Product 250 ml', 'Product 250 ml', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 250.00, 11, NULL, NULL),
-(51, '7', 'Tawa Naan', 'application/modules/itemmanage/assets/images/P7.jpg', 'application/modules/itemmanage/assets/images/big/P7.jpg', 'application/modules/itemmanage/assets/images/medium/P7.jpg', 'application/modules/itemmanage/assets/images/small/P7.jpg', 'test', 'testing testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-05-27', '2025-05-27', '2025-05-27', 1, 1, 1, 850.00, 3, NULL, NULL),
-(52, '7', 'Paratha Cashew', 'application/modules/itemmanage/assets/images/P8.jpg', 'application/modules/itemmanage/assets/images/big/P8.jpg', 'application/modules/itemmanage/assets/images/medium/P8.jpg', 'application/modules/itemmanage/assets/images/small/P8.jpg', 'test', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:04:00', 1, 2, 2, 2, '2025-06-03', '2025-06-03', '2025-06-03', 1, 1, 1, 250.00, 3, NULL, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3859,101 +2992,7 @@ CREATE TABLE `itxn` (
   `unit_id` bigint(20) DEFAULT NULL,
   `production_dtl_id` bigint(20) DEFAULT NULL,
   `created_at` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `itxn`
---
-
-INSERT INTO `itxn` (`tid`, `order_id`, `food_id`, `pvarient_id`, `ingredient_id`, `used_qty`, `used_sales_price`, `unit_id`, `production_dtl_id`, `created_at`) VALUES
-(1, 1, 34, 1, 49, 200.000, 0.00, NULL, NULL, '2025-05-20'),
-(2, 2, 34, 1, 49, 200.000, 1400.00, 7, NULL, '2025-05-20'),
-(3, 3, 34, 1, 49, 400.000, 2800.00, 7, NULL, '2025-05-20'),
-(4, 4, 35, 2, 19, 50.000, 137.50, 7, NULL, '2025-05-20'),
-(5, 4, 35, 2, 68, 250.000, 11250.00, 7, NULL, '2025-05-20'),
-(6, 6, 37, 5, 131, 30.000, 0.00, NULL, NULL, '2025-05-22'),
-(7, 7, 37, 5, 131, 2.000, 0.00, NULL, NULL, '2025-05-22'),
-(8, 8, 38, 6, 132, 7.000, 0.00, NULL, NULL, '2025-05-22'),
-(9, 9, 39, 7, 133, 2.000, 0.00, NULL, NULL, '2025-05-22'),
-(10, 12, 39, 7, 133, 2.000, 0.00, NULL, NULL, '2025-05-22'),
-(11, 15, 39, 7, 133, 1.000, 0.00, NULL, NULL, '2025-05-22'),
-(12, 16, 41, 10, 135, 2.000, 0.00, NULL, NULL, '2025-05-22'),
-(13, 18, 42, 11, 136, 1.000, 0.00, NULL, NULL, '2025-05-22'),
-(14, 19, 42, 11, 136, 1.000, 0.00, NULL, NULL, '2025-05-22'),
-(15, 20, 43, 13, 137, 3.000, 0.00, NULL, NULL, '2025-05-22'),
-(16, 21, 45, 16, 138, 3.000, 0.00, NULL, NULL, '2025-05-22'),
-(17, 22, 46, 19, 139, 1.000, 0.00, NULL, NULL, '2025-05-23'),
-(18, 23, 48, 23, 141, 10.000, 0.00, NULL, NULL, '2025-05-23'),
-(19, 24, 49, 24, 142, 500.000, 0.00, NULL, NULL, '2025-05-23'),
-(20, 25, 43, 13, 137, 1.000, 0.00, NULL, NULL, '2025-05-23'),
-(21, 26, 43, 13, 137, 1.000, 0.00, NULL, NULL, '2025-05-23'),
-(22, 27, 45, 16, 138, 1.000, 0.00, NULL, NULL, '2025-05-23'),
-(23, 28, 52, 51, 60, 250.000, 2375.00, 7, NULL, '2025-06-03'),
-(24, 29, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-06'),
-(25, 29, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-06'),
-(26, 30, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-06'),
-(27, 30, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-06'),
-(28, 31, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-06'),
-(29, 31, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-06'),
-(30, 32, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(31, 32, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(32, 33, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(33, 33, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(34, 34, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(35, 34, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(36, 35, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(37, 35, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(38, 36, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(39, 36, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(40, 37, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(41, 37, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(42, 38, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(43, 38, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(44, 39, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(45, 39, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(46, 40, 51, 48, 51, 500.000, 0.00, NULL, NULL, '2025-06-09'),
-(47, 40, 51, 48, 74, 350.000, 0.00, NULL, NULL, '2025-06-09'),
-(48, 41, 44, 27, 23, 250.000, 0.00, NULL, NULL, '2025-06-09'),
-(49, 41, 44, 27, 69, 100.000, 0.00, NULL, NULL, '2025-06-09'),
-(50, 42, 44, 27, 23, 250.000, 0.00, NULL, NULL, '2025-06-09'),
-(51, 42, 44, 27, 69, 100.000, 0.00, NULL, NULL, '2025-06-09'),
-(52, 43, 44, 27, 23, 250.000, 0.00, NULL, NULL, '2025-06-09'),
-(53, 43, 44, 27, 69, 100.000, 0.00, NULL, NULL, '2025-06-09'),
-(54, 44, 35, 31, 19, 50.000, 137.50, 7, NULL, '2025-06-09'),
-(55, 44, 35, 31, 68, 250.000, 11250.00, 7, NULL, '2025-06-09'),
-(56, 45, 44, 27, 23, 250.000, 0.00, NULL, NULL, '2025-06-10'),
-(57, 45, 44, 27, 69, 100.000, 0.00, NULL, NULL, '2025-06-10'),
-(58, 46, 44, 27, 23, 250.000, 0.00, NULL, NULL, '2025-06-10'),
-(59, 46, 44, 27, 69, 100.000, 0.00, NULL, NULL, '2025-06-10'),
-(60, 47, 35, 31, 19, 50.000, 137.50, 7, NULL, '2025-06-11'),
-(61, 47, 35, 31, 68, 250.000, 11250.00, 7, NULL, '2025-06-11'),
-(62, 48, 44, 27, 23, 250.000, 0.00, NULL, NULL, '2025-06-12'),
-(63, 48, 44, 27, 69, 100.000, 0.00, NULL, NULL, '2025-06-12'),
-(64, 49, 35, 61, 19, 50.000, 137.50, 7, NULL, '2025-06-12'),
-(65, 49, 35, 61, 68, 250.000, 11250.00, 7, NULL, '2025-06-12'),
-(66, 50, 35, 61, 19, 100.000, 275.00, 7, NULL, '2025-06-12'),
-(67, 50, 35, 61, 68, 500.000, 22500.00, 7, NULL, '2025-06-12'),
-(68, 50, 35, 61, 19, 100.000, 275.00, 7, NULL, '2025-06-12'),
-(69, 50, 35, 61, 68, 500.000, 22500.00, 7, NULL, '2025-06-12'),
-(70, 50, 44, 59, 23, 250.000, 0.00, NULL, NULL, '2025-06-12'),
-(71, 50, 44, 59, 69, 100.000, 0.00, NULL, NULL, '2025-06-12'),
-(72, 51, 44, 59, 23, 250.000, 0.00, NULL, NULL, '2025-06-12'),
-(73, 51, 44, 59, 69, 100.000, 0.00, NULL, NULL, '2025-06-12'),
-(74, 52, 44, 59, 23, 250.000, 0.00, NULL, NULL, '2025-06-12'),
-(75, 52, 44, 59, 69, 100.000, 0.00, NULL, NULL, '2025-06-12'),
-(76, 53, 44, 59, 23, 250.000, 0.00, NULL, NULL, '2025-06-12'),
-(77, 53, 44, 59, 69, 100.000, 0.00, NULL, NULL, '2025-06-12'),
-(78, 54, 35, 61, 19, 50.000, 137.50, 7, NULL, '2025-06-12'),
-(79, 54, 35, 61, 68, 250.000, 11250.00, 7, NULL, '2025-06-12'),
-(80, 55, 35, 61, 19, 50.000, 137.50, 7, NULL, '2025-06-12'),
-(81, 55, 35, 61, 68, 250.000, 11250.00, 7, NULL, '2025-06-12'),
-(82, 56, 35, 61, 19, 50.000, 137.50, 7, NULL, '2025-06-12'),
-(83, 56, 35, 61, 68, 250.000, 11250.00, 7, NULL, '2025-06-12'),
-(84, 57, 35, 61, 19, 50.000, 137.50, 7, NULL, '2025-06-26'),
-(85, 57, 35, 61, 68, 250.000, 11250.00, 7, NULL, '2025-06-26'),
-(86, 57, 35, 61, 19, 50.000, 137.50, 7, NULL, '2025-06-26'),
-(87, 57, 35, 61, 68, 250.000, 11250.00, 7, NULL, '2025-06-26'),
-(88, 57, 34, 1, 49, 200.000, 1400.00, 7, NULL, '2025-06-26');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -3963,12 +3002,12 @@ INSERT INTO `itxn` (`tid`, `order_id`, `food_id`, `pvarient_id`, `ingredient_id`
 
 CREATE TABLE `job_advertisement` (
   `job_adv_id` int(10) UNSIGNED NOT NULL,
-  `pos_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `adv_circular_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `circular_dadeline` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `adv_file` tinytext CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `adv_details` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `pos_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `adv_circular_date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `circular_dadeline` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `adv_file` tinytext CHARACTER SET latin1 NOT NULL,
+  `adv_details` varchar(255) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3980,7 +3019,7 @@ CREATE TABLE `language` (
   `id` int(11) NOT NULL,
   `phrase` varchar(100) NOT NULL,
   `english` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `language`
@@ -5271,7 +4310,8 @@ INSERT INTO `language` (`id`, `phrase`, `english`) VALUES
 (1648, 'sound_setting', 'Sound Setting'),
 (1649, 'is_sound', 'Is Sound Enable'),
 (1650, 'upload_notify', 'Upload Notification Sound'),
-(1651, 'upload_order', 'Upload order Add Sound'),
+(1651, 'upload_order', 'Upload order Add Sound');
+INSERT INTO `language` (`id`, `phrase`, `english`) VALUES
 (1655, 'room_list', 'Room List'),
 (1656, 'add_room', 'Add Room'),
 (1657, 'room_no', 'Room No'),
@@ -5504,7 +4544,7 @@ CREATE TABLE `leave_apply` (
   `approve_date` varchar(20) NOT NULL,
   `approved_by` varchar(30) NOT NULL,
   `leave_type` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -5516,7 +4556,7 @@ CREATE TABLE `leave_type` (
   `leave_type_id` int(11) NOT NULL,
   `leave_type` varchar(50) NOT NULL,
   `leave_days` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -5526,15 +4566,15 @@ CREATE TABLE `leave_type` (
 
 CREATE TABLE `loan_installment` (
   `loan_inst_id` int(11) NOT NULL,
-  `employee_id` varchar(21) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `loan_id` varchar(21) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `installment_amount` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `payment` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `date` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `received_by` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `installment_no` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '1',
-  `notes` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `employee_id` varchar(21) CHARACTER SET latin1 NOT NULL,
+  `loan_id` varchar(21) CHARACTER SET latin1 NOT NULL,
+  `installment_amount` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `payment` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `date` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `received_by` varchar(20) CHARACTER SET latin1 NOT NULL,
+  `installment_no` varchar(20) CHARACTER SET latin1 NOT NULL DEFAULT '1',
+  `notes` varchar(80) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5545,7 +4585,7 @@ CREATE TABLE `loan_installment` (
 CREATE TABLE `marital_info` (
   `id` int(11) NOT NULL,
   `marital_sta` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marital_info`
@@ -5569,17 +4609,17 @@ CREATE TABLE `measurement_units` (
   `uomid` int(10) NOT NULL,
   `quantity` decimal(10,2) NOT NULL,
   `quantity_measure` enum('ml','gm') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `measurement_units`
 --
 
 INSERT INTO `measurement_units` (`id`, `uomid`, `quantity`, `quantity_measure`) VALUES
-(1, 10, 10.00, 'gm'),
-(2, 12, 20.00, 'gm'),
-(3, 8, 250.00, 'ml'),
-(4, 7, 50.00, 'gm');
+(1, 10, '10.00', 'gm'),
+(2, 12, '20.00', 'gm'),
+(3, 8, '250.00', 'ml'),
+(4, 7, '50.00', 'gm');
 
 -- --------------------------------------------------------
 
@@ -5589,9 +4629,9 @@ INSERT INTO `measurement_units` (`id`, `uomid`, `quantity`, `quantity_measure`) 
 
 CREATE TABLE `membership` (
   `id` int(11) NOT NULL,
-  `membership_name` varchar(250) NOT NULL,
+  `membership_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `discount` float NOT NULL,
-  `other_facilities` varchar(255) NOT NULL,
+  `other_facilities` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `create_by` int(11) NOT NULL,
   `create_date` date NOT NULL,
   `update_by` int(11) NOT NULL,
@@ -5627,30 +4667,6 @@ CREATE TABLE `menu_add_on` (
   `is_active` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `menu_add_on`
---
-
-INSERT INTO `menu_add_on` (`row_id`, `menu_id`, `add_on_id`, `modifier_groupid`, `min`, `max`, `isreq`, `sortby`, `is_active`) VALUES
-(1, 34, 0, 7, 0, 0, 0, 0, 1),
-(2, 35, 0, 7, 0, 0, 0, 0, 1),
-(3, 35, 0, 6, 0, 0, 0, 0, 1),
-(4, 36, 0, 5, 0, 0, 0, 0, 1),
-(5, 37, 0, 5, 0, 0, 0, 0, 1),
-(6, 38, 0, 5, 0, 0, 0, 0, 1),
-(7, 39, 0, 5, 0, 0, 0, 0, 1),
-(8, 40, 0, 5, 0, 0, 0, 0, 1),
-(9, 41, 0, 5, 0, 0, 0, 0, 1),
-(10, 42, 0, 5, 0, 0, 0, 0, 1),
-(11, 43, 0, 7, 0, 0, 0, 0, 1),
-(13, 45, 0, 5, 0, 0, 0, 0, 1),
-(16, 44, 0, 41, 0, 0, 0, 0, 1),
-(17, 49, 0, 41, 0, 0, 0, 0, 1),
-(18, 35, 0, 41, 0, 0, 0, 0, 1),
-(19, 50, 0, 41, 0, 0, 0, 0, 1),
-(20, 51, 0, 7, 0, 0, 0, 0, 1),
-(21, 52, 0, 10, 0, 0, 0, 0, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -5662,7 +4678,7 @@ CREATE TABLE `menu_group_modifiers` (
   `menu_group_id` int(11) NOT NULL,
   `modifier_id` int(11) NOT NULL,
   `is_default` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -5675,7 +4691,7 @@ CREATE TABLE `menu_modifier_groups` (
   `menu_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `sort_order` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -5692,7 +4708,7 @@ CREATE TABLE `menu_pdf_materials` (
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `pdf_group_id` bigint(20) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `menu_pdf_materials`
@@ -5719,7 +4735,7 @@ CREATE TABLE `message` (
   `datetime` datetime NOT NULL,
   `sender_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=unseen, 1=seen, 2=delete',
   `receiver_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=unseen, 1=seen, 2=delete'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5736,7 +4752,7 @@ CREATE TABLE `modifiers` (
   `is_default` tinyint(1) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -5752,24 +4768,7 @@ CREATE TABLE `modifier_groups` (
   `min_selection` int(11) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `modifier_groups`
---
-
-INSERT INTO `modifier_groups` (`id`, `name`, `description`, `is_required`, `min_selection`, `created_at`, `updated_at`) VALUES
-(5, 'Savory', '', 0, 0, '2025-03-17 13:34:09', '2025-03-17 13:34:09'),
-(6, 'Spicy', '', 0, 0, '2025-03-17 13:36:31', '2025-05-02 10:06:45'),
-(7, 'Mild', '', 0, 0, '2025-03-17 13:38:35', '2025-03-17 13:38:35'),
-(8, 'Sweet', '', 0, 0, '2025-03-17 13:40:13', '2025-03-17 13:40:13'),
-(9, 'Tangy', '', 0, 0, '2025-03-17 13:41:58', '2025-03-17 13:41:58'),
-(10, 'Smoky', '', 0, 0, '2025-03-17 13:43:02', '2025-03-17 13:43:02'),
-(40, 'Raita', '', 0, 0, '2025-04-09 09:49:55', '2025-04-09 09:49:55'),
-(41, 'Chilli', '', 0, 0, '2025-05-02 10:16:23', '2025-06-26 09:15:12'),
-(42, 'New Mod Test', '', 0, 0, '2025-06-26 09:17:22', '2025-06-26 09:17:22'),
-(43, 'NModT', '', 0, 0, '2025-06-26 10:32:39', '2025-06-26 10:34:13'),
-(44, 'New Set', '', 0, 0, '2025-07-15 10:14:30', '2025-07-15 10:14:30');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -5784,7 +4783,7 @@ CREATE TABLE `module` (
   `image` varchar(255) NOT NULL,
   `directory` varchar(100) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5800,7 +4799,7 @@ CREATE TABLE `module_permission` (
   `read` tinyint(1) DEFAULT NULL,
   `update` tinyint(1) DEFAULT NULL,
   `delete` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5810,8 +4809,8 @@ CREATE TABLE `module_permission` (
 
 CREATE TABLE `module_purchase_key` (
   `id` int(11) NOT NULL,
-  `identity` varchar(250) DEFAULT NULL,
-  `purchase_key` varchar(255) DEFAULT NULL,
+  `identity` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `purchase_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -5824,138 +4823,10 @@ CREATE TABLE `module_purchase_key` (
 CREATE TABLE `multipay_bill` (
   `multipay_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `multipayid` varchar(30) DEFAULT NULL,
+  `multipayid` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `payment_type_id` int(11) NOT NULL,
   `amount` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `multipay_bill`
---
-
-INSERT INTO `multipay_bill` (`multipay_id`, `order_id`, `multipayid`, `payment_type_id`, `amount`) VALUES
-(1, 1, NULL, 4, 79.8),
-(2, 2, NULL, 4, 119.7),
-(3, 4, NULL, 4, 39.9),
-(4, 3, NULL, 4, 119.7),
-(5, 5, NULL, 4, 119.7),
-(6, 6, NULL, 4, 353.4),
-(7, 7, NULL, 4, 530.1),
-(8, 8, NULL, 4, 706.8),
-(9, 8, NULL, 4, 706.8),
-(10, 9, NULL, 4, 706.8),
-(11, 9, NULL, 4, 706.8),
-(12, 10, NULL, 4, 706.8),
-(13, 31, NULL, 4, 176.7),
-(14, 30, NULL, 4, 353.4),
-(15, 11, NULL, 4, 883.5),
-(16, 1, NULL, 4, 176.7),
-(17, 2, NULL, 4, 39.9),
-(18, 3, NULL, 4, 360),
-(19, 5, NULL, 4, 684),
-(20, 2, NULL, 4, 660),
-(21, 1, NULL, 4, 234),
-(22, 1, NULL, 4, 108),
-(23, 2, NULL, 4, 684),
-(24, 1, NULL, 4, 264),
-(25, 2, NULL, 4, 396),
-(26, 3, NULL, 4, 60),
-(27, 5, NULL, 4, 1680),
-(28, 4, NULL, 4, 3600),
-(29, 6, NULL, 4, 237.6),
-(30, 8, NULL, 4, 186),
-(31, 7, NULL, 4, 304.8),
-(32, 10, NULL, 4, 210),
-(33, 11, NULL, 4, 24),
-(34, 12, NULL, 4, 24),
-(35, 13, NULL, 4, 48),
-(36, 15, NULL, 4, 24),
-(37, 15, NULL, 4, 0),
-(38, 16, NULL, 4, 24),
-(39, 18, NULL, 4, 24),
-(40, 14, NULL, 4, 0),
-(41, 17, NULL, 4, 24),
-(42, 32, NULL, 4, 186),
-(43, 33, NULL, 4, 186),
-(44, 34, NULL, 4, 120),
-(45, 35, NULL, 4, 114),
-(46, 36, NULL, 4, 186),
-(47, 37, NULL, 4, 54),
-(48, 38, NULL, 4, 186),
-(49, 39, NULL, 4, 54),
-(50, 41, NULL, 4, 186),
-(51, 42, NULL, 4, 372),
-(52, 43, NULL, 4, 186),
-(53, 45, NULL, 4, 186),
-(54, 46, NULL, 4, 186),
-(55, 44, NULL, 4, 186),
-(56, 47, NULL, 4, 186),
-(57, 48, NULL, 4, 186),
-(58, 49, NULL, 4, 372),
-(59, 50, NULL, 4, 186),
-(60, 1, NULL, 4, 6),
-(61, 4, NULL, 4, 2),
-(62, 5, NULL, 4, 2),
-(63, 6, NULL, 4, 6),
-(64, 7, NULL, 4, 4),
-(65, 9, NULL, 4, 2),
-(66, 19, NULL, 4, 10),
-(67, 1, NULL, 4, 14),
-(68, 1, NULL, 4, 3),
-(69, 1, NULL, 4, 0),
-(70, 2, NULL, 4, 3),
-(71, 3, NULL, 4, 6),
-(72, 4, NULL, 4, 2),
-(73, 5, NULL, 4, 6),
-(74, 8, NULL, 4, 35),
-(75, 7, NULL, 4, 30),
-(76, 6, NULL, 4, 15),
-(77, 9, NULL, 4, 50),
-(78, 12, NULL, 4, 50),
-(79, 10, NULL, 4, 150),
-(80, 11, NULL, 4, 90),
-(81, 13, NULL, 4, 30),
-(82, 14, NULL, 4, 30),
-(83, 15, NULL, 4, 25),
-(84, 16, NULL, 4, 30),
-(85, 17, NULL, 4, 13),
-(86, 21, NULL, 4, 60),
-(87, 23, NULL, 4, 30),
-(88, 25, NULL, 4, 15),
-(89, 24, NULL, 4, 12),
-(90, 22, NULL, 4, 25),
-(91, 22, NULL, 4, 25),
-(92, 26, NULL, 4, 15),
-(93, 27, NULL, 4, 20),
-(94, 20, NULL, 4, 45),
-(95, 28, NULL, 4, 3),
-(96, 29, NULL, 4, 5),
-(97, 30, NULL, 4, 5),
-(98, 33, NULL, 4, 5),
-(99, 32, NULL, 4, 5),
-(100, 34, NULL, 4, 5),
-(101, 35, NULL, 4, 5),
-(102, 36, NULL, 4, 5),
-(103, 40, NULL, 4, 5),
-(104, 39, NULL, 4, 5),
-(105, 38, NULL, 4, 5),
-(106, 37, NULL, 4, 5),
-(107, 41, NULL, 4, 7),
-(108, 44, NULL, 4, 2),
-(109, 43, NULL, 4, 7),
-(110, 42, NULL, 4, 7),
-(111, 45, NULL, 4, 7),
-(112, 46, NULL, 4, 7),
-(113, 47, NULL, 4, 2),
-(114, 48, NULL, 4, 6.3),
-(115, 49, NULL, 4, 1.8),
-(116, 50, NULL, 4, 8.91),
-(117, 51, NULL, 4, 5.67),
-(118, 52, NULL, 4, 5.67),
-(119, 53, NULL, 4, 6.3),
-(120, 54, NULL, 4, 1.62),
-(121, 55, NULL, 4, 1.62),
-(122, 56, NULL, 4, 1.62);
 
 -- --------------------------------------------------------
 
@@ -5973,40 +4844,7 @@ CREATE TABLE `ordered_menu_item_modifiers` (
   `foods_or_mods` int(11) NOT NULL DEFAULT 2 COMMENT '1 = For Foods\r\n2 = For Mods',
   `is_active` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Active, 0 = Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ordered_menu_item_modifiers`
---
-
-INSERT INTO `ordered_menu_item_modifiers` (`id`, `menu_id`, `variant_id`, `add_on_id`, `modifier_groupid`, `order_id`, `foods_or_mods`, `is_active`, `created_at`) VALUES
-(1, 6, 0, 2, 41, 9, 2, 1, '2025-05-06 13:59:07'),
-(2, 6, 0, 3, 41, 9, 2, 1, '2025-05-06 13:59:07'),
-(3, 6, 0, 2, 41, 10, 2, 1, '2025-05-06 16:10:58'),
-(4, 6, 0, 3, 41, 10, 2, 1, '2025-05-06 16:10:58'),
-(5, 6, 0, 2, 41, 15, 2, 1, '2025-05-06 16:55:08'),
-(6, 6, 0, 3, 41, 15, 2, 1, '2025-05-06 16:55:08'),
-(7, 6, 0, 2, 41, 17, 2, 1, '2025-05-06 17:23:28'),
-(8, 6, 0, 3, 41, 17, 2, 1, '2025-05-06 17:23:28'),
-(9, 6, 0, 2, 41, 18, 2, 1, '2025-05-06 17:30:48'),
-(10, 6, 0, 3, 41, 18, 2, 1, '2025-05-06 17:30:48'),
-(11, 44, 0, 1, 41, 41, 2, 1, '2025-06-09 22:31:54'),
-(12, 44, 0, 1, 41, 42, 2, 1, '2025-06-09 22:38:18'),
-(13, 44, 0, 1, 41, 43, 2, 1, '2025-06-09 22:42:58'),
-(14, 35, 0, 1, 41, 44, 2, 1, '2025-06-09 22:43:53'),
-(15, 44, 0, 1, 41, 45, 2, 1, '2025-06-10 14:02:58'),
-(16, 44, 0, 1, 41, 46, 2, 1, '2025-06-10 14:31:17'),
-(17, 35, 0, 1, 41, 47, 2, 1, '2025-06-11 18:27:45'),
-(18, 44, 0, 1, 41, 48, 2, 1, '2025-06-12 14:14:53'),
-(19, 35, 0, 1, 41, 49, 2, 1, '2025-06-12 14:41:58'),
-(20, 35, 0, 1, 41, 50, 2, 1, '2025-06-12 19:44:53'),
-(21, 44, 0, 1, 41, 50, 2, 1, '2025-06-12 19:44:54'),
-(22, 44, 0, 1, 41, 51, 2, 1, '2025-06-12 21:07:01'),
-(23, 44, 0, 1, 41, 52, 2, 1, '2025-06-12 21:25:34'),
-(24, 44, 0, 1, 41, 53, 2, 1, '2025-06-12 21:28:41'),
-(25, 35, 0, 1, 41, 54, 2, 1, '2025-06-12 22:10:29'),
-(26, 35, 0, 1, 41, 55, 2, 1, '2025-06-12 22:10:58'),
-(27, 35, 0, 1, 41, 56, 2, 1, '2025-06-12 22:44:37');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -6022,7 +4860,7 @@ CREATE TABLE `order_item_modifiers` (
   `modifier_id` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `quantity` int(11) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -6036,10 +4874,10 @@ CREATE TABLE `order_menu` (
   `menu_id` int(11) NOT NULL,
   `price` decimal(19,3) DEFAULT 0.000,
   `groupmid` int(11) DEFAULT 0,
-  `notes` varchar(255) DEFAULT NULL,
+  `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `menuqty` float NOT NULL,
-  `add_on_id` varchar(100) NOT NULL,
-  `addonsqty` varchar(100) NOT NULL,
+  `add_on_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `addonsqty` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `varientid` int(11) NOT NULL,
   `groupvarient` int(11) DEFAULT NULL,
   `addonsuid` int(11) DEFAULT NULL,
@@ -6049,71 +4887,6 @@ CREATE TABLE `order_menu` (
   `allfoodready` int(11) DEFAULT NULL,
   `isupdate` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `order_menu`
---
-
-INSERT INTO `order_menu` (`row_id`, `order_id`, `menu_id`, `price`, `groupmid`, `notes`, `menuqty`, `add_on_id`, `addonsqty`, `varientid`, `groupvarient`, `addonsuid`, `qroupqty`, `isgroup`, `food_status`, `allfoodready`, `isupdate`) VALUES
-(1, 1, 34, 3.000, 0, '', 1, '', '', 1, NULL, 341, NULL, 0, 1, 1, NULL),
-(2, 2, 34, 3.000, 0, '', 1, '', '', 1, NULL, 341, NULL, 0, 1, 1, NULL),
-(3, 3, 34, 3.000, 0, '', 2, '', '', 1, NULL, 341, NULL, 0, 1, 1, NULL),
-(4, 4, 35, 2.000, 0, '', 1, '', '', 2, NULL, 352, NULL, 0, 1, 1, NULL),
-(5, 5, 36, 6.000, 0, '', 1, '', '', 4, NULL, 364, NULL, 0, 1, 1, NULL),
-(6, 6, 37, 15.000, 0, '', 1, '', '', 5, NULL, 375, NULL, 0, 1, 1, NULL),
-(7, 7, 37, 15.000, 0, '', 2, '', '', 5, NULL, 375, NULL, 0, 1, 1, NULL),
-(8, 8, 38, 35.000, 0, '', 1, '', '', 6, NULL, 386, NULL, 0, 1, 1, NULL),
-(9, 9, 39, 25.000, 0, '', 2, '', '', 7, NULL, 397, NULL, 0, 1, 1, NULL),
-(10, 10, 40, 30.000, 0, '', 5, '', '', 8, NULL, 408, NULL, 0, 1, 1, NULL),
-(11, 11, 40, 30.000, 0, '', 3, '', '', 8, NULL, 408, NULL, 0, 1, 1, NULL),
-(12, 12, 39, 25.000, 0, '', 2, '', '', 7, NULL, 397, NULL, 0, 1, 1, NULL),
-(13, 13, 40, 30.000, 0, '', 1, '', '', 8, NULL, 408, NULL, 0, 1, 1, NULL),
-(14, 14, 40, 30.000, 0, '', 1, '', '', 8, NULL, 408, NULL, 0, 1, 1, NULL),
-(15, 15, 39, 25.000, 0, '', 1, '', '', 7, NULL, 397, NULL, 0, 1, 1, NULL),
-(16, 16, 41, 15.000, 0, '', 2, '', '', 10, NULL, 4110, NULL, 0, 1, 1, NULL),
-(17, 17, 42, 13.000, 0, '', 1, '', '', 11, NULL, 4211, NULL, 0, 1, 1, NULL),
-(18, 18, 42, 13.000, 0, '', 1, '', '', 11, NULL, 4211, NULL, 0, 0, NULL, NULL),
-(19, 19, 42, 13.000, 0, '', 1, '', '', 11, NULL, 4211, NULL, 0, 0, NULL, NULL),
-(20, 20, 43, 15.000, 0, '', 3, '', '', 13, NULL, 4313, NULL, 0, 1, 1, NULL),
-(21, 21, 45, 20.000, 0, '', 3, '', '', 16, NULL, 4516, NULL, 0, 1, 1, NULL),
-(22, 22, 46, 25.000, 0, '', 1, '', '', 19, NULL, 4619, NULL, 0, 0, NULL, NULL),
-(23, 23, 48, 3.000, 0, '', 10, '', '', 23, NULL, 4823, NULL, 0, 1, 1, NULL),
-(24, 24, 49, 12.000, 0, '', 1, '', '', 24, NULL, 4924, NULL, 0, 1, 1, NULL),
-(25, 25, 43, 15.000, 0, '', 1, '', '', 13, NULL, 4313, NULL, 0, 1, 1, NULL),
-(26, 26, 43, 15.000, 0, '', 1, '', '', 13, NULL, 4313, NULL, 0, 1, 1, NULL),
-(27, 27, 45, 20.000, 0, '', 1, '', '', 16, NULL, 4516, NULL, 0, 1, 1, NULL),
-(28, 28, 52, 3.000, 0, '', 1, '', '', 51, NULL, 5251, NULL, 0, 1, 1, NULL),
-(29, 29, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(30, 30, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(31, 31, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 0, NULL, NULL),
-(32, 32, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(33, 33, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(34, 34, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(35, 35, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(36, 36, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(37, 37, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(38, 38, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(39, 39, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(40, 40, 51, 5.000, 0, '', 1, '', '', 48, NULL, 5148, NULL, 0, 1, 1, NULL),
-(41, 41, 44, 7.000, 0, '', 1, '', '', 27, NULL, 4427, NULL, 0, 1, 1, NULL),
-(42, 42, 44, 7.000, 0, '', 1, '', '', 27, NULL, 4427, NULL, 0, 1, 1, NULL),
-(43, 43, 44, 7.000, 0, '', 1, '', '', 27, NULL, 4427, NULL, 0, 1, 1, NULL),
-(44, 44, 35, 2.000, 0, '', 1, '', '', 31, NULL, 3531, NULL, 0, 1, 1, NULL),
-(45, 45, 44, 7.000, 0, '', 1, '', '', 27, NULL, 4427, NULL, 0, 1, 1, NULL),
-(46, 46, 44, 7.000, 0, '', 1, '', '', 27, NULL, 4427, NULL, 0, 1, 1, NULL),
-(47, 47, 35, 2.000, 0, '', 1, '', '', 31, NULL, 3531, NULL, 0, 1, 1, NULL),
-(48, 48, 44, 7.000, 0, '', 1, '', '', 27, NULL, 4427, NULL, 0, 1, 1, NULL),
-(49, 49, 35, 2.000, 0, '', 1, '', '', 61, NULL, 3561, NULL, 0, 1, 1, NULL),
-(50, 50, 35, 2.000, 0, '', 2, '', '', 61, NULL, 3561, NULL, 0, 1, 1, NULL),
-(51, 50, 44, 7.000, 0, '', 1, '', '', 59, NULL, 4459, NULL, 0, 1, 1, NULL),
-(52, 51, 44, 7.000, 0, '', 1, '', '', 59, NULL, 4459, NULL, 0, 1, 1, NULL),
-(53, 52, 44, 7.000, 0, '', 1, '', '', 59, NULL, 4459, NULL, 0, 1, 1, NULL),
-(54, 53, 44, 7.000, 0, '', 1, '', '', 59, NULL, 4459, NULL, 0, 1, 1, NULL),
-(55, 54, 35, 2.000, 0, '', 1, '', '', 61, NULL, 3561, NULL, 0, 1, 1, NULL),
-(56, 55, 35, 2.000, 0, '', 1, '', '', 61, NULL, 3561, NULL, 0, 1, 1, NULL),
-(57, 56, 35, 2.000, 0, '', 1, '', '', 61, NULL, 3561, NULL, 0, 1, 1, NULL),
-(58, 57, 35, 2.000, 0, '', 1, '', '', 61, NULL, 3561, NULL, 0, 0, NULL, NULL),
-(59, 57, 34, 0.000, 0, '', 1, '', '', 1, NULL, 341, NULL, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6131,7 +4904,7 @@ CREATE TABLE `paymentsetup` (
   `Islive` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `edit_url` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paymentsetup`
@@ -6158,7 +4931,7 @@ INSERT INTO `paymentsetup` (`setupid`, `paymentid`, `marchantid`, `password`, `e
 
 CREATE TABLE `payment_method` (
   `payment_method_id` tinyint(4) NOT NULL,
-  `payment_method` varchar(100) NOT NULL,
+  `payment_method` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `modulename` varchar(50) CHARACTER SET utf8 COLLATE utf8_estonian_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -6203,13 +4976,13 @@ CREATE TABLE `payroll_commission_setting` (
 
 CREATE TABLE `payroll_holiday` (
   `payrl_holi_id` int(10) UNSIGNED NOT NULL,
-  `holiday_name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `start_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `end_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `no_of_days` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `created_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `updated_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `holiday_name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `start_date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `end_date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `no_of_days` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `created_by` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `updated_by` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6219,11 +4992,11 @@ CREATE TABLE `payroll_holiday` (
 
 CREATE TABLE `payroll_tax_setup` (
   `tax_setup_id` int(10) UNSIGNED NOT NULL,
-  `start_amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `end_amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `rate` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `status` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `start_amount` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `end_amount` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `rate` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `status` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6234,7 +5007,7 @@ CREATE TABLE `payroll_tax_setup` (
 CREATE TABLE `pay_frequency` (
   `id` int(11) NOT NULL,
   `frequency_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pay_frequency`
@@ -6254,9 +5027,9 @@ INSERT INTO `pay_frequency` (`id`, `frequency_name`) VALUES
 
 CREATE TABLE `position` (
   `pos_id` int(10) UNSIGNED NOT NULL,
-  `position_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `position_details` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `position_name` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `position_details` text CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `position`
@@ -6287,83 +5060,7 @@ CREATE TABLE `production` (
   `is_bom` int(10) DEFAULT 1 COMMENT '''0 => Without bill of materials, 1 => With bill of material''',
   `saveddate` date NOT NULL,
   `productionexpiredate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `production`
---
-
-INSERT INTO `production` (`productionid`, `itemid`, `itemvid`, `itemquantity`, `savedby`, `suplierid`, `is_bom`, `saveddate`, `productionexpiredate`) VALUES
-(1, 34, 1, 1, 2, 0, 1, '2025-05-20', '2025-05-20'),
-(2, 34, 1, 1, 2, NULL, 1, '2025-05-20', '2025-05-20'),
-(3, 34, 1, 1, 2, NULL, 1, '2025-05-20', '2025-05-20'),
-(4, 34, 1, 1, 2, NULL, 1, '2025-05-20', '2025-05-20'),
-(5, 34, 1, 2, 2, NULL, 1, '2025-05-20', '2025-05-20'),
-(9, 36, 4, 1, 2, 0, 0, '2025-05-20', '2025-05-20'),
-(10, 36, 4, 1, 2, NULL, 1, '2025-05-20', '2025-05-20'),
-(11, 37, 5, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(12, 38, 6, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(13, 38, 6, 1, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(14, 37, 5, 2, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(15, 37, 5, 1, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(16, 39, 7, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(17, 39, 7, 2, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(18, 40, 8, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(19, 40, 9, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(20, 39, 7, 2, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(21, 40, 8, 5, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(22, 40, 8, 3, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(23, 40, 8, 1, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(24, 41, 10, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(25, 40, 8, 1, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(26, 39, 7, 1, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(27, 42, 11, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(28, 42, 12, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(29, 41, 10, 2, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(30, 42, 11, 1, 2, NULL, 1, '2025-05-22', '2025-05-22'),
-(31, 43, 13, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(38, 46, 19, 1, 2, 0, 0, '2025-05-23', '2025-05-23'),
-(41, 48, 23, 1, 2, 0, 0, '2025-05-23', '2025-05-23'),
-(42, 48, 23, 10, 2, NULL, 1, '2025-05-23', '2025-05-23'),
-(44, 43, 13, 1, 2, NULL, 1, '2025-05-23', '2025-05-23'),
-(46, 46, 19, 1, 2, NULL, 1, '2025-05-23', '2025-05-23'),
-(47, 46, 19, 1, 2, NULL, 1, '2025-05-23', '2025-05-23'),
-(48, 43, 13, 1, 2, NULL, 1, '2025-05-23', '2025-05-23'),
-(50, 43, 13, 3, 2, NULL, 1, '2025-05-23', '2025-05-23'),
-(59, 45, 33, 1, 2, 0, 0, '2025-05-22', '2025-05-22'),
-(62, 50, 36, 1, 2, 0, 0, '2025-05-26', '2025-05-26'),
-(63, 49, 37, 1, 2, 0, 0, '2025-05-23', '2025-05-23'),
-(74, 51, 48, 1, 2, 0, 1, '2025-05-27', '2025-05-27'),
-(75, 51, 49, 1, 2, 0, 1, '2025-05-27', '2025-05-27'),
-(76, 51, 50, 1, 2, 0, 1, '2025-05-27', '2025-05-27'),
-(77, 52, 51, 1, 2, 0, 1, '2025-06-03', '2025-06-03'),
-(78, 52, 52, 1, 2, 0, 1, '2025-06-03', '2025-06-03'),
-(79, 52, 51, 1, 2, NULL, 1, '2025-06-03', '2025-06-03'),
-(82, 51, 48, 1, 2, NULL, 1, '2025-06-06', '2025-06-06'),
-(83, 51, 48, 1, 2, NULL, 1, '2025-06-06', '2025-06-06'),
-(84, 51, 48, 1, 2, NULL, 1, '2025-06-09', '2025-06-09'),
-(85, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(86, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(87, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(88, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(89, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(90, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(91, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(92, 51, 48, 1, 168, NULL, 1, '2025-06-09', '2025-06-09'),
-(104, 44, 59, 1, 2, 0, 1, '2025-05-22', '2025-05-22'),
-(105, 44, 60, 1, 2, 0, 1, '2025-05-22', '2025-05-22'),
-(106, 35, 61, 1, 2, 0, 1, '2025-05-20', '2025-05-20'),
-(107, 35, 62, 1, 2, 0, 1, '2025-05-20', '2025-05-20'),
-(108, 44, 27, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(109, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(110, 35, 61, 2, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(111, 44, 59, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(112, 44, 59, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(113, 44, 59, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(114, 44, 59, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(115, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(116, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(117, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6382,41 +5079,7 @@ CREATE TABLE `production_details` (
   `recipe_price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `createdby` int(11) NOT NULL,
   `created_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `production_details`
---
-
-INSERT INTO `production_details` (`pro_detailsid`, `foodid`, `pvarientid`, `ingredientid`, `qty`, `unitid`, `unitname`, `recipe_price`, `createdby`, `created_date`) VALUES
-(1, 34, 1, 49, 200.00, 3, 'grm.', 2.80, 2, '2025-05-20'),
-(6, 37, 5, 131, 1.00, 7, 'pcs', 12.00, 2, '2025-05-22'),
-(7, 38, 6, 132, 1.00, 7, 'pcs', 25.00, 2, '2025-05-22'),
-(8, 39, 7, 133, 1.00, 7, 'pcs', 20.00, 2, '2025-05-22'),
-(9, 40, 9, 134, 1.00, 7, 'pcs', 22.00, 2, '2025-05-22'),
-(10, 41, 10, 135, 1.00, 7, 'pcs', 11.00, 2, '2025-05-22'),
-(11, 42, 11, 136, 1.00, 7, 'pcs', 11.00, 2, '2025-05-22'),
-(12, 43, 13, 137, 1.00, 7, 'pcs', 10.00, 2, '2025-05-22'),
-(19, 46, 19, 139, 1.00, 7, 'pcs', 20.00, 2, '2025-05-23'),
-(23, 48, 23, 141, 1.00, 7, 'pcs', 2.00, 2, '2025-05-23'),
-(39, 45, 33, 138, 1.00, 7, 'pcs', 15.00, 2, '2025-05-26'),
-(42, 50, 36, 143, 250.00, 7, 'pcs', 30.00, 2, '2025-05-26'),
-(43, 49, 37, 142, 500.00, 7, 'pcs', 10.00, 2, '2025-05-26'),
-(65, 51, 48, 51, 500.00, 3, 'grm.', 0.85, 2, '2025-05-27'),
-(66, 51, 48, 74, 350.00, 3, 'grm.', 1.37, 2, '2025-05-27'),
-(67, 51, 49, 93, 200.00, 3, 'grm.', 3.50, 2, '2025-05-27'),
-(68, 51, 50, 23, 100.00, 3, 'grm.', 2.50, 2, '2025-05-27'),
-(69, 51, 50, 24, 250.00, 3, 'grm.', 4.25, 2, '2025-05-27'),
-(70, 52, 51, 60, 250.00, 3, 'gm.', 2.38, 2, '2025-06-03'),
-(71, 52, 52, 60, 500.00, 3, 'gm.', 4.75, 2, '2025-06-03'),
-(82, 44, 59, 23, 250.00, 3, 'grm.', 6.25, 2, '2025-06-12'),
-(83, 44, 59, 69, 100.00, 3, 'grm.', 0.22, 2, '2025-06-12'),
-(84, 44, 60, 23, 500.00, 3, 'grm.', 12.50, 2, '2025-06-12'),
-(85, 44, 60, 94, 250.00, 3, 'grm.', 5.50, 2, '2025-06-12'),
-(86, 35, 61, 19, 50.00, 3, 'grm.', 1.38, 2, '2025-06-12'),
-(87, 35, 61, 68, 250.00, 3, 'grm.', 0.55, 2, '2025-06-12'),
-(88, 35, 62, 19, 100.00, 3, 'grm.', 2.75, 2, '2025-06-12'),
-(89, 35, 62, 68, 350.00, 3, 'grm.', 0.77, 2, '2025-06-12');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6433,7 +5096,7 @@ CREATE TABLE `promotion_main_modifiers` (
   `total_weight_percent` double NOT NULL,
   `total_no_of_item` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -6446,7 +5109,7 @@ CREATE TABLE `promotion_other_modifiers` (
   `promotion_id` int(11) NOT NULL,
   `modifier_set_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -6468,16 +5131,7 @@ CREATE TABLE `promo_data` (
   `status` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Active, 0 = Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `promo_data`
---
-
-INSERT INTO `promo_data` (`id`, `promo_title`, `promo_type`, `start_date`, `end_date`, `get_food_id`, `buy_qty`, `get_qty`, `discount_rate`, `offer_food_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Free Item 1', 2, '2025-06-11', '2025-06-12', 52, 3, 1, 0, 51, 1, '2025-06-11 23:08:26', '2025-06-11 18:38:26'),
-(2, 'duplicate disc', 2, '2025-06-12', '2025-06-13', 53, 2, 1, 0, 52, 1, '2025-06-12 22:44:36', '2025-06-12 18:14:36'),
-(4, 'Veg Biriyani Promotion', 2, '2025-06-13', '2025-07-15', 34, 2, 1, 0, 35, 1, '2025-06-13 17:57:29', '2025-07-14 21:42:55');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -6498,19 +5152,7 @@ CREATE TABLE `purchaseitem` (
   `purchaseexpiredate` date NOT NULL,
   `savedby` int(11) NOT NULL,
   `is_bom` int(10) NOT NULL DEFAULT 1 COMMENT '''0 => Without bill of materials, 1 => With bill of material'''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `purchaseitem`
---
-
-INSERT INTO `purchaseitem` (`purID`, `invoiceid`, `suplierID`, `paymenttype`, `bankid`, `total_price`, `paid_amount`, `details`, `purchasedate`, `purchaseexpiredate`, `savedby`, `is_bom`) VALUES
-(1, 'Invoice No', 1, 1, 0, 77.000, 77.000, '', '2025-05-20', '2025-05-20', 2, 1),
-(2, 'INV2', 1, 1, 0, 137.830, 137.830, '', '2025-05-20', '2025-05-20', 2, 1),
-(3, 'INV3', 2, 1, 0, 305.250, 305.250, '', '2025-05-20', '2025-05-20', 2, 1),
-(4, 'INV4', 1, 1, 0, 277.750, 277.750, '', '2025-05-20', '2025-05-20', 2, 1),
-(5, 'INV5', 2, 1, 0, 52.250, 52.250, '', '2025-06-03', '2025-06-03', 2, 1),
-(6, 'INV6', 2, 1, 0, 21.850, 31.350, '', '2025-06-03', '2025-06-03', 2, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6530,23 +5172,7 @@ CREATE TABLE `purchase_details` (
   `is_bom` int(10) DEFAULT 1 COMMENT '0 => Without bill of materials, 1 => With bill of material',
   `purchasedate` date NOT NULL,
   `purchaseexpiredate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `purchase_details`
---
-
-INSERT INTO `purchase_details` (`detailsid`, `purchaseid`, `indredientid`, `quantity`, `unitname`, `price`, `totalprice`, `purchaseby`, `is_bom`, `purchasedate`, `purchaseexpiredate`) VALUES
-(1, 1, 49, 5000.000, '', 7.000, 77.000, 2, 1, '2025-05-20', '2025-05-20'),
-(2, 2, 44, 1000.000, '', 11.500, 25.300, 2, 1, '2025-05-20', '2025-05-20'),
-(3, 2, 82, 1200.000, '', 1.100, 3.630, 2, 1, '2025-05-20', '2025-05-20'),
-(4, 2, 15, 5000.000, '', 49.500, 108.900, 2, 1, '2025-05-20', '2025-05-20'),
-(5, 3, 44, 2000.000, '', 12.500, 55.000, 2, 1, '2025-05-20', '2025-05-20'),
-(6, 3, 15, 12500.000, '', 45.500, 250.250, 2, 1, '2025-05-20', '2025-05-20'),
-(7, 4, 19, 1000.000, '', 2.750, 30.250, 2, 1, '2025-05-20', '2025-05-20'),
-(8, 4, 68, 100000.000, '', 45.000, 247.500, 2, 1, '2025-05-20', '2025-05-20'),
-(9, 5, 60, 5000.000, '', 9.500, 52.250, 2, 1, '2025-06-03', '2025-06-03'),
-(10, 6, 60, 2000.000, '', 9.500, 21.850, 2, 1, '2025-06-03', '2025-06-03');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6557,23 +5183,16 @@ INSERT INTO `purchase_details` (`detailsid`, `purchaseid`, `indredientid`, `quan
 CREATE TABLE `purchase_return` (
   `preturn_id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `po_no` varchar(120) NOT NULL,
+  `po_no` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `return_date` date NOT NULL,
   `totalamount` float NOT NULL,
   `totaldiscount` float NOT NULL,
-  `return_reason` varchar(250) NOT NULL,
+  `return_reason` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `createby` int(11) NOT NULL,
   `createdate` datetime NOT NULL,
   `updateby` int(11) NOT NULL,
   `updatedate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `purchase_return`
---
-
-INSERT INTO `purchase_return` (`preturn_id`, `supplier_id`, `po_no`, `return_date`, `totalamount`, `totaldiscount`, `return_reason`, `createby`, `createdate`, `updateby`, `updatedate`) VALUES
-(1, 2, 'INV6', '2025-06-03', 9.5, 0, '', 2, '2025-06-03 21:20:25', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -6590,13 +5209,6 @@ CREATE TABLE `purchase_return_details` (
   `discount` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `purchase_return_details`
---
-
-INSERT INTO `purchase_return_details` (`preturn_id`, `product_id`, `qty`, `product_rate`, `store_id`, `discount`) VALUES
-(1, 60, 1000, 9.5, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -6606,7 +5218,7 @@ INSERT INTO `purchase_return_details` (`preturn_id`, `product_id`, `qty`, `produ
 CREATE TABLE `rate_type` (
   `id` int(11) NOT NULL,
   `r_type_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rate_type`
@@ -6627,7 +5239,7 @@ CREATE TABLE `reservationofday` (
   `offdaydate` date NOT NULL,
   `availtime` varchar(50) NOT NULL,
   `is_active` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6642,7 +5254,7 @@ CREATE TABLE `rest_table` (
   `table_icon` varchar(255) NOT NULL,
   `floor` int(11) DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0 COMMENT '1=booked,0=free'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `rest_table`
@@ -6671,7 +5283,7 @@ CREATE TABLE `role_permission` (
   `read` tinyint(1) DEFAULT NULL,
   `update` tinyint(1) DEFAULT NULL,
   `delete` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6681,12 +5293,12 @@ CREATE TABLE `role_permission` (
 
 CREATE TABLE `salary_setup_header` (
   `s_s_h_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `salary_payable` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `absent_deduct` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `tax_manager` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `status` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `employee_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `salary_payable` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `absent_deduct` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `tax_manager` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `status` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6697,12 +5309,12 @@ CREATE TABLE `salary_setup_header` (
 CREATE TABLE `salary_sheet_generate` (
   `ssg_id` int(10) UNSIGNED NOT NULL,
   `employee_id` varchar(20) NOT NULL,
-  `name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `name` varchar(30) CHARACTER SET latin1 NOT NULL,
   `gdate` varchar(20) DEFAULT NULL,
-  `start_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `end_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `generate_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `start_date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `end_date` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `generate_by` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6712,11 +5324,11 @@ CREATE TABLE `salary_sheet_generate` (
 
 CREATE TABLE `salary_type` (
   `salary_type_id` int(10) UNSIGNED NOT NULL,
-  `sal_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `emp_sal_type` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `sal_name` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `emp_sal_type` varchar(50) CHARACTER SET latin1 NOT NULL,
   `default_amount` varchar(30) NOT NULL,
   `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `salary_type`
@@ -6734,9 +5346,9 @@ INSERT INTO `salary_type` (`salary_type_id`, `sal_name`, `emp_sal_type`, `defaul
 
 CREATE TABLE `sec_menu_item` (
   `menu_id` int(11) NOT NULL,
-  `menu_title` varchar(200) DEFAULT NULL,
-  `page_url` varchar(250) DEFAULT NULL,
-  `module` varchar(200) DEFAULT NULL,
+  `menu_title` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `page_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `module` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parent_menu` int(11) DEFAULT NULL,
   `is_report` tinyint(1) DEFAULT NULL,
   `createby` int(11) NOT NULL,
@@ -7286,7 +5898,7 @@ CREATE TABLE `sec_role_tbl` (
   `create_by` int(11) DEFAULT NULL,
   `date_time` datetime DEFAULT NULL,
   `role_status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sec_role_tbl`
@@ -7308,7 +5920,7 @@ CREATE TABLE `sec_user_access_tbl` (
   `role_acc_id` int(11) NOT NULL,
   `fk_role_id` int(11) NOT NULL,
   `fk_user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sec_user_access_tbl`
@@ -7366,14 +5978,14 @@ CREATE TABLE `setting` (
   `reservation_close` varchar(30) DEFAULT NULL,
   `maxreserveperson` int(11) DEFAULT NULL,
   `printtype` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `setting`
 --
 
 INSERT INTO `setting` (`id`, `title`, `storename`, `address`, `email`, `phone`, `logo`, `logoweb`, `favicon`, `opentime`, `closetime`, `vat`, `isvatnumshow`, `vattinno`, `isvatinclusive`, `discount_type`, `discountrate`, `servicecharge`, `service_chargeType`, `currency`, `min_prepare_time`, `language`, `timezone`, `dateformat`, `site_align`, `kitchenrefreshtime`, `powerbytxt`, `footer_text`, `reservation_open`, `reservation_close`, `maxreserveperson`, `printtype`) VALUES
-(2, 'Punjabi Palace Restaurant', 'Punjabi Palace Restaurant', '135, Melbourne Street, South Brisbane, QLD', 'info@PunjabiPalace.com.au', '(07) 3846 3884', 'assets/img/icons/2019-10-29/h.png', NULL, 'assets/img/icons/m.png', '9:00AM', '10:00PM', 10.00, NULL, '23457586', 1, 1, 10.000, 0, 1, 2, '1:00 Hour', 'english', 'Australia/Brisbane', 'd/m/Y', 'LTR', 15, 'Powered By: Adzguru, www.adzguru.com\n', '2025', '09:00:00', '22:00:00', 10, 2);
+(2, 'Punjabi Palace Restaurant', 'Punjabi Palace Restaurant', '135, Melbourne Street, South Brisbane, QLD', 'info@PunjabiPalace.com.au', '(07) 3846 3884', 'assets/img/icons/2019-10-29/h.png', NULL, 'assets/img/icons/m.png', '9:00AM', '10:00PM', '10.00', NULL, '23457586', 1, 1, '10.000', '0', 1, 2, '1:00 Hour', 'english', 'Australia/Brisbane', 'd/m/Y', 'LTR', 15, 'Powered By: Adzguru, www.adzguru.com\n', '2025', '09:00:00', '22:00:00', 10, 2);
 
 -- --------------------------------------------------------
 
@@ -7388,16 +6000,16 @@ CREATE TABLE `shipping_method` (
   `payment_method` varchar(255) DEFAULT NULL,
   `is_active` int(11) NOT NULL DEFAULT 0,
   `shiptype` int(11) DEFAULT NULL COMMENT '1=dinein,2=pickup,3=home'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `shipping_method`
 --
 
 INSERT INTO `shipping_method` (`ship_id`, `shipping_method`, `shippingrate`, `payment_method`, `is_active`, `shiptype`) VALUES
-(1, 'Home Delivary', 60.00, '9, 8, 5, 4, 3, 1', 1, 3),
-(2, 'Pickup', 0.00, '4, 3, 1', 1, 2),
-(3, 'Dine-in', 0.00, '9, 8, 5, 4, 3', 1, 1);
+(1, 'Home Delivary', '60.00', '9, 8, 5, 4, 3, 1', 1, 3),
+(2, 'Pickup', '0.00', '4, 3, 1', 1, 2),
+(3, 'Dine-in', '0.00', '9, 8, 5, 4, 3', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -7411,7 +6023,7 @@ CREATE TABLE `slots` (
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `is_active` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `slots`
@@ -7512,7 +6124,7 @@ CREATE TABLE `sms_configuration` (
   `sms_from` varchar(200) NOT NULL,
   `userid` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sms_configuration`
@@ -7538,7 +6150,7 @@ CREATE TABLE `sms_template` (
   `default_status` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sms_template`
@@ -7561,8 +6173,8 @@ CREATE TABLE `stock_adjustments` (
   `ingredient_id` int(11) NOT NULL,
   `adjusted_qty` decimal(10,2) NOT NULL COMMENT 'Positive = addition, Negative = subtraction',
   `adjustment_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `responsible_person` varchar(100) NOT NULL,
-  `note` text DEFAULT NULL,
+  `responsible_person` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `note` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `added_by` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -7572,25 +6184,25 @@ CREATE TABLE `stock_adjustments` (
 --
 
 INSERT INTO `stock_adjustments` (`id`, `ingredient_id`, `adjusted_qty`, `adjustment_date`, `responsible_person`, `note`, `added_by`, `created_at`) VALUES
-(1, 60, -2.00, '2025-05-26 00:00:00', 'John Doe', 'Damage product', 2, '2025-06-02 15:45:45'),
-(2, 60, 1.00, '2025-06-09 00:00:00', 'John Doe', 'Added from godown kitchen', 2, '2025-06-02 15:46:16'),
-(3, 60, -3.00, '2025-05-26 00:00:00', 'John Doe', 'New Stock come from old stock', 2, '2025-06-02 15:59:20'),
-(4, 60, 2.00, '2025-06-09 00:00:00', 'John Doe', 'test', 2, '2025-06-02 16:00:19'),
-(5, 60, -1.00, '2025-06-02 00:00:00', 'John Doe', 'damage', 2, '2025-06-02 16:00:44'),
-(6, 60, 3.00, '2025-06-03 00:00:00', 'John Doe', 'Added from another stock', 2, '2025-06-02 16:02:00'),
-(7, 60, -4.00, '2025-06-03 00:00:00', 'John Doe', 'Damage due to flood', 2, '2025-06-02 16:02:30'),
-(8, 60, 7.00, '2025-06-02 00:00:00', 'John Doe', 'Add new kitchen stock', 2, '2025-06-02 16:34:30'),
-(9, 60, -14.00, '2025-06-02 00:00:00', 'John Doe', 'Damage all goods', 2, '2025-06-02 16:34:58'),
-(10, 60, 7.00, '2025-06-02 00:00:00', 'John Doe', 'Adjusted from another kitchen stock', 2, '2025-06-02 16:38:17'),
-(11, 60, -8.00, '2025-06-02 00:00:00', 'John Doe', 'damage due to rat', 2, '2025-06-02 17:26:40'),
-(12, 60, 5.00, '2025-06-02 00:00:00', 'John Doe', 'Adjust from another stock', 2, '2025-06-02 17:27:03'),
-(13, 60, 2.00, '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:44:30'),
-(14, 60, 3.00, '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:29'),
-(15, 60, 5.00, '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:46'),
-(16, 60, -3.00, '2025-06-02 00:00:00', 'John Doe', 'Broken packet', 2, '2025-06-02 17:46:09'),
-(17, 60, 2.00, '2025-06-03 00:00:00', 'John Doe', 'new stock added from another store', 2, '2025-06-03 13:09:30'),
-(18, 60, 2.00, '2025-06-03 00:00:00', 'John Doe', 'new stock added', 2, '2025-06-03 13:12:27'),
-(19, 60, -1.00, '2025-06-03 17:44:29', 'John Doe', 'Damage Stock', 2, '2025-06-03 13:14:55');
+(1, 60, '-2.00', '2025-05-26 00:00:00', 'John Doe', 'Damage product', 2, '2025-06-02 15:45:45'),
+(2, 60, '1.00', '2025-06-09 00:00:00', 'John Doe', 'Added from godown kitchen', 2, '2025-06-02 15:46:16'),
+(3, 60, '-3.00', '2025-05-26 00:00:00', 'John Doe', 'New Stock come from old stock', 2, '2025-06-02 15:59:20'),
+(4, 60, '2.00', '2025-06-09 00:00:00', 'John Doe', 'test', 2, '2025-06-02 16:00:19'),
+(5, 60, '-1.00', '2025-06-02 00:00:00', 'John Doe', 'damage', 2, '2025-06-02 16:00:44'),
+(6, 60, '3.00', '2025-06-03 00:00:00', 'John Doe', 'Added from another stock', 2, '2025-06-02 16:02:00'),
+(7, 60, '-4.00', '2025-06-03 00:00:00', 'John Doe', 'Damage due to flood', 2, '2025-06-02 16:02:30'),
+(8, 60, '7.00', '2025-06-02 00:00:00', 'John Doe', 'Add new kitchen stock', 2, '2025-06-02 16:34:30'),
+(9, 60, '-14.00', '2025-06-02 00:00:00', 'John Doe', 'Damage all goods', 2, '2025-06-02 16:34:58'),
+(10, 60, '7.00', '2025-06-02 00:00:00', 'John Doe', 'Adjusted from another kitchen stock', 2, '2025-06-02 16:38:17'),
+(11, 60, '-8.00', '2025-06-02 00:00:00', 'John Doe', 'damage due to rat', 2, '2025-06-02 17:26:40'),
+(12, 60, '5.00', '2025-06-02 00:00:00', 'John Doe', 'Adjust from another stock', 2, '2025-06-02 17:27:03'),
+(13, 60, '2.00', '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:44:30'),
+(14, 60, '3.00', '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:29'),
+(15, 60, '5.00', '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:46'),
+(16, 60, '-3.00', '2025-06-02 00:00:00', 'John Doe', 'Broken packet', 2, '2025-06-02 17:46:09'),
+(17, 60, '2.00', '2025-06-03 00:00:00', 'John Doe', 'new stock added from another store', 2, '2025-06-03 13:09:30'),
+(18, 60, '2.00', '2025-06-03 00:00:00', 'John Doe', 'new stock added', 2, '2025-06-03 13:12:27'),
+(19, 60, '-1.00', '2025-06-03 17:44:29', 'John Doe', 'Damage Stock', 2, '2025-06-03 13:14:55');
 
 -- --------------------------------------------------------
 
@@ -7602,7 +6214,7 @@ CREATE TABLE `subscribe_emaillist` (
   `emailid` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `dateinsert` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7619,9 +6231,9 @@ CREATE TABLE `sub_order` (
   `s_charge` float DEFAULT NULL,
   `total_price` float DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0 COMMENT '0=unpaid,1=paid',
-  `order_menu_id` text DEFAULT NULL,
-  `adons_id` varchar(20) DEFAULT NULL,
-  `adons_qty` varchar(20) DEFAULT NULL,
+  `order_menu_id` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adons_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adons_qty` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `invoiceprint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -7638,7 +6250,7 @@ CREATE TABLE `supplier` (
   `supEmail` varchar(100) NOT NULL,
   `supMobile` varchar(50) NOT NULL,
   `supAddress` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `supplier`
@@ -7667,25 +6279,7 @@ CREATE TABLE `supplier_ledger` (
   `date` varchar(50) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `d_c` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `supplier_ledger`
---
-
-INSERT INTO `supplier_ledger` (`id`, `transaction_id`, `supplier_id`, `chalan_no`, `deposit_no`, `amount`, `description`, `payment_type`, `cheque_no`, `date`, `status`, `d_c`) VALUES
-(1, 'Invoice No', 1, 'Invoice No', NULL, 77.000, '', NULL, NULL, '2025-05-20', 1, 'c'),
-(2, 'Invoice No', 1, 'Invoice No', NULL, 77.000, 'Purchase From Supplier. ', NULL, NULL, '2025-05-20', 1, 'd'),
-(3, 'INV2', 1, 'INV2', NULL, 137.830, '', NULL, NULL, '2025-05-20', 1, 'c'),
-(4, 'INV2', 1, 'INV2', NULL, 137.830, 'Purchase From Supplier. ', NULL, NULL, '2025-05-20', 1, 'd'),
-(5, 'INV3', 2, 'INV3', NULL, 305.250, '', NULL, NULL, '2025-05-20', 1, 'c'),
-(6, 'INV3', 2, 'INV3', NULL, 305.250, 'Purchase From Supplier. ', NULL, NULL, '2025-05-20', 1, 'd'),
-(7, 'INV4', 1, 'INV4', NULL, 277.750, '', NULL, NULL, '2025-05-20', 1, 'c'),
-(8, 'INV4', 1, 'INV4', NULL, 277.750, 'Purchase From Supplier. ', NULL, NULL, '2025-05-20', 1, 'd'),
-(9, 'INV5', 2, 'INV5', NULL, 52.250, '', NULL, NULL, '2025-06-03', 1, 'c'),
-(10, 'INV5', 2, 'INV5', NULL, 52.250, 'Purchase From Supplier. ', NULL, NULL, '2025-06-03', 1, 'd'),
-(11, 'INV6', 2, 'INV6', NULL, 31.350, '', NULL, NULL, '2025-06-03', 1, 'c'),
-(12, 'INV6', 2, 'INV6', NULL, 31.350, 'Purchase From Supplier. ', NULL, NULL, '2025-06-03', 1, 'd');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7701,7 +6295,7 @@ CREATE TABLE `synchronizer_setting` (
   `port` varchar(10) NOT NULL,
   `debug` varchar(10) NOT NULL,
   `project_root` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `synchronizer_setting`
@@ -7744,7 +6338,7 @@ CREATE TABLE `table_setting` (
   `settingid` int(11) NOT NULL,
   `tableid` int(11) NOT NULL,
   `iconpos` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `table_setting`
@@ -7780,7 +6374,7 @@ CREATE TABLE `tblreservation` (
   `customer_notes` text DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '1=free,2=booked,3=complete,4=expire',
   `notif` int(11) NOT NULL DEFAULT 0 COMMENT '0=unseen,1=seen'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tblreservation`
@@ -7801,7 +6395,7 @@ CREATE TABLE `tblserver` (
   `serverid` int(11) NOT NULL,
   `localhost_url` varchar(255) NOT NULL,
   `online_url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblserver`
@@ -7820,7 +6414,7 @@ CREATE TABLE `tbl_assign_kitchen` (
   `assignid` int(11) NOT NULL,
   `kitchen_id` int(11) NOT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7835,7 +6429,7 @@ CREATE TABLE `tbl_bank` (
   `ac_number` varchar(200) DEFAULT NULL,
   `branch` varchar(200) DEFAULT NULL,
   `signature_pic` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_bank`
@@ -7867,7 +6461,7 @@ CREATE TABLE `tbl_billingaddress` (
   `address` text DEFAULT NULL,
   `address2` text DEFAULT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7881,7 +6475,7 @@ CREATE TABLE `tbl_cancelitem` (
   `foodid` int(11) NOT NULL,
   `varientid` int(11) NOT NULL,
   `quantity` decimal(19,3) NOT NULL DEFAULT 0.000
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -7892,7 +6486,7 @@ CREATE TABLE `tbl_cancelitem` (
 CREATE TABLE `tbl_card_terminal` (
   `card_terminalid` int(11) NOT NULL,
   `terminal_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_card_terminal`
@@ -7912,7 +6506,7 @@ INSERT INTO `tbl_card_terminal` (`card_terminalid`, `terminal_name`) VALUES
 CREATE TABLE `tbl_cashcounter` (
   `ccid` int(11) NOT NULL,
   `counterno` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_cashcounter`
@@ -7947,22 +6541,22 @@ CREATE TABLE `tbl_cashregister` (
   `status` int(11) NOT NULL DEFAULT 0,
   `openingnote` text DEFAULT NULL,
   `closing_note` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_cashregister`
 --
 
 INSERT INTO `tbl_cashregister` (`id`, `userid`, `counter_no`, `opening_balance`, `closing_balance`, `openclosedate`, `opendate`, `closedate`, `status`, `openingnote`, `closing_note`) VALUES
-(1, 2, 1, 14000.000, 58787.600, '2025-01-23', '2025-01-23 15:40:46', '2025-02-20 19:36:50', 1, '', ''),
-(2, 177, 2, 14000.000, 0.000, '2025-02-10', '2025-02-10 12:56:48', '1970-01-01 00:00:00', 0, 'Cash Register', ''),
-(3, 179, 3, 10000.000, 0.000, '2025-02-14', '2025-02-14 08:29:33', '1970-01-01 00:00:00', 0, 'testing note', ''),
-(4, 180, 6, 25000.000, 0.000, '2025-02-14', '2025-02-14 11:39:15', '1970-01-01 00:00:00', 0, 'my wallet', ''),
-(5, 2, 1, 58787.600, 76981.800, '2025-02-20', '2025-02-20 19:37:23', '2025-07-15 20:31:06', 1, '', ''),
-(6, 168, 7, 200.000, 0.000, '2025-06-09', '2025-06-09 20:56:39', '1970-01-01 00:00:00', 0, 'opening balance', ''),
-(7, 182, 8, 500.000, 0.000, '2025-06-10', '2025-06-10 14:53:16', '1970-01-01 00:00:00', 0, '', ''),
-(8, 189, 9, 100.000, 0.000, '2025-06-11', '2025-06-11 16:51:11', '1970-01-01 00:00:00', 0, 'starting wallet', ''),
-(9, 2, 1, 76981.800, 0.000, '2025-07-15', '2025-07-15 20:32:34', '1970-01-01 00:00:00', 0, '', '');
+(1, 2, 1, '14000.000', '58787.600', '2025-01-23', '2025-01-23 15:40:46', '2025-02-20 19:36:50', 1, '', ''),
+(2, 177, 2, '14000.000', '0.000', '2025-02-10', '2025-02-10 12:56:48', '1970-01-01 00:00:00', 0, 'Cash Register', ''),
+(3, 179, 3, '10000.000', '0.000', '2025-02-14', '2025-02-14 08:29:33', '1970-01-01 00:00:00', 0, 'testing note', ''),
+(4, 180, 6, '25000.000', '0.000', '2025-02-14', '2025-02-14 11:39:15', '1970-01-01 00:00:00', 0, 'my wallet', ''),
+(5, 2, 1, '58787.600', '76981.800', '2025-02-20', '2025-02-20 19:37:23', '2025-07-15 20:31:06', 1, '', ''),
+(6, 168, 7, '200.000', '0.000', '2025-06-09', '2025-06-09 20:56:39', '1970-01-01 00:00:00', 0, 'opening balance', ''),
+(7, 182, 8, '500.000', '0.000', '2025-06-10', '2025-06-10 14:53:16', '1970-01-01 00:00:00', 0, '', ''),
+(8, 189, 9, '100.000', '0.000', '2025-06-11', '2025-06-11 16:51:11', '1970-01-01 00:00:00', 0, 'starting wallet', ''),
+(9, 2, 1, '76981.800', '0.000', '2025-07-15', '2025-07-15 20:32:34', '1970-01-01 00:00:00', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -7976,7 +6570,7 @@ CREATE TABLE `tbl_city` (
   `stateid` int(11) NOT NULL,
   `cityname` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_city`
@@ -8000,7 +6594,7 @@ CREATE TABLE `tbl_country` (
   `countryid` int(11) NOT NULL,
   `countryname` varchar(70) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_country`
@@ -8022,7 +6616,7 @@ INSERT INTO `tbl_country` (`countryid`, `countryname`, `status`) VALUES
 CREATE TABLE `tbl_delivaritime` (
   `dtimeid` int(11) NOT NULL,
   `deltime` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_delivaritime`
@@ -8062,7 +6656,7 @@ CREATE TABLE `tbl_delivaryaddress` (
   `delivaryid` int(11) NOT NULL,
   `deladdress` text NOT NULL,
   `delcharge` decimal(10,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -8091,7 +6685,7 @@ CREATE TABLE `tbl_generatedreport` (
   `nofification` int(11) NOT NULL,
   `orderacceptreject` int(11) DEFAULT NULL,
   `reportDate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -8106,7 +6700,7 @@ CREATE TABLE `tbl_groupitems` (
   `item_qty` decimal(10,2) NOT NULL DEFAULT 0.00,
   `varientid` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -8120,7 +6714,7 @@ CREATE TABLE `tbl_itemaccepted` (
   `menuid` int(11) NOT NULL,
   `varient` int(11) NOT NULL,
   `accepttime` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_itemaccepted`
@@ -8149,7 +6743,7 @@ CREATE TABLE `tbl_kitchen` (
   `ip` varchar(255) DEFAULT NULL,
   `port` varchar(10) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_kitchen`
@@ -8171,66 +6765,7 @@ CREATE TABLE `tbl_kitchen_order` (
   `itemid` int(11) NOT NULL,
   `varient` int(11) DEFAULT NULL,
   `addonsuid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `tbl_kitchen_order`
---
-
-INSERT INTO `tbl_kitchen_order` (`ktid`, `kitchenid`, `orderid`, `itemid`, `varient`, `addonsuid`) VALUES
-(1, 1, 1, 34, 1, NULL),
-(2, 1, 2, 34, 1, NULL),
-(3, 1, 3, 34, 1, NULL),
-(4, 1, 4, 35, 2, NULL),
-(5, 1, 5, 36, 4, NULL),
-(6, 1, 8, 38, 6, NULL),
-(7, 1, 7, 37, 5, NULL),
-(8, 1, 6, 37, 5, NULL),
-(9, 1, 9, 39, 7, NULL),
-(10, 1, 12, 39, 7, NULL),
-(11, 1, 10, 40, 8, NULL),
-(12, 1, 11, 40, 8, NULL),
-(13, 1, 13, 40, 8, NULL),
-(14, 1, 14, 40, 8, NULL),
-(15, 1, 15, 39, 7, NULL),
-(16, 1, 16, 41, 10, NULL),
-(17, 1, 17, 42, 11, NULL),
-(18, 1, 21, 45, 16, NULL),
-(19, 1, 23, 48, 23, NULL),
-(20, 1, 25, 43, 13, NULL),
-(21, 1, 24, 49, 24, NULL),
-(22, 1, 26, 43, 13, NULL),
-(23, 1, 27, 45, 16, NULL),
-(24, 1, 20, 43, 13, NULL),
-(25, 1, 28, 52, 51, NULL),
-(26, 1, 29, 51, 48, NULL),
-(27, 1, 30, 51, 48, NULL),
-(28, 1, 32, 51, 48, NULL),
-(29, 1, 33, 51, 48, NULL),
-(30, 1, 34, 51, 48, NULL),
-(31, 1, 35, 51, 48, NULL),
-(32, 1, 36, 51, 48, NULL),
-(33, 1, 37, 51, 48, NULL),
-(34, 1, 38, 51, 48, NULL),
-(35, 1, 39, 51, 48, NULL),
-(36, 1, 40, 51, 48, NULL),
-(37, 1, 41, 44, 27, NULL),
-(38, 1, 44, 35, 31, NULL),
-(39, 1, 43, 44, 27, NULL),
-(40, 1, 42, 44, 27, NULL),
-(41, 1, 45, 44, 27, NULL),
-(42, 1, 46, 44, 27, NULL),
-(43, 1, 47, 35, 31, NULL),
-(44, 1, 48, 44, 27, NULL),
-(45, 1, 49, 35, 61, NULL),
-(46, 1, 50, 35, 61, NULL),
-(47, 1, 50, 44, 59, NULL),
-(48, 1, 51, 44, 59, NULL),
-(49, 1, 52, 44, 59, NULL),
-(50, 1, 53, 44, 59, NULL),
-(51, 1, 54, 35, 61, NULL),
-(52, 1, 55, 35, 61, NULL),
-(53, 1, 56, 35, 61, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -8243,7 +6778,7 @@ CREATE TABLE `tbl_menutype` (
   `menutype` varchar(120) NOT NULL,
   `menu_icon` varchar(150) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -8257,7 +6792,7 @@ CREATE TABLE `tbl_module_purchasekey` (
   `purchasekey` varchar(55) DEFAULT NULL,
   `downloaddate` datetime NOT NULL DEFAULT '1970-01-01 01:01:01',
   `updatedate` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -8271,7 +6806,7 @@ CREATE TABLE `tbl_notificationsetting` (
   `onesignalcustomer` text NOT NULL,
   `onesignal_ioswaiter` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -8284,7 +6819,7 @@ CREATE TABLE `tbl_openclose` (
   `dayname` varchar(20) NOT NULL,
   `opentime` varchar(15) NOT NULL,
   `closetime` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_openclose`
@@ -8311,7 +6846,7 @@ CREATE TABLE `tbl_orderprepare` (
   `menuid` int(11) NOT NULL,
   `varient` int(11) NOT NULL,
   `preparetime` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_orderprepare`
@@ -8341,7 +6876,7 @@ CREATE TABLE `tbl_posetting` (
   `productionsetting` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=manual,1=auto',
   `tablemaping` int(11) NOT NULL DEFAULT 0 COMMENT '1=enable,0=disable',
   `soundenable` int(11) DEFAULT NULL COMMENT '1=enable,0=disable'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_posetting`
@@ -8363,7 +6898,7 @@ CREATE TABLE `tbl_quickordersetting` (
   `cooktime` int(11) NOT NULL DEFAULT 1 COMMENT '1=show,0=hide',
   `soundenable` int(11) NOT NULL DEFAULT 1 COMMENT '1=enable,0=disable	',
   `tablemaping` int(11) NOT NULL DEFAULT 1 COMMENT '1=enable,0=disable'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_quickordersetting`
@@ -8388,7 +6923,7 @@ CREATE TABLE `tbl_rating` (
   `status` int(11) NOT NULL DEFAULT 0,
   `email` varchar(255) NOT NULL,
   `ratetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -8401,7 +6936,7 @@ CREATE TABLE `tbl_room` (
   `roomno` varchar(100) NOT NULL,
   `floorno` int(11) NOT NULL,
   `status` int(11) NOT NULL COMMENT '1=active,0=inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -8415,7 +6950,7 @@ CREATE TABLE `tbl_seoption` (
   `title_slug` varchar(255) NOT NULL,
   `keywords` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_seoption`
@@ -8465,7 +7000,7 @@ CREATE TABLE `tbl_shippingaddress` (
   `address` text DEFAULT NULL,
   `address2` text DEFAULT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_shippingaddress`
@@ -8492,7 +7027,7 @@ CREATE TABLE `tbl_slider` (
   `delation_status` int(11) NOT NULL DEFAULT 0,
   `width` int(11) NOT NULL DEFAULT 0,
   `height` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_slider`
@@ -8531,7 +7066,7 @@ CREATE TABLE `tbl_slider_type` (
   `stype_id` int(11) NOT NULL,
   `STypeName` varchar(255) DEFAULT NULL,
   `delation_status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_slider_type`
@@ -8561,7 +7096,7 @@ CREATE TABLE `tbl_sociallink` (
   `socialurl` text DEFAULT NULL,
   `icon` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_sociallink`
@@ -8584,7 +7119,7 @@ CREATE TABLE `tbl_soundsetting` (
   `soundid` int(11) NOT NULL,
   `nofitysound` text DEFAULT NULL,
   `addtocartsound` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_soundsetting`
@@ -8604,7 +7139,7 @@ CREATE TABLE `tbl_state` (
   `countryid` int(11) NOT NULL,
   `statename` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_state`
@@ -8650,7 +7185,7 @@ INSERT INTO `tbl_state` (`stateid`, `countryid`, `statename`, `status`) VALUES
 CREATE TABLE `tbl_tablefloor` (
   `tbfloorid` int(11) NOT NULL,
   `floorName` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_tablefloor`
@@ -8672,7 +7207,7 @@ CREATE TABLE `tbl_thirdparty_customer` (
   `company_name` varchar(150) NOT NULL,
   `address` text DEFAULT NULL,
   `commision` decimal(10,2) DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -8687,14 +7222,14 @@ CREATE TABLE `tbl_token` (
   `tokenstartdate` date NOT NULL,
   `tokenendate` date NOT NULL,
   `tokenstatus` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_token`
 --
 
 INSERT INTO `tbl_token` (`tokenid`, `tokencode`, `tokenrate`, `tokenstartdate`, `tokenendate`, `tokenstatus`) VALUES
-(1, 'ABCD', 10.00, '2021-08-28', '2021-12-30', 1);
+(1, 'ABCD', '10.00', '2021-08-28', '2021-12-30', 1);
 
 -- --------------------------------------------------------
 
@@ -8713,7 +7248,7 @@ CREATE TABLE `tbl_updateitems` (
   `addonsuid` int(11) DEFAULT NULL,
   `isupdate` varchar(5) DEFAULT NULL,
   `insertdate` date DEFAULT '0000-00-00'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -8725,7 +7260,7 @@ CREATE TABLE `tbl_version_checker` (
   `vid` int(11) NOT NULL,
   `version` varchar(10) DEFAULT NULL,
   `disable` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_version_checker`
@@ -8766,7 +7301,7 @@ CREATE TABLE `tbl_waiterappcart` (
   `variantName` varchar(255) NOT NULL,
   `variantid` int(11) NOT NULL,
   `orderid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -8781,7 +7316,7 @@ CREATE TABLE `tbl_widget` (
   `widget_desc` text DEFAULT NULL,
   `widget_desc_full` text DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_widget`
@@ -8821,7 +7356,7 @@ CREATE TABLE `themes` (
   `theme_thumb` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '0=inactive,1=active',
   `activedate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `themes`
@@ -8844,7 +7379,7 @@ CREATE TABLE `top_menu` (
   `parentid` int(11) NOT NULL,
   `entrydate` date NOT NULL,
   `isactive` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `top_menu`
@@ -8872,10 +7407,10 @@ INSERT INTO `top_menu` (`menuid`, `menu_name`, `menu_slug`, `parentid`, `entryda
 
 CREATE TABLE `unit_of_measurement` (
   `id` int(11) NOT NULL,
-  `uom_name` varchar(200) NOT NULL,
-  `uom_short_code` varchar(10) NOT NULL,
+  `uom_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `uom_short_code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `is_foodunit` int(11) NOT NULL DEFAULT 0,
-  `uom_variations` text DEFAULT NULL,
+  `uom_variations` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -8907,7 +7442,7 @@ CREATE TABLE `usedcoupon` (
   `orderid` int(11) NOT NULL,
   `couponcode` varchar(100) NOT NULL,
   `couponrate` decimal(10,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -8932,14 +7467,14 @@ CREATE TABLE `user` (
   `counter` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `is_admin` tinyint(4) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `about`, `waiter_kitchenToken`, `email`, `password`, `login_pin`, `password_reset_token`, `image`, `last_login`, `last_logout`, `ip_address`, `counter`, `status`, `is_admin`) VALUES
-(2, 'John', 'Doe', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '', 'admin@example.com', '827ccb0eea8a706c4c34a16891f84e7b', '9630', '', './assets/img/user/m2.png', '2025-07-16 13:53:15', '2025-07-14 22:43:42', '127.0.0.1', NULL, 1, 1),
+(2, 'John', 'Doe', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '', 'admin@example.com', '827ccb0eea8a706c4c34a16891f84e7b', '9630', '', './assets/img/user/m2.png', '2025-07-18 13:39:58', '2025-07-14 22:43:42', '::1', NULL, 1, 1),
 (165, 'Hm', 'Isahaq', NULL, NULL, 'hmisahaq@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '3333', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
 (166, 'Ainal', 'Haque', NULL, NULL, 'ainal@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '4444', NULL, NULL, '2020-12-17 12:30:42', '2020-12-17 12:30:31', '::1', NULL, 1, 0),
 (168, 'Manik ', 'Hassan', NULL, NULL, 'manik@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '7777', NULL, NULL, '2025-06-12 21:37:47', '2025-06-12 21:28:58', '::1', NULL, 1, 0),
@@ -8974,36 +7509,7 @@ CREATE TABLE `variant` (
   `web_order_price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `recipe_cost` decimal(10,2) DEFAULT NULL,
   `recipe_weightage` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `variant`
---
-
-INSERT INTO `variant` (`variantid`, `menuid`, `variantName`, `price`, `takeaway_price`, `uber_eats_price`, `doordash_price`, `web_order_price`, `recipe_cost`, `recipe_weightage`) VALUES
-(1, 34, 'Regular', 3.00, 3.00, 4.00, 4.00, 4.00, 2.80, 200.00),
-(4, 36, '', 6.00, 6.00, 6.50, 6.50, 6.50, 0.00, 0.00),
-(5, 37, '', 15.00, 15.00, 15.00, 15.00, 15.00, 0.00, 0.00),
-(6, 38, '', 35.00, 35.00, 35.00, 32.00, 32.00, 0.00, 0.00),
-(7, 39, '', 25.00, 25.00, 25.00, 25.00, 25.00, 0.00, 0.00),
-(8, 40, 'Regular', 30.00, 30.00, 30.00, 30.00, 30.00, 0.00, 0.00),
-(10, 41, '', 15.00, 15.00, 15.00, 15.00, 15.00, 0.00, 0.00),
-(11, 42, 'Regular', 13.00, 13.00, 15.00, 15.00, 15.00, 0.00, 0.00),
-(12, 42, '', 0.00, 0.00, 0.00, 0.00, 0.00, NULL, NULL),
-(13, 43, 'Regular', 15.00, 15.00, 15.00, 15.00, 15.00, NULL, NULL),
-(23, 48, 'Regular', 3.00, 3.00, 3.00, 3.00, 3.00, NULL, NULL),
-(33, 45, 'Regular', 20.00, 20.00, 22.00, 22.00, 22.00, NULL, NULL),
-(36, 50, 'Regular', 35.00, 35.00, 35.00, 35.00, 35.00, NULL, NULL),
-(37, 49, 'Regular', 12.00, 12.00, 12.00, 12.00, 12.00, NULL, NULL),
-(48, 51, 'Regular', 5.00, 5.00, 5.00, 5.00, 5.00, 2.22, 850.00),
-(49, 51, 'Large', 4.00, 4.00, 4.00, 3.00, 3.00, 3.50, 200.00),
-(50, 51, 'Medium', 6.00, 5.00, 7.00, 7.00, 7.00, 6.75, 350.00),
-(51, 52, 'Regular', 3.00, 3.00, 3.00, 3.00, 3.00, 2.38, 250.00),
-(52, 52, 'Large', 5.00, 5.00, 5.00, 5.00, 5.00, 4.75, 500.00),
-(59, 44, 'Regular', 7.00, 7.00, 7.00, 7.00, 7.00, 6.47, 350.00),
-(60, 44, 'Large', 20.00, 20.00, 20.00, 18.00, 19.00, 18.00, 750.00),
-(61, 35, 'Regular', 2.00, 2.00, 3.00, 3.00, 3.00, 1.93, 300.00),
-(62, 35, 'Large', 4.00, 4.00, 3.75, 4.00, 4.00, 3.52, 450.00);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9020,7 +7526,7 @@ CREATE TABLE `waste_management` (
   `total_loss_amt` decimal(10,2) DEFAULT 0.00,
   `note` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9039,7 +7545,7 @@ CREATE TABLE `waste_management_items` (
   `food_id` int(11) DEFAULT NULL,
   `food_qty` decimal(10,2) DEFAULT NULL,
   `food_variant` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -9049,8 +7555,8 @@ CREATE TABLE `waste_management_items` (
 
 CREATE TABLE `weekly_holiday` (
   `wk_id` int(11) NOT NULL,
-  `dayname` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `dayname` varchar(30) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `weekly_holiday`
@@ -10106,7 +8612,7 @@ ALTER TABLE `weekly_holiday`
 -- AUTO_INCREMENT for table `accesslog`
 --
 ALTER TABLE `accesslog`
-  MODIFY `sl_no` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1237;
+  MODIFY `sl_no` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1250;
 
 --
 -- AUTO_INCREMENT for table `acc_account_name`
@@ -10136,7 +8642,7 @@ ALTER TABLE `acc_income_expence`
 -- AUTO_INCREMENT for table `acc_transaction`
 --
 ALTER TABLE `acc_transaction`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=308;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `acn_account_transaction`
@@ -10148,13 +8654,13 @@ ALTER TABLE `acn_account_transaction`
 -- AUTO_INCREMENT for table `add_ons`
 --
 ALTER TABLE `add_ons`
-  MODIFY `add_on_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `add_on_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `add_on_ingr_dtls`
 --
 ALTER TABLE `add_on_ingr_dtls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `award`
@@ -10166,7 +8672,7 @@ ALTER TABLE `award`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `bill_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `bill_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `bill_card_payment`
@@ -10292,7 +8798,7 @@ ALTER TABLE `customer_membership_map`
 -- AUTO_INCREMENT for table `customer_order`
 --
 ALTER TABLE `customer_order`
-  MODIFY `order_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `order_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customer_type`
@@ -10406,43 +8912,43 @@ ALTER TABLE `grand_loan`
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ingredients_opening_stock`
 --
 ALTER TABLE `ingredients_opening_stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ingredient_temp`
 --
 ALTER TABLE `ingredient_temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invprice_difference_notification`
 --
 ALTER TABLE `invprice_difference_notification`
-  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `item_category`
 --
 ALTER TABLE `item_category`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `item_foods`
 --
 ALTER TABLE `item_foods`
-  MODIFY `ProductsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `ProductsID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `itxn`
 --
 ALTER TABLE `itxn`
-  MODIFY `tid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `tid` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `language`
@@ -10490,7 +8996,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `menu_add_on`
 --
 ALTER TABLE `menu_add_on`
-  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `menu_group_modifiers`
@@ -10526,7 +9032,7 @@ ALTER TABLE `modifiers`
 -- AUTO_INCREMENT for table `modifier_groups`
 --
 ALTER TABLE `modifier_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `module`
@@ -10550,13 +9056,13 @@ ALTER TABLE `module_purchase_key`
 -- AUTO_INCREMENT for table `multipay_bill`
 --
 ALTER TABLE `multipay_bill`
-  MODIFY `multipay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `multipay_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ordered_menu_item_modifiers`
 --
 ALTER TABLE `ordered_menu_item_modifiers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_item_modifiers`
@@ -10568,7 +9074,7 @@ ALTER TABLE `order_item_modifiers`
 -- AUTO_INCREMENT for table `order_menu`
 --
 ALTER TABLE `order_menu`
-  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `paymentsetup`
@@ -10616,13 +9122,13 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `production`
 --
 ALTER TABLE `production`
-  MODIFY `productionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `productionid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `production_details`
 --
 ALTER TABLE `production_details`
-  MODIFY `pro_detailsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `pro_detailsid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `promotion_main_modifiers`
@@ -10640,25 +9146,25 @@ ALTER TABLE `promotion_other_modifiers`
 -- AUTO_INCREMENT for table `promo_data`
 --
 ALTER TABLE `promo_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `purchaseitem`
 --
 ALTER TABLE `purchaseitem`
-  MODIFY `purID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `purID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `purchase_details`
 --
 ALTER TABLE `purchase_details`
-  MODIFY `detailsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `detailsid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `purchase_return`
 --
 ALTER TABLE `purchase_return`
-  MODIFY `preturn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `preturn_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rate_type`
@@ -10784,7 +9290,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `supplier_ledger`
 --
 ALTER TABLE `supplier_ledger`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `synchronizer_setting`
@@ -10910,7 +9416,7 @@ ALTER TABLE `tbl_kitchen`
 -- AUTO_INCREMENT for table `tbl_kitchen_order`
 --
 ALTER TABLE `tbl_kitchen_order`
-  MODIFY `ktid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `ktid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_menutype`
@@ -11084,7 +9590,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `variant`
 --
 ALTER TABLE `variant`
-  MODIFY `variantid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `variantid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `waste_management`
