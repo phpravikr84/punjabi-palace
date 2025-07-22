@@ -1177,7 +1177,10 @@ class Item_category extends MX_Controller {
         
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $data["categories"] = $this->category_model->read_category($config["per_page"], $page, ['parentid !=' => 0]); // Fetch only categories
+        $data["categories"] = $this->category_model->read_firstcategory_withgroup($config["per_page"], $page); // Fetch only categories
+		// echo '<pre>';
+		// print_r($data["categories"]);
+		// echo '</pre>';
         $data["links"] = $this->pagination->create_links();
         $data['pagenum'] = $page;
         #

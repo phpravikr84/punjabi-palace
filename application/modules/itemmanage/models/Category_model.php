@@ -408,18 +408,45 @@ public function count_category()
     }
 
 
-	public function read_category_first($limit = null, $start = null, $condition = []) {
-        $this->db->select('*');
-        $this->db->from('item_category');
-        if (!empty($condition)) {
-            $this->db->where($condition);
-        }
-        if ($limit !== null && $start !== null) {
-            $this->db->limit($limit, $start);
-        }
-        $this->db->order_by('CategoryID', 'DESC');
-        $query = $this->db->get();
-        return $query->result();
-    }
+	public function read_firstcategory_withgroup($limit = null, $start = null, $condition = [])
+	{
+		// Fetch all groups (parentid = 0)
+		$this->db->select('*');
+		$this->db->from('item_category');
+		$this->db->where('parentid', 0);
+
+		if (!empty($condition)) {
+			$this->db->where($condition);
+		}
+
+		if ($limit !== null && $start !== null) {
+			$this->db->limit($limit, $start);
+		}
+
+		$this->db->order_by('CategoryID', 'ASC');
+		$groups_query = $this->db->get();
+		$groups = $groups_query->result_array();
+
+		$result = [];
+
+		foreach ($groups as $group) {
+			// Get first child category for this group
+			$this->db->select('*');
+			$this->db->from('item_category');
+			$this->db->where('parentid', $group['CategoryID']);
+			$this->db->order_by('CategoryID', 'ASC');
+			//$this->db->limit(1);
+			$child_query = $this->db->get();
+			$child = $child_query->result_array();
+
+			// Add 'category' key with child details
+			$group['category'] = $child;
+
+			$result[] = $group;
+		}
+
+		return $result;
+	}
+
 
 }
