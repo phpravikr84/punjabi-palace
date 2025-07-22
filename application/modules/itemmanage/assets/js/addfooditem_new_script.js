@@ -1380,61 +1380,139 @@ $(document).ready(function () {
 });
 
 
-//New Category Dropdown ajax
-$(document).ready(function() {
-      // Initialize Select2 for all dropdowns
+//New Category Dropdown ajax -- old code commented by Ravi on 21072025
+// $(document).ready(function() {
+//       // Initialize Select2 for all dropdowns
+//     var getSubcategoriesUrl = $('#getSubcategoriesUrl').val();
 
+//     // Handle parent category change
+//     $('#parent_category').change(function() {
+//         var parent_id = $(this).val();
+//         // $('#child_category_container').hide();
+//         // $('#grandchild_category_container').hide();
+//         // $('#child_category').val('0').trigger('change');
+//         // $('#grandchild_category').val('0').trigger('change');
+//         // $('#child_category_container').hide();
+//         // $('#grandchild_category_container').hide();
+//         // $('#child_category').empty().append('<option value="">Select Subcategory</option>');
+//         // $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
+       
 
-    // Handle parent category change
-    $('#parent_category').change(function() {
+//         var csrf = $('#csrfhashresarvation').val();
+
+//         if (parent_id) {
+//             $.ajax({
+//                 url: getSubcategoriesUrl + '/' + parent_id,
+//                 type: 'GET',
+//                 data: { csrf_test_name: csrf  },
+//                 success: function(response) {
+//                     console.log('Response:', response);
+//                     $('#child_category').html(response);
+//                     $('#child_category_container').show();
+//                 }
+//             });
+//         }
+//     });
+
+//     // Handle child category change
+//     $('#child_category').change(function() {
+//         var parent_id = $(this).val();
+//         $('#grandchild_category_container').show();
+//         $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
+//         var csrf = $('#csrfhashresarvation').val();
+//         if (parent_id) {
+//             $.ajax({
+//                 url: getSubcategoriesUrl + '/' + parent_id,
+//                 type: 'GET',
+//                 data: { csrf_test_name: csrf },
+//                 success: function(response) {
+//                     if ($(response).filter('option').length > 1) { // Check if there are subcategories
+//                         $('#grandchild_category').html(response);
+//                         $('#grandchild_category_container').show();
+//                     }
+//                 }
+//             });
+//         }
+//     });
+// });
+
+$(document).ready(function () {
+    var getSubcategoriesUrl = $('#getSubcategoriesUrl').val();
+
+    // Handle Parent Category Change
+    $('#parent_category').change(function () {
         var parent_id = $(this).val();
-        // $('#child_category_container').hide();
-        // $('#grandchild_category_container').hide();
-        // $('#child_category').val('0').trigger('change');
-        // $('#grandchild_category').val('0').trigger('change');
-        // $('#child_category_container').hide();
-        // $('#grandchild_category_container').hide();
-        // $('#child_category').empty().append('<option value="">Select Subcategory</option>');
-        // $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
-        var getSubcategoriesUrl = $('#getSubcategoriesUrl').val();
-
         var csrf = $('#csrfhashresarvation').val();
 
-        if (parent_id) {
-            $.ajax({
-                url: getSubcategoriesUrl + '/' + parent_id,
-                type: 'GET',
-                data: { csrf_test_name: csrf  },
-                success: function(response) {
-                    console.log('Response:', response);
-                    $('#child_category').html(response);
-                    $('#child_category_container').show();
-                }
-            });
-        }
-    });
-
-    // Handle child category change
-    $('#child_category').change(function() {
-        var parent_id = $(this).val();
-        $('#grandchild_category_container').hide();
-        $('#grandchild_category').empty().append('<option value="">Select Sub-subcategory</option>');
-        var csrf = $('#csrfhashresarvation').val();
         if (parent_id) {
             $.ajax({
                 url: getSubcategoriesUrl + '/' + parent_id,
                 type: 'GET',
                 data: { csrf_test_name: csrf },
-                success: function(response) {
-                    if ($(response).filter('option').length > 1) { // Check if there are subcategories
-                        $('#grandchild_category').html(response);
-                        $('#grandchild_category_container').show();
+                success: function (response) {
+                    $('#child_category').html(response);
+                    $('#child_category_container').show();
+
+                    var selectedChild = $('#child_category').data('selected');
+                    if (selectedChild) {
+                        $('#child_category').val(selectedChild).trigger('change');
                     }
                 }
             });
+        } else {
+            $('#child_category_container').hide();
+            $('#child_category').html('<option value="0">Select Category</option>');
+            $('#grandchild_category_container').hide();
+            $('#grandchild_category').html('<option value="0">Select Sub-subcategory</option>');
         }
     });
+
+    // Handle Child Category Change
+    $('#child_category').change(function () {
+        var parent_id = $(this).val();
+        var csrf = $('#csrfhashresarvation').val();
+
+        if (parent_id && parent_id !== '0') {
+            $.ajax({
+                url: getSubcategoriesUrl + '/' + parent_id,
+                type: 'GET',
+                data: { csrf_test_name: csrf },
+                success: function (response) {
+                    $('#grandchild_category').html(response);
+                    $('#grandchild_category_container').show();
+
+                    var selectedGrandchild = $('#grandchild_category').data('selected');
+                    if (selectedGrandchild) {
+                        $('#grandchild_category').val(selectedGrandchild);
+                    }
+                }
+            });
+        } else {
+            $('#grandchild_category_container').hide();
+            $('#grandchild_category').html('<option value="0">Select Sub-subcategory</option>');
+        }
+    });
+
+    // ===================================
+    // 🟡 Trigger logic on Page Load
+    // ===================================
+    var selectedParent = $('#parent_category').val();
+    var selectedChild = $('#child_category').val();
+    var selectedGrandchild = $('#grandchild_category').val();
+
+    if (selectedChild && selectedChild !== '0') {
+        $('#child_category').data('selected', selectedChild);
+    }
+
+    if (selectedGrandchild && selectedGrandchild !== '0') {
+        $('#grandchild_category').data('selected', selectedGrandchild);
+    }
+
+    if (selectedParent && selectedParent !== '0') {
+        $('#parent_category').trigger('change');
+    }
 });
+
 
 //Handle Switch on Edit page -- Disable due to already php function implement by Joy
 // $(document).ready(function () {
@@ -1473,5 +1551,23 @@ $(document).ready(function() {
 //         });
 //     }
 // });
+
+// Weborder price
+$(document).ready(function() {
+    $(document).on('focus', '.pr_uber_eats_price', function() {
+        var value = $(this).val();
+        console.log('Uber Eats Price:', value);
+        var container = $(this).closest('.productprices');
+        
+        // Only update if value is not empty
+        if (value !== '') {
+            container.find('.pr_doordash_price').val(value);
+            container.find('.pr_weborder_price').val(value);
+        }
+    });
+});
+
+
+
 
 

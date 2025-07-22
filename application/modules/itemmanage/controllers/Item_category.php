@@ -1177,7 +1177,10 @@ class Item_category extends MX_Controller {
         
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        $data["categories"] = $this->category_model->read_category($config["per_page"], $page, ['parentid !=' => 0]); // Fetch only categories
+        $data["categories"] = $this->category_model->read_firstcategory_withgroup($config["per_page"], $page); // Fetch only categories
+		// echo '<pre>';
+		// print_r($data["categories"]);
+		// echo '</pre>';
         $data["links"] = $this->pagination->create_links();
         $data['pagenum'] = $page;
         #
@@ -1255,5 +1258,173 @@ class Item_category extends MX_Controller {
 			echo json_encode(['status' => 'error']);
 		}
 	}
-	
+
+	// Fetch parent categories for dropdown based on the provided SQL query
+    public function get_parent_categories_for_dropdown() {
+        $query = $this->db->query("
+            SELECT ic.* 
+            FROM item_category ic 
+            JOIN (
+                SELECT parentid, MIN(CategoryID) AS FirstChildID 
+                FROM item_category 
+                WHERE parentid != 0 
+                GROUP BY parentid
+            ) first_child 
+            ON ic.CategoryID = first_child.FirstChildID
+        ");
+        return $query->result();
+    }
+
+	/**
+	 * Fetch Subcategories for a given first category
+	 *
+	 */
+	public function subcategory_list() {
+        $this->permission->method('itemmanage', 'read')->redirect();
+        $data['title'] = display('subcategory_list');
+
+        #-------------------------------#
+        # Pagination starts
+        #
+        $config["base_url"] = base_url('itemmanage/item_category/subcategory_list');
+        $config["total_rows"] = $this->category_model->count_category(['parentid !=' => 0]);
+        $config["per_page"] = 25;
+        $config["uri_segment"] = 4;
+        $config["last_link"] = "Last"; 
+        $config["first_link"] = "First"; 
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';  
+        $config['full_tag_open'] = "<ul class='pagination col-xs pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tag_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tag_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tag_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tag_close'] = "</li>";
+        
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $data["categories"] = $this->category_model->get_subcategories_for_listing($config["per_page"], $page);
+		// echo '<pre>';
+		// print_r($data["categories"]);
+		// echo '</pre>';
+		// exit;
+        $data["links"] = $this->pagination->create_links();
+        $data['pagenum'] = $page;
+        #
+        # Pagination ends
+        #
+
+        $data['sub_header'] = 'subcategory';
+        $data['module'] = "itemmanage";
+        $data['page'] = "subcategory_list";   
+        echo Modules::run('template/layout', $data); 
+    }
+
+    public function create_subcategory($id = null) {
+        $this->permission->method('itemmanage', 'create')->redirect();
+
+        $data['title'] = !empty($id) ? display('update_subcategory') : display('add_subcategory');
+        $this->load->library(['form_validation', 'fileupload']);
+        $savedid = $this->session->userdata('id');
+
+        // Get form data
+        $categoryNames = $this->input->post('categoryname', true);
+        $subcategoryIds = $this->input->post('subCategoryId', true) ?? [];
+        $statuses = $this->input->post('status', true) ?? [];
+        $parentCategories = $this->input->post('Parentcategory', true) ?? [];
+        $isOffers = $this->input->post('isoffer', true) ?? [];
+        $offerPercentages = $this->input->post('offerpercentage', true) ?? [];
+        $offerStartDates = $this->input->post('offerstartdate', true) ?? [];
+        $offerEndDates = $this->input->post('offerendate', true) ?? [];
+
+        // Validation
+        if (!empty($categoryNames)) {
+            foreach ($categoryNames as $key => $categoryName) {
+                $this->form_validation->set_rules("categoryname[$key]", display('category_name'), "required|max_length[100]");
+                $this->form_validation->set_rules("Parentcategory[$key]", 'Parent Category', "required");
+                $this->form_validation->set_rules("status[$key]", display('status'), "required|in_list[0,1]");
+            }
+        }
+
+        if ($this->form_validation->run()) {
+            $img = $this->fileupload->do_upload('./application/modules/itemmanage/assets/images/', 'picture');
+            if (empty($img)) {
+                $img = $this->input->post('old_image', true);
+            }
+
+            $success = true;
+            $insertedCategories = [];
+            $updatedCategories = [];
+
+            foreach ($categoryNames as $index => $categoryName) {
+                $isOffer = !empty($isOffers[$index]) ? 1 : 0;
+                $offerPercentage = $offerPercentages[$index] ?? 0;
+                $offerStartDate = $isOffer && !empty($offerStartDates[$index]) ? date('Y-m-d', strtotime($offerStartDates[$index])) : "0000-00-00";
+                $offerEndDate = $isOffer && !empty($offerEndDates[$index]) ? date('Y-m-d', strtotime($offerEndDates[$index])) : "0000-00-00";
+                $parentId = !empty($parentCategories[$index]) ? $parentCategories[$index] : 0;
+
+                $postData = [
+                    'Name'             => $categoryName,
+                    'parentid'         => $parentId,
+                    'CategoryIsActive' => $statuses[$index] ?? 1,
+                    'isoffer'          => $isOffer,
+                    'offerpercentage'  => $offerPercentage,
+                    'offerstartdate'   => $offerStartDate,
+                    'offerendate'      => $offerEndDate,
+                    'UserIDUpdated'    => $savedid,
+                    'DateUpdated'      => date('Y-m-d H:i:s'),
+                    'DateLocked'       => date('Y-m-d H:i:s'),
+                ];
+
+                if (!empty($subcategoryIds[$index])) {
+                    $postData['CategoryID'] = $subcategoryIds[$index];
+                    if (!$this->category_model->update_cat($postData)) {
+                        $success = false;
+                    } else {
+                        $updatedCategories[] = $postData;
+                    }
+                } else {
+                    $postData['CategoryImage'] = $img;
+                    $postData['UserIDInserted'] = $savedid;
+                    $postData['DateInserted'] = date('Y-m-d H:i:s');
+                    if (!$this->category_model->cat_create($postData)) {
+                        $success = false;
+                    } else {
+                        $insertedCategories[] = $postData;
+                    }
+                }
+            }
+
+            if ($success) {
+                if (!empty($insertedCategories)) {
+                    $this->logCategoryAction("Insert Data", "Multiple subcategories created");
+                }
+                if (!empty($updatedCategories)) {
+                    $this->logCategoryAction("Update Data", "Multiple subcategories updated");
+                }
+                $this->session->set_flashdata('message', display(!empty($id) ? 'update_successfully' : 'save_successfully'));
+                redirect("itemmanage/item_category/subcategory_list");
+            } else {
+                $this->session->set_flashdata('exception', display('please_try_again'));
+            }
+        } else {
+            $data['validation_errors'] = $this->form_validation->error_array();
+            if (!empty($id)) {
+                $data['categoryinfo'] = $this->category_model->findCategoryWithSubcategories($id);
+            }
+            $data['sub_header'] = 'subcategory';
+            $data['categories'] = $this->category_model->get_parent_categories_for_dropdown();
+            $data['module'] = "itemmanage";
+            $data['page'] = "create_subcategory";
+            echo Modules::run('template/layout', $data);
+        }
+    }
 }

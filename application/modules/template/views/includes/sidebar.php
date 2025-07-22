@@ -41,6 +41,7 @@
 					"icon"           => "<i class='fa fa-cube' aria-hidden='true'></i>", 
 					"edit_group" => array("controller" => "item_category","method"=> "group_list","permission" => "create"), 
 					"edit_category" => array("controller" => "item_category","method" => "category_list","permission" => "read"),
+					"edit_subcategory" => array("controller" => "item_category","method" => "subcategory_list","permission" => "read"),
 					"edit_food" => array("controller" => "item_food","method" => "index","permission" => "read"),
 					"edit_modifiers" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
 					"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read"),
@@ -411,6 +412,9 @@
 
 						case 'edit_category':
 							echo 'Edit Category';
+							break;
+						case 'edit_subcategory':
+							echo 'Edit SubCategory';
 							break;
 						case 'edit_food':
 							echo 'Edit Item';

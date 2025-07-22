@@ -92,6 +92,8 @@
                                 <th class="no-rotate"><div><span><?php echo 'Group'; ?></span></div></th>
                                 <th class="no-rotate"><div><span><?php echo 'Category'; ?></span></div></th>
                                 <th class="no-rotate"><div><span><?php echo 'Item Name'; ?></span></div></th>
+                                <th class="no-rotate"><div><span><?php echo 'Item Code' ?></span></div></th>
+                                <th class="rotate"><div><span><?php echo 'Meal Type' ?></span></div></th>
                                 <th class="rotate"><div><span><?php echo display('component') ?></span></div></th>
                                 <th class="rotate"><div><span>Recipe</span></div></th>
                                 <th class="no-rotate text-center"><div><span><?php echo 'All Prices (Incl. other vendors)' ?></span></div></th>
@@ -122,6 +124,19 @@
                                         <td class="text-center"><?php echo get_category_name($fooditems->GroupID); ?></td>
                                         <td class="text-center"><?php if ($fooditems->isgroup == 1): echo "<strong class='text-success'>Promotions</strong>"; else: echo $fooditems->Name; endif; ?></td>
                                         <td><?php echo $fooditems->ProductName . ($fooditems->is_bom == 1 ? ' (With BOM)' : ''); ?></td>
+                                        <td><?php echo $fooditems->item_code; ?></td>
+                                        <td>
+                                            <?php
+                                            $groupName = strtolower(get_category_name($fooditems->GroupID));
+                                            //echo $groupName; // For debugging, can be removed later
+
+                                            if ($groupName === 'Food Menu' || $groupName === 'food menu' || $groupName === 'FOOD MENU') {
+                                                echo htmlspecialchars($fooditems->food_type == 1 ? '🥗' : '🍗');
+                                            } elseif (in_array($groupName, ['beverage', 'beverages'])) {
+                                                echo '🥤'; // Drink icon for beverages
+                                            }
+                                            ?>
+                                        </td>
                                         <td><?php echo !empty($fooditems->component) ? $fooditems->component : '-'; ?></td>
                                         <td class="text-center">
                                             <?php if ($fooditems->is_bom == 1): ?>
@@ -138,14 +153,14 @@
                                                             <?php if ($fooditems->is_bom == 1) { ?>
                                                                 <th class="rotate-sub"><div><span>Variant</span></div></th>
                                                             <?php } ?>
-                                                            <th class="rotate-sub"><div><span>Price</span></div></th>
+                                                            <th class="rotate-sub"><div><span>Dine In</span></div></th>
                                                             <th class="rotate-sub"><div><span>Takeaway</span></div></th>
                                                             <th class="rotate-sub"><div><span>Uber Eats</span></div></th>
-                                                            <th class="rotate-sub"><div><span>DoorDash</span></div></>
-                                                            <th class="rotate-sub"><div><span>Web Order</span></div></th>
+                                                            <!-- <th class="rotate-sub"><div><span>DoorDash</span></div></th>
+                                                            <th class="rotate-sub"><div><span>Web Order</span></div></th> -->
                                                             <?php if ($fooditems->is_bom == 1) { ?>
                                                                 <th class="rotate-sub"><div><span>Recipe Cost</span></div></th>
-                                                                <th class="rotate-sub"><div><span>Weightage</span></div></th>
+                                                                <!-- <th class="rotate-sub"><div><span>Weightage</span></div></th> -->
                                                             <?php } ?>
                                                         </tr>
                                                     </thead>
@@ -158,11 +173,11 @@
                                                                 <td><?php echo number_format($variant['price'], 2); ?></td>
                                                                 <td><?php echo number_format($variant['takeaway_price'], 2); ?></td>
                                                                 <td><?php echo number_format($variant['uber_eats_price'], 2); ?></td>
-                                                                <td><?php echo number_format($variant['doordash_price'], 2); ?></td>
-                                                                <td><?php echo number_format($variant['web_order_price'], 2); ?></td>
+                                                                <!-- <td><?php //echo number_format($variant['doordash_price'], 2); ?></td>
+                                                                <td><?php //echo number_format($variant['web_order_price'], 2); ?></td> -->
                                                                 <?php if ($fooditems->is_bom == 1) { ?>
                                                                     <td><?php echo !empty($variant['recipe_cost']) ? number_format($variant['recipe_cost'], 2) : '-'; ?></td>
-                                                                    <td><?php echo !empty($variant['recipe_weightage']) ? number_format($variant['recipe_weightage'], 2) : '-'; ?></td>
+                                                                    <!-- <td><?php //echo !empty($variant['recipe_weightage']) ? number_format($variant['recipe_weightage'], 2) : '-'; ?></td> -->
                                                                 <?php } ?>
                                                             </tr>
                                                         <?php } ?>

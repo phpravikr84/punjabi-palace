@@ -489,28 +489,44 @@
                                         <input type="hidden" id="getSubcategoriesUrl" value="<?php echo base_url('itemmanage/item_food/get_subcategories'); ?>">
                                         <?php if (!empty($categories)) { ?>
                                             <?php
+                                            echo '<pre>';
+                                            print_r($categories);
+                                            echo '</pre>';
+                                            exit;
                                                 // Handle selected categories for edit mode
                                                 $selected_parent = $selected_child = $selected_grandchild = '';
-
-                                                if (!empty($productinfo['GroupID'])) {
-                                                    $selected_parent = $productinfo['GroupID'];
+                                                if (isset($productinfo) && !empty($productinfo['CategoryID'])) {
+                                                    $selectedCategories = explode(',', $productinfo['CategoryID']);
+                                                    $last_category_id = end($selectedCategories);
+                                                    
+                                                    foreach ($categories as $cat) {
+                                                        if ($cat->CategoryID == $last_category_id) {
+                                                            if ($cat->parentid == 0) {
+                                                                $selected_parent = $last_category_id;
+                                                            } else {
+                                                                foreach ($categories as $parent_cat) {
+                                                                    if ($parent_cat->CategoryID == $cat->parentid) {
+                                                                        $selected_child = $last_category_id;
+                                                                        if ($parent_cat->parentid == 0) {
+                                                                            $selected_parent = $parent_cat->CategoryID;
+                                                                        } else {
+                                                                            $selected_grandchild = $last_category_id;
+                                                                            $selected_child = $parent_cat->CategoryID;
+                                                                            foreach ($categories as $grandparent_cat) {
+                                                                                if ($grandparent_cat->CategoryID == $parent_cat->parentid) {
+                                                                                    $selected_parent = $grandparent_cat->CategoryID;
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                            break;
+                                                        }
+                                                    }
                                                 }
-                                                if (!empty($productinfo['CategoryID'])) {
-                                                    $selected_child = $productinfo['CategoryID'];
-                                                }
-                                                if (!empty($productinfo['SubCategoryID'])) {
-                                                    $selected_grandchild = $productinfo['SubCategoryID'];
-                                                }
-
                                             ?>
-
-                                             <?php
-                                                    // echo '<pre>';
-                                                    // echo 'Selected Parent: ' . $selected_parent . "\n";
-                                                    // echo 'Selected Child: ' . $selected_child . "\n";
-                                                    // echo 'Selected Grandchild: ' . $selected_grandchild . "\n";
-                                                    // echo '</pre>';
-                                                ?>
 
                                             <!-- Parent Category Dropdown -->
                                             <div class="mb-3">
@@ -545,25 +561,18 @@
 
                                             <!-- Grandchild Category Dropdown -->
                                             <div class="mb-3" id="grandchild_category_container" style="display: <?php echo $selected_grandchild ? 'block' : 'none'; ?>;">
-                                                <label class="form-label fw-bold">Sub-subcategory</label>
-                                               
-
+                                                <label class="form-label fw-bold">Sub-subcategory <?php echo $selected_grandchild; ?></label>
                                                 <select id="grandchild_category" name="CategoryID[grandchild]" class="form-control selectcategories">
-                                                <option value="">Select Subcategory</option>
-                                                <?php foreach ($categories as $cat): ?>
-                                                    <?php if ($selected_grandchild): ?>
-    <?php
-    $grandchild_categories = sub_categories_by_parent_id($selected_child); // Get only grandchildren
-    foreach ($grandchild_categories as $grandchild) {
-    ?>
-        <option value="<?= $grandchild->CategoryID ?>" <?= ($selected_grandchild == $grandchild->CategoryID) ? 'selected' : '' ?>>
-            <?= htmlspecialchars($grandchild->Name) ?>
-        </option>
-    <?php } ?>
-<?php endif; ?>
-                                                <?php endforeach; ?>
-                                            </select>
-
+                                                    <option value="0">Select Sub-subcategory</option>
+                                                    <?php if ($selected_grandchild) { 
+                                                        $grandchild_categories = sub_categories_by_parent_id($selected_grandchild);
+                                                        foreach ($grandchild_categories as $grandchild) { ?>
+                                                            <option value="<?php echo $grandchild->CategoryID; ?>" <?php echo ($selected_grandchild == $grandchild->CategoryID) ? 'selected' : ''; ?>>
+                                                                <?php echo htmlspecialchars($grandchild->Name); ?>
+                                                            </option>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         <?php } ?>
                                     </div>
