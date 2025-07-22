@@ -77,7 +77,8 @@ left:0;
 }
 
 .tab-content-xs {
-    top: 75px;
+    /* top: 75px; */
+    top: 55px;
     position: relative;
     padding: 0 0 40px
 }
@@ -251,12 +252,17 @@ listcat.listcat {
         color:#000;
         background: #fff;
         border-radius: 12px;
-        padding: 12px 15px;
+        /* padding: 12px 15px; */
+        padding: 10px 12px;
         margin-right: 6px;
         line-height: 18px;
         display: flex;
         align-items: center;
         gap: 7px;
+    }
+    .nav-tabs > li > a {
+        padding: 10px 12px !important;
+        font-size: 12px;
     }
 
     .nav-tabs > li > a.maindashboard:hover {
@@ -354,6 +360,9 @@ search-custom .select2-container--default .select2-selection--single .select2-se
 .p-10 {
     padding: 10px;
 }
+.p-12 {
+    padding: 12px;
+}
 /* Form container */
 .pos-newform {
     background: #FFF2E8 !important;
@@ -363,10 +372,12 @@ search-custom .select2-container--default .select2-selection--single .select2-se
     padding: 10px;
     max-width: 600px; /* Adjust form width */
     margin: auto;
+    font-size: 12px !important;
 }
 
 .pos-newform label {
-    font-size: 1.3rem;
+    /* font-size: 1.3rem; */
+    font-size: 1.1rem;
 }
 #table_person svg {
     width: 20px;  /* Adjust the width to your preference */

@@ -29,7 +29,7 @@ if (count($selectedFoodsForCart)>0):
   foreach ($selectedFoodsForCart as $smk => $smv):
 ?>
         <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name. ' (Food)';?></small>
+        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
 <?php
   endforeach;
 endif;
@@ -43,7 +43,7 @@ if (count($selectedModsForCart)>0):
         <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
 <?php 
     else:
-        $smv->add_on_name = $smv->add_on_name . ' (Modifier)';
+        $smv->add_on_name = $smv->add_on_name;
 ?>
         <br />
         <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
@@ -54,7 +54,7 @@ endif;
 if (count($selectedModsForCart) == 0 && count($selectedFoodsForCart) == 0):
 ?>
         <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">Choose Modifiers</small>
+        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">+ Modifiers</small>
 <?php
 endif;
 ?>
@@ -79,7 +79,21 @@ if ($cart = $this->cart->contents()):
     $pdiscount = 0;
     foreach ($cart as $item) {
         $iteminfo = $this->ordermodel->getiteminfo($item['pid']);
+        // switch ($ctype) {
+        //     case '1':
+        //         $itemprice = $item['price'] * $item['qty'];
+        //         break;
+        //     case '2':
+        //         $itemprice = $item['uber_eats_price'] * $item['qty'];
+        //         break;
+        //     case '4':
+        //         $itemprice = $item['takeaway_price'] * $item['qty'];
+        //         break;
+        //     default:
+        //         $itemprice = $item['price'] * $item['qty'];
+        // }
         $itemprice = $item['price'] * $item['qty'];
+
         $cartItemQty = $item['qty'];
         //Fetching add-on prices
         $this->db->select('SUM(add_ons.price) AS mod_total_price');

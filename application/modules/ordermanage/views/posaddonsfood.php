@@ -93,8 +93,27 @@ if ($recipe_feature_flag == 1) {
                 <input type="number" name="itemqty" id="itemqty_<?php echo "1"; ?>" class="form-control text-right" value="1" min="1" />
             </td>
             <td>
-                <input name="itemprice" type="hidden" value="<?php echo $item->price; ?>" id="itemprice_<?php echo "1"; ?>" />
-                <span id="vprice"><?php echo (($currency->position == 1) ? $currency->curr_icon : '').$item->price; ?></span>
+                <?php 
+                $itemprice=0;
+                // echo "<pre>";
+                // print_r($item);
+                // echo "</pre>";
+                switch ($ctype) {
+                    case '1':
+                        $itemprice = $item->price;
+                        break;
+                    case '2':
+                        $itemprice = $item->uber_eats_price;
+                        break;
+                    case '4':
+                        $itemprice = $item->takeaway_price;
+                        break;
+                    default:
+                        $itemprice = $item->price;
+                }
+                ?>
+                <input name="itemprice" type="hidden" value="<?php echo $itemprice; ?>" id="itemprice_<?php echo "1"; ?>" />
+                <span id="vprice"><?php echo (($currency->position == 1) ? $currency->curr_icon : '').$itemprice; ?></span>
             </td>
 
         </tr>

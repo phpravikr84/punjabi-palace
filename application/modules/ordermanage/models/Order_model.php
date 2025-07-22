@@ -59,7 +59,7 @@ class Order_model extends CI_Model
 		$itemlist = $query->result();
 		return $itemlist;
 	}
-	public function allfood2()
+	public function allfood2($ctype = null)
 	{
 		$this->db->select('*');
 		$this->db->from('item_foods');
@@ -79,7 +79,23 @@ class Order_model extends CI_Model
 						$output[$k]['variantid'] = $varientinfo->variantid;
 						$output[$k]['totalvarient'] = $varientinfo->totalvarient;
 						$output[$k]['variantName'] = $varientinfo->variantName;
-						$output[$k]['price'] = $varientinfo->price;
+						if (empty($ctype)) {
+							$ctype = 1; // Default to 1 if ctype is not set
+						}
+						switch ($ctype) {
+							case '1':
+								$output[$k]['price'] = $varientinfo->price;
+								break;
+							case '2':
+								$output[$k]['price'] = $varientinfo->uber_eats_price;
+								break;
+							case '4':
+								$output[$k]['price'] = $varientinfo->takeaway_price;
+								break;
+							default:
+								$output[$k]['price'] = $varientinfo->price;
+						}
+						// $output[$k]['price'] = $varientinfo->price;
 					} else {
 						$output[$k]['variantid'] = '';
 						$output[$k]['totalvarient'] = 0;
@@ -749,9 +765,9 @@ class Order_model extends CI_Model
 		$itemlist = $query->row();
 		return $itemlist;
 	}
-	public function findid($id = null, $sid = null)
+	public function findid($id = null, $sid = null, $ctype=null)
 	{
-		$this->db->select('item_foods.*,variant.variantid,variant.variantName,variant.price');
+		$this->db->select('item_foods.*,variant.variantid,variant.variantName,variant.price, variant.takeaway_price, variant.uber_eats_price');
 		$this->db->from('item_foods');
 		$this->db->join('variant', 'item_foods.ProductsID=variant.menuid', 'left');
 		$this->db->where('menuid', $id);

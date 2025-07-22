@@ -262,12 +262,12 @@ class Order extends MX_Controller
 		$data['page']   = "addorder";
 		echo Modules::run('template/layout', $data);
 	}
-	public function pos_invoice()
+	public function pos_invoice($ctype = null)
 	{
 		if ($this->permission->method('ordermanage', 'create')->access() == FALSE) {
 			redirect('dashboard/home');
 		}
-
+		// echo "<script>alert('ctype = " . $ctype . "');</script>";
 		$data['title'] = "posinvoiceloading";
 		$saveid = $this->session->userdata('id');
 		$data['categorylist']  = $this->order_model->category_dropdown();
@@ -280,7 +280,7 @@ class Order extends MX_Controller
 		$data['terminalist']   = $this->order_model->allterminal_dropdown();
 		$data['waiterlist']    = $this->order_model->waiter_dropdown();
 		$data['tablelist']     = $this->order_model->table_dropdown();
-		$data['itemlist']      =  $this->order_model->allfood2();
+		$data['itemlist']      =  $this->order_model->allfood2($ctype);
 		$data['ongoingorder']  = $this->order_model->get_ongoingorder();
 		$data['possetting'] = $this->order_model->read('*', 'tbl_posetting', array('possettingid' => 1));
 		$data['possetting2'] = $this->order_model->read('*', 'tbl_quickordersetting', array('quickordid' => 1));
@@ -292,6 +292,10 @@ class Order extends MX_Controller
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
 		$data['page']   = "posorder";
+		if (empty($ctype)) {
+			$ctype = 1; // Default to 1 if ctype is not set
+		}
+		$data['ctype']   = $ctype;
 		echo Modules::run('template/layout', $data);
 	}
 	public function getongoingorder($id = null, $table = null)
@@ -1014,9 +1018,10 @@ class Order extends MX_Controller
 	{
 		$id = $this->input->post('pid');
 		$sid = $this->input->post('sid');
+		$ctype = $this->input->post('ctype');
 		$data['totalvarient'] = $this->input->post('totalvarient', true);
 		$data['customqty'] = $this->input->post('customqty', true);
-		$data['item']   	  = $this->order_model->findid($id, $sid);
+		$data['item']   	  = $this->order_model->findid($id, $sid, $ctype);
 		$data['addonslist']   = $this->order_model->findaddons($id);
 		$data['varientlist']   = $this->order_model->findByvmenuId($id);
 		$settinginfo = $this->order_model->settinginfo();
@@ -1037,6 +1042,7 @@ class Order extends MX_Controller
 		$data['modifiers'] = $modifiers;
 		$data['modQty'] = $modQty;
 		$data['page'] = "posaddonsfood";
+		$data['ctype'] = $ctype;
 		$this->load->view('ordermanage/posaddonsfood', $data);
 	}
 	public function GetPromoFoodsForCart()
@@ -1159,9 +1165,10 @@ class Order extends MX_Controller
 					// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have any ingredients!!!');
 					// redirect("ordermanage/order/pos_invoice");
 					// exit;
-					$msg = 'The modifier doesn\'t have any ingredients!!!';
-					echo 420;
-					exit;
+					// uncomment below lines if you want to return error code
+					// $msg = 'The modifier doesn\'t have any ingredients!!!';
+					// echo 420;
+					// exit;
 				} else {
 					if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 2){
 						//ingredients
@@ -1175,9 +1182,10 @@ class Order extends MX_Controller
 							// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient ingredients!!!');
 							// redirect("ordermanage/order/pos_invoice");
 							// exit;
-							$msg = 'The modifier doesn\'t have sufficient ingredients!!!';
-							echo 421;
-							exit;
+							// uncomment below lines if you want to return error code
+							// $msg = 'The modifier doesn\'t have sufficient ingredients!!!';
+							// echo 421;
+							// exit;
 						}
 					} 
 					if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 1){
@@ -1194,18 +1202,20 @@ class Order extends MX_Controller
 									// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient stock!!!');
 									// redirect("ordermanage/order/pos_invoice");
 									// exit;
-									$msg = 'The modifier doesn\'t have sufficient stock!!!';
-									echo 422;
-									exit;
+									// uncomment below lines if you want to return error code
+									// $msg = 'The modifier doesn\'t have sufficient stock!!!';
+									// echo 422;
+									// exit;
 								}
 							}
 						} else {
 							// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' can\'t be added!!!');
 							// redirect("ordermanage/order/pos_invoice");
 							// exit;
-							$msg = 'The modifier can\'t be added!!!';
-							echo 423;
-							exit;
+							// uncomment below lines if you want to return error code
+							// $msg = 'The modifier can\'t be added!!!';
+							// echo 423;
+							// exit;
 						}
 					}
 				}
@@ -1245,6 +1255,7 @@ class Order extends MX_Controller
 		$d['taxinfos'] = $this->taxchecking();
 		$d['module'] = "ordermanage";
 		$d['page']   = "posmodifiersave";
+		$d['ctype']   = $this->input->post('ctype', true);
 		$this->load->view('ordermanage/posmodifiersave', $d);
 	}
 	public function cartPromoFoodModifierSave()

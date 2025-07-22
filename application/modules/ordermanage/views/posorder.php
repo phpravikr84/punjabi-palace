@@ -766,6 +766,7 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="cartPromoFoodModifierSaveUrl" value="<?php echo base_url("ordermanage/order/cartPromoFoodModifierSave") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
+                <input name="ctype" type="hidden" id="ctype" value="<?=$ctype;?>" />
                 <input name="foods_or_mods" type="hidden" id="foods_or_mods" value="2" />
                 <div class="row">
                   <div class="col-md-7">
@@ -781,7 +782,7 @@ foreach ($scan as $file) {
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-3 col-lg-3">
+                      <div class="col-md-3 col-lg-3" style="padding-right: 0px !important;">
                         <div class="leftSidebarPosMain">
                           <div class="slimScrollDiv">
                             <div class="product-category">
@@ -838,7 +839,7 @@ foreach ($scan as $file) {
                                 }
                               ?>
                                 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-p-3">
-                                  <div class="panel panel-bd product-panel select_product p-10 rounded-lg">
+                                  <div class="panel panel-bd product-panel select_product p-12 rounded-lg">
                                     <div class="panel-body"> <img src="<?php echo base_url(!empty($item->small_thumb) ? $item->small_thumb : 'assets/img/icons/default_pos_pro.jpg'); ?>" class="img-responsive" alt="<?php echo $item->ProductName; ?>">
                                       <input type="hidden" name="select_product_id" class="select_product_id" value="<?php echo $item->ProductsID; ?>">
                                       <input type="hidden" name="select_totalvarient" class="select_totalvarient" value="<?php echo $item->totalvarient; ?>">
@@ -893,15 +894,16 @@ foreach ($scan as $file) {
                           
                                       if (!empty($item->component)) {
                                           $components = explode(',', $item->component);
+                                          echo '<div class="tag-wrapper">';
                                           foreach ($components as $comp) {
                                             echo '<span class="label label-primary" style="margin-right:5px;">' . trim($comp) . '</span>';
                                           }
+                                          echo '</div>';
                                       }
-
-
                                         if (!empty($item->price)) {
-                                          echo "<br /> <br/><strong style='padding-bottom:15px;'>" .(($currency->position == 1) ? $currency->curr_icon : '').$item->price."</strong>";
-                                        } 
+                                          echo "<div class='tag-wrapper'><strong>" .(($currency->position == 1) ? $currency->curr_icon : '').$item->price."</strong>";
+                                          echo '</div>';
+                                        }
                                         ?>
                                       </h5>
                                     </div>
@@ -930,7 +932,8 @@ foreach ($scan as $file) {
                             </div>
                             <div class="col-md-6 form-group">
                               <label for="store_id"><?php echo display('customer_type'); ?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                              <?php $ctype = 1;
+                              <?php 
+                              // $ctype = 1;
                               echo form_dropdown('ctypeid', $curtomertype, (!empty($ctype) ? $ctype : null), 'class="form-control" id="ctypeid" required') ?>
                             </div>
                             <div id="nonthirdparty" class="col-md-12">
@@ -995,15 +998,6 @@ foreach ($scan as $file) {
     </script>
 
 </div>
-
-
-
-
-
-
-
-
-
                                 <!-- Table Modal Button + Table Dropdown -->
                                 <?php if ($possetting->tablemaping == 1) { ?>
                                 <div class="col-md-5 form-group" id="tblsecp" data-tip="Persons">
@@ -1238,7 +1232,7 @@ foreach ($scan as $file) {
                                               <?php 
                                               if($q1->num_rows() <= 0 || $q2->num_rows() <= 0):
                                               ?>
-                                              <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;" id="cartModToggle_<?= $item['pid']; ?>">Choose Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
+                                              <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;" id="cartModToggle_<?= $item['pid']; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
                                               <?php endif; ?>
                                                 <?php
 
@@ -1250,7 +1244,7 @@ foreach ($scan as $file) {
                                                   foreach ($selectedFoodsForCart as $smk => $smv):
                                                 ?>
                                                         <br />
-                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name. ' (Food)';?></small>
+                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
                                                 <?php
                                                   endforeach;
                                                 endif;
@@ -1258,13 +1252,13 @@ foreach ($scan as $file) {
                                                   echo "<br />";
                                                   foreach ($selectedModsForCart as $smk => $smv):
                                                     if($smv->foods_or_mods == 1):
-                                                        $smv->add_on_name = $smv->add_on_name . ' (Food)';
+                                                        $smv->add_on_name = $smv->add_on_name;
                                                 ?>
                                                         <br />
                                                         <small class="modCheck bg-danger" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
                                                 <?php 
                                                     else:
-                                                        $smv->add_on_name = $smv->add_on_name . ' (Modifier)';
+                                                        $smv->add_on_name = $smv->add_on_name;
                                                 ?>
                                                         <br />
                                                         <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
@@ -1400,7 +1394,7 @@ foreach ($scan as $file) {
                                   </tr>
                                 </table>
                               </div>
-                              <div class="col-sm-6 text-right"> <a class="btn btn-primary cusbtn" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-calculator" aria-hidden="true"></i>Calculator</a> <a href="<?php echo base_url("ordermanage/order/posclear") ?>" type="button" class="btn btn-danger cusbtn"><?php echo display('cancel') ?></a>
+                              <div class="col-sm-6 text-right"> <a class="btn btn-primary cusbtn" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-calculator" aria-hidden="true"></i>Calculator</a> <a href="<?php echo base_url("ordermanage/order/posclear") ?>" type="button" class="btn btn-danger cusbtn" id="poscartclearbtn"><?php echo display('cancel') ?></a>
                                 <input type="hidden" id="getitemp" name="getitemp" value="<?php echo $totalitem - $discount; ?>" />
                                 <input type="button" id="add_payment2" class="btn btn-primary btn-large cusbtn" onclick="quickorder()" name="add-payment" value="<?php echo display('quickorder') ?>">
                                 <input type="button" id="add_payment" class="btn btn-success btn-large cusbtn" onclick="placeorder()" name="add-payment" value="<?php echo display('placeorder') ?>">
@@ -1484,13 +1478,55 @@ foreach ($scan1 as $file) {
 //$this->load->view('include/pos_script');
 ?>
 <script>
+  $(document).ready(()=>{
+    var customertype = $("#ctypeid").val();
+    if (customertype == 3) {
+        $("#delivercom").prop('disabled', false);
+        $("#waiter").prop('disabled', true);
+        $("#tableid").prop('disabled', true);
+        $("#cookingtime").prop('disabled', true);
+        $("#nonthirdparty").hide();
+        $("#thirdparty").show();
+    } else if (customertype == 4) {
+        $("#nonthirdparty").show();
+        $("#thirdparty").hide();
+        $("#tblsec").hide();
+        $("#tblsecp").hide();
+        $("#delivercom").prop('disabled', true);
+        $("#waiter").prop('disabled', false);
+        $("#tableid").prop('disabled', true);
+        $("#cookingtime").prop('disabled', true);
+    } else if (customertype == 2) {
+        $("#nonthirdparty").show();
+        $("#tblsecp").hide();
+        $("#tblsec").hide();
+        $("#thirdparty").hide();
+        $("#waiter").prop('disabled', false);
+        $("#tableid").prop('disabled', false);
+        $("#cookingtime").prop('disabled', false);
+        $("#delivercom").prop('disabled', true);
+    } else {
+        $("#nonthirdparty").show();
+        $("#tblsecp").show();
+        $("#tblsec").show();
+        $("#thirdparty").hide();
+        $("#waiter").prop('disabled', false);
+        $("#tableid").prop('disabled', false);
+        $("#cookingtime").prop('disabled', false);
+        $("#delivercom").prop('disabled', true);
+    }
+  });
+  $(document).on('change', '#ctypeid', function () {
+    let ctype = $(this).val();
+    $("#poscartclearbtn").click();
+    window.location.href = "<?=base_url('ordermanage/order/pos_invoice/');?>" + ctype;
+  });
+
   Pace.options.ajax = {
     trackMethods: ['POST', 'GET'],
     trackWebSockets: false,
     ignoreURLs: []
   };
-</script>
-<script>
   function openNav() {
     document.getElementById("mySidebar").style.width = "100%";
     $("#mySidebar").find(".closebtn").css({
@@ -1525,6 +1561,6 @@ foreach ($scan1 as $file) {
     console.log("Accordion Clicked, and collapsed: "+((!$(this).hasClass('collapsed')) ? "False" : "True"));
   });
 </script>
-<script src="<?php echo base_url('ordermanage/order/possettingjs') ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('ordermanage/order/quickorderjs') ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('application/modules/ordermanage/assets/js/possetting.js'); ?>" type="text/javascript"></script>
+<script src="<?=base_url('ordermanage/order/possettingjs');?>" type="text/javascript"></script>
+<script src="<?=base_url('ordermanage/order/quickorderjs');?>" type="text/javascript"></script>
+<script src="<?=base_url('application/modules/ordermanage/assets/js/possetting.js');?>" type="text/javascript"></script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2025 at 07:44 AM
+-- Generation Time: Jul 21, 2025 at 02:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.1
 
@@ -1276,7 +1276,9 @@ INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user
 (1233, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-09 20:34:12'),
 (1234, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 16:25:03'),
 (1235, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 21:40:49'),
-(1236, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 21:42:55');
+(1236, 'Promo Food List', 'Update Data', 'Promo Food Updated', 'John Doe', '2025-07-14 21:42:55'),
+(1237, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-18 18:19:51'),
+(1238, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-21 18:16:19');
 
 -- --------------------------------------------------------
 
@@ -2848,6 +2850,27 @@ CREATE TABLE `customer_type` (
 --
 
 INSERT INTO `customer_type` (`customer_type_id`, `customer_type`, `ordering`) VALUES
+(1, 'Dine In Customer', 0),
+(2, 'Uber Eats', 0),
+(4, 'Take Way', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_type_old`
+--
+
+CREATE TABLE `customer_type_old` (
+  `customer_type_id` int(11) NOT NULL,
+  `customer_type` varchar(100) NOT NULL,
+  `ordering` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `customer_type_old`
+--
+
+INSERT INTO `customer_type_old` (`customer_type_id`, `customer_type`, `ordering`) VALUES
 (1, 'Walk In Customer', 0),
 (2, 'Online Customer', 0),
 (3, 'Third Party', 0),
@@ -3782,7 +3805,9 @@ INSERT INTO `item_category` (`CategoryID`, `Name`, `CategoryImage`, `Position`, 
 
 CREATE TABLE `item_foods` (
   `ProductsID` int(11) NOT NULL,
+  `GroupID` int(11) DEFAULT NULL,
   `CategoryID` varchar(155) NOT NULL,
+  `SubCategoryID` int(11) DEFAULT NULL,
   `ProductName` varchar(255) DEFAULT NULL,
   `ProductImage` varchar(200) DEFAULT NULL,
   `bigthumb` varchar(255) NOT NULL,
@@ -3823,24 +3848,24 @@ CREATE TABLE `item_foods` (
 -- Dumping data for table `item_foods`
 --
 
-INSERT INTO `item_foods` (`ProductsID`, `CategoryID`, `ProductName`, `ProductImage`, `bigthumb`, `medium_thumb`, `small_thumb`, `component`, `descrip`, `itemnotes`, `menutype`, `productvat`, `special`, `OffersRate`, `offerIsavailable`, `offerstartdate`, `offerendate`, `Position`, `kitchenid`, `isgroup`, `is_customqty`, `cookedtime`, `ProductsIsActive`, `UserIDInserted`, `UserIDUpdated`, `UserIDLocked`, `DateInserted`, `DateUpdated`, `DateLocked`, `cusine_type`, `is_bom`, `food_type`, `weightage`, `uomid`, `tax0`, `tax1`) VALUES
-(34, '7', 'Paneer Pakoda', 'application/modules/itemmanage/assets/images/C15.jpg', 'application/modules/itemmanage/assets/images/big/C15.jpg', 'application/modules/itemmanage/assets/images/medium/C15.jpg', 'application/modules/itemmanage/assets/images/small/C15.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-05-20', '2025-05-20', '2025-05-20', 1, 1, 1, 200.00, 3, NULL, NULL),
-(35, '7', 'Veg Briyani', 'application/modules/itemmanage/assets/images/202211051245413.jpg', 'application/modules/itemmanage/assets/images/big/202211051245413.jpg', 'application/modules/itemmanage/assets/images/medium/202211051245413.jpg', 'application/modules/itemmanage/assets/images/small/202211051245413.jpg', 'df', 'Testing', 'testing', '', 0.000, 0, 10, 1, '2025-06-11', '2025-06-14', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-06-12', '2025-06-12', '2025-06-12', 1, 1, 1, 300.00, 3, NULL, NULL),
-(36, '17', 'Coca Cola 500 ml', 'application/modules/itemmanage/assets/images/coco23.jpg', 'application/modules/itemmanage/assets/images/big/coco23.jpg', 'application/modules/itemmanage/assets/images/medium/coco23.jpg', 'application/modules/itemmanage/assets/images/small/coco23.jpg', 'test', 'Testing', 'test description', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-20', '2025-05-20', '2025-05-20', 3, 0, 1, 500.00, 11, NULL, NULL),
-(37, '17', 'Limca 500 Ml', 'application/modules/itemmanage/assets/images/coco26.jpg', 'application/modules/itemmanage/assets/images/big/coco26.jpg', 'application/modules/itemmanage/assets/images/medium/coco26.jpg', 'application/modules/itemmanage/assets/images/small/coco26.jpg', 'df', 'limca', 'lca', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(38, '17', 'Red Bull 500 ML', 'application/modules/itemmanage/assets/images/coco27.jpg', 'application/modules/itemmanage/assets/images/big/coco27.jpg', 'application/modules/itemmanage/assets/images/medium/coco27.jpg', 'application/modules/itemmanage/assets/images/small/coco27.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(39, '17', 'Lehar Cold Drink 500 ML', 'application/modules/itemmanage/assets/images/coco28.jpg', 'application/modules/itemmanage/assets/images/big/coco28.jpg', 'application/modules/itemmanage/assets/images/medium/coco28.jpg', 'application/modules/itemmanage/assets/images/small/coco28.jpg', 'testing', 'Testing', 'testing ', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(40, '17', 'Maaza Cold Drink 1000 ML', 'application/modules/itemmanage/assets/images/coco29.jpg', 'application/modules/itemmanage/assets/images/big/coco29.jpg', 'application/modules/itemmanage/assets/images/medium/coco29.jpg', 'application/modules/itemmanage/assets/images/small/coco29.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 1000.00, 11, NULL, NULL),
-(41, '17', 'Coke 500 ML', 'application/modules/itemmanage/assets/images/coco30.jpg', 'application/modules/itemmanage/assets/images/big/coco30.jpg', 'application/modules/itemmanage/assets/images/medium/coco30.jpg', 'application/modules/itemmanage/assets/images/small/coco30.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(42, '17', 'IceBerg Drink 250 ML Bottle', 'application/modules/itemmanage/assets/images/coco31.jpg', 'application/modules/itemmanage/assets/images/big/coco31.jpg', 'application/modules/itemmanage/assets/images/medium/coco31.jpg', 'application/modules/itemmanage/assets/images/small/coco31.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 250.00, 11, NULL, NULL),
-(43, '17', 'Liqu500t', 'application/modules/itemmanage/assets/images/coco32.jpg', 'application/modules/itemmanage/assets/images/big/coco32.jpg', 'application/modules/itemmanage/assets/images/medium/coco32.jpg', 'application/modules/itemmanage/assets/images/small/coco32.jpg', 'sf', 'st', 'sdfdssdfd', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
-(44, '7', 'Testing Food', 'application/modules/itemmanage/assets/images/D117.jpg', 'application/modules/itemmanage/assets/images/big/D117.jpg', 'application/modules/itemmanage/assets/images/medium/D117.jpg', 'application/modules/itemmanage/assets/images/small/D117.jpg', 'gf', 'Testing Food 1213t', 'testing Desc', '', 0.000, 0, 10, 1, '2025-06-11', '2025-06-14', NULL, 1, NULL, 0, '00:02:00', 1, 2, 2, 2, '2025-06-12', '2025-06-12', '2025-06-12', 1, 1, 1, 350.00, 3, NULL, NULL),
-(45, '17', 'Sting Cold Drink 500 ML', 'application/modules/itemmanage/assets/images/coco33.jpg', 'application/modules/itemmanage/assets/images/big/coco33.jpg', 'application/modules/itemmanage/assets/images/medium/coco33.jpg', 'application/modules/itemmanage/assets/images/small/coco33.jpg', 'testing', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 500.00, 11, NULL, NULL),
-(48, '7', 'Tawa Roti', 'application/modules/itemmanage/assets/images/tawa_roti2.png', 'application/modules/itemmanage/assets/images/big/tawa_roti2.png', 'application/modules/itemmanage/assets/images/medium/tawa_roti2.png', 'application/modules/itemmanage/assets/images/small/tawa_roti2.png', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-23', '2025-05-23', '2025-05-23', 3, 0, 1, 150.00, 3, NULL, NULL),
-(49, '10', 'Icecream Block 500 gram ', 'application/modules/itemmanage/assets/images/coco35.jpg', 'application/modules/itemmanage/assets/images/big/coco35.jpg', 'application/modules/itemmanage/assets/images/medium/coco35.jpg', 'application/modules/itemmanage/assets/images/small/coco35.jpg', 'test', 'testing', 'test', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 20.00, 3, NULL, NULL),
-(50, '16', 'Product 250 ml', '', '', '', '', '', 'Product 250 ml', 'Product 250 ml', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 250.00, 11, NULL, NULL),
-(51, '7', 'Tawa Naan', 'application/modules/itemmanage/assets/images/P7.jpg', 'application/modules/itemmanage/assets/images/big/P7.jpg', 'application/modules/itemmanage/assets/images/medium/P7.jpg', 'application/modules/itemmanage/assets/images/small/P7.jpg', 'test', 'testing testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-05-27', '2025-05-27', '2025-05-27', 1, 1, 1, 850.00, 3, NULL, NULL),
-(52, '7', 'Paratha Cashew', 'application/modules/itemmanage/assets/images/P8.jpg', 'application/modules/itemmanage/assets/images/big/P8.jpg', 'application/modules/itemmanage/assets/images/medium/P8.jpg', 'application/modules/itemmanage/assets/images/small/P8.jpg', 'test', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:04:00', 1, 2, 2, 2, '2025-06-03', '2025-06-03', '2025-06-03', 1, 1, 1, 250.00, 3, NULL, NULL);
+INSERT INTO `item_foods` (`ProductsID`, `GroupID`, `CategoryID`, `SubCategoryID`, `ProductName`, `ProductImage`, `bigthumb`, `medium_thumb`, `small_thumb`, `component`, `descrip`, `itemnotes`, `menutype`, `productvat`, `special`, `OffersRate`, `offerIsavailable`, `offerstartdate`, `offerendate`, `Position`, `kitchenid`, `isgroup`, `is_customqty`, `cookedtime`, `ProductsIsActive`, `UserIDInserted`, `UserIDUpdated`, `UserIDLocked`, `DateInserted`, `DateUpdated`, `DateLocked`, `cusine_type`, `is_bom`, `food_type`, `weightage`, `uomid`, `tax0`, `tax1`) VALUES
+(34, NULL, '7', NULL, 'Paneer Pakoda', 'application/modules/itemmanage/assets/images/C15.jpg', 'application/modules/itemmanage/assets/images/big/C15.jpg', 'application/modules/itemmanage/assets/images/medium/C15.jpg', 'application/modules/itemmanage/assets/images/small/C15.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-05-20', '2025-05-20', '2025-05-20', 1, 1, 1, 200.00, 3, NULL, NULL),
+(35, NULL, '7', NULL, 'Veg Briyani', 'application/modules/itemmanage/assets/images/202211051245413.jpg', 'application/modules/itemmanage/assets/images/big/202211051245413.jpg', 'application/modules/itemmanage/assets/images/medium/202211051245413.jpg', 'application/modules/itemmanage/assets/images/small/202211051245413.jpg', 'df', 'Testing', 'testing', '', 0.000, 0, 10, 1, '2025-06-11', '2025-06-14', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-06-12', '2025-06-12', '2025-06-12', 1, 1, 1, 300.00, 3, NULL, NULL),
+(36, NULL, '17', NULL, 'Coca Cola 500 ml', 'application/modules/itemmanage/assets/images/coco23.jpg', 'application/modules/itemmanage/assets/images/big/coco23.jpg', 'application/modules/itemmanage/assets/images/medium/coco23.jpg', 'application/modules/itemmanage/assets/images/small/coco23.jpg', 'test', 'Testing', 'test description', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-20', '2025-05-20', '2025-05-20', 3, 0, 1, 500.00, 11, NULL, NULL),
+(37, NULL, '17', NULL, 'Limca 500 Ml', 'application/modules/itemmanage/assets/images/coco26.jpg', 'application/modules/itemmanage/assets/images/big/coco26.jpg', 'application/modules/itemmanage/assets/images/medium/coco26.jpg', 'application/modules/itemmanage/assets/images/small/coco26.jpg', 'df', 'limca', 'lca', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
+(38, NULL, '17', NULL, 'Red Bull 500 ML', 'application/modules/itemmanage/assets/images/coco27.jpg', 'application/modules/itemmanage/assets/images/big/coco27.jpg', 'application/modules/itemmanage/assets/images/medium/coco27.jpg', 'application/modules/itemmanage/assets/images/small/coco27.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
+(39, NULL, '17', NULL, 'Lehar Cold Drink 500 ML', 'application/modules/itemmanage/assets/images/coco28.jpg', 'application/modules/itemmanage/assets/images/big/coco28.jpg', 'application/modules/itemmanage/assets/images/medium/coco28.jpg', 'application/modules/itemmanage/assets/images/small/coco28.jpg', 'testing', 'Testing', 'testing ', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
+(40, NULL, '17', NULL, 'Maaza Cold Drink 1000 ML', 'application/modules/itemmanage/assets/images/coco29.jpg', 'application/modules/itemmanage/assets/images/big/coco29.jpg', 'application/modules/itemmanage/assets/images/medium/coco29.jpg', 'application/modules/itemmanage/assets/images/small/coco29.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 1000.00, 11, NULL, NULL),
+(41, NULL, '17', NULL, 'Coke 500 ML', 'application/modules/itemmanage/assets/images/coco30.jpg', 'application/modules/itemmanage/assets/images/big/coco30.jpg', 'application/modules/itemmanage/assets/images/medium/coco30.jpg', 'application/modules/itemmanage/assets/images/small/coco30.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
+(42, NULL, '17', NULL, 'IceBerg Drink 250 ML Bottle', 'application/modules/itemmanage/assets/images/coco31.jpg', 'application/modules/itemmanage/assets/images/big/coco31.jpg', 'application/modules/itemmanage/assets/images/medium/coco31.jpg', 'application/modules/itemmanage/assets/images/small/coco31.jpg', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 250.00, 11, NULL, NULL),
+(43, NULL, '17', NULL, 'Liqu500t', 'application/modules/itemmanage/assets/images/coco32.jpg', 'application/modules/itemmanage/assets/images/big/coco32.jpg', 'application/modules/itemmanage/assets/images/medium/coco32.jpg', 'application/modules/itemmanage/assets/images/small/coco32.jpg', 'sf', 'st', 'sdfdssdfd', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-22', '2025-05-22', '2025-05-22', 3, 0, 1, 500.00, 11, NULL, NULL),
+(44, NULL, '7', NULL, 'Testing Food', 'application/modules/itemmanage/assets/images/D117.jpg', 'application/modules/itemmanage/assets/images/big/D117.jpg', 'application/modules/itemmanage/assets/images/medium/D117.jpg', 'application/modules/itemmanage/assets/images/small/D117.jpg', 'gf', 'Testing Food 1213t', 'testing Desc', '', 0.000, 0, 10, 1, '2025-06-11', '2025-06-14', NULL, 1, NULL, 0, '00:02:00', 1, 2, 2, 2, '2025-06-12', '2025-06-12', '2025-06-12', 1, 1, 1, 350.00, 3, NULL, NULL),
+(45, NULL, '17', NULL, 'Sting Cold Drink 500 ML', 'application/modules/itemmanage/assets/images/coco33.jpg', 'application/modules/itemmanage/assets/images/big/coco33.jpg', 'application/modules/itemmanage/assets/images/medium/coco33.jpg', 'application/modules/itemmanage/assets/images/small/coco33.jpg', 'testing', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 500.00, 11, NULL, NULL),
+(48, NULL, '7', NULL, 'Tawa Roti', 'application/modules/itemmanage/assets/images/tawa_roti2.png', 'application/modules/itemmanage/assets/images/big/tawa_roti2.png', 'application/modules/itemmanage/assets/images/medium/tawa_roti2.png', 'application/modules/itemmanage/assets/images/small/tawa_roti2.png', 'df', 'testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-23', '2025-05-23', '2025-05-23', 3, 0, 1, 150.00, 3, NULL, NULL),
+(49, NULL, '10', NULL, 'Icecream Block 500 gram ', 'application/modules/itemmanage/assets/images/coco35.jpg', 'application/modules/itemmanage/assets/images/big/coco35.jpg', 'application/modules/itemmanage/assets/images/medium/coco35.jpg', 'application/modules/itemmanage/assets/images/small/coco35.jpg', 'test', 'testing', 'test', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 20.00, 3, NULL, NULL),
+(50, NULL, '16', NULL, 'Product 250 ml', '', '', '', '', '', 'Product 250 ml', 'Product 250 ml', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-05-26', '2025-05-26', '2025-05-26', 3, 0, 1, 250.00, 11, NULL, NULL),
+(51, NULL, '7', NULL, 'Tawa Naan', 'application/modules/itemmanage/assets/images/P7.jpg', 'application/modules/itemmanage/assets/images/big/P7.jpg', 'application/modules/itemmanage/assets/images/medium/P7.jpg', 'application/modules/itemmanage/assets/images/small/P7.jpg', 'test', 'testing testing', 'testing', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:05:00', 1, 2, 2, 2, '2025-05-27', '2025-05-27', '2025-05-27', 1, 1, 1, 850.00, 3, NULL, NULL),
+(52, 1, '7', NULL, 'Paratha Cashew', '', '', '', '', 'test,df,gf,more,ff,gg', 'Test Description', 'Short Description', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:04:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 1, 1, 250.00, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6336,9 +6361,6 @@ INSERT INTO `production` (`productionid`, `itemid`, `itemvid`, `itemquantity`, `
 (74, 51, 48, 1, 2, 0, 1, '2025-05-27', '2025-05-27'),
 (75, 51, 49, 1, 2, 0, 1, '2025-05-27', '2025-05-27'),
 (76, 51, 50, 1, 2, 0, 1, '2025-05-27', '2025-05-27'),
-(77, 52, 51, 1, 2, 0, 1, '2025-06-03', '2025-06-03'),
-(78, 52, 52, 1, 2, 0, 1, '2025-06-03', '2025-06-03'),
-(79, 52, 51, 1, 2, NULL, 1, '2025-06-03', '2025-06-03'),
 (82, 51, 48, 1, 2, NULL, 1, '2025-06-06', '2025-06-06'),
 (83, 51, 48, 1, 2, NULL, 1, '2025-06-06', '2025-06-06'),
 (84, 51, 48, 1, 2, NULL, 1, '2025-06-09', '2025-06-09'),
@@ -6363,7 +6385,9 @@ INSERT INTO `production` (`productionid`, `itemid`, `itemvid`, `itemquantity`, `
 (114, 44, 59, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
 (115, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
 (116, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
-(117, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12');
+(117, 35, 61, 1, 168, NULL, 1, '2025-06-12', '2025-06-12'),
+(121, 52, 66, 1, 2, 0, 1, '2025-06-03', '2025-06-03'),
+(122, 52, 67, 1, 2, 0, 1, '2025-06-03', '2025-06-03');
 
 -- --------------------------------------------------------
 
@@ -6407,8 +6431,6 @@ INSERT INTO `production_details` (`pro_detailsid`, `foodid`, `pvarientid`, `ingr
 (67, 51, 49, 93, 200.00, 3, 'grm.', 3.50, 2, '2025-05-27'),
 (68, 51, 50, 23, 100.00, 3, 'grm.', 2.50, 2, '2025-05-27'),
 (69, 51, 50, 24, 250.00, 3, 'grm.', 4.25, 2, '2025-05-27'),
-(70, 52, 51, 60, 250.00, 3, 'gm.', 2.38, 2, '2025-06-03'),
-(71, 52, 52, 60, 500.00, 3, 'gm.', 4.75, 2, '2025-06-03'),
 (82, 44, 59, 23, 250.00, 3, 'grm.', 6.25, 2, '2025-06-12'),
 (83, 44, 59, 69, 100.00, 3, 'grm.', 0.22, 2, '2025-06-12'),
 (84, 44, 60, 23, 500.00, 3, 'grm.', 12.50, 2, '2025-06-12'),
@@ -6416,7 +6438,9 @@ INSERT INTO `production_details` (`pro_detailsid`, `foodid`, `pvarientid`, `ingr
 (86, 35, 61, 19, 50.00, 3, 'grm.', 1.38, 2, '2025-06-12'),
 (87, 35, 61, 68, 250.00, 3, 'grm.', 0.55, 2, '2025-06-12'),
 (88, 35, 62, 19, 100.00, 3, 'grm.', 2.75, 2, '2025-06-12'),
-(89, 35, 62, 68, 350.00, 3, 'grm.', 0.77, 2, '2025-06-12');
+(89, 35, 62, 68, 350.00, 3, 'grm.', 0.77, 2, '2025-06-12'),
+(92, 52, 66, 60, 250.00, 3, 'gm.', 2.38, 2, '2025-07-21'),
+(93, 52, 67, 60, 500.00, 3, 'gm.', 4.75, 2, '2025-07-21');
 
 -- --------------------------------------------------------
 
@@ -8939,7 +8963,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `about`, `waiter_kitchenToken`, `email`, `password`, `login_pin`, `password_reset_token`, `image`, `last_login`, `last_logout`, `ip_address`, `counter`, `status`, `is_admin`) VALUES
-(2, 'John', 'Doe', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '', 'admin@example.com', '827ccb0eea8a706c4c34a16891f84e7b', '9630', '', './assets/img/user/m2.png', '2025-07-16 13:53:15', '2025-07-14 22:43:42', '127.0.0.1', NULL, 1, 1),
+(2, 'John', 'Doe', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '', 'admin@example.com', '827ccb0eea8a706c4c34a16891f84e7b', '9630', '', './assets/img/user/m2.png', '2025-07-21 16:51:44', '2025-07-21 16:17:49', '127.0.0.1', NULL, 1, 1),
 (165, 'Hm', 'Isahaq', NULL, NULL, 'hmisahaq@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '3333', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
 (166, 'Ainal', 'Haque', NULL, NULL, 'ainal@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '4444', NULL, NULL, '2020-12-17 12:30:42', '2020-12-17 12:30:31', '::1', NULL, 1, 0),
 (168, 'Manik ', 'Hassan', NULL, NULL, 'manik@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '7777', NULL, NULL, '2025-06-12 21:37:47', '2025-06-12 21:28:58', '::1', NULL, 1, 0),
@@ -8998,12 +9022,12 @@ INSERT INTO `variant` (`variantid`, `menuid`, `variantName`, `price`, `takeaway_
 (48, 51, 'Regular', 5.00, 5.00, 5.00, 5.00, 5.00, 2.22, 850.00),
 (49, 51, 'Large', 4.00, 4.00, 4.00, 3.00, 3.00, 3.50, 200.00),
 (50, 51, 'Medium', 6.00, 5.00, 7.00, 7.00, 7.00, 6.75, 350.00),
-(51, 52, 'Regular', 3.00, 3.00, 3.00, 3.00, 3.00, 2.38, 250.00),
-(52, 52, 'Large', 5.00, 5.00, 5.00, 5.00, 5.00, 4.75, 500.00),
 (59, 44, 'Regular', 7.00, 7.00, 7.00, 7.00, 7.00, 6.47, 350.00),
 (60, 44, 'Large', 20.00, 20.00, 20.00, 18.00, 19.00, 18.00, 750.00),
 (61, 35, 'Regular', 2.00, 2.00, 3.00, 3.00, 3.00, 1.93, 300.00),
-(62, 35, 'Large', 4.00, 4.00, 3.75, 4.00, 4.00, 3.52, 450.00);
+(62, 35, 'Large', 4.00, 4.00, 3.75, 4.00, 4.00, 3.52, 450.00),
+(66, 52, 'Regular', 3.00, 3.00, 3.00, 3.00, 3.00, 2.38, 250.00),
+(67, 52, 'Large', 5.00, 5.00, 5.00, 5.00, 5.00, 4.75, 500.00);
 
 -- --------------------------------------------------------
 
@@ -9279,6 +9303,12 @@ ALTER TABLE `customer_order`
 -- Indexes for table `customer_type`
 --
 ALTER TABLE `customer_type`
+  ADD PRIMARY KEY (`customer_type_id`);
+
+--
+-- Indexes for table `customer_type_old`
+--
+ALTER TABLE `customer_type_old`
   ADD PRIMARY KEY (`customer_type_id`);
 
 --
@@ -10106,7 +10136,7 @@ ALTER TABLE `weekly_holiday`
 -- AUTO_INCREMENT for table `accesslog`
 --
 ALTER TABLE `accesslog`
-  MODIFY `sl_no` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1237;
+  MODIFY `sl_no` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1239;
 
 --
 -- AUTO_INCREMENT for table `acc_account_name`
@@ -10298,6 +10328,12 @@ ALTER TABLE `customer_order`
 -- AUTO_INCREMENT for table `customer_type`
 --
 ALTER TABLE `customer_type`
+  MODIFY `customer_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+
+--
+-- AUTO_INCREMENT for table `customer_type_old`
+--
+ALTER TABLE `customer_type_old`
   MODIFY `customer_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
@@ -10616,13 +10652,13 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `production`
 --
 ALTER TABLE `production`
-  MODIFY `productionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `productionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT for table `production_details`
 --
 ALTER TABLE `production_details`
-  MODIFY `pro_detailsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `pro_detailsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `promotion_main_modifiers`
@@ -11084,7 +11120,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `variant`
 --
 ALTER TABLE `variant`
-  MODIFY `variantid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `variantid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `waste_management`

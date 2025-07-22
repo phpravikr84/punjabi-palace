@@ -135,6 +135,7 @@ if ($cart = $this->cart->contents()) { ?>
         $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
         $this->db->where('cart_selected_modifiers.menu_id',$item['pid']);
         $this->db->where('cart_selected_modifiers.is_active', 1);
+        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
         $q = $this->db->get();
         $modTotalPrice = $q->row();
         // echo "<pre>";
@@ -254,12 +255,12 @@ if ($cart = $this->cart->contents()) { ?>
                                           foreach ($selectedModsForCart as $smk => $smv):
                                         ?>
                                             <br />
-                                          <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> <?php if($smv->price>0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+                                          <small class="modCheck bg-danger" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> <?php if($smv->price>0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                         <?php 
                                           endforeach;
                                         else:
                                         ?>
-                                        <small class="modCheck">Choose Modifiers</small>
+                                        <small class="modCheck bg-danger" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">+ Modifiers</small>
                                         <?php
                                         endif;
                                         ?>

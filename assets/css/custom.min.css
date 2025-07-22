@@ -36,7 +36,8 @@ body {
     overflow-y: auto;
     color: #374767;
     background-color: #f1f3f6;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 
 .wrapper {
@@ -5656,6 +5657,7 @@ pre .arg {
 
 .navbar-search > .input-group {
     width: 100%;
+    font-size: 12px;
 }
 
 .navbar-search .form-control {
@@ -5705,7 +5707,8 @@ pre .arg {
     cursor: pointer;
     border: 1px solid #bfbfbf;
     border-radius: 8px;
-    height: 22rem; /* Adjust this percentage according to your layout */
+    /*height: 22rem; /* Adjust this percentage according to your layout */
+    height: fit-content;
 }
 .product-panel .panel-body {
     padding: 8px;
@@ -5729,6 +5732,13 @@ pre .arg {
     display: -webkit-box;
     overflow: hidden;
     height: 29px;
+}
+
+.tag-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
 }
 
 

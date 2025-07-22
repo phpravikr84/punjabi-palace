@@ -339,8 +339,9 @@
           });
       } else {
           var geturl = $("#addonexsurl").val();
+          var ctype = $("#ctype").val();
           var myurl = geturl + '/' + pid;
-          var dataString = "pid=" + pid + "&sid=" + sizeid + '&csrf_test_name=' + csrf;
+          var dataString = "pid=" + pid + "&sid=" + sizeid + '&ctype=' + ctype + '&csrf_test_name=' + csrf;
           $.ajax({
               type: "POST",
               url: geturl,
@@ -619,8 +620,9 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
         console.log("cart save row id: " + $("#tr_row_id_"+pid).val());
         var csrf = $('#csrfhashresarvation').val(),
             geturl = $("#cartmodifiersaveurl").val(),
+            ctype = $("#ctype").val(),
             myurl = geturl,
-            dataString = "pid=" + pid + '&tr_row_id=' + trrowid + '&mods=' + mods + '&csrf_test_name=' + csrf;
+            dataString = "pid=" + pid + '&tr_row_id=' + trrowid + '&mods=' + mods + '&ctype=' + ctype + '&csrf_test_name=' + csrf;
         $.ajax({
             type: "POST",
             url: myurl,
@@ -734,7 +736,7 @@ function ApplyModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0, promoqty=0) 
                 $(".page-loader-wrapper").hide();
             }
         });
-    }, 2000);
+    }, 3000);
 }
 let isPromoFreeItem = false;
 function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) {
