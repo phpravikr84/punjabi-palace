@@ -3965,5 +3965,382 @@ class Item_food extends MX_Controller
 			echo json_encode(['status' => 'error']);
 		}
 	}
+
+	/**
+	 * =============================================================
+	 * PRICE SCHEDULE LOGIC
+	 * =============================================================
+	 */
+	  public function price_schedule() {
+        $this->permission->method('itemmanage', 'read')->redirect();
+        $data['title'] = display('price_schedule_list');
+
+        #-------------------------------#
+        # Pagination starts
+        #
+        $config["base_url"] = base_url('itemmanage/item_food/price_schedule');
+        $config["total_rows"] = $this->fooditem_model->count_price_schedules();
+        $config["per_page"] = 25;
+        $config["uri_segment"] = 4;
+        $config["last_link"] = "Last";
+        $config["first_link"] = "First";
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        $config['full_tag_open'] = "<ul class='pagination col-xs pull-right'>";
+        $config['full_tag_close'] = "</ul>";
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+        $config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+        $config['next_tag_open'] = "<li>";
+        $config['next_tag_close'] = "</li>";
+        $config['prev_tag_open'] = "<li>";
+        $config['prev_tagl_close'] = "</li>";
+        $config['first_tag_open'] = "<li>";
+        $config['first_tagl_close'] = "</li>";
+        $config['last_tag_open'] = "<li>";
+        $config['last_tagl_close'] = "</li>";
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $data["schedules"] = $this->fooditem_model->read_price_schedules($config["per_page"], $page);
+        $data['pagenum'] = $page;
+        $data["links"] = $this->pagination->create_links();
+        #
+        # Pagination ends
+        #
+
+
+        $data['sub_header'] = 'item';
+        $data['module'] = "itemmanage";
+        $data['page'] = "price_schedule_list";
+        echo Modules::run('template/layout', $data);
+    }
+
+    public function add_price_schedule() {
+        $this->permission->method('itemmanage', 'create')->redirect();
+        $data['title'] = display('add_price_schedule');
+        $data['categories'] = $this->fooditem_model->get_categories();
+		$data['customer_types'] = $this->fooditem_model->get_customer_type();
+
+		  $data['scheduleinfo'] = new stdClass();
+        $data['scheduleinfo']->ScheduleID = null;
+        $data['scheduleinfo']->items = null;
+        $data['scheduleinfo']->price_level = null;
+        $data['scheduleinfo']->effective_date = null;
+        $data['scheduleinfo']->description = null;
+        $data['scheduleinfo']->based_on = null;
+        $data['scheduleinfo']->base_price = null;
+        $data['scheduleinfo']->calculation_method = null;
+        $data['scheduleinfo']->percentage = null;
+        $data['scheduleinfo']->rounding_method = null;
+        $data['scheduleinfo']->round_to_nearest = null;
+        $data['scheduleinfo']->adjusted_by = null;
+
+        $data['sub_header'] = 'item';
+        $data['module'] = "itemmanage";
+        $data['page'] = "add_price_schedule";
+        echo Modules::run('template/layout', $data);
+    }
+
+    public function get_items() {
+        $search = $this->input->get('search');
+        $items = $this->fooditem_model->search_items($search);
+        echo json_encode($items);
+    }
+
+    // public function save_schedule() {
+    //     $this->permission->method('itemmanage', 'create')->redirect();
+    //     $post_data = $this->input->post();
+    //     $result = $this->fooditem_model->save_price_schedule($post_data);
+    //     echo json_encode(['status' => $result ? 'success' : 'error']);
+    // }
+
+	// public function get_items_by_category() {
+	// 	$category_id = $this->input->get('category_id');
+	// 	$this->db->select('if.ProductsID, if.ProductName, if.item_code, if.weightage, if.uomid, uom.uom_short_code, ic.Name as category_name');
+	// 	$this->db->from('item_foods if');
+	// 	$this->db->join('item_category ic', 'if.CategoryID = ic.CategoryID', 'left');
+	// 	$this->db->join('unit_of_measurement uom', 'if.uomid = uom.id', 'left');
+	// 	$this->db->where('if.CategoryID', $category_id);
+	// 	$query = $this->db->get();
+	// 	echo json_encode($query->result());
+	// }
+
+	public function get_items_by_category() {
+		$category_id = $this->input->get('category_id');
+		$this->db->select('if.ProductsID, if.ProductName, if.item_code, if.weightage, if.uomid, v.price, v.takeaway_price, v.uber_eats_price, uom.uom_short_code, ic.Name as category_name');
+		$this->db->from('item_foods if');
+		$this->db->join('variant v', 'if.ProductsID = v.menuid', 'left'); // Join with variant table if needed
+		$this->db->join('item_category ic', 'if.CategoryID = ic.CategoryID', 'left');
+		$this->db->join('unit_of_measurement uom', 'if.uomid = uom.id', 'left');
+		$this->db->where('if.CategoryID', $category_id);
+		$query = $this->db->get();
+		$result = $query->result_array();
+		
+		// Ensure all fields are strings to prevent JSON issues
+		foreach ($result as &$item) {
+			$item['ProductsID'] = (string)($item['ProductsID'] ?? '');
+			$item['ProductName'] = (string)($item['ProductName'] ?? '');
+			$item['item_code'] = (string)($item['item_code'] ?? '');
+			$item['category_name'] = (string)($item['category_name'] ?? '');
+			$item['weightage'] = (string)($item['weightage'] ?? '0.00');
+			$item['uom_short_code'] = (string)($item['uom_short_code'] ?? '');
+			$item['price'] = (string)($item['price'] ?? '');
+			$item['takeaway_price'] = (string)($item['takeaway_price'] ?? '');
+			$item['uber_eats_price'] = (string)($item['uber_eats_price'] ?? '');
+		}
+		
+		$this->output
+			->set_content_type('application/json')
+			->set_output(json_encode($result));
+	}
+
+    // public function add_price_schedule() {
+    //     $data['title'] = 'Add Price Schedule';
+    //     $data['customer_types'] = $this->db->get('customer_type')->result_array();
+    //     $data['categories'] = $this->db->get('category')->result_array();
+    //     $data['scheduleinfo'] = new stdClass();
+    //     $data['scheduleinfo']->ScheduleID = null;
+    //     $data['scheduleinfo']->items = null;
+    //     $data['scheduleinfo']->price_level = null;
+    //     $data['scheduleinfo']->effective_date = null;
+    //     $data['scheduleinfo']->description = null;
+    //     $data['scheduleinfo']->based_on = null;
+    //     $data['scheduleinfo']->base_price = null;
+    //     $data['scheduleinfo']->calculation_method = null;
+    //     $data['scheduleinfo']->percentage = null;
+    //     $data['scheduleinfo']->rounding_method = null;
+    //     $data['scheduleinfo']->round_to_nearest = null;
+    //     $data['scheduleinfo']->adjusted_by = null;
+    //     $this->load->view('itemmanage/add_price_schedule', $data);
+    // }
+
+    public function save_schedule() {
+        if ($this->input->method() !== 'post') {
+            $this->output->set_content_type('application/json')
+                ->set_output(json_encode(['success' => false, 'message' => 'Invalid request method.']));
+            return;
+        }
+
+        // Verify CSRF token
+        $csrf_token = $this->input->post($this->security->get_csrf_token_name(), TRUE);
+        if (!$csrf_token || $csrf_token !== $this->security->get_csrf_hash()) {
+            log_message('error', 'CSRF token validation failed. Received: ' . ($csrf_token ?? 'null'));
+            $this->output->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => false,
+                    'message' => 'Invalid CSRF token.',
+                    'csrf_name' => $this->security->get_csrf_token_name(),
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                ]));
+            return;
+        }
+
+        // Form validation rules
+        $this->form_validation->set_rules('price_level', 'Price Level', 'required|trim');
+        $this->form_validation->set_rules('effective_date', 'Effective Date', 'required|trim');
+        $this->form_validation->set_rules('based_on', 'Based On', 'trim');
+        $this->form_validation->set_rules('base_price', 'Base Price', 'trim');
+        $this->form_validation->set_rules('calculation_method', 'Calculation Method', 'trim');
+        $this->form_validation->set_rules('percentage', 'Percentage', 'numeric|greater_than_equal_to[0]');
+        $this->form_validation->set_rules('rounding_method', 'Rounding Method', 'trim');
+        $this->form_validation->set_rules('round_to_nearest', 'Round to Nearest', 'numeric|greater_than_equal_to[0]');
+        $this->form_validation->set_rules('adjusted_by', 'Adjusted By', 'numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->output->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => false,
+                    'message' => validation_errors(),
+                    'csrf_name' => $this->security->get_csrf_token_name(),
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                ]));
+            return;
+        }
+
+        // Get form data
+        $data = array(
+            'ScheduleID' => $this->input->post('ScheduleID', TRUE) ? $this->input->post('ScheduleID', TRUE) : NULL,
+            'PriceLevel' => $this->input->post('price_level', TRUE),
+            'EffectiveDate' => $this->input->post('effective_date', TRUE),
+            'Description' => $this->input->post('description', TRUE),
+            'CategoryID' => $this->input->post('Parentcategory', TRUE) ? $this->input->post('Parentcategory', TRUE) : NULL,
+            'BasedOn' => $this->input->post('based_on', TRUE) ?: 'sp',
+            'BasePrice' => $this->input->post('base_price', TRUE),
+            'CalculationMethod' => $this->input->post('calculation_method', TRUE) ?: '',
+            'Percentage' => $this->input->post('percentage', TRUE) ? floatval($this->input->post('percentage', TRUE)) : 0.00,
+            'RoundingMethod' => $this->input->post('rounding_method', TRUE) ?: 'none',
+            'RoundToNearest' => $this->input->post('round_to_nearest', TRUE) ? floatval($this->input->post('round_to_nearest', TRUE)) : 0.00,
+            'AdjustedBy' => $this->input->post('adjusted_by', TRUE) ? floatval($this->input->post('adjusted_by', TRUE)) : 0.00,
+            'UserIDInserted' => $this->session->userdata('id') ? $this->session->userdata('id') : 0,
+            'DateInserted' => date('Y-m-d H:i:s')
+        );
+
+        // Get selected items
+        $items = $this->input->post('items', TRUE);
+        if (empty($items)) {
+            $this->output->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => false,
+                    'message' => 'No items selected.',
+                    'csrf_name' => $this->security->get_csrf_token_name(),
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                ]));
+            return;
+        }
+
+        // Decode items
+        $items = is_string($items) ? json_decode($items, true) : $items;
+        if (json_last_error() !== JSON_ERROR_NONE || !is_array($items)) {
+            log_message('error', 'Invalid item JSON: ' . $this->input->post('items', TRUE));
+            $this->output->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => false,
+                    'message' => 'Invalid item data format: ' . json_last_error_msg(),
+                    'csrf_name' => $this->security->get_csrf_token_name(),
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                ]));
+            return;
+        }
+
+        // Validate item structure
+        foreach ($items as $item) {
+            if (!isset($item['product_id']) || !isset($item['product_name']) || !isset($item['item_code'])) {
+                log_message('error', 'Invalid item structure: ' . json_encode($item));
+                $this->output->set_content_type('application/json')
+                    ->set_output(json_encode([
+                        'success' => false,
+                        'message' => 'Invalid item structure for: ' . (isset($item['product_name']) ? $item['product_name'] : 'unknown'),
+                        'csrf_name' => $this->security->get_csrf_token_name(),
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    ]));
+                return;
+            }
+        }
+
+        // Fetch item details
+        $item_ids = array_column($items, 'product_id');
+        $item_details = $this->Item_model->get_items_by_ids($item_ids);
+
+        if (empty($item_details)) {
+            log_message('error', 'No items found for IDs: ' . implode(',', $item_ids));
+            $this->output->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => false,
+                    'message' => 'No valid items found in the database.',
+                    'csrf_name' => $this->security->get_csrf_token_name(),
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                ]));
+            return;
+        }
+
+        // Process items
+        $processed_items = [];
+        foreach ($item_details as $item) {
+            $base_price = 0.00;
+            if ($data['BasedOn'] === 'sp') {
+                $base_price = isset($item['prices'][$data['PriceLevel']]) ? floatval($item['prices'][$data['PriceLevel']]) : floatval($item['price']);
+            } else if ($data['BasedOn'] === 'cp') {
+                $base_price = floatval($item['cost_price']);
+            }
+
+            $new_price = $base_price;
+            if ($data['CalculationMethod'] === 'Percentage Markup') {
+                $new_price = $base_price * (1 + $data['Percentage'] / 100);
+            } else if ($data['CalculationMethod'] === 'Amount Markup') {
+                $new_price = $base_price + $data['Percentage'];
+            }
+
+            $new_price = $this->apply_rounding($new_price, $data['RoundingMethod'], $data['RoundToNearest']);
+            $new_price = $new_price + $data['AdjustedBy'];
+            $margin = ($base_price != 0) ? (($new_price - $base_price) / $base_price * 100) : ($new_price == 0 ? 100.00 : 0.00);
+
+            $processed_items[] = [
+                'product_id' => $item['ProductsID'],
+                'product_name' => $item['ProductName'],
+                'item_code' => $item['item_code'],
+                'category' => $item['category_name'],
+                'price' => number_format(floatval($item['price']), 2, '.', ''),
+                'prices' => $item['prices'],
+                'cost_price' => number_format(floatval($item['cost_price']), 2, '.', ''),
+                'last_cost' => number_format(floatval($item['last_cost']), 2, '.', ''),
+                'average_cost' => number_format(floatval($item['average_cost']), 2, '.', ''),
+                'new_price' => number_format($new_price, 2, '.', ''),
+                'adjustment' => number_format($data['AdjustedBy'], 2, '.', ''),
+                'margin' => number_format($margin, 2, '.', '')
+            ];
+        }
+
+        $data['Items'] = json_encode($processed_items);
+
+        // Save to database
+        try {
+            $result = $this->Item_model->save_price_schedule($data);
+            if ($result) {
+                $this->output->set_content_type('application/json')
+                    ->set_output(json_encode([
+                        'success' => true,
+                        'message' => 'Price schedule saved successfully.',
+                        'csrf_name' => $this->security->get_csrf_token_name(),
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    ]));
+            } else {
+                log_message('error', 'Database save failed: ' . $this->db->last_query());
+                $this->output->set_content_type('application/json')
+                    ->set_output(json_encode([
+                        'success' => false,
+                        'message' => 'Failed to save price schedule to database.',
+                        'csrf_name' => $this->security->get_csrf_token_name(),
+                        'csrf_hash' => $this->security->get_csrf_hash()
+                    ]));
+            }
+        } catch (Exception $e) {
+            log_message('error', 'Save schedule error: ' . $e->getMessage());
+            $this->output->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => false,
+                    'message' => 'Database error: ' . $e->getMessage(),
+                    'csrf_name' => $this->security->get_csrf_token_name(),
+                    'csrf_hash' => $this->security->get_csrf_hash()
+                ]));
+        }
+    }
+
+    private function apply_rounding($price, $rounding_method, $round_to_nearest) {
+        if (!$price || is_nan($price)) return number_format(0.00, 2, '.', '');
+        $base_price = floatval($price);
+        $round_to_nearest = floatval($round_to_nearest) ?: 0.05;
+
+        if (!$rounding_method || $rounding_method === 'none') {
+            return number_format($base_price, 2, '.', '');
+        }
+
+        $last_digit = ($base_price % 0.10) * 100;
+        if ($rounding_method === 'round_half_down') {
+            if ($last_digit <= 2.5) $base_price = floor($base_price * 20) / 20;
+            else if ($last_digit > 2.5 && $last_digit <= 7.5) $base_price = floor($base_price * 20 + 0.5) / 20;
+            else $base_price = ceil($base_price * 20) / 20;
+        } else if ($rounding_method === 'round_down') {
+            $base_price = floor($base_price * 20) / 20;
+        } else if ($rounding_method === 'round_half_up') {
+            if ($last_digit < 5) $base_price = ceil($base_price * 20 - 0.5) / 20;
+            else $base_price = ceil($base_price * 20) / 20;
+        } else if ($rounding_method === 'round_up') {
+            $base_price = ceil($base_price * 20) / 20;
+        }
+
+        if ($round_to_nearest > 0) {
+            $base_price = round($base_price / $round_to_nearest) * $round_to_nearest;
+        }
+
+        return number_format($base_price, 2, '.', '');
+    }
+
+
+	/**
+	 * ===========================================================
+	 * Price Schedule Logic END Code
+	 * ===========================================================
+	 */
 	
 }

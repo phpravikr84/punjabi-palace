@@ -1045,5 +1045,133 @@ class Fooditem_model extends CI_Model {
 	}
 
 
+	/**
+	 * ========================================
+	 * PRICE Schedule Model
+	 * ========================================
+	 */
+
+
+    public function count_price_schedules() {
+        // Placeholder for counting price schedules
+        // Assumes a price_schedules table
+        return $this->db->from('price_schedules')->count_all_results();
+    }
+
+    public function read_price_schedules($limit, $offset) {
+        // Placeholder for retrieving scheduled price updates
+        // This would typically join with a price_schedules table
+        return $this->db->select('ps.*, ic.Name as category_name')
+            ->from('price_schedules ps') // Assuming a price_schedules table exists
+            ->join('item_category ic', 'ps.CategoryID = ic.CategoryID', 'left')
+            ->limit($limit, $offset)
+            ->get()->result_array();
+    }
+
+    public function get_categories() {
+		$sql = "
+			SELECT CategoryID, Name 
+			FROM item_category 
+			WHERE CategoryIsActive = 1 
+			AND parentid IN (SELECT CategoryID FROM item_category WHERE parentid = 0)
+		";
+
+		return $this->db->query($sql)->result_array();
+	}
+
+
+    public function search_items($search = '') {
+        $this->db->select('ProductsID, ProductName, item_code, ic.Name as CategoryName, weightage, uomid')
+            ->from('item_foods if')
+            ->join('item_category ic', 'if.CategoryID = ic.CategoryID', 'left')
+            ->where('if.ProductsIsActive', 1);
+
+        if (!empty($search)) {
+            $this->db->group_start()
+                ->like('ProductName', $search)
+                ->or_like('item_code', $search)
+                ->group_end();
+        }
+
+        return $this->db->get()->result_array();
+    }
+
+	public function get_customer_type() {
+		return $this->db->select('customer_type_id, customer_type')
+			->from('customer_type')
+			->order_by('ordering', 'ASC')
+			->get()
+			->result_array();
+	}
+
+	public function get_items_by_ids($item_ids) {
+        if (empty($item_ids)) {
+            log_message('error', 'No item IDs provided in get_items_by_ids');
+            return [];
+        }
+
+        $this->db->select('i.ProductsID, i.ProductName, i.item_code, c.Name as category_name, v.price, v.takeaway_price, v.uber_eats_price, v.cost_price');
+        $this->db->from('item_foods i');
+        $this->db->join('variant v', 'i.ProductsID = v.menuid', 'left');
+        $this->db->join('category c', 'i.CategoryID = c.CategoryID', 'left');
+        $this->db->where_in('i.ProductsID', $item_ids);
+        $query = $this->db->get();
+
+        if ($query === FALSE) {
+            log_message('error', 'Database query failed in get_items_by_ids: ' . $this->db->last_query());
+            return [];
+        }
+
+        $items = $query->result_array();
+        $result = [];
+        foreach ($items as $item) {
+            $result[] = [
+                'ProductsID' => $item['ProductsID'],
+                'ProductName' => $item['ProductName'],
+                'item_code' => $item['item_code'],
+                'category_name' => $item['category_name'] ?: 'Uncategorized',
+                'price' => $item['price'] ?: '0.00',
+                'prices' => [
+                    '1' => $item['price'] ?: '0.00', // Dine-In
+                    '2' => $item['takeaway_price'] ?: '0.00', // Takeaway
+                    '3' => $item['uber_eats_price'] ?: '0.00' // UberEats
+                ],
+                'cost_price' => $item['cost_price'] ?: '0.00',
+                'last_cost' => '0.00', // Default since not in variant
+                'average_cost' => '0.00' // Default since not in variant
+            ];
+        }
+        return $result;
+    }
+
+    public function save_price_schedule($data) {
+        $this->db->trans_start();
+
+        if (!empty($data['ScheduleID'])) {
+            $this->db->where('ScheduleID', $data['ScheduleID']);
+            $this->db->update('price_schedules', $data);
+            $schedule_id = $data['ScheduleID'];
+        } else {
+            unset($data['ScheduleID']);
+            $this->db->insert('price_schedules', $data);
+            $schedule_id = $this->db->insert_id();
+        }
+
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE) {
+            log_message('error', 'Database transaction failed in save_price_schedule: ' . $this->db->last_query());
+            return false;
+        }
+        return $schedule_id;
+    }
+
+
+	/**
+	 * ========================================
+	 * END PRICE Schedule Model
+	 * ========================================
+	 */
+
+
 
 }
