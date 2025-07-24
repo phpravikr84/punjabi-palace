@@ -4010,7 +4010,7 @@ class Item_food extends MX_Controller
         #
 
 
-        $data['sub_header'] = 'item';
+        $data['sub_header'] = 'price_schedule';
         $data['module'] = "itemmanage";
         $data['page'] = "price_schedule_list";
         echo Modules::run('template/layout', $data);
@@ -4036,7 +4036,7 @@ class Item_food extends MX_Controller
         $data['scheduleinfo']->round_to_nearest = null;
         $data['scheduleinfo']->adjusted_by = null;
 
-        $data['sub_header'] = 'item';
+        $data['sub_header'] = 'price_schedule';
         $data['module'] = "itemmanage";
         $data['page'] = "add_price_schedule";
         echo Modules::run('template/layout', $data);
@@ -4122,19 +4122,20 @@ class Item_food extends MX_Controller
             return;
         }
 
-        // Verify CSRF token
-        $csrf_token = $this->input->post($this->security->get_csrf_token_name(), TRUE);
-        if (!$csrf_token || $csrf_token !== $this->security->get_csrf_hash()) {
-            log_message('error', 'CSRF token validation failed. Received: ' . ($csrf_token ?? 'null'));
-            $this->output->set_content_type('application/json')
-                ->set_output(json_encode([
-                    'success' => false,
-                    'message' => 'Invalid CSRF token.',
-                    'csrf_name' => $this->security->get_csrf_token_name(),
-                    'csrf_hash' => $this->security->get_csrf_hash()
-                ]));
-            return;
-        }
+
+        // // Verify CSRF token
+        // $csrf_token = $this->input->post($this->security->get_csrf_token_name(), TRUE);
+        // if (!$csrf_token || $csrf_token !== $this->security->get_csrf_hash()) {
+        //     log_message('error', 'CSRF token validation failed. Received: ' . ($csrf_token ?? 'null'));
+        //     $this->output->set_content_type('application/json')
+        //         ->set_output(json_encode([
+        //             'success' => false,
+        //             'message' => 'Invalid CSRF token.',
+        //             'csrf_name' => $this->security->get_csrf_token_name(),
+        //             'csrf_hash' => $this->security->get_csrf_hash()
+        //         ]));
+        //     return;
+        // }
 
         // Form validation rules
         $this->form_validation->set_rules('price_level', 'Price Level', 'required|trim');
@@ -4152,8 +4153,6 @@ class Item_food extends MX_Controller
                 ->set_output(json_encode([
                     'success' => false,
                     'message' => validation_errors(),
-                    'csrf_name' => $this->security->get_csrf_token_name(),
-                    'csrf_hash' => $this->security->get_csrf_hash()
                 ]));
             return;
         }
@@ -4183,8 +4182,6 @@ class Item_food extends MX_Controller
                 ->set_output(json_encode([
                     'success' => false,
                     'message' => 'No items selected.',
-                    'csrf_name' => $this->security->get_csrf_token_name(),
-                    'csrf_hash' => $this->security->get_csrf_hash()
                 ]));
             return;
         }
@@ -4192,13 +4189,11 @@ class Item_food extends MX_Controller
         // Decode items
         $items = is_string($items) ? json_decode($items, true) : $items;
         if (json_last_error() !== JSON_ERROR_NONE || !is_array($items)) {
-            log_message('error', 'Invalid item JSON: ' . $this->input->post('items', TRUE));
+            //log_message('error', 'Invalid item JSON: ' . $this->input->post('items', TRUE));
             $this->output->set_content_type('application/json')
                 ->set_output(json_encode([
                     'success' => false,
                     'message' => 'Invalid item data format: ' . json_last_error_msg(),
-                    'csrf_name' => $this->security->get_csrf_token_name(),
-                    'csrf_hash' => $this->security->get_csrf_hash()
                 ]));
             return;
         }
@@ -4206,21 +4201,23 @@ class Item_food extends MX_Controller
         // Validate item structure
         foreach ($items as $item) {
             if (!isset($item['product_id']) || !isset($item['product_name']) || !isset($item['item_code'])) {
-                log_message('error', 'Invalid item structure: ' . json_encode($item));
+                //log_message('error', 'Invalid item structure: ' . json_encode($item));
                 $this->output->set_content_type('application/json')
                     ->set_output(json_encode([
                         'success' => false,
                         'message' => 'Invalid item structure for: ' . (isset($item['product_name']) ? $item['product_name'] : 'unknown'),
-                        'csrf_name' => $this->security->get_csrf_token_name(),
-                        'csrf_hash' => $this->security->get_csrf_hash()
                     ]));
                 return;
             }
         }
 
+			
         // Fetch item details
         $item_ids = array_column($items, 'product_id');
-        $item_details = $this->Item_model->get_items_by_ids($item_ids);
+        $item_details = $this->fooditem_model->get_items_by_ids($item_ids);
+
+		
+
 
         if (empty($item_details)) {
             log_message('error', 'No items found for IDs: ' . implode(',', $item_ids));
@@ -4234,6 +4231,8 @@ class Item_food extends MX_Controller
             return;
         }
 
+		
+		
         // Process items
         $processed_items = [];
         foreach ($item_details as $item) {
@@ -4273,25 +4272,26 @@ class Item_food extends MX_Controller
 
         $data['Items'] = json_encode($processed_items);
 
+		// echo '<pre>';
+		// print_r($data);
+		// echo '</pre>';
+		// exit;
+		
         // Save to database
         try {
-            $result = $this->Item_model->save_price_schedule($data);
+            $result = $this->fooditem_model->save_price_schedule($data);
             if ($result) {
                 $this->output->set_content_type('application/json')
                     ->set_output(json_encode([
                         'success' => true,
                         'message' => 'Price schedule saved successfully.',
-                        'csrf_name' => $this->security->get_csrf_token_name(),
-                        'csrf_hash' => $this->security->get_csrf_hash()
                     ]));
             } else {
-                log_message('error', 'Database save failed: ' . $this->db->last_query());
+                //log_message('error', 'Database save failed: ' . $this->db->last_query());
                 $this->output->set_content_type('application/json')
                     ->set_output(json_encode([
                         'success' => false,
                         'message' => 'Failed to save price schedule to database.',
-                        'csrf_name' => $this->security->get_csrf_token_name(),
-                        'csrf_hash' => $this->security->get_csrf_hash()
                     ]));
             }
         } catch (Exception $e) {
@@ -4300,8 +4300,6 @@ class Item_food extends MX_Controller
                 ->set_output(json_encode([
                     'success' => false,
                     'message' => 'Database error: ' . $e->getMessage(),
-                    'csrf_name' => $this->security->get_csrf_token_name(),
-                    'csrf_hash' => $this->security->get_csrf_hash()
                 ]));
         }
     }
@@ -4334,6 +4332,134 @@ class Item_food extends MX_Controller
         }
 
         return number_format($base_price, 2, '.', '');
+    }
+
+	 // View price schedule details
+    public function view_schedule($schedule_id) {
+        $this->permission->method('itemmanage', 'read')->redirect();
+        $data['title'] = display('price_schedule_details');
+
+        $data['scheduleinfo'] = $this->fooditem_model->get_schedule_details($schedule_id);
+        if (!$data['scheduleinfo']) {
+            $this->session->set_flashdata('error', display('schedule_not_found'));
+            redirect('itemmanage/item_food/price_schedule');
+        }
+
+        $data['module'] = "itemmanage";
+        $data['page'] = "view_price_schedule";
+        echo Modules::run('template/layout', $data);
+    }
+	
+    // Toggle schedule status
+    public function toggle_schedule_status($schedule_id) {
+        $result = $this->fooditem_model->toggle_schedule_status($schedule_id);
+        echo json_encode([
+            'status' => $result ? 'success' : 'error',
+            'message' => $result ? 'Status updated successfully.' : 'Failed to update status.'
+        ]);
+    }
+
+	public function apply_changes_now() {
+		$scheduleId = $this->input->post('schedule_id', TRUE);
+		$priceLevel = $this->input->post('price_level', TRUE);
+		$items = $this->input->post('items', TRUE);
+		$effectiveDate = $this->input->post('effective_date', TRUE);
+		$description = $this->input->post('description', TRUE);
+		$basedOn = $this->input->post('based_on', TRUE) ?: 'sp';
+		$basePrice = $this->input->post('base_price', TRUE);
+		$calculationMethod = $this->input->post('calculation_method', TRUE) ?: '';
+		$percentage = $this->input->post('percentage', TRUE) ? floatval($this->input->post('percentage', TRUE)) : 0.00;
+		$roundingMethod = $this->input->post('rounding_method', TRUE) ?: 'none';
+		$roundToNearest = $this->input->post('round_to_nearest', TRUE) ? floatval($this->input->post('round_to_nearest', TRUE)) : 0.00;
+		$adjustedBy = $this->input->post('adjusted_by', TRUE) ? floatval($this->input->post('adjusted_by', TRUE)) : 0.00;
+		$categoryId = $this->input->post('category_id', TRUE);
+		$userId = $this->input->post('user_id', TRUE) ? $this->input->post('user_id', TRUE) : 0;
+
+		if (!$items || !$priceLevel) {
+			echo json_encode(['success' => false, 'message' => 'Invalid input data']);
+			return;
+		}
+
+		$items = is_string($items) ? json_decode($items, true) : $items;
+		if (json_last_error() !== JSON_ERROR_NONE || !is_array($items)) {
+			echo json_encode(['success' => false, 'message' => 'Invalid item data format']);
+			return;
+		}
+
+		$currentDateTime = date('Y-m-d H:i:s');
+
+		// Prepare data for price_schedules
+		$data = [
+			'PriceLevel' => $priceLevel,
+			'EffectiveDate' => $effectiveDate ?: date('Y-m-d'),
+			'Description' => $description,
+			'CategoryID' => $categoryId ? $categoryId : null,
+			'BasedOn' => $basedOn,
+			'BasePrice' => $basePrice,
+			'CalculationMethod' => $calculationMethod,
+			'Percentage' => $percentage,
+			'RoundingMethod' => $roundingMethod,
+			'RoundToNearest' => $roundToNearest,
+			'AdjustedBy' => $adjustedBy,
+			'UserIDInserted' => $userId,
+			'DateInserted' => $currentDateTime,
+			'Items' => json_encode($items),
+			'schedule_flag' => 1,
+			'cron_run_datetime' => $currentDateTime
+		];
+
+		// If scheduleId exists, update existing schedule; otherwise, insert new
+		if ($scheduleId) {
+			$this->db->where('ScheduleID', $scheduleId);
+			$result = $this->db->update('price_schedules', $data);
+			if (!$result) {
+				$error = $this->db->error();
+				log_message('error', 'Failed to update price schedule ID ' . $scheduleId . ': ' . json_encode($error));
+				echo json_encode(['success' => false, 'message' => 'Failed to update price schedule: ' . $error['message']]);
+				return;
+			}
+		} else {
+			$result = $this->fooditem_model->save_price_schedule($data);
+			if (!$result) {
+				$error = $this->db->error();
+				log_message('error', 'Failed to save price schedule: ' . json_encode($error));
+				echo json_encode(['success' => false, 'message' => 'Failed to save price schedule: ' . $error['message']]);
+				return;
+			}
+			$scheduleId = $this->db->insert_id();
+		}
+
+		// Update variant table
+		foreach ($items as $item) {
+			$price_field = $this->get_price_field($priceLevel);
+			if ($price_field) {
+				$this->db->where('menuid', $item['product_id']);
+				$update_result = $this->db->update('variant', [
+					$price_field => $item['new_price']
+				]);
+				if (!$update_result) {
+					$error = $this->db->error();
+					log_message('error', 'Failed to update variant for menuid ' . $item['product_id'] . ': ' . json_encode($error));
+					echo json_encode(['success' => false, 'message' => 'Failed to update variant prices: ' . $error['message']]);
+					return;
+				}
+			} else {
+				log_message('error', 'Invalid price field for price_level ' . $priceLevel);
+				echo json_encode(['success' => false, 'message' => 'Invalid price level']);
+				return;
+			}
+		}
+
+		echo json_encode(['success' => true, 'message' => 'Price changes applied successfully']);
+	}
+
+    private function get_price_field($price_level) {
+        $map = [
+            '1' => 'price',           // Dine In
+            '2' => 'takeaway_price', // Uber Eats
+            '3' => 'uber_eats_price'   // Take Away
+        ];
+        return isset($map[$price_level]) ? $map[$price_level] : null;
     }
 
 

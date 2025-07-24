@@ -134,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th><?php echo 'Category'; ?></th>
                                     <th><?php echo 'Last Cost'; ?></th>
                                     <th><?php echo 'Average Cost'; ?></th>
-                                    <th class="price-header"><?php echo 'Price'; ?></th>
+                                    <th><?php echo 'Price'; ?></th>
                                     <th><?php echo 'New Price'; ?></th>
                                     <th><?php echo 'Adjustment'; ?></th>
                                     <th><?php echo 'Margin'; ?></th>
@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </thead>
                             <tbody id="itemTableBody">
                                 <!-- Hidden Category Id Selected -->
-                                <input type="text" name="Parentcategory" id="CategoryID" value="<?php echo isset($scheduleinfo->CategoryID) ?: ''; ?>">
+                                <input type="hidden" name="Parentcategory" id="CategoryID" value="<?php echo isset($scheduleinfo->CategoryID) ?: ''; ?>">
                                 <?php if (!empty($scheduleinfo->items)): ?>
                                     <?php foreach (json_decode($scheduleinfo->items, true) as $item): ?>
                                         <tr>
@@ -204,7 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th><?php echo 'Category'; ?></th>
                             <th><?php echo 'Weight'; ?></th>
                             <th><?php echo 'Unit'; ?></th>
-                            <th class="price-header"><?php echo 'Price'; ?></th>
+                            <th><?php echo 'Price'; ?></th>
                         </tr>
                     </thead>
                     <tbody id="itemSearchTableBody"></tbody>
@@ -304,6 +304,7 @@ $(document).ready(function() {
 
         $('#itemTableBody tr').each(function() {
             let $row = $(this);
+            //let itemPrice = parseFloat($row.data('prices')[priceLevel]) || parseFloat($row.find('td:eq(5)').text()) || 0;
             let itemPrice = parseFloat($row.find('td:eq(5)').text()) || 0;
             let basePrice = itemPrice;
             let lastCost = parseFloat($row.data('last-cost')) || 0;
@@ -336,30 +337,10 @@ $(document).ready(function() {
         });
     }
 
-    function updateTableHeaders(priceLevel) {
-        let headerText;
-        switch (priceLevel) {
-            case '1':
-                headerText = 'Price';
-                break;
-            case '2':
-                headerText = 'Takeaway Price';
-                break;
-            case '3':
-                headerText = 'Uber Eats Price';
-                break;
-            default:
-                headerText = 'Price';
-        }
-        $('#itemTable thead .price-header').text(headerText);
-        $('#itemSearchTable thead .price-header').text(headerText);
-    }
-
     function bindScheduleRowEvents($scheduleRow) {
         $scheduleRow.find('[name="price_level"]').on('change', function() {
             let priceLevel = $(this).val();
             $scheduleRow.find('[name="base_price"]').val(priceLevel).trigger('change.select2');
-            updateTableHeaders(priceLevel);
             updateTablePrices($scheduleRow);
             // Trigger Parentcategory change to refresh item search table with correct price
             if ($('#Parentcategory').val()) {
@@ -746,9 +727,5 @@ $(document).ready(function() {
             }
         });
     });
-
-    // Initialize table headers based on initial price_level
-    let initialPriceLevel = $('#price_level').val();
-    updateTableHeaders(initialPriceLevel);
 });
 </script>

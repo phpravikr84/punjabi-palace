@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <label for="effectiveFrom"><?php echo 'Effective From'; ?> *</label>
                                 <input name="effective_date" class="form-control datepicker" type="text"
                                     placeholder="Effective From" id="effectiveFrom"
-                                    value="<?php echo !empty($scheduleinfo->effective_date) ? htmlspecialchars($scheduleinfo->effective_date) : ''; ?>" required>
+                                    value="<?php echo !empty($scheduleinfo->effective_date) ? htmlspecialchars($scheduleinfo->effective_date) : date('Y-m-d'); ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="description"><?php echo 'Description'; ?></label>
@@ -134,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th><?php echo 'Category'; ?></th>
                                     <th><?php echo 'Last Cost'; ?></th>
                                     <th><?php echo 'Average Cost'; ?></th>
-                                    <th class="price-header"><?php echo 'Price'; ?></th>
+                                    <th><?php echo 'Price'; ?></th>
                                     <th><?php echo 'New Price'; ?></th>
                                     <th><?php echo 'Adjustment'; ?></th>
                                     <th><?php echo 'Margin'; ?></th>
@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </thead>
                             <tbody id="itemTableBody">
                                 <!-- Hidden Category Id Selected -->
-                                <input type="text" name="Parentcategory" id="CategoryID" value="<?php echo isset($scheduleinfo->CategoryID) ?: ''; ?>">
+                                <input type="hidden" name="Parentcategory" id="CategoryID" value="<?php echo isset($scheduleinfo->CategoryID) ?: ''; ?>">
                                 <?php if (!empty($scheduleinfo->items)): ?>
                                     <?php foreach (json_decode($scheduleinfo->items, true) as $item): ?>
                                         <tr>
@@ -204,7 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th><?php echo 'Category'; ?></th>
                             <th><?php echo 'Weight'; ?></th>
                             <th><?php echo 'Unit'; ?></th>
-                            <th class="price-header"><?php echo 'Price'; ?></th>
+                            <th><?php echo 'Price'; ?></th>
                         </tr>
                     </thead>
                     <tbody id="itemSearchTableBody"></tbody>
@@ -235,8 +235,7 @@ $(document).ready(function() {
     });
 
     $('.datepicker').datepicker({
-        dateFormat: 'yy-mm-dd',
-        minDate: 1 // Disable today and past dates
+        dateFormat: 'yy-mm-dd'
     });
 
     function updateItemTableLength() {
@@ -282,17 +281,6 @@ $(document).ready(function() {
         return (((newPrice - price) / price) * 100).toFixed(2);
     }
 
-    function getPriceForLevel(item, priceLevel) {
-        if (!item.prices || !priceLevel) return item.price || '0.00';
-        console.log('Item prices:', item.prices, 'Price Level:', priceLevel);
-        switch (priceLevel) {
-            case '1': return item.prices['1'] || '0.00'; // price
-            case '2': return item.prices['2'] || '0.00'; // takeaway_price
-            case '3': return item.prices['3'] || '0.00'; // uber_eats_price
-            default: return item.price || '0.00';
-        }
-    }
-
     function updateTablePrices($scheduleRow) {
         let priceLevel = $scheduleRow.find('[name="price_level"]').val();
         let basedOn = $scheduleRow.find('[name="based_on"]').val();
@@ -329,42 +317,17 @@ $(document).ready(function() {
 
             $row.find('td:eq(3)').text(lastCost.toFixed(2));
             $row.find('td:eq(4)').text(averageCost.toFixed(2));
-            $row.find('td:eq(5)').text(basePrice.toFixed(2)); // Update Price column
             $row.find('td:eq(6)').text(parseFloat(newPrice).toFixed(2));
             $row.find('td:eq(7)').text(adjustedBy.toFixed(2));
             $row.find('td:eq(8)').text(calculateMargin(basePrice, newPrice));
         });
     }
 
-    function updateTableHeaders(priceLevel) {
-        let headerText;
-        switch (priceLevel) {
-            case '1':
-                headerText = 'Price';
-                break;
-            case '2':
-                headerText = 'Takeaway Price';
-                break;
-            case '3':
-                headerText = 'Uber Eats Price';
-                break;
-            default:
-                headerText = 'Price';
-        }
-        $('#itemTable thead .price-header').text(headerText);
-        $('#itemSearchTable thead .price-header').text(headerText);
-    }
-
     function bindScheduleRowEvents($scheduleRow) {
         $scheduleRow.find('[name="price_level"]').on('change', function() {
             let priceLevel = $(this).val();
             $scheduleRow.find('[name="base_price"]').val(priceLevel).trigger('change.select2');
-            updateTableHeaders(priceLevel);
             updateTablePrices($scheduleRow);
-            // Trigger Parentcategory change to refresh item search table with correct price
-            if ($('#Parentcategory').val()) {
-                $('#Parentcategory').trigger('change');
-            }
         });
 
         $scheduleRow.find('[name="based_on"], [name="calculation_method"], [name="percentage"], [name="rounding_method"], [name="round_to_nearest"], [name="adjusted_by"]').on('change input', function() {
@@ -380,136 +343,8 @@ $(document).ready(function() {
         }
     });
 
-    // Apply Changes Now button click handler
-    $('.apply-changesNow').on('click', function() {
-        let scheduleId = $('[name="ScheduleID"]').val();
-        let effectiveDate = $('[name="effective_date"]').val();
-        let priceLevel = $('[name="price_level"]').val();
-        let items = $('[name="items"]').val();
-        let csrf = $('#csrfhashresarvation').val();
-        let today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-        let basedOn = $('[name="based_on"]').val() || 'sp';
-        let calculationMethod = $('[name="calculation_method"]').val() || '';
-        let percentage = parseFloat($('[name="percentage"]').val()) || 0;
-        let roundingMethod = $('[name="rounding_method"]').val() || 'none';
-        let roundToNearest = parseFloat($('[name="round_to_nearest"]').val()) || 0;
-        let adjustedBy = parseFloat($('[name="adjusted_by"]').val()) || 0;
-
-        if (!items || items === '' || (items && JSON.parse(items).length === 0)) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'No items selected for this schedule.',
-                confirmButtonText: 'OK'
-            });
-            return;
-        }
-
-        // Process items to include new_price, adjustment, and margin
-        let itemsArray = JSON.parse(items);
-        let processedItems = itemsArray.map(item => {
-            let basePrice = 0.00;
-            if (basedOn === 'sp') {
-                basePrice = priceLevel && item.prices && item.prices[priceLevel] ? parseFloat(item.prices[priceLevel]) : parseFloat(item.price);
-            } else if (basedOn === 'cp') {
-                basePrice = parseFloat(item.cost_price) || 0;
-            }
-
-            let newPrice = basePrice;
-            if (calculationMethod === 'Percentage Markup') {
-                newPrice = basePrice * (1 + percentage / 100);
-            } else if (calculationMethod === 'Amount Markup') {
-                newPrice = basePrice + percentage;
-            }
-
-            newPrice = applyRounding(newPrice, roundingMethod, roundToNearest);
-            newPrice = parseFloat(newPrice) + adjustedBy;
-            let margin = (basePrice !== 0) ? (((newPrice - basePrice) / basePrice) * 100).toFixed(2) : (newPrice === 0 ? '100.00' : '0.00');
-
-            return {
-                ...item,
-                price: getPriceForLevel(item, priceLevel), // Ensure correct price is stored
-                new_price: parseFloat(newPrice).toFixed(2),
-                adjustment: parseFloat(adjustedBy).toFixed(2),
-                margin: margin
-            };
-        });
-
-        let formData = {
-            schedule_id: scheduleId,
-            price_level: priceLevel,
-            items: JSON.stringify(processedItems),
-            effective_date: effectiveDate,
-            description: $('[name="description"]').val(),
-            based_on: basedOn,
-            base_price: $('[name="base_price"]').val(),
-            calculation_method: calculationMethod,
-            percentage: percentage,
-            rounding_method: roundingMethod,
-            round_to_nearest: roundToNearest,
-            adjusted_by: adjustedBy,
-            category_id: $('[name="Parentcategory"]').val(),
-            user_id: '<?php echo $this->session->userdata('id') ? $this->session->userdata('id') : 0; ?>',
-            csrf_test_name: csrf
-        };
-
-        let applyChanges = function() {
-            $.ajax({
-                url: '<?php echo base_url('itemmanage/item_food/apply_changes_now'); ?>',
-                type: 'POST',
-                data: formData,
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: response.message || 'Price changes applied successfully.',
-                            confirmButtonText: 'OK'
-                        }).then(() => {
-                            window.location.reload();
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: response.message || 'Failed to apply price changes.',
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Server error: ' + (jqXHR.responseJSON ? jqXHR.responseJSON.message : textStatus),
-                        confirmButtonText: 'OK'
-                    });
-                }
-            });
-        };
-
-        if (!effectiveDate || effectiveDate === today) {
-            applyChanges();
-        } else {
-            Swal.fire({
-                title: 'Apply Changes Now?',
-                text: 'The effective date is in the future. Do you want to apply these price changes immediately?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, apply now!',
-                cancelButtonText: 'No, cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    applyChanges();
-                }
-            });
-        }
-    });
-
     $('#Parentcategory').on('change', function() {
         let categoryId = $(this).val();
-        let priceLevel = $('#price_level').val();
         if (categoryId) {
             $.ajax({
                 url: '<?php echo base_url('itemmanage/item_food/get_items_by_category'); ?>',
@@ -551,7 +386,6 @@ $(document).ready(function() {
                             last_cost: '0.00',
                             average_cost: '0.00'
                         };
-                        let displayPrice = getPriceForLevel(itemData, priceLevel);
                         let jsonString = JSON.stringify(itemData);
                         let encodedItemData = jsonString.replace(/'/g, '\\\'').replace(/"/g, '"');
                         console.log('Encoded item data:', encodedItemData);
@@ -563,7 +397,7 @@ $(document).ready(function() {
                                 <td>${$('<div/>').text(item.category_name || '').html()}</td>
                                 <td>${$('<div/>').text(item.weightage || '0.00').html()}</td>
                                 <td>${$('<div/>').text(item.uom_short_code || '').html()}</td>
-                                <td>${$('<div/>').text(displayPrice).html()}</td>
+                                <td>${$('<div/>').text(item.price || '0.00').html()}</td>
                             </tr>
                         `);
                     });
@@ -591,9 +425,8 @@ $(document).ready(function() {
         $('#itemTableBody').empty();
         let validItems = 0;
         let itemsArray = [];
-        let priceLevel = $('#price_level').val();
-        let category_id = $('#Parentcategory').val();
-        $('#CategoryID').val(category_id);
+        $category_id = $('#Parentcategory').val();
+        $('#CategoryID').val($category_id);
         $('.item-checkbox:checked').each(function() {
             let rawData = $(this).attr('data-item');
             console.log('Raw data-item:', rawData);
@@ -611,7 +444,6 @@ $(document).ready(function() {
                     });
                     return true;
                 }
-                let displayPrice = getPriceForLevel(item, priceLevel);
                 $('#itemTableBody').append(`
                     <tr data-prices='${JSON.stringify(item.prices)}' data-cost-price="${item.cost_price}" data-last-cost="${item.last_cost}" data-average-cost="${item.average_cost}">
                         <td>${$('<div/>').text(item.product_name).html()}</td>
@@ -619,7 +451,7 @@ $(document).ready(function() {
                         <td>${$('<div/>').text(item.category).html()}</td>
                         <td>${$('<div/>').text(item.last_cost).html()}</td>
                         <td>${$('<div/>').text(item.average_cost).html()}</td>
-                        <td>${$('<div/>').text(displayPrice).html()}</td>
+                        <td>${$('<div/>').text(item.price).html()}</td>
                         <td>0.00</td>
                         <td>0.00</td>
                         <td>0.00</td>
@@ -630,7 +462,7 @@ $(document).ready(function() {
                     product_name: item.product_name,
                     item_code: item.item_code,
                     category: item.category,
-                    price: displayPrice,
+                    price: item.price,
                     prices: item.prices,
                     cost_price: item.cost_price,
                     last_cost: item.last_cost,
@@ -687,7 +519,7 @@ $(document).ready(function() {
             return;
         }
 
-        var csrf = $('#csrfhashresarvation').val();
+         var csrf = $('#csrfhashresarvation').val();
         var form = $('#priceScheduleForm')[0];
         var formData = new FormData(form);
 
@@ -745,10 +577,7 @@ $(document).ready(function() {
                 });
             }
         });
-    });
 
-    // Initialize table headers based on initial price_level
-    let initialPriceLevel = $('#price_level').val();
-    updateTableHeaders(initialPriceLevel);
+    });
 });
 </script>

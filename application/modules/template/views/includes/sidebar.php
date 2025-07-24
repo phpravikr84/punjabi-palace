@@ -44,7 +44,8 @@
 					"edit_subcategory" => array("controller" => "item_category","method" => "subcategory_list","permission" => "read"),
 					"edit_food" => array("controller" => "item_food","method" => "index","permission" => "read"),
 					"edit_modifiers" => array("controller" => "menu_addons","method"     => "index","permission" => "read"),
-					"waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read"),
+					"price_schedules" => array("controller" => "item_food", "method"  => "price_schedule","permission" => "read"),
+					// "waste_food" => array("controller" => "waste", "method"  => "index","permission" => "read"),
 
 					// "manage_category" => array(
 					// 	"add_category" => array("controller" => "item_category","method"=> "create","permission" => "create"), 
@@ -404,6 +405,10 @@
 						
 						case 'waste_food':
 							echo 'Manage Wastage';
+							break;
+						
+						case 'price_schedules':
+							echo 'Price Schedules';
 							break;
 
 						case 'edit_group':
