@@ -4453,11 +4453,81 @@ class Item_food extends MX_Controller
 		echo json_encode(['success' => true, 'message' => 'Price changes applied successfully']);
 	}
 
+
+	/**
+	 * Cron job to apply price changes
+	 * This method is called by the cron job to apply price changes
+	 */
+	public function check_effective_date() {
+        $currentDate = date('Y-m-d');
+        log_message('debug', 'Current server date: ' . $currentDate);
+        
+        // Fetch schedules where EffectiveDate is today, is_enabled is 1, cron_run_datetime is NULL, and not yet processed
+        $this->db->where('EffectiveDate', $currentDate);
+        $this->db->where('is_enabled', 1);
+        $this->db->where('cron_run_datetime IS NULL', NULL, FALSE);
+        $this->db->where('schedule_flag', 0);
+        //log_message('debug', 'Query: ' . $this->db->get_compiled_select('price_schedules'));
+        $query = $this->db->get('price_schedules');
+
+        $currentDateTime = date('Y-m-d H:i:s');
+        
+        foreach ($query->result_array() as $schedule) {
+           
+            
+            $items = json_decode($schedule['Items'], true);
+            if (json_last_error() !== JSON_ERROR_NONE || !is_array($items)) {
+               
+            }
+
+            $priceLevel = $schedule['PriceLevel'];
+            $price_field = $this->get_price_field($priceLevel);
+            if (!$price_field) {
+                continue;
+            }
+
+			// echo '<pre>';
+			// print_r($items);
+			// echo '<pre/>';
+			// exit;
+            // Update variant table
+            foreach ($items as $item) {
+                
+                $this->db->where('menuid', $item['product_id']);
+                $update_result = $this->db->update('variant', [
+                    $price_field => $item['new_price']
+                ]);
+                if (!$update_result) {
+                    $error = $this->db->error();
+                    log_message('error', 'Failed to update variant for menuid ' . $item['product_id'] . ' in ScheduleID: ' . $schedule['ScheduleID'] . ': ' . json_encode($error));
+                    continue;
+                }
+                log_message('debug', 'Updated variant for menuid ' . $item['product_id'] . ' with ' . $price_field . ' = ' . $item['new_price']);
+            }
+
+            // Update price_schedules to mark as processed
+            $this->db->where('ScheduleID', $schedule['ScheduleID']);
+            $result = $this->db->update('price_schedules', [
+                'schedule_flag' => 1,
+                'cron_run_datetime' => $currentDateTime
+            ]);
+
+            if (!$result) {
+                $error = $this->db->error();
+                log_message('error', 'Failed to update price_schedules for ScheduleID ' . $schedule['ScheduleID'] . ': ' . json_encode($error));
+            } else {
+                log_message('debug', 'Marked ScheduleID ' . $schedule['ScheduleID'] . ' as processed');
+            }
+        }
+
+        log_message('info', 'Price schedule cron job completed for date: ' . $currentDate);
+    }
+
     private function get_price_field($price_level) {
-        $map = [
+       $map = [
             '1' => 'price',           // Dine In
-            '2' => 'takeaway_price', // Uber Eats
-            '3' => 'uber_eats_price'   // Take Away
+            '2' => 'uber_eats_price', // Uber Eats
+            '4' => 'takeaway_price'   // Take Away
         ];
         return isset($map[$price_level]) ? $map[$price_level] : null;
     }

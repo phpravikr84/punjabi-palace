@@ -76,8 +76,8 @@
 <?php if (!empty($sub_header) && $sub_header == 'price_schedule'): ?>
     <div class="col-sm-12 mb-3">
         <div class="d-flex justify-content-start">
-            <a href="<?php echo base_url('itemmanage/item_food/price_schedule'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php echo 'Price Schedules'; ?></a>
-            <a href="<?php echo base_url('itemmanage/item_food/add_price_schedule'); ?>" class="btn btn-success"><?php echo 'Add Price Schedule'; ?></a>
+            <!-- <a href="<?php echo base_url('itemmanage/item_food/price_schedule'); ?>" class="btn btn-primary me-2" style="margin-right:10px;"><?php //echo 'Price Schedules'; ?></a> -->
+            <a href="<?php echo base_url('itemmanage/item_food/add_price_schedule'); ?>" class="btn btn-success"><?php echo 'Create Price Schedule'; ?></a>
         </div>
     </div>
 <?php endif; ?>

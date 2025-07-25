@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th><?php echo 'Effective On'; ?></th>
                             <th><?php echo 'Description'; ?></th>
                             <th><?php echo 'Cron Run Date'; ?></th>
-                            <th><?php echo 'Status'; ?></th>
+                            <th class="text-center"><?php echo 'Status'; ?></th>
                             <th><?php echo 'Action'; ?></th>
                         </tr>
                     </thead>
@@ -32,10 +32,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td><?php echo isset($schedule['EffectiveDate']) ? htmlspecialchars(date('d-m-Y', strtotime($schedule['EffectiveDate']))) : '-'; ?></td>
                                     <td><a href="<?php echo base_url('itemmanage/item_food/view_schedule/' . $schedule['ScheduleID']); ?>" class="text-primary"><?php echo isset($schedule['category_name']) ? htmlspecialchars($schedule['category_name']) : '-'; ?></a></td>
                                     <td><?php echo isset($schedule['cron_run_datetime']) ? htmlspecialchars(date('d-m-Y H:i:s', strtotime($schedule['cron_run_datetime']))) : '-'; ?></td>
-                                    <td>
-                                        <span class="<?php echo $schedule['is_enabled'] ? 'badge badge-success' : 'btn btn-danger btn-sm rounded'; ?>">
-                                            <?php echo $schedule['is_enabled'] ? 'Enabled' : 'Disabled'; ?>
-                                        </span>
+                                    <td class="text-center">
+                                        <?php echo $schedule['is_enabled'] ? '<i class="fas fa-lg fa-check-circle text-success"></i>' : '<i class="fas fa-lg fa-times-circle text-danger"></i>'; ?>
                                     </td>
                                     <td>
                                         <button class="btn btn-sm <?php echo $schedule['is_enabled'] ? 'btn-warning' : 'btn-success'; ?> toggle-status" data-url="<?php echo base_url('itemmanage/item_food/toggle_schedule_status/' . $schedule['ScheduleID']); ?>">

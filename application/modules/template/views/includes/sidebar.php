@@ -408,7 +408,7 @@
 							break;
 						
 						case 'price_schedules':
-							echo 'Price Schedules';
+							echo 'Edit Price Schedules';
 							break;
 
 						case 'edit_group':
