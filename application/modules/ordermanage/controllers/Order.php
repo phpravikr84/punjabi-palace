@@ -4986,6 +4986,10 @@ class Order extends MX_Controller
 
 		$user_id = $this->session->userdata('id');
 		$data['user_is_waiter'] = $this->order_model->is_user_waiter($user_id);
+		// echo '<pre>';
+		// print_r($data['kitcheninfo']);
+		// echo '</pre>';
+		// exit;
 		$data['title'] = "Counter Dashboard";
 		$data['module'] = "ordermanage";
 		$data['page']   = "allkitchen";

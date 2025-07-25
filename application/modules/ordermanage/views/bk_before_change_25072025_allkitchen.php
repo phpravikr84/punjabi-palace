@@ -325,3 +325,4 @@
             </div><!-- /.modal-dialog -->
         </div>
         <script src="<?php echo base_url('application/modules/ordermanage/assets/js/kitchen.js'); ?>" type="text/javascript"></script>
+
