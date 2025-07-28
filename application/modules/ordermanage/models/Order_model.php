@@ -1234,12 +1234,14 @@ class Order_model extends CI_Model
 	}
 	public function customerorderkitchen($id, $kitchen)
 	{
-		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.kitchenid,item_foods.cookedtime,variant.variantid,variant.variantName,variant.price');
+		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.kitchenid,item_foods.cookedtime,item_category.CategoryID as category_id, item_category.Name as cat_name, variant.variantid,variant.variantName,variant.price');
 		$this->db->from('order_menu');
 		$this->db->join('item_foods', 'order_menu.menu_id=item_foods.ProductsID', 'left');
+		$this->db->join('item_category', 'item_foods.CategoryID=item_category.CategoryID', 'left');
 		$this->db->join('variant', 'order_menu.varientid=variant.variantid', 'left');
 		$this->db->where('order_menu.order_id', $id);
 		$this->db->where('item_foods.kitchenid', $kitchen);
+		$this->db->order_by('order_menu.order_id', 'desc');
 		$query = $this->db->get();
 		$orderinfo = $query->result();
 		return $orderinfo;
@@ -1621,6 +1623,7 @@ class Order_model extends CI_Model
 		$this->db->join('item_foods', 'item_foods.ProductsID=order_menu.menu_id', 'Inner');
 		$this->db->where($where);
 		$this->db->where('item_foods.kitchenid', $id);
+		$this->db->order_by('customer_order.order_id', 'desc');
 		$this->db->group_by('customer_order.order_id');
 		$query = $this->db->get();
 
