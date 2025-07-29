@@ -1668,6 +1668,9 @@ class Item_food extends MX_Controller
 		$totalitem = count(explode(',', $groupietm));
 		$isoffer = $this->input->post('isoffer', true);
 		$special = $this->input->post('special', true);
+		$dinein_price = $this->input->post('dinein_price', true);
+		$takeaway_price = $this->input->post('takeaway_price', true);
+		$ubereats_price = $this->input->post('ubereats_price', true);
 		if ($isoffer == 1) {
 			$this->form_validation->set_rules('offerstartdate', display('offerdate'), 'required');
 			$this->form_validation->set_rules('offerendate', display('offerenddate'), 'required');
@@ -1802,7 +1805,14 @@ class Item_food extends MX_Controller
 				}
 				if ($this->fooditem_model->groupfood_create($postData)) {
 					$insertedFoodId = $this->db->insert_id(); // Get last inserted food item ID
-					$mainModArr=$otherModArr=[];
+					$mainModArr=$otherModArr=$variantArr=[];
+					$variantArr['menuid'] = $insertedFoodId;
+					$variantArr['variantName'] = "Regular";
+					$variantArr['price'] = $this->input->post('dinein_price', true);
+					$variantArr['takeaway_price'] = $this->input->post('takeaway_price', true);
+					$variantArr['uber_eats_price'] = $this->input->post('ubereats_price', true);
+					$this->db->insert('variant', $variantArr);
+					// Insert main modifiers
 					if (isset($_POST['mainModID']) && count($_POST['mainModID'])>0) {
 						for ($i=0; $i < (count($_POST['mainModID'])); $i++) {
 
@@ -1936,6 +1946,15 @@ class Item_food extends MX_Controller
 					$this->db->where('promotion_id',$_POST["ProductsID"])->delete('promotion_main_modifiers');
 					$this->db->where('promotion_id',$_POST["ProductsID"])->delete('promotion_other_modifiers');
 					$mainModArr=$otherModArr=[];
+					$variantArr=[];
+					$variantArr['menuid'] = $_POST["ProductsID"];
+					$variantArr['variantName'] = "Regular";
+					$variantArr['price'] = $this->input->post('dinein_price', true);
+					$variantArr['takeaway_price'] = $this->input->post('takeaway_price', true);
+					$variantArr['uber_eats_price'] = $this->input->post('ubereats_price', true);
+					$this->db->where('menuid', $_POST["ProductsID"])->delete('variant');
+					$this->db->insert('variant', $variantArr);
+					// Insert main modifiers
 					if (isset($_POST['mainModID']) && count($_POST['mainModID'])>0) {
 						for ($i=0; $i < (count($_POST['mainModID'])); $i++) {
 							$mainModArr['promotion_id'] = $_POST["ProductsID"];

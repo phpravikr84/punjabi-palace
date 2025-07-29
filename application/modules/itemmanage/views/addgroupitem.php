@@ -1,5 +1,31 @@
-<script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_new_script.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('application/modules/itemmanage/assets/css/item_stylenew.css') ?>" rel="stylesheet" type="text/css" />
+<style>
+    fieldset {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-top: -15px;
+        border-radius: 5px;
+        width: 100%;
+    }
+    legend {
+        /* padding: 0 10px; */
+        font-weight: bold;
+        color: #333;
+        border-bottom: none !important;
+        width: auto !important;
+        border: 1px solid #000;
+        background: #e1e1e1;
+        border-radius: 10px;
+        padding: 5px;
+        font-size: 1.3rem !important;
+    }
+    .fldsetCol {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+</style>
+<script src="<?php echo base_url('application/modules/itemmanage/assets/js/addfooditem_new_script.js'); ?>" type="text/javascript"></script>
 <?php
 $productArr = (isset($productinfo)) ? $productinfo :[];
 $productinfo = (object) $productinfo;
@@ -74,9 +100,9 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group row">
-                            <label for="foodname" class="col-sm-4 col-form-label"><?php echo display('food_name') ?> <span class="text-danger">*</span></label>
+                            <label for="foodname" class="col-sm-4 col-form-label"><?php echo 'Deal Name' ?> <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
-                                <input name="foodname" class="form-control" type="text" placeholder="<?php echo display('food_name') ?>" id="foodname" value="<?php echo (!empty($productinfo->ProductName) ? $productinfo->ProductName : null) ?>" />
+                                <input name="foodname" class="form-control" type="text" placeholder="<?php echo 'Deal Name' ?>" id="foodname" value="<?php echo (!empty($productinfo->ProductName) ? $productinfo->ProductName : null) ?>" />
                             </div>
                         </div>
                         <div class="form-group row">
@@ -85,12 +111,12 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                 <input name="component" class="form-control" data-role="tagsinput" type="text" placeholder="<?php echo display('component') ?>" id="category_subtitle" value="<?php echo (!empty($productinfo->component) ? $productinfo->component : null) ?>">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="vat" class="col-sm-5 col-form-label">GST <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="GST Are always Caltulate percent like: 5 means 5%;"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                             <div class="col-sm-7">
-                                <input name="vat" class="form-control" type="text" placeholder="0%" id="vat" value="<?php echo (!empty($productinfo->productvat) ? $productinfo->productvat : '') ?>">
+                                <input name="vat" class="form-control" type="text" placeholder="0%" id="vat" value="<?php ##echo (!empty($productinfo->productvat) ? $productinfo->productvat : '') ?>">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row" style="display: none;">
                             <label for="firstname" class="col-sm-5 col-form-label"><?php echo display('is_offer') ?> <a class="cattooltips" data-toggle="tooltip" data-placement="top" title="If use Food Special Offer then check it and fill necessary field"><i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                             <div class="col-sm-2">
@@ -174,8 +200,7 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                 } 
                                 ?>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
+
                         <?php if (!empty($taxitems)) {
                             $tx = 0;
                             foreach ($taxitems as $taxitem) {
@@ -243,10 +268,33 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4 fldsetCol">
+                        <fieldset>
+                            <legend><?php echo 'Price'; ?></legend>
+                            <div class="form-group row">
+                                <label for="dinein_price" class="col-sm-4 col-form-label"><?php echo 'Dine In' ?> *</label>
+                                <div class="col-sm-8">
+                                    <input name="dinein_price" class="form-control" type="text" placeholder="<?php echo display('price') ?>" id="dinein_price" value="<?php echo (!empty($productinfo->price) ? $productinfo->price : 0.00) ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="takeaway_price" class="col-sm-4 col-form-label"><?php echo "Take Away" ?> *</label>
+                                <div class="col-sm-8">
+                                    <input name="takeaway_price" class="form-control" type="text" placeholder="<?php echo display('price') ?>" id="takeaway_price" value="<?php echo (!empty($productinfo->takeaway_price) ? $productinfo->takeaway_price : 0.00) ?>" />
+                                </div>
+                            </div>
+                            <div class="form-group row" style="display: none;">
+                                <label for="ubereats_price" class="col-sm-4 col-form-label"><?php echo "Uber Eats" ?> *</label>
+                                <div class="col-sm-8">
+                                    <input name="ubereats_price" class="form-control" type="text" placeholder="<?php echo display('price') ?>" id="ubereats_price" value="<?php echo (!empty($productinfo->uber_eats_price) ? $productinfo->uber_eats_price : 0.00) ?>" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
                 </div>
                 <!-- Select Modifiers [start] -->
                 <div class="row mt-2">
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-6 col-md-6" style="display:none;">
                         <div class="panel panel-bd">
                             <div class="panel-heading" style="background-color: #eeeeee;">
                                 <div class="panel-title box-header itemmanage_box_header">
@@ -273,15 +321,13 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                                 <div class="form-group row">
                                     <label for="addhoc_weight_percent" class="col-sm-4 col-form-label">Total Weightage (%)</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="addhoc_weight_percent" class="form-control addhoc_weight_percent hdb" id="addhoc_weight_percent" placeholder="Weightage %" value="<?php if (!empty($mainModinfo[0]->total_weight_percent)): echo $mainModinfo[0]->total_weight_percent;
-                                                                                                                                                                                                    endif; ?>" />
+                                        <input type="text" name="addhoc_weight_percent" class="form-control addhoc_weight_percent hdb" id="addhoc_weight_percent" placeholder="Weightage %" value="<?php if (!empty($mainModinfo[0]->total_weight_percent)): echo $mainModinfo[0]->total_weight_percent;                                                                                                                                                                                                    endif; ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="addhoc_max_item" class="col-sm-4 col-form-label">Total No. of Item</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="addhoc_max_item" class="form-control addhoc_max_item hdb" id="addhoc_max_item" placeholder="Max No. of Item" value="<?php if (!empty($mainModinfo[0]->total_no_of_item)): echo $mainModinfo[0]->total_no_of_item;
-                                                                                                                                                                                        endif; ?>" />
+                                        <input type="text" name="addhoc_max_item" class="form-control addhoc_max_item hdb" id="addhoc_max_item" placeholder="Max No. of Item" value="<?php if (!empty($mainModinfo[0]->total_no_of_item)): echo $mainModinfo[0]->total_no_of_item; endif; ?>" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -365,7 +411,7 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-12 col-md-12">
                         <!-- Modifiers Panel -->
                     <div class="panel panel-default" id="modifiersPanel">
                         <div class="panel-heading" role="tab" id="headingModifiers">
@@ -581,7 +627,7 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
             endif;
         endif;
         ?>
-        $("#promotionAddSbmt").on('click', function(e) {
+        $("#promotionAddSbmt_ygyh").on('click', function(e) {
             e.preventDefault();
             // alert("Submission Prevented");
             const
@@ -611,12 +657,12 @@ function renderCategoryOptions($categories, $selectedID = null, $level = 0)
                 $promoErr.show();
                 return false;
             }
-            if (totalMainMod < 2) {
-                $mainModID.focus();
-                $promoErr.text("Add More then 1 main modifiers for setting Promotion items !");
-                $promoErr.show();
-                return false;
-            }
+            // if (totalMainMod < 2) {
+            //     $mainModID.focus();
+            //     $promoErr.text("Add More then 1 main modifiers for setting Promotion items !");
+            //     $promoErr.show();
+            //     return false;
+            // }
             if ($categeorywise.prop('checked')) {
                 $("input[name='max_quantity[]']").each(function() {
                     let indvQty = $(this).val();

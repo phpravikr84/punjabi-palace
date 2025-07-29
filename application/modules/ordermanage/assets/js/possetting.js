@@ -1,5 +1,6 @@
   // JavaScript Document
    var editpos=0;
+let selectedDealSubMods = [];
   $(document).ready(function() {
       "use strict";
  	
@@ -182,26 +183,26 @@
       });
   }
   function getBanqcategory() {
-      var product_name = $('#product_name').val();
-      var csrf = $('#csrfhashresarvation').val();
-      var category_id = 0;
-      var myurl = $('#posBanqurl').val();
-      $.ajax({
-          type: "post",
-          async: false,
-          url: myurl,
-          data: { isuptade: 0, csrf_test_name: csrf },
-          success: function(data) {
-              if (data == '420') {
-                  $("#product_search").html('Product not found !');
-              } else {
-                  $("#product_search").html(data);
-              }
-          },
-          error: function() {
-              alert(lang.req_failed);
-          }
-      });
+    var product_name = $('#product_name').val();
+    var csrf = $('#csrfhashresarvation').val();
+    var category_id = 0;
+    var myurl = $('#posBanqurl').val();
+    $.ajax({
+        type: "post",
+        async: false,
+        url: myurl,
+        data: { isuptade: 0, csrf_test_name: csrf },
+        success: function(data) {
+            if (data == '420') {
+                $("#product_search").html('Product not found !');
+            } else {
+                $("#product_search").html(data);
+            }
+        },
+        error: function() {
+            alert(lang.req_failed);
+        }
+    });
   }
   function getPromotionalDeals() {
       var product_name = $('#product_name').val();
@@ -225,6 +226,50 @@
           }
       });
   }
+  function getPromotionalDeals_update() {
+      var product_name = $('#product_name').val();
+      var csrf = $('#csrfhashresarvation').val();
+      var category_id = 0;
+      var myurl = $('#posPromoDealurl').val();
+      $.ajax({
+          type: "post",
+          async: false,
+          url: myurl,
+          data: { isuptade: 0, csrf_test_name: csrf },
+          success: function(data) {
+              if (data == '420') {
+                  $("#product_search_update").html('Product not found !');
+              } else {
+                  $("#product_search_update").html(data);
+              }
+          },
+          error: function() {
+              alert(lang.req_failed);
+          }
+      });
+  }
+  function getBanqcategory_update() {
+        var product_name = $('#product_name').val();
+        var csrf = $('#csrfhashresarvation').val();
+        var category_id = 0;
+        var myurl = $('#posBanqurl').val();
+        $.ajax({
+            type: "post",
+            async: false,
+            url: myurl,
+            data: { isuptade: 0, csrf_test_name: csrf },
+            success: function(data) {
+                if (data == '420') {
+                    $("#product_search_update").html('Product not found !');
+                } else {
+                    $("#product_search_update").html(data);
+                }
+            },
+            error: function() {
+                alert(lang.req_failed);
+            }
+        });
+    }
   //Product search button js
   $('body').on('click', '#search_button', function() {
       var product_name = $('#product_name').val();
@@ -435,12 +480,12 @@ function selectGroupItem(th) {
             
             $('#sideMfContainer').html($("#modifierContent_1").html());
             $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
-            $('#sideVarContainer').append($("#promomainfoodlist").html());
+            // $('#sideVarContainer').append($("#promomainfoodlist").html());
             $("#promomainfoodlist").remove();
             $("#posSelectPurchaseTable").remove();
             $("#modifierContent_1").remove();
-            $("#sideVarContainer").parent('.col-md-6').find('.card-header').html('Choose Main Foods');
-            $("#sideVarContainer").parent('.col-md-6').find('.modifier-sec-sub-heading').html('Choose the main food items of the Deal Menu');
+            // $("#sideVarContainer").parent('.col-md-6').find('.card-header').html('Choose Main Foods');
+            // $("#sideVarContainer").parent('.col-md-6').find('.modifier-sec-sub-heading').html('Choose the main food items of the Deal Menu');
             var modVarItemNameCont = $("#modVarItemNameCont").val();
             // $("#modVarItemName").html(`<p class="text-left" style="padding:0px 25px;">Item Name: <strong>${modVarItemNameCont}</strong></p>`);
             // $("#modVarItemName").show();
@@ -453,7 +498,7 @@ function selectGroupItem(th) {
                     </div>
                 </div>
                 `;
-                $('#sideVarContainer').append(noModHtml);
+                // $('#sideVarContainer').append(noModHtml);
                 $('#sideMfContainer').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
                 // $('#modSubHeading').html(`No Modifiers Found For this Item`);
             }
@@ -844,8 +889,172 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
                 $(".page-loader-wrapper").hide();
             }
         });
-    }, 2000);
+    }, 3000);
 }
+
+$(document).on('click', '#sideMfContainer tr', function (e) {
+    if (!$(e.target).is("input[type='checkbox']")) {
+        let $checkbox = $(this).find("input[name='modifier_items[]']");
+        $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
+
+        if ($checkbox.is(":checked")) {
+            let myurl = $('#modifierCheckUrl').val(),
+                csrf = $('#csrfhashresarvation').val(),
+                group_id = $checkbox.data('group-id'),
+                addon_id = $checkbox.val(),
+                pid = $checkbox.data('pid');
+
+            $.ajax({
+                type: "POST",
+                url: myurl,
+                data: {
+                    group_id: group_id,
+                    addon_id: addon_id,
+                    pid: pid,
+                    csrf_test_name: csrf
+                },
+                success: function (data) {
+                    if (data == '0') {
+                        // swal({
+                        //     title: "No Modifiers Found",
+                        //     text: "This item has no modifiers assigned.",
+                        //     type: "warning",
+                        //     confirmButtonText: "OK",
+                        //     closeOnConfirm: true
+                        // });
+                    } else {
+                        if (data!="") {
+                            console.log("Modifiers found: " + data);
+                            $("#mealDealSubModListModal").find('.modal-body').html(data);
+                            $("#mealDealSubModListModal").modal('show');
+                        }
+                    }
+                },
+                error: function () {
+                    swal({
+                        title: "Error",
+                        text: "An error occurred while checking modifiers. Please try again.",
+                        type: "error",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
+                }
+            });
+        }
+    }
+});
+
+
+// $(document).on('click', '#sideMfContainer tr', function (e) {
+//     // Avoid double toggle if user clicks directly on checkbox
+//     if (!$(e.target).is("input[type='checkbox']")) {
+//         const $checkbox = $(this).find("input[name='modifier_items[]']");
+//         $checkbox.prop("checked", !$checkbox.prop("checked")); // Toggle checkbox
+//         $checkbox.trigger("click"); // This will trigger your existing click handler
+//     }
+// });
+
+
+$(document).on('click', "#sideMfContainer input[name='modifier_items[]']", function () {
+    var checkbox = $(this); // Save reference for later use
+    //extract pid from the checkbox data attribute
+    var pid = checkbox.data('pid');
+
+    if (checkbox.is(":checked")) {
+        //make an ajax request to find the modifiers assigned to the checked item
+        var myurl = $('#modifierCheckUrl').val(),
+            csrf = $('#csrfhashresarvation').val(),
+            group_id = checkbox.data('group-id'),
+            addon_id = checkbox.val();
+        $.ajax({
+            type: "POST",
+            url: myurl,
+            data: { group_id: group_id, addon_id: addon_id, pid: pid, csrf_test_name: csrf },
+            success: function (data) {
+                if (data == '0') {
+                    // No modifiers found for this item
+                    swal({
+                        title: "No Modifiers Found",
+                        text: "This item has no modifiers assigned.",
+                        type: "warning",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
+                } else {
+                    $(".page-loader-wrapper").show();
+                    console.log("Modifiers found: " + data);
+                    // Modifiers found, proceed with the alert
+                    // swal({
+                    //     title: "Modifiers Found",
+                    //     text: "You have selected a modifier. Please click on the 'Apply' button to add it to the cart.",
+                    //     type: "info",
+                    //     showCancelButton: true,
+                    //     confirmButtonText: "OK",
+                    //     cancelButtonText: "Cancel",
+                    //     closeOnConfirm: false,
+                    //     closeOnCancel: false
+                    // }, function (isConfirm) {
+                    //     if (isConfirm) {
+                    //         swal.close(); // Close the alert manually
+                    //     } else {
+                    //         checkbox.prop('checked', false); // Uncheck on cancel
+                    //         swal.close(); // Close the alert manually
+                    //     }
+                    // });
+                    $("#mealDealSubModListModal").find('.modal-body').html(data);
+                    $(".page-loader-wrapper").hide();
+                    $("#mealDealSubModListModal").modal('show');
+                }
+            },
+            error: function () {
+                // Handle error case
+                swal({
+                    title: "Error",
+                    text: "An error occurred while checking modifiers. Please try again.",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                });
+            }
+        });
+
+
+
+        // swal({
+        //     title: "Modifier Selected",
+        //     text: "You have selected a modifier. Please click on the 'Apply' button to add it to the cart.",
+        //     type: "info",
+        //     showCancelButton: true,
+        //     confirmButtonText: "OK",
+        //     cancelButtonText: "Cancel",
+        //     closeOnConfirm: false,
+        //     closeOnCancel: false
+        // }, function (isConfirm) {
+        //     if (isConfirm) {
+        //         let pid = checkbox.data('pid');
+        //         // ApplyModifierSelect(pid); // Uncomment if needed
+        //         swal.close(); // Close the alert manually
+        //     } else {
+        //         checkbox.prop('checked', false); // Uncheck on cancel
+        //         swal.close(); // Close the alert manually
+        //     }
+        // });
+    }
+});
+
+function selectMealDealSubMods(menu_id) {
+    $("input[name='promo_sub_modifiers[]']:checked").each(function () {
+        let value = $(this).val();
+        let groupId = $(this).attr("data-group-id");
+        //pid
+        
+        selectedDealSubMods.push({ add_on_id: value, mgid: groupId, deal_pid: menu_id });
+    });
+    var mods = JSON.stringify(selectedDealSubMods);
+    console.log("Selected Meal Deal Sub Mods: " + mods);
+    $("#mealDealSubModListModal").modal('hide');
+}
+
 
   $(document).ready(function() {
       "use strict";

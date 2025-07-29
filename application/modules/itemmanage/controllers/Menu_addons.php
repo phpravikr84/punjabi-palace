@@ -308,22 +308,59 @@ class Menu_addons extends MX_Controller {
 
 			$arrangedData = $this->arrangeModifierData($this->input->post());
 			$groupid = $this->input->post('group_id', true);
+			$isMealDeal = $this->input->post('isMealDeal', true) ? 1 : 0;
+			$mealModifierItemsSelect = $this->input->post('mealModifierItemsSelect', false) ?? 0;
 
-			// echo '<pre>';
-			// print_r($arrangedData);
+			$idsCsv = $_POST['mealModifierSelectedItems'] ?? '';
+			$modItemsCsv = $_POST['mealModifierSelectedItemsValue'] ?? '';
+			$ids = array_filter(array_map('intval', explode(',', $idsCsv)));
+
+			$modItemsArr = array_filter(array_map('intval', explode(',', $modItemsCsv)));
+			//have to convert to array this data: [{"id":"86","name":"Palak","price":"2.00","minQty":"0","maxQty":"0"},{"id":"58","name":"Rogan Josh","price":"4.00","minQty":"0","maxQty":"0"},{"id":"43","name":"Kadahi Paneer","price":"2.00","minQty":"0","maxQty":"0"},{"id":"88","name":"Prawn Biryani","price":"0.00","minQty":"0","maxQty":"0"},{"id":"60","name":"Butter Chicken","price":"0.00","minQty":"0","maxQty":"0"},{"id":"45","name":"Vegetable Paneer Tikka Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"62","name":"Kadahi Chicken","price":"0.00","minQty":"0","maxQty":"0"},{"id":"47","name":"Butter Paneer","price":"0.00","minQty":"0","maxQty":"0"},{"id":"64","name":"Chicken Makhini","price":"0.00","minQty":"0","maxQty":"0"},{"id":"31","name":"Alu Gobi","price":"0.00","minQty":"0","maxQty":"0"},{"id":"49","name":"Paneer Tikka Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"33","name":"Bombay Potatoes","price":"0.00","minQty":"0","maxQty":"0"},{"id":"66","name":"Chicken Tikka Biryani","price":"0.00","minQty":"0","maxQty":"0"},{"id":"51","name":"Dhansak","price":"0.00","minQty":"0","maxQty":"0"},{"id":"36","name":"Malai Kofta","price":"0.00","minQty":"0","maxQty":"0"},{"id":"68","name":"Goat Curry","price":"0.00","minQty":"0","maxQty":"0"},{"id":"53","name":"Madras","price":"0.00","minQty":"0","maxQty":"0"},{"id":"38","name":"Alu or Paneer Palak","price":"0.00","minQty":"0","maxQty":"0"},{"id":"83","name":"Malai","price":"0.00","minQty":"0","maxQty":"0"},{"id":"55","name":"Ceylon","price":"0.00","minQty":"0","maxQty":"0"},{"id":"40","name":"Dhal Palak","price":"0.00","minQty":"0","maxQty":"0"},{"id":"85","name":"Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"57","name":"Punjabi Delight","price":"0.00","minQty":"0","maxQty":"0"},{"id":"42","name":"Dhal Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"87","name":"Tikka Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"59","name":"Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"44","name":"Butter Matar Paneer","price":"0.00","minQty":"0","maxQty":"0"},{"id":"61","name":"Chicken Tikka Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"46","name":"Alu Matar Madras","price":"0.00","minQty":"0","maxQty":"0"},{"id":"63","name":"Chicken Or Lamb Palak","price":"0.00","minQty":"0","maxQty":"0"},{"id":"48","name":"Shahi Paneer","price":"0.00","minQty":"0","maxQty":"0"},{"id":"32","name":"Mixed Vegetable Curry","price":"0.00","minQty":"0","maxQty":"0"},{"id":"65","name":"Mango Chicken","price":"0.00","minQty":"0","maxQty":"0"},{"id":"50","name":"Mushroom Malai","price":"0.00","minQty":"0","maxQty":"0"},{"id":"35","name":"Channa Masala","price":"0.00","minQty":"0","maxQty":"0"},{"id":"67","name":"Chicken Tikka Jalfrezi","price":"0.00","minQty":"0","maxQty":"0"},{"id":"52","name":"Korma","price":"0.00","minQty":"0","maxQty":"0"},{"id":"37","name":"Alu Matar","price":"0.00","minQty":"0","maxQty":"0"},{"id":"69","name":"Mutton Keema Curry","price":"0.00","minQty":"0","maxQty":"0"},{"id":"54","name":"Vindaloo","price":"0.00","minQty":"0","maxQty":"0"},{"id":"39","name":"Dhal Makhini","price":"0.00","minQty":"0","maxQty":"0"},{"id":"84","name":"Vindaloo","price":"0.00","minQty":"0","maxQty":"0"},{"id":"56","name":"Bhuna","price":"0.00","minQty":"0","maxQty":"0"}]
+			$modItemsCsv = array_map(function($item) {
+				return json_decode($item, true);
+			}, explode(',', $modItemsCsv));
+
+			$raw = $this->input->post('mealModifierSelectedItemsValue', true);   // or whatever key you used
+
+			// Decode to ASSOCIATIVE array
+			$items = json_decode($raw, true);
+
+			if (json_last_error() !== JSON_ERROR_NONE || !is_array($items)) {
+				// handle bad/empty JSON
+				show_error('Invalid items payload');
+			}
+
+			$rows = array_map(function ($r) {
+				return [
+					'item_id'    => (int)$r['id'],
+					'name'       => $r['name'],
+					'price'      => (float)$r['price'],
+					'min_qty'    => (int)$r['minQty'],
+					'max_qty'    => (int)$r['maxQty'],
+					'created_at' => date('Y-m-d H:i:s'),
+				];
+			}, $items);
+
+			// echo 'arrangedData(food_menu): <br /><pre>';
+			// print_r($rows);
+			// echo '</pre><br />';
+			// echo 'Meal Deal Selected Ids: <br /><pre>';
+			// print_r($ids);
 			// echo '</pre>';
 			// exit;
 
 			$modifierData = [
-				'name'          => $this->db->escape_str($this->input->post('modifiersetname', true)),
-				'description'   => $this->db->escape_str($this->input->post('description', true)),
-				'is_required'   => $this->input->post('modifier_setting') ? 1 : 0,
-				'min_selection' => $this->input->post('modifier_setting') ? 1 : 0,
-				'updated_at'    => date('Y-m-d H:i:s'),
+				'name'          	=> $this->db->escape_str($this->input->post('modifiersetname', true)),
+				'description'   	=> $this->db->escape_str($this->input->post('description', true)),
+				'is_required'   	=> $this->input->post('modifier_setting') ? 1 : 0,
+				'min_selection' 	=> $this->input->post('modifier_setting') ? 1 : 0,
+				'isMealDeal' 		=> $isMealDeal,
+				'meal_deal_item_id' => $mealModifierItemsSelect,
+				'updated_at'    	=> date('Y-m-d H:i:s')
 			];
 
 			$this->db->trans_start();
-
 			// Create or Update Modifier Set
 			if (empty($groupid)) {
 				$modifierData['created_at'] = date('Y-m-d H:i:s');
@@ -346,54 +383,95 @@ class Menu_addons extends MX_Controller {
 				$this->db->delete('add_ons');
 			}
 
-			// Handle Add-ons
-			foreach ($arrangedData['food_menu'] as $addon) {
-	
-				$addon['modifier_id'] = $addon['modifier_id'] == 0 ? $modifier_set_id : $addon['modifier_id'];
-
-				$this->db->where([
-					'modifier_set_id' => $modifier_set_id,
-					'modifier_id'     => $addon['modifier_id'],
-				]);
-				$exists = $this->db->get('add_ons')->row();
-
-				$addonData = [
-					'modifier_set_id' => $modifier_set_id,
-					'add_on_name'     => $this->db->escape_str($addon['addon_name']),
-					'price'           => isset($addon['addonsprice']) ? $addon['addonsprice'] : 0,
-					'minqty'          => isset($addon['min_qty']) ? intval($addon['min_qty']) : 0,
-					'maxqty'          => isset($addon['max_qty']) ? intval($addon['max_qty']) : 0,
-					'is_comp'         => !empty($addon['complementary']) ? 1 : 0,
-					'modifier_id'     => $addon['modifier_id'],
-					'is_food_item'    => $this->addons_model->check_id_existence($addon['modifier_id']),
-					'is_active'       => $addon['status'],
-				];
-
-				if ($exists) {
-					$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
-					$addonid = $exists->add_on_id;
-				} else {
-					$this->db->insert('add_ons', $addonData);
-					$addonid = $this->db->insert_id();
-				}
-
-				$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
-
-				if (!empty($addon['ingredients'])) {
-						
-					foreach ($addon['ingredients'] as $ingredient) {
-						$this->db->insert('add_on_ingr_dtls', [
-							'add_on_id'             => $addonid,
-							'modifier_set_id'       => $modifier_set_id,
-							'modifier_foodid'       => $ingredient['food_id'],
-							'modifier_ingr_id'      => $ingredient['ingredient_id'],
-							'modifier_ingr_qty'     => $ingredient['quantity'],
-							'modifier_ingr_adj_qty' => $ingredient['adjusted_qty'],
-							'modifier_ingr_unitname'=> $ingredient['unit_name'],
-							'modifier_ingr_unitid'  => $ingredient['unit_id'],
-							'created_at'            => date('Y-m-d H:i:s'),
-							'updated_at'            => date('Y-m-d H:i:s'),
+			if ($isMealDeal==1 && count($rows)>0) {
+				//delete existing meal deal items
+				$this->db->where('modifier_set_id', $modifier_set_id);
+				$this->db->delete('add_ons');
+				// Insert or Update Meal Deal Items
+				foreach ($rows as $row) {
+					if ((count($ids)>0) && (in_array($row['item_id'], $ids))) {
+						// continue; // Skip if not selected in meal deal
+						// }
+						// Check if meal deal item already exists
+						$this->db->where([
+							'modifier_set_id' => $modifier_set_id,
+							'modifier_id'     => $row['item_id'],
 						]);
+						$exists = $this->db->get('add_ons')->row();
+
+						$addonData = [
+							'modifier_set_id' => $modifier_set_id,
+							'add_on_name'     => $this->db->escape_str($row['name']),
+							'price'           => $row['price'],
+							'minqty'          => $row['min_qty'],
+							'maxqty'          => $row['max_qty'],
+							'is_comp'         => 0, // Meal deals are not complementary
+							'modifier_id'     => $row['item_id'],
+							'is_food_item'    => 1, // Assuming all meal deal items are food items
+							'is_active'       => 1, // Active by default
+						];
+
+						if ($exists) {
+							$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
+						} else {
+							$this->db->insert('add_ons', $addonData);
+						}
+					}
+				}
+			} else {
+				// Handle Add-ons
+				foreach ($arrangedData['food_menu'] as $addon) {
+					if ((count($ids)>0) && (in_array($addon['modifier_id'], $ids))) {
+						// 	continue; // Skip if not selected in meal deal
+						// }
+			
+						$addon['modifier_id'] = $addon['modifier_id'] == 0 ? $modifier_set_id : $addon['modifier_id'];
+
+						$this->db->where([
+							'modifier_set_id' => $modifier_set_id,
+							'modifier_id'     => $addon['modifier_id'],
+						]);
+						$exists = $this->db->get('add_ons')->row();
+
+						$addonData = [
+							'modifier_set_id' => $modifier_set_id,
+							'add_on_name'     => $this->db->escape_str($addon['addon_name']),
+							'price'           => isset($addon['addonsprice']) ? $addon['addonsprice'] : 0,
+							'minqty'          => isset($addon['min_qty']) ? intval($addon['min_qty']) : 0,
+							'maxqty'          => isset($addon['max_qty']) ? intval($addon['max_qty']) : 0,
+							'is_comp'         => !empty($addon['complementary']) ? 1 : 0,
+							'modifier_id'     => $addon['modifier_id'],
+							'is_food_item'    => $this->addons_model->check_id_existence($addon['modifier_id']),
+							'is_active'       => $addon['status'],
+						];
+
+						if ($exists) {
+							$this->db->where('add_on_id', $exists->add_on_id)->update('add_ons', $addonData);
+							$addonid = $exists->add_on_id;
+						} else {
+							$this->db->insert('add_ons', $addonData);
+							$addonid = $this->db->insert_id();
+						}
+
+						$this->db->where('add_on_id', $addonid)->delete('add_on_ingr_dtls');
+
+						if (!empty($addon['ingredients'])) {
+								
+							foreach ($addon['ingredients'] as $ingredient) {
+								$this->db->insert('add_on_ingr_dtls', [
+									'add_on_id'             => $addonid,
+									'modifier_set_id'       => $modifier_set_id,
+									'modifier_foodid'       => $ingredient['food_id'],
+									'modifier_ingr_id'      => $ingredient['ingredient_id'],
+									'modifier_ingr_qty'     => $ingredient['quantity'],
+									'modifier_ingr_adj_qty' => $ingredient['adjusted_qty'],
+									'modifier_ingr_unitname'=> $ingredient['unit_name'],
+									'modifier_ingr_unitid'  => $ingredient['unit_id'],
+									'created_at'            => date('Y-m-d H:i:s'),
+									'updated_at'            => date('Y-m-d H:i:s'),
+								]);
+							}
+						}
 					}
 				}
 			}
@@ -543,6 +621,7 @@ class Menu_addons extends MX_Controller {
 			$data['module'] = "itemmanage";
 			$data['sub_header'] = 'modifiers';
 			$data['page'] = "addonscreate";
+			$data['categories'] = $this->addons_model->allcategory_dropdown();
 			$this->load->view('template/layout', $data);
 		}
 	}
@@ -837,6 +916,8 @@ class Menu_addons extends MX_Controller {
 							'name'	=> $group_name,
 							'min_selection' => $group_min_selection,
 							'modifier_set_id' => $group_modifier_set_id,
+							'isMealDeal' => $item->isMealDeal,
+							'meal_deal_item_id' => $item->meal_deal_item_id,
 							'addons' => []
 						];
 					}
@@ -851,6 +932,8 @@ class Menu_addons extends MX_Controller {
 					unset($addon->name);
 					unset($addon->min_selection);
 					unset($addon->modifier_set_id);
+					unset($addon->isMealDeal);
+					unset($addon->meal_deal_item_id);
 					$grouped[$group_id]->addons[] = $addon;
 				}
 
@@ -986,6 +1069,35 @@ class Menu_addons extends MX_Controller {
 		echo json_encode($modifiers, JSON_UNESCAPED_UNICODE);
 		exit;
 	}
+	public function get_modifier_items()
+	{
+		// $term = $this->input->get('term', true);
+		$cat_id = $this->input->get('categoryId', true);
+		if (empty($cat_id)) {
+			echo json_encode([]); // Return empty array if no term
+			exit;
+		}
+		// Fetch food items based on category ID
+		$food_items = $this->addons_model->get_food_items_by_category($cat_id);
+		// Prepare the result array
+		$result = [];
+		foreach ($food_items as $item) {
+			// echo "<pre>";
+			// print_r($item);
+			// echo "</pre><br>";
+			// echo $item->ProductName;
+			// echo $item->ProductsID;
+			// exit;
+			$result[] = [
+				'name' => $item->ProductName,
+				'id' => $item->ProductsID
+			];
+		}
+		// Ensure JSON response with correct header
+		header('Content-Type: application/json');
+		echo json_encode($result, JSON_UNESCAPED_UNICODE);
+		exit;
+	}
 
 	
 	public function get_modifier_details() {
@@ -1031,6 +1143,11 @@ class Menu_addons extends MX_Controller {
 			'ingredients' => [],
 			'flavours' => []
 		];
+
+		// echo "<pre>";
+		// print_r($postData);
+		// echo "</pre>";
+		// exit;
 	
 		if (!empty($postData['modifier_id']) && is_array($postData['modifier_id'])) {
 	
@@ -1071,7 +1188,8 @@ class Menu_addons extends MX_Controller {
 							'max_qty' => $postData['maxqty'][$index] ?? '',
 							'status' => $postData['status'][$index] ?? '',
 							'sort_order' => $postData['sort_order'][$index] ?? '',
-							'ingredients' => $ingredients
+							'ingredients' => $ingredients,
+							'addonsprice' => $postData['addonsprice'][$index] ?? 0,
 						];
 	
 					} elseif ($type == 2) {

@@ -1311,9 +1311,9 @@ class Order extends MX_Controller
 					// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have any ingredients!!!');
 					// redirect("ordermanage/order/pos_invoice");
 					// exit;
-					$msg = 'The modifier doesn\'t have any ingredients!!!';
-					echo 420;
-					exit;
+					// $msg = 'The modifier doesn\'t have any ingredients!!!';
+					// echo 420;
+					// exit;
 				} else {
 					if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 2){
 						//ingredients
@@ -1327,9 +1327,9 @@ class Order extends MX_Controller
 							// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient ingredients!!!');
 							// redirect("ordermanage/order/pos_invoice");
 							// exit;
-							$msg = 'The modifier doesn\'t have sufficient ingredients!!!';
-							echo 421;
-							exit;
+							// $msg = 'The modifier doesn\'t have sufficient ingredients!!!';
+							// echo 421;
+							// exit;
 						}
 					} 
 					if($modIngrdId->modifier_id != 0 && $modIngrdId->is_food_item == 1){
@@ -1346,18 +1346,18 @@ class Order extends MX_Controller
 									// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient stock!!!');
 									// redirect("ordermanage/order/pos_invoice");
 									// exit;
-									$msg = 'The modifier doesn\'t have sufficient stock!!!';
-									echo 422;
-									exit;
+									// $msg = 'The modifier doesn\'t have sufficient stock!!!';
+									// echo 422;
+									// exit;
 								}
 							}
 						} else {
 							// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' can\'t be added!!!');
 							// redirect("ordermanage/order/pos_invoice");
 							// exit;
-							$msg = 'The modifier can\'t be added!!!';
-							echo 423;
-							exit;
+							// $msg = 'The modifier can\'t be added!!!';
+							// echo 423;
+							// exit;
 						}
 					}
 				}
@@ -2213,8 +2213,8 @@ class Order extends MX_Controller
 															if ($igsv->stock_qty < $igsv->modifier_ingr_adj_qty) {
 																// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' doesn\'t have sufficient stock!!!');
 																// redirect("ordermanage/order/pos_invoice");
-																echo "error";
-																exit;
+																// echo "error";
+																// exit;
 															}
 															$prev_qty = $igsv->stock_qty;
 															$updated_qty = ($prev_qty - $igsv->modifier_ingr_adj_qty);
@@ -2228,8 +2228,8 @@ class Order extends MX_Controller
 													else {
 														// $this->session->set_flashdata('exception', 'The modifier '.$modIngrdId->add_on_name.' can\'t be added!!!');
 														// redirect("ordermanage/order/pos_invoice");
-														echo "error";
-														exit;
+														// echo "error";
+														// exit;
 													}
 												}
 											}
@@ -3237,6 +3237,20 @@ class Order extends MX_Controller
 		$this->db->where('order_id', $id);
 		$this->db->update('customer_order', $updatetData);
 
+		//fetch `ordered_menu_item_modifiers` table data based on order id `$id`
+		$this->db->select('ordered_menu_item_modifiers.*');
+		$this->db->from('ordered_menu_item_modifiers');
+		$this->db->where('order_id', $id);
+		$this->db->where('is_active', 1);
+		$this->db->where('DATE(created_at)', date('Y-m-d'));
+		$this->db->order_by('id', 'DESC');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			$data['ordered_menu_item_modifiers'] = $query->result();
+		} else {
+			$data['ordered_menu_item_modifiers'] = [];
+		}
+
 		$customerorder = $this->order_model->read('*', 'customer_order', array('order_id' => $id));
 		$data['categorylist']   = $this->order_model->category_dropdown();
 		$data['allcategorylist']  = $this->order_model->allcat_dropdown();
@@ -3253,7 +3267,7 @@ class Order extends MX_Controller
 		$data['iteminfo']       = $this->order_model->customerorder($id);
 		$data['billinfo']	   = $this->order_model->billinfo($id);
 		$data['itemlist']      =  $this->order_model->allfood2();
-		$settinginfo = $this->order_model->settinginfo();
+		$settinginfo 			= $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
 		$data['possetting'] = $this->order_model->read('*', 'tbl_posetting', array('possettingid' => 1));
@@ -3271,6 +3285,25 @@ class Order extends MX_Controller
 		$updatetData = array('nofification' => 1);
 		$this->db->where('order_id', $id);
 		$this->db->update('customer_order', $updatetData);
+
+		//fetch `ordered_menu_item_modifiers` table data based on order id `$id`
+		$this->db->select('ordered_menu_item_modifiers.*');
+		$this->db->from('ordered_menu_item_modifiers');
+		$this->db->where('order_id', $id);
+		$this->db->where('is_active', 1);
+		// $this->db->where('DATE(created_at)', date('Y-m-d'));
+		$this->db->order_by('id', 'DESC');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			$data['ordered_menu_item_modifiers'] = $query->result();
+		} else {
+			$data['ordered_menu_item_modifiers'] = [];
+		}
+
+		// echo "<pre>";
+		// print_r($data['ordered_menu_item_modifiers']);
+		// echo "</pre>";
+		// exit;
 
 		$customerorder = $this->order_model->read('*', 'customer_order', array('order_id' => $id));
 		$data['categorylist']   = $this->order_model->category_dropdown();
@@ -3602,13 +3635,101 @@ class Order extends MX_Controller
 			'totalamount'     => $updatedprice,
 		);
 		$this->order_model->update_order($postData);
-		$data['orderinfo']  	   = $this->order_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['iteminfo']       = $this->order_model->customerorder($orderid);
-		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
-		$data['taxinfos'] = $this->taxchecking();
-		$data['module'] = "ordermanage";
-		$data['page']   = "updateorderlist";
+		$data['orderinfo'] = $this->order_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['iteminfo']  = $this->order_model->customerorder($orderid);
+		$data['currency']  = $this->order_model->currencysetting($settinginfo->currency);
+		$data['taxinfos']  = $this->taxchecking();
+		$data['module']    = "ordermanage";
+		$data['page']      = "updateorderlist";
+		$data['orderid']   = $orderid;
 		$this->load->view('ordermanage/updateorderlist', $data);
+	}
+	public function modifierCheck()
+	{
+		$group_id = $this->input->post('group_id', true);
+		$addon_id = $this->input->post('addon_id', true);
+		$pid = $this->input->post('pid', true);
+		$menu_id = 0;
+		$settinginfo = $this->order_model->settinginfo();
+		$currency = $this->order_model->currencysetting($settinginfo->currency);
+		//query to the add_ons table join with menu_add_on table on add_ons.modifier_id = menu_add_on.menu_id, where add_ons.food_or_mods = 1 and add_ons.add_on_id = $addon_id, join with modifier_groups on menu_add_on.modifier_groupid = modifier_groups.id, where modifier_groups.group_id = $group_id and add_ons.add_on_id = $addon_id, join with add_ons on add_ons.modifier_set_id = modifier_groups.id, and get all add ons data
+		
+		$this->db->select('a.modifier_id, a.is_food_item');
+		$this->db->from('add_ons a');
+		$this->db->where('a.is_food_item', 1);
+		$this->db->where('a.add_on_id', $addon_id);
+		$this->db->where('a.modifier_set_id', $group_id);
+		$this->db->where('a.is_active', 1);
+
+		$q1 = $this->db->get();
+		if ($q1->num_rows() > 0) {
+			$addons = $q1->row();
+			$menu_id = $addons->modifier_id;
+			// echo json_encode($addons);
+			// exit;
+		}
+
+		if ($menu_id == 0) {
+			// If no menu_id found, return empty response
+			echo '0';
+			exit;
+		}
+
+		//query to the add_ons table and get add_ons.*, join with modifier_groups on add_ons.modifier_set_id = modifier_groups.id, and get all add ons data, join menu_add_on table with modifier_groups on (menu_add_on.modifier_groupid = modifier_groups.id), where menu_add_on.menu_id = $menu_id.	
+		$this->db->select('a.*, mg.name');
+		$this->db->from('add_ons a');
+		$this->db->join('modifier_groups mg', 'a.modifier_set_id = mg.id');
+		$this->db->join('menu_add_on ma', 'ma.modifier_groupid = mg.id');
+		// $this->db->where('a.is_food_item', 1);
+		$this->db->where('ma.menu_id', $menu_id);
+		$this->db->where('a.is_active', 1);
+		$q2 = $this->db->get();
+		$addons2 = $q2->result();
+
+		// echo $this->db->last_query();
+		// echo "<br />";
+		// echo "<pre>";
+		// print_r($addons2);
+		// echo "</pre>";
+		// exit;
+		// return json_encode($addons2);
+		$data = '';
+		if ($q2->num_rows() > 0) {
+			$data='
+			<div class="panel-body">
+                    <div class="mt-3">
+                        <table class="table table-bordered">
+                            <tbody>';
+			foreach ($addons2 as $miv) {
+			$data.= '<tr>
+						<td style="width: 85%;">
+							<label for="promo_sub_modifiers'.$miv->add_on_id.'" class="form-label">'.$miv->add_on_name.'</label>
+						</td>
+						<td style="width: 10%;text-align: end;">
+							<label for="promo_sub_modifiers'.$miv->add_on_id.'" class="form-label">'.(($currency->position == 1) ? $currency->curr_icon : '').$miv->price.'</label>
+						</td>
+						<td style="width: 5%;" class="text-center">
+							<div class="form-check">
+								<input class="form-check-input modifier-checkbox" type="checkbox" name="promo_sub_modifiers[]" value="'.$miv->add_on_id.'" id="promo_sub_modifiers_'.$miv->add_on_id.'" data-group-id="'.$miv->modifier_set_id.'" data-pid="'.$pid.'" autocomplete="off">
+							</div>
+						</td>
+					</tr>';
+			}
+			$data.= '</tbody>
+                        </table>
+                    </div>
+					<div class="mt-3 text-right">
+						<button class="btn btn-sm btn-success" onclick="selectMealDealSubMods('.$menu_id.');">Select</button>
+						<button class="btn btn-sm btn-danger" onclick="$(\'#mealDealSubModListModal\').modal(\'hide\');">Cancel</button>
+					</div>
+                </div>
+			';
+		} else {
+			echo '0';
+			exit;
+		}
+		echo $data;
+		exit;
 	}
 	public function addtocartupdate()
 	{
@@ -3628,7 +3749,7 @@ class Order extends MX_Controller
 		$adonsqty = $this->input->post('adonsqty', true);
 		$adonsname = $this->input->post('adonsname', true);
 		$orderid = $this->input->post('orderid');
-		$data['paymentmethod']   = $this->order_model->pmethod_dropdown();
+		$data['paymentmethod'] = $this->order_model->pmethod_dropdown();
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 
@@ -3886,12 +4007,13 @@ class Order extends MX_Controller
 		$this->order_model->update_order($postData);
 
 
-		$data['orderinfo']  	   = $this->order_model->read('*', 'customer_order', array('order_id' => $orderid));
-		$data['iteminfo']       = $this->order_model->customerorder($orderid);
-		$data['billinfo']	   = $this->order_model->billinfo($orderid);
+		$data['orderinfo']= $this->order_model->read('*', 'customer_order', array('order_id' => $orderid));
+		$data['iteminfo'] = $this->order_model->customerorder($orderid);
+		$data['billinfo'] = $this->order_model->billinfo($orderid);
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
+		$data['orderid'] = $orderid;
 		$data['page']   = "updateorderlist";
 
 		$this->load->view('ordermanage/updateorderlist', $data);

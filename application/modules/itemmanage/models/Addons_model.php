@@ -6,6 +6,45 @@ class Addons_model extends CI_Model {
 	private $table = 'add_ons';
 	private $table1 = 'modifier_groups';
 	private $table2 = 'menu_add_on';
+	private $table3 = 'item_category';
+
+	public function allcategory_dropdown(){
+
+        $this->db->select('*');
+        $this->db->from('item_category');
+        //$this->db->where('parentid', 0);
+        $parent = $this->db->get();
+        $categories = $parent->result();
+        $i=0;
+        foreach($categories as $p_cat){
+			
+            $categories[$i]->sub = $this->sub_categories($p_cat->CategoryID);
+
+			$scs=0;
+			foreach ($categories[$i]->sub as $scat) {
+				$categories[$i]->sub[$scs]->sub = $this->sub_categories($scat->CategoryID);
+				$scs++;
+			}
+			
+            $i++;
+        }
+        return $categories;
+    }
+	public function sub_categories($id){
+
+        $this->db->select('*');
+        $this->db->from('item_category');
+        $this->db->where('parentid', $id);
+
+        $child = $this->db->get();
+        $categories = $child->result();
+        $i=0;
+        foreach($categories as $p_cat){
+            $categories[$i]->sub = $this->sub_categories($p_cat->CategoryID);
+            $i++;
+        }
+        return $categories;
+    }
  
 	public function addons_create($data = array())
 	{
@@ -96,7 +135,33 @@ class Addons_model extends CI_Model {
 		}
 	} 
 
-
+	public function get_food_items_by_category($category_id = null)
+	{
+		// echo "category_id: " . $category_id; // Debugging line
+		// exit();
+		if ($category_id) {
+			$this->db->select('*');
+			$this->db->from('item_foods');
+			$this->db->where('CategoryID', $category_id);
+			$this->db->where('ProductsIsActive', 1);
+			$query = $this->db->get();
+			// echo $this->db->last_query(); // Debugging line
+			// exit();
+			// Check if the query returned any results
+			// echo "Query Result Count: " . $query->num_rows(); // Debug
+			// exit();
+			// If there are results, return them
+			// echo "Query Result: <pre>" . print_r($query->result(), true) . "</pre>"; // Debugging line
+			// exit();
+			if ($query->num_rows() > 0) {
+				return $query->result();
+			}
+			return false;
+		} else {
+			//return empty array if no category ID is provided
+			return [];
+		}
+	}
 
 	public function update_addons($data = array())
 	{
@@ -185,7 +250,7 @@ class Addons_model extends CI_Model {
 
 	public function findModifierGroupsById($id = null)
 	{ 
-		return $this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.min_selection, add_ons.*, add_ons.modifier_set_id")
+		return $this->db->select("modifier_groups.id as group_id, modifier_groups.name, modifier_groups.isMealDeal, modifier_groups.meal_deal_item_id, modifier_groups.min_selection, add_ons.*, add_ons.modifier_set_id")
 			->from('modifier_groups')
 			->join('add_ons', 'modifier_groups.id = add_ons.modifier_set_id', 'left')
 			->where('modifier_groups.id', $id)

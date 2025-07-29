@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2025 at 11:00 AM
--- Server version: 10.4.22-MariaDB
+-- Generation Time: Jul 29, 2025 at 12:45 PM
+-- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accesslog` (
   `sl_no` bigint(20) NOT NULL,
-  `action_page` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `action_done` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remarks` text COLLATE utf8_unicode_ci NOT NULL,
-  `user_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `action_page` varchar(50) DEFAULT NULL,
+  `action_done` text DEFAULT NULL,
+  `remarks` text NOT NULL,
+  `user_name` varchar(50) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -569,8 +569,7 @@ INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user
 (526, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:16:57'),
 (527, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:24:55'),
 (528, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:37:24'),
-(529, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:46:56');
-INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user_name`, `entry_date`) VALUES
+(529, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 20:46:56'),
 (530, 'Create New', 'Insert Data', 'New Varient Created', 'John Doe', '2025-03-19 21:22:39'),
 (531, 'Ingredient List', 'Insert Data', 'New Ingredient Created', 'John Doe', '2025-03-24 15:01:47'),
 (532, 'Ingredient List', 'Insert Data', 'New Ingredient Created', 'John Doe', '2025-03-24 15:02:06'),
@@ -1111,8 +1110,7 @@ INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user
 (1067, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-20 21:26:35'),
 (1068, 'Order List', 'Insert Data', 'Order is Update', 'John Doe', '2025-05-20 21:26:47'),
 (1069, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:49:00'),
-(1070, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:53:19');
-INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user_name`, `entry_date`) VALUES
+(1070, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:53:19'),
 (1071, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-05-22 20:59:08'),
 (1072, 'Order List', 'Insert Data', 'Order is Update', 'John Doe', '2025-05-22 20:59:50'),
 (1073, 'Order List', 'Insert Data', 'Order is Update', 'John Doe', '2025-05-22 20:59:56'),
@@ -1365,7 +1363,26 @@ INSERT INTO `accesslog` (`sl_no`, `action_page`, `action_done`, `remarks`, `user
 (1320, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-22 17:30:59'),
 (1321, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-22 17:32:13'),
 (1322, 'Food List', 'Delete Data', 'Food Deleted', 'John Doe', '2025-07-22 17:35:33'),
-(1323, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-22 17:46:37');
+(1323, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-22 17:46:37'),
+(1324, 'Add Food', 'Insert Data', 'New Food Added', 'John Doe', '2025-07-22 21:33:52'),
+(1325, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-24 20:57:09'),
+(1326, 'Add Food', 'Insert Data', 'New Food Added', 'John Doe', '2025-07-25 13:56:24'),
+(1327, 'Food List', 'Delete Data', 'Food Deleted', 'John Doe', '2025-07-25 13:56:50'),
+(1328, 'Add Food', 'Insert Data', 'New Food Added', 'John Doe', '2025-07-25 13:57:42'),
+(1329, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-07-25 14:00:37'),
+(1330, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-07-25 14:05:12'),
+(1331, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-07-25 14:07:42'),
+(1332, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-25 17:02:16'),
+(1333, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-07-25 17:03:37'),
+(1334, 'Pending Order', 'Insert Data', 'Pending Order is Update', 'John Doe', '2025-07-25 19:19:12'),
+(1335, 'Pending Order', 'Insert Data', 'Pending Order is Update', 'John Doe', '2025-07-25 19:39:31'),
+(1336, 'Pending Order', 'Insert Data', 'Pending Order is Update', 'John Doe', '2025-07-25 21:08:15'),
+(1337, 'Add New Order', 'Insert Data', 'Item New Order Created', 'John Doe', '2025-07-28 15:30:46'),
+(1338, 'Pending Order', 'Insert Data', 'Pending Order is Update', 'John Doe', '2025-07-28 15:31:55'),
+(1339, 'Pending Order', 'Insert Data', 'Pending Order is Update', 'John Doe', '2025-07-28 15:32:34'),
+(1340, 'Pending Order', 'Insert Data', 'Pending Order is Update', 'John Doe', '2025-07-28 17:47:25'),
+(1341, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-28 18:53:41'),
+(1342, 'Food List', 'Update Data', 'Food Updated', 'John Doe', '2025-07-28 18:54:58');
 
 -- --------------------------------------------------------
 
@@ -1377,7 +1394,7 @@ CREATE TABLE `acc_account_name` (
   `account_id` int(10) UNSIGNED NOT NULL,
   `account_name` varchar(255) NOT NULL,
   `account_type` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1386,20 +1403,20 @@ CREATE TABLE `acc_account_name` (
 --
 
 CREATE TABLE `acc_coa` (
-  `HeadCode` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `HeadName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `PHeadName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `HeadCode` varchar(50) NOT NULL,
+  `HeadName` varchar(100) NOT NULL,
+  `PHeadName` varchar(50) NOT NULL,
   `HeadLevel` int(11) NOT NULL,
   `IsActive` tinyint(1) NOT NULL,
   `IsTransaction` tinyint(1) NOT NULL,
   `IsGL` tinyint(1) NOT NULL,
-  `HeadType` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `HeadType` char(1) NOT NULL,
   `IsBudget` tinyint(1) NOT NULL,
   `IsDepreciation` tinyint(1) NOT NULL,
   `DepreciationRate` decimal(18,2) NOT NULL,
-  `CreateBy` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `CreateBy` varchar(50) NOT NULL,
   `CreateDate` datetime NOT NULL,
-  `UpdateBy` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `UpdateBy` varchar(50) NOT NULL,
   `UpdateDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1408,229 +1425,229 @@ CREATE TABLE `acc_coa` (
 --
 
 INSERT INTO `acc_coa` (`HeadCode`, `HeadName`, `PHeadName`, `HeadLevel`, `IsActive`, `IsTransaction`, `IsGL`, `HeadType`, `IsBudget`, `IsDepreciation`, `DepreciationRate`, `CreateBy`, `CreateDate`, `UpdateBy`, `UpdateDate`) VALUES
-('502020000001', '145454-HmIsahaq', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2018-12-17 15:10:19', '', '0000-00-00 00:00:00'),
-('4021403', 'AC', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:33:55', '', '0000-00-00 00:00:00'),
-('50202', 'Account Payable', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:50:43', '', '0000-00-00 00:00:00'),
-('10203', 'Account Receivable', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2013-09-18 15:29:35'),
-('1020201', 'Advance', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, '0.00', 'Zoherul', '2015-05-31 13:29:12', 'admin', '2015-12-31 16:46:32'),
-('102020103', 'Advance House Rent', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-10-02 16:55:38', 'admin', '2016-10-02 16:57:32'),
-('10202', 'Advance, Deposit And Pre-payments', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-12-31 16:46:24'),
-('4020602', 'Advertisement and Publicity', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:51:44', '', '0000-00-00 00:00:00'),
-('1010410', 'Air Cooler', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-05-23 12:13:55', '', '0000-00-00 00:00:00'),
-('4020603', 'AIT Against Advertisement', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:52:09', '', '0000-00-00 00:00:00'),
-('1', 'Assets', 'COA', 0, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('1010204', 'Attendance Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:49:31', '', '0000-00-00 00:00:00'),
-('40216', 'Audit Fee', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, '0.00', 'admin', '2017-07-18 12:54:30', '', '0000-00-00 00:00:00'),
-('4021002', 'Bank Charge', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:21:03', '', '0000-00-00 00:00:00'),
-('30203', 'Bank Interest', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, '0.00', 'Obaidul', '2015-01-03 14:49:54', 'admin', '2016-09-25 11:04:19'),
-('1010104', 'Book Shelf', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:46:11', '', '0000-00-00 00:00:00'),
-('1010407', 'Books and Journal', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:45:37', '', '0000-00-00 00:00:00'),
-('102010207', 'Brac Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-01-18 10:10:31', '', '0000-00-00 00:00:00'),
-('4020604', 'Business Development Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:52:29', '', '0000-00-00 00:00:00'),
-('4020606', 'Campaign Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:52:57', 'admin', '2016-09-19 14:52:48'),
-('4020502', 'Campus Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:46:53', 'admin', '2017-04-27 17:02:39'),
-('40212', 'Car Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:28:43', '', '0000-00-00 00:00:00'),
-('10201', 'Cash & Cash Equivalent', 'Current Asset', 2, 1, 0, 1, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:57:55'),
-('1020102', 'Cash At Bank', 'Cash & Cash Equivalent', 3, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-07-19 13:43:59', 'admin', '2015-10-15 15:32:42'),
-('1020101', 'Cash In Hand', 'Cash & Cash Equivalent', 3, 1, 1, 1, 'A', 0, 0, '0.00', '2', '2018-07-31 12:56:28', 'admin', '2016-05-23 12:05:43'),
-('30101', 'Cash Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2018-07-08 07:51:26', '', '0000-00-00 00:00:00'),
-('1010207', 'CCTV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:24', '', '0000-00-00 00:00:00'),
-('102020102', 'CEO Current A/C', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-09-25 11:54:54', '', '0000-00-00 00:00:00'),
-('102010206', 'City Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-01-18 10:09:32', '', '0000-00-00 00:00:00'),
-('1010101', 'Class Room Chair', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:45:29', '', '0000-00-00 00:00:00'),
-('4021407', 'Close Circuit Cemera', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:35:35', '', '0000-00-00 00:00:00'),
-('4020601', 'Commision on Admission', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:51:21', 'admin', '2016-09-19 14:42:54'),
-('1010206', 'Computer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:09', '', '0000-00-00 00:00:00'),
-('4021410', 'Computer (R)', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-03-24 12:38:52', 'Zoherul', '2016-03-24 12:41:40'),
-('1010102', 'Computer Table', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:45:44', '', '0000-00-00 00:00:00'),
-('301020401', 'Continuing Registration fee - UoL (Income)', 'Registration Fee (UOL) Income', 4, 1, 1, 0, 'I', 0, 0, '0.00', 'admin', '2015-10-15 17:40:40', '', '0000-00-00 00:00:00'),
-('4020904', 'Contratuall Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:34', '', '0000-00-00 00:00:00'),
-('403', 'Cost of Sale', 'Expence', 0, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-07-08 10:37:16', '', '0000-00-00 00:00:00'),
-('30102', 'Credit Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2018-07-08 07:51:34', '', '0000-00-00 00:00:00'),
-('4020709', 'Cultural Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'nasmud', '2017-04-29 12:45:10', '', '0000-00-00 00:00:00'),
-('102', 'Current Asset', 'Assets', 1, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-12-06 13:54:42', 'admin', '2018-07-07 11:23:00'),
-('502', 'Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, '0.00', 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
-('102030101', 'cusL-0001-Walkin', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2019-01-08 09:14:48', '', '2020-11-17 11:41:07'),
-('102030108', 'cusL-0002-Jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2021-08-25 14:12:02', '', '0000-00-00 00:00:00'),
-('102030109', 'cusL-0004-Kabir khan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '36', '2021-08-31 14:03:18', '', '0000-00-00 00:00:00'),
-('102030115', 'cusL-0005-jaman', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '53', '2023-07-03 15:50:20', '', '0000-00-00 00:00:00'),
-('102030116', 'cusL-0005-Ravi Kumar', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2025-01-24 18:48:16', '', '0000-00-00 00:00:00'),
-('102030110', 'cusL-0007-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '39', '2021-09-05 19:38:26', '', '0000-00-00 00:00:00'),
-('102030111', 'cusL-0008-kamal', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '40', '2021-09-19 11:53:13', '', '0000-00-00 00:00:00'),
-('102030112', 'cusL-0009-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '41', '2021-10-26 10:20:44', '', '0000-00-00 00:00:00'),
-('102030113', 'cusL-0010-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '42', '2021-10-26 10:23:52', '', '0000-00-00 00:00:00'),
-('102030117', 'cusL-0016-Customer', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '66', '2025-03-03 16:28:30', '', '0000-00-00 00:00:00'),
-('102030104', 'cusL-0018-jamildasd', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '20', '2021-01-05 14:14:11', '', '0000-00-00 00:00:00'),
-('102030114', 'cusL-0019- ', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '0', '2021-11-10 14:06:32', '', '0000-00-00 00:00:00'),
-('102030105', 'cusL-0021-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '25', '2021-01-31 14:17:07', '', '0000-00-00 00:00:00'),
-('102030106', 'cusL-0022-Saiful Hassan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '26', '2021-01-31 18:18:33', '', '0000-00-00 00:00:00'),
-('102030107', 'cusL-0023-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, '0.00', '27', '2021-02-03 10:12:50', '', '0000-00-00 00:00:00'),
-('1020301', 'Customer Receivable', 'Account Receivable', 3, 1, 0, 1, 'A', 0, 0, '0.00', '2', '2019-01-08 09:15:08', 'admin', '2018-07-07 12:31:42'),
-('40100002', 'cw-Chichawatni', 'Store Expenses', 2, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-08-02 16:30:41', '', '0000-00-00 00:00:00'),
-('1020202', 'Deposit', 'Advance, Deposit And Pre-payments', 3, 1, 0, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:40:42', '', '0000-00-00 00:00:00'),
-('4020605', 'Design & Printing Expense', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:55:00', '', '0000-00-00 00:00:00'),
-('4020404', 'Dish Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:58:21', '', '0000-00-00 00:00:00'),
-('40215', 'Dividend', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, '0.00', 'admin', '2016-09-25 14:07:55', '', '0000-00-00 00:00:00'),
-('4020403', 'Drinking Water Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:58:10', '', '0000-00-00 00:00:00'),
-('1010211', 'DSLR Camera', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:53:17', 'admin', '2016-01-02 16:23:25'),
-('102010205', 'Dutch-Bangla Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-01-18 09:49:13', '', '0000-00-00 00:00:00'),
-('502020000007', 'E3Y1WJMB-John Maria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 05:55:58', '', '0000-00-00 00:00:00'),
-('502020000010', 'E4Y91CAX-onlineorder', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-02-03 11:20:44', '', '0000-00-00 00:00:00'),
-('502020000004', 'E97E9SJT-Manik Hassan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-09 14:32:22', '', '0000-00-00 00:00:00'),
-('4020908', 'Earned Leave', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:38', '', '0000-00-00 00:00:00'),
-('502020000006', 'EBK2UPRA-John Carlos', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 05:51:09', '', '0000-00-00 00:00:00'),
-('4020607', 'Education Fair Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:53:42', '', '0000-00-00 00:00:00'),
-('502020000011', 'EK9BYZVY-test sdafdssdfds', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-02-24 14:07:53', '', '0000-00-00 00:00:00'),
-('1010602', 'Electric Equipment', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:44:51', '', '0000-00-00 00:00:00'),
-('1010203', 'Electric Kettle', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:49:07', '', '0000-00-00 00:00:00'),
-('10106', 'Electrical Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:43:44', '', '0000-00-00 00:00:00'),
-('4020407', 'Electricity Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:59:31', '', '0000-00-00 00:00:00'),
-('10202010501', 'employ', 'Salary', 5, 1, 0, 0, 'A', 0, 0, '0.00', 'admin', '2018-07-05 11:47:10', '', '0000-00-00 00:00:00'),
-('405', 'Entertainment', 'Expense', 1, 1, 1, 0, 'E', 1, 1, '1.00', '2', '2020-01-18 07:49:00', '', '0000-00-00 00:00:00'),
-('502020000012', 'ENVBUZKE-kabirkhan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2020-10-12 10:57:33', '', '0000-00-00 00:00:00'),
-('502020000002', 'EQLAJFUW-AinalHaque', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2018-12-17 15:08:43', '', '0000-00-00 00:00:00'),
-('2', 'Equity', 'COA', 0, 1, 0, 0, 'L', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('502020000009', 'EU3APTYY-JohnDoe', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 06:02:46', '', '0000-00-00 00:00:00'),
-('502020000005', 'EW9PM201-test emp', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-09 14:38:15', '', '0000-00-00 00:00:00'),
-('502020000008', 'EXL9WSCL-Mitchel Santner', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2019-01-27 05:58:55', '', '0000-00-00 00:00:00'),
-('4', 'Expense', 'COA', 0, 1, 0, 0, 'E', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('502020000003', 'EY2T1OWA-jahangirAhmad', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2018-12-17 15:11:13', '', '0000-00-00 00:00:00'),
-('502020000013', 'EZR0A9IB-DiMaria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'John Doe', '2021-11-14 10:54:22', '', '0000-00-00 00:00:00'),
-('4020903', 'Faculty,Staff Salary & Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:21', '', '0000-00-00 00:00:00'),
-('4021404', 'Fax Machine', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:34:15', '', '0000-00-00 00:00:00'),
-('4020905', 'Festival & Incentive Bonus', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:48', '', '0000-00-00 00:00:00'),
-('1010103', 'File Cabinet', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:46:02', '', '0000-00-00 00:00:00'),
-('40210', 'Financial Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-08-20 12:24:31', 'admin', '2015-10-15 19:20:36'),
-('1010403', 'Fire Extingushier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:39:32', '', '0000-00-00 00:00:00'),
-('4021408', 'Furniture', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:35:47', '', '0000-00-00 00:00:00'),
-('10101', 'Furniture & Fixturers', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'anwarul', '2013-08-20 16:18:15', 'anwarul', '2013-08-21 13:35:40'),
-('4020406', 'Gas Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:59:20', '', '0000-00-00 00:00:00'),
-('20201', 'General Reserve', 'Reserve & Surplus', 2, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-25 14:07:12', 'admin', '2016-10-02 17:48:49'),
-('10105', 'Generator', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, '0.00', 'Zoherul', '2016-02-27 16:02:35', 'admin', '2016-05-23 12:05:18'),
-('4021414', 'Generator Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-06-16 10:21:05', '', '0000-00-00 00:00:00'),
-('40213', 'Generator Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:29:29', '', '0000-00-00 00:00:00'),
-('10103', 'Groceries and Cutleries', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, '0.00', '2', '2018-07-12 10:02:55', '', '0000-00-00 00:00:00'),
-('1010408', 'Gym Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:46:03', '', '0000-00-00 00:00:00'),
-('4020907', 'Honorarium', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:26', '', '0000-00-00 00:00:00'),
-('40205', 'House Rent', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-08-24 10:26:56', '', '0000-00-00 00:00:00'),
-('40100001', 'HP-Hasilpur', 'Academic Expenses', 2, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-07-29 03:44:23', '', '0000-00-00 00:00:00'),
-('4020702', 'HR Recruitment Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-09-25 12:55:49', '', '0000-00-00 00:00:00'),
-('4020703', 'Incentive on Admission', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-09-25 12:56:09', '', '0000-00-00 00:00:00'),
-('3', 'Income', 'COA', 0, 1, 0, 0, 'I', 0, 0, '0.00', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-('5020302', 'Income Tax Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2016-09-19 11:18:17', 'admin', '2016-09-28 13:18:35'),
-('102020302', 'Insurance Premium', 'Prepayment', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-09-19 13:10:57', '', '0000-00-00 00:00:00'),
-('4021001', 'Interest on Loan', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:20:53', 'admin', '2016-09-19 14:53:34'),
-('4020401', 'Internet Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:56:55', 'admin', '2015-10-15 18:57:32'),
-('10107', 'Inventory', 'Non Current Assets', 1, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-07-07 15:21:58', '', '0000-00-00 00:00:00'),
-('102010309', 'iyzico', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:32:35', '', '0000-00-00 00:00:00'),
-('10205010101', 'Jahangir', 'Hasan', 1, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2018-07-07 10:40:56', '', '0000-00-00 00:00:00'),
-('1010210', 'LCD TV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:52:27', '', '0000-00-00 00:00:00'),
-('30103', 'Lease Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2018-07-08 07:51:52', '', '0000-00-00 00:00:00'),
-('5', 'Liabilities', 'COA', 0, 1, 0, 0, 'L', 0, 0, '0.00', 'admin', '2013-07-04 12:32:07', 'admin', '2015-10-15 19:46:54'),
-('50203', 'Liabilities for Expenses', 'Current Liabilities', 2, 1, 0, 0, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:50:59', '', '0000-00-00 00:00:00'),
-('4020707', 'Library Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2017-01-10 15:34:54', '', '0000-00-00 00:00:00'),
-('4021409', 'Lift', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:36:12', '', '0000-00-00 00:00:00'),
-('50101', 'Long Term Borrowing', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2013-07-04 12:32:26', 'admin', '2015-10-15 19:47:40'),
-('4020608', 'Marketing & Promotion Exp.', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:53:59', '', '0000-00-00 00:00:00'),
-('4020901', 'Medical Allowance', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:11:33', '', '0000-00-00 00:00:00'),
-('1010411', 'Metal Ditector', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'Zoherul', '2016-08-22 10:55:22', '', '0000-00-00 00:00:00'),
-('4021413', 'Micro Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-05-12 14:53:51', '', '0000-00-00 00:00:00'),
-('30202', 'Miscellaneous (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, '0.00', 'anwarul', '2014-02-06 15:26:31', 'admin', '2016-09-25 11:04:35'),
-('4020909', 'Miscellaneous Benifit', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:53', '', '0000-00-00 00:00:00'),
-('4020701', 'Miscellaneous Exp', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-09-25 12:54:39', '', '0000-00-00 00:00:00'),
-('40207', 'Miscellaneous Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2014-04-26 16:49:56', 'admin', '2016-09-25 12:54:19'),
-('1010401', 'Mobile Phone', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-01-29 10:43:30', '', '0000-00-00 00:00:00'),
-('102020101', 'Mr Ashiqur Rahman', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-12-31 16:47:23', 'admin', '2016-09-25 11:55:13'),
-('1010212', 'Network Accessories', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-01-02 16:23:32', '', '0000-00-00 00:00:00'),
-('102020106', 'new head dfhgfh', 'Advance', 3, 1, 0, 0, 'A', 0, 0, '0.00', '2', '2020-01-16 06:25:10', '', '0000-00-00 00:00:00'),
-('4020408', 'News Paper Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-01-02 15:55:57', '', '0000-00-00 00:00:00'),
-('101', 'Non Current Assets', 'Assets', 1, 1, 0, 0, 'A', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:29:11'),
-('501', 'Non Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, '0.00', 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
-('406', 'Office Accessories', 'Expense', 1, 1, 1, 0, 'E', 1, 1, '1.00', '2', '2020-01-18 07:51:32', '', '0000-00-00 00:00:00'),
-('1010404', 'Office Decoration', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:40:02', '', '0000-00-00 00:00:00'),
-('10102', 'Office Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'anwarul', '2013-12-06 18:08:00', 'admin', '2015-10-15 15:48:21'),
-('4021401', 'Office Repair & Maintenance', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:33:15', '', '0000-00-00 00:00:00'),
-('30201', 'Office Stationary (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, '0.00', 'anwarul', '2013-07-17 15:21:06', 'admin', '2016-09-25 11:04:50'),
-('1020103', 'Online Payment', 'Cash & Cash Equivalent', 2, 1, 0, 1, 'A', 0, 0, '0.00', '2', '2020-10-18 14:26:41', '', '0000-00-00 00:00:00'),
-('102010308', 'Orange Money payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:32:11', '', '0000-00-00 00:00:00'),
-('402', 'Other Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, '0.00', '2', '2018-07-07 14:00:16', 'admin', '2015-10-15 18:37:42'),
-('302', 'Other Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, '0.00', '2', '2018-07-07 13:40:57', 'admin', '2016-09-25 11:04:09'),
-('40211', 'Others (Non Academic Expenses)', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'Obaidul', '2014-12-03 16:05:42', 'admin', '2015-10-15 19:22:09'),
-('30205', 'Others (Non-Academic Income)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, '0.00', 'admin', '2015-10-15 17:23:49', 'admin', '2015-10-15 17:57:52'),
-('10104', 'Others Assets', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, '0.00', 'admin', '2016-01-29 10:43:16', '', '0000-00-00 00:00:00'),
-('4020910', 'Outstanding Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-04-24 11:56:50', '', '0000-00-00 00:00:00'),
-('4021405', 'Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:34:31', '', '0000-00-00 00:00:00'),
-('4021412', 'PABX-Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-04-24 14:40:18', '', '0000-00-00 00:00:00'),
-('4020902', 'Part-time Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:12:06', '', '0000-00-00 00:00:00'),
-('102010301', 'Paypal', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:27:41', '', '0000-00-00 00:00:00'),
-('102010306', 'Paystack Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:30:55', '', '0000-00-00 00:00:00'),
-('102010307', 'Paytm Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:31:23', '', '0000-00-00 00:00:00'),
-('1010202', 'Photocopy & Fax Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:47:27', 'admin', '2016-05-23 12:14:40'),
-('4021411', 'Photocopy Machine Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'Zoherul', '2016-04-24 12:40:02', 'admin', '2017-04-27 17:03:17'),
-('3020503', 'Practical Fee', 'Others (Non-Academic Income)', 3, 1, 1, 1, 'I', 0, 0, '0.00', 'admin', '2017-07-22 18:00:37', '', '0000-00-00 00:00:00'),
-('1020203', 'Prepayment', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:40:51', 'admin', '2015-12-31 16:49:58'),
-('1010201', 'Printer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:47:15', '', '0000-00-00 00:00:00'),
-('407', 'Product Purchase', 'Expense', 0, 1, 0, 0, 'E', 0, 0, '0.00', '2', '2020-01-23 07:09:10', '', '0000-00-00 00:00:00'),
-('3020502', 'Professional Training Course(Oracal-1)', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, '0.00', 'nasim', '2017-06-22 13:28:05', '', '0000-00-00 00:00:00'),
-('30207', 'Professional Training Course(Oracal)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, '0.00', 'nasim', '2017-06-22 13:24:16', 'nasim', '2017-06-22 13:25:56'),
-('1010208', 'Projector', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:44', '', '0000-00-00 00:00:00'),
-('40206', 'Promonational Expense', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-07-11 13:48:57', 'anwarul', '2013-07-17 14:23:03'),
-('40214', 'Repair and Maintenance', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:32:46', '', '0000-00-00 00:00:00'),
-('202', 'Reserve & Surplus', 'Equity', 1, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2016-09-25 14:06:34', 'admin', '2016-10-02 17:48:57'),
-('20102', 'Retained Earnings', 'Share Holders Equity', 2, 1, 1, 1, 'L', 0, 0, '0.00', 'admin', '2016-05-23 11:20:40', 'admin', '2016-09-25 14:05:06'),
-('4020708', 'River Cruse', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2017-04-24 15:35:25', '', '0000-00-00 00:00:00'),
-('102010311', 'RMA PAYMENT GATEWAY', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:33:12', '', '0000-00-00 00:00:00'),
-('102020105', 'Salary', 'Advance', 4, 1, 0, 0, 'A', 0, 0, '0.00', 'admin', '2018-07-05 11:46:44', '', '0000-00-00 00:00:00'),
-('40209', 'Salary & Allowances', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-12-12 11:22:58', '', '0000-00-00 00:00:00'),
-('404', 'Sale Discount', 'Expense', 1, 1, 1, 0, 'E', 0, 0, '0.00', '2', '2018-07-19 10:15:11', '', '0000-00-00 00:00:00'),
-('303', 'Sale Income', 'Income', 0, 1, 1, 1, 'I', 0, 0, '0.00', '2', '2020-01-23 06:58:20', '', '0000-00-00 00:00:00'),
-('1010406', 'Security Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:41:30', '', '0000-00-00 00:00:00'),
-('30104', 'Service Charge Income', 'Store Income', 1, 1, 1, 0, 'I', 0, 0, '0.00', '2', '2020-12-30 11:23:32', '', '0000-00-00 00:00:00'),
-('20101', 'Share Capital', 'Share Holders Equity', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'anwarul', '2013-12-08 19:37:32', 'admin', '2015-10-15 19:45:35'),
-('201', 'Share Holders Equity', 'Equity', 1, 1, 0, 0, 'L', 0, 0, '0.00', '', '0000-00-00 00:00:00', 'admin', '2015-10-15 19:43:51'),
-('50201', 'Short Term Borrowing', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:50:30', '', '0000-00-00 00:00:00'),
-('102010310', 'SIPS Office', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:32:54', '', '0000-00-00 00:00:00'),
-('4020906', 'Special Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:13:13', '', '0000-00-00 00:00:00'),
-('50102', 'Sponsors Loan', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:48:02', '', '0000-00-00 00:00:00'),
-('4020706', 'Sports Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'nasmud', '2016-11-09 13:16:53', '', '0000-00-00 00:00:00'),
-('102010304', 'Square Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:29:32', '', '0000-00-00 00:00:00'),
-('102010302', 'SSLCommerz', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:28:06', '', '0000-00-00 00:00:00'),
-('401', 'Store Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, '0.00', '2', '2018-07-07 13:38:59', 'admin', '2015-10-15 17:58:46'),
-('301', 'Store Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, '0.00', '2', '2018-07-07 13:40:37', 'admin', '2015-09-17 17:00:02'),
-('102010305', 'Stripe Payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:29:59', '', '0000-00-00 00:00:00'),
-('3020501', 'Students Info. Correction Fee', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, '0.00', 'admin', '2015-10-15 17:24:45', '', '0000-00-00 00:00:00'),
-('1010601', 'Sub Station', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:44:11', '', '0000-00-00 00:00:00'),
-('502020501', 'sup_002-Kamal Hossain', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-01-18 10:49:49', '', '0000-00-00 00:00:00'),
-('502020505', 'sup_002-Mohan Store', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2025-01-27 11:02:03', '', '0000-00-00 00:00:00'),
-('502020506', 'sup_002-Patza', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2025-03-11 21:21:48', '', '0000-00-00 00:00:00'),
-('502020504', 'sup_002-Supplier_1', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-09-08 14:26:40', '', '0000-00-00 00:00:00'),
-('502020502', 'sup_003-Maruf', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-01-18 10:56:31', '', '0000-00-00 00:00:00'),
-('502020507', 'sup_003-Rizvi', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2025-05-09 20:52:32', '', '0000-00-00 00:00:00'),
-('502020503', 'sup_004-Saiful', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-01-18 10:57:04', '2', '2020-01-21 13:10:59'),
-('5020205', 'Suppliers', 'Account Payable', 3, 1, 0, 1, 'L', 0, 0, '0.00', '2', '2018-12-15 06:50:12', '', '0000-00-00 00:00:00'),
-('4020704', 'TB Care Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-10-08 13:03:04', '', '0000-00-00 00:00:00'),
-('4020501', 'TDS on House Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:44:07', 'admin', '2016-09-19 14:40:16'),
-('502030201', 'TDS Payable House Rent', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-19 11:19:42', 'admin', '2016-09-28 13:19:37'),
-('502030203', 'TDS Payable on Advertisement Bill', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-28 13:20:51', '', '0000-00-00 00:00:00'),
-('502030202', 'TDS Payable on Salary', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, '0.00', 'admin', '2016-09-28 13:20:17', '', '0000-00-00 00:00:00'),
-('4021402', 'Tea Kettle', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:33:45', '', '0000-00-00 00:00:00'),
-('4020402', 'Telephone Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:57:59', '', '0000-00-00 00:00:00'),
-('1010209', 'Telephone Set & PABX', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:51:57', 'admin', '2016-10-02 17:10:40'),
-('102020104', 'Test', 'Advance', 4, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2018-07-05 11:42:48', '', '0000-00-00 00:00:00'),
-('40203', 'Travelling & Conveyance', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, '0.00', 'admin', '2013-07-08 16:22:06', 'admin', '2015-10-15 18:45:13'),
-('4021406', 'TV', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 19:35:07', '', '0000-00-00 00:00:00'),
-('102010303', 'Two Checkout', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, '0.00', '2', '2020-10-18 14:28:29', '', '0000-00-00 00:00:00'),
-('1010205', 'UPS', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:50:38', '', '0000-00-00 00:00:00'),
-('40204', 'Utility Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, '0.00', 'anwarul', '2013-07-11 16:20:24', 'admin', '2016-01-02 15:55:22'),
-('4020503', 'VAT on House Rent Exp', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:49:22', 'admin', '2016-09-25 14:00:52'),
-('5020301', 'VAT Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, '0.00', 'admin', '2015-10-15 19:51:11', 'admin', '2016-09-28 13:23:53'),
-('502030101', 'VAT- TAX', 'VAT Payable', 3, 1, 1, 0, 'L', 0, 0, '0.00', '2', '2020-12-30 10:58:49', '', '0000-00-00 00:00:00'),
-('1010409', 'Vehicle A/C', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'Zoherul', '2016-05-12 12:13:21', '', '0000-00-00 00:00:00'),
-('1010405', 'Voltage Stablizer', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-03-27 10:40:59', '', '0000-00-00 00:00:00'),
-('1010105', 'Waiting Sofa - Steel', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2015-10-15 15:46:29', '', '0000-00-00 00:00:00'),
-('4020405', 'WASA Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2015-10-15 18:58:51', '', '0000-00-00 00:00:00'),
-('1010402', 'Water Purifier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, '0.00', 'admin', '2016-01-29 11:14:11', '', '0000-00-00 00:00:00'),
-('4020705', 'Website Development Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, '0.00', 'admin', '2016-10-15 12:42:47', '', '0000-00-00 00:00:00');
+('502020000001', '145454-HmIsahaq', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2018-12-17 15:10:19', '', '0000-00-00 00:00:00'),
+('4021403', 'AC', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:33:55', '', '0000-00-00 00:00:00'),
+('50202', 'Account Payable', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:50:43', '', '0000-00-00 00:00:00'),
+('10203', 'Account Receivable', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2013-09-18 15:29:35'),
+('1020201', 'Advance', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, 0.00, 'Zoherul', '2015-05-31 13:29:12', 'admin', '2015-12-31 16:46:32'),
+('102020103', 'Advance House Rent', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-10-02 16:55:38', 'admin', '2016-10-02 16:57:32'),
+('10202', 'Advance, Deposit And Pre-payments', 'Current Asset', 2, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-12-31 16:46:24'),
+('4020602', 'Advertisement and Publicity', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:51:44', '', '0000-00-00 00:00:00'),
+('1010410', 'Air Cooler', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-05-23 12:13:55', '', '0000-00-00 00:00:00'),
+('4020603', 'AIT Against Advertisement', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:52:09', '', '0000-00-00 00:00:00'),
+('1', 'Assets', 'COA', 0, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('1010204', 'Attendance Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:49:31', '', '0000-00-00 00:00:00'),
+('40216', 'Audit Fee', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, 0.00, 'admin', '2017-07-18 12:54:30', '', '0000-00-00 00:00:00'),
+('4021002', 'Bank Charge', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:21:03', '', '0000-00-00 00:00:00'),
+('30203', 'Bank Interest', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, 0.00, 'Obaidul', '2015-01-03 14:49:54', 'admin', '2016-09-25 11:04:19'),
+('1010104', 'Book Shelf', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:46:11', '', '0000-00-00 00:00:00'),
+('1010407', 'Books and Journal', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:45:37', '', '0000-00-00 00:00:00'),
+('102010207', 'Brac Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-01-18 10:10:31', '', '0000-00-00 00:00:00'),
+('4020604', 'Business Development Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:52:29', '', '0000-00-00 00:00:00'),
+('4020606', 'Campaign Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:52:57', 'admin', '2016-09-19 14:52:48'),
+('4020502', 'Campus Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:46:53', 'admin', '2017-04-27 17:02:39'),
+('40212', 'Car Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:28:43', '', '0000-00-00 00:00:00'),
+('10201', 'Cash & Cash Equivalent', 'Current Asset', 2, 1, 0, 1, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:57:55'),
+('1020102', 'Cash At Bank', 'Cash & Cash Equivalent', 3, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-07-19 13:43:59', 'admin', '2015-10-15 15:32:42'),
+('1020101', 'Cash In Hand', 'Cash & Cash Equivalent', 3, 1, 1, 1, 'A', 0, 0, 0.00, '2', '2018-07-31 12:56:28', 'admin', '2016-05-23 12:05:43'),
+('30101', 'Cash Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2018-07-08 07:51:26', '', '0000-00-00 00:00:00'),
+('1010207', 'CCTV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:24', '', '0000-00-00 00:00:00'),
+('102020102', 'CEO Current A/C', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-09-25 11:54:54', '', '0000-00-00 00:00:00'),
+('102010206', 'City Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-01-18 10:09:32', '', '0000-00-00 00:00:00'),
+('1010101', 'Class Room Chair', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:45:29', '', '0000-00-00 00:00:00'),
+('4021407', 'Close Circuit Cemera', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:35:35', '', '0000-00-00 00:00:00'),
+('4020601', 'Commision on Admission', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:51:21', 'admin', '2016-09-19 14:42:54'),
+('1010206', 'Computer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:09', '', '0000-00-00 00:00:00'),
+('4021410', 'Computer (R)', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-03-24 12:38:52', 'Zoherul', '2016-03-24 12:41:40'),
+('1010102', 'Computer Table', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:45:44', '', '0000-00-00 00:00:00'),
+('301020401', 'Continuing Registration fee - UoL (Income)', 'Registration Fee (UOL) Income', 4, 1, 1, 0, 'I', 0, 0, 0.00, 'admin', '2015-10-15 17:40:40', '', '0000-00-00 00:00:00'),
+('4020904', 'Contratuall Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:34', '', '0000-00-00 00:00:00'),
+('403', 'Cost of Sale', 'Expence', 0, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-07-08 10:37:16', '', '0000-00-00 00:00:00'),
+('30102', 'Credit Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2018-07-08 07:51:34', '', '0000-00-00 00:00:00'),
+('4020709', 'Cultural Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'nasmud', '2017-04-29 12:45:10', '', '0000-00-00 00:00:00'),
+('102', 'Current Asset', 'Assets', 1, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-12-06 13:54:42', 'admin', '2018-07-07 11:23:00'),
+('502', 'Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, 0.00, 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
+('102030101', 'cusL-0001-Walkin', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2019-01-08 09:14:48', '', '2020-11-17 11:41:07'),
+('102030108', 'cusL-0002-Jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2021-08-25 14:12:02', '', '0000-00-00 00:00:00'),
+('102030109', 'cusL-0004-Kabir khan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '36', '2021-08-31 14:03:18', '', '0000-00-00 00:00:00'),
+('102030115', 'cusL-0005-jaman', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '53', '2023-07-03 15:50:20', '', '0000-00-00 00:00:00'),
+('102030116', 'cusL-0005-Ravi Kumar', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2025-01-24 18:48:16', '', '0000-00-00 00:00:00'),
+('102030110', 'cusL-0007-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '39', '2021-09-05 19:38:26', '', '0000-00-00 00:00:00'),
+('102030111', 'cusL-0008-kamal', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '40', '2021-09-19 11:53:13', '', '0000-00-00 00:00:00'),
+('102030112', 'cusL-0009-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '41', '2021-10-26 10:20:44', '', '0000-00-00 00:00:00'),
+('102030113', 'cusL-0010-shakil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '42', '2021-10-26 10:23:52', '', '0000-00-00 00:00:00'),
+('102030117', 'cusL-0016-Customer', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '66', '2025-03-03 16:28:30', '', '0000-00-00 00:00:00'),
+('102030104', 'cusL-0018-jamildasd', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '20', '2021-01-05 14:14:11', '', '0000-00-00 00:00:00'),
+('102030114', 'cusL-0019- ', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '0', '2021-11-10 14:06:32', '', '0000-00-00 00:00:00'),
+('102030105', 'cusL-0021-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '25', '2021-01-31 14:17:07', '', '0000-00-00 00:00:00'),
+('102030106', 'cusL-0022-Saiful Hassan', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '26', '2021-01-31 18:18:33', '', '0000-00-00 00:00:00'),
+('102030107', 'cusL-0023-jamil', 'Customer Receivable', 4, 1, 1, 0, 'A', 0, 0, 0.00, '27', '2021-02-03 10:12:50', '', '0000-00-00 00:00:00'),
+('1020301', 'Customer Receivable', 'Account Receivable', 3, 1, 0, 1, 'A', 0, 0, 0.00, '2', '2019-01-08 09:15:08', 'admin', '2018-07-07 12:31:42'),
+('40100002', 'cw-Chichawatni', 'Store Expenses', 2, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-08-02 16:30:41', '', '0000-00-00 00:00:00'),
+('1020202', 'Deposit', 'Advance, Deposit And Pre-payments', 3, 1, 0, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:40:42', '', '0000-00-00 00:00:00'),
+('4020605', 'Design & Printing Expense', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:55:00', '', '0000-00-00 00:00:00'),
+('4020404', 'Dish Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:58:21', '', '0000-00-00 00:00:00'),
+('40215', 'Dividend', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, 0.00, 'admin', '2016-09-25 14:07:55', '', '0000-00-00 00:00:00'),
+('4020403', 'Drinking Water Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:58:10', '', '0000-00-00 00:00:00'),
+('1010211', 'DSLR Camera', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:53:17', 'admin', '2016-01-02 16:23:25'),
+('102010205', 'Dutch-Bangla Bank', 'Cash At Bank', 4, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-01-18 09:49:13', '', '0000-00-00 00:00:00'),
+('502020000007', 'E3Y1WJMB-John Maria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 05:55:58', '', '0000-00-00 00:00:00'),
+('502020000010', 'E4Y91CAX-onlineorder', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-02-03 11:20:44', '', '0000-00-00 00:00:00'),
+('502020000004', 'E97E9SJT-Manik Hassan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-09 14:32:22', '', '0000-00-00 00:00:00'),
+('4020908', 'Earned Leave', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:38', '', '0000-00-00 00:00:00'),
+('502020000006', 'EBK2UPRA-John Carlos', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 05:51:09', '', '0000-00-00 00:00:00'),
+('4020607', 'Education Fair Expenses', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:53:42', '', '0000-00-00 00:00:00'),
+('502020000011', 'EK9BYZVY-test sdafdssdfds', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-02-24 14:07:53', '', '0000-00-00 00:00:00'),
+('1010602', 'Electric Equipment', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:44:51', '', '0000-00-00 00:00:00'),
+('1010203', 'Electric Kettle', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:49:07', '', '0000-00-00 00:00:00'),
+('10106', 'Electrical Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:43:44', '', '0000-00-00 00:00:00'),
+('4020407', 'Electricity Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:59:31', '', '0000-00-00 00:00:00'),
+('10202010501', 'employ', 'Salary', 5, 1, 0, 0, 'A', 0, 0, 0.00, 'admin', '2018-07-05 11:47:10', '', '0000-00-00 00:00:00'),
+('405', 'Entertainment', 'Expense', 1, 1, 1, 0, 'E', 1, 1, 1.00, '2', '2020-01-18 07:49:00', '', '0000-00-00 00:00:00'),
+('502020000012', 'ENVBUZKE-kabirkhan', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2020-10-12 10:57:33', '', '0000-00-00 00:00:00'),
+('502020000002', 'EQLAJFUW-AinalHaque', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2018-12-17 15:08:43', '', '0000-00-00 00:00:00'),
+('2', 'Equity', 'COA', 0, 1, 0, 0, 'L', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('502020000009', 'EU3APTYY-JohnDoe', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 06:02:46', '', '0000-00-00 00:00:00'),
+('502020000005', 'EW9PM201-test emp', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-09 14:38:15', '', '0000-00-00 00:00:00'),
+('502020000008', 'EXL9WSCL-Mitchel Santner', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2019-01-27 05:58:55', '', '0000-00-00 00:00:00'),
+('4', 'Expense', 'COA', 0, 1, 0, 0, 'E', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('502020000003', 'EY2T1OWA-jahangirAhmad', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2018-12-17 15:11:13', '', '0000-00-00 00:00:00'),
+('502020000013', 'EZR0A9IB-DiMaria', 'Account Payable', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'John Doe', '2021-11-14 10:54:22', '', '0000-00-00 00:00:00'),
+('4020903', 'Faculty,Staff Salary & Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:21', '', '0000-00-00 00:00:00'),
+('4021404', 'Fax Machine', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:34:15', '', '0000-00-00 00:00:00'),
+('4020905', 'Festival & Incentive Bonus', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:48', '', '0000-00-00 00:00:00'),
+('1010103', 'File Cabinet', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:46:02', '', '0000-00-00 00:00:00'),
+('40210', 'Financial Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-08-20 12:24:31', 'admin', '2015-10-15 19:20:36'),
+('1010403', 'Fire Extingushier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:39:32', '', '0000-00-00 00:00:00'),
+('4021408', 'Furniture', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:35:47', '', '0000-00-00 00:00:00'),
+('10101', 'Furniture & Fixturers', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'anwarul', '2013-08-20 16:18:15', 'anwarul', '2013-08-21 13:35:40'),
+('4020406', 'Gas Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:59:20', '', '0000-00-00 00:00:00'),
+('20201', 'General Reserve', 'Reserve & Surplus', 2, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-25 14:07:12', 'admin', '2016-10-02 17:48:49'),
+('10105', 'Generator', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, 0.00, 'Zoherul', '2016-02-27 16:02:35', 'admin', '2016-05-23 12:05:18'),
+('4021414', 'Generator Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-06-16 10:21:05', '', '0000-00-00 00:00:00'),
+('40213', 'Generator Running Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:29:29', '', '0000-00-00 00:00:00'),
+('10103', 'Groceries and Cutleries', 'Non Current Assets', 2, 1, 1, 1, 'A', 0, 0, 0.00, '2', '2018-07-12 10:02:55', '', '0000-00-00 00:00:00'),
+('1010408', 'Gym Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:46:03', '', '0000-00-00 00:00:00'),
+('4020907', 'Honorarium', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:26', '', '0000-00-00 00:00:00'),
+('40205', 'House Rent', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-08-24 10:26:56', '', '0000-00-00 00:00:00'),
+('40100001', 'HP-Hasilpur', 'Academic Expenses', 2, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-07-29 03:44:23', '', '0000-00-00 00:00:00'),
+('4020702', 'HR Recruitment Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-09-25 12:55:49', '', '0000-00-00 00:00:00'),
+('4020703', 'Incentive on Admission', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-09-25 12:56:09', '', '0000-00-00 00:00:00'),
+('3', 'Income', 'COA', 0, 1, 0, 0, 'I', 0, 0, 0.00, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+('5020302', 'Income Tax Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2016-09-19 11:18:17', 'admin', '2016-09-28 13:18:35'),
+('102020302', 'Insurance Premium', 'Prepayment', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-09-19 13:10:57', '', '0000-00-00 00:00:00'),
+('4021001', 'Interest on Loan', 'Financial Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:20:53', 'admin', '2016-09-19 14:53:34'),
+('4020401', 'Internet Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:56:55', 'admin', '2015-10-15 18:57:32'),
+('10107', 'Inventory', 'Non Current Assets', 1, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-07-07 15:21:58', '', '0000-00-00 00:00:00'),
+('102010309', 'iyzico', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:32:35', '', '0000-00-00 00:00:00'),
+('10205010101', 'Jahangir', 'Hasan', 1, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2018-07-07 10:40:56', '', '0000-00-00 00:00:00'),
+('1010210', 'LCD TV', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:52:27', '', '0000-00-00 00:00:00'),
+('30103', 'Lease Sale', 'Store Income', 1, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2018-07-08 07:51:52', '', '0000-00-00 00:00:00'),
+('5', 'Liabilities', 'COA', 0, 1, 0, 0, 'L', 0, 0, 0.00, 'admin', '2013-07-04 12:32:07', 'admin', '2015-10-15 19:46:54'),
+('50203', 'Liabilities for Expenses', 'Current Liabilities', 2, 1, 0, 0, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:50:59', '', '0000-00-00 00:00:00'),
+('4020707', 'Library Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2017-01-10 15:34:54', '', '0000-00-00 00:00:00'),
+('4021409', 'Lift', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:36:12', '', '0000-00-00 00:00:00'),
+('50101', 'Long Term Borrowing', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2013-07-04 12:32:26', 'admin', '2015-10-15 19:47:40'),
+('4020608', 'Marketing & Promotion Exp.', 'Promonational Expence', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:53:59', '', '0000-00-00 00:00:00'),
+('4020901', 'Medical Allowance', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:11:33', '', '0000-00-00 00:00:00'),
+('1010411', 'Metal Ditector', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'Zoherul', '2016-08-22 10:55:22', '', '0000-00-00 00:00:00'),
+('4021413', 'Micro Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-05-12 14:53:51', '', '0000-00-00 00:00:00'),
+('30202', 'Miscellaneous (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, 0.00, 'anwarul', '2014-02-06 15:26:31', 'admin', '2016-09-25 11:04:35'),
+('4020909', 'Miscellaneous Benifit', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:53', '', '0000-00-00 00:00:00'),
+('4020701', 'Miscellaneous Exp', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-09-25 12:54:39', '', '0000-00-00 00:00:00'),
+('40207', 'Miscellaneous Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2014-04-26 16:49:56', 'admin', '2016-09-25 12:54:19'),
+('1010401', 'Mobile Phone', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-01-29 10:43:30', '', '0000-00-00 00:00:00'),
+('102020101', 'Mr Ashiqur Rahman', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-12-31 16:47:23', 'admin', '2016-09-25 11:55:13'),
+('1010212', 'Network Accessories', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-01-02 16:23:32', '', '0000-00-00 00:00:00'),
+('102020106', 'new head dfhgfh', 'Advance', 3, 1, 0, 0, 'A', 0, 0, 0.00, '2', '2020-01-16 06:25:10', '', '0000-00-00 00:00:00'),
+('4020408', 'News Paper Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-01-02 15:55:57', '', '0000-00-00 00:00:00'),
+('101', 'Non Current Assets', 'Assets', 1, 1, 0, 0, 'A', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-10-15 15:29:11'),
+('501', 'Non Current Liabilities', 'Liabilities', 1, 1, 0, 0, 'L', 0, 0, 0.00, 'anwarul', '2014-08-30 13:18:20', 'admin', '2015-10-15 19:49:21'),
+('406', 'Office Accessories', 'Expense', 1, 1, 1, 0, 'E', 1, 1, 1.00, '2', '2020-01-18 07:51:32', '', '0000-00-00 00:00:00'),
+('1010404', 'Office Decoration', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:40:02', '', '0000-00-00 00:00:00'),
+('10102', 'Office Equipment', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'anwarul', '2013-12-06 18:08:00', 'admin', '2015-10-15 15:48:21'),
+('4021401', 'Office Repair & Maintenance', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:33:15', '', '0000-00-00 00:00:00'),
+('30201', 'Office Stationary (Income)', 'Other Income', 2, 1, 1, 1, 'I', 0, 0, 0.00, 'anwarul', '2013-07-17 15:21:06', 'admin', '2016-09-25 11:04:50'),
+('1020103', 'Online Payment', 'Cash & Cash Equivalent', 2, 1, 0, 1, 'A', 0, 0, 0.00, '2', '2020-10-18 14:26:41', '', '0000-00-00 00:00:00'),
+('102010308', 'Orange Money payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:32:11', '', '0000-00-00 00:00:00'),
+('402', 'Other Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, 0.00, '2', '2018-07-07 14:00:16', 'admin', '2015-10-15 18:37:42'),
+('302', 'Other Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, 0.00, '2', '2018-07-07 13:40:57', 'admin', '2016-09-25 11:04:09'),
+('40211', 'Others (Non Academic Expenses)', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'Obaidul', '2014-12-03 16:05:42', 'admin', '2015-10-15 19:22:09'),
+('30205', 'Others (Non-Academic Income)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, 0.00, 'admin', '2015-10-15 17:23:49', 'admin', '2015-10-15 17:57:52'),
+('10104', 'Others Assets', 'Non Current Assets', 2, 1, 0, 1, 'A', 0, 0, 0.00, 'admin', '2016-01-29 10:43:16', '', '0000-00-00 00:00:00'),
+('4020910', 'Outstanding Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-04-24 11:56:50', '', '0000-00-00 00:00:00'),
+('4021405', 'Oven', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:34:31', '', '0000-00-00 00:00:00'),
+('4021412', 'PABX-Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-04-24 14:40:18', '', '0000-00-00 00:00:00'),
+('4020902', 'Part-time Staff Salary', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:12:06', '', '0000-00-00 00:00:00'),
+('102010301', 'Paypal', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:27:41', '', '0000-00-00 00:00:00'),
+('102010306', 'Paystack Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:30:55', '', '0000-00-00 00:00:00'),
+('102010307', 'Paytm Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:31:23', '', '0000-00-00 00:00:00'),
+('1010202', 'Photocopy & Fax Machine', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:47:27', 'admin', '2016-05-23 12:14:40'),
+('4021411', 'Photocopy Machine Repair', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'Zoherul', '2016-04-24 12:40:02', 'admin', '2017-04-27 17:03:17'),
+('3020503', 'Practical Fee', 'Others (Non-Academic Income)', 3, 1, 1, 1, 'I', 0, 0, 0.00, 'admin', '2017-07-22 18:00:37', '', '0000-00-00 00:00:00'),
+('1020203', 'Prepayment', 'Advance, Deposit And Pre-payments', 3, 1, 0, 1, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:40:51', 'admin', '2015-12-31 16:49:58'),
+('1010201', 'Printer', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:47:15', '', '0000-00-00 00:00:00'),
+('407', 'Product Purchase', 'Expense', 0, 1, 0, 0, 'E', 0, 0, 0.00, '2', '2020-01-23 07:09:10', '', '0000-00-00 00:00:00'),
+('3020502', 'Professional Training Course(Oracal-1)', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, 0.00, 'nasim', '2017-06-22 13:28:05', '', '0000-00-00 00:00:00'),
+('30207', 'Professional Training Course(Oracal)', 'Other Income', 2, 1, 0, 1, 'I', 0, 0, 0.00, 'nasim', '2017-06-22 13:24:16', 'nasim', '2017-06-22 13:25:56'),
+('1010208', 'Projector', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:44', '', '0000-00-00 00:00:00'),
+('40206', 'Promonational Expense', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-07-11 13:48:57', 'anwarul', '2013-07-17 14:23:03'),
+('40214', 'Repair and Maintenance', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:32:46', '', '0000-00-00 00:00:00'),
+('202', 'Reserve & Surplus', 'Equity', 1, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2016-09-25 14:06:34', 'admin', '2016-10-02 17:48:57'),
+('20102', 'Retained Earnings', 'Share Holders Equity', 2, 1, 1, 1, 'L', 0, 0, 0.00, 'admin', '2016-05-23 11:20:40', 'admin', '2016-09-25 14:05:06'),
+('4020708', 'River Cruse', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2017-04-24 15:35:25', '', '0000-00-00 00:00:00'),
+('102010311', 'RMA PAYMENT GATEWAY', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:33:12', '', '0000-00-00 00:00:00'),
+('102020105', 'Salary', 'Advance', 4, 1, 0, 0, 'A', 0, 0, 0.00, 'admin', '2018-07-05 11:46:44', '', '0000-00-00 00:00:00'),
+('40209', 'Salary & Allowances', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-12-12 11:22:58', '', '0000-00-00 00:00:00'),
+('404', 'Sale Discount', 'Expense', 1, 1, 1, 0, 'E', 0, 0, 0.00, '2', '2018-07-19 10:15:11', '', '0000-00-00 00:00:00'),
+('303', 'Sale Income', 'Income', 0, 1, 1, 1, 'I', 0, 0, 0.00, '2', '2020-01-23 06:58:20', '', '0000-00-00 00:00:00'),
+('1010406', 'Security Equipment', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:41:30', '', '0000-00-00 00:00:00'),
+('30104', 'Service Charge Income', 'Store Income', 1, 1, 1, 0, 'I', 0, 0, 0.00, '2', '2020-12-30 11:23:32', '', '0000-00-00 00:00:00'),
+('20101', 'Share Capital', 'Share Holders Equity', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'anwarul', '2013-12-08 19:37:32', 'admin', '2015-10-15 19:45:35'),
+('201', 'Share Holders Equity', 'Equity', 1, 1, 0, 0, 'L', 0, 0, 0.00, '', '0000-00-00 00:00:00', 'admin', '2015-10-15 19:43:51'),
+('50201', 'Short Term Borrowing', 'Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:50:30', '', '0000-00-00 00:00:00'),
+('102010310', 'SIPS Office', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:32:54', '', '0000-00-00 00:00:00'),
+('4020906', 'Special Allowances', 'Salary & Allowances', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:13:13', '', '0000-00-00 00:00:00'),
+('50102', 'Sponsors Loan', 'Non Current Liabilities', 2, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:48:02', '', '0000-00-00 00:00:00'),
+('4020706', 'Sports Expense', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'nasmud', '2016-11-09 13:16:53', '', '0000-00-00 00:00:00'),
+('102010304', 'Square Payments', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:29:32', '', '0000-00-00 00:00:00'),
+('102010302', 'SSLCommerz', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:28:06', '', '0000-00-00 00:00:00'),
+('401', 'Store Expenses', 'Expense', 1, 1, 0, 0, 'E', 0, 0, 0.00, '2', '2018-07-07 13:38:59', 'admin', '2015-10-15 17:58:46'),
+('301', 'Store Income', 'Income', 1, 1, 0, 0, 'I', 0, 0, 0.00, '2', '2018-07-07 13:40:37', 'admin', '2015-09-17 17:00:02'),
+('102010305', 'Stripe Payment', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:29:59', '', '0000-00-00 00:00:00'),
+('3020501', 'Students Info. Correction Fee', 'Others (Non-Academic Income)', 3, 1, 1, 0, 'I', 0, 0, 0.00, 'admin', '2015-10-15 17:24:45', '', '0000-00-00 00:00:00'),
+('1010601', 'Sub Station', 'Electrical Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:44:11', '', '0000-00-00 00:00:00'),
+('502020501', 'sup_002-Kamal Hossain', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-01-18 10:49:49', '', '0000-00-00 00:00:00'),
+('502020505', 'sup_002-Mohan Store', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2025-01-27 11:02:03', '', '0000-00-00 00:00:00'),
+('502020506', 'sup_002-Patza', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2025-03-11 21:21:48', '', '0000-00-00 00:00:00'),
+('502020504', 'sup_002-Supplier_1', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-09-08 14:26:40', '', '0000-00-00 00:00:00'),
+('502020502', 'sup_003-Maruf', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-01-18 10:56:31', '', '0000-00-00 00:00:00'),
+('502020507', 'sup_003-Rizvi', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2025-05-09 20:52:32', '', '0000-00-00 00:00:00'),
+('502020503', 'sup_004-Saiful', 'Suppliers', 4, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-01-18 10:57:04', '2', '2020-01-21 13:10:59'),
+('5020205', 'Suppliers', 'Account Payable', 3, 1, 0, 1, 'L', 0, 0, 0.00, '2', '2018-12-15 06:50:12', '', '0000-00-00 00:00:00'),
+('4020704', 'TB Care Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-10-08 13:03:04', '', '0000-00-00 00:00:00'),
+('4020501', 'TDS on House Rent', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:44:07', 'admin', '2016-09-19 14:40:16'),
+('502030201', 'TDS Payable House Rent', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-19 11:19:42', 'admin', '2016-09-28 13:19:37'),
+('502030203', 'TDS Payable on Advertisement Bill', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-28 13:20:51', '', '0000-00-00 00:00:00'),
+('502030202', 'TDS Payable on Salary', 'Income Tax Payable', 4, 1, 1, 0, 'L', 0, 0, 0.00, 'admin', '2016-09-28 13:20:17', '', '0000-00-00 00:00:00'),
+('4021402', 'Tea Kettle', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:33:45', '', '0000-00-00 00:00:00'),
+('4020402', 'Telephone Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:57:59', '', '0000-00-00 00:00:00'),
+('1010209', 'Telephone Set & PABX', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:51:57', 'admin', '2016-10-02 17:10:40'),
+('102020104', 'Test', 'Advance', 4, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2018-07-05 11:42:48', '', '0000-00-00 00:00:00'),
+('40203', 'Travelling & Conveyance', 'Other Expenses', 2, 1, 1, 1, 'E', 0, 0, 0.00, 'admin', '2013-07-08 16:22:06', 'admin', '2015-10-15 18:45:13'),
+('4021406', 'TV', 'Repair and Maintenance', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 19:35:07', '', '0000-00-00 00:00:00'),
+('102010303', 'Two Checkout', 'Online Payment', 2, 1, 1, 0, 'A', 0, 0, 0.00, '2', '2020-10-18 14:28:29', '', '0000-00-00 00:00:00'),
+('1010205', 'UPS', 'Office Equipment', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:50:38', '', '0000-00-00 00:00:00'),
+('40204', 'Utility Expenses', 'Other Expenses', 2, 1, 0, 1, 'E', 0, 0, 0.00, 'anwarul', '2013-07-11 16:20:24', 'admin', '2016-01-02 15:55:22'),
+('4020503', 'VAT on House Rent Exp', 'House Rent', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:49:22', 'admin', '2016-09-25 14:00:52'),
+('5020301', 'VAT Payable', 'Liabilities for Expenses', 3, 1, 0, 1, 'L', 0, 0, 0.00, 'admin', '2015-10-15 19:51:11', 'admin', '2016-09-28 13:23:53'),
+('502030101', 'VAT- TAX', 'VAT Payable', 3, 1, 1, 0, 'L', 0, 0, 0.00, '2', '2020-12-30 10:58:49', '', '0000-00-00 00:00:00'),
+('1010409', 'Vehicle A/C', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'Zoherul', '2016-05-12 12:13:21', '', '0000-00-00 00:00:00'),
+('1010405', 'Voltage Stablizer', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-03-27 10:40:59', '', '0000-00-00 00:00:00'),
+('1010105', 'Waiting Sofa - Steel', 'Furniture & Fixturers', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2015-10-15 15:46:29', '', '0000-00-00 00:00:00'),
+('4020405', 'WASA Bill', 'Utility Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2015-10-15 18:58:51', '', '0000-00-00 00:00:00'),
+('1010402', 'Water Purifier', 'Others Assets', 3, 1, 1, 0, 'A', 0, 0, 0.00, 'admin', '2016-01-29 11:14:11', '', '0000-00-00 00:00:00'),
+('4020705', 'Website Development Expenses', 'Miscellaneous Expenses', 3, 1, 1, 0, 'E', 0, 0, 0.00, 'admin', '2016-10-15 12:42:47', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1640,8 +1657,8 @@ INSERT INTO `acc_coa` (`HeadCode`, `HeadName`, `PHeadName`, `HeadLevel`, `IsActi
 
 CREATE TABLE `acc_customer_income` (
   `ID` int(11) NOT NULL,
-  `Customer_Id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `VNo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Customer_Id` varchar(50) NOT NULL,
+  `VNo` varchar(50) NOT NULL,
   `Date` date NOT NULL,
   `Amount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1654,11 +1671,11 @@ CREATE TABLE `acc_customer_income` (
 
 CREATE TABLE `acc_glsummarybalance` (
   `ID` int(11) NOT NULL,
-  `COAID` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `COAID` varchar(50) DEFAULT NULL,
   `Debit` decimal(18,2) DEFAULT NULL,
   `Credit` decimal(18,2) DEFAULT NULL,
   `FYear` int(11) DEFAULT NULL,
-  `CreateBy` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `CreateBy` varchar(50) DEFAULT NULL,
   `CreateDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1670,17 +1687,17 @@ CREATE TABLE `acc_glsummarybalance` (
 
 CREATE TABLE `acc_income_expence` (
   `ID` int(11) NOT NULL,
-  `VNo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Student_Id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `VNo` varchar(50) NOT NULL,
+  `Student_Id` varchar(50) NOT NULL,
   `Date` date NOT NULL,
-  `Paymode` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Perpose` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Narration` text COLLATE utf8_unicode_ci NOT NULL,
+  `Paymode` varchar(50) NOT NULL,
+  `Perpose` varchar(50) NOT NULL,
+  `Narration` text NOT NULL,
   `StoreID` int(11) NOT NULL,
-  `COAID` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `COAID` varchar(50) NOT NULL,
   `Amount` decimal(10,2) NOT NULL,
   `IsApprove` tinyint(4) NOT NULL,
-  `CreateBy` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `CreateBy` varchar(50) NOT NULL,
   `CreateDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1691,8 +1708,8 @@ CREATE TABLE `acc_income_expence` (
 --
 
 CREATE TABLE `acc_temp` (
-  `COAID` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `COAID` varchar(50) NOT NULL,
+  `Name` varchar(50) NOT NULL,
   `Debit` decimal(18,2) NOT NULL,
   `Credit` decimal(18,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1705,20 +1722,20 @@ CREATE TABLE `acc_temp` (
 
 CREATE TABLE `acc_transaction` (
   `ID` int(11) NOT NULL,
-  `VNo` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Vtype` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VNo` varchar(50) DEFAULT NULL,
+  `Vtype` varchar(50) DEFAULT NULL,
   `VDate` date DEFAULT NULL,
-  `COAID` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Narration` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `COAID` varchar(50) DEFAULT NULL,
+  `Narration` text DEFAULT NULL,
   `Debit` decimal(18,2) DEFAULT NULL,
   `Credit` decimal(18,2) DEFAULT NULL,
   `StoreID` int(11) NOT NULL,
-  `IsPosted` char(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `CreateBy` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IsPosted` char(10) DEFAULT NULL,
+  `CreateBy` varchar(50) DEFAULT NULL,
   `CreateDate` datetime DEFAULT NULL,
-  `UpdateBy` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `UpdateBy` varchar(50) DEFAULT NULL,
   `UpdateDate` datetime DEFAULT NULL,
-  `IsAppove` char(10) COLLATE utf8_unicode_ci DEFAULT NULL
+  `IsAppove` char(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -1726,11 +1743,11 @@ CREATE TABLE `acc_transaction` (
 --
 
 INSERT INTO `acc_transaction` (`ID`, `VNo`, `Vtype`, `VDate`, `COAID`, `Narration`, `Debit`, `Credit`, `StoreID`, `IsPosted`, `CreateBy`, `CreateDate`, `UpdateBy`, `UpdateDate`, `IsAppove`) VALUES
-(1, 'Sale0001', 'Sales Products', '2025-07-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', '26.01', '0.00', 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
-(2, '0001', 'CIV', '2025-07-22', '102030101', 'Customer debit for Product Invoice#0001', '23.12', '0.00', 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
-(3, '0001', 'CIV', '2025-07-22', '10107', 'Inventory Credit for Product Invoice#0001', '0.00', '23.12', 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
-(4, '0001', 'CIV', '2025-07-22', '102030101', 'Customer Credit for Product Invoice#0001', '0.00', '23.12', 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
-(5, 'Sale0001', 'Sales Products', '2025-07-22', '303', 'Sale Income For cusL-0001-Walkin', '0.00', '23.12', 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1');
+(1, 'Sale0001', 'Sales Products', '2025-07-22', '1020101', 'Sale Income For Online paymentcusL-0001-Walkin', 26.01, 0.00, 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
+(2, '0001', 'CIV', '2025-07-22', '102030101', 'Customer debit for Product Invoice#0001', 23.12, 0.00, 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
+(3, '0001', 'CIV', '2025-07-22', '10107', 'Inventory Credit for Product Invoice#0001', 0.00, 23.12, 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
+(4, '0001', 'CIV', '2025-07-22', '102030101', 'Customer Credit for Product Invoice#0001', 0.00, 23.12, 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1'),
+(5, 'Sale0001', 'Sales Products', '2025-07-22', '303', 'Sale Income For cusL-0001-Walkin', 0.00, 23.12, 0, '1', '2', '2025-07-22 00:00:00', NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -1746,7 +1763,7 @@ CREATE TABLE `acn_account_transaction` (
   `tran_date` date NOT NULL,
   `payment_id` int(11) NOT NULL,
   `create_by_id` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1757,7 +1774,7 @@ CREATE TABLE `acn_account_transaction` (
 CREATE TABLE `add_ons` (
   `add_on_id` int(11) NOT NULL,
   `modifier_set_id` int(20) NOT NULL,
-  `add_on_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `add_on_name` varchar(200) NOT NULL,
   `price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `minqty` int(11) NOT NULL DEFAULT 0,
   `maxqty` int(11) NOT NULL DEFAULT 0,
@@ -1773,16 +1790,57 @@ CREATE TABLE `add_ons` (
 --
 
 INSERT INTO `add_ons` (`add_on_id`, `modifier_set_id`, `add_on_name`, `price`, `minqty`, `maxqty`, `is_comp`, `modifier_id`, `is_food_item`, `sort_order`, `is_active`) VALUES
-(1, 1, 'Hot', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(2, 1, 'Medium', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(3, 1, 'Mild', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(4, 1, 'Extra Hot', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(5, 2, 'Rare', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(6, 2, 'Rare to Medium', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(7, 2, 'Medium', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(8, 2, 'Medium to Welldone', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(9, 2, 'Welldone', '0.00', 0, 0, 0, 0, 0, 0, 1),
-(10, 3, 'NAAN', '0.00', 1, 1, 0, 90, 1, 0, 1);
+(1, 1, 'Hot', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(2, 1, 'Medium', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(3, 1, 'Mild', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(4, 1, 'Extra Hot', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(5, 2, 'Rare', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(6, 2, 'Rare to Medium', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(7, 2, 'Medium', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(8, 2, 'Medium to Welldone', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(9, 2, 'Welldone', 0.00, 0, 0, 0, 0, 0, 0, 1),
+(10, 3, 'NAAN', 0.00, 1, 1, 0, 90, 1, 0, 1),
+(97, 4, 'Chicken Tikka Biryani', 0.00, 0, 0, 0, 66, 1, 0, 1),
+(98, 4, 'Chicken Or Lamb Palak', 0.00, 0, 0, 0, 63, 1, 0, 1),
+(99, 4, 'Malai Kofta', 0.00, 0, 0, 0, 36, 1, 0, 1),
+(100, 4, 'Madras', 0.00, 0, 0, 0, 53, 1, 0, 1),
+(101, 4, 'Mushroom Malai', 0.00, 0, 0, 0, 50, 1, 0, 1),
+(102, 4, 'Palak', 3.00, 0, 0, 0, 86, 1, 0, 1),
+(103, 4, 'Malai', 0.00, 0, 0, 0, 83, 1, 0, 1),
+(104, 4, 'Kadahi Paneer', 2.00, 0, 0, 0, 43, 1, 0, 1),
+(105, 4, 'Chicken Tikka Jalfrezi', 0.00, 0, 0, 0, 67, 1, 0, 1),
+(106, 4, 'Dhal Palak', 0.00, 0, 0, 0, 40, 1, 0, 1),
+(107, 4, 'Vegetable Paneer Tikka Masala', 0.00, 0, 0, 0, 45, 1, 0, 1),
+(108, 4, 'Alu Matar', 0.00, 0, 0, 0, 37, 1, 0, 1),
+(109, 4, 'Punjabi Delight', 0.00, 0, 0, 0, 57, 1, 0, 1),
+(110, 4, 'Butter Paneer', 0.00, 0, 0, 0, 47, 1, 0, 1),
+(111, 4, 'Vindaloo', 0.00, 0, 0, 0, 54, 1, 0, 1),
+(112, 4, 'Tikka Masala', 0.00, 0, 0, 0, 87, 1, 0, 1),
+(113, 4, 'Alu Gobi', 0.00, 0, 0, 0, 31, 1, 0, 1),
+(114, 4, 'Vindaloo', 0.00, 0, 0, 0, 84, 1, 0, 1),
+(115, 4, 'Butter Matar Paneer', 0.00, 0, 0, 0, 44, 1, 0, 1),
+(116, 4, 'Bombay Potatoes', 0.00, 0, 0, 0, 33, 1, 0, 1),
+(117, 4, 'Alu Matar Madras', 0.00, 0, 0, 0, 46, 1, 0, 1),
+(118, 4, 'Dhansak', 0.00, 0, 0, 0, 51, 1, 0, 1),
+(119, 4, 'Shahi Paneer', 0.00, 0, 0, 0, 48, 1, 0, 1),
+(120, 4, 'Goat Curry', 0.00, 0, 0, 0, 68, 1, 0, 1),
+(121, 4, 'Mango Chicken', 0.00, 0, 0, 0, 65, 1, 0, 1),
+(122, 4, 'Alu or Paneer Palak', 0.00, 0, 0, 0, 38, 1, 0, 1),
+(123, 4, 'Rogan Josh', 4.00, 0, 0, 0, 58, 1, 0, 1),
+(124, 4, 'Channa Masala', 0.00, 0, 0, 0, 35, 1, 0, 1),
+(125, 4, 'Ceylon', 0.00, 0, 0, 0, 55, 1, 0, 1),
+(126, 4, 'Prawn Biryani', 4.00, 0, 0, 0, 88, 1, 0, 1),
+(127, 4, 'Korma', 0.00, 0, 0, 0, 52, 1, 0, 1),
+(128, 4, 'Masala', 0.00, 0, 0, 0, 85, 1, 0, 1),
+(129, 4, 'Kadahi Chicken', 0.00, 0, 0, 0, 62, 1, 0, 1),
+(130, 4, 'Mutton Keema Curry', 0.00, 0, 0, 0, 69, 1, 0, 1),
+(131, 4, 'Dhal Masala', 0.00, 0, 0, 0, 42, 1, 0, 1),
+(132, 4, 'Chicken Makhini', 0.00, 0, 0, 0, 64, 1, 0, 1),
+(133, 4, 'Dhal Makhini', 0.00, 0, 0, 0, 39, 1, 0, 1),
+(134, 4, 'Masala', 0.00, 0, 0, 0, 59, 1, 0, 1),
+(135, 4, 'Paneer Tikka Masala', 0.00, 0, 0, 0, 49, 1, 0, 1),
+(136, 4, 'Bhuna', 0.00, 0, 0, 0, 56, 1, 0, 1),
+(137, 4, 'Chicken Tikka Masala', 0.00, 0, 0, 0, 61, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1802,7 +1860,7 @@ CREATE TABLE `add_on_ingr_dtls` (
   `modifier_ingr_unitid` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1818,7 +1876,7 @@ CREATE TABLE `award` (
   `date` date NOT NULL,
   `employee_id` varchar(30) NOT NULL,
   `awarded_by` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -1836,7 +1894,7 @@ CREATE TABLE `bank_summary` (
   `cr` float DEFAULT NULL,
   `ammount` float DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1866,6 +1924,17 @@ CREATE TABLE `bill` (
   `update_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`bill_id`, `customer_id`, `order_id`, `total_amount`, `discount`, `service_charge`, `shipping_type`, `delivarydate`, `VAT`, `bill_amount`, `bill_date`, `bill_time`, `create_at`, `bill_status`, `payment_method_id`, `create_by`, `create_date`, `update_by`, `update_date`) VALUES
+(1, 54, 1, 13, 0, 0, NULL, NULL, 1.3, 13, '2025-07-25', '14:00:39', '1970-01-01 01:01:01', 0, 4, 2, '2025-07-25', 0, '0000-00-00'),
+(2, 54, 2, 13, 0, 0, NULL, NULL, 1.3, 13, '2025-07-25', '14:05:12', '1970-01-01 01:01:01', 0, 4, 2, '2025-07-25', 0, '0000-00-00'),
+(3, 54, 3, 23, 0, 0, NULL, NULL, 2.3, 23, '2025-07-25', '14:07:42', '1970-01-01 01:01:01', 0, 4, 2, '2025-07-25', 0, '0000-00-00'),
+(4, 54, 4, 8, 0, 0, NULL, NULL, 0.8, 8, '2025-07-25', '17:03:39', '1970-01-01 01:01:01', 0, 4, 2, '2025-07-25', 0, '0000-00-00'),
+(5, 54, 5, 48.9, 0, 0, NULL, NULL, 4.89, 48.9, '2025-07-28', '15:30:47', '1970-01-01 01:01:01', 0, 4, 2, '2025-07-28', 0, '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
@@ -1876,7 +1945,7 @@ CREATE TABLE `bill_card_payment` (
   `row_id` bigint(20) NOT NULL,
   `bill_id` bigint(20) NOT NULL,
   `multipay_id` int(11) DEFAULT NULL,
-  `card_no` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `card_no` varchar(200) DEFAULT NULL,
   `terminal_name` int(11) NOT NULL,
   `bank_name` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1894,7 +1963,7 @@ CREATE TABLE `bkp_13062025_contact_data` (
   `phone` varchar(20) DEFAULT NULL,
   `text` varchar(350) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bkp_13062025_contact_data`
@@ -1915,7 +1984,7 @@ CREATE TABLE `bkp_13062025_tbl_seoption` (
   `title_slug` varchar(255) NOT NULL,
   `keywords` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_seoption`
@@ -1959,7 +2028,7 @@ CREATE TABLE `bkp_13062025_tbl_slider` (
   `delation_status` int(11) NOT NULL DEFAULT 0,
   `width` int(11) NOT NULL DEFAULT 0,
   `height` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_slider`
@@ -1997,7 +2066,7 @@ CREATE TABLE `bkp_13062025_tbl_slider_type` (
   `stype_id` int(11) NOT NULL,
   `STypeName` varchar(255) DEFAULT NULL,
   `delation_status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_slider_type`
@@ -2028,7 +2097,7 @@ CREATE TABLE `bkp_13062025_tbl_widget` (
   `widget_desc` text DEFAULT NULL,
   `widget_desc_full` text DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bkp_13062025_tbl_widget`
@@ -2069,7 +2138,7 @@ CREATE TABLE `bkp_13062025_top_menu` (
   `parentid` int(11) NOT NULL,
   `entrydate` date NOT NULL,
   `isactive` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bkp_13062025_top_menu`
@@ -2101,7 +2170,7 @@ CREATE TABLE `brands` (
   `status` tinyint(1) DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `brands`
@@ -2128,19 +2197,19 @@ INSERT INTO `brands` (`id`, `brand_name`, `status`, `created_at`, `updated_at`) 
 
 CREATE TABLE `candidate_basic_info` (
   `can_id` varchar(20) NOT NULL,
-  `first_name` varchar(11) CHARACTER SET latin1 NOT NULL,
-  `last_name` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `email` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `phone` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `alter_phone` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `present_address` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `parmanent_address` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `first_name` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `last_name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `email` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `phone` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `alter_phone` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `present_address` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `parmanent_address` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `picture` text DEFAULT NULL,
   `ssn` varchar(50) NOT NULL,
   `state` varchar(30) NOT NULL,
   `city` varchar(30) NOT NULL,
   `zip` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2151,12 +2220,12 @@ CREATE TABLE `candidate_basic_info` (
 CREATE TABLE `candidate_education_info` (
   `can_edu_id` int(11) NOT NULL,
   `can_id` varchar(30) NOT NULL,
-  `degree_name` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `university_name` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `cgp` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `comments` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
-  `sequencee` varchar(255) CHARACTER SET latin1 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `degree_name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `university_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `cgp` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `comments` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `sequencee` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2166,18 +2235,18 @@ CREATE TABLE `candidate_education_info` (
 
 CREATE TABLE `candidate_interview` (
   `can_int_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `job_adv_id` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `interview_date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `interviewer_id` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `interview_marks` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `written_total_marks` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `mcq_total_marks` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `job_adv_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `interview_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `interviewer_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `interview_marks` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `written_total_marks` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `mcq_total_marks` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `total_marks` varchar(30) NOT NULL,
-  `recommandation` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `selection` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `details` varchar(50) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `recommandation` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `selection` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `details` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2187,11 +2256,11 @@ CREATE TABLE `candidate_interview` (
 
 CREATE TABLE `candidate_selection` (
   `can_sel_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `pos_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `selection_terms` varchar(50) CHARACTER SET latin1 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `pos_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `selection_terms` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2201,11 +2270,11 @@ CREATE TABLE `candidate_selection` (
 
 CREATE TABLE `candidate_shortlist` (
   `can_short_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `job_adv_id` int(11) NOT NULL,
-  `date_of_shortlist` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `interview_date` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date_of_shortlist` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `interview_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2215,13 +2284,13 @@ CREATE TABLE `candidate_shortlist` (
 
 CREATE TABLE `candidate_workexperience` (
   `can_workexp_id` int(11) NOT NULL,
-  `can_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `company_name` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `working_period` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `duties` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `supervisor` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `sequencee` varchar(10) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `can_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `company_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `working_period` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `duties` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `supervisor` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `sequencee` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2237,20 +2306,27 @@ CREATE TABLE `cart_selected_modifiers` (
   `modifier_groupid` int(11) NOT NULL,
   `tr_row_id` varchar(100) DEFAULT NULL,
   `foods_or_mods` int(11) NOT NULL DEFAULT 2 COMMENT '1 = For Foods\r\n2 = For Mods',
+  `meal_deal_id` int(11) NOT NULL DEFAULT 0,
   `is_active` int(11) NOT NULL DEFAULT 1 COMMENT '1=Active,0=Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart_selected_modifiers`
 --
 
-INSERT INTO `cart_selected_modifiers` (`id`, `menu_id`, `variant_id`, `add_on_id`, `modifier_groupid`, `tr_row_id`, `foods_or_mods`, `is_active`, `created_at`) VALUES
-(7, 4, 5, 1, 15, '34186e9eb70e30487210b962e867b742', 1, 1, '2025-05-02 22:14:46'),
-(8, 4, 7, 2, 11, '34186e9eb70e30487210b962e867b742', 1, 1, '2025-05-02 22:14:46'),
-(9, 4, 0, 1, 6, '34186e9eb70e30487210b962e867b742', 2, 1, '2025-05-02 22:14:46'),
-(31, 6, 0, 2, 41, '41e38763b5ebfcf35226dfb730b805f9', 2, 1, '2025-05-06 17:46:24'),
-(32, 6, 0, 3, 41, '41e38763b5ebfcf35226dfb730b805f9', 2, 1, '2025-05-06 17:46:24');
+INSERT INTO `cart_selected_modifiers` (`id`, `menu_id`, `variant_id`, `add_on_id`, `modifier_groupid`, `tr_row_id`, `foods_or_mods`, `meal_deal_id`, `is_active`, `created_at`) VALUES
+(7, 4, 5, 1, 15, '34186e9eb70e30487210b962e867b742', 1, 0, 1, '2025-05-02 22:14:46'),
+(8, 4, 7, 2, 11, '34186e9eb70e30487210b962e867b742', 1, 0, 1, '2025-05-02 22:14:46'),
+(9, 4, 0, 1, 6, '34186e9eb70e30487210b962e867b742', 2, 0, 1, '2025-05-02 22:14:46'),
+(31, 6, 0, 2, 41, '41e38763b5ebfcf35226dfb730b805f9', 2, 0, 1, '2025-05-06 17:46:24'),
+(32, 6, 0, 3, 41, '41e38763b5ebfcf35226dfb730b805f9', 2, 0, 1, '2025-05-06 17:46:24'),
+(117, 99, 0, 137, 4, '05f12a7f2217e526f1463cb383ead06c', 2, 0, 1, '2025-07-24 22:41:30'),
+(118, 99, 0, 126, 4, '05f12a7f2217e526f1463cb383ead06c', 2, 0, 1, '2025-07-24 22:41:30'),
+(119, 99, 0, 125, 4, '05f12a7f2217e526f1463cb383ead06c', 2, 0, 1, '2025-07-24 22:41:30'),
+(120, 99, 0, 123, 4, '05f12a7f2217e526f1463cb383ead06c', 2, 0, 1, '2025-07-24 22:41:30'),
+(121, 99, 0, 4, 1, '05f12a7f2217e526f1463cb383ead06c', 2, 0, 1, '2025-07-24 22:41:30'),
+(131, 101, 0, 126, 4, '', 2, 0, 1, '2025-07-25 20:57:57');
 
 -- --------------------------------------------------------
 
@@ -2287,7 +2363,7 @@ CREATE TABLE `common_setting` (
   `backgroundcolorqr` varchar(30) DEFAULT NULL,
   `qrheaderfontcolor` varchar(20) DEFAULT NULL,
   `recipe_feature_flag` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `common_setting`
@@ -2309,7 +2385,7 @@ CREATE TABLE `contact_data` (
   `phone` varchar(20) DEFAULT NULL,
   `text` varchar(350) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact_data`
@@ -2356,16 +2432,16 @@ CREATE TABLE `currency` (
   `curr_icon` varchar(50) NOT NULL,
   `position` int(11) NOT NULL DEFAULT 1 COMMENT '1=left.2=right',
   `curr_rate` decimal(10,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `currency`
 --
 
 INSERT INTO `currency` (`currencyid`, `currencyname`, `curr_icon`, `position`, `curr_rate`) VALUES
-(1, 'BDT', 'BDT', 2, '83.00'),
-(2, 'USD', '$', 1, '1.00'),
-(3, 'INR', 'Rs.', 1, '0.50');
+(1, 'BDT', 'BDT', 2, 83.00),
+(2, 'USD', '$', 1, 1.00),
+(3, 'INR', 'Rs.', 1, 0.50);
 
 -- --------------------------------------------------------
 
@@ -2375,16 +2451,16 @@ INSERT INTO `currency` (`currencyid`, `currencyname`, `curr_icon`, `position`, `
 
 CREATE TABLE `customer_info` (
   `customer_id` int(11) NOT NULL,
-  `cuntomer_no` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `cuntomer_no` varchar(120) NOT NULL,
   `membership_type` int(11) DEFAULT NULL COMMENT '1=bronze,2=silver,3=gold,4=platinum,5vip',
-  `customer_name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `customer_email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `customer_token` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `customer_address` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `customer_phone` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `customer_picture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `favorite_delivery_address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customer_name` varchar(150) NOT NULL,
+  `customer_email` varchar(100) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `customer_token` text DEFAULT NULL,
+  `customer_address` varchar(250) DEFAULT NULL,
+  `customer_phone` varchar(200) NOT NULL,
+  `customer_picture` varchar(255) DEFAULT NULL,
+  `favorite_delivery_address` varchar(200) DEFAULT NULL,
   `crdate` date DEFAULT NULL,
   `is_active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2435,8 +2511,8 @@ CREATE TABLE `customer_membership_map` (
 
 CREATE TABLE `customer_order` (
   `order_id` bigint(20) NOT NULL,
-  `saleinvoice` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `marge_order_id` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `saleinvoice` varchar(100) NOT NULL,
+  `marge_order_id` varchar(30) DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
   `cutomertype` int(11) NOT NULL,
   `isthirdparty` int(11) NOT NULL DEFAULT 0 COMMENT '0=normal,1>all Third Party',
@@ -2447,11 +2523,11 @@ CREATE TABLE `customer_order` (
   `order_time` time NOT NULL,
   `cookedtime` time NOT NULL DEFAULT '00:15:00',
   `table_no` int(11) DEFAULT NULL,
-  `tokenno` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tokenno` varchar(30) DEFAULT NULL,
   `totalamount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `customerpaid` decimal(10,2) DEFAULT 0.00,
-  `customer_note` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `anyreason` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customer_note` text DEFAULT NULL,
+  `anyreason` text DEFAULT NULL,
   `order_status` tinyint(1) NOT NULL COMMENT '1=Pending, 2=Processing, 3=Ready, 4=Served,5=Cancel',
   `nofification` int(11) NOT NULL DEFAULT 0 COMMENT '0=unseen,1=seen',
   `orderacceptreject` int(11) DEFAULT NULL,
@@ -2462,6 +2538,17 @@ CREATE TABLE `customer_order` (
   `invoiceprint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `customer_order`
+--
+
+INSERT INTO `customer_order` (`order_id`, `saleinvoice`, `marge_order_id`, `customer_id`, `cutomertype`, `isthirdparty`, `thirdpartyinvoiceid`, `waiter_id`, `kitchen`, `order_date`, `order_time`, `cookedtime`, `table_no`, `tokenno`, `totalamount`, `customerpaid`, `customer_note`, `anyreason`, `order_status`, `nofification`, `orderacceptreject`, `splitpay_status`, `isupdate`, `shipping_date`, `tokenprint`, `invoiceprint`) VALUES
+(1, '0001', NULL, 54, 4, 0, NULL, 168, NULL, '2025-07-25', '14:00:38', '00:15:00', 0, '01', 13.00, 0.00, '', NULL, 1, 0, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
+(2, '0002', NULL, 54, 4, 0, NULL, 166, NULL, '2025-07-25', '14:05:12', '00:15:00', 0, '02', 13.00, 0.00, '', NULL, 1, 0, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
+(3, '0003', NULL, 54, 4, 0, NULL, 165, NULL, '2025-07-25', '14:07:42', '00:15:00', NULL, '03', 43.95, 0.00, '', NULL, 1, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
+(4, '0004', NULL, 54, 1, 0, NULL, 165, NULL, '2025-07-25', '17:03:37', '00:15:00', 1, '04', 8.00, 0.00, '', NULL, 1, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL),
+(5, '0005', NULL, 54, 1, 0, NULL, 166, NULL, '2025-07-28', '15:30:46', '00:15:00', 1, '01', 34.05, 0.00, '', NULL, 1, 1, NULL, 0, NULL, '1790-01-01 01:01:01', 0, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -2470,7 +2557,7 @@ CREATE TABLE `customer_order` (
 
 CREATE TABLE `customer_type` (
   `customer_type_id` int(11) NOT NULL,
-  `customer_type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `customer_type` varchar(100) NOT NULL,
   `ordering` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2479,11 +2566,9 @@ CREATE TABLE `customer_type` (
 --
 
 INSERT INTO `customer_type` (`customer_type_id`, `customer_type`, `ordering`) VALUES
-(1, 'Walk In Customer', 0),
-(2, 'Online Customer', 0),
-(3, 'Third Party', 0),
-(4, 'Take Way', 0),
-(99, 'QR Customer', 0);
+(1, 'Dine In Customer', 0),
+(2, 'Uber Eats', 0),
+(4, 'Take Way', 0);
 
 -- --------------------------------------------------------
 
@@ -2497,7 +2582,7 @@ CREATE TABLE `custom_table` (
   `custom_data_type` int(11) NOT NULL,
   `custom_data` text NOT NULL,
   `employee_no` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `custom_table`
@@ -2518,7 +2603,7 @@ INSERT INTO `custom_table` (`custom_id`, `custom_field`, `custom_data_type`, `cu
 CREATE TABLE `days` (
   `day_id` int(11) NOT NULL,
   `day_name` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `days`
@@ -2545,7 +2630,7 @@ CREATE TABLE `delivery_charges` (
   `charge` double NOT NULL DEFAULT 0,
   `is_active` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Active\r\n0 = Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `delivery_charges`
@@ -2574,7 +2659,7 @@ CREATE TABLE `department` (
   `dept_id` int(11) NOT NULL,
   `department_name` varchar(100) NOT NULL,
   `parent_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `department`
@@ -2602,7 +2687,7 @@ INSERT INTO `department` (`dept_id`, `department_name`, `parent_id`) VALUES
 CREATE TABLE `duty_type` (
   `id` int(11) NOT NULL,
   `type_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `duty_type`
@@ -2631,7 +2716,7 @@ CREATE TABLE `email_config` (
   `sender` text NOT NULL,
   `api_key` varchar(250) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `email_config`
@@ -2654,7 +2739,7 @@ CREATE TABLE `employee_benifit` (
   `bnff_acural_date` date NOT NULL,
   `bnf_status` tinyint(4) NOT NULL,
   `employee_id` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -2735,7 +2820,7 @@ CREATE TABLE `employee_history` (
   `alt_em_contct` varchar(30) NOT NULL,
   `alt_emg_h_phone` varchar(30) NOT NULL,
   `alt_emg_w_phone` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `employee_history`
@@ -2765,14 +2850,14 @@ INSERT INTO `employee_history` (`emp_id`, `employee_no`, `pos_id`, `first_name`,
 
 CREATE TABLE `employee_performance` (
   `emp_per_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `note` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `date` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `note_by` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `number_of_star` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `status` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `updated_by` varchar(50) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `note` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `note_by` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `number_of_star` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `updated_by` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2782,14 +2867,14 @@ CREATE TABLE `employee_performance` (
 
 CREATE TABLE `employee_salary_payment` (
   `emp_sal_pay_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `total_salary` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `total_working_minutes` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `working_period` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `payment_due` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `payment_date` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `paid_by` varchar(50) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `total_salary` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `total_working_minutes` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `working_period` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `payment_due` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `payment_date` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `paid_by` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2799,15 +2884,15 @@ CREATE TABLE `employee_salary_payment` (
 
 CREATE TABLE `employee_salary_setup` (
   `e_s_s_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `employee_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `sal_type` varchar(30) NOT NULL,
-  `salary_type_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `amount` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `salary_type_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `create_date` date DEFAULT NULL,
   `update_date` datetime(6) DEFAULT NULL,
-  `update_id` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `update_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `gross_salary` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2817,8 +2902,8 @@ CREATE TABLE `employee_salary_setup` (
 
 CREATE TABLE `employee_sal_pay_type` (
   `emp_sal_pay_type_id` int(10) UNSIGNED NOT NULL,
-  `payment_period` varchar(50) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `payment_period` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2828,12 +2913,12 @@ CREATE TABLE `employee_sal_pay_type` (
 
 CREATE TABLE `emp_attendance` (
   `att_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `sign_in` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
-  `sign_out` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
+  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `sign_in` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `sign_out` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `staytime` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2847,7 +2932,7 @@ CREATE TABLE `expense` (
   `type` varchar(100) NOT NULL,
   `voucher_no` varchar(50) NOT NULL,
   `amount` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2858,7 +2943,7 @@ CREATE TABLE `expense` (
 CREATE TABLE `expense_item` (
   `id` int(11) NOT NULL,
   `expense_item_name` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2872,7 +2957,7 @@ CREATE TABLE `foodvariable` (
   `availtime` varchar(50) NOT NULL,
   `availday` varchar(30) NOT NULL,
   `is_active` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2883,7 +2968,7 @@ CREATE TABLE `foodvariable` (
 CREATE TABLE `gender` (
   `id` int(11) NOT NULL,
   `gender_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `gender`
@@ -2902,20 +2987,20 @@ INSERT INTO `gender` (`id`, `gender_name`) VALUES
 
 CREATE TABLE `grand_loan` (
   `loan_id` int(11) NOT NULL,
-  `employee_id` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `permission_by` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `loan_details` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `amount` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `interest_rate` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `installment` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `installment_period` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `repayment_amount` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `date_of_approve` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `repayment_start_date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `created_by` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `updated_by` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `loan_status` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `employee_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `permission_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `loan_details` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `interest_rate` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `installment` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `installment_period` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `repayment_amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date_of_approve` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `repayment_start_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `created_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `updated_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `loan_status` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -2925,7 +3010,7 @@ CREATE TABLE `grand_loan` (
 
 CREATE TABLE `ingredients` (
   `id` int(11) NOT NULL,
-  `ingredient_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `ingredient_name` varchar(250) NOT NULL,
   `purchase_price` decimal(10,2) DEFAULT NULL,
   `cost_perunit` decimal(10,4) DEFAULT NULL,
   `uom_id` int(11) NOT NULL,
@@ -2949,7 +3034,7 @@ CREATE TABLE `ingredients` (
 
 CREATE TABLE `ingredients_opening_stock` (
   `id` int(11) NOT NULL,
-  `ingredient_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `ingredient_name` varchar(250) NOT NULL,
   `ingredient_id` int(11) NOT NULL,
   `purchase_price` decimal(10,2) DEFAULT NULL,
   `opening_balance` decimal(10,2) DEFAULT 0.00 COMMENT 'As per consumption unit (Lower Unit) & inserted in higher unit',
@@ -2979,7 +3064,7 @@ CREATE TABLE `ingredient_temp` (
   `saved_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -3002,7 +3087,7 @@ CREATE TABLE `invprice_difference_notification` (
   `price_down` tinyint(10) NOT NULL DEFAULT 0,
   `price_diff_percentage` decimal(19,3) NOT NULL,
   `is_seen` tinyint(10) NOT NULL DEFAULT 10
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -3027,41 +3112,41 @@ CREATE TABLE `item_category` (
   `DateInserted` datetime NOT NULL DEFAULT '1970-01-01 00:00:01',
   `DateUpdated` datetime NOT NULL DEFAULT '1970-01-01 00:00:01',
   `DateLocked` datetime NOT NULL DEFAULT '1970-01-01 00:00:01'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `item_category`
 --
 
 INSERT INTO `item_category` (`CategoryID`, `Name`, `CategoryImage`, `Position`, `CategoryIsActive`, `offerstartdate`, `offerendate`, `isoffer`, `offerpercentage`, `parentid`, `UserIDInserted`, `UserIDUpdated`, `UserIDLocked`, `DateInserted`, `DateUpdated`, `DateLocked`) VALUES
-(1, 'Food Menu', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 0, 2, 2, 2, '2025-07-21 14:39:06', '2025-07-21 14:39:06', '2025-07-21 14:39:06'),
-(2, 'Beverage', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 0, 2, 2, 2, '2025-07-21 14:39:06', '2025-07-21 14:39:06', '2025-07-21 14:39:06'),
-(3, 'Main Course', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 14:40:01', '2025-07-22 16:52:56', '2025-07-21 14:40:01'),
-(4, 'Indian Street Food', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(5, 'Small Plates', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(6, 'Tandoori Small Plates', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(7, 'Signature Curries (Dry)', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
-(8, 'Signature Curries (Gravy)', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
-(9, 'Panjabi Palace Special', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
-(10, 'Tandoori Special', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(11, 'Rice', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(12, 'Biryani', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(13, 'Prawns or Fish', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
-(14, 'Accompaniments', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(15, 'Bread', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(16, 'Kids Meals', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(17, 'Sweet Treats', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
-(18, 'Hot Beverages', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 2, 2, 2, 0, '2025-07-22 16:23:35', '2025-07-22 16:23:35', '2025-07-22 16:23:35'),
-(19, 'Cold Beverages', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 2, 2, 2, 0, '2025-07-22 16:23:35', '2025-07-22 16:23:35', '2025-07-22 16:23:35'),
-(20, 'Wine', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 2, 2, 2, 0, '2025-07-22 16:25:46', '2025-07-22 16:25:46', '2025-07-22 16:25:46'),
-(21, 'Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 2, 2, 2, 0, '2025-07-22 16:25:46', '2025-07-22 16:25:46', '2025-07-22 16:25:46'),
-(22, 'Spirits', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 2, 2, 2, 0, '2025-07-22 16:25:46', '2025-07-22 16:25:46', '2025-07-22 16:25:46'),
-(23, 'Sparkling Wines', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 20, 2, 2, 0, '2025-07-22 16:29:00', '2025-07-22 16:29:00', '2025-07-22 16:29:00'),
-(24, 'White Wines', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 20, 2, 2, 0, '2025-07-22 16:29:00', '2025-07-22 16:29:00', '2025-07-22 16:29:00'),
-(25, 'Rose Wines', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 20, 2, 2, 0, '2025-07-22 16:29:00', '2025-07-22 16:29:00', '2025-07-22 16:29:00'),
-(26, 'Imported Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 21, 2, 2, 0, '2025-07-22 16:31:36', '2025-07-22 16:31:36', '2025-07-22 16:31:36'),
-(27, 'Local Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 21, 2, 2, 0, '2025-07-22 16:31:36', '2025-07-22 16:31:36', '2025-07-22 16:31:36'),
-(28, 'Cider', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, '0.00', 21, 2, 2, 0, '2025-07-22 16:31:36', '2025-07-22 16:31:36', '2025-07-22 16:31:36');
+(1, 'Food Menu', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 0, 2, 2, 2, '2025-07-21 14:39:06', '2025-07-21 14:39:06', '2025-07-21 14:39:06'),
+(2, 'Beverage', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 0, 2, 2, 2, '2025-07-21 14:39:06', '2025-07-21 14:39:06', '2025-07-21 14:39:06'),
+(3, 'Main Course', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 14:40:01', '2025-07-22 16:52:56', '2025-07-21 14:40:01'),
+(4, 'Indian Street Food', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(5, 'Small Plates', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(6, 'Tandoori Small Plates', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(7, 'Signature Curries (Dry)', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
+(8, 'Signature Curries (Gravy)', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
+(9, 'Panjabi Palace Special', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
+(10, 'Tandoori Special', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(11, 'Rice', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(12, 'Biryani', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(13, 'Prawns or Fish', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 3, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-21 15:08:03', '2025-07-21 15:08:03'),
+(14, 'Accompaniments', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(15, 'Bread', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(16, 'Kids Meals', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(17, 'Sweet Treats', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 1, 2, 2, 0, '2025-07-21 15:08:03', '2025-07-22 16:52:56', '2025-07-21 15:08:03'),
+(18, 'Hot Beverages', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 2, 2, 2, 0, '2025-07-22 16:23:35', '2025-07-22 16:23:35', '2025-07-22 16:23:35'),
+(19, 'Cold Beverages', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 2, 2, 2, 0, '2025-07-22 16:23:35', '2025-07-22 16:23:35', '2025-07-22 16:23:35'),
+(20, 'Wine', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 2, 2, 2, 0, '2025-07-22 16:25:46', '2025-07-22 16:25:46', '2025-07-22 16:25:46'),
+(21, 'Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 2, 2, 2, 0, '2025-07-22 16:25:46', '2025-07-22 16:25:46', '2025-07-22 16:25:46'),
+(22, 'Spirits', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 2, 2, 2, 0, '2025-07-22 16:25:46', '2025-07-22 16:25:46', '2025-07-22 16:25:46'),
+(23, 'Sparkling Wines', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 20, 2, 2, 0, '2025-07-22 16:29:00', '2025-07-22 16:29:00', '2025-07-22 16:29:00'),
+(24, 'White Wines', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 20, 2, 2, 0, '2025-07-22 16:29:00', '2025-07-22 16:29:00', '2025-07-22 16:29:00'),
+(25, 'Rose Wines', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 20, 2, 2, 0, '2025-07-22 16:29:00', '2025-07-22 16:29:00', '2025-07-22 16:29:00'),
+(26, 'Imported Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 21, 2, 2, 0, '2025-07-22 16:31:36', '2025-07-22 16:31:36', '2025-07-22 16:31:36'),
+(27, 'Local Beer', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 21, 2, 2, 0, '2025-07-22 16:31:36', '2025-07-22 16:31:36', '2025-07-22 16:31:36'),
+(28, 'Cider', NULL, NULL, 1, '0000-00-00', '0000-00-00', 0, 0.00, 21, 2, 2, 0, '2025-07-22 16:31:36', '2025-07-22 16:31:36', '2025-07-22 16:31:36');
 
 -- --------------------------------------------------------
 
@@ -3109,109 +3194,111 @@ CREATE TABLE `item_foods` (
   `uomid` int(10) NOT NULL DEFAULT 0,
   `tax0` text DEFAULT NULL,
   `tax1` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `item_foods`
 --
 
 INSERT INTO `item_foods` (`ProductsID`, `GroupID`, `CategoryID`, `SubCategoryID`, `ProductName`, `item_code`, `ProductImage`, `bigthumb`, `medium_thumb`, `small_thumb`, `component`, `descrip`, `itemnotes`, `menutype`, `productvat`, `special`, `OffersRate`, `offerIsavailable`, `offerstartdate`, `offerendate`, `Position`, `kitchenid`, `isgroup`, `is_customqty`, `cookedtime`, `ProductsIsActive`, `UserIDInserted`, `UserIDUpdated`, `UserIDLocked`, `DateInserted`, `DateUpdated`, `DateLocked`, `cusine_type`, `is_bom`, `food_type`, `weightage`, `uomid`, `tax0`, `tax1`) VALUES
-(1, 1, '4', NULL, 'Chole Bhature', 'CHB', '', '', '', '', '', 'Bhature Naan served with chickpeas curry, sliced onion, pickles & raita.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(2, 1, '4', NULL, 'Soya Chaap Tikka', 'SOCT', '', '', '', '', '', 'Soyabean dough cufltes marinsted with creamy and mild spicy gravy. cooked in tandoor. served with mint sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(3, 1, '4', NULL, 'Veg Manchurian', 'VEM', '', '', '', '', '', 'Deep-fried grated balls of veggies in combination with sweet-sour tangy say mild chilli sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(4, 1, '4', NULL, 'Chicken Manchurian', 'CHM', '', '', '', '', '', 'Deep-fried grated balls of chicken in combination with sweet.sour tangy soy mild chilli sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(5, 1, '4', NULL, 'Chilli Chicken', 'CHC', '', '', '', '', '', 'Chicken pieces tossed with onian, capsicum, gorlic, herbs and fresh chilli.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(6, 1, '4', NULL, 'Chilli Paneer', 'CHP', '', '', '', '', '', 'Lightly battered pieces of paneer, deep fried and then sauteed with onions & capsicum in a sweet sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(7, 1, '4', NULL, 'Chilli Fish', 'CHF', '', '', '', '', '', 'Fish tossed with onion, capsicum, garlic, herbs and fresh chilli.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(8, 1, '4', NULL, 'Alu Tikki Chaat', 'ALTC', '', '', '', '', '', 'Round patties of potatoes with chat spices mint & tamarind chutney.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(9, 1, '4', NULL, 'Samosa Chaat', 'SAC', '', '', '', '', '', 'Samosa with chickpeas mixed with chat spices, mint & tamarind chutney.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(10, 1, '4', NULL, 'Pani Puri Shots', 'PAPS', '', '', '', '', '', 'Pani puri in shot glasses', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(11, 1, '4', NULL, 'Veg Curry Bombs', 'VECB', '', '', '', '', '', 'Curry shots in crispy putfs', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(12, 1, '4', NULL, 'Chicken Curry Bombs', 'CHCB', '', '', '', '', '', 'Curry shots in crispy puffs', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(13, 1, '4', NULL, 'Veg Fried Rice', 'VEFR', '', '', '', '', '', 'Hot wok stir.fried rice infused with spices and vegetables.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(14, 1, '4', NULL, 'Chicken Fried Rice', 'CHFR', '', '', '', '', '', 'Hot wok stir-fried rice infused with spices and chicken', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(15, 1, '5', NULL, 'Vegetable Samosa (3 per serve)', 'VES', '', '', '', '', 'DF', 'Spiced potatoes with peas, onion & fresh coriander stuffed into our homemade pastry & fried', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(16, 1, '5', NULL, 'Onion Bhaji Pakora (4 per serve)', 'ONBP', '', '', '', '', 'DF,GF', 'Sliced onion fritter dipped in chickpea batter with spices & gently fried', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(17, 1, '5', NULL, 'Alu Bonda (3 per serve)', 'ALB', '', '', '', '', '', 'Mashed potatoes, homemade cheese, fresh coriander coated in bread crumbs, lightly spiced & fried.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(18, 1, '5', NULL, 'Paneer Pakora (4 per serve)', 'PAP', '', '', '', '', 'GF', 'Homemade cheese coated in chickpea batter & fried with spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(19, 1, '5', NULL, 'Papadum Platter', 'PAP', '', '', '', '', '', '6 papadums served with 3 dips of choice (mint sauce, sweet chutney, raita, hot mix pickle or lime pickle).', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(20, 1, '5', NULL, 'Keema Samosa (3 per serve)', 'KES', '', '', '', '', 'DF', 'Spiced mince meat seasoned with fresh herbs & spices stuffed into our homemade pastry & fried.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(21, 1, '5', NULL, 'Machi Pakora (6 Per Serve)', 'MAP', '', '', '', '', '', 'Pieces of fish coated in chickpea batter flavoured with mint, lemon, lightly spiced & fried.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(22, 1, '5', NULL, 'Chicken Pakora (6 Per Serve)', 'CHP', '', '', '', '', 'GF,DF', 'Boneless chicken pieces marinated in chick pea batter, spices & herbs and fried till they are crispy.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(23, 1, '5', NULL, 'Prawn Pakora (6 Per Serve)', 'PRP', '', '', '', '', '', 'Prawn coated in chickpea batter flavoured with spices, crumbled & fried.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(24, 1, '5', NULL, 'Lamb Seekh Kebab (4 Per Serve)', 'LASK', '', '', '', '', 'GF', 'Skewers of lamb mince cooked in traditional aromatic spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(25, 1, '5', NULL, 'Chilli Garlic Prawns (8 Per Serve)', 'CHGP', '', '', '', '', 'GF', 'Prawns cooked with capsicum, onion, ginger, garlic & spices in a sweet and sour ', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(26, 1, '5', NULL, 'Lamb Cutlets (4 Per Serve)', 'LAC', '', '', '', '', 'DF,GF', 'Tender lamb cutlets marinated in basic spices & served with mint sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(27, 1, '6', NULL, 'Paneer Tikka (6 Per Serve)', 'PAT', '', '', '', '', 'GF', 'Home made cheese cubes, capsicum and onion marinated in tandoori spices, skewered & grilled.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(28, 1, '6', NULL, 'Tandoori Chicken Wings (6 Per Serve)', 'TACW', '', '', '', '', 'GF', 'Chicken wings marinated in yoghurt, fresh herbs, spices and grille', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(29, 1, '6', NULL, 'Tandoori Drumsticks (2 Per Serve)', 'TAD', '', '', '', '', 'GF', 'Chicken drumsticks marinated in yoghurt, fresh herbs & spices & grilled', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(30, 1, '6', NULL, 'Chicken Tikka (4 Per Serve)', 'CHT', '', '', '', '', 'GF', 'Boneless chicken pieces marinated with yoghurt, fresh herbs & spices, skewered & grilled. ', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(31, 1, '3', 7, 'Alu Gobi', 'ALG', '', '', '', '', 'DF,GF', 'Traditional North Indian curry cooked with cauliflower & potatoes with fresh coriander.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(32, 1, '3', 7, 'Mixed Vegetable Curry', 'MIVC', '', '', '', '', 'GF', 'An assortment of fresh vegetables blended with fresh coriander & various spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(33, 1, '3', 7, 'Bombay Potatoes', 'BOP', '', '', '', '', 'DF,GF', 'Pan fried with garlic & onion & lightly spiced with fresh coriander.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(35, 1, '3', 8, 'Channa Masala', 'CHM', '', '', '', '', 'GF,DF', 'A chickpea curry cooked with basic spices & herbs.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(36, 1, '3', 8, 'Malai Kofta', 'MAK', '', '', '', '', '', 'Mashed potato & homemade cheese donut deep fried and served with a creamy sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(37, 1, '3', 8, 'Alu Matar', 'ALM', '', '', '', '', '', 'A popular dish from Kashmir, cubed potatoes cooked with peas & roasted spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 7, NULL, NULL),
-(38, 1, '3', 8, 'Alu or Paneer Palak', 'AL, PAP', '', '', '', '', 'GF', 'A spinach delicacy blended with fresh masala & served with cubes of potatoes or homemade cheese.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(39, 1, '3', 8, 'Dhal Makhini', 'DHM', '', '', '', '', 'GF', 'Lentil curry mixed in a variety of spices & simmered.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(40, 1, '3', 8, 'Dhal Palak', 'DHP', '', '', '', '', 'GF', 'Spinach curry with lentils & traditional spices & herbs.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(41, 1, '3', 8, 'Veg Dhal', 'VED', '', '', '', '', '', 'Lentil curry cooked with vegetables & fresh coriander.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(42, 1, '3', 8, 'Dhal Masala', 'DHM', '', '', '', '', 'Gf', 'Lentil curry mixed in a variety of spices & simmered.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(43, 1, '3', 8, 'Kadahi Paneer', 'KAP', '', '', '', '', 'GF', 'Cubes of homemade cheese with pan fried fresh ginger, garlic, tomato, onion and capsicum. Finished with hot spices in a creamy tomato based sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(44, 1, '3', 8, 'Butter Matar Paneer', 'BUMP', '', '', '', '', 'Gf', 'Cubes of homemade cheese & peas cooked in tomatoes ground cashews & spices giving a smooth rich gravy.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(45, 1, '3', 8, 'Vegetable Paneer Tikka Masala', 'VEPTM', '', '', '', '', 'GF', 'Mixed vegetables & cubes of homemade cheese cooked in a gentle & sweet tomato creamy sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(46, 1, '3', 8, 'Alu Matar Madras', 'ALMM', '', '', '', '', 'GF,DF', 'Cooked in fresh tomatoes, onions, herbs & spices South Indian curry with cubes of potatoes & peas.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(47, 1, '3', 8, 'Butter Paneer', 'BUP', '', '', '', '', 'GF', 'Cubes of cottage cheese cooked with a special butter sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(48, 1, '3', 8, 'Shahi Paneer', 'SHP', '', '', '', '', 'GF', 'Cubes of cottage cheese cooked in a gentle creamy sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(49, 1, '3', 8, 'Paneer Tikka Masala', 'PATM', '', '', '', '', 'GF', 'Cubes of homemade cheese cooked in a gentle tomato sauce with chunks of onion & capsicum.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 7, NULL, NULL),
-(50, 1, '3', 8, 'Mushroom Malai', 'MUM', '', '', '', '', 'GF', 'Mushrooms cooked in a rich exotic sauce with coconut milk and spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(51, 1, '3', 8, 'Dhansak', 'DH', '', '', '', '', '', 'Chef\'s special creation simmered with lentils and flavoured with fresh lemon juice and garlic', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(52, 1, '3', 8, 'Korma', 'KO', '', '', '', '', '', 'The Korma was created for the Moghul emperors. Yoghurt & selected spices are used to create this rich & exotic curry.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(53, 1, '3', 8, 'Madras', 'MA', '', '', '', '', '', 'A delicious curry from the south of India prepared with tomatoes onions & fresh herbs & spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(54, 1, '3', 8, 'Vindaloo', 'VI', '', '', '', '', '', ' lovers dream - uniquely blended spices make it tangy & HOT.This is a seasoned curry', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(55, 1, '3', 8, 'Ceylon', 'CE', '', '', '', '', '', 'Goan style curry, prepared with coconut & traditional Ceylonese spices creating a unique flavour.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(56, 1, '3', 8, 'Bhuna', 'BH', '', '', '', '', '', 'An English favourite curry cooked with fresh garlic, capsicum, onion, tomato & fresh herbs and spices', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(57, 1, '3', 8, 'Punjabi Delight', 'PUD', '', '', '', '', '', 'Meat cooked in basic spices, cashews & sultanas. A curry which is commonly used in the every day life of Indian Families.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(58, 1, '3', 8, 'Rogan Josh', 'ROJ', '', '', '', '', '', 'Traditional style curry cooked with a north Indian spice blend in our signature rogan josh sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, '1.00', 12, NULL, NULL),
-(59, 1, '3', 8, 'Masala', 'MA', '', '', '', '', '', ' Your choice of meat cooked with basic spices, herbs & flavoured with fresh coriander.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(60, 1, '3', 9, 'Butter Chicken', 'BUC', '', '', '', '', 'GF', 'Boneless curried chicken pieces cooked in tomato, ground cashew nuts & spices in a thick smooth gravy.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 7, NULL, NULL),
-(61, 1, '3', 9, 'Chicken Tikka Masala', 'CHTM', '', '', '', '', 'GF', 'Boneless chicken pieces baked in the oven then blended in a sweet & gentle creamy tomato sauce with ground cashew nuts.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(62, 1, '3', 9, 'Kadahi Chicken', 'KAC', '', '', '', '', 'GF', 'Chicken pieces with pan fried fresh ginger, garlic, tomato, onion & capsicum. Finished with hot spices in a creamy tomato based sauce.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(63, 1, '3', 9, 'Chicken Or Lamb Palak', 'CH, LAP', '', '', '', '', 'GF', 'Tender & flavoursome Punjabi curry with spinach & herbs.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(64, 1, '3', 9, 'Chicken Makhini', 'CHM', '', '', '', '', 'GF', ' Tandoori baked chicken cooked in ground cashews and spices with hints of onion and capsicum. ', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(65, 1, '3', 9, 'Mango Chicken', 'MAC', '', '', '', '', 'GF', ' Chicken pieces blended in a smooth thick mango gravy.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(66, 1, '3', 9, 'Chicken Tikka Biryani', 'CHTB', '', '', '', '', 'GF', 'Tandoori chicken tikka pieces cooked in basic spices & flavoured rice served with yogurt.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(67, 1, '3', 9, 'Chicken Tikka Jalfrezi', 'CHTJ', '', '', '', '', 'GF', 'This is a wonderfully aromatic dish cooked in royal spices with onions, tomator and capsicum.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(68, 1, '3', 9, 'Goat Curry', 'GOC', '', '', '', '', 'GF', 'Goat curry made in the traditional way – slow cooked goat on-the-bone, full of ȵDYRXU SHUIHFWO\\WHQGHU MXLF\\', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(69, 1, '3', 9, 'Mutton Keema Curry', 'MUKC', '', '', '', '', 'GF', 'Traditional slow cooked dish with mince and your choice of meat (available with lamb, goat or beef).', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(70, 1, '10', NULL, 'Half Tandoori Chicken', 'HATC', '', '', '', '', 'GF', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(71, 1, '10', NULL, 'Full Tandoori Chicken', 'FUTC', '', '', '', '', 'GF', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(72, 1, '10', NULL, 'Tandoori Platter For 2', 'TAPF2', '', '', '', '', '', 'Consists of 6 pieces of tandoori prawns and 2 pieces each of chicken tikka, lamb cutlets and lamb sheekh kebabs.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(73, 1, '11', NULL, 'Saffron Rice', 'SAR', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(74, 1, '11', NULL, 'Jeera Rice', 'JER', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(75, 1, '11', NULL, 'Coconut Rice', 'COR', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(76, 1, '11', NULL, 'Pulao Rice', 'PUR', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(77, 1, '12', NULL, 'Vegetable Biryani', 'VEB', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(78, 1, '12', NULL, 'Chicken Biryani', 'CHB', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(79, 1, '12', NULL, 'Chicken Tikka Biryani', 'CHTB', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(80, 1, '12', NULL, 'Lamb Biryani', 'LAB', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(81, 1, '12', NULL, 'Beef Biryani', 'BEB', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(82, 1, '12', NULL, 'Prawn Biryani', 'PRB', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, '1.00', 12, NULL, NULL),
-(83, 1, '3', 13, 'Malai', 'MA', '', '', '', '', 'GF', 'Prawns/Fish cooked in a rich sauce with coconut milk & spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(84, 1, '3', 13, 'Vindaloo', 'VI', '', '', '', '', 'GF,DF', 'A seafood curry prepared with a wide array of spices, garlic & ginger simmered in a special onion sauce', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(85, 1, '3', 13, 'Masala', 'MA', '', '', '', '', 'GF,DF', 'Prawns/Fish marinated with ginger & garlic then pan fried with spices, fresh tomatoes & coriander', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(86, 1, '3', 13, 'Palak', 'PA', '', '', '', '', 'GF', 'Cooked with spinach & traditional spices', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(87, 1, '3', 13, 'Tikka Masala', 'TIM', '', '', '', '', 'GF', 'Prawns/Fish cooked in a sweet tomato creamy sauce & spices.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(88, 1, '3', 13, 'Prawn Biryani', 'PRB', '', '', '', '', 'GF', 'Prawns sauteed and simmered in fresh garlic & cooked with flavoured rice served.', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, '1.00', 12, NULL, NULL),
-(89, 1, '14', NULL, 'Papadums (4 per serve)', 'PA', '', '', '', '', 'DF,GF', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(91, 1, '14', NULL, 'Yoghurt & Cucumber Raita', 'YO&CR', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(92, 1, '14', NULL, 'Yoghurt & Mint Sauce ', 'YO&MS', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(93, 1, '14', NULL, 'Hot Mix Pickle', 'HOMP', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(94, 1, '14', NULL, 'Chilli Pickle', 'CHP', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(95, 1, '14', NULL, 'Lime Pickle', 'LIP', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(96, 1, '14', NULL, 'Sweet Chutney', 'SWC', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(97, 1, '14', NULL, 'Sliced Onions', 'SLO', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL),
-(98, 1, '14', NULL, 'Indian Salad', 'INS', '', '', '', '', '', '', '', '', '0.000', 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, '1.00', 12, NULL, NULL);
+(1, 1, '4', NULL, 'Chole Bhature', 'CHB', '', '', '', '', '', 'Bhature Naan served with chickpeas curry, sliced onion, pickles & raita.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-28', '2025-07-28', '2025-07-28', 1, 0, 1, 1.00, 12, NULL, NULL),
+(2, 1, '4', NULL, 'Soya Chaap Tikka', 'SOCT', '', '', '', '', '', 'Soyabean dough cufltes marinsted with creamy and mild spicy gravy. cooked in tandoor. served with mint sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(3, 1, '4', NULL, 'Veg Manchurian', 'VEM', '', '', '', '', '', 'Deep-fried grated balls of veggies in combination with sweet-sour tangy say mild chilli sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(4, 1, '4', NULL, 'Chicken Manchurian', 'CHM', '', '', '', '', '', 'Deep-fried grated balls of chicken in combination with sweet.sour tangy soy mild chilli sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(5, 1, '4', NULL, 'Chilli Chicken', 'CHC', '', '', '', '', '', 'Chicken pieces tossed with onian, capsicum, gorlic, herbs and fresh chilli.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(6, 1, '4', NULL, 'Chilli Paneer', 'CHP', '', '', '', '', '', 'Lightly battered pieces of paneer, deep fried and then sauteed with onions & capsicum in a sweet sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(7, 1, '4', NULL, 'Chilli Fish', 'CHF', '', '', '', '', '', 'Fish tossed with onion, capsicum, garlic, herbs and fresh chilli.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(8, 1, '4', NULL, 'Alu Tikki Chaat', 'ALTC', '', '', '', '', '', 'Round patties of potatoes with chat spices mint & tamarind chutney.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(9, 1, '4', NULL, 'Samosa Chaat', 'SAC', '', '', '', '', '', 'Samosa with chickpeas mixed with chat spices, mint & tamarind chutney.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(10, 1, '4', NULL, 'Pani Puri Shots', 'PAPS', '', '', '', '', '', 'Pani puri in shot glasses', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(11, 1, '4', NULL, 'Veg Curry Bombs', 'VECB', '', '', '', '', '', 'Curry shots in crispy putfs', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(12, 1, '4', NULL, 'Chicken Curry Bombs', 'CHCB', '', '', '', '', '', 'Curry shots in crispy puffs', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(13, 1, '4', NULL, 'Veg Fried Rice', 'VEFR', '', '', '', '', '', 'Hot wok stir.fried rice infused with spices and vegetables.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(14, 1, '4', NULL, 'Chicken Fried Rice', 'CHFR', '', '', '', '', '', 'Hot wok stir-fried rice infused with spices and chicken', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(15, 1, '5', NULL, 'Vegetable Samosa (3 per serve)', 'VES', '', '', '', '', 'DF', 'Spiced potatoes with peas, onion & fresh coriander stuffed into our homemade pastry & fried', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(16, 1, '5', NULL, 'Onion Bhaji Pakora (4 per serve)', 'ONBP', '', '', '', '', 'DF,GF', 'Sliced onion fritter dipped in chickpea batter with spices & gently fried', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(17, 1, '5', NULL, 'Alu Bonda (3 per serve)', 'ALB', '', '', '', '', '', 'Mashed potatoes, homemade cheese, fresh coriander coated in bread crumbs, lightly spiced & fried.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(18, 1, '5', NULL, 'Paneer Pakora (4 per serve)', 'PAP', '', '', '', '', 'GF', 'Homemade cheese coated in chickpea batter & fried with spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(19, 1, '5', NULL, 'Papadum Platter', 'PAP', '', '', '', '', '', '6 papadums served with 3 dips of choice (mint sauce, sweet chutney, raita, hot mix pickle or lime pickle).', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(20, 1, '5', NULL, 'Keema Samosa (3 per serve)', 'KES', '', '', '', '', 'DF', 'Spiced mince meat seasoned with fresh herbs & spices stuffed into our homemade pastry & fried.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(21, 1, '5', NULL, 'Machi Pakora (6 Per Serve)', 'MAP', '', '', '', '', '', 'Pieces of fish coated in chickpea batter flavoured with mint, lemon, lightly spiced & fried.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(22, 1, '5', NULL, 'Chicken Pakora (6 Per Serve)', 'CHP', '', '', '', '', 'GF,DF', 'Boneless chicken pieces marinated in chick pea batter, spices & herbs and fried till they are crispy.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(23, 1, '5', NULL, 'Prawn Pakora (6 Per Serve)', 'PRP', '', '', '', '', '', 'Prawn coated in chickpea batter flavoured with spices, crumbled & fried.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(24, 1, '5', NULL, 'Lamb Seekh Kebab (4 Per Serve)', 'LASK', '', '', '', '', 'GF', 'Skewers of lamb mince cooked in traditional aromatic spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(25, 1, '5', NULL, 'Chilli Garlic Prawns (8 Per Serve)', 'CHGP', '', '', '', '', 'GF', 'Prawns cooked with capsicum, onion, ginger, garlic & spices in a sweet and sour ', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(26, 1, '5', NULL, 'Lamb Cutlets (4 Per Serve)', 'LAC', '', '', '', '', 'DF,GF', 'Tender lamb cutlets marinated in basic spices & served with mint sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(27, 1, '6', NULL, 'Paneer Tikka (6 Per Serve)', 'PAT', '', '', '', '', 'GF', 'Home made cheese cubes, capsicum and onion marinated in tandoori spices, skewered & grilled.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(28, 1, '6', NULL, 'Tandoori Chicken Wings (6 Per Serve)', 'TACW', '', '', '', '', 'GF', 'Chicken wings marinated in yoghurt, fresh herbs, spices and grille', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(29, 1, '6', NULL, 'Tandoori Drumsticks (2 Per Serve)', 'TAD', '', '', '', '', 'GF', 'Chicken drumsticks marinated in yoghurt, fresh herbs & spices & grilled', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(30, 1, '6', NULL, 'Chicken Tikka (4 Per Serve)', 'CHT', '', '', '', '', 'GF', 'Boneless chicken pieces marinated with yoghurt, fresh herbs & spices, skewered & grilled. ', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(31, 1, '3', 7, 'Alu Gobi', 'ALG', '', '', '', '', 'DF,GF', 'Traditional North Indian curry cooked with cauliflower & potatoes with fresh coriander.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(32, 1, '3', 7, 'Mixed Vegetable Curry', 'MIVC', '', '', '', '', 'GF', 'An assortment of fresh vegetables blended with fresh coriander & various spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(33, 1, '3', 7, 'Bombay Potatoes', 'BOP', '', '', '', '', 'DF,GF', 'Pan fried with garlic & onion & lightly spiced with fresh coriander.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(35, 1, '3', 8, 'Channa Masala', 'CHM', '', '', '', '', 'GF,DF', 'A chickpea curry cooked with basic spices & herbs.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(36, 1, '3', 8, 'Malai Kofta', 'MAK', '', '', '', '', '', 'Mashed potato & homemade cheese donut deep fried and served with a creamy sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(37, 1, '3', 8, 'Alu Matar', 'ALM', '', '', '', '', '', 'A popular dish from Kashmir, cubed potatoes cooked with peas & roasted spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 7, NULL, NULL),
+(38, 1, '3', 8, 'Alu or Paneer Palak', 'AL, PAP', '', '', '', '', 'GF', 'A spinach delicacy blended with fresh masala & served with cubes of potatoes or homemade cheese.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(39, 1, '3', 8, 'Dhal Makhini', 'DHM', '', '', '', '', 'GF', 'Lentil curry mixed in a variety of spices & simmered.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(40, 1, '3', 8, 'Dhal Palak', 'DHP', '', '', '', '', 'GF', 'Spinach curry with lentils & traditional spices & herbs.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(41, 1, '3', 8, 'Veg Dhal', 'VED', '', '', '', '', '', 'Lentil curry cooked with vegetables & fresh coriander.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(42, 1, '3', 8, 'Dhal Masala', 'DHM', '', '', '', '', 'Gf', 'Lentil curry mixed in a variety of spices & simmered.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(43, 1, '3', 8, 'Kadahi Paneer', 'KAP', '', '', '', '', 'GF', 'Cubes of homemade cheese with pan fried fresh ginger, garlic, tomato, onion and capsicum. Finished with hot spices in a creamy tomato based sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(44, 1, '3', 8, 'Butter Matar Paneer', 'BUMP', '', '', '', '', 'Gf', 'Cubes of homemade cheese & peas cooked in tomatoes ground cashews & spices giving a smooth rich gravy.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(45, 1, '3', 8, 'Vegetable Paneer Tikka Masala', 'VEPTM', '', '', '', '', 'GF', 'Mixed vegetables & cubes of homemade cheese cooked in a gentle & sweet tomato creamy sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(46, 1, '3', 8, 'Alu Matar Madras', 'ALMM', '', '', '', '', 'GF,DF', 'Cooked in fresh tomatoes, onions, herbs & spices South Indian curry with cubes of potatoes & peas.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(47, 1, '3', 8, 'Butter Paneer', 'BUP', '', '', '', '', 'GF', 'Cubes of cottage cheese cooked with a special butter sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(48, 1, '3', 8, 'Shahi Paneer', 'SHP', '', '', '', '', 'GF', 'Cubes of cottage cheese cooked in a gentle creamy sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(49, 1, '3', 8, 'Paneer Tikka Masala', 'PATM', '', '', '', '', 'GF', 'Cubes of homemade cheese cooked in a gentle tomato sauce with chunks of onion & capsicum.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 7, NULL, NULL),
+(50, 1, '3', 8, 'Mushroom Malai', 'MUM', '', '', '', '', 'GF', 'Mushrooms cooked in a rich exotic sauce with coconut milk and spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(51, 1, '3', 8, 'Dhansak', 'DH', '', '', '', '', '', 'Chef\'s special creation simmered with lentils and flavoured with fresh lemon juice and garlic', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(52, 1, '3', 8, 'Korma', 'KO', '', '', '', '', '', 'The Korma was created for the Moghul emperors. Yoghurt & selected spices are used to create this rich & exotic curry.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(53, 1, '3', 8, 'Madras', 'MA', '', '', '', '', '', 'A delicious curry from the south of India prepared with tomatoes onions & fresh herbs & spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(54, 1, '3', 8, 'Vindaloo', 'VI', '', '', '', '', '', ' lovers dream - uniquely blended spices make it tangy & HOT.This is a seasoned curry', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(55, 1, '3', 8, 'Ceylon', 'CE', '', '', '', '', '', 'Goan style curry, prepared with coconut & traditional Ceylonese spices creating a unique flavour.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(56, 1, '3', 8, 'Bhuna', 'BH', '', '', '', '', '', 'An English favourite curry cooked with fresh garlic, capsicum, onion, tomato & fresh herbs and spices', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(57, 1, '3', 8, 'Punjabi Delight', 'PUD', '', '', '', '', '', 'Meat cooked in basic spices, cashews & sultanas. A curry which is commonly used in the every day life of Indian Families.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(58, 1, '3', 8, 'Rogan Josh', 'ROJ', '', '', '', '', '', 'Traditional style curry cooked with a north Indian spice blend in our signature rogan josh sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 1, 1.00, 12, NULL, NULL),
+(59, 1, '3', 8, 'Masala', 'MA', '', '', '', '', '', ' Your choice of meat cooked with basic spices, herbs & flavoured with fresh coriander.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(60, 1, '3', 9, 'Butter Chicken', 'BUC', '', '', '', '', 'GF', 'Boneless curried chicken pieces cooked in tomato, ground cashew nuts & spices in a thick smooth gravy.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 7, NULL, NULL),
+(61, 1, '3', 9, 'Chicken Tikka Masala', 'CHTM', '', '', '', '', 'GF', 'Boneless chicken pieces baked in the oven then blended in a sweet & gentle creamy tomato sauce with ground cashew nuts.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(62, 1, '3', 9, 'Kadahi Chicken', 'KAC', '', '', '', '', 'GF', 'Chicken pieces with pan fried fresh ginger, garlic, tomato, onion & capsicum. Finished with hot spices in a creamy tomato based sauce.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(63, 1, '3', 9, 'Chicken Or Lamb Palak', 'CH, LAP', '', '', '', '', 'GF', 'Tender & flavoursome Punjabi curry with spinach & herbs.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(64, 1, '3', 9, 'Chicken Makhini', 'CHM', '', '', '', '', 'GF', ' Tandoori baked chicken cooked in ground cashews and spices with hints of onion and capsicum. ', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(65, 1, '3', 9, 'Mango Chicken', 'MAC', '', '', '', '', 'GF', ' Chicken pieces blended in a smooth thick mango gravy.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(66, 1, '3', 9, 'Chicken Tikka Biryani', 'CHTB', '', '', '', '', 'GF', 'Tandoori chicken tikka pieces cooked in basic spices & flavoured rice served with yogurt.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(67, 1, '3', 9, 'Chicken Tikka Jalfrezi', 'CHTJ', '', '', '', '', 'GF', 'This is a wonderfully aromatic dish cooked in royal spices with onions, tomator and capsicum.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-28', '2025-07-28', '2025-07-28', 1, 0, 0, 1.00, 12, NULL, NULL),
+(68, 1, '3', 9, 'Goat Curry', 'GOC', '', '', '', '', 'GF', 'Goat curry made in the traditional way – slow cooked goat on-the-bone, full of ȵDYRXU SHUIHFWO\\WHQGHU MXLF\\', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(69, 1, '3', 9, 'Mutton Keema Curry', 'MUKC', '', '', '', '', 'GF', 'Traditional slow cooked dish with mince and your choice of meat (available with lamb, goat or beef).', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(70, 1, '10', NULL, 'Half Tandoori Chicken', 'HATC', '', '', '', '', 'GF', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(71, 1, '10', NULL, 'Full Tandoori Chicken', 'FUTC', '', '', '', '', 'GF', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(72, 1, '10', NULL, 'Tandoori Platter For 2', 'TAPF2', '', '', '', '', '', 'Consists of 6 pieces of tandoori prawns and 2 pieces each of chicken tikka, lamb cutlets and lamb sheekh kebabs.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(73, 1, '11', NULL, 'Saffron Rice', 'SAR', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(74, 1, '11', NULL, 'Jeera Rice', 'JER', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(75, 1, '11', NULL, 'Coconut Rice', 'COR', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(76, 1, '11', NULL, 'Pulao Rice', 'PUR', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(77, 1, '12', NULL, 'Vegetable Biryani', 'VEB', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(78, 1, '12', NULL, 'Chicken Biryani', 'CHB', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(79, 1, '12', NULL, 'Chicken Tikka Biryani', 'CHTB', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(80, 1, '12', NULL, 'Lamb Biryani', 'LAB', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(81, 1, '12', NULL, 'Beef Biryani', 'BEB', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(82, 1, '12', NULL, 'Prawn Biryani', 'PRB', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 0, 1.00, 12, NULL, NULL),
+(83, 1, '3', 13, 'Malai', 'MA', '', '', '', '', 'GF', 'Prawns/Fish cooked in a rich sauce with coconut milk & spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(84, 1, '3', 13, 'Vindaloo', 'VI', '', '', '', '', 'GF,DF', 'A seafood curry prepared with a wide array of spices, garlic & ginger simmered in a special onion sauce', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(85, 1, '3', 13, 'Masala', 'MA', '', '', '', '', 'GF,DF', 'Prawns/Fish marinated with ginger & garlic then pan fried with spices, fresh tomatoes & coriander', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(86, 1, '3', 13, 'Palak', 'PA', '', '', '', '', 'GF', 'Cooked with spinach & traditional spices', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(87, 1, '3', 13, 'Tikka Masala', 'TIM', '', '', '', '', 'GF', 'Prawns/Fish cooked in a sweet tomato creamy sauce & spices.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(88, 1, '3', 13, 'Prawn Biryani', 'PRB', '', '', '', '', 'GF', 'Prawns sauteed and simmered in fresh garlic & cooked with flavoured rice served.', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-21', '2025-07-21', '2025-07-21', 1, 0, 0, 1.00, 12, NULL, NULL),
+(89, 1, '14', NULL, 'Papadums (4 per serve)', 'PA', '', '', '', '', 'DF,GF', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(91, 1, '14', NULL, 'Yoghurt & Cucumber Raita', 'YO&CR', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(92, 1, '14', NULL, 'Yoghurt & Mint Sauce ', 'YO&MS', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(93, 1, '14', NULL, 'Hot Mix Pickle', 'HOMP', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(94, 1, '14', NULL, 'Chilli Pickle', 'CHP', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(95, 1, '14', NULL, 'Lime Pickle', 'LIP', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(96, 1, '14', NULL, 'Sweet Chutney', 'SWC', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(97, 1, '14', NULL, 'Sliced Onions', 'SLO', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(98, 1, '14', NULL, 'Indian Salad', 'INS', '', '', '', '', '', '', '', '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 1, NULL, 0, '00:00:00', 1, 2, 2, 2, '2025-07-22', '2025-07-22', '2025-07-22', 1, 0, 1, 1.00, 12, NULL, NULL),
+(100, NULL, '0', NULL, 'Lunch Meal Deal', NULL, '', '', '', '', 'df', NULL, NULL, '', NULL, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 0, 1, 0, '00:00:00', 1, 2, 2, 2, '2025-07-25', '2025-07-25', '2025-07-25', 1, 1, 0, 0.00, 0, NULL, NULL),
+(101, NULL, '0', NULL, 'Second Meal Deal', NULL, '', '', '', '', '', '', NULL, '', 0.000, 0, 0, 0, '0000-00-00', '0000-00-00', NULL, 0, 1, 0, '00:00:00', 1, 2, 2, 2, '2025-07-25', '2025-07-25', '2025-07-25', 1, 1, 0, 0.00, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3230,7 +3317,7 @@ CREATE TABLE `itxn` (
   `unit_id` bigint(20) DEFAULT NULL,
   `production_dtl_id` bigint(20) DEFAULT NULL,
   `created_at` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -3240,12 +3327,12 @@ CREATE TABLE `itxn` (
 
 CREATE TABLE `job_advertisement` (
   `job_adv_id` int(10) UNSIGNED NOT NULL,
-  `pos_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `adv_circular_date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `circular_dadeline` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `adv_file` tinytext CHARACTER SET latin1 NOT NULL,
-  `adv_details` varchar(255) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `pos_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `adv_circular_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `circular_dadeline` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `adv_file` tinytext CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `adv_details` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -3257,7 +3344,7 @@ CREATE TABLE `language` (
   `id` int(11) NOT NULL,
   `phrase` varchar(100) NOT NULL,
   `english` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `language`
@@ -4548,8 +4635,7 @@ INSERT INTO `language` (`id`, `phrase`, `english`) VALUES
 (1648, 'sound_setting', 'Sound Setting'),
 (1649, 'is_sound', 'Is Sound Enable'),
 (1650, 'upload_notify', 'Upload Notification Sound'),
-(1651, 'upload_order', 'Upload order Add Sound');
-INSERT INTO `language` (`id`, `phrase`, `english`) VALUES
+(1651, 'upload_order', 'Upload order Add Sound'),
 (1655, 'room_list', 'Room List'),
 (1656, 'add_room', 'Add Room'),
 (1657, 'room_no', 'Room No'),
@@ -4782,7 +4868,7 @@ CREATE TABLE `leave_apply` (
   `approve_date` varchar(20) NOT NULL,
   `approved_by` varchar(30) NOT NULL,
   `leave_type` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -4794,7 +4880,7 @@ CREATE TABLE `leave_type` (
   `leave_type_id` int(11) NOT NULL,
   `leave_type` varchar(50) NOT NULL,
   `leave_days` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -4804,15 +4890,15 @@ CREATE TABLE `leave_type` (
 
 CREATE TABLE `loan_installment` (
   `loan_inst_id` int(11) NOT NULL,
-  `employee_id` varchar(21) CHARACTER SET latin1 NOT NULL,
-  `loan_id` varchar(21) CHARACTER SET latin1 NOT NULL,
-  `installment_amount` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `payment` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `date` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `received_by` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `installment_no` varchar(20) CHARACTER SET latin1 NOT NULL DEFAULT '1',
-  `notes` varchar(80) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `employee_id` varchar(21) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `loan_id` varchar(21) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `installment_amount` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `payment` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `received_by` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `installment_no` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '1',
+  `notes` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -4823,7 +4909,7 @@ CREATE TABLE `loan_installment` (
 CREATE TABLE `marital_info` (
   `id` int(11) NOT NULL,
   `marital_sta` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `marital_info`
@@ -4847,17 +4933,17 @@ CREATE TABLE `measurement_units` (
   `uomid` int(10) NOT NULL,
   `quantity` decimal(10,2) NOT NULL,
   `quantity_measure` enum('ml','gm') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `measurement_units`
 --
 
 INSERT INTO `measurement_units` (`id`, `uomid`, `quantity`, `quantity_measure`) VALUES
-(1, 10, '10.00', 'gm'),
-(2, 12, '20.00', 'gm'),
-(3, 8, '250.00', 'ml'),
-(4, 7, '50.00', 'gm');
+(1, 10, 10.00, 'gm'),
+(2, 12, 20.00, 'gm'),
+(3, 8, 250.00, 'ml'),
+(4, 7, 50.00, 'gm');
 
 -- --------------------------------------------------------
 
@@ -4867,9 +4953,9 @@ INSERT INTO `measurement_units` (`id`, `uomid`, `quantity`, `quantity_measure`) 
 
 CREATE TABLE `membership` (
   `id` int(11) NOT NULL,
-  `membership_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `membership_name` varchar(250) NOT NULL,
   `discount` float NOT NULL,
-  `other_facilities` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `other_facilities` varchar(255) NOT NULL,
   `create_by` int(11) NOT NULL,
   `create_date` date NOT NULL,
   `update_by` int(11) NOT NULL,
@@ -4910,7 +4996,14 @@ CREATE TABLE `menu_add_on` (
 --
 
 INSERT INTO `menu_add_on` (`row_id`, `menu_id`, `add_on_id`, `modifier_groupid`, `min`, `max`, `isreq`, `sortby`, `is_active`) VALUES
-(1, 31, 0, 1, 0, 0, 0, 0, 1);
+(1, 31, 0, 1, 0, 0, 0, 0, 1),
+(5, 101, 0, 4, 0, 0, 0, 0, 1),
+(6, 101, 0, 3, 0, 0, 0, 0, 1),
+(7, 101, 0, 1, 0, 0, 0, 0, 1),
+(8, 100, 0, 4, 0, 0, 0, 0, 1),
+(9, 100, 0, 1, 0, 0, 0, 0, 1),
+(10, 1, 0, 1, 0, 0, 0, 0, 1),
+(11, 67, 0, 1, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -4923,7 +5016,7 @@ CREATE TABLE `menu_group_modifiers` (
   `menu_group_id` int(11) NOT NULL,
   `modifier_id` int(11) NOT NULL,
   `is_default` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -4936,7 +5029,7 @@ CREATE TABLE `menu_modifier_groups` (
   `menu_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `sort_order` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -4953,7 +5046,7 @@ CREATE TABLE `menu_pdf_materials` (
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `pdf_group_id` bigint(20) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `menu_pdf_materials`
@@ -4980,7 +5073,7 @@ CREATE TABLE `message` (
   `datetime` datetime NOT NULL,
   `sender_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=unseen, 1=seen, 2=delete',
   `receiver_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=unseen, 1=seen, 2=delete'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -4997,7 +5090,7 @@ CREATE TABLE `modifiers` (
   `is_default` tinyint(1) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5011,18 +5104,21 @@ CREATE TABLE `modifier_groups` (
   `description` varchar(255) DEFAULT NULL,
   `is_required` tinyint(1) DEFAULT 0,
   `min_selection` int(11) DEFAULT 0,
+  `isMealDeal` int(11) NOT NULL DEFAULT 0,
+  `meal_deal_item_id` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `modifier_groups`
 --
 
-INSERT INTO `modifier_groups` (`id`, `name`, `description`, `is_required`, `min_selection`, `created_at`, `updated_at`) VALUES
-(1, 'Spice Level', '', 0, 0, '2025-07-22 08:48:18', '2025-07-22 08:48:18'),
-(2, 'Donness', '', 0, 0, '2025-07-22 08:50:08', '2025-07-22 08:50:08'),
-(3, 'Breads', '', 0, 0, '2025-07-22 08:53:44', '2025-07-22 08:53:44');
+INSERT INTO `modifier_groups` (`id`, `name`, `description`, `is_required`, `min_selection`, `isMealDeal`, `meal_deal_item_id`, `created_at`, `updated_at`) VALUES
+(1, 'Spice Level', '', 0, 0, 0, 0, '2025-07-22 08:48:18', '2025-07-22 08:48:18'),
+(2, 'Donness', '', 0, 0, 0, 0, '2025-07-22 08:50:08', '2025-07-22 08:50:08'),
+(3, 'Breads', '', 0, 0, 0, 0, '2025-07-22 08:53:44', '2025-07-22 08:53:44'),
+(4, 'Main Course Meal Deal Group', '', 0, 0, 1, 11, '2025-07-24 10:13:50', '2025-07-24 15:56:51');
 
 -- --------------------------------------------------------
 
@@ -5037,7 +5133,7 @@ CREATE TABLE `module` (
   `image` varchar(255) NOT NULL,
   `directory` varchar(100) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5053,7 +5149,7 @@ CREATE TABLE `module_permission` (
   `read` tinyint(1) DEFAULT NULL,
   `update` tinyint(1) DEFAULT NULL,
   `delete` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5063,8 +5159,8 @@ CREATE TABLE `module_permission` (
 
 CREATE TABLE `module_purchase_key` (
   `id` int(11) NOT NULL,
-  `identity` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `purchase_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `identity` varchar(250) DEFAULT NULL,
+  `purchase_key` varchar(255) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -5077,7 +5173,7 @@ CREATE TABLE `module_purchase_key` (
 CREATE TABLE `multipay_bill` (
   `multipay_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `multipayid` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `multipayid` varchar(30) DEFAULT NULL,
   `payment_type_id` int(11) NOT NULL,
   `amount` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -5103,16 +5199,29 @@ CREATE TABLE `ordered_menu_item_modifiers` (
   `modifier_groupid` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `foods_or_mods` int(11) NOT NULL DEFAULT 2 COMMENT '1 = For Foods\r\n2 = For Mods',
+  `meal_deal_id` int(11) NOT NULL DEFAULT 0,
   `is_active` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Active, 0 = Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ordered_menu_item_modifiers`
 --
 
-INSERT INTO `ordered_menu_item_modifiers` (`id`, `menu_id`, `variant_id`, `add_on_id`, `modifier_groupid`, `order_id`, `foods_or_mods`, `is_active`, `created_at`) VALUES
-(1, 31, 0, 2, 1, 1, 2, 1, '2025-07-22 14:33:11');
+INSERT INTO `ordered_menu_item_modifiers` (`id`, `menu_id`, `variant_id`, `add_on_id`, `modifier_groupid`, `order_id`, `foods_or_mods`, `meal_deal_id`, `is_active`, `created_at`) VALUES
+(1, 31, 0, 2, 1, 1, 2, 0, 1, '2025-07-22 14:33:11'),
+(2, 101, 0, 102, 4, 1, 2, 0, 1, '2025-07-25 14:00:39'),
+(3, 101, 0, 102, 4, 2, 2, 0, 1, '2025-07-25 14:05:13'),
+(4, 101, 0, 102, 4, 3, 2, 0, 1, '2025-07-25 14:07:42'),
+(5, 101, 0, 104, 4, 3, 2, 0, 1, '2025-07-25 14:07:42'),
+(6, 101, 0, 3, 1, 3, 2, 0, 1, '2025-07-25 14:07:42'),
+(7, 101, 0, 4, 1, 3, 2, 0, 1, '2025-07-25 14:07:42'),
+(8, 101, 0, 102, 4, 4, 2, 0, 1, '2025-07-25 17:03:39'),
+(9, 101, 0, 123, 4, 4, 2, 0, 1, '2025-07-25 17:03:39'),
+(10, 101, 0, 4, 1, 4, 2, 0, 1, '2025-07-25 17:03:39'),
+(11, 100, 0, 102, 4, 5, 2, 0, 1, '2025-07-28 15:30:47'),
+(12, 100, 0, 104, 4, 5, 2, 0, 1, '2025-07-28 15:30:47'),
+(13, 100, 0, 4, 1, 5, 2, 0, 1, '2025-07-28 15:30:48');
 
 -- --------------------------------------------------------
 
@@ -5128,7 +5237,7 @@ CREATE TABLE `order_item_modifiers` (
   `modifier_id` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `quantity` int(11) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5142,10 +5251,10 @@ CREATE TABLE `order_menu` (
   `menu_id` int(11) NOT NULL,
   `price` decimal(19,3) DEFAULT 0.000,
   `groupmid` int(11) DEFAULT 0,
-  `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notes` varchar(255) DEFAULT NULL,
   `menuqty` float NOT NULL,
-  `add_on_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `addonsqty` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `add_on_id` varchar(100) NOT NULL,
+  `addonsqty` varchar(100) NOT NULL,
   `varientid` int(11) NOT NULL,
   `groupvarient` int(11) DEFAULT NULL,
   `addonsuid` int(11) DEFAULT NULL,
@@ -5155,6 +5264,20 @@ CREATE TABLE `order_menu` (
   `allfoodready` int(11) DEFAULT NULL,
   `isupdate` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `order_menu`
+--
+
+INSERT INTO `order_menu` (`row_id`, `order_id`, `menu_id`, `price`, `groupmid`, `notes`, `menuqty`, `add_on_id`, `addonsqty`, `varientid`, `groupvarient`, `addonsuid`, `qroupqty`, `isgroup`, `food_status`, `allfoodready`, `isupdate`) VALUES
+(1, 1, 101, 8.000, 0, '', 1, '', '', 163, NULL, 101163, NULL, 0, 0, NULL, NULL),
+(2, 2, 101, 8.000, 0, '', 1, '', '', 163, NULL, 101163, NULL, 0, 0, NULL, NULL),
+(3, 3, 101, 8.000, 0, '', 1, '', '', 163, NULL, 101163, NULL, 0, 0, NULL, NULL),
+(4, 4, 101, 8.000, 0, '', 1, '', '', 163, NULL, 101163, NULL, 0, 0, NULL, NULL),
+(5, 3, 100, 15.000, 0, NULL, 1, '', '', 164, NULL, 100164, NULL, 0, 0, NULL, 1),
+(7, 3, 1, 16.950, 0, NULL, 1, '', '', 105, NULL, 1105, NULL, 0, 0, NULL, 1),
+(8, 5, 100, 15.000, 0, '', 1, '', '', 164, NULL, 100164, NULL, 0, 0, NULL, NULL),
+(14, 5, 8, 15.950, 0, NULL, 1, '', '', 112, NULL, 8112, NULL, 0, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -5172,7 +5295,7 @@ CREATE TABLE `paymentsetup` (
   `Islive` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `edit_url` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `paymentsetup`
@@ -5199,7 +5322,7 @@ INSERT INTO `paymentsetup` (`setupid`, `paymentid`, `marchantid`, `password`, `e
 
 CREATE TABLE `payment_method` (
   `payment_method_id` tinyint(4) NOT NULL,
-  `payment_method` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `payment_method` varchar(100) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `modulename` varchar(50) CHARACTER SET utf8 COLLATE utf8_estonian_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -5244,13 +5367,13 @@ CREATE TABLE `payroll_commission_setting` (
 
 CREATE TABLE `payroll_holiday` (
   `payrl_holi_id` int(10) UNSIGNED NOT NULL,
-  `holiday_name` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `start_date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `end_date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `no_of_days` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `created_by` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `updated_by` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `holiday_name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `start_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `end_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `no_of_days` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `created_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `updated_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5260,11 +5383,11 @@ CREATE TABLE `payroll_holiday` (
 
 CREATE TABLE `payroll_tax_setup` (
   `tax_setup_id` int(10) UNSIGNED NOT NULL,
-  `start_amount` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `end_amount` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `rate` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `status` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `start_amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `end_amount` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `rate` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5275,7 +5398,7 @@ CREATE TABLE `payroll_tax_setup` (
 CREATE TABLE `pay_frequency` (
   `id` int(11) NOT NULL,
   `frequency_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `pay_frequency`
@@ -5295,9 +5418,9 @@ INSERT INTO `pay_frequency` (`id`, `frequency_name`) VALUES
 
 CREATE TABLE `position` (
   `pos_id` int(10) UNSIGNED NOT NULL,
-  `position_name` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `position_details` text CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `position_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `position_details` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `position`
@@ -5315,6 +5438,62 @@ INSERT INTO `position` (`pos_id`, `position_name`, `position_details`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `price_schedules`
+--
+
+CREATE TABLE `price_schedules` (
+  `ScheduleID` int(11) NOT NULL,
+  `PriceLevel` varchar(50) NOT NULL,
+  `EffectiveDate` date NOT NULL,
+  `Description` text DEFAULT NULL,
+  `CategoryID` int(11) DEFAULT NULL,
+  `Items` longtext DEFAULT NULL,
+  `BasedOn` varchar(50) DEFAULT NULL,
+  `BasePrice` varchar(50) DEFAULT NULL,
+  `CalculationMethod` varchar(50) DEFAULT NULL,
+  `Percentage` decimal(5,2) DEFAULT 0.00,
+  `RoundingMethod` varchar(50) DEFAULT NULL,
+  `RoundToNearest` decimal(5,2) DEFAULT 0.00,
+  `AdjustedBy` decimal(5,2) DEFAULT 0.00,
+  `UserIDInserted` int(11) DEFAULT 0,
+  `DateInserted` datetime DEFAULT current_timestamp(),
+  `schedule_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0 = Not applied, 1 = Applied',
+  `cron_run_datetime` datetime DEFAULT NULL COMMENT 'Date and time when cron applied price changes',
+  `is_enabled` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1 = Enabled, 0 = Disabled'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `price_schedules`
+--
+
+INSERT INTO `price_schedules` (`ScheduleID`, `PriceLevel`, `EffectiveDate`, `Description`, `CategoryID`, `Items`, `BasedOn`, `BasePrice`, `CalculationMethod`, `Percentage`, `RoundingMethod`, `RoundToNearest`, `AdjustedBy`, `UserIDInserted`, `DateInserted`, `schedule_flag`, `cron_run_datetime`, `is_enabled`) VALUES
+(1, '1', '2025-07-24', '', 10, '[{\"product_id\":\"70\",\"product_name\":\"Half Tandoori Chicken\",\"item_code\":\"HATC\",\"category\":\"Tandoori Special\",\"price\":\"16.95\",\"prices\":{\"1\":\"16.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"33.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"},{\"product_id\":\"71\",\"product_name\":\"Full Tandoori Chicken\",\"item_code\":\"FUTC\",\"category\":\"Tandoori Special\",\"price\":\"25.95\",\"prices\":{\"1\":\"25.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"51.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"},{\"product_id\":\"72\",\"product_name\":\"Tandoori Platter For 2\",\"item_code\":\"TAPF2\",\"category\":\"Tandoori Special\",\"price\":\"26.95\",\"prices\":{\"1\":\"26.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"53.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"}]', 'sp', NULL, 'Percentage Markup', 100.00, 'none', 0.00, 0.00, 2, '2025-07-24 14:46:34', 0, NULL, 0),
+(2, '1', '2025-07-24', 'my schedule', 5, '[{\"product_id\":\"16\",\"product_name\":\"Onion Bhaji Pakora (4 per serve)\",\"item_code\":\"ONBP\",\"category\":\"Small Plates\",\"price\":\"9.95\",\"prices\":{\"1\":\"9.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.10\",\"margin\":\"101.01\"},{\"product_id\":\"17\",\"product_name\":\"Alu Bonda (3 per serve)\",\"item_code\":\"ALB\",\"category\":\"Small Plates\",\"price\":\"9.95\",\"prices\":{\"1\":\"9.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.10\",\"margin\":\"101.01\"},{\"product_id\":\"18\",\"product_name\":\"Paneer Pakora (4 per serve)\",\"item_code\":\"PAP\",\"category\":\"Small Plates\",\"price\":\"12.95\",\"prices\":{\"1\":\"12.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"26.00\",\"adjustment\":\"0.10\",\"margin\":\"100.77\"}]', 'sp', NULL, 'Percentage Markup', 100.00, 'none', 0.00, 0.10, 2, '2025-07-24 15:06:20', 0, NULL, 0),
+(3, '2', '2025-07-24', 'Testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"5.95\",\"prices\":{\"1\":\"5.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"0.10\",\"adjustment\":\"0.10\",\"margin\":\"0.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"7.95\",\"prices\":{\"1\":\"7.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"0.10\",\"adjustment\":\"0.10\",\"margin\":\"0.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"7.95\",\"prices\":{\"1\":\"7.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"0.10\",\"adjustment\":\"0.10\",\"margin\":\"0.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"7.95\",\"prices\":{\"1\":\"7.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"0.10\",\"adjustment\":\"0.10\",\"margin\":\"0.00\"}]', 'sp', NULL, 'Percentage Markup', 100.00, 'none', 0.00, 0.10, 2, '2025-07-24 15:11:30', 0, NULL, 1),
+(4, '1', '2025-07-25', 'Testing purpose', NULL, '[{\"product_id\":\"70\",\"product_name\":\"Half Tandoori Chicken\",\"item_code\":\"HATC\",\"category\":\"Tandoori Special\",\"price\":\"16.95\",\"prices\":{\"1\":\"16.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"33.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"},{\"product_id\":\"71\",\"product_name\":\"Full Tandoori Chicken\",\"item_code\":\"FUTC\",\"category\":\"Tandoori Special\",\"price\":\"25.95\",\"prices\":{\"1\":\"25.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"51.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"},{\"product_id\":\"72\",\"product_name\":\"Tandoori Platter For 2\",\"item_code\":\"TAPF2\",\"category\":\"Tandoori Special\",\"price\":\"26.95\",\"prices\":{\"1\":\"26.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"53.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"}]', 'sp', NULL, 'Percentage Markup', 100.00, 'none', 0.00, 0.00, 2, '2025-07-24 17:46:19', 0, NULL, 1),
+(5, '1', '2025-07-28', 'fdsfdsfs', 11, '[{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"7.95\",\"prices\":{\"1\":\"7.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"7.95\",\"prices\":{\"1\":\"7.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\"}]', 'sp', '1', 'Percentage Markup', 50.00, 'none', 0.00, 0.07, 2, '2025-07-24 18:55:29', 0, NULL, 1),
+(6, '1', '2025-07-25', '', 11, '[{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"7.95\",\"prices\":{\"1\":\"7.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"15.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"}]', 'sp', '1', 'Percentage Markup', 100.00, 'none', 0.00, 0.00, 2, '2025-07-24 19:16:25', 0, NULL, 1),
+(7, '1', '2025-07-25', 'testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"5.95\",\"prices\":{\"1\":\"5.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"11.90\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"0.00\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"0.00\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"15.90\",\"prices\":{\"1\":\"15.90\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"31.80\",\"adjustment\":\"0.00\",\"margin\":\"100.00\"}]', 'sp', '1', 'Percentage Markup', 100.00, 'none', 0.00, 0.00, 2, '2025-07-24 19:18:11', 0, NULL, 1),
+(8, '1', '2025-07-29', 'testing', NULL, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"11.90\",\"prices\":{\"1\":\"11.90\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"26.90\",\"adjustment\":\"0.00\",\"margin\":\"126.05\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"15.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"15.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"31.80\",\"prices\":{\"1\":\"31.80\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"46.80\",\"adjustment\":\"0.00\",\"margin\":\"47.17\"}]', 'sp', NULL, 'Amount Markup', 15.00, 'none', 0.00, 0.00, 2, '2025-07-24 19:20:23', 0, NULL, 1),
+(9, '2', '2025-07-26', 'testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"11.90\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"31.80\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"}]', 'sp', '2', 'Amount Markup', 20.00, 'none', 0.00, 0.00, 2, '2025-07-24 20:01:25', 0, NULL, 1),
+(10, '2', '2025-07-26', 'testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"11.90\",\"2\":\"0.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"12.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"12.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"0.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"12.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"31.80\",\"2\":\"0.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"12.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"}]', 'sp', '2', 'Amount Markup', 12.00, 'none', 0.00, 0.00, 2, '2025-07-24 20:05:45', 0, NULL, 1),
+(11, '3', '2025-07-28', 'testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"11.90\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.00\",\"adjustment\":\"0.00\",\"margin\":\"-10.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.00\",\"adjustment\":\"0.00\",\"margin\":\"-10.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.00\",\"adjustment\":\"0.00\",\"margin\":\"-10.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"31.80\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.00\",\"adjustment\":\"0.00\",\"margin\":\"-10.00\"}]', 'sp', '3', 'Percentage Markup', -10.00, 'none', 0.00, 0.00, 2, '2025-07-24 20:07:17', 0, NULL, 1),
+(12, '3', '2025-07-29', 'testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"11.90\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.00\",\"adjustment\":\"0.00\",\"margin\":\"5.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.00\",\"adjustment\":\"0.00\",\"margin\":\"5.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.00\",\"adjustment\":\"0.00\",\"margin\":\"5.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"31.80\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.00\",\"adjustment\":\"0.00\",\"margin\":\"5.00\"}]', 'sp', '3', 'Percentage Markup', 5.00, 'none', 0.00, 0.00, 2, '2025-07-24 20:08:39', 0, NULL, 1),
+(13, '3', '2025-07-26', 'testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"11.90\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"15.00\",\"adjustment\":\"0.00\",\"margin\":\"-25.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"15.00\",\"adjustment\":\"0.00\",\"margin\":\"-25.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"15.00\",\"adjustment\":\"0.00\",\"margin\":\"-25.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"20.00\",\"prices\":{\"1\":\"31.80\",\"2\":\"12.00\",\"3\":\"20.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"15.00\",\"adjustment\":\"0.00\",\"margin\":\"-25.00\"}]', 'sp', '3', 'Percentage Markup', -25.00, 'none', 0.00, 0.00, 2, '2025-07-24 20:10:41', 0, NULL, 1),
+(14, '3', '2025-07-28', 'Testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"15.00\",\"prices\":{\"1\":\"11.90\",\"2\":\"12.00\",\"3\":\"15.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"17.00\",\"adjustment\":\"0.50\",\"margin\":\"13.33\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"15.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"15.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"17.00\",\"adjustment\":\"0.50\",\"margin\":\"13.33\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"15.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"15.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"17.00\",\"adjustment\":\"0.50\",\"margin\":\"13.33\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"15.00\",\"prices\":{\"1\":\"31.80\",\"2\":\"12.00\",\"3\":\"15.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"17.00\",\"adjustment\":\"0.50\",\"margin\":\"13.33\"}]', 'sp', '3', 'Percentage Markup', 10.00, 'none', 0.00, 0.50, 2, '2025-07-24 20:34:54', 0, NULL, 1),
+(15, '2', '2025-07-29', 'testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"12.00\",\"prices\":{\"1\":\"11.90\",\"2\":\"12.00\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"14.50\",\"adjustment\":\"0.50\",\"margin\":\"20.83\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"12.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"14.50\",\"adjustment\":\"0.50\",\"margin\":\"20.83\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"12.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"12.00\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"14.50\",\"adjustment\":\"0.50\",\"margin\":\"20.83\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"12.00\",\"prices\":{\"1\":\"31.80\",\"2\":\"12.00\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"14.50\",\"adjustment\":\"0.50\",\"margin\":\"20.83\"}]', 'sp', '2', 'Amount Markup', 2.00, 'none', 0.00, 0.50, 2, '2025-07-24 20:36:37', 0, NULL, 1),
+(16, '1', '2025-07-28', 'Testing', 11, '[{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"11.80\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"0.00\",\"prices\":{\"1\":\"0.00\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"11.80\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"}]', 'sp', '1', 'Amount Markup', 11.80, 'none', 0.00, 0.00, 2, '2025-07-24 20:38:18', 0, NULL, 1),
+(17, '1', '2025-07-26', 'dsfdsfds', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"11.90\",\"prices\":{\"1\":\"11.90\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"14.00\",\"adjustment\":\"0.10\",\"margin\":\"17.65\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"11.80\",\"prices\":{\"1\":\"11.80\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"13.90\",\"adjustment\":\"0.10\",\"margin\":\"17.80\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"11.80\",\"prices\":{\"1\":\"11.80\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"13.90\",\"adjustment\":\"0.10\",\"margin\":\"17.80\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"31.80\",\"prices\":{\"1\":\"31.80\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"33.90\",\"adjustment\":\"0.10\",\"margin\":\"6.60\"}]', 'sp', '1', 'Amount Markup', 2.00, 'none', 0.00, 0.10, 2, '2025-07-24 20:39:38', 0, NULL, 1),
+(18, '2', '2025-07-29', '', NULL, '[{\"product_id\":\"70\",\"product_name\":\"Half Tandoori Chicken\",\"item_code\":\"HATC\",\"category\":\"Tandoori Special\",\"price\":\"16.95\",\"prices\":{\"1\":\"16.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"71\",\"product_name\":\"Full Tandoori Chicken\",\"item_code\":\"FUTC\",\"category\":\"Tandoori Special\",\"price\":\"25.95\",\"prices\":{\"1\":\"25.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"},{\"product_id\":\"72\",\"product_name\":\"Tandoori Platter For 2\",\"item_code\":\"TAPF2\",\"category\":\"Tandoori Special\",\"price\":\"26.95\",\"prices\":{\"1\":\"26.95\",\"2\":\"0.00\",\"3\":\"0.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"20.00\",\"adjustment\":\"0.00\",\"margin\":\"0.00\"}]', 'sp', NULL, 'Amount Markup', 20.00, 'none', 0.00, 0.00, 2, '2025-07-24 20:59:58', 0, NULL, 1),
+(19, '3', '2025-07-30', '', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"14.00\",\"prices\":{\"1\":\"14.00\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"37.00\",\"adjustment\":\"0.00\",\"margin\":\"117.65\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"13.90\",\"prices\":{\"1\":\"13.90\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"37.00\",\"adjustment\":\"0.00\",\"margin\":\"117.65\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"13.90\",\"prices\":{\"1\":\"13.90\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"37.00\",\"adjustment\":\"0.00\",\"margin\":\"117.65\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"33.90\",\"prices\":{\"1\":\"33.90\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"37.00\",\"adjustment\":\"0.00\",\"margin\":\"117.65\"}]', 'sp', NULL, 'Amount Markup', 20.00, 'none', 0.00, 0.00, 2, '2025-07-24 21:11:21', 0, NULL, 1),
+(20, '2', '2025-07-26', 'Testing', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"14.50\",\"prices\":{\"1\":\"14.00\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"16.50\",\"adjustment\":\"0.00\",\"margin\":\"13.79\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"14.50\",\"prices\":{\"1\":\"13.90\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"16.50\",\"adjustment\":\"0.00\",\"margin\":\"13.79\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"14.50\",\"prices\":{\"1\":\"13.90\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"16.50\",\"adjustment\":\"0.00\",\"margin\":\"13.79\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"14.50\",\"prices\":{\"1\":\"33.90\",\"2\":\"14.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"16.50\",\"adjustment\":\"0.00\",\"margin\":\"13.79\"}]', 'sp', '2', 'Amount Markup', 2.00, 'none', 0.00, 0.00, 2, '2025-07-24 21:26:43', 0, NULL, 1),
+(21, '2', '2025-07-26', '', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"14.00\",\"prices\":{\"1\":\"14.00\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.50\",\"adjustment\":\"0.00\",\"margin\":\"30.30\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"13.90\",\"prices\":{\"1\":\"13.90\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.50\",\"adjustment\":\"0.00\",\"margin\":\"30.30\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"13.90\",\"prices\":{\"1\":\"13.90\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.50\",\"adjustment\":\"0.00\",\"margin\":\"30.30\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"33.90\",\"prices\":{\"1\":\"33.90\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.50\",\"adjustment\":\"0.00\",\"margin\":\"30.30\"}]', 'sp', NULL, 'Amount Markup', 5.00, 'none', 0.00, 0.00, 2, '2025-07-24 21:58:14', 0, NULL, 1),
+(22, '2', '2025-07-26', 'dsfsfds', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"16.50\",\"prices\":{\"1\":\"14.00\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.15\",\"adjustment\":\"0.00\",\"margin\":\"10.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"16.50\",\"prices\":{\"1\":\"13.90\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.15\",\"adjustment\":\"0.00\",\"margin\":\"10.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"16.50\",\"prices\":{\"1\":\"13.90\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.15\",\"adjustment\":\"0.00\",\"margin\":\"10.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"16.50\",\"prices\":{\"1\":\"33.90\",\"2\":\"16.50\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"18.15\",\"adjustment\":\"0.00\",\"margin\":\"10.00\"}]', 'sp', '2', 'Percentage Markup', 10.00, 'none', 0.00, 0.00, 2, '2025-07-24 21:58:55', 1, '2025-07-24 21:58:55', 1),
+(23, '3', '2025-07-29', 'sfsdfsdsd', 11, '[{\"product_id\":\"73\",\"product_name\":\"Saffron Rice\",\"item_code\":\"SAR\",\"category\":\"Rice\",\"price\":\"17.00\",\"prices\":{\"1\":\"14.00\",\"2\":\"18.15\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.25\",\"adjustment\":\"0.00\",\"margin\":\"25.00\"},{\"product_id\":\"74\",\"product_name\":\"Jeera Rice\",\"item_code\":\"JER\",\"category\":\"Rice\",\"price\":\"17.00\",\"prices\":{\"1\":\"13.90\",\"2\":\"18.15\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.25\",\"adjustment\":\"0.00\",\"margin\":\"25.00\"},{\"product_id\":\"75\",\"product_name\":\"Coconut Rice\",\"item_code\":\"COR\",\"category\":\"Rice\",\"price\":\"17.00\",\"prices\":{\"1\":\"13.90\",\"2\":\"18.15\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.25\",\"adjustment\":\"0.00\",\"margin\":\"25.00\"},{\"product_id\":\"76\",\"product_name\":\"Pulao Rice\",\"item_code\":\"PUR\",\"category\":\"Rice\",\"price\":\"17.00\",\"prices\":{\"1\":\"33.90\",\"2\":\"18.15\",\"3\":\"17.00\"},\"cost_price\":\"0.00\",\"last_cost\":\"0.00\",\"average_cost\":\"0.00\",\"new_price\":\"21.25\",\"adjustment\":\"0.00\",\"margin\":\"25.00\"}]', 'sp', '3', 'Percentage Markup', 25.00, 'none', 0.00, 0.00, 2, '2025-07-24 22:00:23', 1, '2025-07-24 22:00:23', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `production`
 --
 
@@ -5328,7 +5507,7 @@ CREATE TABLE `production` (
   `is_bom` int(10) DEFAULT 1 COMMENT '''0 => Without bill of materials, 1 => With bill of material''',
   `saveddate` date NOT NULL,
   `productionexpiredate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `production`
@@ -5369,7 +5548,6 @@ INSERT INTO `production` (`productionid`, `itemid`, `itemvid`, `itemquantity`, `
 (76, 64, 76, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (77, 65, 77, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (78, 66, 78, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
-(79, 67, 79, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (80, 68, 80, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (81, 69, 81, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (95, 83, 95, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
@@ -5380,7 +5558,6 @@ INSERT INTO `production` (`productionid`, `itemid`, `itemvid`, `itemquantity`, `
 (100, 88, 100, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (103, 31, 103, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (104, 31, 103, 1, 2, NULL, 1, '2025-07-22', '2025-07-22'),
-(107, 1, 105, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (108, 2, 106, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (109, 4, 107, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
 (110, 3, 108, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
@@ -5431,7 +5608,9 @@ INSERT INTO `production` (`productionid`, `itemid`, `itemvid`, `itemquantity`, `
 (157, 95, 155, 1, 2, 0, 0, '2025-07-22', '2025-07-22'),
 (158, 96, 156, 1, 2, 0, 0, '2025-07-22', '2025-07-22'),
 (159, 97, 157, 1, 2, 0, 0, '2025-07-22', '2025-07-22'),
-(161, 98, 159, 1, 2, 0, 0, '2025-07-22', '2025-07-22');
+(161, 98, 159, 1, 2, 0, 0, '2025-07-22', '2025-07-22'),
+(162, 1, 165, 1, 2, 0, 0, '2025-07-21', '2025-07-21'),
+(163, 67, 166, 1, 2, 0, 0, '2025-07-21', '2025-07-21');
 
 -- --------------------------------------------------------
 
@@ -5450,7 +5629,7 @@ CREATE TABLE `production_details` (
   `recipe_price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `createdby` int(11) NOT NULL,
   `created_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5467,7 +5646,18 @@ CREATE TABLE `promotion_main_modifiers` (
   `total_weight_percent` double NOT NULL,
   `total_no_of_item` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `promotion_main_modifiers`
+--
+
+INSERT INTO `promotion_main_modifiers` (`id`, `promotion_id`, `category_id`, `category_max_qty`, `category_weight_percent`, `total_weight_percent`, `total_no_of_item`, `created_at`) VALUES
+(4, 99, 3, 2, 0, 0, 0, '2025-07-24 20:57:09'),
+(5, 99, 5, 3, 0, 0, 0, '2025-07-24 20:57:09'),
+(6, 99, 11, 1, 0, 0, 0, '2025-07-24 20:57:09'),
+(8, 101, 1, 0, 0, 0, 0, '2025-07-25 13:57:42'),
+(9, 100, 1, 0, 0, 0, 0, '2025-07-25 17:02:16');
 
 -- --------------------------------------------------------
 
@@ -5480,7 +5670,7 @@ CREATE TABLE `promotion_other_modifiers` (
   `promotion_id` int(11) NOT NULL,
   `modifier_set_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5502,7 +5692,7 @@ CREATE TABLE `promo_data` (
   `status` int(11) NOT NULL DEFAULT 1 COMMENT '1 = Active, 0 = Inactive',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5523,7 +5713,7 @@ CREATE TABLE `purchaseitem` (
   `purchaseexpiredate` date NOT NULL,
   `savedby` int(11) NOT NULL,
   `is_bom` int(10) NOT NULL DEFAULT 1 COMMENT '''0 => Without bill of materials, 1 => With bill of material'''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5543,7 +5733,7 @@ CREATE TABLE `purchase_details` (
   `is_bom` int(10) DEFAULT 1 COMMENT '0 => Without bill of materials, 1 => With bill of material',
   `purchasedate` date NOT NULL,
   `purchaseexpiredate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5554,11 +5744,11 @@ CREATE TABLE `purchase_details` (
 CREATE TABLE `purchase_return` (
   `preturn_id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `po_no` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `po_no` varchar(120) NOT NULL,
   `return_date` date NOT NULL,
   `totalamount` float NOT NULL,
   `totaldiscount` float NOT NULL,
-  `return_reason` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `return_reason` varchar(250) NOT NULL,
   `createby` int(11) NOT NULL,
   `createdate` datetime NOT NULL,
   `updateby` int(11) NOT NULL,
@@ -5589,7 +5779,7 @@ CREATE TABLE `purchase_return_details` (
 CREATE TABLE `rate_type` (
   `id` int(11) NOT NULL,
   `r_type_name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `rate_type`
@@ -5610,7 +5800,7 @@ CREATE TABLE `reservationofday` (
   `offdaydate` date NOT NULL,
   `availtime` varchar(50) NOT NULL,
   `is_active` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5625,7 +5815,7 @@ CREATE TABLE `rest_table` (
   `table_icon` varchar(255) NOT NULL,
   `floor` int(11) DEFAULT 0,
   `status` int(11) NOT NULL DEFAULT 0 COMMENT '1=booked,0=free'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `rest_table`
@@ -5654,7 +5844,7 @@ CREATE TABLE `role_permission` (
   `read` tinyint(1) DEFAULT NULL,
   `update` tinyint(1) DEFAULT NULL,
   `delete` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5664,12 +5854,12 @@ CREATE TABLE `role_permission` (
 
 CREATE TABLE `salary_setup_header` (
   `s_s_h_id` int(10) UNSIGNED NOT NULL,
-  `employee_id` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `salary_payable` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `absent_deduct` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `tax_manager` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `status` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `employee_id` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `salary_payable` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `absent_deduct` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tax_manager` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5680,12 +5870,12 @@ CREATE TABLE `salary_setup_header` (
 CREATE TABLE `salary_sheet_generate` (
   `ssg_id` int(10) UNSIGNED NOT NULL,
   `employee_id` varchar(20) NOT NULL,
-  `name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `name` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `gdate` varchar(20) DEFAULT NULL,
-  `start_date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `end_date` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `generate_by` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `start_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `end_date` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `generate_by` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -5695,11 +5885,11 @@ CREATE TABLE `salary_sheet_generate` (
 
 CREATE TABLE `salary_type` (
   `salary_type_id` int(10) UNSIGNED NOT NULL,
-  `sal_name` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `emp_sal_type` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `sal_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `emp_sal_type` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `default_amount` varchar(30) NOT NULL,
   `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `salary_type`
@@ -5717,9 +5907,9 @@ INSERT INTO `salary_type` (`salary_type_id`, `sal_name`, `emp_sal_type`, `defaul
 
 CREATE TABLE `sec_menu_item` (
   `menu_id` int(11) NOT NULL,
-  `menu_title` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `page_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `module` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `menu_title` varchar(200) DEFAULT NULL,
+  `page_url` varchar(250) DEFAULT NULL,
+  `module` varchar(200) DEFAULT NULL,
   `parent_menu` int(11) DEFAULT NULL,
   `is_report` tinyint(1) DEFAULT NULL,
   `createby` int(11) NOT NULL,
@@ -6269,7 +6459,7 @@ CREATE TABLE `sec_role_tbl` (
   `create_by` int(11) DEFAULT NULL,
   `date_time` datetime DEFAULT NULL,
   `role_status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `sec_role_tbl`
@@ -6291,7 +6481,7 @@ CREATE TABLE `sec_user_access_tbl` (
   `role_acc_id` int(11) NOT NULL,
   `fk_role_id` int(11) NOT NULL,
   `fk_user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `sec_user_access_tbl`
@@ -6349,14 +6539,14 @@ CREATE TABLE `setting` (
   `reservation_close` varchar(30) DEFAULT NULL,
   `maxreserveperson` int(11) DEFAULT NULL,
   `printtype` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `setting`
 --
 
 INSERT INTO `setting` (`id`, `title`, `storename`, `address`, `email`, `phone`, `logo`, `logoweb`, `favicon`, `opentime`, `closetime`, `vat`, `isvatnumshow`, `vattinno`, `isvatinclusive`, `discount_type`, `discountrate`, `servicecharge`, `service_chargeType`, `currency`, `min_prepare_time`, `language`, `timezone`, `dateformat`, `site_align`, `kitchenrefreshtime`, `powerbytxt`, `footer_text`, `reservation_open`, `reservation_close`, `maxreserveperson`, `printtype`) VALUES
-(2, 'Punjabi Palace Restaurant', 'Punjabi Palace Restaurant', '135, Melbourne Street, South Brisbane, QLD', 'info@PunjabiPalace.com.au', '(07) 3846 3884', 'assets/img/icons/2019-10-29/h.png', NULL, 'assets/img/icons/m.png', '9:00AM', '10:00PM', '10.00', NULL, '23457586', 1, 1, '10.000', '0', 1, 2, '1:00 Hour', 'english', 'Australia/Brisbane', 'd/m/Y', 'LTR', 15, 'Powered By: Adzguru, www.adzguru.com\n', '2025', '09:00:00', '22:00:00', 10, 2);
+(2, 'Punjabi Palace Restaurant', 'Punjabi Palace Restaurant', '135, Melbourne Street, South Brisbane, QLD', 'info@PunjabiPalace.com.au', '(07) 3846 3884', 'assets/img/icons/2019-10-29/h.png', NULL, 'assets/img/icons/m.png', '9:00AM', '10:00PM', 10.00, NULL, '23457586', 1, 1, 10.000, 0, 1, 2, '1:00 Hour', 'english', 'Australia/Brisbane', 'd/m/Y', 'LTR', 15, 'Powered By: Adzguru, www.adzguru.com\n', '2025', '09:00:00', '22:00:00', 10, 2);
 
 -- --------------------------------------------------------
 
@@ -6371,16 +6561,16 @@ CREATE TABLE `shipping_method` (
   `payment_method` varchar(255) DEFAULT NULL,
   `is_active` int(11) NOT NULL DEFAULT 0,
   `shiptype` int(11) DEFAULT NULL COMMENT '1=dinein,2=pickup,3=home'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `shipping_method`
 --
 
 INSERT INTO `shipping_method` (`ship_id`, `shipping_method`, `shippingrate`, `payment_method`, `is_active`, `shiptype`) VALUES
-(1, 'Home Delivary', '60.00', '9, 8, 5, 4, 3, 1', 1, 3),
-(2, 'Pickup', '0.00', '4, 3, 1', 1, 2),
-(3, 'Dine-in', '0.00', '9, 8, 5, 4, 3', 1, 1);
+(1, 'Home Delivary', 60.00, '9, 8, 5, 4, 3, 1', 1, 3),
+(2, 'Pickup', 0.00, '4, 3, 1', 1, 2),
+(3, 'Dine-in', 0.00, '9, 8, 5, 4, 3', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -6394,7 +6584,7 @@ CREATE TABLE `slots` (
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `is_active` tinyint(1) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `slots`
@@ -6495,7 +6685,7 @@ CREATE TABLE `sms_configuration` (
   `sms_from` varchar(200) NOT NULL,
   `userid` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `sms_configuration`
@@ -6521,7 +6711,7 @@ CREATE TABLE `sms_template` (
   `default_status` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `sms_template`
@@ -6544,8 +6734,8 @@ CREATE TABLE `stock_adjustments` (
   `ingredient_id` int(11) NOT NULL,
   `adjusted_qty` decimal(10,2) NOT NULL COMMENT 'Positive = addition, Negative = subtraction',
   `adjustment_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `responsible_person` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `note` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `responsible_person` varchar(100) NOT NULL,
+  `note` text DEFAULT NULL,
   `added_by` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -6555,25 +6745,25 @@ CREATE TABLE `stock_adjustments` (
 --
 
 INSERT INTO `stock_adjustments` (`id`, `ingredient_id`, `adjusted_qty`, `adjustment_date`, `responsible_person`, `note`, `added_by`, `created_at`) VALUES
-(1, 60, '-2.00', '2025-05-26 00:00:00', 'John Doe', 'Damage product', 2, '2025-06-02 15:45:45'),
-(2, 60, '1.00', '2025-06-09 00:00:00', 'John Doe', 'Added from godown kitchen', 2, '2025-06-02 15:46:16'),
-(3, 60, '-3.00', '2025-05-26 00:00:00', 'John Doe', 'New Stock come from old stock', 2, '2025-06-02 15:59:20'),
-(4, 60, '2.00', '2025-06-09 00:00:00', 'John Doe', 'test', 2, '2025-06-02 16:00:19'),
-(5, 60, '-1.00', '2025-06-02 00:00:00', 'John Doe', 'damage', 2, '2025-06-02 16:00:44'),
-(6, 60, '3.00', '2025-06-03 00:00:00', 'John Doe', 'Added from another stock', 2, '2025-06-02 16:02:00'),
-(7, 60, '-4.00', '2025-06-03 00:00:00', 'John Doe', 'Damage due to flood', 2, '2025-06-02 16:02:30'),
-(8, 60, '7.00', '2025-06-02 00:00:00', 'John Doe', 'Add new kitchen stock', 2, '2025-06-02 16:34:30'),
-(9, 60, '-14.00', '2025-06-02 00:00:00', 'John Doe', 'Damage all goods', 2, '2025-06-02 16:34:58'),
-(10, 60, '7.00', '2025-06-02 00:00:00', 'John Doe', 'Adjusted from another kitchen stock', 2, '2025-06-02 16:38:17'),
-(11, 60, '-8.00', '2025-06-02 00:00:00', 'John Doe', 'damage due to rat', 2, '2025-06-02 17:26:40'),
-(12, 60, '5.00', '2025-06-02 00:00:00', 'John Doe', 'Adjust from another stock', 2, '2025-06-02 17:27:03'),
-(13, 60, '2.00', '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:44:30'),
-(14, 60, '3.00', '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:29'),
-(15, 60, '5.00', '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:46'),
-(16, 60, '-3.00', '2025-06-02 00:00:00', 'John Doe', 'Broken packet', 2, '2025-06-02 17:46:09'),
-(17, 60, '2.00', '2025-06-03 00:00:00', 'John Doe', 'new stock added from another store', 2, '2025-06-03 13:09:30'),
-(18, 60, '2.00', '2025-06-03 00:00:00', 'John Doe', 'new stock added', 2, '2025-06-03 13:12:27'),
-(19, 60, '-1.00', '2025-06-03 17:44:29', 'John Doe', 'Damage Stock', 2, '2025-06-03 13:14:55');
+(1, 60, -2.00, '2025-05-26 00:00:00', 'John Doe', 'Damage product', 2, '2025-06-02 15:45:45'),
+(2, 60, 1.00, '2025-06-09 00:00:00', 'John Doe', 'Added from godown kitchen', 2, '2025-06-02 15:46:16'),
+(3, 60, -3.00, '2025-05-26 00:00:00', 'John Doe', 'New Stock come from old stock', 2, '2025-06-02 15:59:20'),
+(4, 60, 2.00, '2025-06-09 00:00:00', 'John Doe', 'test', 2, '2025-06-02 16:00:19'),
+(5, 60, -1.00, '2025-06-02 00:00:00', 'John Doe', 'damage', 2, '2025-06-02 16:00:44'),
+(6, 60, 3.00, '2025-06-03 00:00:00', 'John Doe', 'Added from another stock', 2, '2025-06-02 16:02:00'),
+(7, 60, -4.00, '2025-06-03 00:00:00', 'John Doe', 'Damage due to flood', 2, '2025-06-02 16:02:30'),
+(8, 60, 7.00, '2025-06-02 00:00:00', 'John Doe', 'Add new kitchen stock', 2, '2025-06-02 16:34:30'),
+(9, 60, -14.00, '2025-06-02 00:00:00', 'John Doe', 'Damage all goods', 2, '2025-06-02 16:34:58'),
+(10, 60, 7.00, '2025-06-02 00:00:00', 'John Doe', 'Adjusted from another kitchen stock', 2, '2025-06-02 16:38:17'),
+(11, 60, -8.00, '2025-06-02 00:00:00', 'John Doe', 'damage due to rat', 2, '2025-06-02 17:26:40'),
+(12, 60, 5.00, '2025-06-02 00:00:00', 'John Doe', 'Adjust from another stock', 2, '2025-06-02 17:27:03'),
+(13, 60, 2.00, '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:44:30'),
+(14, 60, 3.00, '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:29'),
+(15, 60, 5.00, '2025-06-02 00:00:00', 'John Doe', 'new added', 2, '2025-06-02 17:45:46'),
+(16, 60, -3.00, '2025-06-02 00:00:00', 'John Doe', 'Broken packet', 2, '2025-06-02 17:46:09'),
+(17, 60, 2.00, '2025-06-03 00:00:00', 'John Doe', 'new stock added from another store', 2, '2025-06-03 13:09:30'),
+(18, 60, 2.00, '2025-06-03 00:00:00', 'John Doe', 'new stock added', 2, '2025-06-03 13:12:27'),
+(19, 60, -1.00, '2025-06-03 17:44:29', 'John Doe', 'Damage Stock', 2, '2025-06-03 13:14:55');
 
 -- --------------------------------------------------------
 
@@ -6585,7 +6775,7 @@ CREATE TABLE `subscribe_emaillist` (
   `emailid` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `dateinsert` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6602,11 +6792,19 @@ CREATE TABLE `sub_order` (
   `s_charge` float DEFAULT NULL,
   `total_price` float DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0 COMMENT '0=unpaid,1=paid',
-  `order_menu_id` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `adons_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `adons_qty` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `order_menu_id` text DEFAULT NULL,
+  `adons_id` varchar(20) DEFAULT NULL,
+  `adons_qty` varchar(20) DEFAULT NULL,
   `invoiceprint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `sub_order`
+--
+
+INSERT INTO `sub_order` (`sub_id`, `order_id`, `customer_id`, `vat`, `discount`, `s_charge`, `total_price`, `status`, `order_menu_id`, `adons_id`, `adons_qty`, `invoiceprint`) VALUES
+(1, 3, NULL, NULL, 0.00, NULL, NULL, 0, 'a:1:{i:3;i:1;}', NULL, NULL, NULL),
+(2, 3, NULL, NULL, 0.00, NULL, NULL, 0, 'a:1:{i:5;i:1;}', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6621,7 +6819,7 @@ CREATE TABLE `supplier` (
   `supEmail` varchar(100) NOT NULL,
   `supMobile` varchar(50) NOT NULL,
   `supAddress` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `supplier`
@@ -6650,7 +6848,7 @@ CREATE TABLE `supplier_ledger` (
   `date` varchar(50) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `d_c` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6666,7 +6864,7 @@ CREATE TABLE `synchronizer_setting` (
   `port` varchar(10) NOT NULL,
   `debug` varchar(10) NOT NULL,
   `project_root` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `synchronizer_setting`
@@ -6697,7 +6895,9 @@ CREATE TABLE `table_details` (
 --
 
 INSERT INTO `table_details` (`id`, `table_id`, `customer_id`, `order_id`, `time_enter`, `total_people`, `delete_at`, `created_at`) VALUES
-(6, 9, 1, 31, '21:41:11', 3, 0, '2025-06-06');
+(6, 9, 1, 31, '21:41:11', 3, 0, '2025-06-06'),
+(13, 1, 54, 4, '17:03:37', 2, 0, '2025-07-25'),
+(14, 1, 54, 5, '15:30:46', 1, 0, '2025-07-28');
 
 -- --------------------------------------------------------
 
@@ -6709,7 +6909,7 @@ CREATE TABLE `table_setting` (
   `settingid` int(11) NOT NULL,
   `tableid` int(11) NOT NULL,
   `iconpos` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `table_setting`
@@ -6745,7 +6945,7 @@ CREATE TABLE `tblreservation` (
   `customer_notes` text DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '1=free,2=booked,3=complete,4=expire',
   `notif` int(11) NOT NULL DEFAULT 0 COMMENT '0=unseen,1=seen'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tblreservation`
@@ -6766,7 +6966,7 @@ CREATE TABLE `tblserver` (
   `serverid` int(11) NOT NULL,
   `localhost_url` varchar(255) NOT NULL,
   `online_url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblserver`
@@ -6785,7 +6985,7 @@ CREATE TABLE `tbl_assign_kitchen` (
   `assignid` int(11) NOT NULL,
   `kitchen_id` int(11) NOT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6800,7 +7000,7 @@ CREATE TABLE `tbl_bank` (
   `ac_number` varchar(200) DEFAULT NULL,
   `branch` varchar(200) DEFAULT NULL,
   `signature_pic` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_bank`
@@ -6832,7 +7032,7 @@ CREATE TABLE `tbl_billingaddress` (
   `address` text DEFAULT NULL,
   `address2` text DEFAULT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -6846,7 +7046,17 @@ CREATE TABLE `tbl_cancelitem` (
   `foodid` int(11) NOT NULL,
   `varientid` int(11) NOT NULL,
   `quantity` decimal(19,3) NOT NULL DEFAULT 0.000
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `tbl_cancelitem`
+--
+
+INSERT INTO `tbl_cancelitem` (`cancelid`, `orderid`, `foodid`, `varientid`, `quantity`) VALUES
+(1, 3, 101, 0, 0.000),
+(2, 5, 1, 105, 1.000),
+(3, 5, 16, 121, 3.000),
+(4, 5, 4, 107, 1.000);
 
 -- --------------------------------------------------------
 
@@ -6857,7 +7067,7 @@ CREATE TABLE `tbl_cancelitem` (
 CREATE TABLE `tbl_card_terminal` (
   `card_terminalid` int(11) NOT NULL,
   `terminal_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_card_terminal`
@@ -6877,7 +7087,7 @@ INSERT INTO `tbl_card_terminal` (`card_terminalid`, `terminal_name`) VALUES
 CREATE TABLE `tbl_cashcounter` (
   `ccid` int(11) NOT NULL,
   `counterno` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_cashcounter`
@@ -6912,22 +7122,22 @@ CREATE TABLE `tbl_cashregister` (
   `status` int(11) NOT NULL DEFAULT 0,
   `openingnote` text DEFAULT NULL,
   `closing_note` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_cashregister`
 --
 
 INSERT INTO `tbl_cashregister` (`id`, `userid`, `counter_no`, `opening_balance`, `closing_balance`, `openclosedate`, `opendate`, `closedate`, `status`, `openingnote`, `closing_note`) VALUES
-(1, 2, 1, '14000.000', '58787.600', '2025-01-23', '2025-01-23 15:40:46', '2025-02-20 19:36:50', 1, '', ''),
-(2, 177, 2, '14000.000', '0.000', '2025-02-10', '2025-02-10 12:56:48', '1970-01-01 00:00:00', 0, 'Cash Register', ''),
-(3, 179, 3, '10000.000', '0.000', '2025-02-14', '2025-02-14 08:29:33', '1970-01-01 00:00:00', 0, 'testing note', ''),
-(4, 180, 6, '25000.000', '0.000', '2025-02-14', '2025-02-14 11:39:15', '1970-01-01 00:00:00', 0, 'my wallet', ''),
-(5, 2, 1, '58787.600', '76981.800', '2025-02-20', '2025-02-20 19:37:23', '2025-07-15 20:31:06', 1, '', ''),
-(6, 168, 7, '200.000', '0.000', '2025-06-09', '2025-06-09 20:56:39', '1970-01-01 00:00:00', 0, 'opening balance', ''),
-(7, 182, 8, '500.000', '0.000', '2025-06-10', '2025-06-10 14:53:16', '1970-01-01 00:00:00', 0, '', ''),
-(8, 189, 9, '100.000', '0.000', '2025-06-11', '2025-06-11 16:51:11', '1970-01-01 00:00:00', 0, 'starting wallet', ''),
-(9, 2, 1, '76981.800', '0.000', '2025-07-15', '2025-07-15 20:32:34', '1970-01-01 00:00:00', 0, '', '');
+(1, 2, 1, 14000.000, 58787.600, '2025-01-23', '2025-01-23 15:40:46', '2025-02-20 19:36:50', 1, '', ''),
+(2, 177, 2, 14000.000, 0.000, '2025-02-10', '2025-02-10 12:56:48', '1970-01-01 00:00:00', 0, 'Cash Register', ''),
+(3, 179, 3, 10000.000, 0.000, '2025-02-14', '2025-02-14 08:29:33', '1970-01-01 00:00:00', 0, 'testing note', ''),
+(4, 180, 6, 25000.000, 0.000, '2025-02-14', '2025-02-14 11:39:15', '1970-01-01 00:00:00', 0, 'my wallet', ''),
+(5, 2, 1, 58787.600, 76981.800, '2025-02-20', '2025-02-20 19:37:23', '2025-07-15 20:31:06', 1, '', ''),
+(6, 168, 7, 200.000, 0.000, '2025-06-09', '2025-06-09 20:56:39', '1970-01-01 00:00:00', 0, 'opening balance', ''),
+(7, 182, 8, 500.000, 0.000, '2025-06-10', '2025-06-10 14:53:16', '1970-01-01 00:00:00', 0, '', ''),
+(8, 189, 9, 100.000, 0.000, '2025-06-11', '2025-06-11 16:51:11', '1970-01-01 00:00:00', 0, 'starting wallet', ''),
+(9, 2, 1, 76981.800, 0.000, '2025-07-15', '2025-07-15 20:32:34', '1970-01-01 00:00:00', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -6941,7 +7151,7 @@ CREATE TABLE `tbl_city` (
   `stateid` int(11) NOT NULL,
   `cityname` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_city`
@@ -6965,7 +7175,7 @@ CREATE TABLE `tbl_country` (
   `countryid` int(11) NOT NULL,
   `countryname` varchar(70) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_country`
@@ -6987,7 +7197,7 @@ INSERT INTO `tbl_country` (`countryid`, `countryname`, `status`) VALUES
 CREATE TABLE `tbl_delivaritime` (
   `dtimeid` int(11) NOT NULL,
   `deltime` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_delivaritime`
@@ -7027,7 +7237,7 @@ CREATE TABLE `tbl_delivaryaddress` (
   `delivaryid` int(11) NOT NULL,
   `deladdress` text NOT NULL,
   `delcharge` decimal(10,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -7056,7 +7266,7 @@ CREATE TABLE `tbl_generatedreport` (
   `nofification` int(11) NOT NULL,
   `orderacceptreject` int(11) DEFAULT NULL,
   `reportDate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -7071,7 +7281,7 @@ CREATE TABLE `tbl_groupitems` (
   `item_qty` decimal(10,2) NOT NULL DEFAULT 0.00,
   `varientid` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -7085,7 +7295,7 @@ CREATE TABLE `tbl_itemaccepted` (
   `menuid` int(11) NOT NULL,
   `varient` int(11) NOT NULL,
   `accepttime` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_itemaccepted`
@@ -7114,7 +7324,7 @@ CREATE TABLE `tbl_kitchen` (
   `ip` varchar(255) DEFAULT NULL,
   `port` varchar(10) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_kitchen`
@@ -7136,7 +7346,7 @@ CREATE TABLE `tbl_kitchen_order` (
   `itemid` int(11) NOT NULL,
   `varient` int(11) DEFAULT NULL,
   `addonsuid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_kitchen_order`
@@ -7157,7 +7367,7 @@ CREATE TABLE `tbl_menutype` (
   `menutype` varchar(120) NOT NULL,
   `menu_icon` varchar(150) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -7171,7 +7381,7 @@ CREATE TABLE `tbl_module_purchasekey` (
   `purchasekey` varchar(55) DEFAULT NULL,
   `downloaddate` datetime NOT NULL DEFAULT '1970-01-01 01:01:01',
   `updatedate` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -7185,7 +7395,7 @@ CREATE TABLE `tbl_notificationsetting` (
   `onesignalcustomer` text NOT NULL,
   `onesignal_ioswaiter` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -7198,7 +7408,7 @@ CREATE TABLE `tbl_openclose` (
   `dayname` varchar(20) NOT NULL,
   `opentime` varchar(15) NOT NULL,
   `closetime` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_openclose`
@@ -7225,7 +7435,7 @@ CREATE TABLE `tbl_orderprepare` (
   `menuid` int(11) NOT NULL,
   `varient` int(11) NOT NULL,
   `preparetime` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_orderprepare`
@@ -7255,7 +7465,7 @@ CREATE TABLE `tbl_posetting` (
   `productionsetting` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=manual,1=auto',
   `tablemaping` int(11) NOT NULL DEFAULT 0 COMMENT '1=enable,0=disable',
   `soundenable` int(11) DEFAULT NULL COMMENT '1=enable,0=disable'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_posetting`
@@ -7277,7 +7487,7 @@ CREATE TABLE `tbl_quickordersetting` (
   `cooktime` int(11) NOT NULL DEFAULT 1 COMMENT '1=show,0=hide',
   `soundenable` int(11) NOT NULL DEFAULT 1 COMMENT '1=enable,0=disable	',
   `tablemaping` int(11) NOT NULL DEFAULT 1 COMMENT '1=enable,0=disable'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_quickordersetting`
@@ -7302,7 +7512,7 @@ CREATE TABLE `tbl_rating` (
   `status` int(11) NOT NULL DEFAULT 0,
   `email` varchar(255) NOT NULL,
   `ratetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -7315,7 +7525,7 @@ CREATE TABLE `tbl_room` (
   `roomno` varchar(100) NOT NULL,
   `floorno` int(11) NOT NULL,
   `status` int(11) NOT NULL COMMENT '1=active,0=inactive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -7329,7 +7539,7 @@ CREATE TABLE `tbl_seoption` (
   `title_slug` varchar(255) NOT NULL,
   `keywords` text DEFAULT NULL,
   `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_seoption`
@@ -7379,7 +7589,7 @@ CREATE TABLE `tbl_shippingaddress` (
   `address` text DEFAULT NULL,
   `address2` text DEFAULT NULL,
   `DateInserted` datetime NOT NULL DEFAULT '1970-01-01 01:01:01'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_shippingaddress`
@@ -7406,7 +7616,7 @@ CREATE TABLE `tbl_slider` (
   `delation_status` int(11) NOT NULL DEFAULT 0,
   `width` int(11) NOT NULL DEFAULT 0,
   `height` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_slider`
@@ -7445,7 +7655,7 @@ CREATE TABLE `tbl_slider_type` (
   `stype_id` int(11) NOT NULL,
   `STypeName` varchar(255) DEFAULT NULL,
   `delation_status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_slider_type`
@@ -7475,7 +7685,7 @@ CREATE TABLE `tbl_sociallink` (
   `socialurl` text DEFAULT NULL,
   `icon` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_sociallink`
@@ -7498,7 +7708,7 @@ CREATE TABLE `tbl_soundsetting` (
   `soundid` int(11) NOT NULL,
   `nofitysound` text DEFAULT NULL,
   `addtocartsound` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_soundsetting`
@@ -7518,7 +7728,7 @@ CREATE TABLE `tbl_state` (
   `countryid` int(11) NOT NULL,
   `statename` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_state`
@@ -7564,7 +7774,7 @@ INSERT INTO `tbl_state` (`stateid`, `countryid`, `statename`, `status`) VALUES
 CREATE TABLE `tbl_tablefloor` (
   `tbfloorid` int(11) NOT NULL,
   `floorName` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_tablefloor`
@@ -7586,7 +7796,7 @@ CREATE TABLE `tbl_thirdparty_customer` (
   `company_name` varchar(150) NOT NULL,
   `address` text DEFAULT NULL,
   `commision` decimal(10,2) DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -7601,14 +7811,14 @@ CREATE TABLE `tbl_token` (
   `tokenstartdate` date NOT NULL,
   `tokenendate` date NOT NULL,
   `tokenstatus` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_token`
 --
 
 INSERT INTO `tbl_token` (`tokenid`, `tokencode`, `tokenrate`, `tokenstartdate`, `tokenendate`, `tokenstatus`) VALUES
-(1, 'ABCD', '10.00', '2021-08-28', '2021-12-30', 1);
+(1, 'ABCD', 10.00, '2021-08-28', '2021-12-30', 1);
 
 -- --------------------------------------------------------
 
@@ -7627,7 +7837,7 @@ CREATE TABLE `tbl_updateitems` (
   `addonsuid` int(11) DEFAULT NULL,
   `isupdate` varchar(5) DEFAULT NULL,
   `insertdate` date DEFAULT '0000-00-00'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -7639,7 +7849,7 @@ CREATE TABLE `tbl_version_checker` (
   `vid` int(11) NOT NULL,
   `version` varchar(10) DEFAULT NULL,
   `disable` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_version_checker`
@@ -7680,7 +7890,7 @@ CREATE TABLE `tbl_waiterappcart` (
   `variantName` varchar(255) NOT NULL,
   `variantid` int(11) NOT NULL,
   `orderid` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -7695,7 +7905,7 @@ CREATE TABLE `tbl_widget` (
   `widget_desc` text DEFAULT NULL,
   `widget_desc_full` text DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_widget`
@@ -7735,7 +7945,7 @@ CREATE TABLE `themes` (
   `theme_thumb` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT '0=inactive,1=active',
   `activedate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `themes`
@@ -7758,7 +7968,7 @@ CREATE TABLE `top_menu` (
   `parentid` int(11) NOT NULL,
   `entrydate` date NOT NULL,
   `isactive` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `top_menu`
@@ -7786,10 +7996,10 @@ INSERT INTO `top_menu` (`menuid`, `menu_name`, `menu_slug`, `parentid`, `entryda
 
 CREATE TABLE `unit_of_measurement` (
   `id` int(11) NOT NULL,
-  `uom_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `uom_short_code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `uom_name` varchar(200) NOT NULL,
+  `uom_short_code` varchar(10) NOT NULL,
   `is_foodunit` int(11) NOT NULL DEFAULT 0,
-  `uom_variations` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `uom_variations` text DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -7822,7 +8032,7 @@ CREATE TABLE `usedcoupon` (
   `orderid` int(11) NOT NULL,
   `couponcode` varchar(100) NOT NULL,
   `couponrate` decimal(10,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -7847,14 +8057,14 @@ CREATE TABLE `user` (
   `counter` int(11) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `is_admin` tinyint(4) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `about`, `waiter_kitchenToken`, `email`, `password`, `login_pin`, `password_reset_token`, `image`, `last_login`, `last_logout`, `ip_address`, `counter`, `status`, `is_admin`) VALUES
-(2, 'John', 'Doe', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '', 'admin@example.com', '827ccb0eea8a706c4c34a16891f84e7b', '9630', '', './assets/img/user/m2.png', '2025-07-22 13:44:18', '2025-07-18 22:44:35', '::1', NULL, 1, 1),
+(2, 'John', 'Doe', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '', 'admin@example.com', '827ccb0eea8a706c4c34a16891f84e7b', '9630', '', './assets/img/user/m2.png', '2025-07-29 14:06:19', '2025-07-25 14:21:55', '127.0.0.1', NULL, 1, 1),
 (165, 'Hm', 'Isahaq', NULL, NULL, 'hmisahaq@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '3333', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0),
 (166, 'Ainal', 'Haque', NULL, NULL, 'ainal@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '4444', NULL, NULL, '2020-12-17 12:30:42', '2020-12-17 12:30:31', '::1', NULL, 1, 0),
 (168, 'Manik ', 'Hassan', NULL, NULL, 'manik@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '7777', NULL, NULL, '2025-06-12 21:37:47', '2025-06-12 21:28:58', '::1', NULL, 1, 0),
@@ -7889,109 +8099,111 @@ CREATE TABLE `variant` (
   `web_order_price` decimal(10,2) NOT NULL DEFAULT 0.00,
   `recipe_cost` decimal(10,2) DEFAULT NULL,
   `recipe_weightage` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `variant`
 --
 
 INSERT INTO `variant` (`variantid`, `menuid`, `variantName`, `price`, `takeaway_price`, `uber_eats_price`, `doordash_price`, `web_order_price`, `recipe_cost`, `recipe_weightage`) VALUES
-(44, 32, 'Regular', '22.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(45, 33, 'Regular', '22.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(47, 35, 'Regular', '22.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(48, 36, 'Regular', '23.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(49, 37, 'Regular', '22.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(50, 38, 'Regular', '23.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(51, 39, 'Regular', '23.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(52, 40, 'Regular', '23.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(53, 41, 'Regular', '23.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(54, 42, 'Regular', '23.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(55, 43, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(56, 44, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(57, 45, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(58, 46, 'Regular', '22.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(59, 47, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(60, 48, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(61, 49, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(62, 50, 'Regular', '22.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(63, 51, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(64, 52, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(65, 53, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(66, 54, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(67, 55, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(68, 56, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(69, 57, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(70, 58, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(71, 59, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(72, 60, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(73, 61, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(74, 62, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(75, 63, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(76, 64, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(77, 65, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(78, 66, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(79, 67, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(80, 68, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(81, 69, 'Regular', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(95, 83, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(96, 84, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(97, 85, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(98, 86, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(99, 87, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(100, 88, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(103, 31, 'Regular', '22.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(105, 1, 'Regular', '16.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(106, 2, 'Regular', '17.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(107, 4, 'Regular', '18.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(108, 3, 'Regular', '17.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(109, 5, 'Regular', '18.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(110, 6, 'Regular', '18.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(111, 7, 'Regular', '18.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(112, 8, 'Regular', '15.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(113, 11, 'Regular', '14.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(114, 12, 'Regular', '14.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(115, 13, 'Regular', '14.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(116, 14, 'Regular', '16.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(118, 10, 'Regular', '12.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(119, 9, 'Regular', '15.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(120, 15, 'Regular', '9.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(121, 16, 'Regular', '9.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(122, 17, 'Regular', '9.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(123, 18, 'Regular', '12.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(124, 19, 'Regular', '12.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(125, 20, 'Regular', '12.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(126, 21, 'Regular', '14.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(127, 22, 'Regular', '12.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(128, 23, 'Regular', '15.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(130, 24, 'Regular', '17.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(131, 25, 'Regular', '19.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(132, 26, 'Regular', '19.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(133, 30, 'Regular', '14.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(134, 29, 'Regular', '11.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(135, 28, 'Regular', '11.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(136, 27, 'Regular', '18.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(137, 70, 'Regular', '16.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(138, 71, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(139, 72, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(140, 73, 'Regular', '5.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(141, 74, 'Regular', '7.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(142, 75, 'Regular', '7.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(143, 76, 'Regular', '7.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(144, 77, 'Regular', '24.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(145, 78, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(146, 79, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(147, 80, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(148, 81, 'Regular', '25.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(149, 82, 'Regular', '26.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(150, 89, 'Regular', '3.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(151, 91, 'Regular', '4.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(152, 92, 'Regular', '4.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(153, 93, 'Regular', '4.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(154, 94, 'Regular', '4.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(155, 95, 'Regular', '4.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(156, 96, 'Regular', '4.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(157, 97, 'Regular', '4.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00'),
-(159, 98, 'Regular', '8.95', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00');
+(44, 32, 'Regular', 22.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(45, 33, 'Regular', 22.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(47, 35, 'Regular', 22.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(48, 36, 'Regular', 23.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(49, 37, 'Regular', 22.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(50, 38, 'Regular', 23.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(51, 39, 'Regular', 23.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(52, 40, 'Regular', 23.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(53, 41, 'Regular', 23.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(54, 42, 'Regular', 23.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(55, 43, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(56, 44, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(57, 45, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(58, 46, 'Regular', 22.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(59, 47, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(60, 48, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(61, 49, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(62, 50, 'Regular', 22.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(63, 51, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(64, 52, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(65, 53, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(66, 54, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(67, 55, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(68, 56, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(69, 57, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(70, 58, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(71, 59, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(72, 60, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(73, 61, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(74, 62, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(75, 63, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(76, 64, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(77, 65, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(78, 66, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(80, 68, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(81, 69, 'Regular', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(95, 83, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(96, 84, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(97, 85, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(98, 86, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(99, 87, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(100, 88, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(103, 31, 'Regular', 22.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(106, 2, 'Regular', 17.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(107, 4, 'Regular', 18.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(108, 3, 'Regular', 17.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(109, 5, 'Regular', 18.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(110, 6, 'Regular', 18.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(111, 7, 'Regular', 18.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(112, 8, 'Regular', 15.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(113, 11, 'Regular', 14.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(114, 12, 'Regular', 14.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(115, 13, 'Regular', 14.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(116, 14, 'Regular', 16.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(118, 10, 'Regular', 12.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(119, 9, 'Regular', 15.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(120, 15, 'Regular', 9.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(121, 16, 'Regular', 9.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(122, 17, 'Regular', 9.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(123, 18, 'Regular', 12.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(124, 19, 'Regular', 12.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(125, 20, 'Regular', 12.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(126, 21, 'Regular', 14.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(127, 22, 'Regular', 12.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(128, 23, 'Regular', 15.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(130, 24, 'Regular', 17.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(131, 25, 'Regular', 19.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(132, 26, 'Regular', 19.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(133, 30, 'Regular', 14.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(134, 29, 'Regular', 11.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(135, 28, 'Regular', 11.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(136, 27, 'Regular', 18.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(137, 70, 'Regular', 16.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(138, 71, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(139, 72, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(140, 73, 'Regular', 5.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(141, 74, 'Regular', 7.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(142, 75, 'Regular', 7.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(143, 76, 'Regular', 7.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(144, 77, 'Regular', 24.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(145, 78, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(146, 79, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(147, 80, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(148, 81, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(149, 82, 'Regular', 26.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(150, 89, 'Regular', 3.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(151, 91, 'Regular', 4.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(152, 92, 'Regular', 4.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(153, 93, 'Regular', 4.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(154, 94, 'Regular', 4.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(155, 95, 'Regular', 4.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(156, 96, 'Regular', 4.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(157, 97, 'Regular', 4.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(159, 98, 'Regular', 8.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(163, 101, 'Regular', 8.00, 8.00, 8.00, 0.00, 0.00, NULL, NULL),
+(164, 100, 'Regular', 15.00, 15.00, 15.00, 0.00, 0.00, NULL, NULL),
+(165, 1, 'Regular', 16.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00),
+(166, 67, 'Regular', 25.95, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -8008,7 +8220,7 @@ CREATE TABLE `waste_management` (
   `total_loss_amt` decimal(10,2) DEFAULT 0.00,
   `note` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -8027,7 +8239,7 @@ CREATE TABLE `waste_management_items` (
   `food_id` int(11) DEFAULT NULL,
   `food_qty` decimal(10,2) DEFAULT NULL,
   `food_variant` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -8037,8 +8249,8 @@ CREATE TABLE `waste_management_items` (
 
 CREATE TABLE `weekly_holiday` (
   `wk_id` int(11) NOT NULL,
-  `dayname` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `dayname` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `weekly_holiday`
@@ -8590,6 +8802,12 @@ ALTER TABLE `position`
   ADD PRIMARY KEY (`pos_id`);
 
 --
+-- Indexes for table `price_schedules`
+--
+ALTER TABLE `price_schedules`
+  ADD PRIMARY KEY (`ScheduleID`);
+
+--
 -- Indexes for table `production`
 --
 ALTER TABLE `production`
@@ -9094,7 +9312,7 @@ ALTER TABLE `weekly_holiday`
 -- AUTO_INCREMENT for table `accesslog`
 --
 ALTER TABLE `accesslog`
-  MODIFY `sl_no` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1324;
+  MODIFY `sl_no` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1343;
 
 --
 -- AUTO_INCREMENT for table `acc_account_name`
@@ -9136,7 +9354,7 @@ ALTER TABLE `acn_account_transaction`
 -- AUTO_INCREMENT for table `add_ons`
 --
 ALTER TABLE `add_ons`
-  MODIFY `add_on_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `add_on_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `add_on_ingr_dtls`
@@ -9154,7 +9372,7 @@ ALTER TABLE `award`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `bill_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `bill_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `bill_card_payment`
@@ -9238,7 +9456,7 @@ ALTER TABLE `candidate_workexperience`
 -- AUTO_INCREMENT for table `cart_selected_modifiers`
 --
 ALTER TABLE `cart_selected_modifiers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `check_addones`
@@ -9280,7 +9498,7 @@ ALTER TABLE `customer_membership_map`
 -- AUTO_INCREMENT for table `customer_order`
 --
 ALTER TABLE `customer_order`
-  MODIFY `order_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `customer_type`
@@ -9424,7 +9642,7 @@ ALTER TABLE `item_category`
 -- AUTO_INCREMENT for table `item_foods`
 --
 ALTER TABLE `item_foods`
-  MODIFY `ProductsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `ProductsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `itxn`
@@ -9478,7 +9696,7 @@ ALTER TABLE `membership`
 -- AUTO_INCREMENT for table `menu_add_on`
 --
 ALTER TABLE `menu_add_on`
-  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `menu_group_modifiers`
@@ -9514,7 +9732,7 @@ ALTER TABLE `modifiers`
 -- AUTO_INCREMENT for table `modifier_groups`
 --
 ALTER TABLE `modifier_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `module`
@@ -9544,7 +9762,7 @@ ALTER TABLE `multipay_bill`
 -- AUTO_INCREMENT for table `ordered_menu_item_modifiers`
 --
 ALTER TABLE `ordered_menu_item_modifiers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_item_modifiers`
@@ -9556,7 +9774,7 @@ ALTER TABLE `order_item_modifiers`
 -- AUTO_INCREMENT for table `order_menu`
 --
 ALTER TABLE `order_menu`
-  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `row_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `paymentsetup`
@@ -9601,10 +9819,16 @@ ALTER TABLE `position`
   MODIFY `pos_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `price_schedules`
+--
+ALTER TABLE `price_schedules`
+  MODIFY `ScheduleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT for table `production`
 --
 ALTER TABLE `production`
-  MODIFY `productionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `productionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT for table `production_details`
@@ -9616,7 +9840,7 @@ ALTER TABLE `production_details`
 -- AUTO_INCREMENT for table `promotion_main_modifiers`
 --
 ALTER TABLE `promotion_main_modifiers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `promotion_other_modifiers`
@@ -9760,7 +9984,7 @@ ALTER TABLE `subscribe_emaillist`
 -- AUTO_INCREMENT for table `sub_order`
 --
 ALTER TABLE `sub_order`
-  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sub_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -9784,7 +10008,7 @@ ALTER TABLE `synchronizer_setting`
 -- AUTO_INCREMENT for table `table_details`
 --
 ALTER TABLE `table_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `table_setting`
@@ -9826,7 +10050,7 @@ ALTER TABLE `tbl_billingaddress`
 -- AUTO_INCREMENT for table `tbl_cancelitem`
 --
 ALTER TABLE `tbl_cancelitem`
-  MODIFY `cancelid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cancelid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_card_terminal`
@@ -10072,7 +10296,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `variant`
 --
 ALTER TABLE `variant`
-  MODIFY `variantid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `variantid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `waste_management`
@@ -10115,12 +10339,6 @@ ALTER TABLE `menu_modifier_groups`
 --
 ALTER TABLE `modifiers`
   ADD CONSTRAINT `modifiers_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `modifier_groups` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `stock_adjustments`
---
-ALTER TABLE `stock_adjustments`
-  ADD CONSTRAINT `stock_adjustments_ibfk_1` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `waste_management_items`

@@ -18,6 +18,7 @@
         $total = $orderinfo->totalamount;
         $pdiscount = 0;
         $discount = 0;
+        $modEachItemTotal=$modGrandTotal=0;
         $multiplletax = array();
         //Fetching modifiers info
         $this->db->select('a.add_on_name, a.price, om.menu_id');
@@ -28,7 +29,40 @@
         $orderedMods=$q1->result();
         // $data['orderedMods']=$orderedMods;
         foreach ($iteminfo as $item) {
+          $modEachItemTotal = 0;
           $i++;
+          $this->db->select('add_ons.add_on_name, add_ons.price');
+          $this->db->from('add_ons');
+          $this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=add_ons.add_on_id');
+          $this->db->where('ordered_menu_item_modifiers.menu_id',$item->menu_id);
+          $this->db->where('ordered_menu_item_modifiers.foods_or_mods', 2);
+          $this->db->where('ordered_menu_item_modifiers.is_active', 1);
+          $this->db->where('DATE(ordered_menu_item_modifiers.created_at)',date('Y-m-d'));
+          $this->db->where('ordered_menu_item_modifiers.order_id',$orderid);
+          $q1 = $this->db->get();
+          $selectedModsForCart = $q1->result();
+          $this->db->select('item_foods.ProductName AS food_name');
+          $this->db->from('item_foods');
+          $this->db->join('ordered_menu_item_modifiers', 'ordered_menu_item_modifiers.add_on_id=item_foods.ProductsID');
+          $this->db->where('ordered_menu_item_modifiers.menu_id',$item->menu_id);
+          $this->db->where('ordered_menu_item_modifiers.foods_or_mods', 1);
+          $this->db->where('ordered_menu_item_modifiers.is_active', 1);
+          $this->db->where('DATE(ordered_menu_item_modifiers.created_at)',date('Y-m-d'));
+          $this->db->where('ordered_menu_item_modifiers.order_id',$orderid);
+          $q2 = $this->db->get();
+          $selectedFoodsForCart = $q2->result();
+
+          if (count($selectedModsForCart)>0):
+                foreach ($selectedModsForCart as $smk => $smv):
+                  $modEachItemTotal += $smv->price;
+                endforeach;
+          endif;
+          if (count($selectedFoodsForCart)>0):
+                foreach ($selectedFoodsForCart as $smk => $smv):
+                  $modEachItemTotal += $smv->price;
+                endforeach;
+          endif;
+
           if ($item->isgroup == 1) {
             $isgroupidp = 1;
             $isgroup = $item->menu_id;
@@ -96,11 +130,50 @@
             $text = '';
           }
           $totalamount = $totalamount + $nittotal;
+          $modGrandTotal += $modEachItemTotal;
+          $itemprice = $itemprice + $modEachItemTotal;
           $subtotal = $subtotal + $nittotal + $itemprice;
         ?>
           <tr>
             <td>
-              <?php echo $item->ProductName; ?><?php echo $text; ?> <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id; ?>','<?php echo $item->notes; ?>',<?php echo $item->order_id; ?>,1,<?php echo $isgroup; ?>)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+              <?php echo $item->ProductName; ?><?php echo $text; ?> 
+              <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id; ?>','<?php echo $item->notes; ?>',<?php echo $item->order_id; ?>,1,<?php echo $isgroup; ?>)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+              <?php
+              if (count($selectedFoodsForCart)>0):
+                foreach ($selectedFoodsForCart as $smk => $smv):
+                  // $modEachItemTotal += $smv->price;
+              ?>
+                      <br />
+                      <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
+              <?php
+                endforeach;
+              endif;
+
+              if (count($selectedModsForCart)>0):
+                foreach ($selectedModsForCart as $smk => $smv):
+                  // $modEachItemTotal += $smv->price;
+                  if($smv->foods_or_mods == 1):
+                      $smv->add_on_name = $smv->add_on_name . ' (Food)';
+              ?>
+                      <br />
+                      <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+              <?php 
+                  else:
+                      $smv->add_on_name = $smv->add_on_name;
+              ?>
+                      <br />
+                      <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+              <?php
+                    endif;
+                endforeach;
+              endif;
+              if (count($selectedModsForCart) == 0 && count($selectedFoodsForCart) == 0):
+              ?>
+                      <br />
+                      <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">+ Modifiers</small>
+              <?php
+              endif;
+              ?>
             </td>
             <td>
               <?php echo $item->variantName; ?>
@@ -226,6 +299,8 @@
             }
           }
         }
+        $modGrandTotal+= $modEachItemTotal;
+        $subtotal = $subtotal + $modEachItemTotal;
         $itemtotal = $subtotal - $pdiscount;
         if (empty($taxinfos)) {
           if ($settinginfo->vat > 0) {

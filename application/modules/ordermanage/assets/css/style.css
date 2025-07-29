@@ -394,8 +394,10 @@
 	font-weight:bold;
 } */
 
-.listcatnew {
-    background: #FC8019;;
+.listcatnew,
+.listcat
+ {
+    background: #FC8019;
         color: #fff;
     cursor: pointer;
     padding: 5px;

@@ -55,26 +55,35 @@ $ptdiscount = 0; ?>
     </div>
   </div>
 </div>
+<div class="modal fade" id="mealDealSubModListModal" tabindex="-1" role="dialog" aria-labelledby="mealDealSubModListModalLabel" style="z-index: 10000 !important;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title" id="mealDealSubModListModalLabel"><?="Select Modifiers";?></h5>
+      </div>
+      <div class="modal-body pd-15"></div>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="vieworder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h5 class="modal-title" id="exampleModalLabel"><?php echo display('foodnote') ?></h5>
-
       </div>
       <div class="modal-body pd-15">
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label class="control-label" for="user_email"><?php echo display('foodnote') ?></label>
+              <label class="control-label" for="user_email"><?=display('foodnote');?></label>
               <textarea cols="45" rows="3" id="foodnote" class="form-control" name="foodnote"></textarea>
               <input name="foodqty" id="foodqty" type="hidden" />
               <input name="foodgroup" id="foodgroup" type="hidden" />
               <input name="foodid" id="foodid" type="hidden" />
               <input name="foodvid" id="foodvid" type="hidden" />
               <input name="foodcartid" id="foodcartid" type="hidden" />
-
             </div>
           </div>
           <div class="col-md-4">
@@ -765,6 +774,7 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="cartmodifiersaveurl" value="<?php echo base_url("ordermanage/order/cartmodifiersave") ?>" />
                 <input name="url" type="hidden" id="cartPromoFoodModifierSaveUrl" value="<?php echo base_url("ordermanage/order/cartPromoFoodModifierSave") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
+                <input name="url" type="hidden" id="modifierCheckUrl" value="<?php echo base_url("ordermanage/order/modifierCheck") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
                 <input name="ctype" type="hidden" id="ctype" value="<?=$ctype;?>" />
                 <input name="foods_or_mods" type="hidden" id="foods_or_mods" value="2" />
@@ -983,8 +993,6 @@ foreach ($scan as $file) {
             // Always initialize select2 first
             //$('#waiter').select2();
             //alert(isAdmin);
-
-
             if (isAdmin == 1) {
                 // Admin: show select
                 $('.waiter_select').show();
@@ -1206,7 +1214,7 @@ foreach ($scan as $file) {
                                             // echo "</pre><br />";
                                             // echo "Query: ".$this->db->last_query();
                                             ?>
-                                            <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+                                            <a class="serach pl-15" onclick="itemnote('<?=$item['rowid'];?>','<?=$item['itemnote'];?>',<?=$item['qty'];?>,2)" title="<?=display('foodnote');?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
                                             <?php 
                                               if (count($modifiers) > 0):
                                                 $this->db->select('add_ons.add_on_name, add_ons.price');
