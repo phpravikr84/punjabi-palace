@@ -753,7 +753,6 @@ foreach ($scan as $file) {
             <div class="col-sm-12 col-md-12">
               <div class="panel">
                 <input name="url" type="hidden" id="posurl" value="<?php echo base_url("ordermanage/order/getitemlist") ?>" />
-                <input name="url" type="hidden" id="possuburl" value="<?php echo base_url("ordermanage/order/getsubitemlist") ?>" />
                 <input name="url" type="hidden" id="posBanqurl" value="<?php echo base_url("ordermanage/order/getBanqitemlist") ?>" />
                 <input name="url" type="hidden" id="posPromoDealurl" value="<?php echo base_url("ordermanage/order/getPromoDealsItemlist") ?>" />
                 <input name="url" type="hidden" id="GetPromoFoodsForCart" value="<?php echo base_url("ordermanage/order/getPromoFoodsForCart") ?>" />
@@ -788,34 +787,28 @@ foreach ($scan as $file) {
                           <div class="slimScrollDiv">
                             <div class="product-category">
                               <div class="listcatnew" onclick="getslcategory('')"><?php echo display('all') ?> </div>
-                              <?php
-                                  function renderCategory($categories, $level = 0) {
-                                        foreach ($categories as $category) {
-                                            $hasSub = !empty($category->sub);
-                                            $indent = str_repeat('&nbsp;&nbsp;', $level); // Visual indent for hierarchy
-                                            // Determine if this is a child category (level >= 2)
-                                            $isChild = $level >= 2;
-                                            // Choose the appropriate function based on level
-                                            $clickFunction = $isChild ? 'getslsubcategory' : 'getslcategory';
-                                    ?>
-                                            <div class="listcatnew cat-nav<?php echo $hasSub ? '2 pos-category' : ' pos-category'; ?>">
-                                                <a class="btn listcatnew <?php echo $hasSub ? 'listcat2 pos-category-sub' : ''; ?>" 
-                                                  onclick="<?php echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
-                                                  <?php echo $hasSub ? 'data-toggle="newtcat' . $category->CategoryID . '"' : ''; ?>>
-                                                    <?php echo $indent . htmlspecialchars($category->Name); ?>
-                                                    <?php echo $hasSub ? '<span class="caret"></span>' : ''; ?>
-                                                </a>
-                                                <?php if ($hasSub) { ?>
-                                                    <ul class="dropdown-menucat dropcat display-none" id="newtcat<?php echo $category->CategoryID; ?>">
-                                                        <?php renderCategory($category->sub, $level + 1); ?>
-                                                    </ul>
-                                                <?php } ?>
-                                            </div>
-                                    <?php
-                                        }
-                                    }
-                                    renderCategory($allcategorylist);
-                                  ?>
+                              <?php //$result = array_diff($categorylist, array("Select Food Category"));
+                              foreach ($allcategorylist as $category) {
+                                if (!empty($category->sub)) {
+                              ?>
+                                  <div class="listcatnew cat-nav2 pos-category">
+                                    <a class="btn listcatnew listcat2 pos-category-sub">
+                                      <?php echo $category->Name; ?>
+                                      <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menucat dropcat display-none" id="newtcat<?php echo $subcat->CategoryID; ?>">
+                                      <?php foreach ($category->sub as $subcat) { ?>
+                                        <li class="lip-2 border-bottom-white"><a onclick="getslcategory(<?php echo $subcat->CategoryID; ?>)"><?php echo $subcat->Name; ?></a></li>
+                                      <?php } ?>
+                                    </ul>
+
+
+                                  </div>
+                                <?php } else { ?>
+
+                                  <div class="listcatnew cat-nav pos-category" onclick="getslcategory(<?php echo $category->CategoryID; ?>)"><?php echo $category->Name; ?></div>
+                              <?php  }
+                              } ?>
                               <!-- Banquet Menu URL [start] -->
                               <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory()">Banquet</div>
                               <!-- Banquet Menu URL [end] -->

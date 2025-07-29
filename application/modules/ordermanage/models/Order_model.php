@@ -811,6 +811,78 @@ class Order_model extends CI_Model
 		}
 		return $output;
 	}
+	public function searchsubprod($cid = null, $pname = null)
+	{
+		if (!empty($cid)) {
+			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->get()->row();
+			$catids = $cid;
+			if ($catinfo->parentid > 0) {
+				$catids = $cid . ',' . $catinfo->parentid;
+			}
+		} else {
+			$catids = "";
+		}
+		$catcontition = "SubCategoryID IN($catids)";
+		$this->db->select('*');
+		$this->db->from('item_foods');
+		if (!empty($cid)) {
+			$this->db->where($catcontition);
+		}
+		if (!empty($pname)) {
+			$this->db->like('ProductName', $pname);
+		}
+		$this->db->where('isgroup', null);
+		$this->db->where('ProductsIsActive', 1);
+		$query = $this->db->get();
+		$itemlist = $query->result();
+		// echo $this->db->last_query();
+		$output = array();
+		if (!empty($itemlist)) {
+			$k = 0;
+			foreach ($itemlist as $items) {
+				$productionInfo= $this->db->select("production.itemid")->from('production')->where('production.itemid', $items->ProductsID)->get()->row();
+				if (!empty($productionInfo)) {
+					$varientinfo = $this->db->select("variant.*,count(menuid) as totalvarient")->from('variant')->where('menuid', $items->ProductsID)->get()->row();
+					if (!empty($varientinfo)) {
+						$output[$k]['variantid'] = $varientinfo->variantid;
+						$output[$k]['totalvarient'] = $varientinfo->totalvarient;
+						$output[$k]['variantName'] = $varientinfo->variantName;
+						$output[$k]['price'] = $varientinfo->price;
+					} else {
+						$output[$k]['variantid'] = '';
+						$output[$k]['totalvarient'] = 0;
+						$output[$k]['variantName'] = '';
+						$output[$k]['price'] = '';
+					}
+					$output[$k]['ProductsID'] = $items->ProductsID;
+					$output[$k]['CategoryID'] = $items->CategoryID;
+					$output[$k]['ProductName'] = $items->ProductName;
+					$output[$k]['ProductImage'] = $items->ProductImage;
+					$output[$k]['bigthumb'] = $items->bigthumb;
+					$output[$k]['medium_thumb'] = $items->medium_thumb;
+					$output[$k]['small_thumb'] = $items->small_thumb;
+					$output[$k]['component'] = $items->component;
+					$output[$k]['descrip'] = $items->descrip;
+					$output[$k]['itemnotes'] = $items->itemnotes;
+					$output[$k]['menutype'] = $items->menutype;
+					$output[$k]['productvat'] = $items->productvat;
+					$output[$k]['special'] = $items->special;
+					$output[$k]['OffersRate'] = $items->OffersRate;
+					$output[$k]['offerIsavailable'] = $items->offerIsavailable;
+					$output[$k]['offerstartdate'] = $items->offerstartdate;
+					$output[$k]['offerendate'] = $items->offerendate;
+					$output[$k]['Position'] = $items->Position;
+					$output[$k]['kitchenid'] = $items->kitchenid;
+					$output[$k]['isgroup'] = $items->isgroup;
+					$output[$k]['is_customqty'] = $items->is_customqty;
+					$output[$k]['cookedtime'] = $items->cookedtime;
+					$output[$k]['ProductsIsActive'] = $items->ProductsIsActive;
+					$k++;
+				}
+			}
+		}
+		return $output;
+	}
 	public function getuniqeproduct($pid = null)
 	{
 		$this->db->select('item_foods.*,variant.variantid,variant.variantName,variant.price');

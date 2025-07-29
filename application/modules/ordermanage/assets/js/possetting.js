@@ -181,6 +181,28 @@
           }
       });
   }
+  function getslsubcategory(carid) {
+      var product_name = $('#product_name').val();
+      var csrf = $('#csrfhashresarvation').val();
+      var category_id = carid;
+      var myurl = $('#possuburl').val();
+      $.ajax({
+          type: "post",
+          async: false,
+          url: myurl,
+          data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+          success: function(data) {
+              if (data == '420') {
+                  $("#product_search").html('Product not found !');
+              } else {
+                  $("#product_search").html(data);
+              }
+          },
+          error: function() {
+              alert(lang.req_failed);
+          }
+      });
+  }
   function getBanqcategory() {
       var product_name = $('#product_name').val();
       var csrf = $('#csrfhashresarvation').val();
@@ -1102,7 +1124,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
           placeholder: lang.sl_product,
           minimumInputLength: 1,
           ajax: {
-              url: 'getitemlistdroup',
+              url: baseurl+'/ordermanage/order/getitemlistdroup',
               dataType: 'json',
               delay: 250,
               //data:{csrf_test_name:basicinfo.csrftokeng},
@@ -1271,6 +1293,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
                   url: myurl,
                   data: { csrf_test_name: csrf },
                   success: function(data) {
+                    console.log('Data' +  data);
                       $('.addonsinfo').html(data);
                       $('#edit').modal('show');
                       var totalitem = $('#totalitem').val();
@@ -1284,7 +1307,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
                       $('#getitemp').val(totalitem);
                       $('#invoice_discount').val(discount);
                       if(basicinfo.isvatinclusive==1){
-						$('#caltotal').text(tgtotal-tax);  
+						$('#caltotal').text(tgtotal-tax);
 					  }else{
 					    $('#caltotal').text(tgtotal);
 					  }

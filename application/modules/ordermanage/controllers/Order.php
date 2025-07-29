@@ -381,6 +381,31 @@ class Order extends MX_Controller
 			echo 420;
 		}
 	}
+	public function getsubitemlist()
+	{
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$data['title'] = display('supplier_edit');
+		$prod = $this->input->post('product_name', true);
+		$isuptade = $this->input->post('isuptade', true);
+		$catid = $this->input->post('category_id');
+		$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		if (!empty($getproduct)) {
+			$data['itemlist'] = $getproduct;
+			$data['module'] = "ordermanage";
+			if ($isuptade == 1) {
+				$data['page']   = "getfoodlistup";
+				$this->load->view('ordermanage/getfoodlistup', $data);
+			} else {
+				$data['page']   = "getfoodlist";
+				$this->load->view('ordermanage/getfoodlist', $data);
+			}
+		} else {
+			echo 420;
+		}
+	}
 	public function getBanqitemlist()
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
