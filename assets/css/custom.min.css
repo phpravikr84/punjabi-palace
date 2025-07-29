@@ -4134,7 +4134,7 @@ pre .arg {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    background-image: url(../img/profile-bg.jpg);
+    /* background-image: url(../img/profile-bg.jpg); */
     padding: 30px 15px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px

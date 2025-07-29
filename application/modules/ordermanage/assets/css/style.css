@@ -397,17 +397,21 @@
 .listcatnew,
 .listcat
  {
-    background: #FC8019;
-        color: #fff;
+        /* color: #fff; */
+    /* background: #FC8019; */
+    color: #484141;
     cursor: pointer;
     padding: 5px;
     margin-bottom: 5px;
     text-align: center;
     /* font-size: 14px; */
     font-size: 12px;
-	font-weight:bold;
+    font-weight: bold;
     border-radius: 5px;
-    border: 1px solid #FC8019;
+    /* border: 1px solid #FC8019; */
+}
+a.btn.listcatnew:hover {
+    color: #FC8019 !important;
 }
 
 .seelist{position:relative;}

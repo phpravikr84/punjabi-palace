@@ -650,7 +650,7 @@ small.modifier-sec-sub-heading
 }
 @media (min-width: 992px) {
     .cat-nav .dropdown-menu, .cat-nav2 .dropdown-menucat {
-        background-color: #e5e5e5 !important;
+        background-color: #ffffff !important;
         margin-top: 5px !important;
     }
     .cat-nav .dropdown-menu > li > a, .cat-nav2 .dropdown-menucat > li > a {

@@ -129,7 +129,7 @@ if ($recipe_feature_flag == 1) {
     <input type="hidden" name="currModCount" id="currModCount" value="<?=$modQty;?>">
     <input type="hidden" name="modVarItemNameCont" id="modVarItemNameCont" value="<?=$item->ProductName;?>">
       <?php 
-      if (count($modifiers)>0):
+      if (isset($modifiers) && count($modifiers)>0):
       ?>
       <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
       <?php

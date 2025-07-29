@@ -182,6 +182,28 @@ let selectedDealSubMods = [];
           }
       });
   }
+  function getslsubcategory(carid) {
+      var product_name = $('#product_name').val();
+      var csrf = $('#csrfhashresarvation').val();
+      var category_id = carid;
+      var myurl = $('#possuburl').val();
+      $.ajax({
+          type: "post",
+          async: false,
+          url: myurl,
+          data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+          success: function(data) {
+              if (data == '420') {
+                  $("#product_search").html('Product not found !');
+              } else {
+                  $("#product_search").html(data);
+              }
+          },
+          error: function() {
+              alert(lang.req_failed);
+          }
+      });
+  }
   function getBanqcategory() {
     var product_name = $('#product_name').val();
     var csrf = $('#csrfhashresarvation').val();
@@ -1311,7 +1333,7 @@ function selectMealDealSubMods(menu_id) {
           placeholder: lang.sl_product,
           minimumInputLength: 1,
           ajax: {
-              url: 'getitemlistdroup',
+              url: baseurl+'/ordermanage/order/getitemlistdroup',
               dataType: 'json',
               delay: 250,
               //data:{csrf_test_name:basicinfo.csrftokeng},
@@ -1331,7 +1353,7 @@ function selectMealDealSubMods(menu_id) {
 
       /*all ongoingorder product as ajax*/
       $(document).on('click', '#ongoingorder', function() {
-          var url = 'getongoingorder';
+          var url = baseurl+'ordermanage/order/getongoingorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1345,7 +1367,7 @@ function selectMealDealSubMods(menu_id) {
       });
       /*all ongoingorder product as ajax*/
       $(document).on('click', '#kitchenorder', function() {
-          var url = 'kitchenstatus';
+          var url = baseurl+'ordermanage/order/kitchenstatus';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1361,7 +1383,7 @@ function selectMealDealSubMods(menu_id) {
       });
       /*all todayorder product as ajax*/
       $(document).on('click', '#todayorder', function() {
-          var url = 'showtodayorder';
+          var url = baseurl+'ordermanage/order/showtodayorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1378,7 +1400,7 @@ function selectMealDealSubMods(menu_id) {
       /*all todayorder product as ajax*/
       $(document).on('click', '#todayonlieorder', function() {
 
-          var url = 'showonlineorder';
+          var url = baseurl+'ordermanage/order/showonlineorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1395,7 +1417,7 @@ function selectMealDealSubMods(menu_id) {
       /*all todayorder product as ajax*/
       $(document).on('click', '#todayqrorder', function() {
 
-          var url = 'showqrorder';
+          var url = baseurl+'ordermanage/order/showqrorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1415,7 +1437,7 @@ function selectMealDealSubMods(menu_id) {
   "use strict";
   $(document).on('change', '#ongoingtable_name', function() {
       var id = $(this).children("option:selected").val();
-      var url = 'getongoingorder' + '/' + id;
+      var url = baseurl+'ordermanage/order/getongoingorder' + '/' + id;
       var csrf = $('#csrfhashresarvation').val();
       $.ajax({
           type: "GET",
@@ -1432,7 +1454,7 @@ function selectMealDealSubMods(menu_id) {
   });
   $(document).on('change', '#ongoingtable_sr', function() {
       var id = $(this).children("option:selected").val();
-      var url = 'getongoingorder' + '/' + id + '/table';
+      var url = baseurl+'ordermanage/order/getongoingorder' + '/' + id + '/table';
       var csrf = $('#csrfhashresarvation').val();
       $.ajax({
           type: "GET",
@@ -1454,7 +1476,7 @@ function selectMealDealSubMods(menu_id) {
       var idvid = tid.split('-');
       var id = idvid[0];
       var vid = idvid[1];
-      var url = 'srcposaddcart' + '/' + id;
+      var url = baseurl+'ordermanage/order/srcposaddcart' + '/' + id;
       var csrf = $('#csrfhashresarvation').val();
       /*check production*/
       /*please fixt count total counting*/
@@ -1474,12 +1496,13 @@ function selectMealDealSubMods(menu_id) {
           url: url,
           data: { csrf_test_name: csrf },
           success: function(data) {
-              var myurl = "adonsproductadd" + '/' + id;
+              var myurl = baseurl+"ordermanage/order/adonsproductadd" + '/' + id;
               $.ajax({
                   type: "GET",
                   url: myurl,
                   data: { csrf_test_name: csrf },
                   success: function(data) {
+                    console.log('Data' +  data);
                       $('.addonsinfo').html(data);
                       $('#edit').modal('show');
                       var totalitem = $('#totalitem').val();
@@ -1493,7 +1516,7 @@ function selectMealDealSubMods(menu_id) {
                       $('#getitemp').val(totalitem);
                       $('#invoice_discount').val(discount);
                       if(basicinfo.isvatinclusive==1){
-						$('#caltotal').text(tgtotal-tax);  
+						$('#caltotal').text(tgtotal-tax);
 					  }else{
 					    $('#caltotal').text(tgtotal);
 					  }

@@ -450,14 +450,94 @@ class Reservation extends MX_Controller {
 			$data['page']   = "chart";
 			echo Modules::run('template/layout', $data); 
 		}
-public function notification(){
-			$notify=$this->db->select("*")->from('tblreservation')->where('notif',0)->get()->num_rows();
+/**
+ *  Cron Job for price schedule notification
+ * This function checks for unseen reservations and returns the count.
+ * 
+ */ public function check_effective_date() {
+        $currentDate = date('Y-m-d');
+        $currentDateTime = date('Y-m-d H:i:s');
+        
+        // Fetch schedules where EffectiveDate is today, is_enabled is 1, cron_run_datetime is NULL, and not yet processed
+        $this->db->where('EffectiveDate', $currentDate);
+        $this->db->where('is_enabled', 1);
+        $this->db->where('cron_run_datetime IS NULL', NULL, FALSE);
+        $this->db->where('schedule_flag', 0);
+        $query = $this->db->get('price_schedules');
+        
+        if ($query->num_rows() == 0) {
+            return ['success' => true, 'message' => 'No price schedules to process for date: ' . $currentDate];
+        }
+
+        foreach ($query->result_array() as $schedule) {
+            $items = json_decode($schedule['Items'], true);
+            if (json_last_error() !== JSON_ERROR_NONE || !is_array($items)) {
+                return ['success' => false, 'message' => 'Invalid item data format for ScheduleID: ' . $schedule['ScheduleID']];
+            }
+
+            $priceLevel = $schedule['PriceLevel'];
+            $price_field = $this->get_price_field($priceLevel);
+            if (!$price_field) {
+                return ['success' => false, 'message' => 'Invalid price field for PriceLevel ' . $priceLevel . ' in ScheduleID: ' . $schedule['ScheduleID']];
+            }
+
+            // Update variant table
+            foreach ($items as $item) {
+                if (!isset($item['product_id']) || !isset($item['new_price']) || $item['new_price'] == 0.00) {
+                    continue;
+                }
+
+                $this->db->where('menuid', $item['product_id']);
+                $update_result = $this->db->update('variant', [
+                    $price_field => $item['new_price']
+                ]);
+                if (!$update_result) {
+                    $error = $this->db->error();
+                    return ['success' => false, 'message' => 'Failed to update variant for menuid ' . $item['product_id'] . ' in ScheduleID: ' . $schedule['ScheduleID'] . ': ' . $error['message']];
+                }
+            }
+
+            // Update price_schedules to mark as processed
+            $this->db->where('ScheduleID', $schedule['ScheduleID']);
+            $result = $this->db->update('price_schedules', [
+                'schedule_flag' => 1,
+                'cron_run_datetime' => $currentDateTime
+            ]);
+
+            if (!$result) {
+                $error = $this->db->error();
+                return ['success' => false, 'message' => 'Failed to update price_schedules for ScheduleID: ' . $schedule['ScheduleID'] . ': ' . $error['message']];
+            }
+        }
+
+        return ['success' => true, 'message' => 'Price changes applied successfully for date: ' . $currentDate];
+    }
+
+	private function get_price_field($price_level) {
+        $map = [
+            '1' => 'price',           // Dine In
+            '2' => 'uber_eats_price', // Uber Eats
+            '4' => 'takeaway_price'   // Take Away
+        ];
+        return isset($map[$price_level]) ? $map[$price_level] : null;
+    }
+																
+	public function notification(){
+				$notify=$this->db->select("*")->from('tblreservation')->where('notif',0)->get()->num_rows();
+				
+				// $data = array(
+				// 	'unseen_reservation'  => $notify
+				// );
+			  // Call check_effective_date and get its result
+			$cron_result = $this->check_effective_date();
 			
-			$data = array(
-				'unseen_reservation'  => $notify
-			);
-		echo json_encode($data);
-		}
+			// Combine reservation count and cron result
+			$data = [
+				'unseen_reservation' => $notify,
+				'price_schedule_status' => $cron_result
+			];
+			echo json_encode($data);
+			}
 //restaurant Unavailable Section
 	public function unavailablelist($id=null)
     {

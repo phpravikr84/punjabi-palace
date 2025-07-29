@@ -55,35 +55,26 @@ $ptdiscount = 0; ?>
     </div>
   </div>
 </div>
-<div class="modal fade" id="mealDealSubModListModal" tabindex="-1" role="dialog" aria-labelledby="mealDealSubModListModalLabel" style="z-index: 10000 !important;">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h5 class="modal-title" id="mealDealSubModListModalLabel"><?="Select Modifiers";?></h5>
-      </div>
-      <div class="modal-body pd-15"></div>
-    </div>
-  </div>
-</div>
 <div class="modal fade" id="vieworder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h5 class="modal-title" id="exampleModalLabel"><?php echo display('foodnote') ?></h5>
+
       </div>
       <div class="modal-body pd-15">
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <label class="control-label" for="user_email"><?=display('foodnote');?></label>
+              <label class="control-label" for="user_email"><?php echo display('foodnote') ?></label>
               <textarea cols="45" rows="3" id="foodnote" class="form-control" name="foodnote"></textarea>
               <input name="foodqty" id="foodqty" type="hidden" />
               <input name="foodgroup" id="foodgroup" type="hidden" />
               <input name="foodid" id="foodid" type="hidden" />
               <input name="foodvid" id="foodvid" type="hidden" />
               <input name="foodcartid" id="foodcartid" type="hidden" />
+
             </div>
           </div>
           <div class="col-md-4">
@@ -762,7 +753,6 @@ foreach ($scan as $file) {
             <div class="col-sm-12 col-md-12">
               <div class="panel">
                 <input name="url" type="hidden" id="posurl" value="<?php echo base_url("ordermanage/order/getitemlist") ?>" />
-                <input name="url" type="hidden" id="possuburl" value="<?php echo base_url("ordermanage/order/getsubitemlist") ?>" />
                 <input name="url" type="hidden" id="posBanqurl" value="<?php echo base_url("ordermanage/order/getBanqitemlist") ?>" />
                 <input name="url" type="hidden" id="posPromoDealurl" value="<?php echo base_url("ordermanage/order/getPromoDealsItemlist") ?>" />
                 <input name="url" type="hidden" id="GetPromoFoodsForCart" value="<?php echo base_url("ordermanage/order/getPromoFoodsForCart") ?>" />
@@ -775,7 +765,6 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="cartmodifiersaveurl" value="<?php echo base_url("ordermanage/order/cartmodifiersave") ?>" />
                 <input name="url" type="hidden" id="cartPromoFoodModifierSaveUrl" value="<?php echo base_url("ordermanage/order/cartPromoFoodModifierSave") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
-                <input name="url" type="hidden" id="modifierCheckUrl" value="<?php echo base_url("ordermanage/order/modifierCheck") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
                 <input name="ctype" type="hidden" id="ctype" value="<?=$ctype;?>" />
                 <input name="foods_or_mods" type="hidden" id="foods_or_mods" value="2" />
@@ -798,34 +787,28 @@ foreach ($scan as $file) {
                           <div class="slimScrollDiv">
                             <div class="product-category">
                               <div class="listcatnew" onclick="getslcategory('')"><?php echo display('all') ?> </div>
-                              <?php
-                                  function renderCategory($categories, $level = 0) {
-                                        foreach ($categories as $category) {
-                                            $hasSub = !empty($category->sub);
-                                            $indent = str_repeat('&nbsp;&nbsp;', $level); // Visual indent for hierarchy
-                                            // Determine if this is a child category (level >= 2)
-                                            $isChild = $level >= 2;
-                                            // Choose the appropriate function based on level
-                                            $clickFunction = $isChild ? 'getslsubcategory' : 'getslcategory';
-                                    ?>
-                                            <div class="listcatnew cat-nav<?php echo $hasSub ? '2 pos-category' : ' pos-category'; ?>">
-                                                <a class="btn listcatnew <?php echo $hasSub ? 'listcat2 pos-category-sub' : ''; ?>" 
-                                                  onclick="<?php echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
-                                                  <?php echo $hasSub ? 'data-toggle="newtcat' . $category->CategoryID . '"' : ''; ?>>
-                                                    <?php echo $indent . htmlspecialchars($category->Name); ?>
-                                                    <?php echo $hasSub ? '<span class="caret"></span>' : ''; ?>
-                                                </a>
-                                                <?php if ($hasSub) { ?>
-                                                    <ul class="dropdown-menucat dropcat display-none" id="newtcat<?php echo $category->CategoryID; ?>">
-                                                        <?php renderCategory($category->sub, $level + 1); ?>
-                                                    </ul>
-                                                <?php } ?>
-                                            </div>
-                                    <?php
-                                        }
-                                    }
-                                    renderCategory($allcategorylist);
-                                  ?>
+                              <?php //$result = array_diff($categorylist, array("Select Food Category"));
+                              foreach ($allcategorylist as $category) {
+                                if (!empty($category->sub)) {
+                              ?>
+                                  <div class="listcatnew cat-nav2 pos-category">
+                                    <a class="btn listcatnew listcat2 pos-category-sub">
+                                      <?php echo $category->Name; ?>
+                                      <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menucat dropcat display-none" id="newtcat<?php echo $subcat->CategoryID; ?>">
+                                      <?php foreach ($category->sub as $subcat) { ?>
+                                        <li class="lip-2 border-bottom-white"><a onclick="getslcategory(<?php echo $subcat->CategoryID; ?>)"><?php echo $subcat->Name; ?></a></li>
+                                      <?php } ?>
+                                    </ul>
+
+
+                                  </div>
+                                <?php } else { ?>
+
+                                  <div class="listcatnew cat-nav pos-category" onclick="getslcategory(<?php echo $category->CategoryID; ?>)"><?php echo $category->Name; ?></div>
+                              <?php  }
+                              } ?>
                               <!-- Banquet Menu URL [start] -->
                               <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory()">Banquet</div>
                               <!-- Banquet Menu URL [end] -->
@@ -1000,6 +983,8 @@ foreach ($scan as $file) {
             // Always initialize select2 first
             //$('#waiter').select2();
             //alert(isAdmin);
+
+
             if (isAdmin == 1) {
                 // Admin: show select
                 $('.waiter_select').show();
@@ -1221,7 +1206,7 @@ foreach ($scan as $file) {
                                             // echo "</pre><br />";
                                             // echo "Query: ".$this->db->last_query();
                                             ?>
-                                            <a class="serach pl-15" onclick="itemnote('<?=$item['rowid'];?>','<?=$item['itemnote'];?>',<?=$item['qty'];?>,2)" title="<?=display('foodnote');?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+                                            <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
                                             <?php 
                                               if (count($modifiers) > 0):
                                                 $this->db->select('add_ons.add_on_name, add_ons.price');

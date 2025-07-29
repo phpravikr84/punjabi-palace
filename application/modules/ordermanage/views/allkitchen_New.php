@@ -1,8 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<!-- Include jQuery Validate JS -->
+<!-- Include Bootstrap 3 CSS and JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/jquery.validate.min.js" type="text/javascript"></script>
+
 <style>
     body {
         font-family: 'Roboto', sans-serif;
@@ -11,20 +15,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     .panel {
         border-radius: 6px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        background: #fff;
     }
     .panel-body {
         padding: 15px;
     }
-    .item-content {
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -10px;
+    }
+    .grid-col {
+        padding: 10px;
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+    .grid-item-content {
         background: #fff;
         border: 1px solid #ddd;
         border-radius: 6px;
         padding: 12px;
         transition: box-shadow 0.2s;
-        height: 100%;
     }
-    .item-content:hover {
+    .grid-item-content:hover {
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .food_item.pending {
@@ -39,22 +51,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         border-bottom: 1px solid #ddd;
     }
     .item_inner {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-        grid-template-rows: repeat(2, auto);   /* 2 rows, height auto */
-        gap: 5px 10px;                          /* space between rows/cols */
-        padding: 10px;
+        flex: 1;
+        min-width: 120px;
+        margin: 5px;
     }
-
     .kf_info {
-        margin: 0;
-        font-size: 14px;
+        font-size: 13px;
+        margin: 3px 0;
         font-weight: 500;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        color: #333;
     }
-
     .cooking_time {
         font-size: 13px;
         text-align: center;
@@ -125,21 +131,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         color: #666;
         padding: 8px;
     }
-    .kitchen-tab .single_item {
-        padding-bottom: 0;
-        border: none;
-        margin-bottom: 0;
-    }
-    .food_item.complete .food_item_top {
-        background: #449b18;
-        color: #fff;
-    }
-    @media (max-width: 991px) {
+    @media (max-width: 992px) {
+        .grid-col {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
         .kf_info {
             font-size: 12px;
         }
     }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
+        .grid-col {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
         .item_inner {
             min-width: 100%;
         }
@@ -159,12 +164,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 col-md-12">
                         <div class="panel">
                             <div class="panel-body">
                                 <div class="form-group row">
                                     <label for="payments" class="col-sm-4 col-form-label"><?php echo display('ordid');?></label>
-                                    <div class="col-sm-7">
+                                    <div class="col-sm-7 customesl">
                                         <span id="canordid"></span>
                                         <input name="mycanorder" id="mycanorder" type="hidden" value="" />
                                         <input name="mycanitem" id="mycanitem" type="hidden" value="" />
@@ -174,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="form-group row">
                                     <label for="canreason" class="col-sm-4 col-form-label"><?php echo display('can_reason');?></label>
-                                    <div class="col-sm-7">
+                                    <div class="col-sm-7 customesl">
                                         <textarea name="canreason" id="canreason" cols="35" rows="3" class="form-control"></textarea>
                                     </div>
                                 </div>
@@ -196,9 +201,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="panel">
         <div class="panel-body">
             <div class="text-right">
-                <a class="d-none" id="fullscreen" href="#"><i class="pe-7s-expand1"></i></a>
+                <a class="display-none" id="fullscreen" href="#"><i class="pe-7s-expand1"></i></a>
                 <a href="<?php echo base_url();?>ordermanage/order/allkitchen" class="btn btn-primary btn-md">
-                    <i class="fa fa-refresh" aria-hidden="true"></i> <?php echo display('ref_page');?>
+                    <i class="fa fa-load-circle" aria-hidden="true"></i> <?php echo display('ref_page');?>
                 </a>
             </div>
             <div class="row kitchen-tab">
@@ -223,16 +228,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 ?>
                                 <div class="tab-pane fade <?php if($k==1){echo "in active";}?>" id="tab<?php echo $k;?>">
                                     <div class="panel-body">
-                                        <div class="row">
+                                        <div class="grid">
+                                            <div class="grid-sizer col-vxs-12 col-xs-6 col-md-4 col-lg-3 col-xlg-4"></div>
                                             <?php if(!empty($kitchenorderinfo['orderlist'])){
                                                 $t=0;
                                                 foreach($kitchenorderinfo['orderlist'] as $orderinfo){
                                                     $t++;
                                                     ?>
-                                                    <div class="col-md-3 col-sm-6 col-12 mb-3" id="singlegrid<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>">
-                                                        <div class="item-content" id="gridcontent<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>">
+                                                    <div class="grid-col col-vxs-12 col-xs-6 col-md-4 col-lg-3 col-xlg-4" id="singlegrid<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>">
+                                                        <div class="grid-item-content" id="gridcontent<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>">
                                                             <?php 
-                                                            $alliteminfo = $this->ordermodel->customerorderkitchen($orderinfo->order_id, $orderinfo->kitchenid);
+                                                            $alliteminfo = $this->order_model->customerorderkitchen($orderinfo->order_id, $orderinfo->kitchenid);
+                                                            // Debug: Check $alliteminfo
+                                                            // echo '<pre>'; print_r($alliteminfo); echo '</pre>'; // Uncomment to debug
                                                             $allcancelitem = $this->ordermodel->customercancelkitchen($orderinfo->order_id, $orderinfo->kitchenid);
                                                             $allchecked2 = "";
                                                             $date_arr = array();
@@ -245,7 +253,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                     ->where('kitchenid', $orderinfo->kitchenid)
                                                                     ->where('itemid', $single->menu_id)
                                                                     ->where('varient', $single->variantid)
-                                                                    ->order_by('orderid', 'desc')
                                                                     ->get()
                                                                     ->num_rows();
                                                                 $allchecked2 .= ($allisexit > 0) ? "1," : "0,";
@@ -253,12 +260,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             }
                                                             $isaccept = (strpos($allchecked2, '0') !== false) ? 0 : 1;
                                                             ?>
-                                                            <div class="food_item <?php if($isaccept==0){ echo "pending";} else { echo "complete"; } ?>" id="topsec<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>">
+                                                            <div class="food_item <?php if($isaccept==0){ echo "pending";}?>" id="topsec<?php echo $orderinfo->order_id.$orderinfo->kitchenid;?>">
                                                                 <div class="food_item_top">
                                                                     <div class="item_inner">
-                                                                        <?php if(isset($orderinfo->tablename) && !empty($orderinfo->tablename)) { ?>
                                                                         <h4 class="kf_info"><?php echo display('table') ?>: <?php echo $orderinfo->tablename;?></h4>
-                                                                        <?php } ?>
                                                                         <h4 class="kf_info"><?php echo $orderinfo->first_name.' '.$orderinfo->last_name;?></h4>
                                                                     </div>
                                                                     <div class="item_inner">
@@ -304,7 +309,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                                 seconds = (seconds < 10) ? '0' + seconds : seconds;
                                                                                 $('.countdown_<?php echo $orderinfo->order_id;echo $c;?>').html(hours+':'+minutes + ':' + seconds);
                                                                                 if (minutes < 0) clearInterval(interval<?php echo $orderinfo->order_id;echo $c;?>);
-                                                                                if ((seconds <= 0 && minutes <= 0)) clearInterval(interval<?php echo $orderinfo->order_id;echo $c;?>);
+                                                                                if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval<?php echo $orderinfo->order_id;echo $c;?>);
                                                                                 timer<?php echo $orderinfo->order_id;echo $c;?> = hours+':'+minutes + ':' + seconds;
                                                                             }, 1000);
                                                                         </script>
@@ -312,7 +317,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                     <?php } else {
                                                                         $st = 0;
                                                                         ?>
-                                                                        <span><?php //echo display('time_over');?></span>
+                                                                        <span><?php echo display('time_over');?></span>
                                                                     <?php } ?>
                                                                 </div>
                                                                 <div class="food_select" id="acceptitem<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
@@ -320,34 +325,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                     $categories = [
                                                                         5 => 'Starters',
                                                                         3 => 'Main Course',
-                                                                        17 => 'Desserts'
+                                                                        17 => 'Sweet Treats'
                                                                     ];
                                                                     $items_by_category = [];
                                                                     if (!empty($alliteminfo)) {
-                                                                        foreach ($alliteminfo as $item) {
-                                                                            $category_id = isset($item->category_id) ? $item->category_id : 0;
-                                                                            if (isset($categories[$category_id])) {
-                                                                                $category_name = $categories[$category_id];
-                                                                            } else {
-                                                                                $category_name = isset($item->cat_name) && !empty($item->cat_name) ? $item->cat_name : 'Unknown';
-                                                                            }
+                                                                        foreach($alliteminfo as $item){
+                                                                            $category_id = isset($item->CategoryID) ? $item->CategoryID : 0;
+                                                                            $category_name = isset($categories[$category_id]) ? $categories[$category_id] : 'Other';
                                                                             $items_by_category[$category_name][] = $item;
                                                                         }
                                                                     }
-                                                                    $display_order = ['Starters', 'Main Course', 'Desserts'];
-                                                                    foreach ($items_by_category as $cat_name => $items) {
-                                                                        if (!in_array($cat_name, $display_order)) {
-                                                                            $display_order[] = $cat_name;
-                                                                        }
-                                                                    }
-                                                                    foreach ($display_order as $cat_name) {
-                                                                        if (!empty($items_by_category[$cat_name])) {
-                                                                            ?>
-                                                                            <div class="category-section">
-                                                                                <div class="category-title"><?php echo htmlspecialchars($cat_name); ?></div>
-                                                                                <?php
+                                                                    // Debug: Check $items_by_category
+                                                                    // echo '<pre>'; print_r($items_by_category); echo '</pre>'; // Uncomment to debug
+                                                                    $display_order = ['Starters', 'Main Course', 'Sweet Treats', 'Other'];
+                                                                    foreach($display_order as $cat_name){
+                                                                        ?>
+                                                                        <div class="category-section">
+                                                                            <div class="category-title"><?php echo $cat_name; ?></div>
+                                                                            <?php
+                                                                            if (!empty($items_by_category[$cat_name])) {
                                                                                 $l = 0;
-                                                                                foreach ($items_by_category[$cat_name] as $item) {
+                                                                                foreach($items_by_category[$cat_name] as $item){
                                                                                     $l++;
                                                                                     $ischecked = $this->db->select('tbl_kitchen_order.*')
                                                                                         ->from('tbl_kitchen_order')
@@ -355,71 +353,72 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                                         ->where('kitchenid', $orderinfo->kitchenid)
                                                                                         ->where('itemid', $item->menu_id)
                                                                                         ->where('varient', $item->variantid)
-                                                                                        ->order_by('orderid', 'desc')
                                                                                         ->get()
                                                                                         ->num_rows();
                                                                                     ?>
-                                                                                    <div class="single_item row">
-                                                                                        <div class="item-dv col-md-9">
-                                                                                            <?php if ($isaccept == 0): ?>
+                                                                                    <div class="single_item">
+                                                                                        <div class="item-dv">
                                                                                             <input id='chkbox-<?php echo $l . $item->kitchenid . $orderinfo->order_id; ?>'
                                                                                                 usemap="<?php echo $orderinfo->order_id; ?>"
                                                                                                 title="<?php echo $item->variantid; ?>"
                                                                                                 alt="<?php echo $isaccept; ?>"
                                                                                                 type='checkbox'
                                                                                                 <?php 
-                                                                                                    if ($ischecked == 1 && $isaccept == 0) { echo "checked disabled"; } 
-                                                                                                    if ($isaccept == 1 && $item->food_status == 1) { echo "checked"; }
+                                                                                                    if($ischecked == 1 && $isaccept == 0){ echo "checked disabled"; } 
+                                                                                                    if($isaccept == 1 && $item->food_status == 1){ echo "checked"; }
                                                                                                 ?>
                                                                                                 class="individual"
                                                                                                 name="item<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>"
                                                                                                 value="<?php echo $item->menu_id; ?>" />
-                                                                                            <?php endif; ?>
                                                                                             <label for='chkbox-<?php echo $l . $item->kitchenid . $orderinfo->order_id; ?>'>
-                                                                                            <?php if ($isaccept == 0): ?>    
-                                                                                            <span class="radio-shape"><i class="fa fa-check"></i></span>
-                                                                                            <?php endif; ?>
+                                                                                                <span class="radio-shape"><i class="fa fa-check"></i></span>
                                                                                                 <div>
-                                                                                                    <span class="d-block"><?php echo htmlspecialchars($item->ProductName); ?></span>
-                                                                                                    <?php if (!empty($item->variantid)) { ?>
-                                                                                                        <span class="item-span"><?php echo htmlspecialchars($item->variantName); ?></span>
+                                                                                                    <span class="display-block"><?php echo $item->ProductName; ?></span>
+                                                                                                    <?php if(!empty($item->variantid)){ ?>
+                                                                                                        <span class="item-span"><?php echo $item->variantName; ?></span>
                                                                                                     <?php } ?>
                                                                                                 </div>
                                                                                             </label>
+                                                                                            <h4 class="quantity"><?php echo $item->menuqty; ?>x</h4>
                                                                                         </div>
-                                                                                        <div class="col-md-3"><h4 class="quantity"><?php echo $item->menuqty; ?>x</h4></div>
-                                                                                        <?php if (!empty($item->add_on_id)) {
+                                                                                        <?php if(!empty($item->add_on_id)){
                                                                                             $addons = explode(",", $item->add_on_id);
                                                                                             $addonsqty = explode(",", $item->addonsqty);
                                                                                             $p = 0;
                                                                                             ?>
                                                                                             <div>
                                                                                                 <?php 
-                                                                                                foreach ($addons as $addonsid) {
+                                                                                                foreach($addons as $addonsid){
                                                                                                     $adonsinfo = $this->ordermodel->read('*', 'add_ons', array('add_on_id' => $addonsid));
-                                                                                                    echo !empty($adonsinfo) ? htmlspecialchars($adonsinfo->add_on_name) . " (" . $addonsqty[$p] . "), " : '';
+                                                                                                    echo !empty($adonsinfo) ? $adonsinfo->add_on_name . " (" . $addonsqty[$p] . "), " : '';
                                                                                                     $p++;
                                                                                                 }
                                                                                                 ?>
                                                                                             </div>
                                                                                         <?php } ?>
-                                                                                        <?php if (!empty($item->notes)) { ?>
-                                                                                            <div><strong>Notes:</strong> <?php echo htmlspecialchars($item->notes); ?></div>
+                                                                                        <?php if(!empty($item->notes)){ ?>
+                                                                                            <div><strong>Notes:</strong> <?php echo $item->notes; ?></div>
                                                                                         <?php } ?>
                                                                                     </div>
                                                                                 <?php } ?>
-                                                                            </div>
-                                                                        <?php } ?>
-                                                                    <?php } ?>
-                                                                    <?php if (!empty($allcancelitem)) { ?>
+                                                                            <?php } else { ?>
+                                                                                <div class="no-items">No items in this category</div>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                        <?php
+                                                                    }
+                                                                    if(!empty($allcancelitem)){
+                                                                        ?>
                                                                         <div class="category-section">
                                                                             <div class="category-title">Cancelled Items</div>
-                                                                            <?php foreach ($allcancelitem as $cancelitem) { ?>
+                                                                            <?php
+                                                                            foreach($allcancelitem as $cancelitem){
+                                                                                ?>
                                                                                 <div class="single_item bgkitchen">
                                                                                     <div class="item-dv">
                                                                                         <div>
-                                                                                            <h4 class="quantity"><?php echo htmlspecialchars($cancelitem->ProductName); ?></h4>
-                                                                                            <span class="item-span"><?php echo htmlspecialchars($cancelitem->variantName); ?></span>
+                                                                                            <h4 class="quantity"><?php echo $cancelitem->ProductName; ?></h4>
+                                                                                            <span class="item-span"><?php echo $cancelitem->variantName; ?></span>
                                                                                         </div>
                                                                                         <h4 class="quantity"><?php echo $cancelitem->quantity; ?>x</h4>
                                                                                     </div>
@@ -430,8 +429,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                     <?php if (empty($alliteminfo) && empty($allcancelitem)) { ?>
                                                                         <div class="no-items">No items found for this order</div>
                                                                     <?php } ?>
-                                                                    <div class="d-flex justify-content-between align-items-center">
-                                                                        <?php if ($isaccept == 0): ?>   
+                                                                    <div class="align-center justify-between">
                                                                         <div class="checkAll">
                                                                             <input id='allSelect<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>'
                                                                                 name="item<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>"
@@ -441,22 +439,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                                 <?php echo display('all'); ?>
                                                                             </label>
                                                                         </div>
-                                                                        <?php endif; ?>
-                                                                        <?php if ($user_is_waiter && $isaccept == 1): ?>
-                                                                            <div class="d-block" id="isprepare<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
-                                                                                <button class="btn btn-success lh-30" style="margin-left:15px;"
+                                                                        <?php if($user_is_waiter && $isaccept == 1): ?>
+                                                                            <div class="display-block" id="isprepare<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
+                                                                                <button class="btn btn-success w-smd lh-30"
                                                                                         onclick="onprepare(<?php echo $orderinfo->order_id; ?>, <?php echo $orderinfo->kitchenid; ?>)">
                                                                                     <?php echo 'Pickup'; ?>
                                                                                 </button>
                                                                                 <p class="text-success" style="margin-top:10px; font-weight:800;">Ready to pickup.</p>
                                                                             </div>
-                                                                        <?php elseif ($user_is_waiter && $isaccept == 0): ?>
-                                                                            <div class="d-block" id="isprepare<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
+                                                                        <?php elseif($user_is_waiter && $isaccept == 0): ?>
+                                                                            <div class="display-block" id="isprepare<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
                                                                                 <small><img src="<?php echo base_url('assets/img/pot.gif'); ?>" width="40" alt="Pot Image"></small>
                                                                             </div>
-                                                                        <?php elseif (!$user_is_waiter && $isaccept == 0): ?>
-                                                                            <div class="d-block" id="isongoing<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
-                                                                                <button class="btn btn-success lh-30"  style="margin-left:15px;"
+                                                                        <?php elseif(!$user_is_waiter && $isaccept == 0): ?>
+                                                                            <div class="display-block" id="isongoing<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
+                                                                                <button class="btn btn-success lh-30"
                                                                                         onclick="orderaccept(<?php echo $orderinfo->order_id; ?>, <?php echo $orderinfo->kitchenid; ?>)">
                                                                                     <?php echo 'Ready to Pickup'; ?>
                                                                                 </button>
@@ -469,7 +466,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </div>
                                                     <?php 
                                                 }
-                                                if (empty($kitchenorderinfo['orderlist'])) {                                    
+                                                if(empty($kitchenorderinfo['orderlist'])){                                    
                                                     echo '<div class="col-sm-12"><div style="text-align: center;"><h3>'.display('no_orderfound').'</h3> <img src="'.base_url().'assets/img/nofood.png" width="400" /></div></div>';
                                                 }
                                             } ?>
@@ -494,60 +491,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-<style>
-     .item_inner {
-     padding: 0!important;
-    }
-    .kitchen-tab .single_item {
-        padding-bottom: 0 !important; 
-        border:none !important;
-        margin-bottom: 0 !important;
-    }
-    .food_item.complete .food_item_top {
-        background: #449b18 !important; */
-    }
-    .kitchen-tab .single_item .quantity {
-    font-size: 14px !important;
-    }
-    .kitchen-tab .single_item .quantity {
-        padding-right:5% !important;
-        white-space: normal !important;      /* Allow wrapping */
-        word-wrap: break-word !important;    /* Break long words if needed */
-        overflow-wrap: break-word !important; /* Modern equivalent of word-wrap */
-    }
-    
 
-    /* Item top new css override */
-    .d-block { display:block !important;}
-
-    .food_item_top {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important; /* 2 equal columns */
-        grid-template-rows: auto auto !important;
-        gap: 10px !important;
-        padding: 10px !important;
-        border-bottom: 1px solid #ddd !important;
-        color: #fff !important;
-    }
-
-    .item_inner {
-        display: block !important;
-        padding: 0 10px !important;
-        margin: 0 !important;
-        min-width: 0 !important;
-    }
-
-    /* Make the last item (Customer Name) span both columns */
-    .food_item_top .item_inner:last-child {
-        grid-column: span 2 !important;
-    }
-
-    .kf_info {
-        font-size: 16px !important;
-        margin: 3px 0 !important;
-        word-wrap: break-word !important;
-    }
-
-
-</style>
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/kitchen.js'); ?>" type="text/javascript"></script>

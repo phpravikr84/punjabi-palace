@@ -59,6 +59,78 @@ class Order_model extends CI_Model
 		$itemlist = $query->result();
 		return $itemlist;
 	}
+	// public function allfood2($ctype = null)
+	// {
+	// 	$this->db->select('*');
+	// 	$this->db->from('item_foods');
+	// 	$this->db->where('ProductsIsActive', 1);
+	// 	$this->db->where('isgroup', null);
+	// 	$this->db->where('cusine_type', 1);
+	// 	$query = $this->db->get();
+	// 	$itemlist = $query->result();
+	// 	$output = array();
+	// 	if (!empty($itemlist)) {
+	// 		$k = 0;
+	// 		foreach ($itemlist as $items) {
+	// 			$productionInfo= $this->db->select("production.itemid")->from('production')->where('production.itemid', $items->ProductsID)->get()->row();
+	// 			if (!empty($productionInfo)) {
+	// 				$varientinfo = $this->db->select("variant.*,count(menuid) as totalvarient")->from('variant')->where('menuid', $items->ProductsID)->get()->row();
+	// 				if (!empty($varientinfo)) {
+	// 					$output[$k]['variantid'] = $varientinfo->variantid;
+	// 					$output[$k]['totalvarient'] = $varientinfo->totalvarient;
+	// 					$output[$k]['variantName'] = $varientinfo->variantName;
+	// 					if (empty($ctype)) {
+	// 						$ctype = 1; // Default to 1 if ctype is not set
+	// 					}
+	// 					switch ($ctype) {
+	// 						case '1':
+	// 							$output[$k]['price'] = $varientinfo->price;
+	// 							break;
+	// 						case '2':
+	// 							$output[$k]['price'] = $varientinfo->uber_eats_price;
+	// 							break;
+	// 						case '4':
+	// 							$output[$k]['price'] = $varientinfo->takeaway_price;
+	// 							break;
+	// 						default:
+	// 							$output[$k]['price'] = $varientinfo->price;
+	// 					}
+	// 					// $output[$k]['price'] = $varientinfo->price;
+	// 				} else {
+	// 					$output[$k]['variantid'] = '';
+	// 					$output[$k]['totalvarient'] = 0;
+	// 					$output[$k]['variantName'] = '';
+	// 					$output[$k]['price'] = '';
+	// 				}
+	// 				$output[$k]['ProductsID'] = $items->ProductsID;
+	// 				$output[$k]['CategoryID'] = $items->CategoryID;
+	// 				$output[$k]['ProductName'] = $items->ProductName;
+	// 				$output[$k]['ProductImage'] = $items->ProductImage;
+	// 				$output[$k]['bigthumb'] = $items->bigthumb;
+	// 				$output[$k]['medium_thumb'] = $items->medium_thumb;
+	// 				$output[$k]['small_thumb'] = $items->small_thumb;
+	// 				$output[$k]['component'] = $items->component;
+	// 				$output[$k]['descrip'] = $items->descrip;
+	// 				$output[$k]['itemnotes'] = $items->itemnotes;
+	// 				$output[$k]['menutype'] = $items->menutype;
+	// 				$output[$k]['productvat'] = $items->productvat;
+	// 				$output[$k]['special'] = $items->special;
+	// 				$output[$k]['OffersRate'] = $items->OffersRate;
+	// 				$output[$k]['offerIsavailable'] = $items->offerIsavailable;
+	// 				$output[$k]['offerstartdate'] = $items->offerstartdate;
+	// 				$output[$k]['offerendate'] = $items->offerendate;
+	// 				$output[$k]['Position'] = $items->Position;
+	// 				$output[$k]['kitchenid'] = $items->kitchenid;
+	// 				$output[$k]['isgroup'] = $items->isgroup;
+	// 				$output[$k]['is_customqty'] = $items->is_customqty;
+	// 				$output[$k]['cookedtime'] = $items->cookedtime;
+	// 				$output[$k]['ProductsIsActive'] = $items->ProductsIsActive;
+	// 				$k++;
+	// 			}
+	// 		}
+	// 	}
+	// 	return $output;
+	// }
 	public function allfood2($ctype = null)
 	{
 		$this->db->select('*');
@@ -69,68 +141,76 @@ class Order_model extends CI_Model
 		$query = $this->db->get();
 		$itemlist = $query->result();
 		$output = array();
+
 		if (!empty($itemlist)) {
-			$k = 0;
 			foreach ($itemlist as $items) {
-				$productionInfo= $this->db->select("production.itemid")->from('production')->where('production.itemid', $items->ProductsID)->get()->row();
+				$productionInfo = $this->db->select("production.itemid")
+					->from('production')
+					->where('production.itemid', $items->ProductsID)
+					->get()
+					->row();
+
 				if (!empty($productionInfo)) {
-					$varientinfo = $this->db->select("variant.*,count(menuid) as totalvarient")->from('variant')->where('menuid', $items->ProductsID)->get()->row();
+					$varientinfo = $this->db->select("variant.*, COUNT(menuid) AS totalvarient")
+						->from('variant')
+						->where('menuid', $items->ProductsID)
+						->get()
+						->row();
+
 					if (!empty($varientinfo)) {
-						$output[$k]['variantid'] = $varientinfo->variantid;
-						$output[$k]['totalvarient'] = $varientinfo->totalvarient;
-						$output[$k]['variantName'] = $varientinfo->variantName;
-						if (empty($ctype)) {
-							$ctype = 1; // Default to 1 if ctype is not set
-						}
 						switch ($ctype) {
-							case '1':
-								$output[$k]['price'] = $varientinfo->price;
-								break;
 							case '2':
-								$output[$k]['price'] = $varientinfo->uber_eats_price;
+								$price = $varientinfo->uber_eats_price;
 								break;
 							case '4':
-								$output[$k]['price'] = $varientinfo->takeaway_price;
+								$price = $varientinfo->takeaway_price;
 								break;
 							default:
-								$output[$k]['price'] = $varientinfo->price;
+								$price = $varientinfo->price;
 						}
-						// $output[$k]['price'] = $varientinfo->price;
-					} else {
-						$output[$k]['variantid'] = '';
-						$output[$k]['totalvarient'] = 0;
-						$output[$k]['variantName'] = '';
-						$output[$k]['price'] = '';
+
+						// Skip if price is null, empty or 0
+						if ($price === null || $price === '' || floatval($price) == 0) {
+							continue;
+						}
+
+						$output[] = array(
+							'variantid'        => $varientinfo->variantid,
+							'totalvarient'     => $varientinfo->totalvarient,
+							'variantName'      => $varientinfo->variantName,
+							'price'            => $price,
+							'ProductsID'       => $items->ProductsID,
+							'CategoryID'       => $items->CategoryID,
+							'ProductName'      => $items->ProductName,
+							'ProductImage'     => $items->ProductImage,
+							'bigthumb'         => $items->bigthumb,
+							'medium_thumb'     => $items->medium_thumb,
+							'small_thumb'      => $items->small_thumb,
+							'component'        => $items->component,
+							'descrip'          => $items->descrip,
+							'itemnotes'        => $items->itemnotes,
+							'menutype'         => $items->menutype,
+							'productvat'       => $items->productvat,
+							'special'          => $items->special,
+							'OffersRate'       => $items->OffersRate,
+							'offerIsavailable' => $items->offerIsavailable,
+							'offerstartdate'   => $items->offerstartdate,
+							'offerendate'      => $items->offerendate,
+							'Position'         => $items->Position,
+							'kitchenid'        => $items->kitchenid,
+							'isgroup'          => $items->isgroup,
+							'is_customqty'     => $items->is_customqty,
+							'cookedtime'       => $items->cookedtime,
+							'ProductsIsActive' => $items->ProductsIsActive
+						);
 					}
-					$output[$k]['ProductsID'] = $items->ProductsID;
-					$output[$k]['CategoryID'] = $items->CategoryID;
-					$output[$k]['ProductName'] = $items->ProductName;
-					$output[$k]['ProductImage'] = $items->ProductImage;
-					$output[$k]['bigthumb'] = $items->bigthumb;
-					$output[$k]['medium_thumb'] = $items->medium_thumb;
-					$output[$k]['small_thumb'] = $items->small_thumb;
-					$output[$k]['component'] = $items->component;
-					$output[$k]['descrip'] = $items->descrip;
-					$output[$k]['itemnotes'] = $items->itemnotes;
-					$output[$k]['menutype'] = $items->menutype;
-					$output[$k]['productvat'] = $items->productvat;
-					$output[$k]['special'] = $items->special;
-					$output[$k]['OffersRate'] = $items->OffersRate;
-					$output[$k]['offerIsavailable'] = $items->offerIsavailable;
-					$output[$k]['offerstartdate'] = $items->offerstartdate;
-					$output[$k]['offerendate'] = $items->offerendate;
-					$output[$k]['Position'] = $items->Position;
-					$output[$k]['kitchenid'] = $items->kitchenid;
-					$output[$k]['isgroup'] = $items->isgroup;
-					$output[$k]['is_customqty'] = $items->is_customqty;
-					$output[$k]['cookedtime'] = $items->cookedtime;
-					$output[$k]['ProductsIsActive'] = $items->ProductsIsActive;
-					$k++;
 				}
 			}
 		}
+
 		return $output;
 	}
+
 	public function allfoodBanq()
 	{
 		$this->db->select('*');
@@ -731,6 +811,78 @@ class Order_model extends CI_Model
 		}
 		return $output;
 	}
+	public function searchsubprod($cid = null, $pname = null)
+	{
+		if (!empty($cid)) {
+			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->get()->row();
+			$catids = $cid;
+			if ($catinfo->parentid > 0) {
+				$catids = $cid . ',' . $catinfo->parentid;
+			}
+		} else {
+			$catids = "";
+		}
+		$catcontition = "SubCategoryID IN($catids)";
+		$this->db->select('*');
+		$this->db->from('item_foods');
+		if (!empty($cid)) {
+			$this->db->where($catcontition);
+		}
+		if (!empty($pname)) {
+			$this->db->like('ProductName', $pname);
+		}
+		$this->db->where('isgroup', null);
+		$this->db->where('ProductsIsActive', 1);
+		$query = $this->db->get();
+		$itemlist = $query->result();
+		// echo $this->db->last_query();
+		$output = array();
+		if (!empty($itemlist)) {
+			$k = 0;
+			foreach ($itemlist as $items) {
+				$productionInfo= $this->db->select("production.itemid")->from('production')->where('production.itemid', $items->ProductsID)->get()->row();
+				if (!empty($productionInfo)) {
+					$varientinfo = $this->db->select("variant.*,count(menuid) as totalvarient")->from('variant')->where('menuid', $items->ProductsID)->get()->row();
+					if (!empty($varientinfo)) {
+						$output[$k]['variantid'] = $varientinfo->variantid;
+						$output[$k]['totalvarient'] = $varientinfo->totalvarient;
+						$output[$k]['variantName'] = $varientinfo->variantName;
+						$output[$k]['price'] = $varientinfo->price;
+					} else {
+						$output[$k]['variantid'] = '';
+						$output[$k]['totalvarient'] = 0;
+						$output[$k]['variantName'] = '';
+						$output[$k]['price'] = '';
+					}
+					$output[$k]['ProductsID'] = $items->ProductsID;
+					$output[$k]['CategoryID'] = $items->CategoryID;
+					$output[$k]['ProductName'] = $items->ProductName;
+					$output[$k]['ProductImage'] = $items->ProductImage;
+					$output[$k]['bigthumb'] = $items->bigthumb;
+					$output[$k]['medium_thumb'] = $items->medium_thumb;
+					$output[$k]['small_thumb'] = $items->small_thumb;
+					$output[$k]['component'] = $items->component;
+					$output[$k]['descrip'] = $items->descrip;
+					$output[$k]['itemnotes'] = $items->itemnotes;
+					$output[$k]['menutype'] = $items->menutype;
+					$output[$k]['productvat'] = $items->productvat;
+					$output[$k]['special'] = $items->special;
+					$output[$k]['OffersRate'] = $items->OffersRate;
+					$output[$k]['offerIsavailable'] = $items->offerIsavailable;
+					$output[$k]['offerstartdate'] = $items->offerstartdate;
+					$output[$k]['offerendate'] = $items->offerendate;
+					$output[$k]['Position'] = $items->Position;
+					$output[$k]['kitchenid'] = $items->kitchenid;
+					$output[$k]['isgroup'] = $items->isgroup;
+					$output[$k]['is_customqty'] = $items->is_customqty;
+					$output[$k]['cookedtime'] = $items->cookedtime;
+					$output[$k]['ProductsIsActive'] = $items->ProductsIsActive;
+					$k++;
+				}
+			}
+		}
+		return $output;
+	}
 	public function getuniqeproduct($pid = null)
 	{
 		$this->db->select('item_foods.*,variant.variantid,variant.variantName,variant.price');
@@ -1214,8 +1366,8 @@ class Order_model extends CI_Model
 		} else {
 			$where = "order_menu.order_id = '" . $id . "' ";
 		}
-		$sql = "SELECT order_menu.row_id,order_menu.order_id,order_menu.groupmid as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.groupvarient as varientid,order_menu.addonsuid,order_menu.qroupqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice FROM order_menu LEFT JOIN item_foods ON order_menu.groupmid=item_foods.ProductsID LEFT JOIN variant ON order_menu.groupvarient=variant.variantid WHERE {$where} AND order_menu.isgroup=1 Group BY order_menu.groupmid UNION SELECT order_menu.row_id,order_menu.order_id,order_menu.menu_id as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.varientid as varientid,order_menu.addonsuid,order_menu.menuqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice FROM order_menu LEFT JOIN item_foods ON order_menu.menu_id=item_foods.ProductsID LEFT JOIN variant ON order_menu.varientid=variant.variantid WHERE {$where} AND order_menu.isgroup=0";
-		// echo $sql;
+		//$sql = "SELECT order_menu.row_id,order_menu.order_id,order_menu.groupmid as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.groupvarient as varientid,order_menu.addonsuid,order_menu.qroupqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice FROM order_menu LEFT JOIN item_foods ON order_menu.groupmid=item_foods.ProductsID LEFT JOIN variant ON order_menu.groupvarient=variant.variantid WHERE {$where} AND order_menu.isgroup=1 Group BY order_menu.groupmid UNION SELECT order_menu.row_id,order_menu.order_id,order_menu.menu_id as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.varientid as varientid,order_menu.addonsuid,order_menu.menuqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice FROM order_menu LEFT JOIN item_foods ON order_menu.menu_id=item_foods.ProductsID LEFT JOIN variant ON order_menu.varientid=variant.variantid WHERE {$where} AND order_menu.isgroup=0";
+		$sql = "SELECT order_menu.row_id,order_menu.order_id,order_menu.groupmid as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.groupvarient as varientid,order_menu.addonsuid,order_menu.qroupqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice, item_category.Name as CategoryName FROM order_menu LEFT JOIN item_foods ON order_menu.groupmid=item_foods.ProductsID LEFT JOIN variant ON order_menu.groupvarient=variant.variantid LEFT JOIN item_category ON item_foods.CategoryID = item_category.CategoryID WHERE {$where} AND order_menu.isgroup=1 Group BY order_menu.groupmid UNION SELECT order_menu.row_id,order_menu.order_id,order_menu.menu_id as menu_id,order_menu.notes,order_menu.add_on_id,order_menu.addonsqty,order_menu.varientid as varientid,order_menu.addonsuid,order_menu.menuqty as menuqty,order_menu.price as price,order_menu.isgroup,order_menu.food_status,order_menu.allfoodready,order_menu.isupdate, item_foods.ProductName, variant.variantid, variant.variantName, variant.price as mprice, item_category.Name as CategoryName FROM order_menu LEFT JOIN item_foods ON order_menu.menu_id=item_foods.ProductsID LEFT JOIN variant ON order_menu.varientid=variant.variantid LEFT JOIN item_category ON item_foods.CategoryID = item_category.CategoryID WHERE {$where} AND order_menu.isgroup=0";
 		$query = $this->db->query($sql);
 
 		return $query->result();
@@ -1235,12 +1387,14 @@ class Order_model extends CI_Model
 	}
 	public function customerorderkitchen($id, $kitchen)
 	{
-		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.kitchenid,item_foods.cookedtime,variant.variantid,variant.variantName,variant.price');
+		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.kitchenid,item_foods.cookedtime,item_category.CategoryID as category_id, item_category.Name as cat_name, variant.variantid,variant.variantName,variant.price');
 		$this->db->from('order_menu');
 		$this->db->join('item_foods', 'order_menu.menu_id=item_foods.ProductsID', 'left');
+		$this->db->join('item_category', 'item_foods.CategoryID=item_category.CategoryID', 'left');
 		$this->db->join('variant', 'order_menu.varientid=variant.variantid', 'left');
 		$this->db->where('order_menu.order_id', $id);
 		$this->db->where('item_foods.kitchenid', $kitchen);
+		$this->db->order_by('order_menu.order_id', 'desc');
 		$query = $this->db->get();
 		$orderinfo = $query->result();
 		return $orderinfo;
@@ -1622,6 +1776,7 @@ class Order_model extends CI_Model
 		$this->db->join('item_foods', 'item_foods.ProductsID=order_menu.menu_id', 'Inner');
 		$this->db->where($where);
 		$this->db->where('item_foods.kitchenid', $id);
+		$this->db->order_by('customer_order.order_id', 'desc');
 		$this->db->group_by('customer_order.order_id');
 		$query = $this->db->get();
 

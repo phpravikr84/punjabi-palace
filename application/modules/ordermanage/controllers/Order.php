@@ -381,6 +381,31 @@ class Order extends MX_Controller
 			echo 420;
 		}
 	}
+	public function getsubitemlist()
+	{
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$data['title'] = display('supplier_edit');
+		$prod = $this->input->post('product_name', true);
+		$isuptade = $this->input->post('isuptade', true);
+		$catid = $this->input->post('category_id');
+		$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		if (!empty($getproduct)) {
+			$data['itemlist'] = $getproduct;
+			$data['module'] = "ordermanage";
+			if ($isuptade == 1) {
+				$data['page']   = "getfoodlistup";
+				$this->load->view('ordermanage/getfoodlistup', $data);
+			} else {
+				$data['page']   = "getfoodlist";
+				$this->load->view('ordermanage/getfoodlist', $data);
+			}
+		} else {
+			echo 420;
+		}
+	}
 	public function getBanqitemlist()
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
@@ -4770,8 +4795,16 @@ class Order extends MX_Controller
 		$q2 = $this->db->get();
 		$selectedFoodsForCart = $q2->result();
 
+		//Get Order time
+		$this->db->select('*');
+		$this->db->from('bill');
+		$this->db->where('order_id', $id);
+		$q3 = $this->db->get();
+		$order_timings = $q3->row_array(); // Returns an array of arrays
+
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
+		$data['orderTiming'] = $order_timings;
 		
 		echo $view = $this->load->view('postoken', $data, true);
 		//return $view;
@@ -4823,6 +4856,14 @@ class Order extends MX_Controller
 		$q2 = $this->db->get();
 		$selectedFoodsForCart = $q2->result();
 
+		//Get Order time
+		$this->db->select('*');
+		$this->db->from('bill');
+		$this->db->where('order_id', $id);
+		$q3 = $this->db->get();
+		$order_timings = $q3->row_array(); // Returns an array of arrays
+		$data['orderTiming'] = $order_timings;
+
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		echo $view = $this->load->view('postoken', $data, true);
@@ -4866,6 +4907,14 @@ class Order extends MX_Controller
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
 		$data['orderedMods']=$orderedMods;
+
+		//Get Order time
+		$this->db->select('*');
+		$this->db->from('bill');
+		$this->db->where('order_id', $id);
+		$q3 = $this->db->get();
+		$order_timings = $q3->row_array(); // Returns an array of arrays
+		$data['orderTiming'] = $order_timings;
 
 		$view = $this->load->view('postoken', $data);
 		echo $view;
@@ -5108,6 +5157,10 @@ class Order extends MX_Controller
 
 		$user_id = $this->session->userdata('id');
 		$data['user_is_waiter'] = $this->order_model->is_user_waiter($user_id);
+		// echo '<pre>';
+		// print_r($data['kitcheninfo']);
+		// echo '</pre>';
+		// exit;
 		$data['title'] = "Counter Dashboard";
 		$data['module'] = "ordermanage";
 		$data['page']   = "allkitchen";
