@@ -1122,7 +1122,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
 
       /*all ongoingorder product as ajax*/
       $(document).on('click', '#ongoingorder', function() {
-          var url = 'getongoingorder';
+          var url = baseurl+'ordermanage/order/getongoingorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1136,7 +1136,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
       });
       /*all ongoingorder product as ajax*/
       $(document).on('click', '#kitchenorder', function() {
-          var url = 'kitchenstatus';
+          var url = baseurl+'ordermanage/order/kitchenstatus';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1152,7 +1152,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
       });
       /*all todayorder product as ajax*/
       $(document).on('click', '#todayorder', function() {
-          var url = 'showtodayorder';
+          var url = baseurl+'ordermanage/order/showtodayorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1169,7 +1169,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
       /*all todayorder product as ajax*/
       $(document).on('click', '#todayonlieorder', function() {
 
-          var url = 'showonlineorder';
+          var url = baseurl+'ordermanage/order/showonlineorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1186,7 +1186,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
       /*all todayorder product as ajax*/
       $(document).on('click', '#todayqrorder', function() {
 
-          var url = 'showqrorder';
+          var url = baseurl+'ordermanage/order/showqrorder';
           var csrf = $('#csrfhashresarvation').val();
           $.ajax({
               type: "GET",
@@ -1206,7 +1206,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
   "use strict";
   $(document).on('change', '#ongoingtable_name', function() {
       var id = $(this).children("option:selected").val();
-      var url = 'getongoingorder' + '/' + id;
+      var url = baseurl+'ordermanage/order/getongoingorder' + '/' + id;
       var csrf = $('#csrfhashresarvation').val();
       $.ajax({
           type: "GET",
@@ -1223,7 +1223,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
   });
   $(document).on('change', '#ongoingtable_sr', function() {
       var id = $(this).children("option:selected").val();
-      var url = 'getongoingorder' + '/' + id + '/table';
+      var url = baseurl+'ordermanage/order/getongoingorder' + '/' + id + '/table';
       var csrf = $('#csrfhashresarvation').val();
       $.ajax({
           type: "GET",
@@ -1245,7 +1245,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
       var idvid = tid.split('-');
       var id = idvid[0];
       var vid = idvid[1];
-      var url = 'srcposaddcart' + '/' + id;
+      var url = baseurl+'ordermanage/order/srcposaddcart' + '/' + id;
       var csrf = $('#csrfhashresarvation').val();
       /*check production*/
       /*please fixt count total counting*/
@@ -1265,7 +1265,7 @@ function ApplyPromoFoodAndModifierSelect(pid=0,tr_row_id=null, skipAddToCart=0) 
           url: url,
           data: { csrf_test_name: csrf },
           success: function(data) {
-              var myurl = "adonsproductadd" + '/' + id;
+              var myurl = baseurl+"ordermanage/order/adonsproductadd" + '/' + id;
               $.ajax({
                   type: "GET",
                   url: myurl,

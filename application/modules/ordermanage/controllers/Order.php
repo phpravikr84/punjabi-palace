@@ -4648,8 +4648,16 @@ class Order extends MX_Controller
 		$q2 = $this->db->get();
 		$selectedFoodsForCart = $q2->result();
 
+		//Get Order time
+		$this->db->select('*');
+		$this->db->from('bill');
+		$this->db->where('order_id', $id);
+		$q3 = $this->db->get();
+		$order_timings = $q3->row_array(); // Returns an array of arrays
+
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
+		$data['orderTiming'] = $order_timings;
 		
 		echo $view = $this->load->view('postoken', $data, true);
 		//return $view;
@@ -4701,6 +4709,14 @@ class Order extends MX_Controller
 		$q2 = $this->db->get();
 		$selectedFoodsForCart = $q2->result();
 
+		//Get Order time
+		$this->db->select('*');
+		$this->db->from('bill');
+		$this->db->where('order_id', $id);
+		$q3 = $this->db->get();
+		$order_timings = $q3->row_array(); // Returns an array of arrays
+		$data['orderTiming'] = $order_timings;
+
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		echo $view = $this->load->view('postoken', $data, true);
@@ -4744,6 +4760,14 @@ class Order extends MX_Controller
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
 		$data['orderedMods']=$orderedMods;
+
+		//Get Order time
+		$this->db->select('*');
+		$this->db->from('bill');
+		$this->db->where('order_id', $id);
+		$q3 = $this->db->get();
+		$order_timings = $q3->row_array(); // Returns an array of arrays
+		$data['orderTiming'] = $order_timings;
 
 		$view = $this->load->view('postoken', $data);
 		echo $view;
