@@ -39,7 +39,6 @@
                 <legend  class="w-auto"><?php echo display('update_ord') ?></legend>
             </fieldset>
             <input name="url" type="hidden" id="posurl_update" value="<?php echo base_url("ordermanage/order/getitemlist") ?>" />
-            <input name="url" type="hidden" id="possuburl_update" value="<?php echo base_url("ordermanage/order/getsubitemlist") ?>" />
             <input name="url" type="hidden" id="productdata" value="<?php echo base_url("ordermanage/order/getitemdata") ?>" />
             <input name="url" type="hidden" id="updatecarturl" value="<?php echo base_url("ordermanage/order/addtocartupdate") ?>" />
             <input name="url" type="hidden" id="cartupdateturl" value="<?php echo base_url("ordermanage/order/poscartupdate") ?>" />
@@ -68,34 +67,29 @@
                                 <div class="slimScrollDiv">
                                     <div class="product-category">
                                         <div class="listcat" onclick="getslcategory_update('')">All</div>
-                                        <?php
-                                        function renderCategory($categories, $level = 0) {
-                                            foreach ($categories as $category) {
-                                                $hasSub = !empty($category->sub);
-                                                $indent = str_repeat('&nbsp;&nbsp;', $level); // Visual indent for hierarchy
-                                                // Determine if this is a child category (level >= 2)
-                                                $isChild = $level >= 2;
-                                                // Choose the appropriate function based on level
-                                                $clickFunction = $isChild ? 'getslsubcategory_update' : 'getslcategory_update';
+                                        <?php //$result = array_diff($categorylist, array("Select Food Category"));
+                                        foreach($allcategorylist as $category):
+                                        if(!empty($category->sub)):
                                         ?>
-                                                <div class="listcat dropdown cat-nav<?php echo $hasSub ? ' pos-category' : ''; ?> pos-category">
-                                                    <a class="btn listcat <?php echo $hasSub ? 'dropdown-toggle listcat2 listcat3' : ''; ?>" 
-                                                    onclick="<?php echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
-                                                    <?php echo $hasSub ? 'data-toggle="updatenewtcat' . $category->CategoryID . '"' : ''; ?>>
-                                                        <?php echo $indent . htmlspecialchars($category->Name); ?>
-                                                        <?php echo $hasSub ? '<span class="caret"></span>' : ''; ?>
-                                                    </a>
-                                                    <?php if ($hasSub) { ?>
-                                                        <ul class="dropdown-menu dropcat display-none" id="updatenewtcat<?php echo $category->CategoryID; ?>">
-                                                            <?php renderCategory($category->sub, $level + 1); ?>
-                                                        </ul>
-                                                    <?php } ?>
-                                                </div>
-                                        <?php
-                                            }
-                                        }
-                                        renderCategory($allcategorylist);
-                                        ?>
+                                        <div class="listcat dropdown cat-nav pos-category">
+                                            <a class="btn dropdown-toggle listcat listcat2 listcat3 pos-category-sub">
+                                                <?php echo $category->Name;?>
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu dropcat display-none" id="updatenewtcat<?php echo $subcat->CategoryID;?>" >
+                                                <?php foreach($category->sub as $subcat){?>
+                                                <li><a onclick="getslcategory_update(<?php echo $subcat->CategoryID;?>)"><?php echo $subcat->Name;?></a></li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                            <?php 
+                                            else: 
+                                            ?>
+                                        <div class="listcat dropdown cat-nav" onclick="getslcategory_update(<?php echo $category->CategoryID;?>)"><?php echo $category->Name;?></div>
+                                            <?php  
+                                            endif;
+                                            endforeach;
+                                            ?>
                                         <!-- Banquet Menu URL [start] -->
                                         <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory_update()">Banquet</div>
                                         <!-- Banquet Menu URL [end] -->

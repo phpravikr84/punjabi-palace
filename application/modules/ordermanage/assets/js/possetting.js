@@ -292,6 +292,33 @@ let selectedDealSubMods = [];
             }
         });
     }
+    function getslsubcategory_update(carid) {
+        var product_name = $("#update_product_name").val();
+        var category_id = carid;
+        var myurl = $("#possuburl_update").val();
+        var csrf = $("#csrfhashresarvation").val();
+        $.ajax({
+            type: "post",
+            async: false,
+            url: myurl,
+            data: {
+            product_name: product_name,
+            category_id: category_id,
+            isuptade: 1,
+            csrf_test_name: csrf,
+            },
+            success: function (data) {
+            if (data == "420") {
+                $("#product_search_update").html("Product not found !");
+            } else {
+                $("#product_search_update").html(data);
+            }
+            },
+            error: function () {
+            alert(lang.req_failed);
+            },
+        });
+    }
   //Product search button js
   $('body').on('click', '#search_button', function() {
       var product_name = $('#product_name').val();
@@ -2305,7 +2332,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
 
   function createMargeorder(orderid, value = null) {
       var csrf = $('#csrfhashresarvation').val();
-      var url = 'showpaymentmodal/' + orderid;
+      var url = baseurl+'/ordermanage/order/showpaymentmodal/' + orderid;
       callback = function(a) {
           $("#modal-ajaxview").html(a);
           $('#get-order-flag').val('2');
@@ -2331,7 +2358,7 @@ $(document).on("keypress", '#itemqty_1', function(e){
       }
       var orderid = $('#get-order-id').val();
       var csrf = $('#csrfhashresarvation').val();
-      var url = 'showpaymentmodal/' + orderid + '/1';
+      var url =  baseurl+'/ordermanage/order/showpaymentmodal/' + orderid + '/1';
       $.ajax({
           type: "GET",
           url: url,
