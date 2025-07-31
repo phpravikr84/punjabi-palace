@@ -5353,7 +5353,7 @@ class Order extends MX_Controller
 			->num_rows();
 
 		if ($totalmenuord == $totalnumkitord) {
-			$updatetData2 = array('order_status'  => 2);
+			$updatetData2 = array('order_status'  => 3);
 			$this->db->where('order_id', $orderid);
 			$this->db->update('customer_order', $updatetData2);
 		}
@@ -7395,4 +7395,79 @@ class Order extends MX_Controller
 
 		echo json_encode($response);
 	}
+
+	public function cronongoingorderconfirmbyKitchen()
+	{
+		// Get the logged-in waiter's ID from session
+		$waiter_id = $this->session->userdata('id'); // Consistent with confirm_order_notification
+		if (!$waiter_id) {
+			echo json_encode(['status' => 'error', 'message' => 'Waiter not logged in']);
+			return;
+		}
+
+		// Fetch orders with order_status = 3 and nofification = 0 for this waiter
+		$orders = $this->order_model->get_unseen_kitchen_orders($waiter_id);
+
+		if (!empty($orders)) {
+			// Return the first order for the popup (one at a time)
+			$order = $orders[0];
+			$order_details = $this->order_model->get_order_details($order->order_id);
+
+			// Prepare data for the view
+			$data = [
+				'order' => $order,
+				'order_details' => $order_details
+			];
+
+			// Load the modal view and return as JSON
+			$modal_content = $this->load->view('kitchen_order_popup', $data, TRUE);
+			echo json_encode([
+				'status' => 'success',
+				'order_id' => $order->order_id,
+				'unseen_count' => count($orders), // Number of unseen orders
+				'modal_content' => $modal_content,
+				'csrf_hash' => $this->security->get_csrf_hash()
+			]);
+		} else {
+			echo json_encode([
+				'status' => 'no_orders',
+				'unseen_count' => 0,
+				'csrf_hash' => $this->security->get_csrf_hash()
+			]);
+		}
+	}
+
+	// AJAX method to confirm order notification
+	public function confirm_order_notification()
+	{
+		$order_id = $this->input->post('order_id');
+		$waiter_id = $this->session->userdata('id');
+
+		if (!$order_id || !$waiter_id) {
+			echo json_encode(['status' => 'error', 'message' => 'Invalid request']);
+			return;
+		}
+
+		// Update notification status
+		$update_data = ['nofification' => 1];
+		$this->db->where('order_id', $order_id)
+				->where('waiter_id', $waiter_id)
+				->where('order_status', 3)
+				->where('nofification', 0)
+				->update('customer_order', $update_data);
+
+		if ($this->db->affected_rows() > 0) {
+			echo json_encode([
+				'status' => 'success',
+				'message' => 'Order confirmed',
+			]);
+		} else {
+			echo json_encode([
+				'status' => 'error',
+				'message' => 'Failed to confirm order',
+			]);
+		}
+	}
+
+	
 }

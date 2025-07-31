@@ -2833,6 +2833,34 @@ class Order_model extends CI_Model
 					->num_rows() > 0;
 	}
 
-	
+	public function get_unseen_kitchen_orders($waiter_id)
+	{
+		$cdate = date("Y-m-d", strtotime("-1 day"));
+		$today = date("Y-m-d");
+
+		$this->db->select('customer_order.*, customer_info.customer_name, customer_type.customer_type, employee_history.first_name, employee_history.last_name, rest_table.tablename');
+		$this->db->from('customer_order');
+		$this->db->join('customer_info', 'customer_order.customer_id = customer_info.customer_id', 'left');
+		$this->db->join('customer_type', 'customer_order.cutomertype = customer_type.customer_type_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id = employee_history.emp_id', 'left');
+		$this->db->join('rest_table', 'customer_order.table_no = rest_table.tableid', 'left');
+		//$this->db->where('customer_order.order_date BETWEEN', $cdate, $today);
+		$this->db->where('customer_order.order_date', $today);
+		$this->db->where('customer_order.order_status', 3);
+		$this->db->where('customer_order.nofification', 0);
+		$this->db->where('customer_order.waiter_id', $waiter_id);
+		$this->db->order_by('customer_order.order_id', 'ASC');
+		return $this->db->get()->result();
+	}
+
+	public function get_order_details($order_id)
+	{
+		$this->db->select('order_menu.*, item_foods.ProductName, variant.variantName, variant.price');
+		$this->db->from('order_menu');
+		$this->db->join('item_foods', 'order_menu.menu_id = item_foods.ProductsID', 'left');
+		$this->db->join('variant', 'order_menu.varientid = variant.variantid', 'left');
+		$this->db->where('order_menu.order_id', $order_id);
+		return $this->db->get()->result();
+	}
 
 }

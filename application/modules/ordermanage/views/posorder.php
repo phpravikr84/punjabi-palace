@@ -3,6 +3,12 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js" type="text/javascript"></script>
+<!-- Add Virtual Keyboard Begin -->
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/mlkeyboard/jquery.ml-keyboard.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/mlkeyboard/demo.css">
+
+  <script src="<?php echo base_url(); ?>assets/mlkeyboard/jquery.ml-keyboard.js"></script>
+<!-- Virtural Keyboard End -->
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/postop.js'); ?>" type="text/javascript"></script>
 <?php
 (int)$new_version  = file_get_contents('https://update.adzguru.co/punjabi_palace/autoupdate/update_info');
