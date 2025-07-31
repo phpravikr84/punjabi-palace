@@ -7469,5 +7469,85 @@ class Order extends MX_Controller
 		}
 	}
 
+	/**
+	 * Split by Amount new code update 
+	 */
+   // Show split bill by amount modal
+    public function showsplitbyamount($orderid)
+    {
+        $this->permission->method('ordermanage', 'read')->redirect();
+        $array_id = array('order_id' => $orderid);
+        $order_info = $this->order_model->read('*', 'customer_order', $array_id);
+        $settinginfo = $this->order_model->settinginfo();
+        $data['settinginfo'] = $settinginfo;
+        $data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+        $data['order_info'] = $order_info;
+        $data['taxinfos'] = $this->taxchecking();
+        $data['bill_info'] = $this->order_model->read('*', 'bill', $array_id);
+        $data['iteminfo'] = $this->order_model->customerorder($orderid);
+        $data['customerlist'] = $this->order_model->customer_dropdown();
+        $data['module'] = "ordermanage";
+        $this->load->view('ordermanage/split_bill_by_amount', $data);
+    }
+
+    // Create sub-orders based on number of people
+    public function create_split_by_amount($num)
+    {
+        $this->permission->method('ordermanage', 'read')->redirect();
+        $orderid = $this->input->post('orderid');
+        $array_bill = array('order_id' => $orderid);
+        $billinfo = $this->order_model->read('*', 'bill', $array_bill);
+        
+        $data['num'] = $num;
+        $data['orderid'] = $orderid;
+        $data['total_amount'] = $billinfo->bill_amount / $num;
+        $data['service_charge'] = $billinfo->service_charge / $num;
+        $data['vat'] = $billinfo->VAT / $num;
+        $data['customerlist'] = $this->order_model->customer_dropdown();
+        
+        $insertid = array();
+        $this->db->where('order_id', $orderid)->delete('sub_order');
+        for ($i = 0; $i < $num; $i++) {
+            $sub_order = array(
+                'order_id' => $orderid,
+                'total_price' => $data['total_amount'],
+                's_charge' => $data['service_charge'],
+                'vat' => $data['vat'],
+            );
+            $this->db->insert('sub_order', $sub_order);
+            $insertid[$i] = $this->db->insert_id();
+        }
+        $data['suborderid'] = $insertid;
+        $this->load->view('ordermanage/show_split_amounts', $data);
+    }
+
+    // Pay split bill by amount
+    public function pay_split_by_amount()
+    {
+        $sub_id = $this->input->post('sub_id');
+        $customerid = $this->input->post('customerid');
+        $total = $this->input->post('total', true);
+        $vat = $this->input->post('vat', true);
+        $service = $this->input->post('service', true);
+        
+        $updatetordfordiscount = array(
+            'vat' => $vat,
+            's_charge' => $service,
+            'total_price' => $total,
+            'customer_id' => $customerid,
+        );
+
+        $this->db->where('sub_id', $sub_id);
+        $this->db->update('sub_order', $updatetordfordiscount);
+        
+        $data['settinginfo'] = $this->order_model->settinginfo();
+        $data['totaldue'] = $total + $vat + $service;
+        $data['sub_id'] = $sub_id;
+        $data['paymentmethod'] = $this->order_model->pmethod_dropdown();
+        $data['banklist'] = $this->order_model->bank_dropdown();
+        $data['terminalist'] = $this->order_model->allterminal_dropdown();
+        
+        $this->load->view('ordermanage/suborderpay', $data);
+    }
 	
 }

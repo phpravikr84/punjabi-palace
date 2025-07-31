@@ -3472,3 +3472,51 @@ $(document).ready(function () {
   document.addEventListener('click', launchFullscreen);
      
 });
+
+/**
+ * Split by Amount
+ */
+function showsplitmodalbyamount(orderid, option = null) {
+    var url = basicinfo.baseurl + 'ordermanage/order/showsplitbyamount/' + orderid;
+    var callback = function(response) {
+        $("#modal-ajaxview").html(response);
+    };
+    
+    if (option == null) {
+        getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
+    } else {
+        getAjaxModal(url, callback);
+    }
+}
+
+function showSplitByAmount(element) {
+    var val = $(element).val();
+    var url = $(element).attr('data-url') + val;
+    var orderid = $(element).attr('data-value');
+    var csrf = $('#csrfhashresarvation').val();
+    var datavalue = 'orderid=' + orderid + '&csrf_test_name=' + csrf;
+    getAjaxView(url, "show-split-amounts", false, datavalue, 'post');
+}
+
+function selectAmountSplit(element) {
+    $(".split-amount").each(function() {
+        $(this).removeClass('split-selected');
+    });
+    $(element).toggleClass('split-selected');
+}
+
+function paySplitByAmount(element) {
+    var id = $(element).attr('id').replace('splitpay-', '');
+    var url = $(element).attr('data-url');
+    var vat = $('#vat-split-' + id).val();
+    var service = $('#service-split-' + id).val();
+    var total = $('#total-split-' + id).val();
+    var customerid = $('#customer-' + id).val();
+    
+    if ($('#total-split-' + id).length) {
+        $('#tablemodal').modal('hide');
+        $("#modal-ajaxview").empty();
+        var data = 'sub_id=' + id + '&vat=' + vat + '&service=' + service + '&total=' + total + '&customerid=' + customerid + '&csrf_test_name=' + $('#csrfhashresarvation').val();
+        getAjaxModal(url, false, '#modal-ajaxview-split', '#payprint_split', data, 'post');
+    }
+}
