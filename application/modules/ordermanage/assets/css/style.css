@@ -733,3 +733,47 @@ a.disabled {
   cursor: default;
   opacity: 0.40;
 }
+.cartModToggle{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+    cursor: pointer;
+    color: #000 !important;
+}
+.cartModToggle .subMods
+{
+    margin-left: 40px;
+}
+.cartModToggle small
+{
+    font-weight: 400;
+    font-size: 12px;
+}
+
+/* #addinvoice thead tr th:nth-child(2),
+#addinvoice tbody tr th:first-child {
+    display: none !important;
+} */
+.customloader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+    left: 90%;
+}
+
+#posSidebarLoader
+{
+    display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

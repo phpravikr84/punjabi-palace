@@ -467,4 +467,17 @@ legend {
 
 <!-- jQuery for Add/Remove Modifier Rows -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script src="<?php echo base_url('application/modules/itemmanage/assets/js/addonscreate_script.js'); ?>" type="text/javascript"></script>
+<script src="<?=base_url('application/modules/itemmanage/assets/js/addonscreate_script.js');?>" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    <?php if(!empty($isMealDeal) && $isMealDeal==1):?>
+        setTimeout(() => {
+            $('#mealModifierItemsSelect').closest('.col-lg-12').find(".select2-container").show(); // Hide the select2 container initially
+        }, 1000);
+    <?php else: ?>
+        setTimeout(() => {
+            $('#mealModifierItemsSelect').closest('.col-lg-12').find(".select2-container").hide(); // Hide the select2 container initially
+        }, 1000);
+    <?php endif; ?>
+    });
+</script>

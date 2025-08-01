@@ -2,34 +2,43 @@
 <input name="modToggleText_<?= $pid; ?>" type="hidden" value="<?php if ($modTotalPrice > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice; ?>) <?php endif; ?>" id="modToggleText_<?= $pid; ?>" />
 <div id="selectedModsDetails_<?= $pid; ?>" style="display: none; visibility:hidden;">
 <?php
-$this->db->select('add_ons.add_on_name, add_ons.price');
+$this->db->select('add_ons.add_on_name, add_ons.price, cart_selected_modifiers.menu_id, add_ons.add_on_id, add_ons.modifier_id');
 $this->db->from('add_ons');
 $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
 $this->db->where('cart_selected_modifiers.menu_id',$pid);
 $this->db->where('cart_selected_modifiers.foods_or_mods', 2);
 $this->db->where('cart_selected_modifiers.is_active', 1);
+$this->db->where('cart_selected_modifiers.meal_deal_id', 0);
 $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
 $q1 = $this->db->get();
 $selectedModsForCart = $q1->result();
+// echo $this->db->last_query();
+// echo "<br />";
 $this->db->select('item_foods.ProductName AS food_name');
 $this->db->from('item_foods');
 $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=item_foods.ProductsID');
 $this->db->where('cart_selected_modifiers.menu_id',$pid);
-$this->db->where('cart_selected_modifiers.foods_or_mods', 1);
+$this->db->where('cart_selected_modifiers.foods_or_mods', 2);
 $this->db->where('cart_selected_modifiers.is_active', 1);
+$this->db->where('cart_selected_modifiers.meal_deal_id', 0);
 $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
 $q2 = $this->db->get();
 $selectedFoodsForCart = $q2->result();
-// echo "<pre>";
-// print_r($selectedModsForCart);
-// echo "</pre><br>";
-// echo "selectedModsForCart Count: " . count($selectedModsForCart);
+
+
+// echo $this->db->last_query();
 // echo "<br />";
+// echo "<pre>";
+// print_r($selectedDealSubMods);
+// echo "</pre><br>";
+// echo "selectedModsForCart Count: <pre>" . print_r($selectedModsForCart);
+// echo "</pre><br />";
+
 if (count($selectedFoodsForCart)>0):
   foreach ($selectedFoodsForCart as $smk => $smv):
 ?>
-        <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
+        <!-- <br /> -->
+        <!-- <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name;?></small> -->
 <?php
   endforeach;
 endif;
@@ -39,22 +48,73 @@ if (count($selectedModsForCart)>0):
     if($smv->foods_or_mods == 1):
         $smv->add_on_name = $smv->add_on_name . ' (Food)';
 ?>
-        <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+        <!-- <br /> -->
+        <small class="modCheck bg-success" style=""><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
 <?php 
-    else:
-        $smv->add_on_name = $smv->add_on_name;
+    $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
+    $this->db->from('add_ons');
+    $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+    // $this->db->where('cart_selected_modifiers.menu_id',$pid);
+    $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
+    $this->db->where('cart_selected_modifiers.is_active', 1);
+    $this->db->where('cart_selected_modifiers.meal_deal_id', $pid);
+    $this->db->where('cart_selected_modifiers.add_on_id', $smv->menu_id);
+    $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
+    $q3 = $this->db->get();
+    $selectedDealSubMods = $q3->result();
+    if(count($selectedDealSubMods) > 0):
+      foreach ($selectedDealSubMods as $sdm):
+        // echo $smv->add_on_id;
+        // echo "<br />";
+        // echo $sdm->menu_id;
+        // echo "<br />";
+       if($smv->menu_id == $sdm->menu_id):
+          $smv->add_on_name = $sdm->add_on_name . ' (Meal Deal)';
 ?>
-        <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+        <!-- <br /> -->
+        <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif;?> </small>
 <?php
+        endif;      
+        endforeach;
+    endif;
+    else:
+        // $smv->add_on_name = $smv->add_on_name;
+?>
+        <!-- <br /> -->
+        <small class="modCheck" style="background-color: #f2dede !important;"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+<?php
+$this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
+$this->db->from('add_ons');
+$this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+// $this->db->where('cart_selected_modifiers.menu_id',$pid);
+$this->db->where('cart_selected_modifiers.foods_or_mods', 1);
+$this->db->where('cart_selected_modifiers.is_active', 1);
+$this->db->where('cart_selected_modifiers.meal_deal_id', $pid);
+// $this->db->where('cart_selected_modifiers.add_on_id', $smv->menu_id);
+$this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
+$q3 = $this->db->get();
+// echo $this->db->last_query();
+$selectedDealSubMods = $q3->result();
+if(count($selectedDealSubMods) > 0):
+    echo "<div class='subMods'>";
+    foreach ($selectedDealSubMods as $sdm):
+        if($smv->modifier_id == $sdm->menu_id):
+          $smv->add_on_name = $sdm->add_on_name;
+?>
+        <!-- <br /> -->
+        <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
+<?php
+        endif;
+        endforeach;
+    echo "</div>";
+    endif;
       endif;
   endforeach;
 endif;
 if (count($selectedModsForCart) == 0 && count($selectedFoodsForCart) == 0):
 ?>
-        <br />
-        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">+ Modifiers</small>
+        <!-- <br /> -->
+        <small class="modCheck" style="background-color: #f2dede !important;">+ Modifiers</small>
 <?php
 endif;
 ?>

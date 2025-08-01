@@ -36,7 +36,7 @@ if ($recipe_feature_flag == 1) {
         <tr>
             <th class="text-center"><?php echo display('item_information') ?></th>
             <?php if($variantOn): ?>
-            <th class="text-center"><?php echo display('size') ?></th>
+            <th class="text-center" style="display:none;"><?php echo display('size') ?></th>
             <?php endif; ?>
             <th class="text-center wp_100"><?php echo display('qty') ?></th>
             <th class="text-center wp_120"><?php echo display('price') ?></th>
@@ -56,7 +56,7 @@ if ($recipe_feature_flag == 1) {
                 } 
                 ?>
             </td>
-            <td <?php if(!$variantOn): ?>style="display:none;"<?php endif; ?>>
+            <td <?php if(!$variantOn): ?>style="display:none;" <?php else: ?>style="display:none;"<?php endif; ?>>
                 <input name="sizeid" type="hidden" id="sizeid_<?php echo "1"; ?>" value="<?php echo $selectedVarientId; ?>" />
                 <input name="size" type="hidden" value="<?php echo htmlentities($selectedVarientName); ?>" id="size_<?php echo 1; ?>" />
                 <input name="catid" type="hidden" value="<?php echo (!empty($catid) ? $catid : null) ?>" id="catid" />
@@ -282,7 +282,7 @@ if (count($modifiers) > 0):
                                             </td>
                                             <td style="width: 5%;" class="text-center">
                                                 <div class="form-check">
-                                                    <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="modifier_items[]" value="<?=$miv->add_on_id;?>" id="modifier_item_<?=$miv->add_on_id;?>" data-group-id="<?=$mv->modifier_groupid;?>" autocomplete="off">
+                                                    <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="modifier_items[]" value="<?=$miv->add_on_id;?>" id="modifier_item_<?=$miv->add_on_id;?>" data-group-id="<?=$mv->modifier_groupid;?>" data-pid="<?=$pid;?>" autocomplete="off">
                                                 </div>
                                             </td>
                                         </tr>

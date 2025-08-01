@@ -225,7 +225,11 @@ $(document).on("click", ".closeBtnIng", function() {
         newRow.find("select").val("1"); // Reset dropdown
 
         // Update remove button ID and make it visible
-        newRow.find(".remove-row").attr("id", "removeBtn_" + rowCount).show();
+        if ($('#isMealDeal').is(':checked')) {
+            newRow.find(".remove-row").attr("id", "removeBtn_" + rowCount).hide();
+        } else {
+            newRow.find(".remove-row").attr("id", "removeBtn_" + rowCount).show(); // Show remove button for new row    
+        }
 
         // Append the new row
         $(".modifier-container").append(newRow);
@@ -309,52 +313,61 @@ $(document).on("click", ".closeBtnIng", function() {
             success: function (response) {
                 // $(".modifier-container").html(``); // Clear existing rows
                 console.log("Meal Modifier Items Response:", response); // Raw array
-
+                console.log("Meal Modifier Items Response lenghts:", response.length); // Raw array
+                
                 // Loop through array directly
-                response.forEach(function (item) {
-                    let isAlreadyAdded = $("input[name='modifier_id[]']").filter(function () {
-                        return $(this).val() == item.id;
-                    }).length > 0;
+                if (response.length === 0) {
+                    console.warn("No items found for the selected category.");
+                    // return; // Exit if no items found
+                } else {
+                    response.forEach(function (item) {
+                        let isAlreadyAdded = $("input[name='modifier_id[]']").filter(function () {
+                            return $(this).val() == item.id;
+                        }).length > 0;
 
-                    if (isAlreadyAdded) {
-                        console.warn("Modifier already exists with ID:", item.id);
-                        return;
+                        if (isAlreadyAdded) {
+                            console.warn("Modifier already exists with ID:", item.id);
+                            return;
+                        }
+
+                        rowCount++;
+                        let newRow = $(".modifier-row:first").clone();
+
+                        // Update row ID
+                        newRow.attr("id", "modifierRow_" + rowCount);
+                        newRow.addClass("food-item-row"); // Add class for food item rows
+
+                        // Reset fields
+                        newRow.find("input[type='text']").val("");
+                        newRow.find("input[type='hidden']").val("");
+                        newRow.find("input[type='number']").val("");
+                        newRow.find("input[type='checkbox']").prop("checked", false);
+                        newRow.find("select").val("1");
+
+                        // Now set the cloned row values
+                        newRow.find("input[name='modifier_id[]']").val(item.id);
+                        newRow.find("input[name='addonsname[]']").val(item.name);
+
+                        // Set remove button ID
+                        newRow.find(".remove-row").attr("id", "removeBtn_" + rowCount).hide();
+
+                        // Append to container
+                        $(".modifier-container").append(newRow);
+
+                        // Optional autocomplete (only if needed)
+                        // initAutocomplete(newRow.find(".modifierDropDown"));
+                        console.log("newRow: ", newRow); // Debugging output
+                        updateSortOrder();
+                        checkRemoveButton();
+                    });
+                    if ($(".modifier-row:first").find('input[name="addonsname[]"]').val() === "") {
+                        $(".modifier-row:first").remove(); // Remove the first row if it was cloned
                     }
-
-                    rowCount++;
-                    let newRow = $(".modifier-row:first").clone();
-
-                    // Update row ID
-                    newRow.attr("id", "modifierRow_" + rowCount);
-                    newRow.addClass("food-item-row"); // Add class for food item rows
-
-                    // Reset fields
-                    newRow.find("input[type='text']").val("");
-                    newRow.find("input[type='hidden']").val("");
-                    newRow.find("input[type='number']").val("");
-                    newRow.find("input[type='checkbox']").prop("checked", false);
-                    newRow.find("select").val("1");
-
-                    // Now set the cloned row values
-                    newRow.find("input[name='modifier_id[]']").val(item.id);
-                    newRow.find("input[name='addonsname[]']").val(item.name);
-
-                    // Set remove button ID
-                    newRow.find(".remove-row").attr("id", "removeBtn_" + rowCount).hide();
-
-                    // Append to container
-                    $(".modifier-container").append(newRow);
-
-                    // Optional autocomplete (only if needed)
-                    initAutocomplete(newRow.find(".modifierDropDown"));
-
-                    updateSortOrder();
-                    checkRemoveButton();
-                });
-                $("#modifierRow_1").remove(); // Remove the first row if it was cloned
+                    $(".food-item-row").find(".remove-row").hide();
+                }
                 let cntHtml = `<span class="badge badge-info">${response.length} Items</span>`;
                 $("#mealModItemsCount").html(cntHtml).show(); // Show count of meal modifier
-                $(".food-item-row").find(".remove-row").hide(); // Hide remove button for food item rows
+                $(".modifier-row").find(".remove-row").hide(); // Hide remove button for food item rows
             },
             error: function (xhr, status, error) {
                 console.error("Error fetching meal modifier items:", error);
@@ -367,15 +380,21 @@ $(document).on("click", ".closeBtnIng", function() {
 
 $(document).on('change', '#isMealDeal', function () {
     let mealModifierItemsSelect = $('#mealModifierItemsSelect'); // Find the related price input field
+    let mealModifierItemsSelect2 = mealModifierItemsSelect.closest(".select2-container"); // Find the related price input field
 
     if ($(this).is(':checked')) {
         mealModifierItemsSelect.show(); // Disable and clear the price field
+        $('#mealModifierItemsSelect').closest('.col-lg-12').find(".select2-container").show(); // Disable and clear the price field
         $(".food-item-row").find(".remove-row").hide(); // Hide remove button for food item rows
+        $(".modifier-row").find(".remove-row").hide();
         $("#mealModItemsCount").show();
         rowCount = $(".modifier-row").length; // Reset row count
     } else {
         mealModifierItemsSelect.hide(); // Enable the price field
-        $(".food-item-row").remove(); // Remove all food item rows
+        $('#mealModifierItemsSelect').closest('.col-lg-12').find(".select2-container").hide(); // Enable the price field
+        rowCount = 1; // Reset row count
+        $(".add-row").click(); // Add a new row
+        $(".modifier-container").find(".food-item-row").remove(); // Remove all food item rows
         rowCount = $(".modifier-row").length; // Reset row count
         $('#mealModifierItemsSelect').val(''); // Reset the select dropdown
         $("#mealModItemsCount").hide(); // Hide the count of meal modifier

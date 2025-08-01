@@ -31,7 +31,7 @@ $selectedMods = $q2->result();
     <thead>
         <tr>
             <th class="text-center"><?php echo display('item_information') ?></th>
-            <th class="text-center"><?php echo display('size') ?></th>
+            <th class="text-center" style="display:none;"><?php echo display('size') ?></th>
             <th class="text-center wp_100"><?php echo display('qty') ?></th>
             <th class="text-center wp_120"><?php echo display('price') ?></th>
         </tr>
@@ -48,7 +48,7 @@ $selectedMods = $q2->result();
                     echo " -" . $item->itemnotes;
                 } ?>
             </td>
-            <td>
+            <td style="display:none;">
                 <input name="sizeid" type="hidden" id="sizeid_<?php echo "1"; ?>" value="<?php echo $item->variantid; ?>" />
                 <input name="size" type="hidden" value="<?php echo $item->variantName; ?>" id="size_<?php echo 1; ?>" />
                 <input name="catid" type="hidden" value="<?php echo (!empty($catid) ? $catid : null) ?>" id="catid" />

@@ -15,7 +15,7 @@ class Order extends MX_Controller
 		$this->load->library('cart');
 	}
 
-	public function possetting()
+	public function possetting() 
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
 		$data['title'] = display('pos_setting');
@@ -1168,6 +1168,16 @@ class Order extends MX_Controller
 		$pid = $this->input->post('pid');
 		$tr_row_id = $this->input->post('tr_row_id');
 		$mods = json_decode($_POST['mods'], true);
+		$selectedDealSubMods = [];
+		if (isset($_POST['selectedDealSubMods']) && !empty($_POST['selectedDealSubMods'])) {
+			// If selectedDealSubMods is set and not empty, decode it
+			// This is used for deal sub modifiers
+			$selectedDealSubMods = json_decode($_POST['selectedDealSubMods'], true);
+		}
+		// echo "<pre>";
+		// print_r($selectedDealSubMods);
+		// echo "</pre>";
+		// exit;
 		$modTotalPrice=0.00;
 		$trid="";
 		if ($cart = $this->cart->contents()){
@@ -1271,6 +1281,57 @@ class Order extends MX_Controller
 			$this-> db-> where('tr_row_id', $trid);
 			$this-> db-> delete('cart_selected_modifiers');
 		}
+		if (count($selectedDealSubMods)>0) {
+			// $this-> db-> where('menu_id', $mods[0]['pid']);
+			// $this-> db-> where('foods_or_mods', 3);
+			// $this-> db-> delete('cart_selected_modifiers');
+			foreach ($selectedDealSubMods as $smi => $smv) {
+				if ($smi==0) {
+					// delete previous modifiers for the same deal
+					$this-> db-> where('menu_id', $smv['deal_mod_pid']);
+					$this-> db-> where('foods_or_mods', 1);
+					$this-> db-> where('tr_row_id', $trid);
+					$this-> db-> where('meal_deal_id!=', 0);
+					$this-> db-> delete('cart_selected_modifiers');
+				}
+				// echo "<pre>";
+				// print_r($smv);
+				// echo "</pre>";
+				
+				//fetch the variant_id from variant table based on menuid, & variantName="Regular"
+				$this->db->select('variantid');
+				$this->db->from('variant');
+				$this->db->where('menuid', $smv['deal_mod_pid']);
+				$this->db->where('variantName', 'Regular');
+				$q = $this->db->get();
+				$variant = $q->row();
+				if ($variant) {
+					$smv['vid'] = $variant->variantid; // set the vid to Regular variantid
+				} else {
+					$smv['vid'] = 0; // if no Regular variant found, set vid to 0
+				}
+				$data = [
+					'menu_id' => $smv['deal_mod_pid'],
+					'variant_id' => $smv['vid'],
+					'add_on_id' => $smv['add_on_id'],
+					'modifier_groupid' => $smv['mgid'],
+					'tr_row_id' => $trid,
+					'foods_or_mods' => 1,
+					'meal_deal_id' => $smv['meal_deal_pid'],
+					'is_active' => 1,
+					'created_at' => date("Y-m-d H:i:s")
+				];
+				// echo "<br />Data:<pre>";
+				// print_r($data);
+				// echo "</pre>";
+				$this->db->insert('cart_selected_modifiers',$data);
+			}
+		} else {
+			// $this-> db-> where('menu_id', $pid);
+			// $this-> db-> where('tr_row_id', $trid);
+			// $this-> db-> where('foods_or_mods', 3);
+			// $this-> db-> delete('cart_selected_modifiers');
+		}
 		$d['pid'] = $pid;
 		$d['mods'] = $mods;
 		$d['modTotalPrice'] = $modTotalPrice;
@@ -1289,8 +1350,13 @@ class Order extends MX_Controller
 		$tr_row_id = $this->input->post('tr_row_id');
 		$mods = json_decode($_POST['mods'], true);
 		$foods = json_decode($_POST['foods'], true);
+		$selectedDealSubMods = json_decode($_POST['selectedDealSubMods'], true);
 		$modTotalPrice=0.00;
 		$trid="";
+		// echo "<pre>";
+		// print_r($selectedDealSubMods);
+		// echo "</pre>";
+		// exit;
 		if ($cart = $this->cart->contents()){
 			foreach ($cart as $ck => $cv) {
 				$trid = $ck;
@@ -1415,6 +1481,55 @@ class Order extends MX_Controller
 			$this-> db-> where('tr_row_id', $trid);
 			$this-> db-> where('foods_or_mods', 2);
 			$this-> db-> delete('cart_selected_modifiers');
+		}
+		if (count($selectedDealSubMods)>0) {
+			// $this-> db-> where('menu_id', $mods[0]['pid']);
+			// $this-> db-> where('foods_or_mods', 3);
+			// $this-> db-> delete('cart_selected_modifiers');
+			foreach ($selectedDealSubMods as $smi => $smv) {
+				// if ($smi==0) {
+				// 	// delete previous modifiers for the same deal
+				// 	$this-> db-> where('menu_id', $mods[0]['pid']);
+				// 	$this-> db-> where('foods_or_mods', 3);
+				// 	$this-> db-> delete('cart_selected_modifiers');
+				// }
+				// echo "<pre>";
+				// print_r($smv);
+				// echo "</pre>";
+				
+				//fetch the variant_id from variant table based on menuid, & variantName="Regular"
+				$this->db->select('variantid');
+				$this->db->from('variant');
+				$this->db->where('menuid', $smv['deal_mod_pid']);
+				$this->db->where('variantName', 'Regular');
+				$q = $this->db->get();
+				$variant = $q->row();
+				if ($variant) {
+					$smv['vid'] = $variant->variantid; // set the vid to Regular variantid
+				} else {
+					$smv['vid'] = 0; // if no Regular variant found, set vid to 0
+				}
+				$data = [
+					'menu_id' => $smv['deal_mod_pid'],
+					'variant_id' => $smv['vid'],
+					'add_on_id' => $smv['add_on_id'],
+					'modifier_groupid' => $smv['mgid'],
+					'tr_row_id' => $trid,
+					'foods_or_mods' => 1,
+					'meal_deal_id' => $smv['meal_deal_pid'],
+					'is_active' => 1,
+					'created_at' => date("Y-m-d H:i:s")
+				];
+				// echo "<br />Data:<pre>";
+				// print_r($data);
+				// echo "</pre>";
+				$this->db->insert('cart_selected_modifiers',$data);
+			}
+		} else {
+			// $this-> db-> where('menu_id', $pid);
+			// $this-> db-> where('tr_row_id', $trid);
+			// $this-> db-> where('foods_or_mods', 3);
+			// $this-> db-> delete('cart_selected_modifiers');
 		}
 		$d['pid'] = $pid;
 		$d['mods'] = $mods;
@@ -2086,8 +2201,9 @@ class Order extends MX_Controller
 												'add_on_id' => $cmv->add_on_id,
 												'modifier_groupid' => $cmv->modifier_groupid,
 												'order_id' => $orderid,
-												'foods_or_mods' => 1,
-												'is_active' => 1,
+												'foods_or_mods' => $cmv->foods_or_mods,
+												'is_active' => $cmv->is_active,
+												'meal_deal_id' => $cmv->meal_deal_id,
 												'created_at' => date('Y-m-d H:i:s')
 											];
 											$this->db->insert('ordered_menu_item_modifiers',$d1);
@@ -2177,8 +2293,9 @@ class Order extends MX_Controller
 												'add_on_id' => $cmv->add_on_id,
 												'modifier_groupid' => $cmv->modifier_groupid,
 												'order_id' => $orderid,
-												'foods_or_mods' => 2,
-												'is_active' => 1,
+												'foods_or_mods' => $cmv->foods_or_mods,
+												'is_active' => $cmv->is_active,
+												'meal_deal_id' => $cmv->meal_deal_id,
 												'created_at' => date('Y-m-d H:i:s')
 											];
 											$this->db->insert('ordered_menu_item_modifiers',$d1);
@@ -3298,6 +3415,7 @@ class Order extends MX_Controller
 		$data['possetting'] = $this->order_model->read('*', 'tbl_posetting', array('possettingid' => 1));
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
+		$data['order_id'] = $id;
 		$this->load->view('updateorder', $data);
 	}
 
@@ -7394,5 +7512,18 @@ class Order extends MX_Controller
 		}
 
 		echo json_encode($response);
+	}
+	public function checkModGroupMaxItemNumber()
+	{
+		//fetch the maximum item number for the pid from menu_add_on table
+		$pid = $this->input->post('pid', true);
+		$this->db->select('menu_add_on.*');
+		$this->db->from('menu_add_on');
+		$this->db->where('menu_add_on.menu_id', $pid);
+		$this->db->where('menu_add_on.is_active', 1);
+		$maxItem = $this->db->get()->result();
+		
+		header('Content-Type: application/json');
+		echo json_encode($maxItem);
 	}
 }

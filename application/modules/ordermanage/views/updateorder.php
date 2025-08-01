@@ -222,7 +222,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center"><?php echo display('item')?> </th>
-                                                <th class="text-center"><?php echo display('varient_name')?></th>
+                                                <th class="text-center" style="display:none;"><?php echo display('varient_name')?></th>
                                                 <th class="text-center wp_100"><?php echo display('unit_price')?></th>
                                                 <th class="text-center wp_100"><?php echo display('quantity');?></th>
                                                 <th class="text-center"><?php echo display('total_price')?></th>
@@ -264,7 +264,7 @@
 
                                                         $cr=($currency->position == 1) ? $currency->curr_icon : '';
                                                         if($q->num_rows() > 0){
-                                                            $modifierHtml .= '<br /><small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">'.$ordered_modifiers->add_on_name.' ('.$cr.' '.$ordered_modifiers->price.')</small> ';
+                                                            $modifierHtml .= '<small class="modCheck" style="background-color: #f2dede !important;">'.$ordered_modifiers->add_on_name.' '.(($ordered_modifiers->price>0)?$cr.' '.$ordered_modifiers->price:'').'</small> ';
                                                         }
                                                         $modEachItemTotal += $ordered_modifiers->price;
                                                     } 
@@ -379,30 +379,36 @@
                                                     <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id;?>','<?php echo $item->notes;?>',<?php echo $item->order_id;?>,1,<?php echo $isgroup;?>)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
                                                     <?php 
                                                     if (count($modifiers) > 0):
-                                                        $this->db->select('add_ons.add_on_name, add_ons.price');
+
+                                                        $this->db->select('add_ons.add_on_name, add_ons.price, cart_selected_modifiers.menu_id, add_ons.add_on_id, add_ons.modifier_id');
                                                         $this->db->from('add_ons');
                                                         $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
-                                                        $this->db->where('cart_selected_modifiers.menu_id', $item->menu_id);
+                                                        $this->db->where('cart_selected_modifiers.menu_id',$item->menu_id);
                                                         $this->db->where('cart_selected_modifiers.foods_or_mods', 2);
                                                         $this->db->where('cart_selected_modifiers.is_active', 1);
+                                                        $this->db->where('cart_selected_modifiers.meal_deal_id', 0);
+                                                        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
                                                         $q1 = $this->db->get();
-                                                        // echo $this->db->last_query();
                                                         $selectedModsForCart = $q1->result();
+
                                                         $this->db->select('item_foods.ProductName AS food_name');
                                                         $this->db->from('item_foods');
                                                         $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=item_foods.ProductsID');
                                                         $this->db->where('cart_selected_modifiers.menu_id',$item->menu_id);
-                                                        $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
+                                                        $this->db->where('cart_selected_modifiers.foods_or_mods', 2);
                                                         $this->db->where('cart_selected_modifiers.is_active', 1);
+                                                        $this->db->where('cart_selected_modifiers.meal_deal_id', 0);
+                                                        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
                                                         $q2 = $this->db->get();
                                                         $selectedFoodsForCart = $q2->result();
                                                     ?>
-                                                    <br />
-                                              <a id="cartModToggle_update_<?=$item->menu_id;?>" onclick="itemModifiers(<?= $item->menu_id; ?>,'<?= $item->rowid; ?>')" title="Click to Choose Modifiers" >
+                                                    <!-- <br /> -->
+                                              <a class="cartModToggle" id="cartModToggle_update_<?=$item->menu_id;?>" onclick="itemModifiers(<?= $item->menu_id; ?>,'<?= $item->rowid; ?>')" title="Click to Choose Modifiers" >
                                               <?php 
-                                              if($q1->num_rows() <= 0 || $q2->num_rows() <= 0):
+                                              if(($q1->num_rows() <= 0) || ($q2->num_rows() <= 0) && (count($selectedModsForCart) == 0)):
+                                                // if(count($selectedModsForCart) == 0):
                                               ?>
-                                              <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;" id="cartModToggle_<?=$item->menu_id; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
+                                              <small class="modCheck" style="background-color: #f2dede !important;" id="cartModToggle_<?=$item->menu_id; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
                                               <?php endif; ?>
                                                 <?php
 
@@ -413,26 +419,51 @@
                                                 if (count($selectedFoodsForCart)>0):
                                                   foreach ($selectedFoodsForCart as $smk => $smv):
                                                 ?>
-                                                        <br />
-                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
+                                                        <!-- <br /> -->
+                                                        <small class="modCheck" style="background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
                                                 <?php
                                                   endforeach;
                                                 endif;
                                                 if (count($selectedModsForCart)>0):
-                                                  echo "<br />";
+                                                //   echo "<br />";
                                                   foreach ($selectedModsForCart as $smk => $smv):
                                                     if($smv->foods_or_mods == 1):
                                                         $smv->add_on_name = $smv->add_on_name;
                                                 ?>
-                                                        <br />
-                                                        <small class="modCheck bg-danger" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+                                                        <!-- <br /> -->
+                                                        <small class="modCheck bg-success" style=""><?=$smv->add_on_name;?><?php if($smv->price > 0): ?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                                 <?php 
                                                     else:
                                                         $smv->add_on_name = $smv->add_on_name;
                                                 ?>
-                                                        <br />
-                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
+                                                        <!-- <br /> -->
+                                                        <small class="modCheck" style="background-color: #f2dede !important;"><?=$smv->add_on_name;?><?php if($smv->price > 0): ?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                                 <?php
+                                                        $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
+                                                        $this->db->from('add_ons');
+                                                        $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+                                                        // $this->db->where('cart_selected_modifiers.menu_id',$pid);
+                                                        $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
+                                                        $this->db->where('cart_selected_modifiers.is_active', 1);
+                                                        $this->db->where('cart_selected_modifiers.meal_deal_id', $item->menu_id);
+                                                        // $this->db->where('cart_selected_modifiers.add_on_id', $smv->menu_id);
+                                                        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
+                                                        $q3 = $this->db->get();
+                                                        // echo $this->db->last_query();
+                                                        $selectedDealSubMods = $q3->result();
+                                                        if(count($selectedDealSubMods) > 0):
+                                                            echo "<div class='subMods'>";
+                                                            foreach ($selectedDealSubMods as $sdm):
+                                                                if($smv->modifier_id == $sdm->menu_id):
+                                                                $smv->add_on_name = $sdm->add_on_name;
+                                                        ?>
+                                                                <!-- <br /> -->
+                                                                <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
+                                                        <?php
+                                                                endif;
+                                                                endforeach;
+                                                            echo "</div>";
+                                                            endif;
                                                       endif;
                                                   endforeach;
                                                 endif;
@@ -441,7 +472,7 @@
                                               </a>
                                               <?php endif; ?>
                                                 </td>
-                                                <td>
+                                                <td style="display:none;">
                                                     <?php echo $item->variantName;?>
                                                 </td>
                                                 <td class="text-right"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemsingleprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </td>
