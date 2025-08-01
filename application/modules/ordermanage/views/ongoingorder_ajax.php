@@ -108,7 +108,9 @@
                                           <div>
                                             <?php if($onprocess->splitpay_status ==0) { ?>
                                           <a href="javascript:;" onclick="createMargeorder(<?php echo $onprocess->order_id;?>,1)" class="btn btn-xs btn-success btn-sm mr-1"><?php echo display('cmplt');?></a>
-                                           <a href="javascript:;" onclick="showsplitmodal(<?php echo $onprocess->order_id;?>)" class="btn btn-xs btn-success btn-sm mr-1"><?php echo display('split');?></a>
+                                           <!-- <a href="javascript:;" onclick="showsplitmodal(<?php echo $onprocess->order_id;?>)" class="btn btn-xs btn-success btn-sm mr-1"><?php //echo display('split');?></a> -->
+                                            <a href="javascript:;" onclick="showsplitmodalbyamount(<?php echo $onprocess->order_id;?>)" class="btn btn-xs btn-success btn-sm mr-1"><?php echo 'Split bill by amount';?></a>
+                                             <a href="javascript:;" onclick="showsplitmodal(<?php echo $onprocess->order_id;?>)" class="btn btn-xs btn-success btn-sm mr-1"><?php echo 'Split bill by item';?></a>
                                             <?php if($this->permission->method('ordermanage','delete')->access()){?>
                                             <a href="javascript:;" data-id="<?php echo $onprocess->order_id;?>" class="btn btn-xs btn-danger btn-sm mr-1 cancelorder" data-toggle="tooltip" data-placement="left" title="" data-original-title="<?php echo display('cancel_order')?>"><i class="fa fa-trash-o"></i></a>&nbsp;
                                             <?php }?>

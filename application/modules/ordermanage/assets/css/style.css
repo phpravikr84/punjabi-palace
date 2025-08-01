@@ -370,14 +370,14 @@
     text-align: center;
 }
 .listcat {
-    color: #fff;
-    background: #47CD6B;
+    color: #000;
+    /* background: #47CD6B; */
     cursor: pointer;
     padding: 5px;
     margin-bottom: 5px;
     text-align: center;
-    border: 1px solid rgb(55, 160, 0);
-    box-shadow: 0 2px 6px 0 rgba(55, 160, 0, .5);
+    /* border: 1px solid rgb(55, 160, 0);
+    box-shadow: 0 2px 6px 0 rgba(55, 160, 0, .5); */
     font-size: 14px;
 	font-weight:bold;
 }
@@ -399,6 +399,7 @@
  {
         /* color: #fff; */
     /* background: #FC8019; */
+    background: #fff !important;
     color: #484141;
     cursor: pointer;
     padding: 5px;
@@ -413,6 +414,7 @@
 a.btn.listcatnew:hover {
     color: #FC8019 !important;
 }
+
 
 .seelist{position:relative;}
 .notif{

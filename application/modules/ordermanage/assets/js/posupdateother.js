@@ -134,6 +134,33 @@ alert(lang.req_failed);
 }
 });
 }
+function getslsubcategory_update(carid) {
+  var product_name = $("#update_product_name").val();
+  var category_id = carid;
+  var myurl = $("#possuburl_update").val();
+  var csrf = $("#csrfhashresarvation").val();
+  $.ajax({
+    type: "post",
+    async: false,
+    url: myurl,
+    data: {
+      product_name: product_name,
+      category_id: category_id,
+      isuptade: 1,
+      csrf_test_name: csrf,
+    },
+    success: function (data) {
+      if (data == "420") {
+        $("#product_search_update").html("Product not found !");
+      } else {
+        $("#product_search_update").html(data);
+      }
+    },
+    error: function () {
+      alert(lang.req_failed);
+    },
+  });
+}
 //Product search button js
 $('body').on('click', '#search_button', function() {
 var product_name = $('#update_product_name').val();

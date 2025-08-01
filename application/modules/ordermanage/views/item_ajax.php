@@ -31,7 +31,7 @@ foreach ($itemlist as $item) {
         if ($isexists > 0) {
 
       ?>
-          <h6 class="quantity"><?php echo display('processing') ?><br />Accept Time:<?php echo date("H:i:s", strtotime($accepttime->accepttime)); ?></h6>
+          <h6 class="quantity"><?php echo 'Ready for serve' ?><br />Accept Time:<?php echo date("H:i:s", strtotime($accepttime->accepttime)); ?></h6>
         <?php } else { ?>
           <h6 class="quantity"><?php echo display('kitnotacpt') ?></h6>
       <?php }

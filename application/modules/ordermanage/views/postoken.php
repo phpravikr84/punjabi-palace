@@ -103,17 +103,17 @@
         <div class="container-fluid">
             <!-- Store Information -->
 			 <div class="text-center mb-3">
-				<span class="text-success-outline"><?php echo display('billing_from') ?></span>
+				<span class="text-success-outline"><?php echo 'KOT'; ?></span>
 			</div>
-            <div class="text-center mb-3">
-                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" class="logo-img img-fluid" alt="Store Logo">
+            <!-- <div class="text-center mb-3">
+                <img src="<?php //echo base_url();?><?php //echo $storeinfo->logo?>" class="logo-img img-fluid" alt="Store Logo">
                 <address class="mt-2">
-                    <strong><?php echo $storeinfo->storename;?></strong><br>
-                    <?php echo $storeinfo->address;?><br>
-                    <?php echo $storeinfo->phone;?><br>
-                    <?php echo $storeinfo->email;?>
+                    <strong><?php //echo $storeinfo->storename;?></strong><br>
+                    <?php //echo $storeinfo->address;?><br>
+                    <?php //echo $storeinfo->phone;?><br>
+                    <?php //echo $storeinfo->email;?>
                 </address>
-            </div>
+            </div> -->
 
 			 <!-- Middle Information -->
             <div class="text-center border-top-gray border-bottom-gray">

@@ -169,6 +169,88 @@ class Frontend extends CI_Controller
 		}
 		$this->load->view('themes/' . $this->themeinfo->themename . '/todayitems', $data);
 	}
+	// public function menu()
+	// {
+	// 	$data['title'] = "Menu";
+	// 	$data['seoterm'] = "menu";
+	// 	if (empty($this->session->userdata('categoryid'))) {
+	// 		$categoryid = $this->input->post('category_id');
+	// 	} else {
+	// 		$categoryid = $this->session->userdata('categoryid');
+	// 	}
+	// 	$productid = $this->input->post('product_id');
+	// 	$sessiondata = array('categoryid' => $categoryid, 'product_id' => $productid);
+	// 	$this->session->set_userdata($sessiondata);
+	// 	$product  = $this->session->userdata('product_id');
+	// 	$category = $this->session->userdata('categoryid');
+	// 	$data['offerimg'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => '8'));
+	// 	#-------------------------------#       
+	// 	#
+	// 	#pagination starts
+	// 	#
+	// 	$config["base_url"] = base_url('menu');
+	// 	$config["total_rows"]  = $this->frontend_model->count_totalitem($product, $category);
+	// 	$config["per_page"]    = 20;
+	// 	$config["uri_segment"] = 2;
+	// 	$config["last_link"] = "Last";
+	// 	$config["first_link"] = "First";
+	// 	$config['next_link'] = 'Next';
+	// 	$config['prev_link'] = 'Prev';
+	// 	$config['full_tag_open'] = "<ul class='pagination justify-content-center'>";
+	// 	$config['full_tag_close'] = "</ul>";
+	// 	$config['num_tag_open'] = "<li class='page-item'>";
+	// 	$config['num_tag_close'] = '</li>';
+	// 	$config['cur_tag_open'] = "<li class='disabled'><li class='page-item'><a class='page-link active' href='#'>";
+	// 	$config['cur_tag_close'] = "</a></li>";
+	// 	$config['next_tag_open'] = "<li>";
+	// 	$config['next_tag_close'] = "</li>";
+	// 	$config['prev_tag_open'] = "<li>";
+	// 	$config['prev_tagl_close'] = "</li>";
+	// 	$config['first_tag_open'] = "<li class='page-item'>";
+	// 	$config['first_tagl_close'] = "</a></li>";
+	// 	$config['last_tag_open'] = "<li class='page-item'>";
+	// 	$config['last_tagl_close'] = "</a></li>";
+	// 	$config['attributes'] = array('class' => 'page-link');
+	// 	/* ends of bootstrap */
+	// 	$this->pagination->initialize($config);
+	// 	$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+	// 	$data["searchresult"] = $this->frontend_model->searchinfo($product, $category, $config["per_page"], $page);
+	// 	$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
+	// 	$data['totalrows'] =  $this->frontend_model->count_totalitem($product, $category);
+	// 	$countall = $data['totalrows'];
+	// 	if ($page == 0) {
+	// 		$initial = 1;
+	// 		$pagenum = 1;
+	// 		$numrecord = $config["per_page"];
+	// 	} else {
+	// 		$pageofset = $page / $config["per_page"];
+	// 		$pagenum = $pageofset + 1;
+	// 		$numrecord = $config["per_page"] * $pagenum;
+	// 		if ($config['total_rows'] < $numrecord) {
+	// 			$numrecord = $config['total_rows'];
+	// 		}
+	// 		$initial = $page + 1;
+	// 	}
+	// 	$data['showing'] = "Montrant  " . $initial . " - " . $numrecord . " sur " . $config['total_rows'];
+	// 	$data["links"] = $this->pagination->create_links();
+	// 	#
+	// 	#pagination ends
+	// 	#  
+	// 	$data['ads'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => 4));
+	// 	$data["categorylist"] = $this->frontend_model->categories();
+	// 	$data["deals"] = $this->frontend_model->todaydeals();
+	// 	$data['taxinfos'] = $this->taxchecking();
+	// 	if ($this->webinfo->web_onoff == 0) {
+	// 		redirect(base_url() . 'login');
+	// 		exit;
+	// 	}
+	// 	if ($this->themeinfo->themename == "modern") {
+	// 		redirect('');
+	// 	}
+		
+	// 	$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/menu', $data, TRUE);
+	// 	$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
+	// }
 	public function menu()
 	{
 		$data['title'] = "Menu";
@@ -214,7 +296,7 @@ class Frontend extends CI_Controller
 		/* ends of bootstrap */
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-		$data["searchresult"] = $this->frontend_model->searchinfo($product, $category, $config["per_page"], $page);
+		//$data["searchresult"] = $this->frontend_model->searchinfo($product, $category, $config["per_page"], $page);
 		$data['openclosetime'] =  $this->frontend_model->read_allorderby('*', 'tbl_openclose', 'stid', 'ASC');
 		$data['totalrows'] =  $this->frontend_model->count_totalitem($product, $category);
 		$countall = $data['totalrows'];
@@ -238,7 +320,7 @@ class Frontend extends CI_Controller
 		#  
 		$data['ads'] =  $this->frontend_model->read('*', 'tbl_slider', array('Sltypeid' => 4));
 		$data["categorylist"] = $this->frontend_model->categories();
-		$data["deals"] = $this->frontend_model->todaydeals();
+		//$data["deals"] = $this->frontend_model->todaydeals();
 		$data['taxinfos'] = $this->taxchecking();
 		if ($this->webinfo->web_onoff == 0) {
 			redirect(base_url() . 'login');
@@ -247,6 +329,7 @@ class Frontend extends CI_Controller
 		if ($this->themeinfo->themename == "modern") {
 			redirect('');
 		}
+		
 		$data['content'] = $this->load->view('themes/' . $this->themeinfo->themename . '/menu', $data, TRUE);
 		$this->load->view('themes/' . $this->themeinfo->themename . '/index', $data);
 	}

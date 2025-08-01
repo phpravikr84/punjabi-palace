@@ -472,13 +472,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 if (empty($kitchenorderinfo['orderlist'])) {                                    
                                                     echo '<div class="col-sm-12"><div style="text-align: center;"><h3>'.display('no_orderfound').'</h3> <img src="'.base_url().'assets/img/nofood.png" width="400" /></div></div>';
                                                 }
-                                            } ?>
+                                            }  else { echo '<div class="col-sm-12"><div style="text-align: center;"><h3>'.display('no_orderfound').'</h3> <img src="'.base_url().'assets/img/nofood.png" width="400" /></div></div>'; } ?>
                                         </div>
                                     </div>
                                 </div>
                                 <?php
-                            }
-                        }
+                            } 
+                        } 
                         ?>
                     </div>
                 </div>

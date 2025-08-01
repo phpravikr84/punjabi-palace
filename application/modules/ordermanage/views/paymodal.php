@@ -95,7 +95,7 @@
                                         <input type="hidden" id="discounttype" value="<?php echo $settinginfo->discount_type; ?>" />
                                         <input type="hidden" id="ordertotal" value="<?php echo $totalamount; ?>" />
                                         <input type="hidden" id="orderdue" value="<?php echo $totaldue; ?>" />
-                                        <input type="number" class="form-control" id="discount" name="discount" value="<?php echo $settinginfo->discountrate; ?>" placeholder="0" />
+                                        <input type="text" class="form-control" id="discount" name="discount" value="<?php echo $settinginfo->discountrate; ?>" placeholder="0" />
                                         <input type="hidden" id="grandtotal" name="grandtotal" value="<?php echo $totalamount - $disamount; ?>" />
                                         <input type="hidden" id="granddiscount" name="granddiscount" value="<?php echo $disamount; ?>" />
                                         <input type="hidden" id="isredeempoint" name="isredeempoint" value="" />
@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="4digit" class="col-form-label pb-2"><?php echo display('cuspayment'); ?></label>
-                                        <input type="number" id="paidamount_marge" class="form-control number pay firstpay" name="paidamount[]" value="<?php echo $totaldue - $disamount; ?>" onkeyup="changedueamount()" placeholder="0" onclick="givefocus(this)" />
+                                        <input type="text" id="paidamount_marge" class="form-control number pay firstpay" name="paidamount[]" value="<?php echo $totaldue - $disamount; ?>" onkeyup="changedueamount()" placeholder="0" onclick="givefocus(this)" />
                                     </div>
                                 </div>
 
@@ -209,7 +209,7 @@
 
                             </table>
 
-                            <div class="grid-container">
+                            <!-- <div class="grid-container">
                                 <input type="button" class="grid-item" name="n1" value="1" onClick="inputNumbersfocus(n1.value)">
                                 <input type="button" class="grid-item" name="n2" value="2" onClick="inputNumbersfocus(n2.value)">
                                 <input type="button" class="grid-item" name="n3" value="3" onClick="inputNumbersfocus(n3.value)">
@@ -223,7 +223,7 @@
                                 <input type="button" class="grid-item" name="n00" value="00" onClick="inputNumbersfocus(n00.value)">
                                 <input type="button" class="grid-item" name="c0" value="C" placeholder="0" onClick="inputNumbersfocus(c0.value)">
 
-                            </div>
+                            </div> -->
 
                             <div class="form-group text-right mt-3">
                                 <div class="col-sm-12 mt-15 pr-0">
@@ -254,3 +254,10 @@
     </form>
     <input type="hidden" id="get-order-flag" value="1">
     <script src="<?php echo base_url('application/modules/ordermanage/assets/js/paymodal.js'); ?>" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('#paidamount_marge').mlKeyboard({ layout: 'en_US' });
+            //discount
+            $('#discount').mlKeyboard({ layout: 'en_US' });
+        });
+    </script>

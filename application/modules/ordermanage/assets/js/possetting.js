@@ -292,6 +292,33 @@ function getBanqcategory_update() {
         }
     });
 }
+ function getslsubcategory_update(carid) {
+        var product_name = $("#update_product_name").val();
+        var category_id = carid;
+        var myurl = $("#possuburl_update").val();
+        var csrf = $("#csrfhashresarvation").val();
+        $.ajax({
+            type: "post",
+            async: false,
+            url: myurl,
+            data: {
+            product_name: product_name,
+            category_id: category_id,
+            isuptade: 1,
+            csrf_test_name: csrf,
+            },
+            success: function (data) {
+            if (data == "420") {
+                $("#product_search_update").html("Product not found !");
+            } else {
+                $("#product_search_update").html(data);
+            }
+            },
+            error: function () {
+            alert(lang.req_failed);
+            },
+        });
+    }
 //Product search button js
 $('body').on('click', '#search_button', function () {
     var product_name = $('#product_name').val();
@@ -3468,3 +3495,197 @@ $(window).on('load', function () {
         //$("#waiter").select2().val(waiterid).trigger('change');
     }
 });
+
+// Cron for Waiter
+
+$(document).ready(function () {
+    // Audio element for notification sound
+    var myAudio = document.getElementById("myAudio") || new Audio();
+    var intervalc = 0;
+
+    // Function to play notification sound
+    function playNotificationSound(filename) {
+        myAudio.src = filename;
+        myAudio.play().catch(function (error) {
+            console.error('Error playing sound:', error);
+        });
+    }
+
+    // Function to check for unseen kitchen orders
+    function load_unseen_kitchen_orders(view = '') {
+        var csrf = $('#csrfhashresarvation').val();
+        $.ajax({
+            url: baseurl + "ordermanage/order/cronongoingorderconfirmbyKitchen",
+            method: 'POST',
+            data: { csrf_test_name: csrf, view: view },
+            dataType: 'json',
+            success: function (data) {
+                console.log('Response:', data); // Debugging
+                if (data.status === 'success' && data.unseen_count > 0) {
+                    // Update notification count
+                    $('.kitchen-order-count').html(data.unseen_count);
+
+                    // Play sound if enabled
+                    if (data.soundenable == 1) {
+                        playNotificationSound(data.notifysound);
+                    }
+
+                    // Show modal if not already open
+                    if (!$('#kitchenOrderModal').is(':visible')) {
+                        $('body').append(data.modal_content);
+                        $('#kitchenOrderModal').modal('show');
+                        $('#kitchenOrderModal').on('hidden.bs.modal', function () {
+                            $(this).remove();
+                            // Pause sound
+                            if (data.soundenable == 1) {
+                                myAudio.pause();
+                            }
+                        });
+                    }
+
+                    // Update CSRF token
+                    $('#csrfhashresarvation').val(data.csrf_hash);
+                } else {
+                    // No orders, update count and pause sound
+                    $('.kitchen-order-count').html(data.unseen_count);
+                    if (data.soundenable == 1) {
+                        myAudio.pause();
+                    }
+                    // Update CSRF token
+                    $('#csrfhashresarvation').val(data.csrf_hash);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error checking kitchen orders:', error);
+            }
+        });
+    }
+
+    // Handle confirm button click
+    $(document).on('click', '.confirm-order', function () {
+        var orderId = $(this).data('order-id');
+        var csrf = $('#csrfhashresarvation').val();
+        $.ajax({
+            url: baseurl + "ordermanage/order/confirm_order_notification",
+            method: 'POST',
+            data: { order_id: orderId, csrf_test_name: csrf },
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    $('#kitchenOrderModal').modal('hide');
+
+                    // Set flag to show modal after reload
+                    sessionStorage.setItem('showNextKitchenModal', 'true');
+
+                    // Reload page
+                    // Force top-level redirect if inside iframe or nested context
+                    window.top.location.href = baseurl + "ordermanage/order/pos_invoice";
+
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('Error confirming order');
+            }
+        });
+    });
+
+    // Function to refresh ongoing orders
+    function loadOngoingOrders() {
+        $.ajax({
+            url: baseurl + "ordermanage/order/getongoingorder",
+            method: 'GET',
+            success: function (data) {
+                $('#ongoingorder').html(data);
+            }
+        });
+    }
+
+    // On reload: if modal should be shown
+    if (sessionStorage.getItem('showNextKitchenModal') === 'true') {
+        sessionStorage.removeItem('showNextKitchenModal');
+        // Delay to ensure page is fully loaded before AJAX call
+        setTimeout(function () {
+            load_unseen_kitchen_orders(); // This will trigger next modal if any
+        }, 500);
+    }
+
+    // Start polling
+    setInterval(function () {
+        load_unseen_kitchen_orders(intervalc);
+    }, 5000);
+});
+
+
+//Load Expanded Screen
+$(document).ready(function () {
+    function launchFullscreen() {
+    const docEl = document.documentElement;
+
+    if (docEl.requestFullscreen) {
+      docEl.requestFullscreen();
+    } else if (docEl.webkitRequestFullscreen) {
+      docEl.webkitRequestFullscreen();
+    } else if (docEl.mozRequestFullScreen) {
+      docEl.mozRequestFullScreen();
+    } else if (docEl.msRequestFullscreen) {
+      docEl.msRequestFullscreen();
+    }
+
+    $('#fullscreen i').addClass('fullscreen-active');
+    document.removeEventListener('click', launchFullscreen);
+  }
+
+  // Wait for first click anywhere on the page
+  document.addEventListener('click', launchFullscreen);
+     
+});
+
+/**
+ * Split by Amount
+ */
+function showsplitmodalbyamount(orderid, option = null) {
+    var url = basicinfo.baseurl + 'ordermanage/order/showsplitbyamount/' + orderid;
+    var callback = function(response) {
+        $("#modal-ajaxview").html(response);
+    };
+    
+    if (option == null) {
+        getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
+    } else {
+        getAjaxModal(url, callback);
+    }
+}
+
+function showSplitByAmount(element) {
+    var val = $(element).val();
+    var url = $(element).attr('data-url') + val;
+    var orderid = $(element).attr('data-value');
+    var csrf = $('#csrfhashresarvation').val();
+    var datavalue = 'orderid=' + orderid + '&csrf_test_name=' + csrf;
+    getAjaxView(url, "show-split-amounts", false, datavalue, 'post');
+}
+
+function selectAmountSplit(element) {
+    $(".split-amount").each(function() {
+        $(this).removeClass('split-selected');
+    });
+    $(element).toggleClass('split-selected');
+}
+
+function paySplitByAmount(element) {
+    var id = $(element).attr('id').replace('splitpay-', '');
+    var url = $(element).attr('data-url');
+    var vat = $('#vat-split-' + id).val();
+    var service = $('#service-split-' + id).val();
+    var total = $('#total-split-' + id).val();
+    var customerid = $('#customer-' + id).val();
+    
+    if ($('#total-split-' + id).length) {
+        $('#tablemodal').modal('hide');
+        $("#modal-ajaxview").empty();
+        var data = 'sub_id=' + id + '&vat=' + vat + '&service=' + service + '&total=' + total + '&customerid=' + customerid + '&csrf_test_name=' + $('#csrfhashresarvation').val();
+        getAjaxModal(url, false, '#modal-ajaxview-split', '#payprint_split', data, 'post');
+    }
+}

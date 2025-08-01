@@ -39,7 +39,6 @@
                 <legend  class="w-auto"><?php echo display('update_ord') ?></legend>
             </fieldset>
             <input name="url" type="hidden" id="posurl_update" value="<?php echo base_url("ordermanage/order/getitemlist") ?>" />
-            <input name="url" type="hidden" id="possuburl_update" value="<?php echo base_url("ordermanage/order/getsubitemlist") ?>" />
             <input name="url" type="hidden" id="productdata" value="<?php echo base_url("ordermanage/order/getitemdata") ?>" />
             <input name="url" type="hidden" id="updatecarturl" value="<?php echo base_url("ordermanage/order/addtocartupdate") ?>" />
             <input name="url" type="hidden" id="cartupdateturl" value="<?php echo base_url("ordermanage/order/poscartupdate") ?>" />
@@ -68,34 +67,29 @@
                                 <div class="slimScrollDiv">
                                     <div class="product-category">
                                         <div class="listcat" onclick="getslcategory_update('')">All</div>
-                                        <?php
-                                        function renderCategory($categories, $level = 0) {
-                                            foreach ($categories as $category) {
-                                                $hasSub = !empty($category->sub);
-                                                $indent = str_repeat('&nbsp;&nbsp;', $level); // Visual indent for hierarchy
-                                                // Determine if this is a child category (level >= 2)
-                                                $isChild = $level >= 2;
-                                                // Choose the appropriate function based on level
-                                                $clickFunction = $isChild ? 'getslsubcategory_update' : 'getslcategory_update';
+                                        <?php //$result = array_diff($categorylist, array("Select Food Category"));
+                                        foreach($allcategorylist as $category):
+                                        if(!empty($category->sub)):
                                         ?>
-                                                <div class="listcat dropdown cat-nav<?php echo $hasSub ? ' pos-category' : ''; ?> pos-category">
-                                                    <a class="btn listcat <?php echo $hasSub ? 'dropdown-toggle listcat2 listcat3' : ''; ?>" 
-                                                    onclick="<?php echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
-                                                    <?php echo $hasSub ? 'data-toggle="updatenewtcat' . $category->CategoryID . '"' : ''; ?>>
-                                                        <?php echo $indent . htmlspecialchars($category->Name); ?>
-                                                        <?php echo $hasSub ? '<span class="caret"></span>' : ''; ?>
-                                                    </a>
-                                                    <?php if ($hasSub) { ?>
-                                                        <ul class="dropdown-menu dropcat display-none" id="updatenewtcat<?php echo $category->CategoryID; ?>">
-                                                            <?php renderCategory($category->sub, $level + 1); ?>
-                                                        </ul>
-                                                    <?php } ?>
-                                                </div>
-                                        <?php
-                                            }
-                                        }
-                                        renderCategory($allcategorylist);
-                                        ?>
+                                        <div class="listcat dropdown cat-nav pos-category">
+                                            <a class="btn dropdown-toggle listcat listcat2 listcat3 pos-category-sub">
+                                                <?php echo $category->Name;?>
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu dropcat display-none" id="updatenewtcat<?php echo $subcat->CategoryID;?>" >
+                                                <?php foreach($category->sub as $subcat){?>
+                                                <li><a onclick="getslcategory_update(<?php echo $subcat->CategoryID;?>)"><?php echo $subcat->Name;?></a></li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                            <?php 
+                                            else: 
+                                            ?>
+                                        <div class="listcat dropdown cat-nav" onclick="getslcategory_update(<?php echo $category->CategoryID;?>)"><?php echo $category->Name;?></div>
+                                            <?php  
+                                            endif;
+                                            endforeach;
+                                            ?>
                                         <!-- Banquet Menu URL [start] -->
                                         <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory_update()">Banquet</div>
                                         <!-- Banquet Menu URL [end] -->
@@ -228,7 +222,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center"><?php echo display('item')?> </th>
-                                                <th class="text-center" style="display:none;"><?php echo display('varient_name')?></th>
+                                                <th class="text-center"><?php echo display('varient_name')?></th>
                                                 <th class="text-center wp_100"><?php echo display('unit_price')?></th>
                                                 <th class="text-center wp_100"><?php echo display('quantity');?></th>
                                                 <th class="text-center"><?php echo display('total_price')?></th>
@@ -270,7 +264,7 @@
 
                                                         $cr=($currency->position == 1) ? $currency->curr_icon : '';
                                                         if($q->num_rows() > 0){
-                                                            $modifierHtml .= '<small class="modCheck" style="background-color: #f2dede !important;">'.$ordered_modifiers->add_on_name.' '.(($ordered_modifiers->price>0)?$cr.' '.$ordered_modifiers->price:'').'</small> ';
+                                                            $modifierHtml .= '<br /><small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;">'.$ordered_modifiers->add_on_name.' ('.$cr.' '.$ordered_modifiers->price.')</small> ';
                                                         }
                                                         $modEachItemTotal += $ordered_modifiers->price;
                                                     } 
@@ -385,36 +379,30 @@
                                                     <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id;?>','<?php echo $item->notes;?>',<?php echo $item->order_id;?>,1,<?php echo $isgroup;?>)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
                                                     <?php 
                                                     if (count($modifiers) > 0):
-
-                                                        $this->db->select('add_ons.add_on_name, add_ons.price, cart_selected_modifiers.menu_id, add_ons.add_on_id, add_ons.modifier_id');
+                                                        $this->db->select('add_ons.add_on_name, add_ons.price');
                                                         $this->db->from('add_ons');
                                                         $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
-                                                        $this->db->where('cart_selected_modifiers.menu_id',$item->menu_id);
+                                                        $this->db->where('cart_selected_modifiers.menu_id', $item->menu_id);
                                                         $this->db->where('cart_selected_modifiers.foods_or_mods', 2);
                                                         $this->db->where('cart_selected_modifiers.is_active', 1);
-                                                        $this->db->where('cart_selected_modifiers.meal_deal_id', 0);
-                                                        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
                                                         $q1 = $this->db->get();
+                                                        // echo $this->db->last_query();
                                                         $selectedModsForCart = $q1->result();
-
                                                         $this->db->select('item_foods.ProductName AS food_name');
                                                         $this->db->from('item_foods');
                                                         $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=item_foods.ProductsID');
                                                         $this->db->where('cart_selected_modifiers.menu_id',$item->menu_id);
-                                                        $this->db->where('cart_selected_modifiers.foods_or_mods', 2);
+                                                        $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
                                                         $this->db->where('cart_selected_modifiers.is_active', 1);
-                                                        $this->db->where('cart_selected_modifiers.meal_deal_id', 0);
-                                                        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
                                                         $q2 = $this->db->get();
                                                         $selectedFoodsForCart = $q2->result();
                                                     ?>
-                                                    <!-- <br /> -->
-                                              <a class="cartModToggle" id="cartModToggle_update_<?=$item->menu_id;?>" onclick="itemModifiers(<?= $item->menu_id; ?>,'<?= $item->rowid; ?>')" title="Click to Choose Modifiers" >
+                                                    <br />
+                                              <a id="cartModToggle_update_<?=$item->menu_id;?>" onclick="itemModifiers(<?= $item->menu_id; ?>,'<?= $item->rowid; ?>')" title="Click to Choose Modifiers" >
                                               <?php 
-                                              if(($q1->num_rows() <= 0) || ($q2->num_rows() <= 0) && (count($selectedModsForCart) == 0)):
-                                                // if(count($selectedModsForCart) == 0):
+                                              if($q1->num_rows() <= 0 || $q2->num_rows() <= 0):
                                               ?>
-                                              <small class="modCheck" style="background-color: #f2dede !important;" id="cartModToggle_<?=$item->menu_id; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
+                                              <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;" id="cartModToggle_<?=$item->menu_id; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
                                               <?php endif; ?>
                                                 <?php
 
@@ -425,51 +413,26 @@
                                                 if (count($selectedFoodsForCart)>0):
                                                   foreach ($selectedFoodsForCart as $smk => $smv):
                                                 ?>
-                                                        <!-- <br /> -->
-                                                        <small class="modCheck" style="background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
+                                                        <br />
+                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
                                                 <?php
                                                   endforeach;
                                                 endif;
                                                 if (count($selectedModsForCart)>0):
-                                                //   echo "<br />";
+                                                  echo "<br />";
                                                   foreach ($selectedModsForCart as $smk => $smv):
                                                     if($smv->foods_or_mods == 1):
                                                         $smv->add_on_name = $smv->add_on_name;
                                                 ?>
-                                                        <!-- <br /> -->
-                                                        <small class="modCheck bg-success" style=""><?=$smv->add_on_name;?><?php if($smv->price > 0): ?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+                                                        <br />
+                                                        <small class="modCheck bg-danger" style="font-style: italic;font-weight: 400;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
                                                 <?php 
                                                     else:
                                                         $smv->add_on_name = $smv->add_on_name;
                                                 ?>
-                                                        <!-- <br /> -->
-                                                        <small class="modCheck" style="background-color: #f2dede !important;"><?=$smv->add_on_name;?><?php if($smv->price > 0): ?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+                                                        <br />
+                                                        <small class="modCheck" style="font-style: italic;font-weight: 400;background-color: #f2dede !important;"><?=$smv->add_on_name;?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)</small>
                                                 <?php
-                                                        $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
-                                                        $this->db->from('add_ons');
-                                                        $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
-                                                        // $this->db->where('cart_selected_modifiers.menu_id',$pid);
-                                                        $this->db->where('cart_selected_modifiers.foods_or_mods', 1);
-                                                        $this->db->where('cart_selected_modifiers.is_active', 1);
-                                                        $this->db->where('cart_selected_modifiers.meal_deal_id', $item->menu_id);
-                                                        // $this->db->where('cart_selected_modifiers.add_on_id', $smv->menu_id);
-                                                        $this->db->where('DATE(cart_selected_modifiers.created_at)',date('Y-m-d'));
-                                                        $q3 = $this->db->get();
-                                                        // echo $this->db->last_query();
-                                                        $selectedDealSubMods = $q3->result();
-                                                        if(count($selectedDealSubMods) > 0):
-                                                            echo "<div class='subMods'>";
-                                                            foreach ($selectedDealSubMods as $sdm):
-                                                                if($smv->modifier_id == $sdm->menu_id):
-                                                                $smv->add_on_name = $sdm->add_on_name;
-                                                        ?>
-                                                                <!-- <br /> -->
-                                                                <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
-                                                        <?php
-                                                                endif;
-                                                                endforeach;
-                                                            echo "</div>";
-                                                            endif;
                                                       endif;
                                                   endforeach;
                                                 endif;
@@ -478,7 +441,7 @@
                                               </a>
                                               <?php endif; ?>
                                                 </td>
-                                                <td style="display:none;">
+                                                <td>
                                                     <?php echo $item->variantName;?>
                                                 </td>
                                                 <td class="text-right"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemsingleprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </td>

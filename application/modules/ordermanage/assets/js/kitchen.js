@@ -74,6 +74,8 @@ if(values==''){
 					$("#isongoing"+ordid+kitid).addClass("display-none");
 					$('input[name="item'+ordid+kitid+'"]:checked').attr('alt',1);
 					$('input[name="item'+ordid+kitid+'"]:checked').removeAttr('checked');
+					//Forcelly Reload page
+					window.top.location.href = baseurl + "ordermanage/order/allkitchen";
 					}
 					else{
 						$('input[name="item'+ordid+kitid+'"]:checked').attr('alt',1);

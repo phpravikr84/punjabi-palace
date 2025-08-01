@@ -66,7 +66,7 @@
                         <div class="form-group col-md-6">
                             <label for="fd4digit" class="col-form-label pb-2"><?php echo display('cuspayment');?></label>
                             
-                                  <input type="number"  class="form-control number pay firstpay"  name="paidamount[]" value="<?php echo $totaldue; ?>" onkeyup="changedueamount()"  placeholder="0" onclick="givefocus(this)" />
+                                  <input type="text"  id="firstpay" class="form-control number pay firstpay"  name="paidamount[]" value="<?php echo $totaldue; ?>" onkeyup="changedueamount()"  placeholder="0" onclick="givefocus(this)" />
                           
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                   
                                 </table>
 
-                        <div class="grid-container">
+                        <!-- <div class="grid-container">
                         <input type="button" class="grid-item" name="n1" value="1" onClick="inputNumbersfocus(n1.value)">
                         <input type="button" class="grid-item" name="n2" value="2" onClick="inputNumbersfocus(n2.value)">
                         <input type="button" class="grid-item" name="n3" value="3" onClick="inputNumbersfocus(n3.value)">
@@ -154,7 +154,7 @@
                         <input type="button" class="grid-item" name="n00" value="00" onClick="inputNumbersfocus(n00.value)"> 
                         <input type="button" class="grid-item" name="c0" value="C" placeholder="0" onClick="inputNumbersfocus(c0.value)">   
                        
-                        </div>
+                        </div> -->
                        
                         <div class="form-group text-right mt-3">
                             <div class="col-sm-12 pr-0 mt-15">
@@ -171,4 +171,10 @@
 </form>      
 <input type="hidden" id="get-order-flag" name="orderid" value="1">
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/suborder.js'); ?>" type="text/javascript"></script>
-            
+<script>
+    $(document).ready(function () {
+        $('#firstpay').mlKeyboard({ layout: 'en_US' });
+        //discount
+        $('#discount').mlKeyboard({ layout: 'en_US' });
+    });
+</script>
