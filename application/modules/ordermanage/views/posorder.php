@@ -10,6 +10,9 @@
   <script src="<?php echo base_url(); ?>assets/mlkeyboard/jquery.ml-keyboard.js"></script>
 <!-- Virtural Keyboard End -->
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/postop.js'); ?>" type="text/javascript"></script>
+<script type="text/javascript">
+  var customer_name, ctypeid = "";
+</script>
 <?php
 (int)$new_version  = file_get_contents('https://update.adzguru.co/punjabi_palace/autoupdate/update_info');
 $myversion = current_version();
@@ -364,6 +367,12 @@ $ptdiscount = 0; ?>
       </div>
       <div class="modal-body">
         <div class="form-group row">
+          <label for="mobile" class="col-sm-3 col-form-label"><?php echo display('mobile'); ?> <i class="text-danger">*</i></label>
+          <div class="col-sm-6">
+            <input class="form-control" name="mobile" id="mobile" type="number" placeholder="Customer Mobile" required="" min="0">
+          </div>
+        </div>
+        <div class="form-group row">
           <label for="name" class="col-sm-3 col-form-label"><?php echo display('customer_name'); ?> <i class="text-danger">*</i></label>
           <div class="col-sm-6">
             <input class="form-control simple-control" name="customer_name" id="name" type="text" placeholder="Customer Name" required="">
@@ -376,27 +385,21 @@ $ptdiscount = 0; ?>
           </div>
         </div>
         <div class="form-group row">
-          <label for="mobile" class="col-sm-3 col-form-label"><?php echo display('mobile'); ?> <i class="text-danger">*</i></label>
-          <div class="col-sm-6">
-            <input class="form-control" name="mobile" id="mobile" type="number" placeholder="Customer Mobile" required="" min="0">
-          </div>
-        </div>
-        <div class="form-group row">
           <label for="address " class="col-sm-3 col-form-label"><?php echo display('b_address'); ?></label>
           <div class="col-sm-6">
-            <textarea class="form-control" name="address" id="address " rows="3" placeholder="Customer Address"></textarea>
+            <textarea class="form-control" name="address" id="address" rows="3" placeholder="Customer Address"></textarea>
           </div>
         </div>
         <div class="form-group row">
           <label for="address " class="col-sm-3 col-form-label"><?php echo display('fav_addesrr'); ?></label>
           <div class="col-sm-6">
-            <textarea class="form-control" name="favaddress" id="favaddress " rows="3" placeholder="Customer Address"></textarea>
+            <textarea class="form-control" name="favaddress" id="favaddress" rows="3" placeholder="Customer Address"></textarea>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal"><?php echo display('close'); ?> </button>
-        <button type="submit" class="btn btn-success"><?php echo display('submit'); ?> </button>
+        <button type="submit" class="btn btn-success" id="posAddNewCustomerBtn"><?php echo display('submit'); ?> </button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -948,18 +951,18 @@ foreach ($scan as $file) {
                         <div class="slimScrollDiv">
                           <div class="row pos-newform">
                             <div class="col-md-6 form-group">
+                              <label for="store_id"><?php echo display('customer_type'); ?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                              <?php 
+                              // $ctype = 1;
+                              echo form_dropdown('ctypeid', $curtomertype, (!empty($ctype) ? $ctype : null), 'class="form-control" id="ctypeid" required') ?>
+                            </div>
+                            <div class="col-md-6 form-group">
                               <label for="customer_name"><?php echo display('customer_name'); ?><span class="color-red">*</span></label>
                               <div class="d-flex">
                                 <?php $cusid = 1;
                                 echo form_dropdown('customer_name', $customerlist, (!empty($cusid) ? $cusid : null), 'class="postform resizeselect form-control" id="customer_name" required') ?>
                                 <button type="button" class="btn btn-primary ml-l" aria-hidden="true" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" id="add_cust" data-target="#client-info"><i class="ti-plus"></i></button>
                               </div>
-                            </div>
-                            <div class="col-md-6 form-group">
-                              <label for="store_id"><?php echo display('customer_type'); ?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                              <?php 
-                              // $ctype = 1;
-                              echo form_dropdown('ctypeid', $curtomertype, (!empty($ctype) ? $ctype : null), 'class="form-control" id="ctypeid" required') ?>
                             </div>
                             <div id="nonthirdparty" class="col-md-12">
                               <div class="row align-items-end">
@@ -1229,7 +1232,7 @@ foreach ($scan as $file) {
                                             // echo "</pre><br />";
                                             // echo "Query: ".$this->db->last_query();
                                             ?>
-                                            <a class="serach pl-15" onclick="itemnote('<?=$item['rowid'];?>','<?=$item['itemnote'];?>',<?=$item['qty'];?>,2)" title="<?=display('foodnote');?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+                                            <a class="serach pl-15" onclick="itemnote('<?=$item['rowid'];?>','<?=$item['itemnote'];?>',<?=$item['qty'];?>,2)" title="<?=display('foodnote');?>"> <?php if(!empty($item['itemnote'])):?> <span class="cartItemNote"><?=$item['itemnote'];?></span> <?php else: ?><i class="fa fa-sticky-note" aria-hidden="true"></i><?php endif; ?> </a>
                                             <?php 
                                               if (count($modifiers) > 0):
                                                 $this->db->select('add_ons.add_on_name, add_ons.price, cart_selected_modifiers.menu_id, add_ons.add_on_id, add_ons.modifier_id');
@@ -1569,11 +1572,39 @@ foreach ($scan1 as $file) {
         $("#delivercom").prop('disabled', true);
     }
   });
-  $(document).on('change', '#ctypeid', function () {
-    let ctype = $(this).val();
-    $("#poscartclearbtn").click();
-    window.location.href = "<?=base_url('ordermanage/order/pos_invoice/');?>" + ctype;
-  });
+  // $(document).on('change', '#ctypeid', function () {
+  //   let ctype = $(this).val();
+  //   $("#poscartclearbtn").click();
+  //   window.location.href = "<?=base_url('ordermanage/order/pos_invoice/');?>" + ctype;
+  // });
+
+  // $(document).on('change', '#ctypeid', function () {
+  //     let ctype = $(this).val();
+  //     $("#poscartclearbtn").click();
+
+  //     // Get the current full URL
+  //     let url = new URL(window.location.href);
+
+  //     // Split the path segments
+  //     let pathnameParts = url.pathname.split('/');
+
+  //     // Find and replace the ctype in the URL path (e.g., pos_invoice/1)
+  //     let posIndex = pathnameParts.indexOf('pos_invoice');
+  //     if (posIndex !== -1 && pathnameParts.length > posIndex + 1) {
+  //         pathnameParts[posIndex + 1] = ctype;
+  //     }
+
+  //     // Update the query string for ctypeid
+  //     url.searchParams.set('ctypeid', ctype);
+
+  //     // Build the full updated URL
+  //     let newPath = pathnameParts.join('/');
+  //     let newUrl = url.origin + newPath + '?' + url.searchParams.toString();
+
+  //     // Reload the page with updated URL
+  //     window.location.href = newUrl;
+  // });
+
 
   Pace.options.ajax = {
     trackMethods: ['POST', 'GET'],
@@ -1617,3 +1648,357 @@ foreach ($scan1 as $file) {
 <script src="<?=base_url('ordermanage/order/possettingjs');?>" type="text/javascript"></script>
 <script src="<?=base_url('ordermanage/order/quickorderjs');?>" type="text/javascript"></script>
 <script src="<?=base_url('application/modules/ordermanage/assets/js/possetting.js');?>" type="text/javascript"></script>
+<script type="text/javascript">
+  // $(document).on('change', '#customer_name, #ctypeid', function () {
+  //     let customerName = $('#customer_name').val();
+  //     let ctypeId = $('#ctypeid').val();
+
+  //     let url = new URL(window.location.href);
+      
+  //     if (customerName) {
+  //         url.searchParams.set('customer_name', customerName);
+  //     } else {
+  //         url.searchParams.delete('customer_name');
+  //     }
+
+  //     if (ctypeId) {
+  //         url.searchParams.set('ctypeid', ctypeId);
+  //     } else {
+  //         url.searchParams.delete('ctypeid');
+  //     }
+
+  //     // Update URL without reload
+  //     window.history.replaceState({}, '', url.toString());
+  // });
+
+
+  // $(document).ready(function () {
+  //     const urlParams = new URLSearchParams(window.location.search);
+  //     const customerName = urlParams.get('customer_name');
+  //     const ctypeId = urlParams.get('ctypeid');
+
+  //     if (customerName) {
+  //         $('#customer_name').val(customerName);
+  //     }
+
+  //     if (ctypeId) {
+  //         $('#ctypeid').val(ctypeId);
+  //     }
+  // });
+$(document).ready(function () {
+    // 1. On page load: Set dropdowns from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const customerName = urlParams.get('customer_name');
+    const ctypeId = urlParams.get('ctypeid');
+
+    setTimeout(() => {
+      if (customerName) {
+          $('#customer_name').val(customerName).change(); // Trigger change event to update URL
+      }
+
+      if (ctypeId) {
+          $('#ctypeid').val(ctypeId);
+      }
+    }, 1000);
+
+    // 2. Handle changes
+    $(document).on('change', '#customer_name, #ctypeid', function () {
+        let customerName = $('#customer_name').val();
+        let ctypeId = $('#ctypeid').val();
+
+        let currentUrl = new URL(window.location.href);
+        let pathSegments = currentUrl.pathname.split('/');
+
+        // Update path if ctypeId is present
+        let posIndex = pathSegments.indexOf('pos_invoice');
+        if (posIndex !== -1 && pathSegments.length > posIndex + 1 && ctypeId) {
+            pathSegments[posIndex + 1] = ctypeId;
+        }
+
+        // Always update search params
+        if (customerName) {
+            currentUrl.searchParams.set('customer_name', customerName);
+        } else {
+            // currentUrl.searchParams.delete('customer_name');
+        }
+
+        if (ctypeId) {
+            currentUrl.searchParams.set('ctypeid', ctypeId);
+        } else {
+            // currentUrl.searchParams.delete('ctypeid');
+        }
+
+        // Final URL
+        let newUrl = currentUrl.origin + pathSegments.join('/') + '?' + currentUrl.searchParams.toString();
+
+        // Update browser URL without reload
+        window.history.replaceState({}, '', newUrl);
+
+        // Reload only if #ctypeid is changed
+        if ($(this).attr('id') === 'ctypeid') {
+            $("#poscartclearbtn").click();
+            window.location.href = newUrl;
+        }
+    });
+});
+
+$(document).on('submit', "#validate", function (e) {
+    e.preventDefault();
+
+    var url = basicinfo.baseurl + 'ordermanage/order/insert_customer',
+        customerName = $("#name").val(),
+        email = $("#email").val(),
+        mobile = $("#mobile").val(),
+        csrf = $('#csrfhashresarvation').val();
+
+    if (customerName == '') {
+        swal({
+            title: "Error",
+            text: "Please enter customer name",
+            type: "warning",
+            confirmButtonText: "OK",
+            closeOnConfirm: true
+        });
+        $("#name").focus();
+        return false;
+    }
+
+    if (mobile == '') {
+        swal({
+            title: "Error",
+            text: "Please enter customer mobile",
+            type: "warning",
+            confirmButtonText: "OK",
+            closeOnConfirm: true
+        });
+        $("#mobile").focus();
+        return false;
+    } else if (isNaN(mobile)) {
+        swal({
+            title: "Error",
+            text: "Please enter a valid mobile number",
+            type: "warning",
+            confirmButtonText: "OK",
+            closeOnConfirm: true
+        });
+        $("#mobile").focus();
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            customer_name: customerName,
+            email: email,
+            mobile: mobile,
+            csrf_test_name: csrf
+        },
+        dataType: "json",
+        success: function (data) {
+            if (data.status == 1) {
+                swal({
+                    title: "Success",
+                    text: data.message,
+                    type: "success",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                });
+                $("#customer_name").append('<option value="' + data.customer_id + '" selected>' + customerName + '</option>');
+                $("#customer_name").val(data.customer_id).change();
+                $("#name").val('');
+                $("#email").val('');
+                $("#mobile").val('');
+                $("#client-info").modal('hide');
+            } else {
+                swal({
+                    title: "Error",
+                    text: data.message,
+                    type: "error",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                });
+            }
+        }
+    });
+});
+
+// $(document).on('keyup', '#mobile', function () {
+//     let mobile = $(this).val();
+
+//     // Sanitize: remove non-digit characters
+//     // mobile = mobile.replace(/[^0-9]/g, '');
+
+//     console.log("Mobile Number After Sanitize: ", mobile);
+
+//     if (mobile.length === 10 && !isNaN(mobile)) {
+//         $(this).removeClass('is-invalid');
+//         console.log("Mobile Number After 10 digits check: ", mobile);
+
+//         var url = basicinfo.baseurl + 'ordermanage/order/check_customer_by_mobile',
+//             csrf = $('#csrfhashresarvation').val();
+
+//         $.ajax({
+//             type: "POST",
+//             url: url,
+//             data: {
+//                 mobile: mobile,
+//                 csrf_test_name: csrf
+//             },
+//             dataType: "json",
+//             success: function (data) {
+//                 if (data.status == 1) {
+//                     $("#name").val(data.customer_name);
+//                     $("#email").val(data.email);
+//                     $("#mobile").val(data.mobile);
+//                     $("#address").val(data.address);
+//                     $("#favaddress").val(data.favaddress);
+//                 } else {
+//                     $("#name").val('');
+//                     $("#email").val('');
+//                     $("#address").val('');
+//                     $("#favaddress").val('');
+//                 }
+//             }
+//         });
+
+//     } else {
+//         $(this).addClass('is-invalid');
+//     }
+// });
+$(document).on('keyup', '#mobile', function () {
+    let $mobileInput = $(this);
+    let mobile = $mobileInput.val().replace(/[^0-9]/g, '');
+
+    // Remove old suggestions
+    $('#customerSuggestionBox').remove();
+    $("#name, #email, #address, #favaddress").prop("disabled", false);
+    $("#posAddNewCustomerBtn").prop("disabled", false);
+
+    if (mobile.length === 10 && !isNaN(mobile)) {
+        $mobileInput.removeClass('is-invalid');
+
+        $.ajax({
+            type: "POST",
+            url: basicinfo.baseurl + 'ordermanage/order/check_customer_by_mobile',
+            data: {
+                mobile: mobile,
+                csrf_test_name: $('#csrfhashresarvation').val()
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 1) {
+                    // Customer found – disable other inputs
+                    $("#name, #email, #address, #favaddress").prop("disabled", true);
+                    $("#posAddNewCustomerBtn").prop("disabled", true).prop("readonly", true);
+
+                    // Show selectable suggestion box
+                    const suggestionHTML = `
+                        <div id="customerSuggestionBox" style="position: absolute; background: #fff; border: 1px solid #ccc; z-index: 9999; width: 100%; max-width: 300px;">
+                            <div class="suggestion-item" data-cid="${data.customer_id}" style="padding: 8px; cursor: pointer;">
+                                <strong>${data.customer_name}</strong><br>
+                                ${data.mobile} &mdash; ${data.email || ''}
+                            </div>
+                        </div>`;
+
+                    // Append suggestion just below the input
+                    $mobileInput.after(suggestionHTML);
+                } else {
+                    // No customer found – enable fields
+                    // $("#name, #email, #address, #favaddress, #posAddNewCustomerBtn button[type='submit']").prop("disabled", false).prop("readonly", false);
+                    $("#name, #email, #address, #favaddress").prop("disabled", false);
+                    $("#posAddNewCustomerBtn").prop("disabled", false);
+
+                }
+            }
+        });
+    } else {
+        $mobileInput.addClass('is-invalid');
+    }
+});
+
+$(document).on('focus', '#mobile', function () {
+    // If the input is empty, remove the suggestion box
+    if ($(this).val().trim() === '') {
+        
+    } else {
+      let $mobileInput = $(this);
+      let mobile = $mobileInput.val().replace(/[^0-9]/g, '');
+
+      // Remove old suggestions
+      $('#customerSuggestionBox').remove();
+      $("#name, #email, #address, #favaddress").prop("disabled", false);
+      $("#posAddNewCustomerBtn").prop("disabled", false);
+
+      if (mobile.length === 10 && !isNaN(mobile)) {
+          $mobileInput.removeClass('is-invalid');
+
+          $.ajax({
+              type: "POST",
+              url: basicinfo.baseurl + 'ordermanage/order/check_customer_by_mobile',
+              data: {
+                  mobile: mobile,
+                  csrf_test_name: $('#csrfhashresarvation').val()
+              },
+              dataType: "json",
+              success: function (data) {
+                  if (data.status == 1) {
+                      // Customer found – disable other inputs
+                      $("#name, #email, #address, #favaddress").prop("disabled", true);
+                      $("#posAddNewCustomerBtn").prop("disabled", true).prop("readonly", true);
+
+                      // Show selectable suggestion box
+                      const suggestionHTML = `
+                          <div id="customerSuggestionBox" style="position: absolute; background: #fff; border: 1px solid #ccc; z-index: 9999; width: 100%; max-width: 300px;">
+                              <div class="suggestion-item" data-cid="${data.customer_id}" style="padding: 8px; cursor: pointer;">
+                                  <strong>${data.customer_name}</strong><br>
+                                  ${data.mobile} &mdash; ${data.email || ''}
+                              </div>
+                          </div>`;
+
+                      // Append suggestion just below the input
+                      $mobileInput.after(suggestionHTML);
+                  } else {
+                      // No customer found – enable fields
+                      // $("#name, #email, #address, #favaddress, #posAddNewCustomerBtn button[type='submit']").prop("disabled", false).prop("readonly", false);
+                      $("#name, #email, #address, #favaddress").prop("disabled", false);
+                      $("#posAddNewCustomerBtn").prop("disabled", false);
+
+                  }
+              }
+          });
+      } else {
+          $mobileInput.addClass('is-invalid');
+      }
+    }
+});
+$(document).on('focusout', '#mobile', function () {
+    setTimeout(() => {
+        if ($(this).val().trim() === '') {
+            $('#customerSuggestionBox').remove();
+        }
+    }, 200); // Delay enough for click events to process
+});
+
+$(document).on('click', '.suggestion-item', function () {
+    const customerId = $(this).data('cid');
+    const customerName = $(this).text().trim();
+
+    // Select customer in dropdown
+    $("#customer_name").val(customerId).change();
+    if($("#customer_name_update")){
+      $("#customer_name_update").val(customerId).change();
+    }
+    // Close modal
+    $("#client-info").modal('hide');
+
+    // Clear the form and enable inputs
+    $("#name, #email, #mobile, #address, #favaddress").val('').prop("disabled", false).prop("readonly", false);
+    $("#posAddNewCustomerBtn button[type='submit']").prop("disabled", false);
+
+    // Remove suggestion box
+    $('#customerSuggestionBox').remove();
+});
+
+
+</script>

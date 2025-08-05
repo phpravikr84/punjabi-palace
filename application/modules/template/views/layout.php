@@ -51,7 +51,7 @@
 
     <div class="wrapper">
         <?php if ($title == 'posinvoiceloading') { ?>
-            <div class="page-loader-wrapper">
+            <!-- <div class="page-loader-wrapper">
                 <div class="loader">
                     <div class="preloader">
                         <div class="spinner-layer pl-green">
@@ -63,9 +63,9 @@
                             </div>
                         </div>
                     </div>
-                    <p><?php echo display('please_wait') ?>...</p>
+                    <p><?php ##echo display('please_wait') ?>...</p>
                 </div>
-            </div>
+            </div> -->
         <?php } ?>
         <script>
             $(document).ready(function() {

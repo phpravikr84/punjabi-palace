@@ -1071,7 +1071,7 @@ class Order_model extends CI_Model
 		$list[''] = 'Select Customer';
 		if (!empty($data)) {
 			foreach ($data as $value)
-				$list[$value->customer_id] = $value->customer_name;
+				$list[$value->customer_id] = ($value->customer_phone != "") ? $value->customer_name.'('.$value->customer_phone.')' : $value->customer_name;
 			return $list;
 		} else {
 			return false;

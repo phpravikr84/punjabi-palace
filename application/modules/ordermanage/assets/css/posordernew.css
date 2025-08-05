@@ -634,7 +634,17 @@ small.modifier-sec-sub-heading
     display: inline-block;
     margin-left: 5px;
   }
-  
+  .cartItemNote{
+    padding: 2px 5px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 450;
+  }
+  .fa-sticky-note
+  {
+    font-size: 25px;
+    cursor:pointer;
+  }
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
