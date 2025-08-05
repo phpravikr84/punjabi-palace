@@ -56,6 +56,7 @@ class Order extends MX_Controller
 		$this->form_validation->set_rules('email', display('email'), 'required');
 		$this->form_validation->set_rules('mobile', display('mobile'), 'required');
 		$savedid = $this->session->userdata('id');
+		$response = ['status'=>0,'message'=>''];
 
 		$coa = $this->order_model->headcode();
 		if ($coa->HeadCode != NULL) {
@@ -141,14 +142,51 @@ class Order extends MX_Controller
 					$this->db->insert('tbl_customerpoint', $pointstable);
 				}
 				$this->logs_model->log_recorded($logData);
-				$this->session->set_flashdata('message', display('save_successfully'));
-				redirect('ordermanage/order/pos_invoice');
+				//get the last inserted customer id
+				$response['customer_id'] = $customerid->customer_id;
+				$response['status'] = 1;
+				$response['message'] = display('save_successfully');
+				echo json_encode($response);
+				exit();
+				// $this->session->set_flashdata('message', display('save_successfully'));
+				// redirect('ordermanage/order/pos_invoice');
+
 			} else {
-				$this->session->set_flashdata('exception',  display('please_try_again'));
+				// $this->session->set_flashdata('exception',  display('please_try_again'));
+				$response['status'] = 0;
+				$response['message'] = display('please_try_again');
+				echo json_encode($response);
+				exit();
 			}
 			redirect("ordermanage/order/pos_invoice");
+			// echo json_encode($response);
 		} else {
 			redirect("ordermanage/order/pos_invoice");
+			// echo json_encode($response);
+		}
+	}
+	public function check_customer_by_mobile()
+	{
+		// $response = [];
+		$mobile = $this->input->post('mobile', true);
+		if (!empty($mobile)) {
+			$customer = $this->order_model->read('*', 'customer_info', array('customer_phone' => $mobile));
+			if (!empty($customer)) {
+				echo json_encode([
+					'status' => 1, 
+					'message' => display('customer_already_exist'),
+					'customer_name' => $customer->customer_name,
+					'customer_id' => $customer->customer_id,
+					'email' => $customer->customer_email,
+					'mobile' => $customer->customer_phone,
+					'address' => $customer->customer_address,
+					'favaddress' => $customer->favorite_delivery_address,
+				]);
+			} else {
+				echo json_encode(array('status' => 0, 'message' => display('customer_not_exist')));
+			}
+		} else {
+			echo json_encode(array('status' => 2, 'message' => display('please_enter_mobile')));
 		}
 	}
 	public function insert_customerord()

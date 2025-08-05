@@ -145,7 +145,7 @@
           <tr>
             <td style="text-align: left;">
               <?php echo $item->ProductName; ?><?php echo $text; ?> 
-              <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id; ?>','<?php echo $item->notes; ?>',<?php echo $item->order_id; ?>,1,<?php echo $isgroup; ?>)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+              <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id; ?>','<?php echo $item->notes; ?>',<?php echo $item->order_id; ?>,1,<?php echo $isgroup; ?>)" title="<?php echo display('foodnote') ?>"> <?php if(!empty($item->notes)):?> <span class="cartItemNote"><?=$item->notes;?></span> <?php else: ?><i class="fa fa-sticky-note" aria-hidden="true"></i><?php endif; ?> </a>
               <?php
               if(count($modifiers) > 0):
               if (count($selectedFoodsForCart)>0):

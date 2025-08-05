@@ -10,7 +10,7 @@
 <!-- lobipanel -->
 <script src="<?php echo base_url('assets/js/lobipanel.min.js') ?>" type="text/javascript"></script>
 <!-- Pace js -->
-<script src="<?php echo base_url('assets/js/pace.min.js') ?>" type="text/javascript"></script>
+<!-- <script src="<?php ## echo base_url('assets/js/pace.min.js') ?>" type="text/javascript"></script> -->
 <!-- SlimScroll -->
 <script src="<?php echo base_url('assets/js/jquery.slimscroll.min.js') ?>" type="text/javascript"></script>
 <!-- FastClick -->

@@ -371,7 +371,7 @@ $('body').on('click', '.select_product', function (e) {
     var hasaddons = panel.find('.panel-body input[name=select_addons]').val();
     var csrf = $('#csrfhashresarvation').val();
 
-    Pace.restart();
+    // Pace.restart();
     console.log("hasaddons: " + hasaddons);
     console.log("totalvarient: " + totalvarient);
     console.log("customqty: " + customqty);
@@ -522,7 +522,7 @@ function selectGroupItem(th) {
     var hasaddons = panel.find('.panel-body input[name=select_addons]').val();
     var csrf = $('#csrfhashresarvation').val();
 
-    Pace.restart();
+    // Pace.restart();
 
     var dataString = "pid=" + pid + "&sid=" + sizeid + '&itemname=' + itemname + '&isgroup=' + isgroup + '&csrf_test_name=' + csrf;
     var myurl = $('#GetPromoFoodsForCart').val();

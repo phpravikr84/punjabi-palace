@@ -13,7 +13,11 @@ $this->load->model('ordermanage/order_model',  'ordermodel');
 if ((!isset($modifiers)) && !is_array($modifiers)) {
     $modifiers = [];
 }
-if ($cart = $this->cart->contents()) { ?>
+if ($cart = $this->cart->contents()) {
+// echo "<pre>";
+// print_r($cart);
+// echo "</pre>";  
+?>
 <div class="div" id="modifierContent" style="display: none;">
       <?php 
       if (count($modifiers)>0):
@@ -228,7 +232,7 @@ if ($cart = $this->cart->contents()) { ?>
                                         }
                                       }
                                       ?>
-                                      <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <i class="fa fa-sticky-note" aria-hidden="true"></i> </a>
+                                      <a class="serach pl-15" onclick="itemnote('<?php echo $item['rowid'] ?>','<?php echo $item['itemnote'] ?>',<?php echo $item['qty']; ?>,2)" title="<?php echo display('foodnote') ?>"> <?php if(!empty($item['itemnote'])):?> <span class="cartItemNote"><?=$item['itemnote'];?></span> <?php else: ?><i class="fa fa-sticky-note" aria-hidden="true"></i><?php endif; ?> </a>
                                       <?php 
                                       //Fetching modifier groups information from the database
                                       $this->db->select('modifier_groups.*,menu_add_on.*');

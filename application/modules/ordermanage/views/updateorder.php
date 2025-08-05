@@ -224,6 +224,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <input type="hidden" id="product_value" name="">
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="product-list">
                                 <div id="updatefoodlist">
                                     <div class="">
@@ -240,6 +241,192 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+=======
+                        </div>
+                        <div id="thirdparty_update" class="col-md-12 display-none">
+                            <div class="form-group">
+                                <label for="store_id"><?php echo display('del_company');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <?php echo form_dropdown('delivercom',$thirdpartylist,(!empty($orderinfo->isthirdparty)?$orderinfo->isthirdparty:null),'class="form-control wpr_95" id="delivercom_update" required disabled="disabled"') ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="hidden" id="order_date" name="order_date" required value="<?php echo date('d-m-Y')?>" />
+                            <input class="form-control" type="hidden" id="bill_info" name="bill_info" required value="<?php echo $billinfo->bill_status;?>" />
+                            <input type="hidden" id="card_type" name="card_type" value="<?php echo $billinfo->payment_method_id;?>" />
+                            <input type="hidden" id="orderstatus" name="orderstatus" value="<?php echo $orderinfo->order_status;?>" />
+                            <input type="hidden" id="assigncard_terminal" name="assigncard_terminal" value="" />
+                            <input type="hidden" id="assignbank" name="assignbank" value="" />
+                            <input type="hidden" id="assignlastdigit" name="assignlastdigit" value="" />
+                            <input type="hidden" id="product_value" name="">
+                        </div>
+                        
+                    </div>
+                    <div class="product-list">
+                        <div id="updatefoodlist">
+                            
+                            
+                            <div class="">
+                                <div class="table-responsive">
+                                    <table class="table table-fixed table-bordered table-hover bg-white" id="purchaseTable">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center"><?php echo display('item')?> </th>
+                                                <th class="text-center" style="display:none;"><?php echo display('varient_name')?></th>
+                                                <th class="text-center wp_100"><?php echo display('unit_price')?></th>
+                                                <th class="text-center wp_100"><?php echo display('quantity');?></th>
+                                                <th class="text-center"><?php echo display('total_price')?></th>
+                                                <th class="text-center"><?php echo display('action')?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php  $this->load->model('ordermanage/order_model','ordermodel');
+                                            $i=0;
+                                            $totalamount=0;
+                                            $subtotal=0;
+                                            $pvat=0;
+                                            $total=$orderinfo->totalamount;
+											$pdiscount=0;
+											$discount=0;
+											$multiplletax = array();
+                                            $modEachItemTotal=$modGrandTotal=0;
+                                        foreach ($iteminfo as $item){
+                                            //print the cart
+                                            $cart = $this->cart->contents();
+                                            // echo "<pre>";
+                                            // print_r($ordered_menu_item_modifiers);
+                                            // echo "</pre>";
+                                            $modifierHtml='';
+                                            if(count($ordered_menu_item_modifiers)>0){
+                                                
+                                                foreach($ordered_menu_item_modifiers as $modifier){
+                                                    if ($modifier->foods_or_mods == 2 && $modifier->menu_id == $item->menu_id) {
+                                                        //fetch add_ons details from `add_ons` table [Modifiers]
+                                                        $this->db->select('add_ons.*');
+                                                        $this->db->from('add_ons');
+                                                        $this->db->where('add_ons.add_on_id', $modifier->add_on_id);
+                                                        $q = $this->db->get();
+                                                        $ordered_modifiers = $q->row();
+
+                                                        // echo "<pre>";
+                                                        // print_r($ordered_modifiers);
+                                                        // echo "</pre><br> name: ".$ordered_modifiers->add_on_name;
+
+                                                        $cr=($currency->position == 1) ? $currency->curr_icon : '';
+                                                        if($q->num_rows() > 0){
+                                                            $modifierHtml .= '<small class="modCheck" style="background-color: #f2dede !important;">'.$ordered_modifiers->add_on_name.' '.(($ordered_modifiers->price>0)?$cr.' '.$ordered_modifiers->price:'').'</small> ';
+                                                        }
+                                                        $modEachItemTotal += $ordered_modifiers->price;
+                                                    } 
+                                                }
+                                            }
+                                            //Fetching add-on prices
+                                            $this->db->select('SUM(add_ons.price) AS mod_total_price');
+                                            $this->db->from('add_ons');
+                                            $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
+                                            $this->db->where('cart_selected_modifiers.menu_id', $item->menu_id);
+                                            $this->db->where('cart_selected_modifiers.is_active', 1);
+                                            $q1 = $this->db->get();
+                                            $modTotalPrice = $q1->row();
+                                            $i++;
+                                            if($item->isgroup==1){
+                                                $isgroupidp=1;
+                                                $isgroup=$item->menu_id;
+                                            }
+                                            else{
+                                                $isgroupidp=0;
+                                                $isgroup=0;
+                                                }
+                                                if($item->price>0){
+                                                $itemprice= $item->price*$item->menuqty;
+
+                                                $itemsingleprice=$item->price;
+                                                }
+                                                else{
+                                                    $itemprice= $item->mprice*$item->menuqty;
+                                                    $itemsingleprice=$item->mprice;
+                                                    }
+                                            $itemprice += $modEachItemTotal;
+                                            $iteminfo=$this->ordermodel->getiteminfo($item->menu_id);
+                                            $mypdiscountprice =0;
+                                            if(!empty($taxinfos)){
+                                            $tx=0;
+                                            if($iteminfo->OffersRate>0){
+                                            $mypdiscountprice=$iteminfo->OffersRate*$itemprice/100;
+                                            }
+                                            $itemvalprice =  ($itemprice-$mypdiscountprice);
+                                            foreach ($taxinfos as $taxinfo)
+                                            {
+                                            $fildname='tax'.$tx;
+                                            if(!empty($iteminfo->$fildname)){
+                                            $vatcalc=$itemvalprice*$iteminfo->$fildname/100;
+                                            $multiplletax[$fildname] = $multiplletax[$fildname]+$vatcalc;
+                                            }
+                                            else{
+                                            $vatcalc=$itemvalprice*$taxinfo['default_value']/100;
+                                            $multiplletax[$fildname] = $multiplletax[$fildname]+$vatcalc;
+                                            }
+                                            $pvat=$pvat+$vatcalc;
+                                            $vatcalc =0;
+                                            $tx++;
+                                            }
+                                            }
+                                            else{
+                                            $vatcalc=$itemprice*$iteminfo->productvat/100;
+                                            $pvat=$pvat+$vatcalc;
+                                            }
+                                            if($iteminfo->OffersRate>0){
+                                                $mypdiscount=$iteminfo->OffersRate*$itemprice/100;
+                                                $pdiscount=$pdiscount+($iteminfo->OffersRate*$itemprice/100);
+                                                }
+                                            else{
+                                                $mypdiscount=0;
+                                                $pdiscount=$pdiscount+0;
+                                            }
+                                            $adonsprice=0;
+                                            if(!empty($item->add_on_id)){
+                                            $addons=explode(",",$item->add_on_id);
+                                            $addonsqty=explode(",",$item->addonsqty);
+                                            $text='&nbsp;&nbsp;<a class="text-right adonsmore" onclick="expand('.$i.')">More..</a>';
+                                            $x=0;
+                                            foreach($addons as $addonsid){
+                                            $adonsinfo=$this->order_model->read('*', 'add_ons', array('add_on_id' => $addonsid));
+                                            $adonsprice=$adonsprice+$adonsinfo->price*$addonsqty[$x];
+                                            $x++;
+                                            }
+                                            $nittotal=$adonsprice;
+                                            $itemprice=$itemprice;
+                                            }
+                                            else{
+                                            $nittotal=0;
+                                            $text='';
+                                            }
+                                            $totalamount=$totalamount+$nittotal;
+                                            $modGrandTotal += $modEachItemTotal;
+                                            $subtotal=$subtotal+$nittotal+$itemsingleprice*$item->menuqty+$modGrandTotal;
+
+                                            //Fetching modifier groups information from the database
+                                            $this->db->select('modifier_groups.*,menu_add_on.*');
+                                            $this->db->from('modifier_groups');
+                                            $this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+                                            $this->db->where('menu_add_on.menu_id', $item->menu_id);
+                                            $this->db->where('menu_add_on.is_active', 1);
+                                            $query = $this->db->get();
+                                            $modifiers = $query->result();
+
+                                            //last query for debugging
+                                            // echo $this->db->last_query();
+                                            // exit;
+                                            // echo "<pre>";
+                                            // print_r($modifiers);
+                                            // echo "</pre><br />Item Info: <br /><pre>";
+                                            // print_r($item);
+                                            // echo "</pre>";
+                                            ?>
+                                            <tr>
+                                                <td style="text-align:left;">
+                                                    <?php echo $item->ProductName;?><?php echo $text;?> 
+                                                    <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id;?>','<?php echo $item->notes;?>',<?php echo $item->order_id;?>,1,<?php echo $isgroup;?>)" title="<?php echo display('foodnote') ?>"> <?php if(!empty($item->notes)):?> <span class="cartItemNote"><?=$item->notes;?></span> <?php else: ?><i class="fa fa-sticky-note" aria-hidden="true"></i><?php endif; ?> </a>
+>>>>>>> dc989c718a36f0f977ebdc23afc3a8e9557bdb0d
                                                     <?php 
                                                     $this->load->model('ordermanage/order_model', 'ordermodel');
                                                     $i = 0;
