@@ -5,24 +5,34 @@ $(document).ready(function () {
     "use strict";
 
     if (basicinfo.segment4 != null) {
+        // swal({
+        //     title: lang.ord_uodate_success,
+        //     text: lang.do_print_token,
+        //     type: "success",
+        //     showCancelButton: true,
+        //     confirmButtonColor: "#28a745",
+        //     confirmButtonText: lang.yes,
+        //     cancelButtonText: lang.no,
+        //     closeOnConfirm: false,
+        //     closeOnCancel: true
+        // },
+        //     function (isConfirm) {
+        //         if (isConfirm) {
+        //             window.location.href = basicinfo.baseurl + "ordermanage/order/postokengenerate/" + basicinfo.segment4 + "/1";
+        //         } else {
+        //             window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice";
+        //         }
+        //     });
         swal({
             title: lang.ord_uodate_success,
-            text: lang.do_print_token,
+            text: '',
             type: "success",
-            showCancelButton: true,
             confirmButtonColor: "#28a745",
-            confirmButtonText: lang.yes,
-            cancelButtonText: lang.no,
-            closeOnConfirm: false,
-            closeOnCancel: true
-        },
-            function (isConfirm) {
-                if (isConfirm) {
-                    window.location.href = basicinfo.baseurl + "ordermanage/order/postokengenerate/" + basicinfo.segment4 + "/1";
-                } else {
-                    window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice";
-                }
-            });
+            confirmButtonText: "OK",
+            closeOnConfirm: false
+        }, function () {
+            window.location.href = basicinfo.baseurl + "ordermanage/order/postokengenerate/" + basicinfo.segment4 + "/1";
+        });
     }
 });
 
