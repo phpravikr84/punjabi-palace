@@ -323,9 +323,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                 <div class="food_select" id="acceptitem<?php echo $orderinfo->order_id . $orderinfo->kitchenid; ?>">
                                                                     <?php
                                                                     $categories = [
-                                                                        5 => 'Starters',
+                                                                         5 => 'Starters',
                                                                         3 => 'Main Course',
-                                                                        17 => 'Sweet Treats'
+                                                                        15 => 'Bread',
+                                                                        11 => 'Rice',
+                                                                        17 => 'Desserts'
                                                                     ];
                                                                     $items_by_category = [];
                                                                     if (!empty($alliteminfo)) {
@@ -337,7 +339,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                     }
                                                                     // Debug: Check $items_by_category
                                                                     // echo '<pre>'; print_r($items_by_category); echo '</pre>'; // Uncomment to debug
-                                                                    $display_order = ['Starters', 'Main Course', 'Sweet Treats', 'Other'];
+                                                                    $display_order = ['Starters', 'Main Course', 'Bread', 'Rice', 'Desserts'];
                                                                     foreach($display_order as $cat_name){
                                                                         ?>
                                                                         <div class="category-section">

@@ -2169,9 +2169,10 @@ class Order_model extends CI_Model
 	}
 	public function get_itemlist($id)
 	{
-		$this->db->select('order_menu.*,item_foods.ProductName,variant.variantid,variant.variantName,variant.price');
+		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.CategoryID,item_category.Name as CategoryName,variant.variantid,variant.variantName,variant.price');
 		$this->db->from('order_menu');
 		$this->db->join('item_foods', 'order_menu.menu_id=item_foods.ProductsID', 'left');
+		$this->db->join('item_category', 'item_foods.CategoryID=item_category.CategoryID', 'left');
 		$this->db->join('variant', 'order_menu.varientid=variant.variantid', 'left');
 		$this->db->where('order_menu.order_id', $id);
 		$query = $this->db->get();
