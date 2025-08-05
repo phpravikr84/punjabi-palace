@@ -911,11 +911,11 @@ foreach ($scan as $file) {
                                       // print_r($item);
                                       // echo "</pre>";
                                       ?>
-                                      <h5><?php echo $item->ProductName; ?> (<?php echo $item->variantName; ?>)
+                                      <h5><?php echo $item->ProductsID.'-'.$item->ProductName; ?>
                                         <?php 
-                                        // if (!empty($item->itemnotes)) {
-                                        //   echo " - " . $item->itemnotes;
-                                        // } 
+                                        if (!empty($item->itemnotes)) {
+                                          echo " -<span class='posShDesc'>" . $item->itemnotes."</span>";
+                                        }
                           
                                       if (!empty($item->component)) {
                                           $components = explode(',', $item->component);
@@ -1046,7 +1046,7 @@ foreach ($scan as $file) {
                                 <?php } ?>
 
                                 <!-- Cook Time -->
-                                <div class="col-md-3 form-group" id="cookingtime">
+                                <div class="col-md-3 form-group" id="cookingtime" style="display: none;">
                                   <label for="cookedtime"><?php echo 'Cook Time'; ?></label>
                                   <input name="cookedtime" type="text" class="form-control timepicker3" id="cookedtime"
                                         placeholder="00:00:00" autocomplete="off" />
@@ -1181,7 +1181,7 @@ foreach ($scan as $file) {
                                         $i++;
                                       ?>
                                         <tr id="<?php echo $i; ?>">
-                                          <th id="product_name_MFU4E">
+                                          <th id="product_name_MFU4E" style="text-align:left;">
                                             <?php echo  $item['name'];
                                             if (!empty($item['addonsid'])) {
                                               echo "<br>";
@@ -1258,9 +1258,9 @@ foreach ($scan as $file) {
                                               <a class="cartModToggle" id="cartModToggle_<?=$item['pid'];?>" onclick="itemModifiers(<?= $item['pid']; ?>,'<?= $item['rowid']; ?>')" title="Click to Choose Modifiers">
                                               <?php 
                                               // if($q1->num_rows() <= 0 || $q2->num_rows() <= 0):
-                                              if(($q1->num_rows() <= 0) || ($q2->num_rows() <= 0) && (count($selectedModsForCart) == 0)):
+                                              if(($q1->num_rows() <= 0) || ($q2->num_rows() <= 0) && (count($modifiers) == 0)):
                                               ?>
-                                              <small class="modCheck" style="background-color: #f2dede !important;" id="cartModToggle_<?= $item['pid']; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
+                                              <small class="modCheck posAddMod" id="cartModToggle_<?= $item['pid']; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
                                               <?php endif; ?>
                                                 <?php
 
@@ -1272,7 +1272,7 @@ foreach ($scan as $file) {
                                                   foreach ($selectedFoodsForCart as $smk => $smv):
                                                 ?>
                                                         <!-- <br /> -->
-                                                        <small class="modCheck" style="background-color: #dff0d8 !important;"><?=$smv->food_name;?></small>
+                                                        <!-- <small class="modCheck"><?=$smv->food_name;?></small> -->
                                                 <?php
                                                   endforeach;
                                                 endif;
@@ -1283,13 +1283,13 @@ foreach ($scan as $file) {
                                                         $smv->add_on_name = $smv->add_on_name;
                                                 ?>
                                                         <!-- <br /> -->
-                                                        <small class="modCheck bg-success" style=""><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+                                                        <small class="modCheck" style=""><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                                 <?php 
                                                     else:
                                                         $smv->add_on_name = $smv->add_on_name;
                                                 ?>
                                                         <!-- <br /> -->
-                                                        <small class="modCheck" style="background-color: #f2dede !important;"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+                                                        <small class="modCheck"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                                 <?php
                                                   $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
                                                   $this->db->from('add_ons');
@@ -1310,7 +1310,7 @@ foreach ($scan as $file) {
                                                             $smv->add_on_name = $sdm->add_on_name;
                                                   ?>
                                                           <!-- <br /> -->
-                                                          <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
+                                                          <small class="modCheck"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
                                                   <?php
                                                           endif;
                                                           endforeach;

@@ -111,3 +111,15 @@ listcat.listcat {
     padding: 5px
 }
 
+.posAddMod 
+{
+    text-decoration:underline; 
+    cursor:pointer;
+}
+
+.selectedDealSubMods
+{
+    font-style: italic;
+    font-size: 11px !important;
+    
+}

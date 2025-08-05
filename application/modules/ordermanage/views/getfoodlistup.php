@@ -1,13 +1,13 @@
 <?php $i=0;
 foreach($itemlist as $item){
-                                                                                        $item=(object)$item;
-$i++;
-                                                                                        if($item->isgroup==1){
-                                                                                            $isgroupid=1;
-                                                                                        }
-                                                                                        else{
-                                                                                            $isgroupid=0;
-                                                                                            }
+    $item=(object)$item;
+    $i++;
+    if($item->isgroup==1){
+        $isgroupid=1;
+    }
+    else{
+        $isgroupid=0;
+    }
 $this->db->select('*');
 $this->db->from('menu_add_on');
 $this->db->where('menu_id',$item->ProductsID);
@@ -21,7 +21,7 @@ $getadons =  0;
 }
 ?>
 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-p-3">
-    <div class="panel panel-bd product-panel update_select_product">
+    <div class="panel panel-bd product-panel update_select_product p-12 rounded-lg">
         <div class="panel-body">
             <img src="<?php echo base_url(!empty($item->ProductImage)?$item->ProductImage:'assets/img/icons/default_pos_pro.jpg'); ?>" class="img-responsive" alt="<?php echo $item->ProductName;?>">
             <input type="hidden" name="update_select_product_id" class="select_product_id" value="<?php echo $item->ProductsID;?>">
@@ -35,7 +35,29 @@ $getadons =  0;
             <input type="hidden" name="update_select_product_price" class="select_product_price" value="<?php echo $item->price;?>">
             <input type="hidden" name="update_select_addons" class="select_addons" value="<?php echo $getadons;?>">
         </div>
-        <div class="text-center"><h4><?php echo $item->ProductName;?> (<?php echo $item->variantName;?>)<?php if(!empty($item->itemnotes)){ echo " -".$item->itemnotes;}?></h4></div>
+        <div class="text-center">
+         <h5>
+          <?php 
+          echo $item->ProductsID.'-'.$item->ProductName;
+          if (!empty($item->itemnotes)) {
+            echo " -<span class='posShDesc'>" . $item->itemnotes."</span>";
+          }
+          if (!empty($item->component)) {
+              $components = explode(',', $item->component);
+              echo '<div class="tag-wrapper">';
+              foreach ($components as $comp) {
+                echo '<span class="label label-primary" style="margin-right:5px;">' . trim($comp) . '</span>';
+              }
+              echo '</div>';
+          }
+          if (!empty($item->price)) {
+            echo "<div class='tag-wrapper'><strong>" .(($currency->position == 1) ? $currency->curr_icon : '').$item->price."</strong>";
+            echo '</div>';
+          }
+          ?>
+           <?php  ?>
+         </h5>
+       </div>
     </div>
 </div>
 <?php } ?>

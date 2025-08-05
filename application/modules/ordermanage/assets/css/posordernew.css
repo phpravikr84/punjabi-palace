@@ -600,11 +600,11 @@ small.modifier-sec-sub-heading
   {
     padding: 4px 5px 4px 5px;
     border-radius: 20px;
-    background-color: #ececec;
+    /* background-color: #ececec; */
     color: #000;
     cursor: pointer;
     margin-top: 7px;
-    border: solid 0.4px #dfdfdf;
+    /* border: solid 0.4px #dfdfdf; */
   }
   
   .openbtn {
@@ -623,6 +623,16 @@ small.modifier-sec-sub-heading
   #main {
     transition: margin-left .5s;
     padding: 16px;
+  }
+
+  .posShDesc
+  {
+    font-size: 12px;
+    font-style: italic;
+    color: #000000;
+    font-weight: 400;
+    display: inline-block;
+    margin-left: 5px;
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */

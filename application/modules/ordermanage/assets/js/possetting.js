@@ -737,7 +737,9 @@ function checkModGroupMaxItemNumber(pid, mods, callback) {
                         const minSelect = parseInt(rule.min);
                         const maxSelect = parseInt(rule.max);
                         let count = $(`input[type="checkbox"][data-group-id="${item.mgid}"]:checked`).length;
-
+                        if (minSelect === 0 && maxSelect === 0) {
+                            count = 0; // Reset count to 0 if both are 0
+                        }
                         if (count < minSelect || count > maxSelect) {
                             valid = false;
                             $(`input[type="checkbox"][data-group-id="${item.mgid}"]`).prop("checked", false);
@@ -792,7 +794,10 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
                         const minSelect = parseInt(rule.min);
                         const maxSelect = parseInt(rule.max);
                         let count = $(`input[type="checkbox"][name="promo_sub_modifiers[]"][data-group-id="${item.mgid}"]:checked`).length;
-
+                        //we have to avoid checking if minSelect and maxSelect are 0
+                        if (minSelect === 0 && maxSelect === 0) {
+                            count = 0; // Reset count to 0 if both are 0
+                        }
                         if (count < minSelect || count > maxSelect) {
                             valid = false;
                             $(`input[type="checkbox"][name="promo_sub_modifiers[]"][data-group-id="${item.mgid}"]`).prop("checked", false);
@@ -1251,13 +1256,21 @@ $(document).on('click', "#sideMfContainer input[name='modifier_items[]']", funct
 });
 
 function selectMealDealSubMods(menu_id) {
-    selectedDealSubMods = [];
     $("input[name='promo_sub_modifiers[]']:checked").each(function () {
         let value = $(this).val();
         let groupId = $(this).attr("data-group-id");
         let pid = $(this).data("pid");
 
-
+        //before this I have to check if the groupId, add_on_id and menu_id are already exists with the same pid into the selectedDealSubMods array
+        let exists = selectedDealSubMods.some(function (item) {
+            return item.add_on_id === value && item.mgid === groupId && item.deal_mod_pid === menu_id && item.meal_deal_pid === pid;
+        });
+        if (exists) {
+            console.log("This sub mod is already selected: " + value);
+            return; // Skip adding this sub mod if it already exists
+        }
+        // If it doesn't exist, add it to the selectedDealSubMods array
+        console.log("Adding sub mod: " + value + " with groupId: " + groupId + " for menu_id: " + menu_id + " and pid: " + pid);
         selectedDealSubMods.push({ add_on_id: value, mgid: groupId, deal_mod_pid: menu_id, meal_deal_pid: pid });
     });
     if (selectedDealSubMods.length > 0) {
@@ -1842,6 +1855,7 @@ function placeorder() {
             url: basicinfo.baseurl + "ordermanage/order/pos_order",
             data: dataString,
             success: function (data) {
+                selectedDealSubMods = [];
                 $('#addfoodlist').empty();
                 $("#getitemp").val('0');
                 $('#calvat').text('0');
@@ -1909,6 +1923,7 @@ function placeorder() {
 
                         });
                 } else {
+                    selectedDealSubMods = [];
                     if (basicinfo.printtype == 1) {
                         swal({
                             title: lang.ord_succ,
@@ -1965,7 +1980,7 @@ function postokenprint(id) {
 }
 
 function editposorder(id, view) {
-    var url = 'updateorder' + '/' + id;
+    var url = basicinfo.baseurl + 'ordermanage/order/updateorder' + '/' + id;
     var csrf = $('#csrfhashresarvation').val();
     if (view == 1) {
         editpos = 1;
@@ -2438,7 +2453,7 @@ function pospageprint(orderid) {
 
 function printPosinvoice(id) {
     var csrf = $('#csrfhashresarvation').val();
-    var url = 'posorderinvoice/' + id;
+    var url = basicinfo.baseurl + 'posorderinvoice/' + id;
     $.ajax({
         type: "GET",
         url: url,
@@ -2453,7 +2468,7 @@ function printPosinvoice(id) {
 
 function pos_order_invoice(id) {
     var csrf = $('#csrfhashresarvation').val();
-    var url = 'pos_order_invoice/' + id;
+    var url = basicinfo.baseurl + 'pos_order_invoice/' + id;
     $.ajax({
         type: "GET",
         url: url,
@@ -2468,7 +2483,7 @@ function pos_order_invoice(id) {
 
 function orderdetails_post(id) {
     var csrf = $('#csrfhashresarvation').val();
-    var url = 'orderdetails_post/' + id;
+    var url = basicinfo.baseurl + 'orderdetails_post/' + id;
     $.ajax({
         type: "GET",
         url: url,
@@ -2482,7 +2497,7 @@ function orderdetails_post(id) {
 }
 
 function orderdetails_onlinepost(id) {
-    var url = 'orderdetails_post/' + id;
+    var url = basicinfo.baseurl + 'orderdetails_post/' + id;
     var csrf = $('#csrfhashresarvation').val();
     $.ajax({
         type: "GET",
@@ -2501,7 +2516,7 @@ load_unseen_notification();
 
 function createMargeorder(orderid, value = null) {
     var csrf = $('#csrfhashresarvation').val();
-    var url = 'showpaymentmodal/' + orderid;
+    var url = basicinfo.baseurl + 'ordermanage/order/showpaymentmodal/' + orderid;
     callback = function (a) {
         $("#modal-ajaxview").html(a);
         $('#get-order-flag').val('2');
@@ -2527,7 +2542,7 @@ $(document).on('click', '#add_new_payment_type', function () {
     }
     var orderid = $('#get-order-id').val();
     var csrf = $('#csrfhashresarvation').val();
-    var url = 'showpaymentmodal/' + orderid + '/1';
+    var url = basicinfo.baseurl + 'showpaymentmodal/' + orderid + '/1';
     $.ajax({
         type: "GET",
         url: url,
@@ -2844,7 +2859,6 @@ function checktable(id = null) {
 
         });
     } else {
-
         setTimeout(function () {
             $("#table_member").focus();
 
@@ -2855,11 +2869,7 @@ function checktable(id = null) {
                 timeOut: 4000,
 
             };
-
             toastr.error('Please type Number of person', 'Error');
-
-
-
         }, 5000);
 
 
@@ -3028,11 +3038,6 @@ $(document).on('change', '#update_product_name', function () {
 
                 }
             });
-
-
-
-
-
         }
     });
 
@@ -3070,7 +3075,7 @@ $(function ($) {
 
 /*for split order js*/
 function showsplitmodal(orderid, option = null) {
-    var url = 'showsplitorder/' + orderid;
+    var url = basicinfo.baseurl + 'ordermanage/order/showsplitorder/' + orderid;
     callback = function (a) {
         $("#modal-ajaxview").html(a);
 
@@ -3284,8 +3289,8 @@ function addnotetoitem() {
                 };
                 toastr.success("Note Added Successfully", 'Success');
                 $('#addfoodlist').html(data);
-                $('#sideMfContainer').html($("#modifierContent").html());
-                openNav();
+                // $('#sideMfContainer').html($("#modifierContent").html());
+                // openNav();
                 //   $('#sideMfContainer').html($("#modifierContent").html());
                 $('#vieworder').modal('hide');
             }, 100);

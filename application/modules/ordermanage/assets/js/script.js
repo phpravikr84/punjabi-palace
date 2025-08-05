@@ -224,6 +224,7 @@ function removecart(rid) {
     url: geturl,
     data: dataString,
     success: function (data) {
+      selectedDealSubMods = [];
       $("#addfoodlist").html(data);
       var total = $("#grtotal").val();
       var totalitem = $("#totalitem").val();

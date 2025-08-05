@@ -53,7 +53,5 @@ function inputNumbersfocus(result) {
         var totalpaid = paidamount + result;
         prevFocus.val(totalpaid);
         changedueamount()
-
-
     }
 }

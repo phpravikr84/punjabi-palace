@@ -16,9 +16,14 @@
     } else {
       $getadons =  0;
     }
+    $componentText = '';
+    if (!empty($item->component)) {
+        $components = explode(',', $item->component);
+        $componentText = ' (' . implode(', ', array_map('trim', $components)) . ')';
+    }
   ?>
    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-p-3">
-     <div class="panel panel-bd product-panel <?php if($item->isgroup !=1): ?>select_product<?php endif; ?>" <?php if($item->isgroup ==1): ?>onclick="selectGroupItem($(this));"<?php endif; ?>>
+     <div class="panel panel-bd product-panel p-12 rounded-lg <?php if($item->isgroup !=1): ?>select_product<?php endif; ?>" <?php if($item->isgroup ==1): ?>onclick="selectGroupItem($(this));"<?php endif; ?>>
      <!-- <div class="panel panel-bd product-panel select_product"> -->
        <div class="panel-body"> <img src="<?php echo base_url(!empty($item->small_thumb) ? $item->small_thumb : 'assets/img/icons/default_pos_pro.jpg'); ?>" class="img-responsive" alt="<?php echo $item->ProductName; ?>">
          <input type="hidden" name="select_product_id" class="select_product_id" value="<?php echo $item->ProductsID; ?>">
@@ -36,11 +41,27 @@
          <input type="hidden" name="select_addons" class="select_addons" value="<?php echo $getadons; ?>">
        </div>
        <div class="text-center">
-         <h4><?php echo $item->ProductName; ?> (<?php echo $item->variantName; ?>)
-           <?php if (!empty($item->itemnotes)) {
-              echo " -" . $item->itemnotes;
-            } ?>
-         </h4>
+         <h5>
+          <?php 
+          echo $item->ProductsID.'-'.$item->ProductName;
+          if (!empty($item->itemnotes)) {
+            echo " -<span class='posShDesc'>" . $item->itemnotes."</span>";
+          }
+          if (!empty($item->component)) {
+              $components = explode(',', $item->component);
+              echo '<div class="tag-wrapper">';
+              foreach ($components as $comp) {
+                echo '<span class="label label-primary" style="margin-right:5px;">' . trim($comp) . '</span>';
+              }
+              echo '</div>';
+          }
+          if (!empty($item->price)) {
+            echo "<div class='tag-wrapper'><strong>" .(($currency->position == 1) ? $currency->curr_icon : '').$item->price."</strong>";
+            echo '</div>';
+          }
+          ?>
+           <?php  ?>
+         </h5>
        </div>
      </div>
    </div>

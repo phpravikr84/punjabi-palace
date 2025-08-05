@@ -1,5 +1,8 @@
 <?php
 foreach ($itemlist as $item) {
+  // echo "<pre>";
+  // print_r($item);
+  // echo "</pre>";
   $isexists = $this->db->select('tbl_kitchen_order.*')->from('tbl_kitchen_order')->where('orderid', $item->order_id)->where('itemid', $item->menu_id)->where('varient', $item->variantid)->get()->num_rows();
   $condition = "orderid=" . $item->order_id . " AND menuid=" . $item->menu_id . " AND varient=" . $item->variantid;
   $accepttime = $this->db->select('*')->from('tbl_itemaccepted')->where($condition)->get()->row();
@@ -8,8 +11,11 @@ foreach ($itemlist as $item) {
   <div class="single_item">
     <div class="align-center justify-between mb-13 position-relative">
       <div>
-        <div> <span class="display-block"><?php echo $item->ProductName; ?></span> <span class="font-p-fw"><?php echo $item->variantName; ?></span> </div>
+        <div> <span class="display-block"><?php echo $item->ProductName; ?></span> </div>
         <?php
+        if (!empty($item->notes)) {
+          echo " -<span class='posShDesc'>" . $item->notes."</span>";
+        }
         if(count($orderedMods)>0){
           foreach ($orderedMods as $mk => $mv) {
             if ($mv->menu_id == $item->menu_id) {

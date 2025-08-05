@@ -452,12 +452,12 @@ body
           <div class="row-data">
             <div class="item-info">
               <h5 class="item-title"><?php echo $item->ProductName;?></h5>
-              <p class="item-size"><?php echo $item->variantName;?></p>
+              <!-- <p class="item-size"><?php ##echo $item->variantName;?></p> -->
               
             </div>
             <div class="text-right">
             <p class="item-number"><?php echo $singleprice;?> x <?php echo $item->menuqty;?></p>
-            <h5 class="my-0">            
+            <h5 class="my-0" style="display: none;">            
               <?php if($currency->position==1){echo $currency->curr_icon;}?>
               <?php echo $itemprice;?>
               <?php if($currency->position==2){echo $currency->curr_icon;}?>

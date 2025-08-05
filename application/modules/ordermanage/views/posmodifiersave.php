@@ -49,7 +49,7 @@ if (count($selectedModsForCart)>0):
         $smv->add_on_name = $smv->add_on_name . ' (Food)';
 ?>
         <!-- <br /> -->
-        <small class="modCheck bg-success" style=""><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+        <small class="modCheck"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
 <?php 
     $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
     $this->db->from('add_ons');
@@ -72,7 +72,7 @@ if (count($selectedModsForCart)>0):
           $smv->add_on_name = $sdm->add_on_name . ' (Meal Deal)';
 ?>
         <!-- <br /> -->
-        <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif;?> </small>
+        <small class="modCheck selectedDealSubMods"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif;?> </small>
 <?php
         endif;      
         endforeach;
@@ -81,7 +81,7 @@ if (count($selectedModsForCart)>0):
         // $smv->add_on_name = $smv->add_on_name;
 ?>
         <!-- <br /> -->
-        <small class="modCheck" style="background-color: #f2dede !important;"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+        <small class="modCheck"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
 <?php
 $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
 $this->db->from('add_ons');
@@ -102,7 +102,7 @@ if(count($selectedDealSubMods) > 0):
           $smv->add_on_name = $sdm->add_on_name;
 ?>
         <!-- <br /> -->
-        <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
+        <small class="modCheck selectedDealSubMods"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
 <?php
         endif;
         endforeach;
@@ -114,7 +114,7 @@ endif;
 if (count($selectedModsForCart) == 0 && count($selectedFoodsForCart) == 0):
 ?>
         <!-- <br /> -->
-        <small class="modCheck" style="background-color: #f2dede !important;">+ Modifiers</small>
+        <small class="modCheck posAddMod">+ Modifiers</small>
 <?php
 endif;
 ?>

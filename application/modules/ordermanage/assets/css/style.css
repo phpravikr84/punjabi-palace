@@ -741,13 +741,18 @@ a.disabled {
     align-content: space-around;
     justify-content: space-around;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
     color: #000 !important;
 }
 .cartModToggle .subMods
 {
-    margin-left: 40px;
+    /* margin-left: 40px; */
+}
+.subMods small
+{
+    font-style: italic;
+    font-size: 11px;
 }
 .cartModToggle small
 {

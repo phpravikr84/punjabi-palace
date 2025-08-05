@@ -193,7 +193,7 @@ if ($cart = $this->cart->contents()) { ?>
         $totalitem = $i;
       ?>
         <tr id="<?php echo $i; ?>">
-          <th id="product_name_MFU4E"><?php echo  $item['name'];
+          <th id="product_name_MFU4E" style="text-align:left;"><?php echo  $item['name'];
                                       echo "<br>";
                                       if (!empty($item['addonsid'])) {
                                         echo $item['addonname'];
@@ -268,7 +268,7 @@ if ($cart = $this->cart->contents()) { ?>
                                           foreach ($selectedModsForCart as $smk => $smv):
                                         ?>
                                             <br />
-                                          <small class="modCheck bg-danger" style="background-color: #f2dede !important;"><?=$smv->add_on_name;?> <?php if($smv->price>0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+                                          <small class="modCheck"><?=$smv->add_on_name;?> <?php if($smv->price>0): ?>(<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
                                         <?php 
                                           $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
                                           $this->db->from('add_ons');
@@ -289,7 +289,7 @@ if ($cart = $this->cart->contents()) { ?>
                                                     $smv->add_on_name = $sdm->add_on_name;
                                           ?>
                                                   <!-- <br /> -->
-                                                  <small class="modCheck bg-info" style="background-color: #b7dddc !important;"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
+                                                  <small class="modCheck"><?=$smv->add_on_name;?><?php if($sdm->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$sdm->price;?>)<?php endif; ?></small>
                                           <?php
                                                   endif;
                                                   endforeach;
@@ -297,9 +297,11 @@ if ($cart = $this->cart->contents()) { ?>
                                               endif;
                                           endforeach;
                                         else:
+                                          if(count($modifiers) > 0):
                                         ?>
-                                        <small class="modCheck bg-danger" style="background-color: #f2dede !important;">+ Modifiers</small>
+                                        <small class="modCheck posAddMod">+ Modifiers</small>
                                         <?php
+                                          endif;
                                         endif;
                                         ?>
                                       </a>
@@ -312,7 +314,7 @@ if ($cart = $this->cart->contents()) { ?>
           </td>
 
           <td width="">
-            <?php echo $item['price']; ?>
+            <?php echo (($currency->position == 1)?$currency->curr_icon:'').' '.$item['price']; ?>
           </td>
           <td scope="row">
            <?php if($itemprice!=0): ?>
@@ -324,7 +326,7 @@ if ($cart = $this->cart->contents()) { ?>
             <?php endif; ?>
           </td>
           <td width="">
-            <?php echo $itemprice - $mypdiscount; ?>  
+            <?php echo (($currency->position == 1)?$currency->curr_icon:'').' '.$itemprice - $mypdiscount; ?>  
           </td>
           <td width="80"><a class="btn btn-danger btn-sm btnrightalign" onclick="removecart('<?php echo $item['rowid']; ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
           </td>

@@ -124,7 +124,7 @@
                                         <td class="text-center"><?php echo get_category_name($fooditems->GroupID); ?></td>
                                         <td class="text-center"><?php if ($fooditems->isgroup == 1): echo "<strong class='text-success'>Promotions</strong>"; else: echo $fooditems->Name; endif; ?></td>
                                         <td><?php echo $fooditems->ProductName . ($fooditems->is_bom == 1 ? ' (With BOM)' : ''); ?></td>
-                                        <td><?php echo $fooditems->item_code; ?></td>
+                                        <td><?php //echo $fooditems->item_code; ?><?php echo $fooditems->ProductsID; ?></td>
                                         <td>
                                             <?php
                                             $groupName = strtolower(get_category_name($fooditems->GroupID));

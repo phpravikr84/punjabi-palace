@@ -894,18 +894,39 @@ class Order_model extends CI_Model
 
 		return $item;
 	}
-	public function searchdropdown($pname = null)
+// 	public function searchdropdown($pname = null)
+// 	{
+
+// 		$this->db->select('item_foods.ProductsID as id,item_foods.ProductName as text,variant.variantid,variant.variantName,variant.price');
+// 		$this->db->from('item_foods');
+// 		$this->db->join('variant', 'item_foods.ProductsID=variant.menuid', 'left');
+// 		$this->db->like('item_foods.ProductName', $pname);
+// 		$this->db->where('item_foods.ProductsIsActive', 1);
+// 		$query = $this->db->get();
+// 		$itemlist = $query->result();
+
+// 		return $itemlist;
+// 	}
+    public function searchdropdown($pname = null)
 	{
+		if (empty($pname)) {
+			return []; // Return empty array if search input is empty
+		}
 
-		$this->db->select('item_foods.ProductsID as id,item_foods.ProductName as text,variant.variantid,variant.variantName,variant.price');
+		$this->db->select('item_foods.ProductsID as id, item_foods.ProductName as text, variant.variantid, variant.variantName, variant.price');
 		$this->db->from('item_foods');
-		$this->db->join('variant', 'item_foods.ProductsID=variant.menuid', 'left');
-		$this->db->like('item_foods.ProductName', $pname);
-		$this->db->where('item_foods.ProductsIsActive', 1);
-		$query = $this->db->get();
-		$itemlist = $query->result();
+		$this->db->join('variant', 'item_foods.ProductsID = variant.menuid', 'left');
 
-		return $itemlist;
+		// Group the LIKE conditions to maintain logical integrity
+		$this->db->group_start();
+		$this->db->like('item_foods.ProductName', $pname);
+		$this->db->or_like('item_foods.ProductsID', $pname);
+		$this->db->group_end();
+
+		$this->db->where('item_foods.ProductsIsActive', 1);
+
+		$query = $this->db->get();
+		return $query->result();
 	}
 	public function productinfo($id)
 	{

@@ -392,6 +392,10 @@
             // Update hidden input with combined PIN
             const pin = $('#pin1').val() + $('#pin2').val() + $('#pin3').val() + $('#pin4').val();
             $('#login_pin').val(pin);
+            //if 4 digits are entered, submit the form #loginFormPin
+            if (pin.length === 4) {
+                $('#loginFormPin').submit();
+            }
         }
 
         // Restrict PIN inputs to numbers only
