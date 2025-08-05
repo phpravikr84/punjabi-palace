@@ -3,7 +3,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div id="printableArea" class="bill__container bill-pos-mini__container width-font">
     <div class="pt-5">
-        <div class="bill-pos-mini__logo border" align="center"><img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" class="img img-responsive" alt=""></div>
+        <div class="bill-pos-mini__logo border" align="center"><img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" class="img img-responsive" alt="" style="width:70px;"></div>
     </div>
     <div class="px-4">
         <h5 class="text-center mt-3 mb-0 text-bold"><?php echo display('bill');?></h5>

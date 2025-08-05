@@ -75,17 +75,12 @@
 
                                     <div class="extra_elem">
                                         <form class="add_form">
-                                            <select class="form-control add_input"
-                                                    name="person-<?= $table['tableid'] ?>"
-                                                    id="person-<?= $table['tableid'] ?>">
-                                                <option value=""><?= display('person') ?></option>
-                                                <?php for ($i = 1; $i <= 8; $i++): ?>
-                                                    <option value="<?= $i ?>"><?= $i ?></option>
-                                                <?php endfor; ?>
-                                            </select>
-
+                                            <input type="number" min="1" class="form-control add_input" 
+                                                placeholder="<?= display('person') ?>" 
+                                                name="person-<?= $table['tableid'] ?>" 
+                                                id="person-<?= $table['tableid'] ?>">
                                             <button type="button" onclick="checktable(<?= $table['tableid'] ?>)" class="btn add_btn">
-                                                 <i class="fas fa-user-plus"></i>
+                                                <i class="ti-plus"></i>
                                             </button>
                                         </form>
                                         <?php if (!empty($table['table_details'])) { ?>

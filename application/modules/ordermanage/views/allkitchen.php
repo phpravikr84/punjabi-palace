@@ -320,6 +320,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                     $categories = [
                                                                         5 => 'Starters',
                                                                         3 => 'Main Course',
+                                                                        15 => 'Bread',
+                                                                        11 => 'Rice',
                                                                         17 => 'Desserts'
                                                                     ];
                                                                     $items_by_category = [];
@@ -334,7 +336,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                             $items_by_category[$category_name][] = $item;
                                                                         }
                                                                     }
-                                                                    $display_order = ['Starters', 'Main Course', 'Desserts'];
+                                                                    $display_order = ['Starters', 'Main Course', 'Bread', 'Rice', 'Desserts'];
                                                                     foreach ($items_by_category as $cat_name => $items) {
                                                                         if (!in_array($cat_name, $display_order)) {
                                                                             $display_order[] = $cat_name;

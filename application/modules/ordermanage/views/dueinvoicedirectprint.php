@@ -378,7 +378,7 @@ body
 <div class="page-wrapper">
   <div class="invoice-card">
     <div class="invoice-head"> 
-      <img src="<?php echo base_url();?><?php echo $storeinfo->logo ?>" alt="">
+      <img src="<?php echo base_url();?><?php echo $storeinfo->logo ?>" alt="" style="width:70px;">
       <h4><?php echo $storeinfo->storename;?></h4>
       <p class="my-0"><?php echo $storeinfo->address;?></p>
     </div>

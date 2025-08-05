@@ -22,7 +22,7 @@ function printDiv(divName) {
 	                    <div class="panel-body">
 	                        <div class="row">
 	                            <div class="col-sm-10 wpr_68 display-inlineblock">
-	                                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" class="img img-responsive height-mb" alt="">
+	                                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" class="img img-responsive height-mb" style="width:70px;" alt="">
 	                                <br>
 	                                <span class="label label-success-outline m-r-15 p-10" ><?php echo display('billing_from') ?></span>
 	                                <address class="mt-10">
