@@ -136,7 +136,6 @@
               success: function(data) {
                     console.log('Order Person'+ typeof(order_person));
                     console.log('Data'+ typeof(data));
-                    var data = parseInt(order_person);
                   if (parseInt(order_person) > parseInt(data)) {
                     console.log('High capacity');
                     alert('Table capacity overflow');

@@ -660,47 +660,6 @@ function itemModifiers(pid, tr_row_id) {
         }
     });
 }
-function itemModifiersUpdate(pid, orderid) {
-    // var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
-    // pid = 0;
-    if (pid == "" || pid == 0) {
-        // alert("No Item Found !");
-        //create sweatalert alert
-        swal({
-            title: "No Item Found !",
-            text: "Please select an item first.",
-            type: "warning",
-            confirmButtonText: "OK",
-            closeOnConfirm: true
-        });
-        return false;
-    }
-    var csrf = $('#csrfhashresarvation').val(),
-        geturl = $("#modifierurlupdate").val(),
-        myurl = geturl,
-        dataString = "pid=" + pid + '&orderid=' + orderid + '&csrf_test_name=' + csrf;
-    $("#posAddmodSizeInfo").remove();
-    $.ajax({
-        type: "POST",
-        url: myurl,
-        data: dataString,
-        success: function (data) {
-            console.log("Modifier data: " + data);
-            $("#posSelectPurchaseTable").remove();
-            // $('#addfoodlist').html(data);
-            $("#mySidebar").find('#sideMfContainer').html(data);
-            // $('#sideVarContainer').html($("#posAddmodSizeInfo").html());
-            $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
-            $("#posSelectPurchaseTable").remove();
-            $("#posAddmodSizeInfo").remove();
-            // $("#modifierChoosebtnDiv").html(`
-            //     <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
-            //     `);
-            openNav();
-            //   $("#modifierContent").show();
-        }
-    });
-}
 // function checkModGroupMaxItemNumber(pid,mods) {
 
 //     //fetch the maximum item number for the pid from menu_add_on table
@@ -2898,8 +2857,7 @@ function checktable(id = null) {
             url: url,
             data: { csrf_test_name: csrf },
             success: function (data) {
-                //var capacity = parseInt(data.capacity || data, 10); // handle both plain/text and JSON
-                var capacity = parseInt(order_person);
+                var capacity = parseInt(data.capacity || data, 10); // handle both plain/text and JSON
                 console.log('Order Person' + order_person);
                 console.log('Table Capacity' + capacity);
                 if (order_person > capacity) {
@@ -2956,28 +2914,28 @@ function checktable(id = null) {
 
 //   }
 
-// function showTablemodal() {
-//     var url = "showtablemodalpopup";
-//     getAjaxModalPopUp(url, false, '#modal-ajaxviewnew', '#tablemodalNew');
-// }
+function showTablemodal() {
+    var url = "showtablemodalpopup";
+    getAjaxModalPopUp(url, false, '#modal-ajaxviewnew', '#tablemodalNew');
+}
 
 // function showTablemodal() {
 //     window.location.href = basicinfo.baseurl + "ordermanage/order/alltables";
 // }
 
-function showTablemodal() {
-    const customerName = document.querySelector('#customer_name')?.value.trim();
-    const waiter = document.querySelector('#waiter')?.value.trim();
+// function showTablemodal() {
+//     const customerName = document.querySelector('#customer_name')?.value.trim();
+//     const waiter = document.querySelector('#waiter')?.value.trim();
 
-    let url = basicinfo.baseurl + "ordermanage/order/alltables";
+//     let url = basicinfo.baseurl + "ordermanage/order/alltables";
 
-    // Check if both fields are valid
-    if (customerName || waiter && waiter !== "0") {
-        url += `?cid=${encodeURIComponent(customerName)}&waiter=${encodeURIComponent(waiter)}`;
-    }
+//     // Check if both fields are valid
+//     if (customerName || waiter && waiter !== "0") {
+//         url += `?cid=${encodeURIComponent(customerName)}&waiter=${encodeURIComponent(waiter)}`;
+//     }
 
-    window.location.href = url;
-}
+//     window.location.href = url;
+// }
 
 
 

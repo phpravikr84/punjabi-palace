@@ -77,7 +77,7 @@
                 #<?php echo $onprocess->saleinvoice; ?>
               </div>
               <?php if ($this->permission->method('ordermanage', 'delete')->access()) { ?>
-                <a href="javascript:;" data-id="<?php echo $onprocess->order_id; ?>" class="btn btn-xs btn-danger btn-sm cancelorder position-absolute" style="top: 10px; right: 40px;" data-toggle="tooltip" data-placement="left" title="<?php echo display('cancel_order'); ?>">
+                <a href="javascript:;" data-id="<?php echo $onprocess->order_id; ?>" class="btn btn-xs btn-danger btn-sm cancelorder position-absolute" style="bottom: 10px; right: 40px;" data-toggle="tooltip" data-placement="left" title="<?php echo display('cancel_order'); ?>">
                   <i class="fa fa-trash-o"></i>
                 </a>
               <?php } ?>
@@ -129,7 +129,7 @@
                 #<?php echo $onprocess->saleinvoice; ?>
               </div>
               <?php if ($this->permission->method('ordermanage', 'delete')->access()) { ?>
-                <a href="javascript:;" data-id="<?php echo $onprocess->order_id; ?>" class="btn btn-xs btn-danger btn-sm cancelorder position-absolute" style="top: 10px; right: 40px;" data-toggle="tooltip" data-placement="left" title="<?php echo display('cancel_order'); ?>">
+                <a href="javascript:;" data-id="<?php echo $onprocess->order_id; ?>" class="btn btn-xs btn-danger btn-sm cancelorder position-absolute" style="bottom: 10px; right: 40px;" data-toggle="tooltip" data-placement="left" title="<?php echo display('cancel_order'); ?>">
                   <i class="fa fa-trash-o"></i>
                 </a>
               <?php } ?>

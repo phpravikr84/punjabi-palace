@@ -6,7 +6,7 @@
         <div class="search-container">
             <!-- <input type="text" class="search-input" placeholder="Search">
             <i class="fa fa-search search-icon"></i> -->
-            <a href="<?php echo $this->input->server('HTTP_REFERER') ?: 'javascript:history.back()'; ?>" class="btn btn-secondary">Back</a>
+            <a href="<?php echo $this->input->server('HTTP_REFERER') ?: 'javascript:history.back()'; ?>" class="btn btn-primary btn-large">POS</a>
         </div>
     </div>
 
