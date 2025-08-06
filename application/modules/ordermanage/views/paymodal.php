@@ -95,7 +95,15 @@
                                         <input type="hidden" id="discounttype" value="<?php echo $settinginfo->discount_type; ?>" />
                                         <input type="hidden" id="ordertotal" value="<?php echo $totalamount; ?>" />
                                         <input type="hidden" id="orderdue" value="<?php echo $totaldue; ?>" />
-                                        <input type="text" class="form-control" id="discount" name="discount" value="<?php echo $settinginfo->discountrate; ?>" placeholder="0" />
+                                        <input type="hidden" class="form-control" id="discount" name="discount" value="<?php echo $settinginfo->discountrate; ?>" placeholder="0" />
+                                        <select class="form-control" id="discount_select" name="discount_select" onchange="changediscount()">
+                                            <option value="0">0</option>
+                                            <option selected value="<?php echo $settinginfo->discountrate; ?>"><?php echo $settinginfo->discountrate; ?></option>
+                                            <option value="<?php echo ($settinginfo->discountrate+5); ?>"><?php echo ($settinginfo->discountrate+5); ?></option>
+                                            <option value="<?php echo ($settinginfo->discountrate+10); ?>"><?php echo ($settinginfo->discountrate+10); ?></option>
+                                            <option value="<?php echo ($settinginfo->discountrate+15); ?>"><?php echo ($settinginfo->discountrate+15); ?></option>
+                                            <option value="<?php echo ($settinginfo->discountrate+20); ?>"><?php echo ($settinginfo->discountrate+20); ?></option>
+                                        </select>
                                         <input type="hidden" id="grandtotal" name="grandtotal" value="<?php echo $totalamount - $disamount; ?>" />
                                         <input type="hidden" id="granddiscount" name="granddiscount" value="<?php echo $disamount; ?>" />
                                         <input type="hidden" id="isredeempoint" name="isredeempoint" value="" />
@@ -260,4 +268,19 @@
             //discount
             $('#discount').mlKeyboard({ layout: 'en_US' });
         });
+        function changediscount() {
+            var discount = $('#discount_select').val();
+            var ordertotal = $('#ordertotal').val();
+            var discounttype = $('#discounttype').val();
+            if (discounttype == 1) {
+                var disamount = (ordertotal * discount) / 100;
+            } else {
+                var disamount = discount.toFixed(2);
+            }
+            $('#discount').val(disamount);
+            $('#grandtotal').val((ordertotal - disamount).toFixed(2));
+            $('#granddiscount').val(disamount);
+            $('#pay-amount').text((ordertotal - disamount).toFixed(2));
+            $('#paidamount_marge').val((ordertotal - disamount).toFixed(2));
+        }
     </script>
