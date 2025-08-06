@@ -2857,8 +2857,7 @@ function checktable(id = null) {
             url: url,
             data: { csrf_test_name: csrf },
             success: function (data) {
-                //var capacity = parseInt(data.capacity || data, 10); // handle both plain/text and JSON
-                var capacity = parseInt(order_person);
+                var capacity = parseInt(data.capacity || data, 10); // handle both plain/text and JSON
                 console.log('Order Person' + order_person);
                 console.log('Table Capacity' + capacity);
                 if (order_person > capacity) {
@@ -2915,28 +2914,28 @@ function checktable(id = null) {
 
 //   }
 
-// function showTablemodal() {
-//     var url = "showtablemodalpopup";
-//     getAjaxModalPopUp(url, false, '#modal-ajaxviewnew', '#tablemodalNew');
-// }
+function showTablemodal() {
+    var url = "showtablemodalpopup";
+    getAjaxModalPopUp(url, false, '#modal-ajaxviewnew', '#tablemodalNew');
+}
 
 // function showTablemodal() {
 //     window.location.href = basicinfo.baseurl + "ordermanage/order/alltables";
 // }
 
-function showTablemodal() {
-    const customerName = document.querySelector('#customer_name')?.value.trim();
-    const waiter = document.querySelector('#waiter')?.value.trim();
+// function showTablemodal() {
+//     const customerName = document.querySelector('#customer_name')?.value.trim();
+//     const waiter = document.querySelector('#waiter')?.value.trim();
 
-    let url = basicinfo.baseurl + "ordermanage/order/alltables";
+//     let url = basicinfo.baseurl + "ordermanage/order/alltables";
 
-    // Check if both fields are valid
-    if (customerName || waiter && waiter !== "0") {
-        url += `?cid=${encodeURIComponent(customerName)}&waiter=${encodeURIComponent(waiter)}`;
-    }
+//     // Check if both fields are valid
+//     if (customerName || waiter && waiter !== "0") {
+//         url += `?cid=${encodeURIComponent(customerName)}&waiter=${encodeURIComponent(waiter)}`;
+//     }
 
-    window.location.href = url;
-}
+//     window.location.href = url;
+// }
 
 
 

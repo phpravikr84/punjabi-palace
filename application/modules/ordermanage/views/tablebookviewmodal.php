@@ -85,7 +85,7 @@
                                             </select>
 
                                             <button type="button" onclick="checktable(<?= $table['tableid'] ?>)" class="btn add_btn">
-                                                 <i class="fas fa-user-plus"></i>
+                                                 Submit
                                             </button>
                                         </form>
                                         <?php if (!empty($table['table_details'])) { ?>
