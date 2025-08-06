@@ -960,9 +960,22 @@ foreach ($scan as $file) {
                           <div class="row pos-newform">
                             <div class="col-md-6 form-group">
                               <label for="store_id"><?php echo display('customer_type'); ?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                              <?php
+                                  // Get the value from GET request (fallback to null if not set)
+                                  $ctype = $this->input->get('ctypeid');
+
+                                  // Build the dropdown using form_dropdown helper
+                                  echo form_dropdown(
+                                      'ctypeid',                            // Name attribute
+                                      $curtomertype,                        // Options array (id => name)
+                                      (!empty($ctype) ? $ctype : null),     // Selected value
+                                      'class="form-control" id="ctypeid" required'  // Extra attributes
+                                  );
+                              ?>
+
                               <?php 
                               // $ctype = 1;
-                              echo form_dropdown('ctypeid', $curtomertype, (!empty($ctype) ? $ctype : null), 'class="form-control" id="ctypeid" required') ?>
+                              //echo form_dropdown('ctypeid', $curtomertype, (!empty($ctype) ? $ctype : null), 'class="form-control" id="ctypeid" required') ?>
                             </div>
                             <div class="col-md-6 form-group">
                               <label for="customer_name"><?php echo display('customer_name'); ?><span class="color-red">*</span></label>
@@ -1730,6 +1743,7 @@ $(document).ready(function () {
         } else {
             // currentUrl.searchParams.delete('customer_name');
         }
+
 
         if (ctypeId) {
             currentUrl.searchParams.set('ctypeid', ctypeId);
