@@ -2885,4 +2885,63 @@ class Order_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	/**
+	 * Cancel Order in ajax
+	 */
+	public function get_completecancelorder()
+	{
+		$this->get_alltodaycancelorder_query();
+		if ($_POST['length'] != -1)
+			$this->db->limit($_POST['length'], $_POST['start']);
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+	private function get_alltodaycancelorder_query()
+	{
+		$column_order = array(null, 'customer_order.saleinvoice', 'customer_info.customer_name', 'customer_type.customer_type', 'employee_history.first_name', 'employee_history.last_name', 'rest_table.tablename', 'customer_order.order_date', 'customer_order.totalamount'); //set column field database for datatable orderable
+		$column_search = array('customer_order.saleinvoice', 'customer_info.customer_name', 'customer_type.customer_type', 'employee_history.first_name', 'employee_history.last_name', 'rest_table.tablename', 'customer_order.order_date', 'customer_order.totalamount'); //set column field database for datatable searchable 
+		$order = array('customer_order.order_id' => 'asc');
+
+		$cdate = date('Y-m-d');
+		$this->db->select('customer_order.*, customer_info.customer_name, customer_type.customer_type, employee_history.first_name, employee_history.last_name, rest_table.tablename, bill.bill_status');
+		$this->db->from('customer_order');
+		$this->db->join('customer_info', 'customer_order.customer_id = customer_info.customer_id', 'left');
+		$this->db->join('customer_type', 'customer_order.cutomertype = customer_type.customer_type_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id = employee_history.emp_id', 'left');
+		$this->db->join('rest_table', 'customer_order.table_no = rest_table.tableid', 'left');
+		$this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+		$this->db->where('customer_order.order_date', $cdate);
+		$this->db->where('bill.bill_status', 0); // Fixed: Changed from 1 to 0
+		$this->db->where('customer_order.order_status', 5); // Added: Filter for canceled orders
+		$this->db->group_by('customer_order.order_id');
+		$this->db->order_by('customer_order.order_id', 'desc');
+
+		$i = 0;
+		foreach ($column_search as $item) // loop column 
+		{
+			if (!empty($_POST['search']['value'])) // if datatable sends POST for search
+			{
+				if ($i === 0) // first loop
+				{
+					$this->db->group_start();
+					$this->db->like($item, $_POST['search']['value']);
+				} else {
+					$this->db->or_like($item, $_POST['search']['value']);
+				}
+
+				if (count($column_search) - 1 == $i) // last loop
+					$this->db->group_end(); // close bracket
+			}
+			$i++;
+		}
+
+		if (isset($_POST['order'])) // handle DataTable ordering
+		{
+			$this->db->order_by($column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+		} else if (isset($order)) {
+			$this->db->order_by(key($order), $order[key($order)]);
+		}
+	}
+
 }
