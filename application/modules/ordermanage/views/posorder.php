@@ -1606,11 +1606,11 @@ foreach ($scan1 as $file) {
   // });
 
 
-  Pace.options.ajax = {
-    trackMethods: ['POST', 'GET'],
-    trackWebSockets: false,
-    ignoreURLs: []
-  };
+  // Pace.options.ajax = {
+  //   trackMethods: ['POST', 'GET'],
+  //   trackWebSockets: false,
+  //   ignoreURLs: []
+  // };
   function openNav() {
     document.getElementById("mySidebar").style.width = "100%";
     $("#mySidebar").find(".closebtn").css({

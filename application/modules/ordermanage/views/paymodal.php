@@ -95,7 +95,7 @@
                                         <input type="hidden" id="discounttype" value="<?php echo $settinginfo->discount_type; ?>" />
                                         <input type="hidden" id="ordertotal" value="<?php echo $totalamount; ?>" />
                                         <input type="hidden" id="orderdue" value="<?php echo $totaldue; ?>" />
-                                        <input type="hidden" class="form-control" id="discount" name="discount" value="<?php echo $settinginfo->discountrate; ?>" placeholder="0" />
+                                        <input type="text" class="form-control" id="discount" name="discount" value="<?php echo $settinginfo->discountrate; ?>" placeholder="0" style="display: none;" />
                                         <select class="form-control" id="discount_select" name="discount_select" onchange="changediscount()">
                                             <option value="0">0</option>
                                             <option selected value="<?php echo $settinginfo->discountrate; ?>"><?php echo $settinginfo->discountrate; ?></option>
@@ -268,19 +268,65 @@
             //discount
             $('#discount').mlKeyboard({ layout: 'en_US' });
         });
-        function changediscount() {
-            var discount = $('#discount_select').val();
-            var ordertotal = $('#ordertotal').val();
-            var discounttype = $('#discounttype').val();
+        $(document).on('change', '#discountttch', function () {
+            var discounttype = $(this).val();
+            var discount_select2 = $('#discount_select').next('.select2-container');
             if (discounttype == 1) {
-                var disamount = (ordertotal * discount) / 100;
+                // $('#chty').text('%');
+                $('#discount').hide();
+                $('#discount_select').show();
+                discount_select2.show();
             } else {
-                var disamount = discount.toFixed(2);
+                // $('#chty').text('<?php ##echo $currency->curr_icon; ?>');
+                $('#discount').show();
+                $('#discount_select').hide();
+                discount_select2.hide();
             }
-            $('#discount').val(disamount);
-            $('#grandtotal').val((ordertotal - disamount).toFixed(2));
-            $('#granddiscount').val(disamount);
-            $('#pay-amount').text((ordertotal - disamount).toFixed(2));
-            $('#paidamount_marge').val((ordertotal - disamount).toFixed(2));
+        });
+        function changediscount() {
+            var discount_select = $('#discount_select').val();
+            $("#discount").val(discount_select);
+            // var ordertotal = $('#ordertotal').val();
+            // var discounttype = $('#discounttype').val();
+            // if (discounttype == 1) {
+            //     var disamount = (ordertotal * discount) / 100;
+            // } else {
+            //     var disamount = discount.toFixed(2);
+            // }
+            // $('#discount').val(disamount);
+            // $('#grandtotal').val((ordertotal - disamount).toFixed(2));
+            // $('#granddiscount').val(disamount);
+            // $('#pay-amount').text((ordertotal - disamount).toFixed(2));
+            // $('#paidamount_marge').val((ordertotal - disamount).toFixed(2));
+
+            var discount = $("#discount").val();
+			var distype=$("#discounttype").val();
+			var total=$("#ordertotal").val();
+			var due=$("#orderdue").val();
+			if(discount=='' || discount==0){
+				 $("#totalamount_marge").text(total);
+				 $("#due-amount").text(due);
+				 $("#grandtotal").val(total);
+				 $("#granddiscount").val(0);
+				 $(".firstpay").val(total);
+            } else {
+                if(distype==1){
+                    var totaldis=discount*total/100;
+                } else {
+                    var totaldis=discount;
+                }
+                var afterdiscount=parseFloat(total-totaldis);
+                var newtotal=afterdiscount.toFixed(2);
+                var granddiscount=parseFloat(totaldis);
+                $("#totalamount_marge").text(newtotal);
+                $("#paidamount_marge").val(newtotal);
+                $("#grandtotal").val(newtotal);
+                $("#due-amount").text(newtotal);
+                $("#granddiscount").val(granddiscount.toFixed(2));				 
+            }
+            //$("#adddiscount").hide();
+            $("#adddiscount").addClass('display-none');
+            $("#add_new_payment").empty();
+            $("#adddiscount").removeClass('display-none');
         }
     </script>

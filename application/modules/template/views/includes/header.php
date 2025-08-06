@@ -127,13 +127,16 @@ function current_version(){
 <div class="mobile-sidebar-link">
         <span class="top-fixed-link">
             <?php 
-                if($this->permission->method('itemmanage','create')->access()){
-                if(($title=='Home') || ($title2=='dashboard')){
+                if($this->permission->method('itemmanage','create')->access()):
+                if(($title=='Home') || ($title2=='dashboard')):
                 ?>
                 <a href="<?php echo base_url("ordermanage/order/pos_invoice") ?>" class="btn custom_btn_in_header text-green"><i class="fa fa-plus"></i> <?php echo display('pos_invoice') ?></a>
                 <a href="<?php echo base_url("ordermanage/order/orderlist") ?>" class="btn custom_btn_in_header text-orange"><i class="fa fa-list"></i> <?php echo display('order_list') ?></a>
                 <a href="<?php echo base_url("ordermanage/order/allkitchen") ?>" class="btn custom_btn_in_header text-violet"><i class="fa fa-user-o" aria-hidden="true"></i> <?php echo display('kitchen_dashboard') ?></a>
                 <a href="<?php echo base_url("ordermanage/order/counterboard") ?>" class="btn custom_btn_in_header text-blue"><i class="fa fa-th"></i> <?php echo display('counter_dashboard') ?></a>
-            <?php } } ?>
+            <?php 
+                endif;
+                endif;
+            ?>
         </span>
     </div>

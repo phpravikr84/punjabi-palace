@@ -16,6 +16,18 @@
 	}
 function changetype(){
 	var distypech=$("#discountttch").val();
+	var discount_select = $('#discount_select');
+	var discount_select2 = $('#discount_select').closest('.select2-container');
+	var discounttype = $('#discounttype').val();
+	if (discounttype == 1) {
+	    $("#discount").hide();
+	    $("#discount_select").show();
+		discount_select2.show();
+	} else {
+	    $("#discount").show();
+	    $("#discount_select").hide();
+		discount_select2.hide();
+	}
 	if(distypech==0){
 		var thistype=basicinfo.curr_icon;
 	}

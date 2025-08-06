@@ -69,7 +69,6 @@
         <?php } ?>
         <script>
             $(document).ready(function() {
-
                 setTimeout(function() {
                     $('.page-loader-wrapper').fadeOut();
                 }, 2000);

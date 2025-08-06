@@ -235,8 +235,10 @@
 /* Tab Content */
 
 .btn-group-sm>.btn, .btnleftalign, .btn-group-sm>.btn, .btnrightalign {
-    padding: 1px 4px;
-    font-size: 10px;
+    /* padding: 1px 4px;
+    font-size: 10px; */
+    padding: 3px 5px;
+    font-size: 14px;
 }
 .table.table.table-bordered.footersumtotal {
     margin-bottom: 0;

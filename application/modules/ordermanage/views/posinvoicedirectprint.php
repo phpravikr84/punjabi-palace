@@ -365,7 +365,7 @@ body
 <div class="page-wrapper">
         <div class="invoice-card">
             <div class="invoice-head">
-                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" alt="">
+                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" style="width:35%;" alt="">
                 <h4><?php echo $storeinfo->storename;?></h4>
                 <p class="my-0"><?php echo $storeinfo->address;?></p>
             </div>
@@ -374,7 +374,7 @@ body
                     <div class="item-info">
                         <h5 class="item-title"><?php echo display('date');?>: <?php echo date("M d, Y", strtotime($orderinfo->order_date));?></h5>
                     </div>
-                    <!-- <?php if($storeinfo->isvatnumshow==1){?><h5 class="item-title"><?php ##echo display('tinvat');?>: <?php ##echo $storeinfo->vattinno;?></h5><?php } ?> -->
+                    <!-- <?php ##if($storeinfo->isvatnumshow==1){?><h5 class="item-title"><?php ##echo display('tinvat');?>: <?php ##echo $storeinfo->vattinno;?></h5><?php ##} ?> -->
                     <?php if($storeinfo->isvatnumshow==1){?><h5 class="item-title">TIN/GST NO.: <?php echo $storeinfo->vattinno;?></h5><?php } ?>
                 </div>
             </div>
@@ -435,7 +435,7 @@ body
                         <div class="row-data">
                             <div class="item-info">
                                 <h5 class="item-title"><?php echo $item->ProductName;?></h5>
-                                <p class="item-size"><?php echo $item->variantName;?></p>
+                                <!-- <p class="item-size"><?php ##echo $item->variantName;?></p> -->
                                 <p class="item-number"><?php echo $singleprice;?> x <?php echo $item->menuqty;?></p>
                             </div>
                             <h5><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
