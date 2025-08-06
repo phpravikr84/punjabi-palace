@@ -2639,7 +2639,7 @@ class Order extends MX_Controller
 			if ($this->permission->method('ordermanage', 'read')->access()):
 				$details = '&nbsp;<a href="javascript:;" onclick="detailspop(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Details"><i class="fa fa-eye"></i></a>&nbsp;';
 				$print = '<a href="javascript:;" onclick="pos_order_invoice(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Invoice"><i class="fa fa-window-restore"></i></a>&nbsp;';
-				$posprint = '<a href="javascript:;" onclick="pospageprint(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="' . display('pos_invoice') . '">Print Invoice</a>';
+				$posprint = '<a href="javascript:;" onclick="pospageprint(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="' . display('pos_invoice') . '"><i class="fa fa-window-maximize"></i></a>';
 				$kot = '<a href="javascript:;" onclick="postokenprint(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="KOT"><i class="fa fa-print"></i></a>';
 			endif;
 
