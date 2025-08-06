@@ -530,6 +530,7 @@ foreach ($scan as $file) {
           <?php } ?>
           <li class="seelist"> <a href="#settings" role="tab" data-toggle="tab" class="comorder newtab" id="todayonlieorder" onclick="giveselecttab(this)"><i class="fa fa-shopping-bag smallview"></i> <span class="responsiveview"><i class="fa fa-internet-explorer" aria-hidden="true"></i>&nbsp;<?php echo display('onlineord'); ?></span> </a> <a href="" class="notif" style="display: none !important;"><span class="label label-danger count">0</span></a></li>
           <li> <a href="#messages" role="tab" data-toggle="tab" class="torder newtab" id="todayorder" onclick="giveselecttab(this)"><i class="fa fa-first-order smallview"></i> <span class="responsiveview"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;<?php echo display('tdayorder'); ?></span> </a> </li>
+          <li> <a href="#cancelorder" role="tab" data-toggle="tab" class="corder newtab" id="cancelorder" onclick="giveselecttab(this)"><i class="fa fa-first-order smallview"></i> <span class="responsiveview"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;<?php echo 'Cancel Order'; ?></span> </a> </li>
           <li class="mobiletag"><a href="javascript:void(0);" class="btn" onclick="closeopenresister()" role="button" data-toggle="tooltip" data-placement="top" title="Click to close the counter register" data-original-title="Click to close the counter register"><i class="fa fa-window-close fa-lg"></i></a></li>
           <li class="mobiletag"><a href="#"><i class="fa fa-keyboard hover-q text-muted" aria-hidden="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<table class='table table-condensed table-striped' >
         <tr>
@@ -646,7 +647,7 @@ foreach ($scan as $file) {
 
         <div class="tgbar">
 
-          <a href="javascript:;" class="btn" onclick="closeopenresister()" role="button"><i class="fa fa-window-close fa-lg"></i></a>
+          <a href="javascript:;" class="btn btn-success w-md m-b-5" onclick="closeopenresister()" role="button">Current Register</a>
           <?php if ($new_version > $myversion) {
             if ($versioncheck->version != $new_version) {
           ?>
@@ -1492,6 +1493,7 @@ foreach ($scan as $file) {
         <?php } ?>
         <div class="tab-pane fade" id="settings"> </div>
         <div class="tab-pane fade" id="messages"> </div>
+        <div class="tab-pane fade" id="cancelorder"> </div>
       </div>
     </div>
   </div>
@@ -2002,3 +2004,14 @@ $(document).on('click', '.suggestion-item', function () {
 
 
 </script>
+
+<style>
+  .nav-tabs > li > a.corder {
+    box-shadow: none !important;
+    color: #000 !important;
+    background: #fff !important;
+    border-radius: 8px !important;
+    line-height: 23px !important;
+    margin-right: 5px !important;
+}
+</style>

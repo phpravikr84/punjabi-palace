@@ -381,6 +381,9 @@ class Order extends MX_Controller
 	{
 		$this->load->view('qrordertable');
 	}
+	public function showcancelorder(){
+		$this->load->view('cancelorder');
+	}
 	public function ongoingtable_name()
 	{
 		$name = $this->input->get('q');
@@ -7719,5 +7722,54 @@ class Order extends MX_Controller
         
         $this->load->view('ordermanage/suborderpay', $data);
     }
+
+	public function todayallcancelorder()
+	{
+
+		$list = $this->order_model->get_completecancelorder();
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $rowdata) {
+			$no++;
+			$row = array();
+			$update = '';
+			$details = '';
+			$print = '';
+			$posprint = '';
+			$split = '';
+			$kot = '';
+			if ($this->permission->method('ordermanage', 'update')->access()):
+				$update = '<a href="javascript:;" onclick="editposorder(' . $rowdata->order_id . ',2)" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="Update" id="table-today-' . $rowdata->order_id . '"><i class="ti-pencil"></i></a>&nbsp;&nbsp;';
+			endif;
+			if ($rowdata->splitpay_status == 1):
+				$split = '<a href="javascript:;" onclick="showsplit(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="Update" id="table-split-' . $rowdata->order_id . '">' . display('split') . '</a>&nbsp;&nbsp;';
+			endif;
+			if ($this->permission->method('ordermanage', 'read')->access()):
+				$details = '&nbsp;<a href="javascript:;" onclick="detailspop(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Details"><i class="fa fa-eye"></i></a>&nbsp;';
+				$print = '<a href="javascript:;" onclick="pos_order_invoice(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Invoice"><i class="fa fa-window-restore"></i></a>&nbsp;';
+				$posprint = '<a href="javascript:;" onclick="pospageprint(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="' . display('pos_invoice') . '">Print Invoice</a>';
+				$kot = '<a href="javascript:;" onclick="postokenprint(' . $rowdata->order_id . ')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="KOT"><i class="fa fa-print"></i></a>';
+			endif;
+
+			$row[] = $no;
+			$row[] = $rowdata->saleinvoice;
+			$row[] = $rowdata->customer_name;
+			$row[] = $rowdata->customer_type;
+			$row[] = $rowdata->first_name . $rowdata->last_name;
+			$row[] = $rowdata->tablename;
+			$row[] = $rowdata->order_date;
+			$row[] = $rowdata->totalamount;
+			//$row[] = $update . $print . $posprint . $details . $split . $kot;
+			$row[] = $posprint;
+			$data[] = $row;
+		}
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->order_model->count_alltodayorder(),
+			"recordsFiltered" => $this->order_model->count_filtertorder(),
+			"data" => $data,
+		);
+		echo json_encode($output);
+	}
 	
 }

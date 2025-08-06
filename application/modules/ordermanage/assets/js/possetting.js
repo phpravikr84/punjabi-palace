@@ -50,6 +50,9 @@ function leftArrowPressed(id) {
     if (id == 'todayorder') {
         $('#todayonlieorder').trigger('click');
     }
+    if (id == 'cancelorder') {
+        $('#todayorder').trigger('click');
+    }
 
 }
 
@@ -1651,6 +1654,23 @@ $(document).ready(function () {
 
     });
 
+       /*all cancelorder product as ajax*/
+    $(document).on('click', '#cancelorder', function () {
+        var url = baseurl + 'ordermanage/order/showcancelorder';
+        var csrf = $('#csrfhashresarvation').val();
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: { csrf_test_name: csrf },
+            success: function (data) {
+                $('#messages').html(data);
+            }
+
+        });
+
+
+    });
+
 });
 /*unique table data*/
 "use strict";
@@ -2237,6 +2257,7 @@ function postupdateorder_ajax() {
                                 $("#todayqrorder").removeClass("disabled");
                                 $("#todayonlieorder").removeClass("disabled");
                                 $("#todayorder").removeClass("disabled");
+                                $("#cancelorder").removeClass("disabled");
                                 $("#ongoingorder").removeClass("disabled");
                             }
                         });
@@ -2252,6 +2273,7 @@ function postupdateorder_ajax() {
                                 $("#todayqrorder").removeClass("disabled");
                                 $("#todayonlieorder").removeClass("disabled");
                                 $("#todayorder").removeClass("disabled");
+                                 $("#cancelorder").removeClass("disabled");
                                 $("#ongoingorder").removeClass("disabled");
                             }
                         });
