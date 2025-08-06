@@ -660,6 +660,47 @@ function itemModifiers(pid, tr_row_id) {
         }
     });
 }
+function itemModifiersUpdate(pid, orderid) {
+    // var sizeid = panel.find('.panel-body input[name=select_product_size]').val();
+    // pid = 0;
+    if (pid == "" || pid == 0) {
+        // alert("No Item Found !");
+        //create sweatalert alert
+        swal({
+            title: "No Item Found !",
+            text: "Please select an item first.",
+            type: "warning",
+            confirmButtonText: "OK",
+            closeOnConfirm: true
+        });
+        return false;
+    }
+    var csrf = $('#csrfhashresarvation').val(),
+        geturl = $("#modifierurlupdate").val(),
+        myurl = geturl,
+        dataString = "pid=" + pid + '&orderid=' + orderid + '&csrf_test_name=' + csrf;
+    $("#posAddmodSizeInfo").remove();
+    $.ajax({
+        type: "POST",
+        url: myurl,
+        data: dataString,
+        success: function (data) {
+            console.log("Modifier data: " + data);
+            $("#posSelectPurchaseTable").remove();
+            // $('#addfoodlist').html(data);
+            $("#mySidebar").find('#sideMfContainer').html(data);
+            // $('#sideVarContainer').html($("#posAddmodSizeInfo").html());
+            $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
+            $("#posSelectPurchaseTable").remove();
+            $("#posAddmodSizeInfo").remove();
+            // $("#modifierChoosebtnDiv").html(`
+            //     <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
+            //     `);
+            openNav();
+            //   $("#modifierContent").show();
+        }
+    });
+}
 // function checkModGroupMaxItemNumber(pid,mods) {
 
 //     //fetch the maximum item number for the pid from menu_add_on table
