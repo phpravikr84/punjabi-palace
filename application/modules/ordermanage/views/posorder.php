@@ -1721,6 +1721,17 @@ $(document).ready(function () {
 
       if (ctypeId) {
           $('#ctypeid').val(ctypeId);
+          if (ctypeId == 1) {
+            //select customerName with value 1 and disable it
+            $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
+            $('#customer_name').prop('disabled', true);
+            $('#customer_name').next('.select2-container').prop('disabled', true);
+            $("#add_cust").hide();
+          } else {
+            $('#customer_name').prop('disabled', false);
+            $('#customer_name').next('.select2-container').prop('disabled', false);
+            $("#add_cust").show();
+          }
       }
     }, 1000);
 

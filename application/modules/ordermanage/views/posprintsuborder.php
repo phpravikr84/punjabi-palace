@@ -27,8 +27,6 @@ body
         display: none;
     }
 }
-</style>
-<style>
 .mb-0 {
     margin-bottom: 0;
 }
@@ -374,7 +372,7 @@ body
 <div class="page-wrapper" id="printableArea">
         <div class="invoice-card">
             <div class="invoice-head">
-                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" alt="">
+                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" alt="Punjabi Palace" style="width: 35%;">
                 <h4><?php echo $storeinfo->storename;?></h4>
                 <p class="my-0"><?php echo $storeinfo->address;?></p>
             </div>
@@ -459,7 +457,7 @@ body
                         <div class="row-data">
                             <div class="item-info">
                                 <h5 class="item-title"><?php echo $item->ProductName;?></h5>
-                                <p class="item-size"><?php echo $item->variantName;?></p>
+                                <!-- <p class="item-size"><?php ##echo $item->variantName;?></p> -->
                                 <p class="item-number"><?php echo $item->price;?> x <?php echo $item->menuqty;?></p>
                             </div>
                             <h5><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemprice-$ptdiscount;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>

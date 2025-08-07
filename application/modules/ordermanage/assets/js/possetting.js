@@ -378,7 +378,7 @@ $('body').on('click', '.select_product', function (e) {
     console.log("hasaddons: " + hasaddons);
     console.log("totalvarient: " + totalvarient);
     console.log("customqty: " + customqty);
-    if (hasaddons == 0 && totalvarient == 1 && customqty == 0) {
+    if (hasaddons >= 0 && totalvarient == 1 && customqty == 0) {
         /*check production*/
         var productionsetting = $('#production_setting').val();
         if (productionsetting == 1) {

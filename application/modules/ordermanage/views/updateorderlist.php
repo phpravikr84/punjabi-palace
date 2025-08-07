@@ -28,6 +28,7 @@
         $q1=$this->db->get();
         $orderedMods=$q1->result();
         // $data['orderedMods']=$orderedMods;
+        
         foreach ($iteminfo as $item) {
           //Fetching modifier groups information from the database
           $this->db->select('modifier_groups.*,menu_add_on.*');

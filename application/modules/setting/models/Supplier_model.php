@@ -74,11 +74,15 @@ public function countlist()
 	{
 	    $this->db->select('*');
         $this->db->from('customer_info');
+		$this->db->where('customer_id!=', 1);
+		if ($limit !== null && $start !== null) {
+			$this->db->limit($limit, $start);
+		}
         $this->db->order_by('customer_id', 'desc');
 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
-            return $query->result();    
+            return $query->result();
         }
         return false;
 	}
