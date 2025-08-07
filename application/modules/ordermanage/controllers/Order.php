@@ -1203,6 +1203,46 @@ class Order extends MX_Controller
 		$data['varientlist']   = $this->order_model->findByvmenuId($id);
 		$this->load->view('ordermanage/posaddmodifier', $data);
 	}
+	public function posaddmodifierupdate()
+	{
+		$id = $this->input->post('pid');
+		$sid = $this->input->post('sid');
+		$orderid = $this->input->post('orderid');
+		$data['totalvarient'] = $this->input->post('totalvarient', true);
+		$data['customqty'] = $this->input->post('customqty', true);
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		$data['taxinfos'] = $this->taxchecking();
+		$data['module'] = "ordermanage";
+		$data['page']   = "posaddmodifierupdate";
+		$data['item']   = $this->order_model->findid($id, $sid);
+		//Fetching modifier groups information from the database
+		$this->db->select('modifier_groups.*,menu_add_on.*');
+		$this->db->from('modifier_groups');
+		$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
+		$this->db->where('menu_add_on.menu_id', $id);
+		$this->db->where('menu_add_on.is_active', 1);
+		$query = $this->db->get();
+		$modifiers = $query->result();
+		$data['modifiers']   = $modifiers;
+		//Fetching selected modifiers information from the database
+		$this->db->select('ordered_menu_item_modifiers.*');
+		$this->db->from('ordered_menu_item_modifiers');
+		$this->db->where('ordered_menu_item_modifiers.menu_id',$id);
+		$this->db->where('ordered_menu_item_modifiers.order_id',$orderid);
+		$this->db->where('ordered_menu_item_modifiers.is_active',1);
+		$q2 = $this->db->get();
+		$selectedMods = $q2->result();
+		$data['pid']   = $id;
+		$data['orderid']   = $orderid;
+		$data['selectedMods']   = $selectedMods;
+
+		$data['mainFoodsList']   = $this->order_model->findMainFoodsPromo($id);
+		$data['mainCats']   = $this->order_model->findMainCats($id);
+		$data['varientlist']   = $this->order_model->findByvmenuId($id);
+		$this->load->view('ordermanage/posaddmodifierupdate', $data);
+	}
 
 	public function cartmodifiersave()
 	{

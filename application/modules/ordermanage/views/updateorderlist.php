@@ -28,6 +28,7 @@
         $q1=$this->db->get();
         $orderedMods=$q1->result();
         // $data['orderedMods']=$orderedMods;
+        
         foreach ($iteminfo as $item) {
           //Fetching modifier groups information from the database
           $this->db->select('modifier_groups.*,menu_add_on.*');
@@ -148,6 +149,9 @@
               <a class="serach pl-15" onclick="itemnote('<?php echo $item->row_id; ?>','<?php echo $item->notes; ?>',<?php echo $item->order_id; ?>,1,<?php echo $isgroup; ?>)" title="<?php echo display('foodnote') ?>"> <?php if(!empty($item->notes)):?> <span class="cartItemNote"><?=$item->notes;?></span> <?php else: ?><i class="fa fa-sticky-note" aria-hidden="true"></i><?php endif; ?> </a>
               <?php
               if(count($modifiers) > 0):
+              ?>
+              <!-- <a class="cartModToggle" id="cartModToggle_<?=$item->pid;?>" onclick="itemModifiersUpdate(<?=$item->menu_id;?>,'<?=$orderid;?>')" title="Click to Choose Modifiers"> -->
+              <?php
               if (count($selectedFoodsForCart)>0):
                 foreach ($selectedFoodsForCart as $smk => $smv):
                   // $modEachItemTotal += $smv->price;
@@ -204,10 +208,13 @@
               endif;
               if (count($selectedModsForCart) == 0 && count($selectedFoodsForCart) == 0 && count($modifiers) > 0):
               ?>
-                <br />
-                <small class="modCheck posAddMod">+ Modifiers</small>
+                <!-- <br />
+                <small class="modCheck posAddMod">+ Modifiers</small> -->
               <?php
               endif;
+              ?>
+              <!-- </a> -->
+              <?php
               endif;
               ?>
             </td>

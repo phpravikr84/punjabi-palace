@@ -790,6 +790,7 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="cartupdateturl" value="<?php echo base_url("ordermanage/order/poscartupdate") ?>" />
                 <input name="url" type="hidden" id="addonexsurl" value="<?php echo base_url("ordermanage/order/posaddonsmenu") ?>" />
                 <input name="url" type="hidden" id="modifierurl" value="<?php echo base_url("ordermanage/order/posaddmodifier") ?>" />
+                <input name="url" type="hidden" id="modifierurlupdate" value="<?php echo base_url("ordermanage/order/posaddmodifierupdate") ?>" />
                 <input name="url" type="hidden" id="cartmodifiersaveurl" value="<?php echo base_url("ordermanage/order/cartmodifiersave") ?>" />
                 <input name="url" type="hidden" id="cartPromoFoodModifierSaveUrl" value="<?php echo base_url("ordermanage/order/cartPromoFoodModifierSave") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
@@ -1720,6 +1721,17 @@ $(document).ready(function () {
 
       if (ctypeId) {
           $('#ctypeid').val(ctypeId);
+          if (ctypeId == 1) {
+            //select customerName with value 1 and disable it
+            $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
+            $('#customer_name').prop('disabled', true);
+            $('#customer_name').next('.select2-container').prop('disabled', true);
+            $("#add_cust").hide();
+          } else {
+            $('#customer_name').prop('disabled', false);
+            $('#customer_name').next('.select2-container').prop('disabled', false);
+            $("#add_cust").show();
+          }
       }
     }, 1000);
 

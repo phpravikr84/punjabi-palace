@@ -640,11 +640,72 @@ small.modifier-sec-sub-heading
     cursor: pointer;
     font-weight: 450;
   }
+  .posAddMod 
+    {
+        text-decoration:underline;
+        cursor:pointer;
+        margin-bottom:7px;
+        font-size: 12px;
+    }
+    .posAddMod:hover
+    {
+        font-weight:bold;
+        font-size: 12px;
+    }
   .fa-sticky-note
   {
     font-size: 25px;
     cursor:pointer;
   }
+  /* Ensure consistent width and height for each product card */
+.product-panel {
+    height: 280px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Ensure the image scales correctly */
+.product-panel .panel-body {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product-panel .panel-body img {
+    max-width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+}
+
+/* Product title and price section */
+.product-panel .text-center {
+    padding-top: 8px;
+    min-height: 60px; /* Enough space for wrapping */
+}
+
+.product-panel .text-center h5 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-word;
+}
+
+.product-panel .tag-wrapper {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #333;
+}
+
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
