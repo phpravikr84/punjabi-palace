@@ -109,6 +109,9 @@
                                                 <th><?php echo display('unit_price');?></th>
                                                 <th><?php echo display('qty');?></th>
                                                 <th class="text-center"><?php echo display('total_price')?></th> 
+                                                <?php if($suborder->status ==0){?>
+                                                    <th class="text-center"><?php echo 'Action'; ?></th>
+                                                <?php } ?>
 
                                                 </tr>
                                             </thead>
@@ -233,7 +236,16 @@
                                                             $totalprice = $totalprice+$suborderqty[$subitem->row_id]*$subitem->price+$adonsprice;
 
                                                     } ?></td>
-                                                 
+                                                    
+                                                    <?php if($suborder->status ==0){?>
+                                                        <td>
+                                                            <button type="button" id="del_split_<?php echo $subitem->row_id; ?>" class="btn btn-danger btn-sm text-light">
+                                                            <i class="fa fa-trash-o" style="color:#fff;"></i>
+                                                            </button>
+                                                        </td>
+                                                    <?php  } ?>
+
+
                                                 </tr>
                                        
                                              

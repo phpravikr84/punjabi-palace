@@ -7771,5 +7771,160 @@ class Order extends MX_Controller
 		);
 		echo json_encode($output);
 	}
-	
+
+	/**
+	 * Delete Order SubItem in case of Split method
+	 */
+	public function deletesuborderitem()
+	{
+		$this->permission->method('ordermanage', 'delete')->redirect();
+
+		// Get input parameters
+		$menuid = $this->input->get('menuid', true);
+		$suborderid = $this->input->get('suborderid', true);
+		$orderid = $this->input->get('orderid', true);
+		$service_chrg_data = $this->input->get('service_chrg', true) ?: 0;
+		$csrf_token = $this->input->get('csrf_test_name', true);
+
+		// Validate inputs
+		if (empty($menuid) || empty($suborderid) || empty($orderid)) {
+			log_message('error', 'Missing required parameters: menuid=' . $menuid . ', suborderid=' . $suborderid . ', orderid=' . $orderid);
+			show_error('Missing required parameters', 400);
+			return;
+		}
+
+		// Validate CSRF token
+		if ($this->security->get_csrf_hash() !== $csrf_token) {
+			log_message('error', 'CSRF token mismatch: received=' . $csrf_token . ', expected=' . $this->security->get_csrf_hash());
+			show_error('CSRF token mismatch', 403);
+			return;
+		}
+
+		// Get current suborder
+		$array_id = array('sub_id' => $suborderid);
+		$order_sub = $this->order_model->read('*', 'sub_order', $array_id);
+
+		if (empty($order_sub)) {
+			log_message('error', 'Suborder not found for sub_id=' . $suborderid);
+			show_error('Suborder not found', 404);
+			return;
+		}
+
+		$presentsub = !empty($order_sub->order_menu_id) ? unserialize($order_sub->order_menu_id) : array();
+
+		// Check if item exists and has quantity > 0
+		if (!empty($presentsub) && isset($presentsub[$menuid]) && $presentsub[$menuid] > 0) {
+			// Decrease quantity or remove item
+			if ($presentsub[$menuid] == 1) {
+				unset($presentsub[$menuid]);
+			} else {
+				$presentsub[$menuid]--;
+			}
+
+			// Update add-ons
+			$check_id = array('order_menuid' => $menuid, 'sub_order_id' => $suborderid);
+			$check_info = $this->order_model->read('*', 'check_addones', $check_id);
+
+			if (!empty($check_info)) {
+				if (!$this->db->where($check_id)->delete('check_addones')) {
+					log_message('error', 'Failed to delete addons for order_menuid=' . $menuid . ', sub_order_id=' . $suborderid);
+					show_error('Database error deleting addons', 500);
+					return;
+				}
+			}
+
+			// Update suborder
+			$order_menu_id = !empty($presentsub) ? serialize($presentsub) : null;
+			$updatetready = array(
+				'order_menu_id' => $order_menu_id,
+				'adons_id' => null,
+				'adons_qty' => null
+			);
+
+			$this->db->where('sub_id', $suborderid);
+			if (!$this->db->update('sub_order', $updatetready)) {
+				log_message('error', 'Failed to update sub_order for sub_id=' . $suborderid);
+				show_error('Database update failed', 500);
+				return;
+			}
+		} else {
+			log_message('debug', 'Menu item not found or quantity is 0 for menuid=' . $menuid . ', suborderid=' . $suborderid);
+		}
+
+		// Get updated data for view
+		$menuarray = !empty($presentsub) ? array_keys($presentsub) : array();
+		try {
+			$data['iteminfo'] = $this->order_model->updateSuborderDatalist($menuarray) ?: array();
+		} catch (Exception $e) {
+			log_message('error', 'Error in updateSuborderDatalist: ' . $e->getMessage());
+			show_error('Error fetching suborder data', 500);
+			return;
+		}
+
+		$data['taxinfos'] = $this->taxchecking() ?: array();
+		$data['presenttab'] = $presentsub;
+		$data['settinginfo'] = $this->order_model->settinginfo() ?: (object) ['servicecharge' => 0, 'vat' => 0];
+		$data['suborderid'] = $suborderid;
+		$data['orderid'] = $orderid;
+		$data['service_chrg_data'] = $service_chrg_data;
+		$data['SDtotal'] = $this->order_model->read('service_charge', 'bill', array('order_id' => $orderid)) ?: (object) ['service_charge' => 0];
+
+		// Calculate totals
+		$data['totalprice'] = 0;
+		$data['totalvat'] = 0;
+		$data['SD'] = 0;
+		$data['multiplletax'] = array();
+		if (!empty($data['iteminfo'])) {
+			foreach ($data['iteminfo'] as $item) {
+				$itemprice = ($presentsub[$item->row_id] ?? 0) * $item->price;
+				if ($item->OffersRate > 0) {
+					$discount = ($item->price * $item->OffersRate) / 100;
+					$itemprice -= $discount * ($presentsub[$item->row_id] ?? 0);
+				}
+
+				// Include add-ons price
+				$adonsprice = 0;
+				$isaddones = $this->order_model->read('*', 'check_addones', array('order_menuid' => $item->row_id));
+				if (!empty($item->add_on_id) && !empty($isaddones)) {
+					$addons = explode(',', $item->add_on_id);
+					$addonsqty = explode(',', $item->addonsqty);
+					foreach ($addons as $index => $addonid) {
+						$addoninfo = $this->order_model->read('*', 'add_ons', array('add_on_id' => $addonid));
+						$adonsprice += $addoninfo->price * ($addonsqty[$index] ?? 0);
+					}
+				}
+				$itemprice += $adonsprice;
+
+				$data['totalprice'] += $itemprice;
+				$data['totalvat'] += $itemprice * ($item->productvat / 100);
+				$data['SD'] += $itemprice * ($data['settinginfo']->servicecharge / 100);
+
+				if (!empty($data['taxinfos'])) {
+					$tx = 0;
+					foreach ($data['taxinfos'] as $taxinfo) {
+						$fildname = 'tax' . $tx;
+						$vatcalc = $itemprice * ($item->$fildname ?? $taxinfo['default_value']) / 100;
+						$data['multiplletax'][$fildname] = ($data['multiplletax'][$fildname] ?? 0) + $vatcalc;
+						$tx++;
+					}
+				}
+			}
+		}
+
+		// Log data for debugging
+		log_message('debug', 'Iteminfo: ' . print_r($data['iteminfo'], true));
+		log_message('debug', 'Presenttab: ' . print_r($presentsub, true));
+		log_message('debug', 'Totalprice: ' . $data['totalprice']);
+		log_message('debug', 'Totalvat: ' . $data['totalvat']);
+		log_message('debug', 'SD: ' . $data['SD']);
+
+		try {
+			$this->load->view('ordermanage/showsuborderdetails', $data);
+		} catch (Exception $e) {
+			log_message('error', 'Error rendering view showsuborderdetails: ' . $e->getMessage());
+			show_error('Error rendering view', 500);
+			return;
+		}
+	}
+		
 }

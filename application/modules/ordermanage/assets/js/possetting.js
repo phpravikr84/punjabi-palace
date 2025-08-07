@@ -3727,3 +3727,178 @@ function paySplitByAmount(element) {
         getAjaxModal(url, false, '#modal-ajaxview-split', '#payprint_split', data, 'post');
     }
 }
+
+/**
+ * Delete Split by Item Code 
+ */
+
+    $(document).ready(function() {
+        // New delete function
+        $(document).on('click', '[id^="del_split_"]', function() {
+            var buttonId = $(this).attr('id');
+            var menuid = buttonId.replace('del_split_', '');
+            var splitItem = $(this).closest('.split-item');
+            var suborderid = splitItem.attr('data-value'); // Get suborderid from split-item
+            var tableId = $(this).closest('table').attr('id'); // table-tbody-24-38
+            var parts = tableId.split('-');
+            var orderid = parts[2]; // Extract orderid (24)
+            var service_chrg = parseFloat($('#service-' + suborderid).val() || 0); // Current service charge
+            var csrf = $('input[name="csrf_test_name"]').val(); // Correct CSRF selector
+
+            if (!suborderid || !orderid || !menuid) {
+                alert('Error: Missing required parameters.');
+                return;
+            }
+
+            if (confirm("Are you sure you want to delete this item?")) {
+                // Store the row and its total price for fallback calculation
+                var $rowToRemove = $(this).closest('tr');
+                var itemTotalText = $rowToRemove.find('td').eq(3).text(); // Total price column (index 3 in 5-column table)
+                var itemTotal = parseFloat(itemTotalText) || 0;
+
+                $.ajax({
+                    url: baseurl + "ordermanage/order/deletesuborderitem",
+                    method: "GET",
+                    data: {
+                        menuid: menuid,
+                        suborderid: suborderid,
+                        orderid: orderid,
+                        service_chrg: service_chrg,
+                        csrf_test_name: csrf
+                    },
+                    success: function(response) {
+                        // Log response and DOM state for debugging
+                        console.log('Server response:', response);
+                        console.log('Table ID:', tableId, 'Suborder ID:', suborderid, 'Order ID:', orderid, 'Menu ID:', menuid);
+
+                        // Find the table body in the response
+                        var $newTableContent = $(response).find('#table-tbody-' + orderid + '-' + suborderid);
+
+                        if ($newTableContent.length > 0) {
+                            // Update table content
+                            $('#table-tbody-' + orderid + '-' + suborderid).html($newTableContent.html());
+
+                            // Check if table is empty
+                            if ($newTableContent.find('tr').length === 0 || $newTableContent.find('td').hasClass('text-center')) {
+                                console.log('Empty suborder detected');
+                                $('#table-tbody-' + orderid + '-' + suborderid).html('<tr><td colspan="5" class="text-center">No items in this suborder</td></tr>');
+                                // Set totals to 0
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(0).find('td:last').text('0.000'); // Total
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(1).find('td:last').text('0.000'); // GST
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(2).find('td:last').text('0.000'); // Service charge
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(3).find('td:last').text('0.000'); // Grand total
+                                $('#total-sub-' + suborderid).val(0);
+                                $('#vat-' + suborderid).val(0);
+                                $('#service-' + suborderid).val(0);
+                            } else {
+                                // Update totals from response
+                                var newTotal = parseFloat($(response).find('#total-sub-' + suborderid).val() || 0);
+                                var newVat = parseFloat($(response).find('#vat-' + suborderid).val() || 0);
+                                var newService = parseFloat($(response).find('#service-' + suborderid).val() || service_chrg);
+                                var grandTotal = newTotal + newVat + newService;
+
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(0).find('td:last').text(newTotal.toFixed(3));
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(1).find('td:last').text(newVat.toFixed(3));
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(2).find('td:last').text(newService.toFixed(3));
+                                $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(3).find('td:last').text(grandTotal.toFixed(3));
+
+                                $('#total-sub-' + suborderid).val(newTotal);
+                                $('#vat-' + suborderid).val(newVat);
+                                $('#service-' + suborderid).val(newService);
+                            }
+                        } else {
+                            // Fallback: remove the row and recalculate totals client-side
+                            console.warn('No valid table content in response, performing client-side update');
+                            $rowToRemove.remove();
+
+                            // Recalculate totals client-side
+                            var currentTotal = parseFloat($('#total-sub-' + suborderid).val() || 0);
+                            var currentVat = parseFloat($('#vat-' + suborderid).val() || 0);
+                            var currentService = parseFloat($('#service-' + suborderid).val() || service_chrg);
+
+                            // Deduct the item's total
+                            currentTotal -= itemTotal;
+                            if (currentTotal < 0) currentTotal = 0;
+
+                            // Approximate VAT and service charge deduction
+                            var vatRate = currentVat / (currentTotal + itemTotal || 1); // Avoid division by 0
+                            var serviceRate = currentService / (currentTotal + itemTotal || 1);
+                            currentVat = currentTotal * vatRate;
+                            currentService = currentTotal * serviceRate;
+
+                            var grandTotal = currentTotal + currentVat + currentService;
+
+                            if ($('#table-tbody-' + orderid + '-' + suborderid + ' tr').length === 0) {
+                                $('#table-tbody-' + orderid + '-' + suborderid).html('<tr><td colspan="5" class="text-center">No items in this suborder</td></tr>');
+                                currentTotal = 0;
+                                currentVat = 0;
+                                currentService = 0;
+                                grandTotal = 0;
+                            }
+
+                            // Update DOM totals
+                            $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(0).find('td:last').text(currentTotal.toFixed(3));
+                            $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(1).find('td:last').text(currentVat.toFixed(3));
+                            $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(2).find('td:last').text(currentService.toFixed(3));
+                            $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(3).find('td:last').text(grandTotal.toFixed(3));
+
+                            $('#total-sub-' + suborderid).val(currentTotal);
+                            $('#vat-' + suborderid).val(currentVat);
+                            $('#service-' + suborderid).val(currentService);
+                        }
+
+                        // Update the original order quantity
+                        $('.splitOrderTr').each(function() {
+                            if ($(this).attr('onclick') && $(this).attr('onclick').indexOf(menuid) !== -1) {
+                                var currentQty = parseInt($(this).find("td:eq(1)").text()) || 0;
+                                $(this).find("td:eq(1)").text(currentQty + 1);
+                            }
+                        });
+
+                        alert("Item deleted successfully.");
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error details:', xhr.responseText, 'Status:', status, 'Error:', error);
+                        console.warn('Server error, performing client-side update');
+                        $rowToRemove.remove();
+
+                        // Recalculate totals client-side
+                        var currentTotal = parseFloat($('#total-sub-' + suborderid).val() || 0);
+                        var currentVat = parseFloat($('#vat-' + suborderid).val() || 0);
+                        var currentService = parseFloat($('#service-' + suborderid).val() || service_chrg);
+
+                        currentTotal -= itemTotal;
+                        if (currentTotal < 0) currentTotal = 0;
+
+                        var vatRate = currentVat / (currentTotal + itemTotal || 1);
+                        var serviceRate = currentService / (currentTotal + itemTotal || 1);
+                        currentVat = currentTotal * vatRate;
+                        currentService = currentTotal * serviceRate;
+
+                        var grandTotal = currentTotal + currentVat + currentService;
+
+                        if ($('#table-tbody-' + orderid + '-' + suborderid + ' tr').length === 0) {
+                            $('#table-tbody-' + orderid + '-' + suborderid).html('<tr><td colspan="5" class="text-center">No items in this suborder</td></tr>');
+                            currentTotal = 0;
+                            currentVat = 0;
+                            currentService = 0;
+                            grandTotal = 0;
+                        }
+
+                        // Update DOM totals
+                        $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(0).find('td:last').text(currentTotal.toFixed(3));
+                        $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(1).find('td:last').text(currentVat.toFixed(3));
+                        $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(2).find('td:last').text(currentService.toFixed(3));
+                        $('#table-tbody-' + orderid + '-' + suborderid).closest('.split-item').find('tfoot tr').eq(3).find('td:last').text(grandTotal.toFixed(3));
+
+                        $('#total-sub-' + suborderid).val(currentTotal);
+                        $('#vat-' + suborderid).val(currentVat);
+                        $('#service-' + suborderid).val(currentService);
+
+                        alert('Error deleting item: ' + xhr.responseText);
+                    }
+                });
+            }
+        });
+
+});
