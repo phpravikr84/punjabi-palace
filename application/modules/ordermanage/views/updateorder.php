@@ -619,23 +619,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <?php echo display('cmplt'); ?>
                                         </a>
                                         <a href="javascript:void(0);" onclick="showsplitmodal(<?php echo $orderinfo->order_id;?>)" class="btn btn-primary btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
-                                            <?php echo display('split'); ?>
+                                            <?php echo 'Split by item'; ?>
+                                        </a>
+
+                                        <a href="javascript:void(0);" onclick="showsplitmodalbyamount(<?php echo $orderinfo->order_id;?>)" class="btn btn-primary btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
+                                            <?php echo 'Split by amount';?>
                                         </a>
                                         <?php if ($this->permission->method('ordermanage', 'delete')->access()) { ?>
-                                            <a href="javascript:void(0);" style="margin-right: 10px;" data-id="<?php echo $orderinfo->order_id;?>" class="btn btn-md btn-warning footer-btn mr-1 cancelorder" data-toggle="tooltip" data-placement="top" title="<?php echo display('cancel_order'); ?>">
-                                                <!-- <i class="fa fa-trash-o"></i> -->Cancel Order
+                                            <a href="javascript:void(0);" style="margin-right: 10px;" data-id="<?php echo $orderinfo->order_id;?>" class="btn btn-md btn-warning cusbtn footer-btn mr-1 cancelorder" data-toggle="tooltip" data-placement="top" title="<?php echo display('cancel_order'); ?>">
+                                                <!-- <i class="fa fa-trash-o"></i> -->Cancel
                                             </a>
                                         <?php } ?>
                                         <a href="javascript:void(0);" class="btn btn-danger cusbtn mr-1 due_print" data-toggle="tooltip" data-placement="top" title="<?php echo display('due_invoice'); ?>" data-url="<?php echo base_url("ordermanage/order/dueinvoice/".$orderinfo->order_id); ?>">
                                            Invoice
                                         </a>
                                     <?php } else { ?>
-                                        <a href="javascript:void(0);" onclick="showsplitmodal(<?php echo $orderinfo->order_id;?>)" class="btn btn-warning btn-large cusbtn" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
-                                            <?php echo display('split'); ?>
-                                        </a>
+
+                                        <!-- Check split type -->
+                                        
+                                        <?php
+                                            $CI =& get_instance();
+                                            $CI->load->database();
+
+                                            // Fetch split_type from sub_order table
+                                            $split_row = $CI->db->get_where('sub_order', ['order_id' => $orderinfo->order_id])->row();
+                                            $split_type = !empty($split_row) ? $split_row->split_type : 0;
+                                            ?>
+
+                                            <?php if ($split_type == 0): ?>
+                                                <!-- Split by Item -->
+                                                <a href="javascript:void(0);" onclick="showsplitmodal(<?php echo $orderinfo->order_id;?>)" class="btn btn-warning btn-large cusbtn" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
+                                                    <?php echo 'Split by item'; ?>
+                                                </a>
+                                            <?php elseif ($split_type == 1): ?>
+                                                <!-- Split by Amount -->
+                                                <a href="javascript:void(0);" onclick="showsplitmodalbyamount(<?php echo $orderinfo->order_id;?>)" class="btn btn-warning btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
+                                                    <?php echo 'Split by amount';?>
+                                                </a>
+                                            <?php endif; ?>
+
                                     <?php } ?>
                                     <input name="getuv" id="uvchange" type="hidden" value="0" />
-                                    <input type="button" id="update_order_confirm" onclick="postupdateorder_ajax()" class="btn btn-success btn-large cusbtn" name="add-payment" value="Order Update">
+                                    <input type="button" id="update_order_confirm" onclick="postupdateorder_ajax()" class="btn btn-success btn-large cusbtn" name="add-payment" value="Update">
                                 </div>
                             </div>
                         </div>
