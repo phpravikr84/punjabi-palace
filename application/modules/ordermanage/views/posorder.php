@@ -362,6 +362,9 @@ $ptdiscount = 0; ?>
 <div id="payprint_split" class="modal fade  bd-example-modal-lg" role="dialog">
   <div class="modal-dialog modal-lg" id="modal-ajaxview-split"> </div>
 </div>
+<div id="payprint_split_byamount" class="modal fade bd-example-modal-lg" role="dialog">
+  <div class="modal-dialog modal-lg" id="modal-ajaxview-split_byamount"></div>
+</div>
 
 <?php echo form_open('ordermanage/order/insert_customer', 'method="post" class="form-vertical" id="validate"') ?>
 <div class="modal fade modal-warning" id="client-info" role="dialog">

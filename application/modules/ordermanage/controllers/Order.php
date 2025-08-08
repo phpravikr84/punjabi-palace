@@ -7685,7 +7685,7 @@ class Order extends MX_Controller
 	/**
 	 * Split by Amount new code update 
 	 */
-   // Show split bill by amount modal
+     // Show split bill by amount modal
     public function showsplitbyamount($orderid)
     {
         $this->permission->method('ordermanage', 'read')->redirect();
@@ -7699,6 +7699,7 @@ class Order extends MX_Controller
         $data['bill_info'] = $this->order_model->read('*', 'bill', $array_id);
         $data['iteminfo'] = $this->order_model->customerorder($orderid);
         $data['customerlist'] = $this->order_model->customer_dropdown();
+        $data['suborder_info'] = $this->order_model->read_all('*', 'sub_order', $array_id);
         $data['module'] = "ordermanage";
         $this->load->view('ordermanage/split_bill_by_amount', $data);
     }
@@ -7710,58 +7711,130 @@ class Order extends MX_Controller
         $orderid = $this->input->post('orderid');
         $array_bill = array('order_id' => $orderid);
         $billinfo = $this->order_model->read('*', 'bill', $array_bill);
+        $existing_suborders = $this->order_model->read_all('*', 'sub_order', $array_bill);
+        $existing_count = count($existing_suborders);
+
+        // Prepare menu items for serialization if new sub-orders are needed
+        if ($existing_count < $num) {
+            $this->db->select('menu_id, add_on_id, addonsqty');
+            $this->db->from('order_menu');
+            $this->db->where('order_id', $orderid);
+            $order_menu_items = $this->db->get()->result();
+            
+            $menu_ids = array();
+            foreach ($order_menu_items as $item) {
+                $menu_ids[$item->menu_id] = isset($menu_ids[$item->menu_id]) ? $menu_ids[$item->menu_id] + 1 : 1;
+            }
+            $order_menu_id = serialize($menu_ids);
+            
+            $addons_id = '';
+            $addons_qty = '';
+            $unique_addons = array();
+            foreach ($order_menu_items as $item) {
+                if (!empty($item->add_on_id)) {
+                    $addon_ids = explode(',', $item->add_on_id);
+                    $addon_qtys = explode(',', $item->addonsqty);
+                    foreach ($addon_ids as $index => $addon_id) {
+                        if (!empty($addon_id)) {
+                            $unique_addons[$addon_id] = isset($unique_addons[$addon_id]) ? $unique_addons[$addon_id] + $addon_qtys[$index] : $addon_qtys[$index];
+                        }
+                    }
+                }
+            }
+            if (!empty($unique_addons)) {
+                $addons_id = implode(',', array_keys($unique_addons));
+                $addons_qty = implode(',', array_values($unique_addons));
+            }
+            
+            // Delete only unpaid sub-orders (status = 0)
+            $this->db->where('order_id', $orderid)->where('status', 0)->delete('sub_order');
+            
+            // Create new sub-orders to reach the requested number
+            $remaining_num = $num - count($this->order_model->read_all('*', 'sub_order', $array_bill));
+            $total_amount = $billinfo->bill_amount / $num;
+            $service_charge = $billinfo->service_charge / $num;
+            $vat = $billinfo->VAT / $num;
+            
+            $insertid = array();
+            for ($i = 0; $i < $remaining_num; $i++) {
+                $sub_order = array(
+                    'order_id' => $orderid,
+                    'total_price' => $total_amount,
+                    's_charge' => $service_charge,
+                    'vat' => $vat,
+                    'order_menu_id' => $order_menu_id,
+                    'adons_id' => $addons_id ?: NULL,
+                    'adons_qty' => $addons_qty ?: NULL,
+					'split_type' => 1 // Add for split-by-amount
+                );
+                $this->db->insert('sub_order', $sub_order);
+                $insertid[] = $this->db->insert_id();
+            }
+        }
         
+        // Fetch all sub-orders to display
+        $data['suborder_info'] = $this->order_model->read_all('*', 'sub_order', $array_bill);
         $data['num'] = $num;
         $data['orderid'] = $orderid;
-        $data['total_amount'] = $billinfo->bill_amount / $num;
-        $data['service_charge'] = $billinfo->service_charge / $num;
-        $data['vat'] = $billinfo->VAT / $num;
         $data['customerlist'] = $this->order_model->customer_dropdown();
-        
-        $insertid = array();
-        $this->db->where('order_id', $orderid)->delete('sub_order');
-        for ($i = 0; $i < $num; $i++) {
-            $sub_order = array(
-                'order_id' => $orderid,
-                'total_price' => $data['total_amount'],
-                's_charge' => $data['service_charge'],
-                'vat' => $data['vat'],
-            );
-            $this->db->insert('sub_order', $sub_order);
-            $insertid[$i] = $this->db->insert_id();
-        }
-        $data['suborderid'] = $insertid;
         $this->load->view('ordermanage/show_split_amounts', $data);
     }
 
     // Pay split bill by amount
-    public function pay_split_by_amount()
-    {
-        $sub_id = $this->input->post('sub_id');
-        $customerid = $this->input->post('customerid');
-        $total = $this->input->post('total', true);
-        $vat = $this->input->post('vat', true);
-        $service = $this->input->post('service', true);
+    // public function pay_split_by_amount()
+    // {
+    //     $sub_id = $this->input->post('sub_id');
+    //     $customerid = $this->input->post('customerid');
+    //     $total = $this->input->post('total', true);
+    //     $vat = $this->input->post('vat', true);
+    //     $service = $this->input->post('service', true);
         
-        $updatetordfordiscount = array(
-            'vat' => $vat,
-            's_charge' => $service,
-            'total_price' => $total,
-            'customer_id' => $customerid,
-        );
+    //     $updatetordfordiscount = array(
+    //         'vat' => $vat,
+    //         's_charge' => $service,
+    //         'total_price' => $total,
+    //         'customer_id' => $customerid,
+    //     );
 
-        $this->db->where('sub_id', $sub_id);
-        $this->db->update('sub_order', $updatetordfordiscount);
+    //     $this->db->where('sub_id', $sub_id);
+    //     $this->db->update('sub_order', $updatetordfordiscount);
         
-        $data['settinginfo'] = $this->order_model->settinginfo();
-        $data['totaldue'] = $total + $vat + $service;
-        $data['sub_id'] = $sub_id;
-        $data['paymentmethod'] = $this->order_model->pmethod_dropdown();
-        $data['banklist'] = $this->order_model->bank_dropdown();
-        $data['terminalist'] = $this->order_model->allterminal_dropdown();
+    //     $data['settinginfo'] = $this->order_model->settinginfo();
+    //     $data['totaldue'] = $total + $vat + $service;
+    //     $data['sub_id'] = $sub_id;
+    //     $data['paymentmethod'] = $this->order_model->pmethod_dropdown();
+    //     $data['banklist'] = $this->order_model->bank_dropdown();
+    //     $data['terminalist'] = $this->order_model->allterminal_dropdown();
         
-        $this->load->view('ordermanage/suborderpay', $data);
-    }
+    //     $this->load->view('ordermanage/suborderpay', $data);
+    // }
+	public function pay_split_by_amount()
+	{
+		$sub_id = $this->input->post('sub_id');
+		$customerid = $this->input->post('customerid');
+		$total = $this->input->post('total', true);
+		$vat = $this->input->post('vat', true);
+		$service = $this->input->post('service', true);
+		
+		$updatetordfordiscount = array(
+			'vat' => $vat,
+			's_charge' => $service,
+			'total_price' => $total,
+			'customer_id' => $customerid,
+		);
+
+		$this->db->where('sub_id', $sub_id);
+		$this->db->update('sub_order', $updatetordfordiscount);
+		
+		$data['settinginfo'] = $this->order_model->settinginfo();
+		$data['totaldue'] = $total + $vat + $service;
+		$data['sub_id'] = $sub_id;
+		$data['paymentmethod'] = $this->order_model->pmethod_dropdown();
+		$data['banklist'] = $this->order_model->bank_dropdown();
+		$data['terminalist'] = $this->order_model->allterminal_dropdown();
+		
+		$this->load->view('ordermanage/suborderpay', $data);
+	}
 
 	public function todayallcancelorder()
 	{

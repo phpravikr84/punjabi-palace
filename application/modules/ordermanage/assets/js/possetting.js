@@ -3727,23 +3727,47 @@ $(document).ready(function () {
 function showsplitmodalbyamount(orderid, option = null) {
     var url = basicinfo.baseurl + 'ordermanage/order/showsplitbyamount/' + orderid;
     var callback = function(response) {
-        $("#modal-ajaxview").html(response);
+        $("#modal-ajaxview-split_byamount").html(response);
+        // Wait for dropdown to render
+        setTimeout(function() {
+            var numSplits = $('#number-of-split').val();
+            console.log('Number of splits: ' + numSplits);
+            if (numSplits && parseInt(numSplits) > 0) {
+                console.log('Loading sub-orders for ' + numSplits + ' splits');
+                showSplitByAmount(numSplits); // Pass number directly
+            } else {
+                console.log('No existing sub-orders found');
+            }
+        }, 200); // Delay for DOM rendering
     };
     
-    if (option == null) {
-        getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
-    } else {
-        getAjaxModal(url, callback);
+    try {
+        getAjaxModal(url, callback, '#modal-ajaxview-split_byamount', '#payprint_split_byamount');
+    } catch (e) {
+        console.error('Error loading modal: ', e);
     }
 }
 
 function showSplitByAmount(element) {
-    var val = $(element).val();
-    var url = $(element).attr('data-url') + val;
-    var orderid = $(element).attr('data-value');
+    var val, url, orderid;
+    // Handle both DOM element and direct number
+    if (typeof element === 'string' || typeof element === 'number') {
+        val = element;
+        var $dropdown = $('#number-of-split');
+        url = $dropdown.attr('data-url') + val;
+        orderid = $dropdown.attr('data-value');
+    } else {
+        val = $(element).val();
+        url = $(element).attr('data-url') + val;
+        orderid = $(element).attr('data-value');
+    }
     var csrf = $('#csrfhashresarvation').val();
     var datavalue = 'orderid=' + orderid + '&csrf_test_name=' + csrf;
-    getAjaxView(url, "show-split-amounts", false, datavalue, 'post');
+    try {
+        getAjaxView(url, "show-split-amounts", false, datavalue, 'post');
+    } catch (e) {
+        console.error('Error loading sub-orders: ', e);
+    }
 }
 
 function selectAmountSplit(element) {
@@ -3762,13 +3786,18 @@ function paySplitByAmount(element) {
     var customerid = $('#customer-' + id).val();
     
     if ($('#total-split-' + id).length) {
-        $('#tablemodal').modal('hide');
-        $("#modal-ajaxview").empty();
+        $('#payprint_split_byamount').modal('hide');
+        $("#modal-ajaxview-split_byamount").empty();
         var data = 'sub_id=' + id + '&vat=' + vat + '&service=' + service + '&total=' + total + '&customerid=' + customerid + '&csrf_test_name=' + $('#csrfhashresarvation').val();
-        getAjaxModal(url, false, '#modal-ajaxview-split', '#payprint_split', data, 'post');
+        try {
+            getAjaxModal(url, false, '#modal-ajaxview-split_byamount', '#payprint_split_byamount', data, 'post');
+        } catch (e) {
+            console.error('Error initiating payment: ', e);
+        }
+    } else {
+        console.warn('Total input not found for sub_id: ' + id);
     }
 }
-
 /**
  * Delete Split by Item Code 
  */
@@ -3857,6 +3886,8 @@ function paySplitByAmount(element) {
                             var currentVat = parseFloat($('#vat-' + suborderid).val() || 0);
                             var currentService = parseFloat($('#service-' + suborderid).val() || service_chrg);
 
+                            console.log('Vat1'+currentVat);
+
                             // Deduct the item's total
                             currentTotal -= itemTotal;
                             if (currentTotal < 0) currentTotal = 0;
@@ -3907,6 +3938,8 @@ function paySplitByAmount(element) {
                         var currentTotal = parseFloat($('#total-sub-' + suborderid).val() || 0);
                         var currentVat = parseFloat($('#vat-' + suborderid).val() || 0);
                         var currentService = parseFloat($('#service-' + suborderid).val() || service_chrg);
+
+                        console.log('Vat2'+currentVat);
 
                         currentTotal -= itemTotal;
                         if (currentTotal < 0) currentTotal = 0;

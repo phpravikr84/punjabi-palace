@@ -71,10 +71,13 @@
                                 <div class="col-md-12 row" id="show-sub-order">
                                      <?php if(!empty($suborder_info)){?>
                                           <?php 
+                                        //   echo '<pre>';
+                                        //   print_r($suborder_info);
+                                        //   exit;
                                           
   foreach ($suborder_info as $suborder) {
     $totalprice =0;
-    $totalvat =0;
+    $totalvat = isset($suborder->vat) ? $suborder->vat : 0;
     $itemprice=0;
 	
        ?>
