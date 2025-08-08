@@ -302,6 +302,10 @@ class Order extends MX_Controller
 	}
 	public function pos_invoice($ctype = null)
 	{
+		// echo "<pre>";
+		// print_r($_SESSION);
+		// echo "</pre>";
+		// exit;
 		if ($this->permission->method('ordermanage', 'create')->access() == FALSE) {
 			redirect('dashboard/home');
 		}
@@ -334,6 +338,125 @@ class Order extends MX_Controller
 			$ctype = 1; // Default to 1 if ctype is not set
 		}
 		$data['ctype']   = $ctype;
+		$categories = $this->order_model->get_all_categories();
+		// echo "Working";
+		// exit;
+		// Build category structure
+		$mainCategories = [];
+		$subCategories = [];
+
+		foreach ($categories as $cat) {
+			if ($cat['parentid'] == 0) {
+				$mainCategories[$cat['CategoryID']] = [
+					'label' => $cat['Name'],
+					'subcategories' => []
+				];
+			} else {
+				$subCategories[$cat['parentid']][] = $cat;
+			}
+		}
+
+		// Attach children to parent
+		foreach ($subCategories as $parentId => $children) {
+			foreach ($children as $child) {
+				$mainCategories[$parentId]['subcategories'][] = [
+					'name' => $child['Name'],
+					'children' => [] // You can add a deeper level if needed
+				];
+			}
+		}
+
+		// Format keys as slug (e.g., 'foodmenu', 'beverage')
+		$jsCategories = [];
+		foreach ($mainCategories as $id => $cat) {
+			$key = strtolower(preg_replace('/[^a-z0-9]+/', '', $cat['label']));
+			$jsCategories[$key] = $cat;
+		}
+
+		$data['categories_json'] = json_encode($jsCategories, JSON_UNESCAPED_UNICODE);
+		$this->db->from('item_category');
+		$this->db->where('CategoryIsActive', 1);
+		$this->db->order_by('Position', 'ASC');
+		$query = $this->db->get();
+		$allCategories = $query->result_array();
+
+		$categories = [];
+
+		// Step 1: Group categories by ID for easy lookup
+		$categoriesById = [];
+		foreach ($allCategories as $cat) {
+			$categoriesById[$cat['CategoryID']] = $cat;
+		}
+
+		// Step 2: Build nested structure
+		foreach ($allCategories as $cat) {
+			$id = $cat['CategoryID'];
+			$parentId = $cat['parentid'];
+			$name = $cat['Name'];
+			$icon = $cat['CategoryImage'] ?: '🍽'; // default icon if empty
+
+			//get item_foods count under this category $cat['CategoryID']
+			$itemCount = $this->order_model->get_item_count_by_category($id);
+
+			// If main category
+			if ($parentId == 0) {
+				$categories[$id] = [
+					'cid' => $id,
+					'label' => $name,
+					'icon' => $icon,
+					'count' => $itemCount,
+					'subcategories' => []
+				];
+			}
+		}
+
+		// Step 3: Attach subcategories and child categories
+		foreach ($allCategories as $cat) {
+			$id = $cat['CategoryID'];
+			$parentId = $cat['parentid'];
+			$name = $cat['Name'];
+
+			// Skip top-level (already added)
+			if ($parentId == 0) continue;
+
+			// If parent is top-level (sub-category)
+			if (isset($categories[$parentId])) {
+				$categories[$parentId]['subcategories'][] = [
+					'name' => $name,
+					'ccid' => $id,
+					'children' => []
+				];
+				// $categories[$parentId]['count']++;
+			}
+			// If parent is a sub-category (i.e., child category of a sub-category)
+			else {
+				// Try to find the grandparent (main category)
+				foreach ($categories as &$mainCat) {
+					foreach ($mainCat['subcategories'] as &$subCat) {
+						if (isset($categoriesById[$subCat['name']]) &&
+							$categoriesById[$subCat['name']]['CategoryID'] == $parentId) {
+							$subCat['children'][] = $name;
+							// $mainCat['count']++;
+							break;
+						}
+					}
+				}
+			}
+		}
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$allfoodPromoCount = $this->order_model->allfoodPromoCount();
+		if (!empty($allfoodPromoCount)) {
+			$data['allfoodPromoCount'] = $allfoodPromoCount;
+		} else {
+			$data['allfoodPromoCount'] = 0;
+		}
+		// echo "<pre>";
+		// print_r($categories);
+		// echo "</pre>";
+		// exit;
+		$data['categories'] = $categories;
+		$data['categories_json'] = json_encode($categories);
+
 		echo Modules::run('template/layout', $data);
 	}
 	public function getongoingorder($id = null, $table = null)
@@ -470,6 +593,16 @@ class Order extends MX_Controller
 			}
 		} else {
 			echo 420;
+		}
+	}
+	public function allfoodPromoCount()
+	{
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$getproduct = $this->order_model->allfoodPromoCount();
+		if (!empty($getproduct)) {
+			echo $getproduct;
+		} else {
+			echo 0;
 		}
 	}
 	public function getPromoDealsItemlist()
@@ -1166,6 +1299,7 @@ class Order extends MX_Controller
 	}
 	public function posaddmodifier()
 	{
+		$saveid = $this->session->userdata('id');
 		$id = $this->input->post('pid');
 		$sid = $this->input->post('sid');
 		$tr_row_id = $this->input->post('tr_row_id');
@@ -1191,6 +1325,7 @@ class Order extends MX_Controller
 		$this->db->select('cart_selected_modifiers.*');
 		$this->db->from('cart_selected_modifiers');
 		$this->db->where('cart_selected_modifiers.menu_id',$id);
+		$this->db->where('cart_selected_modifiers.saveid',$saveid);
 		$this->db->where('cart_selected_modifiers.is_active',1);
 		$q2 = $this->db->get();
 		$selectedMods = $q2->result();
@@ -1249,6 +1384,7 @@ class Order extends MX_Controller
 		$pid = $this->input->post('pid');
 		$tr_row_id = $this->input->post('tr_row_id');
 		$mods = json_decode($_POST['mods'], true);
+		$saveid = $this->session->userdata('id');
 		$selectedDealSubMods = [];
 		if (isset($_POST['selectedDealSubMods']) && !empty($_POST['selectedDealSubMods'])) {
 			// If selectedDealSubMods is set and not empty, decode it
@@ -1346,6 +1482,7 @@ class Order extends MX_Controller
 					'modifier_groupid' => $mv['mgid'],
 					'tr_row_id' => $trid,
 					'is_active' => 1,
+					'saveid' => $saveid,
 					'created_at' => date("Y-m-d H:i:s")
 				];
 				$this->db->insert('cart_selected_modifiers',$data);
@@ -1400,6 +1537,7 @@ class Order extends MX_Controller
 					'foods_or_mods' => 1,
 					'meal_deal_id' => $smv['meal_deal_pid'],
 					'is_active' => 1,
+					'saveid' => $saveid,
 					'created_at' => date("Y-m-d H:i:s")
 				];
 				// echo "<br />Data:<pre>";
@@ -1427,6 +1565,7 @@ class Order extends MX_Controller
 	}
 	public function cartPromoFoodModifierSave()
 	{
+		$saveid = $this->session->userdata('id');
 		$pid = $this->input->post('pid');
 		$tr_row_id = $this->input->post('tr_row_id');
 		$mods = json_decode($_POST['mods'], true);
@@ -1458,6 +1597,7 @@ class Order extends MX_Controller
 					'tr_row_id' => $trid,
 					'foods_or_mods' => 1,
 					'is_active' => 1,
+					'saveid' => $saveid,
 					'created_at' => date("Y-m-d H:i:s")
 				];
 				$this->db->insert('cart_selected_modifiers',$data);
@@ -1546,6 +1686,7 @@ class Order extends MX_Controller
 					'tr_row_id' => $trid,
 					'foods_or_mods' => 2,
 					'is_active' => 1,
+					'saveid' => $saveid,
 					'created_at' => date("Y-m-d H:i:s")
 				];
 				$this->db->insert('cart_selected_modifiers',$data);
@@ -1599,6 +1740,7 @@ class Order extends MX_Controller
 					'foods_or_mods' => 1,
 					'meal_deal_id' => $smv['meal_deal_pid'],
 					'is_active' => 1,
+					'saveid' => $saveid,
 					'created_at' => date("Y-m-d H:i:s")
 				];
 				// echo "<br />Data:<pre>";
@@ -1657,12 +1799,16 @@ class Order extends MX_Controller
 	public function removetocart()
 	{
 		$rowid = $this->input->post('rowid');
-		$data = array(
+		$saveid = $this->session->userdata('id');
+		$data = [
 			'rowid'   => $rowid,
 			'qty'     => 0
-		);
+		];
 		$this->cart->update($data);
+		//reset the query builder
+		$this->db->reset_query();
 		$this-> db-> where('tr_row_id', $rowid);
+		$this-> db-> where('saveid', $saveid);
 		$this-> db-> where('DATE(created_at)', date("Y-m-d"));
 		$this-> db-> delete('cart_selected_modifiers');
 		$settinginfo = $this->order_model->settinginfo();
@@ -2492,7 +2638,7 @@ class Order extends MX_Controller
 					}
 				} else {
 					if ($isonline == 1) {
-						$this->session->set_flashdata('exception',  display('please_try_again'));
+						$this->session->set_flashdata('exception', display('please_try_again'));
 						redirect("ordermanage/order/pos_invoice");
 					} else {
 						echo "error";
@@ -2500,7 +2646,7 @@ class Order extends MX_Controller
 				}
 			} else {
 				if ($isonline == 1) {
-					$this->session->set_flashdata('exception',  'Please add Some food!!');
+					$this->session->set_flashdata('exception', 'Please add Some food!!');
 					redirect("ordermanage/order/pos_invoice");
 				} else {
 					echo "error";
@@ -3498,6 +3644,126 @@ class Order extends MX_Controller
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
 		$data['order_id'] = $id;
+
+		$categories = $this->order_model->get_all_categories();
+		// echo "Working";
+		// exit;
+		// Build category structure
+		$mainCategories = [];
+		$subCategories = [];
+
+		foreach ($categories as $cat) {
+			if ($cat['parentid'] == 0) {
+				$mainCategories[$cat['CategoryID']] = [
+					'label' => $cat['Name'],
+					'subcategories' => []
+				];
+			} else {
+				$subCategories[$cat['parentid']][] = $cat;
+			}
+		}
+
+		// Attach children to parent
+		foreach ($subCategories as $parentId => $children) {
+			foreach ($children as $child) {
+				$mainCategories[$parentId]['subcategories'][] = [
+					'name' => $child['Name'],
+					'children' => [] // You can add a deeper level if needed
+				];
+			}
+		}
+
+		// Format keys as slug (e.g., 'foodmenu', 'beverage')
+		$jsCategories = [];
+		foreach ($mainCategories as $id => $cat) {
+			$key = strtolower(preg_replace('/[^a-z0-9]+/', '', $cat['label']));
+			$jsCategories[$key] = $cat;
+		}
+
+		$data['categories_json'] = json_encode($jsCategories, JSON_UNESCAPED_UNICODE);
+		$this->db->from('item_category');
+		$this->db->where('CategoryIsActive', 1);
+		$this->db->order_by('Position', 'ASC');
+		$query = $this->db->get();
+		$allCategories = $query->result_array();
+
+		$categories = [];
+
+		// Step 1: Group categories by ID for easy lookup
+		$categoriesById = [];
+		foreach ($allCategories as $cat) {
+			$categoriesById[$cat['CategoryID']] = $cat;
+		}
+
+		// Step 2: Build nested structure
+		foreach ($allCategories as $cat) {
+			$id = $cat['CategoryID'];
+			$parentId = $cat['parentid'];
+			$name = $cat['Name'];
+			$icon = $cat['CategoryImage'] ?: '🍽'; // default icon if empty
+
+			//get item_foods count under this category $cat['CategoryID']
+			$itemCount = $this->order_model->get_item_count_by_category($id);
+
+			// If main category
+			if ($parentId == 0) {
+				$categories[$id] = [
+					'cid' => $id,
+					'label' => $name,
+					'icon' => $icon,
+					'count' => $itemCount,
+					'subcategories' => []
+				];
+			}
+		}
+
+		// Step 3: Attach subcategories and child categories
+		foreach ($allCategories as $cat) {
+			$id = $cat['CategoryID'];
+			$parentId = $cat['parentid'];
+			$name = $cat['Name'];
+
+			// Skip top-level (already added)
+			if ($parentId == 0) continue;
+
+			// If parent is top-level (sub-category)
+			if (isset($categories[$parentId])) {
+				$categories[$parentId]['subcategories'][] = [
+					'name' => $name,
+					'ccid' => $id,
+					'children' => []
+				];
+				// $categories[$parentId]['count']++;
+			}
+			// If parent is a sub-category (i.e., child category of a sub-category)
+			else {
+				// Try to find the grandparent (main category)
+				foreach ($categories as &$mainCat) {
+					foreach ($mainCat['subcategories'] as &$subCat) {
+						if (isset($categoriesById[$subCat['name']]) &&
+							$categoriesById[$subCat['name']]['CategoryID'] == $parentId) {
+							$subCat['children'][] = $name;
+							// $mainCat['count']++;
+							break;
+						}
+					}
+				}
+			}
+		}
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$allfoodPromoCount = $this->order_model->allfoodPromoCount();
+		if (!empty($allfoodPromoCount)) {
+			$data['allfoodPromoCount'] = $allfoodPromoCount;
+		} else {
+			$data['allfoodPromoCount'] = 0;
+		}
+		// echo "<pre>";
+		// print_r($categories);
+		// echo "</pre>";
+		// exit;
+		$data['categories'] = $categories;
+		$data['categories_json'] = json_encode($categories);
+		
 		$this->load->view('updateorder', $data);
 	}
 

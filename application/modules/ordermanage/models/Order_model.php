@@ -263,6 +263,46 @@ class Order_model extends CI_Model
 		}
 		return $output;
 	}
+	public function allfoodPromoCount()
+	{
+		//get count
+		$this->db->select('count(*) as total');
+		$this->db->from('item_foods');
+		$this->db->where('ProductsIsActive', 1);
+		$this->db->where('isgroup', 1);
+		// $this->db->where('cusine_type', 1);
+		$countQuery = $this->db->get();
+		return $totalCount = $countQuery->row()->total;
+	}
+	public function get_item_count_by_category($categoryId)
+	{
+		//get all subcategory ids under the given categoryId and count items in item_foods table
+		$this->db->select('CategoryID');
+		$this->db->from('item_category');
+		$this->db->where('Parentid', $categoryId);
+		$subQuery = $this->db->get();
+		$subCategoryIds = array_column($subQuery->result_array(), 'CategoryID');
+		// If there are no subcategories, just count items in the given category
+		if (empty($subCategoryIds)) {
+			$subCategoryIds = array($categoryId);
+		}
+		// Count items in item_foods table for the given category and its subcategories
+		$this->db->reset_query(); // Reset the query builder
+		$this->db->select('COUNT(*) as item_count');
+		$this->db->from('item_foods');
+		$this->db->where_in('CategoryID', $subCategoryIds);
+		// $this->db->where('cusine_type', 1);
+		// $this->db->where('is_customqty', 0); // Assuming you want to count only items with is_customqty = 0
+		$this->db->where('isgroup', null); // Assuming you want to count only non-group items
+		$this->db->where('ProductsIsActive', 1);
+		// $this->db->where('CategoryID', $categoryId);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->row()->item_count;
+		} else {
+			return 0; // No items found
+		}
+	}
 	public function allfoodPromo()
 	{
 		$this->db->select('*');
@@ -272,6 +312,7 @@ class Order_model extends CI_Model
 		$this->db->where('cusine_type', 1);
 		$query = $this->db->get();
 		$itemlist = $query->result();
+
 		//last query
 		// echo $this->db->last_query();
 		$output = array();
@@ -984,6 +1025,11 @@ class Order_model extends CI_Model
 		// exit();
 		return $promoMainCats;
 	}
+
+	public function get_all_categories() {
+        $this->db->order_by('Position', 'ASC');
+        return $this->db->get_where('item_category', ['CategoryIsActive' => 1])->result_array();
+    }
 
 
 

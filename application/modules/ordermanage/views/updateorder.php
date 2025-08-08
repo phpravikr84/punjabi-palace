@@ -65,44 +65,74 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </form>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3"> 
-                            <div class="leftSidebarPos">
-                                <div class="slimScrollDiv">
-                                    <div class="product-category">
-                                        <div class="listcat" onclick="getslcategory_update('')">All</div>
-                                        <?php
-                                        function renderCategory($categories, $level = 0) {
-                                            foreach ($categories as $category) {
-                                                $hasSub = !empty($category->sub);
-                                                $indent = str_repeat('&nbsp;&nbsp;', $level);
-                                                $isChild = $level >= 2;
-                                                $clickFunction = $isChild ? 'getslsubcategory_update' : 'getslcategory_update';
-                                        ?>
-                                                <div class="listcat dropdown cat-nav<?php echo $hasSub ? ' pos-category' : ''; ?> pos-category">
-                                                    <a class="btn listcat <?php echo $hasSub ? 'dropdown-toggle listcat2 listcat3' : ''; ?>" 
-                                                    onclick="<?php echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
-                                                    <?php echo $hasSub ? 'data-toggle="updatenewtcat' . $category->CategoryID . '"' : ''; ?>>
-                                                        <?php echo $indent . htmlspecialchars($category->Name); ?>
-                                                        <?php echo $hasSub ? '<span class="caret"></span>' : ''; ?>
-                                                    </a>
-                                                    <?php if ($hasSub) { ?>
-                                                        <ul class="dropdown-menu dropcat display-none" id="updatenewtcat<?php echo $category->CategoryID; ?>">
-                                                            <?php renderCategory($category->sub, $level + 1); ?>
-                                                        </ul>
-                                                    <?php } ?>
-                                                </div>
-                                        <?php
-                                            }
-                                        }
-                                        renderCategory($allcategorylist);
-                                        ?>
-                                        <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory_update()">Banquet</div>
-                                        <div class="listcatnew cat-nav pos-category" onclick="getPromotionalDeals_update()">Deals</div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="pos-categories">
+                      <!-- <div class="modern-categories main-categories">
+                        <div class="category-card cat-btn active" onclick="showMain()">
+                          <div class="cat-icon">🔲</div>
+                          <div class="cat-title">All</div>
+                          <div class="cat-count">235 items</div>
                         </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('food')">
+                          <div class="cat-icon">🍳</div>
+                          <div class="cat-title">Food Menu</div>
+                          <div class="cat-count">19 items</div>
+                        </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('beverage')">
+                          <div class="cat-icon">🥣</div>
+                          <div class="cat-title">Soups</div>
+                          <div class="cat-count">6 items</div>
+                        </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('banquet')">
+                          <div class="cat-icon">🍝</div>
+                          <div class="cat-title">Pasta</div>
+                          <div class="cat-count">14 items</div>
+                        </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('deals')">
+                          <div class="cat-icon">🍲</div>
+                          <div class="cat-title">Main Course</div>
+                          <div class="cat-count">67 items</div>
+                        </div>
+                      </div> -->
+                      <div class="modern-categories main-categories">
+                    <div class="category-card cat-btn active" onclick="showMain()">
+                        <div class="cat-icon">🔲</div>
+                        <div class="cat-title">All</div>
+                        <div class="cat-count">
+                        <?php
+                            $totalCount = array_sum(array_map(function($item) {
+                            return isset($item['count']) ? $item['count'] : 0;
+                            }, $categories));
+                            echo $totalCount . ' items';
+                        ?>
+                        </div>
+                    </div>
+
+                    <?php foreach ($categories as $key => $cat): ?>
+                        <div class="category-card cat-btn" onclick="showSubcategories('<?= $key ?>'); getslcategory_update(<?= isset($cat['cid']) ? $cat['cid'] : '' ?>);">
+                        <div class="cat-icon"><?= isset($cat['icon']) ? $cat['icon'] : '📦' ?></div>
+                        <div class="cat-title"><?= htmlspecialchars($cat['label']) ?></div>
+                        <div class="cat-count"><?= isset($cat['count']) ? $cat['count'] : 0 ?> items</div>
+                        </div>
+                    <?php endforeach; ?>
+                    <div class="category-card cat-btn" onclick="getPromotionalDeals_update();">
+                        <div class="cat-icon">🍽</div>
+                        <div class="cat-title">Deals</div>
+                        <div class="cat-count">
+                        <?php
+                            
+                            echo $allfoodPromoCount . ' items';
+                        ?>
+                        </div>
+                    </div>
+                    </div>
+
+
+                      <!-- Sub Categories -->
+                      <div class="sub-categories" id="subcategories-update">
+                        <!-- Dynamically added by JS -->
+                      </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-9 col-lg-9">
                             <div class="leftSidebarPos">
                                 <div class="slimScrollDiv">
@@ -159,6 +189,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                         <?php } ?>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="leftSidebarPos">
+                                <div class="slimScrollDiv">
+                                    <!-- <div class="product-category">
+                                        <div class="listcat" onclick="getslcategory_update('')">All</div>
+                                        <?php
+                                        // function renderCategory($categories, $level = 0) {
+                                        //     foreach ($categories as $category) {
+                                        //         $hasSub = !empty($category->sub);
+                                        //         $indent = str_repeat('&nbsp;&nbsp;', $level);
+                                        //         $isChild = $level >= 2;
+                                        //         $clickFunction = $isChild ? 'getslsubcategory_update' : 'getslcategory_update';
+                                        ?>
+                                                <div class="listcat dropdown cat-nav<?php ##echo $hasSub ? ' pos-category' : ''; ?> pos-category">
+                                                    <a class="btn listcat <?php ##echo $hasSub ? 'dropdown-toggle listcat2 listcat3' : ''; ?>" 
+                                                    onclick="<?php ##echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
+                                                    <?php ##echo $hasSub ? 'data-toggle="updatenewtcat' . $category->CategoryID . '"' : ''; ?>>
+                                                        <?php ##echo $indent . htmlspecialchars($category->Name); ?>
+                                                        <?php ##echo $hasSub ? '<span class="caret"></span>' : ''; ?>
+                                                    </a>
+                                                    <?php ##if ($hasSub) { ?>
+                                                        <ul class="dropdown-menu dropcat display-none" id="updatenewtcat<?php ##echo $category->CategoryID; ?>">
+                                                            <?php ##renderCategory($category->sub, $level + 1); ?>
+                                                        </ul>
+                                                    <?php ##} ?>
+                                                </div>
+                                        <?php
+                                        //     }
+                                        // }
+                                        // renderCategory($allcategorylist);
+                                        ?>
+                                        <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory_update()">Banquet</div>
+                                        <div class="listcatnew cat-nav pos-category" onclick="getPromotionalDeals_update()">Deals</div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -440,7 +507,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             <?php echo $item->variantName;?>
                                                         </td>
                                                         <td class="text-right"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemsingleprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </td>
-                                                        <td class="text-right"><a class="btn btn-danger btn-sm btnrightalign" onclick="positemupdate('<?php echo $item->menu_id?>',<?php echo $item->menuqty;?>,'<?php echo $item->order_id;?>','<?php echo $item->varientid?>','<?php echo $isgroupidp;?>','<?php echo $item->addonsuid?>','del')"><i class="fa fa-minus" aria-hidden="true"></i></a><input class="exists_qty" type="hidden" name="select_qty_<?php echo $item->menu_id?>" id="select_qty_<?php echo $item->menu_id?>_<?php echo $item->varientid?>" value="<?php echo $item->menuqty;?>"> <span id="productionsetting-update-<?php echo $item->menu_id.'-'.$item->varientid ?>"><?php echo number_format($item->menuqty,3);?> </span> <a class="btn btn-info btn-sm btnleftalign" onclick="positemupdate('<?php echo $item->menu_id?>',<?php echo $item->menuqty;?>,'<?php echo $item->order_id;?>','<?php echo $item->varientid?>','<?php echo $isgroupidp;?>','<?php echo $item->addonsuid?>','add')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
+                                                        <td class="text-right"><a class="btn btn-danger btn-sm btnrightalign" onclick="positemupdate('<?php echo $item->menu_id?>',<?php echo $item->menuqty;?>,'<?php echo $item->order_id;?>','<?php echo $item->varientid?>','<?php echo $isgroupidp;?>','<?php echo $item->addonsuid?>','del')"><i class="fa fa-minus" aria-hidden="true"></i></a><input class="exists_qty" type="hidden" name="select_qty_<?php echo $item->menu_id?>" id="select_qty_<?php echo $item->menu_id?>_<?php echo $item->varientid?>" value="<?php echo $item->menuqty;?>"> <span id="productionsetting-update-<?php echo $item->menu_id.'-'.$item->varientid ?>"><?php echo number_format($item->menuqty,0);?> </span> <a class="btn btn-info btn-sm btnleftalign" onclick="positemupdate('<?php echo $item->menu_id?>',<?php echo $item->menuqty;?>,'<?php echo $item->order_id;?>','<?php echo $item->varientid?>','<?php echo $isgroupidp;?>','<?php echo $item->addonsuid?>','add')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
                                                         <td class="text-right"><strong><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo number_format($itemprice-$mypdiscount,3);?> <?php if($currency->position==2){echo $currency->curr_icon;}?> </strong></td>
                                                         <td class="text-right"><?php if($orderinfo->order_status!=4){?><a class="btn btn-danger btn-sm btnrightalign" onclick="deletecart(<?php echo $item->row_id;?>,<?php echo $item->order_id;?>,<?php echo $item->menu_id?>,<?php echo $item->varientid?>,<?php echo $item->menuqty;?>)"><i class="fa fa-trash-o" aria-hidden="true"></i></a><?php } ?></td>
                                                     </tr>
@@ -581,3 +648,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url('ordermanage/order/possettingjs') ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('ordermanage/order/updateorderjs/'.$orderinfo->order_id) ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/posupdate.js'); ?>" type="text/javascript"></script>
+<script type="text/javascript">
+    const categories = <?=$categories_json;?>;
+
+    function showMain() {
+    getslcategory_update('');
+    document.getElementById("subcategories-update").innerHTML = "";
+    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.cat-btn:first-child').classList.add('active');
+    }
+
+    function showSubcategories(mainKey) {
+    const container = document.getElementById("subcategories-update");
+    container.innerHTML = "";
+
+    const main = categories[mainKey];
+    main.subcategories.forEach(sub => {
+        const btn = document.createElement("button");
+        btn.className = "cat-btn";
+        btn.textContent = sub.name;
+        container.appendChild(btn);
+        // Add click event to each subcategory button
+        btn.onclick = function() {
+        getslcategory_update(sub.ccid);
+        document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        };
+
+        // Append children, if any
+        if (sub.children.length) {
+        sub.children.forEach(child => {
+            const childBtn = document.createElement("button");
+            childBtn.className = "cat-btn child-btn";
+            childBtn.textContent = child;
+            container.appendChild(childBtn);
+        });
+        }
+    });
+
+    document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
+    }
+</script>

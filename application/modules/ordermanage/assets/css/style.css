@@ -774,7 +774,8 @@ a.disabled {
   height: 30px;
   animation: spin 2s linear infinite;
   position: absolute;
-    left: 90%;
+  left: 80%;
+  top: 2%;
 }
 
 #posSidebarLoader

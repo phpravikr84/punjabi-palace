@@ -1,6 +1,15 @@
 // JavaScript Document
 var editpos = 0;
 let selectedDealSubMods = [];
+let newModifierDefaultContent = `
+<div class="leftSidebarPosMain bg-alice-blue pb-5">
+    <div class="slimScrollDiv">
+        <div class="text-center p-3 my-5">
+        <p class="text-muted">Modifiers will be displayed here when selected.</p>
+        </div>
+    </div>
+</div>
+`;
 $(document).ready(function () {
     "use strict";
 
@@ -540,7 +549,8 @@ function selectGroupItem(th) {
             $('.addonsinfo').html(data);
 
 
-            $('#sideMfContainer').html($("#modifierContent_1").html());
+            // $('#sideMfContainer').html($("#modifierContent_1").html());
+            $('#newModSection').html($("#modifierContent_1").html());
             $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
             // $('#sideVarContainer').append($("#promomainfoodlist").html());
             $("#promomainfoodlist").remove();
@@ -562,9 +572,10 @@ function selectGroupItem(th) {
                 `;
                 // $('#sideVarContainer').append(noModHtml);
                 $('#sideMfContainer').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
+                $('#newModSection').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
                 // $('#modSubHeading').html(`No Modifiers Found For this Item`);
             }
-            openNav();
+            // openNav();
             //   $('#edit').modal('show');
 
             //$('#edit').find('.close').focus();
@@ -647,7 +658,9 @@ function itemModifiers(pid, tr_row_id) {
             console.log("Modifier data: " + data);
             $("#posSelectPurchaseTable").remove();
             // $('#addfoodlist').html(data);
-            $("#mySidebar").find('#sideMfContainer').html(data);
+            $("#mySidebar").find('#sideMfContainer').html('');
+            $("#newModSection").html(data);
+            $("#newModSection").find('#posSelectPurchaseTable').hide();
             // $('#sideVarContainer').html($("#posAddmodSizeInfo").html());
             $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
             $("#posSelectPurchaseTable").remove();
@@ -655,7 +668,7 @@ function itemModifiers(pid, tr_row_id) {
             // $("#modifierChoosebtnDiv").html(`
             //     <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(${pid});">Apply</button>
             //     `);
-            openNav();
+            // openNav();
             //   $("#modifierContent").show();
         }
     });
@@ -887,13 +900,21 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
         return false;
     }
     let selectedValues = [];
+    let loader = $('#posSidebarLoader');
 
     $("input[name='modifier_items[]']:checked").each(function () {
         let value = $(this).val();
         let groupId = $(this).attr("data-group-id");
-        selectedValues.push({ mid: value, mgid: groupId, pid: pid });
+        //check for same groupId, pid and value within selectedValues
+        let existingItem = selectedValues.find(item => item.mid === value && item.mgid === groupId && item.pid === pid);
+        if (existingItem) {
+            // selectedValues.push({ mid: value, mgid: groupId, pid: pid });
+        } else {
+            selectedValues.push({ mid: value, mgid: groupId, pid: pid });
+        }
     });
-
+    console.log("selectedValues cartmodifiersave: " + selectedValues);
+    loader.css({ display: 'flex' });
     if (selectedValues.length > 0) {
         checkModGroupMaxItemNumber(pid, selectedValues, function (isValid) {
             if (isValid) {
@@ -916,6 +937,7 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                                 confirmButtonText: "OK",
                                 closeOnConfirm: true
                             });
+                            loader.hide();
                             return false;
                         }
                     } else {
@@ -928,6 +950,7 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                                 confirmButtonText: "OK",
                                 closeOnConfirm: true
                             });
+                            loader.hide();
                             return false;
                         }
                     }
@@ -944,11 +967,14 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                                 confirmButtonText: "OK",
                                 closeOnConfirm: true
                             });
+                            loader.hide();
                             return false;
                         }
                     }
                 }
                 $(".page-loader-wrapper").show();
+                // the following settimeout function is to wait for the above posaddonsfoodtocart, removecart function to complete its execution
+                // before proceeding to save the modifiers. but I want it to be dynamic and not hardcoded to 3000ms
                 setTimeout(() => {
                     var trrowid = $("#tr_row_id_" + pid).val();
                     console.log("cart save row id: " + $("#tr_row_id_" + pid).val());
@@ -963,6 +989,7 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                         data: dataString,
                         success: function (data) {
                             $(".page-loader-wrapper").hide();
+                            loader.hide();
                             console.log("Modifier save data: " + data);
                             if (data == 420) {
                                 // alert("The modifier doesn't have any ingredients!!!");
@@ -1021,6 +1048,7 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                             }
                             $("#addfoodlist").append(data);
                             closeNav();
+                            $("#newModSection").html(newModifierDefaultContent);
                             var promo_item_id = promo_item_qty = 0;
                             if ($("#promo_item_id_" + pid).length > 0) {
                                 // Get the promo item id and quantity if they exist
@@ -1070,7 +1098,7 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                             $(".page-loader-wrapper").hide();
                         }
                     });
-                }, 3000);
+                }, 4000);
 
 
             } else {
@@ -1084,6 +1112,8 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
     let selectedValues = [];
     let selectedFoods = [];
 
+    let loader = $('#posSidebarLoader');
+
     $("input[name='modifier_items[]']:checked").each(function () {
         let value = $(this).val();
         let groupId = $(this).attr("data-group-id");
@@ -1095,7 +1125,7 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
         let variantid = $(this).attr("data-variantid");
         selectedFoods.push({ mid: value, mgid: groupId, pid: pid, vid: variantid });
     });
-
+    loader.css({ display: 'flex' });
     if (selectedValues.length > 0) {
         checkModGroupMaxItemNumber(pid, selectedValues, function (isValid) {
             if (isValid) {
@@ -1110,6 +1140,7 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
                     //old add to cart function
                     if (!posPromofoodtocart(pid, 1)) {
                         alert("Error adding this item to the cart!");
+                        loader.hide();
                         return false;
                     }
                     // have to write new add to cart function for promo food
@@ -1129,6 +1160,7 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
                         data: dataString,
                         success: function (data) {
                             $(".page-loader-wrapper").hide();
+                            loader.hide();
                             console.log("Modifier save data: " + data);
                             if (data == 420) {
                                 alert("The modifier doesn't have any ingredients!!!");
@@ -1157,6 +1189,7 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
                             }
                             $("#addfoodlist").append(data);
                             closeNav();
+                            $("#newModSection").html(newModifierDefaultContent);
                             var modTotalPrice = $('#modTotalPrice_' + pid).val();
                             var togText = $("#modToggleText_" + pid).val();
                             let selectedNewModsHtml = $("#selectedModsDetails_" + pid).html();
@@ -1195,7 +1228,7 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
     }
 }
 
-$(document).on('click', '#sideMfContainer tr', function (e) {
+$(document).on('click', '#newModSection tr', function (e) {
     if (!$(e.target).is("input[type='checkbox']")) {
         let $checkbox = $(this).find("input[name='modifier_items[]']"),
         loader = $('#posSidebarLoader'),
@@ -1260,7 +1293,7 @@ $(document).on('click', '#mealDealSubModListModal .modal-body table tr', functio
 
 
 
-$(document).on('click', "#sideMfContainer input[name='modifier_items[]']", function () {
+$(document).on('click', "#newModSection input[name='modifier_items[]']", function () {
     var checkbox = $(this), // Save reference for later use
     loader = $('#posSidebarLoader'),
     modifierChoosebtn = $('.modifierChoosebtn');
@@ -2615,7 +2648,7 @@ $(document).on('click', '#add_new_payment_type', function () {
     }
     var orderid = $('#get-order-id').val();
     var csrf = $('#csrfhashresarvation').val();
-    var url = basicinfo.baseurl + 'showpaymentmodal/' + orderid + '/1';
+    var url = basicinfo.baseurl + 'ordermanage/order/showpaymentmodal/' + orderid + '/1';
     $.ajax({
         type: "GET",
         url: url,

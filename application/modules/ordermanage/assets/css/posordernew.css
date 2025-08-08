@@ -706,6 +706,130 @@ small.modifier-sec-sub-heading
     color: #333;
 }
 
+.modern-categories {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.category-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  width: 110px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease-in-out;
+  color: #ff6600;
+  line-height: 1.2;
+}
+
+.category-card:hover {
+  background: rgba(255, 102, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.category-card.active {
+  background: rgba(255, 102, 0, 0.1);
+}
+
+.cat-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.cat-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.cat-count {
+  font-size: 11px;
+  color: rgba(255, 102, 0, 0.7);
+}
+
+/* .sub-categories {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 5px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #ff6600 #f1f1f1;
+} */
+
+.sub-categories {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 0;
+  gap: 10px;
+  scroll-behavior: smooth;
+
+  /* Hide scrollbar in all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.sub-categories::-webkit-scrollbar {
+  /* height: 6px; */
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* .sub-categories::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+} */
+
+/* .sub-categories::-webkit-scrollbar-thumb {
+  background: #ff6600;
+  border-radius: 4px;
+} */
+
+.sub-categories {
+  -webkit-overflow-scrolling: touch; /* iOS momentum scroll */
+  touch-action: pan-x; /* horizontal touch only */
+}
+
+.sub-categories .cat-btn {
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  color: #ff6600;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;           /* prevent breaking inside */
+  flex-shrink: 0;                /* don't shrink */
+  cursor: pointer;
+}
+
+.sub-categories .cat-btn:hover {
+  background: rgba(255, 102, 0, 0.08);
+  transform: scale(1.03);
+}
+#newModSection{
+    margin-top: 22%;
+}
+.sub-categories .child-btn {
+  background: rgba(255, 102, 0, 0.05);
+  border: 1px dashed rgba(255, 102, 0, 0.3);
+  font-size: 11px;
+  padding: 5px 9px;
+  border-radius: 8px;
+}
+.sub-categories {
+  scroll-snap-type: x mandatory;
+}
+
+.sub-categories .cat-btn {
+  scroll-snap-align: start;
+}
+
+
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}

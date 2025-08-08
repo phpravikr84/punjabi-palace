@@ -490,7 +490,6 @@ foreach ($scan as $file) {
 <div id="mySidebar" class="sidebar animate__animated animate__fadeInLeft">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <div class="card">
-    <div class="customloader" id="posSidebarLoader"></div>
     <div class="row">
       <div class="col-md-12 col-lg-12 col-sm-12" id="modVarItemName" style="padding-bottom:15px;display:none;"></div>
     </div>
@@ -812,50 +811,75 @@ foreach ($scan as $file) {
                         </form>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-3 col-lg-3" style="padding-right: 0px !important;">
-                        <div class="leftSidebarPosMain">
-                          <div class="slimScrollDiv">
-                            <div class="product-category">
-                              <div class="listcatnew" onclick="getslcategory('')"><?php echo display('all') ?> </div>
-                              <?php
-                                  function renderCategory($categories, $level = 0) {
-                                        foreach ($categories as $category) {
-                                            $hasSub = !empty($category->sub);
-                                            $indent = str_repeat('&nbsp;&nbsp;', $level); // Visual indent for hierarchy
-                                            // Determine if this is a child category (level >= 2)
-                                            $isChild = $level >= 2;
-                                            // Choose the appropriate function based on level
-                                            $clickFunction = $isChild ? 'getslsubcategory' : 'getslcategory';
-                                    ?>
-                                            <div class="listcatnew cat-nav<?php echo $hasSub ? '2 pos-category' : ' pos-category'; ?>">
-                                                <a class="btn listcatnew <?php echo $hasSub ? 'listcat2 pos-category-sub' : ''; ?>" 
-                                                  onclick="<?php echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
-                                                  <?php echo $hasSub ? 'data-toggle="newtcat' . $category->CategoryID . '"' : ''; ?>>
-                                                    <?php echo $indent . htmlspecialchars($category->Name); ?>
-                                                    <?php echo $hasSub ? '<span class="caret"></span>' : ''; ?>
-                                                </a>
-                                                <?php if ($hasSub) { ?>
-                                                    <ul class="dropdown-menucat dropcat display-none" id="newtcat<?php echo $category->CategoryID; ?>">
-                                                        <?php renderCategory($category->sub, $level + 1); ?>
-                                                    </ul>
-                                                <?php } ?>
-                                            </div>
-                                    <?php
-                                        }
-                                    }
-                                    renderCategory($allcategorylist);
-                                  ?>
-                              <!-- Banquet Menu URL [start] -->
-                              <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory()">Banquet</div>
-                              <!-- Banquet Menu URL [end] -->
-                              <!-- Promotional Menu URL [start] -->
-                              <div class="listcatnew cat-nav pos-category" onclick="getPromotionalDeals()">Deals</div>
-                              <!-- Promotional Menu URL [end] -->
-                            </div>
+                    <div class="pos-categories">
+                      <!-- <div class="modern-categories main-categories">
+                        <div class="category-card cat-btn active" onclick="showMain()">
+                          <div class="cat-icon">🔲</div>
+                          <div class="cat-title">All</div>
+                          <div class="cat-count">235 items</div>
+                        </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('food')">
+                          <div class="cat-icon">🍳</div>
+                          <div class="cat-title">Food Menu</div>
+                          <div class="cat-count">19 items</div>
+                        </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('beverage')">
+                          <div class="cat-icon">🥣</div>
+                          <div class="cat-title">Soups</div>
+                          <div class="cat-count">6 items</div>
+                        </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('banquet')">
+                          <div class="cat-icon">🍝</div>
+                          <div class="cat-title">Pasta</div>
+                          <div class="cat-count">14 items</div>
+                        </div>
+                        <div class="category-card cat-btn" onclick="showSubcategories('deals')">
+                          <div class="cat-icon">🍲</div>
+                          <div class="cat-title">Main Course</div>
+                          <div class="cat-count">67 items</div>
+                        </div>
+                      </div> -->
+                      <div class="modern-categories main-categories">
+                        <div class="category-card cat-btn active" onclick="showMain()">
+                          <div class="cat-icon">🔲</div>
+                          <div class="cat-title">All</div>
+                          <div class="cat-count">
+                            <?php
+                              $totalCount = array_sum(array_map(function($item) {
+                                return isset($item['count']) ? $item['count'] : 0;
+                              }, $categories));
+                              echo $totalCount . ' items';
+                            ?>
+                          </div>
+                        </div>
+
+                        <?php foreach ($categories as $key => $cat): ?>
+                          <div class="category-card cat-btn" onclick="showSubcategories('<?= $key ?>'); getslcategory(<?= isset($cat['cid']) ? $cat['cid'] : '' ?>);">
+                            <div class="cat-icon"><?= isset($cat['icon']) ? $cat['icon'] : '📦' ?></div>
+                            <div class="cat-title"><?= htmlspecialchars($cat['label']) ?></div>
+                            <div class="cat-count"><?= isset($cat['count']) ? $cat['count'] : 0 ?> items</div>
+                          </div>
+                        <?php endforeach; ?>
+                        <div class="category-card cat-btn" onclick="getPromotionalDeals();">
+                          <div class="cat-icon">🍽</div>
+                          <div class="cat-title">Deals</div>
+                          <div class="cat-count">
+                            <?php
+                              
+                              echo $allfoodPromoCount . ' items';
+                            ?>
                           </div>
                         </div>
                       </div>
+
+
+                      <!-- Sub Categories -->
+                      <div class="sub-categories" id="subcategories">
+                        <!-- Dynamically added by JS -->
+                      </div>
+                    </div>
+
+                    <div class="row">
                       <div class="col-md-9 col-lg-9">
                         <div class="leftSidebarPosMain bg-alice-blue pb-5">
                           <div class="slimScrollDiv">
@@ -947,6 +971,62 @@ foreach ($scan as $file) {
                                   </div>
                                 </div>
                               <?php } ?>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-lg-3" style="padding-right: 0px !important;padding-left: 0px !important;">
+                        <div class="leftSidebarPosMain" style="display:none !important;">
+                          <div class="slimScrollDiv">
+                            <div class="product-category">
+                              <div class="listcatnew" onclick="getslcategory('')"><?php echo display('all') ?> </div>
+                              <?php
+                                  function renderCategory($categories, $level = 0) {
+                                        foreach ($categories as $category) {
+                                            $hasSub = !empty($category->sub);
+                                            $indent = str_repeat('&nbsp;&nbsp;', $level); // Visual indent for hierarchy
+                                            // Determine if this is a child category (level >= 2)
+                                            $isChild = $level >= 2;
+                                            // Choose the appropriate function based on level
+                                            $clickFunction = $isChild ? 'getslsubcategory' : 'getslcategory';
+                                    ?>
+                                            <div class="listcatnew cat-nav<?php echo $hasSub ? '2 pos-category' : ' pos-category'; ?>">
+                                                <a class="btn listcatnew <?php echo $hasSub ? 'listcat2 pos-category-sub' : ''; ?>" 
+                                                  onclick="<?php echo $clickFunction . '(' . $category->CategoryID . ')'; ?>"
+                                                  <?php echo $hasSub ? 'data-toggle="newtcat' . $category->CategoryID . '"' : ''; ?>>
+                                                    <?php echo $indent . htmlspecialchars($category->Name); ?>
+                                                    <?php echo $hasSub ? '<span class="caret"></span>' : ''; ?>
+                                                </a>
+                                                <?php if ($hasSub) { ?>
+                                                    <ul class="dropdown-menucat dropcat display-none" id="newtcat<?php echo $category->CategoryID; ?>">
+                                                        <?php renderCategory($category->sub, $level + 1); ?>
+                                                    </ul>
+                                                <?php } ?>
+                                            </div>
+                                    <?php
+                                        }
+                                    }
+                                    renderCategory($allcategorylist);
+                                  ?>
+                              <!-- Banquet Menu URL [start] -->
+                              <div class="listcatnew cat-nav pos-category" onclick="getBanqcategory()">Banquet</div>
+                              <!-- Banquet Menu URL [end] -->
+                              <!-- Promotional Menu URL [start] -->
+                              <div class="listcatnew cat-nav pos-category" onclick="getPromotionalDeals()">Deals</div>
+                              <!-- Promotional Menu URL [end] -->
+                            </div>
+                          </div>
+                        </div>
+                        <div id="newModDiv" class="leftSidebarPosMain bg-alice-blue">
+                          <div class="customloader" id="posSidebarLoader"></div>
+                          <div id="newModSection">
+                            <!-- This section will be dynamically populated with modifiers, for now just leave a common message -->
+                            <div class="pb-5">
+                              <div class="slimScrollDiv">
+                                <div class="text-center p-3 my-5">
+                                  <p class="text-muted">Modifiers will be displayed here when selected.</p>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1474,7 +1554,7 @@ foreach ($scan as $file) {
                               </div>
                               <div class="col-sm-6 text-right"> <a class="btn btn-primary cusbtn" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-calculator" aria-hidden="true"></i>Calculator</a> <a href="<?php echo base_url("ordermanage/order/posclear") ?>" type="button" class="btn btn-danger cusbtn" id="poscartclearbtn"><?php echo display('cancel') ?></a>
                                 <input type="hidden" id="getitemp" name="getitemp" value="<?php echo $totalitem - $discount; ?>" />
-                                <input type="button" id="add_payment2" class="btn btn-primary btn-large cusbtn" onclick="quickorder()" name="add-payment" value="<?php echo display('quickorder') ?>">
+                                <!-- <input type="button" id="add_payment2" class="btn btn-primary btn-large cusbtn" onclick="quickorder()" name="add-payment" value="<?php ##echo display('quickorder') ?>"> -->
                                 <input type="button" id="add_payment" class="btn btn-success btn-large cusbtn" onclick="placeorder()" name="add-payment" value="<?php echo display('placeorder') ?>">
 
                                 <?php
@@ -1671,6 +1751,80 @@ foreach ($scan1 as $file) {
 <script src="<?=base_url('ordermanage/order/possettingjs');?>" type="text/javascript"></script>
 <script src="<?=base_url('ordermanage/order/quickorderjs');?>" type="text/javascript"></script>
 <script src="<?=base_url('application/modules/ordermanage/assets/js/possetting.js');?>" type="text/javascript"></script>
+<script>
+// const categories = {
+//   food: {
+//     label: 'Food Menu',
+//     subcategories: [
+//       { name: 'Starters', children: ['Paneer Tikka', 'Spring Rolls'] },
+//       { name: 'Main Course', children: ['Butter Chicken', 'Dal Makhani'] },
+//       { name: 'Desserts', children: ['Gulab Jamun'] }
+//     ]
+//   },
+//   beverage: {
+//     label: 'Beverage',
+//     subcategories: [
+//       { name: 'Hot Drinks', children: ['Tea', 'Coffee'] },
+//       { name: 'Cold Drinks', children: ['Soda', 'Juice'] }
+//     ]
+//   },
+//   banquet: {
+//     label: 'Banquet',
+//     subcategories: [
+//       { name: 'Wedding', children: [] },
+//       { name: 'Corporate', children: [] }
+//     ]
+//   },
+//   deals: {
+//     label: 'Deals',
+//     subcategories: [
+//       { name: 'Lunch Combo', children: [] },
+//       { name: 'Dinner Combo', children: [] }
+//     ]
+//   }
+// };
+const categories = <?=$categories_json;?>;
+
+function showMain() {
+  getslcategory('');
+  document.getElementById("subcategories").innerHTML = "";
+  document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector('.cat-btn:first-child').classList.add('active');
+}
+
+function showSubcategories(mainKey) {
+  const container = document.getElementById("subcategories");
+  container.innerHTML = "";
+
+  const main = categories[mainKey];
+  main.subcategories.forEach(sub => {
+    const btn = document.createElement("button");
+    btn.className = "cat-btn";
+    btn.textContent = sub.name;
+    container.appendChild(btn);
+    // Add click event to each subcategory button
+    btn.onclick = function() {
+      getslcategory(sub.ccid);
+      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+    };
+
+    // Append children, if any
+    if (sub.children.length) {
+      sub.children.forEach(child => {
+        const childBtn = document.createElement("button");
+        childBtn.className = "cat-btn child-btn";
+        childBtn.textContent = child;
+        container.appendChild(childBtn);
+      });
+    }
+  });
+
+  document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
+}
+</script>
+
 <script type="text/javascript">
   // $(document).on('change', '#customer_name, #ctypeid', function () {
   //     let customerName = $('#customer_name').val();
