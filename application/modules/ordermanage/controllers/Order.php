@@ -1276,6 +1276,7 @@ class Order extends MX_Controller
 		$this->db->join('menu_add_on AS mao', 'mg.id=mao.modifier_groupid', 'INNER');
 		$this->db->where('mao.menu_id', $id);
 		$this->db->where('mao.is_active', 1);
+		$this->db->or_where('mao.sortby', 1);
 		$query = $this->db->get();
 		$modifiers = $query->result();
 		// echo "<pre>";

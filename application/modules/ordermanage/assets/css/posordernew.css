@@ -599,8 +599,8 @@ small.modifier-sec-sub-heading
   .modCheck
   {
     padding: 4px 5px 4px 5px;
-    border-radius: 20px;
-    /* background-color: #ececec; */
+    /* border-radius: 20px; */
+    background-color: #ececec !important;
     color: #000;
     cursor: pointer;
     margin-top: 7px;

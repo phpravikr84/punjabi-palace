@@ -856,14 +856,20 @@ foreach ($scan as $file) {
                           </div>
                         </div>
 
-                        <?php foreach ($categories as $key => $cat): ?>
+                        <?php 
+                        $smenuCnter = 0;
+                        foreach ($categories as $key => $cat):
+                          $smenuCnter=$key;
+                        ?>
                           <div class="category-card cat-btn" onclick="showSubcategories('<?= $key ?>'); getslcategory(<?= isset($cat['cid']) ? $cat['cid'] : '' ?>);">
                             <div class="cat-icon"><?= isset($cat['icon']) ? $cat['icon'] : '📦' ?></div>
                             <div class="cat-title"><?= htmlspecialchars($cat['label']) ?></div>
                             <div class="cat-count"><?= isset($cat['count']) ? $cat['count'] : 0 ?> items</div>
                           </div>
-                        <?php endforeach; ?>
-                        <div class="category-card cat-btn" onclick="getPromotionalDeals();">
+                        <?php 
+                        endforeach; 
+                        ?>
+                        <div class="category-card cat-btn" onclick="getPromotionalDeals();showSubcategories('<?=($smenuCnter+1);?>');">
                           <div class="cat-icon">🍽</div>
                           <div class="cat-title">Deals</div>
                           <div class="cat-count">
@@ -1800,6 +1806,12 @@ function showSubcategories(mainKey) {
   container.innerHTML = "";
 
   const main = categories[mainKey];
+  if (!main) {
+    console.error(`No main category found for key: ${mainKey}`);
+    document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
+    return;
+  }
   main.subcategories.forEach(sub => {
     const btn = document.createElement("button");
     btn.className = "cat-btn";
@@ -1889,6 +1901,13 @@ $(document).ready(function () {
             $('#customer_name').next('.select2-container').prop('disabled', false);
             $("#add_cust").show();
           }
+      } else {
+        //select customerName with value 1 and disable it
+        $('#ctypeid').val(1).change();
+        $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
+        $('#customer_name').prop('disabled', true);
+        $('#customer_name').next('.select2-container').prop('disabled', true);
+        $("#add_cust").hide();
       }
     }, 1000);
 

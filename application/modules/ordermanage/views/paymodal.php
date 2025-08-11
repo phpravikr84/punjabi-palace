@@ -174,7 +174,7 @@
 
                                 <div class="form-group text-right">
                                     <div class="col-sm-12 pr-0">
-                                        <button type="button" id="add_new_payment_type" class="btn btn-success w-md m-b-5"><?php echo display('add_new_payment_type'); ?></button>
+                                        <button type="button" id="add_new_payment_type" class="btn btn-info w-md m-b-5"><?php echo '<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Another Payment Option'; ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -265,6 +265,7 @@
     <script>
         $(document).ready(function () {
             $('#paidamount_marge').mlKeyboard({ layout: 'en_US' });
+            $('input[name="paidamount[]"]').mlKeyboard({ layout: 'en_US' });
             //discount
             $('#discount').mlKeyboard({ layout: 'en_US' });
         });

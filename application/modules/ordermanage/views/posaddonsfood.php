@@ -3,16 +3,13 @@
 // echo "<pre>";
 // print_r($this->cart->contents());
 // echo "</pre><br />";
-
 // foreach ($this->cart->contents() as $item) {
 //     if (!(strpos($item['size'], 'Free Item'))) {
 //         echo "<br>Free Item: <br />";
 //         echo "Name: ".$item['name']."<br /> pid: ".$item['pid']."<br /> rowid: ".$item['rowid'];
 //         break;
 //     }
-    
 // }
-
 $tr_row_id="";
 if ($cart = $this->cart->contents()) 
 {
@@ -231,6 +228,7 @@ if ($recipe_feature_flag == 1) {
       </div> -->
         <div class="row">
             <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
+                <button class="btn btn-danger" onclick="cancelModSelectionArea();">Cancel</button>
                 <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>);">Apply</button>
             </div>
         </div>

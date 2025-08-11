@@ -367,7 +367,7 @@ $('body').on('click', '#search_button', function () {
 
 //Product search button js
 $('body').on('click', '.select_product', function (e) {
-
+    cancelModSelectionArea();
     e.preventDefault();
     var panel = $(this);
     var pid = panel.find('.panel-body input[name=select_product_id]').val();
@@ -519,6 +519,7 @@ $('body').on('click', '.select_product', function (e) {
     }
 });
 function selectGroupItem(th) {
+    cancelModSelectionArea();
     // e.preventDefault();
     var panel = th;
     var pid = panel.find('.panel-body input[name=select_product_id]').val();
@@ -549,10 +550,10 @@ function selectGroupItem(th) {
             $('.addonsinfo').html(data);
 
 
-            // $('#sideMfContainer').html($("#modifierContent_1").html());
-            $('#newModSection').html($("#modifierContent_1").html());
+            $('#sideMfContainer').html($("#modifierContent_1").html());
+            // $('#newModSection').html($("#modifierContent_1").html());
             $('#sideVarContainer').html($("#posSelectPurchaseTable").html());
-            // $('#sideVarContainer').append($("#promomainfoodlist").html());
+            $('#sideVarContainer').append($("#promomainfoodlist").html());
             $("#promomainfoodlist").remove();
             $("#posSelectPurchaseTable").remove();
             $("#modifierContent_1").remove();
@@ -572,10 +573,10 @@ function selectGroupItem(th) {
                 `;
                 // $('#sideVarContainer').append(noModHtml);
                 $('#sideMfContainer').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
-                $('#newModSection').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
+                // $('#newModSection').html(`<p class="text-left" style="padding:0px 0px;">No Modifiers Found For this Item !</strong></p>`);
                 // $('#modSubHeading').html(`No Modifiers Found For this Item`);
             }
-            // openNav();
+            openNav();
             //   $('#edit').modal('show');
 
             //$('#edit').find('.close').focus();
@@ -4009,3 +4010,7 @@ function paySplitByAmount(element) {
         });
 
 });
+
+function cancelModSelectionArea() {
+    $("#newModSection").html(newModifierDefaultContent);
+}

@@ -462,7 +462,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                 <?php
                                                                 if (count($selectedFoodsForCart) > 0) {
                                                                     foreach ($selectedFoodsForCart as $smk => $smv) { ?>
-                                                                        <small class="modCheck"><?=$smv->food_name;?></small>
+                                                                        <!-- <small class="modCheck"><?php ##$smv->food_name;?></small> -->
                                                                     <?php }
                                                                 }
                                                                 if (count($selectedModsForCart) > 0) {

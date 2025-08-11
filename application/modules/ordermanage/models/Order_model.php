@@ -280,6 +280,8 @@ class Order_model extends CI_Model
 		$this->db->select('CategoryID');
 		$this->db->from('item_category');
 		$this->db->where('Parentid', $categoryId);
+		//order by
+		$this->db->order_by('Position', 'ASC');
 		$subQuery = $this->db->get();
 		$subCategoryIds = array_column($subQuery->result_array(), 'CategoryID');
 		// If there are no subcategories, just count items in the given category
@@ -783,7 +785,7 @@ class Order_model extends CI_Model
 	public function searchprod($cid = null, $pname = null)
 	{
 		if (!empty($cid)) {
-			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->get()->row();
+			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->order_by('Position', 'ASC')->get()->row();
 			$catids = $cid;
 			if ($catinfo->parentid > 0) {
 				$catids = $cid . ',' . $catinfo->parentid;
@@ -855,7 +857,7 @@ class Order_model extends CI_Model
 	public function searchsubprod($cid = null, $pname = null)
 	{
 		if (!empty($cid)) {
-			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->get()->row();
+			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->order_by('Position', 'ASC')->get()->row();
 			$catids = $cid;
 			if ($catinfo->parentid > 0) {
 				$catids = $cid . ',' . $catinfo->parentid;
@@ -1026,11 +1028,16 @@ class Order_model extends CI_Model
 		return $promoMainCats;
 	}
 
+	// public function get_all_categories() {
+    //     $this->db->order_by('Position', 'ASC');
+    //     return $this->db->get_where('item_category', ['CategoryIsActive' => 1])->result_array();
+    // }
 	public function get_all_categories() {
-        $this->db->order_by('Position', 'ASC');
-        return $this->db->get_where('item_category', ['CategoryIsActive' => 1])->result_array();
-    }
-
+		$this->db->from('item_category');
+		$this->db->where('CategoryIsActive', 1);
+		$this->db->order_by('`Position`', 'ASC'); // backticks for safety
+		return $this->db->get()->result_array();
+	}
 
 
 	public function findaddons($id = null)
@@ -1065,6 +1072,7 @@ class Order_model extends CI_Model
 		$this->db->from('item_category');
 		$this->db->where('parentid', 0);
 		$this->db->where('CategoryIsActive', 1);
+		$this->db->order_by('Position', 'ASC');
 		$parent = $this->db->get();
 		$menulist = $parent->result();
 		$i = 0;
@@ -1082,6 +1090,7 @@ class Order_model extends CI_Model
 		$this->db->from('item_category');
 		$this->db->where('parentid', $id);
 		$this->db->where('CategoryIsActive', 1);
+		$this->db->order_by('Position', 'ASC');
 		$child = $this->db->get();
 		$menulist = $child->result();
 		$i = 0;
@@ -1095,6 +1104,7 @@ class Order_model extends CI_Model
 	{
 		$data = $this->db->select("*")
 			->from('item_category')
+			->order_by('Position', 'ASC')
 			->get()
 			->result();
 
