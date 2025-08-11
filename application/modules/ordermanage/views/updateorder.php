@@ -618,13 +618,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <a href="javascript:void(0);" onclick="createMargeorder(<?php echo $orderinfo->order_id;?>,1)" class="btn btn-success btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('cmplt'); ?>">
                                             <?php echo display('cmplt'); ?>
                                         </a>
-                                        <a href="javascript:void(0);" onclick="showsplitmodal(<?php echo $orderinfo->order_id;?>)" class="btn btn-primary btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
-                                            <?php echo 'Split by item'; ?>
-                                        </a>
 
-                                        <a href="javascript:void(0);" onclick="showsplitmodalbyamount(<?php echo $orderinfo->order_id;?>)" class="btn btn-primary btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
-                                            <?php echo 'Split by amount';?>
-                                        </a>
+                                        <?php if ($orderinfo->cutomertype == 1) : ?>
+
+                                            <a href="javascript:void(0);" onclick="showsplitmodal(<?php echo $orderinfo->order_id;?>)" class="btn btn-primary btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
+                                                <?php echo 'Split by item'; ?>
+                                            </a>
+
+                                            <a href="javascript:void(0);" onclick="showsplitmodalbyamount(<?php echo $orderinfo->order_id;?>)" class="btn btn-primary btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('split'); ?>">
+                                                <?php echo 'Split by amount';?>
+                                            </a>
+                                    
+                                        <!-- Your HTML/PHP here -->
+                                        <?php endif; ?>
+
                                         <?php if ($this->permission->method('ordermanage', 'delete')->access()) { ?>
                                             <a href="javascript:void(0);" style="margin-right: 10px;" data-id="<?php echo $orderinfo->order_id;?>" class="btn btn-md btn-warning cusbtn footer-btn mr-1 cancelorder" data-toggle="tooltip" data-placement="top" title="<?php echo display('cancel_order'); ?>">
                                                 <!-- <i class="fa fa-trash-o"></i> -->Cancel

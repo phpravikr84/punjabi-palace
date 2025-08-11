@@ -492,10 +492,71 @@ class Order extends MX_Controller
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('item_ajax', $data);
 	}
-	public function showtodayorder()
-	{
-		$this->load->view('todayorder');
-	}
+	// public function showtodayorder()
+	// {
+	// 	$this->load->view('todayorder');
+	// }
+	public function showtodayorder() {
+        $cdate = date('Y-m-d');
+
+        // Total Sales
+        $this->db->select('SUM(customer_order.totalamount) as total_sales');
+        $this->db->from('customer_order');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $total_sales = $this->db->get()->row()->total_sales ?? 0;
+
+        // Dine In Sales (cutomertype = 1)
+        $this->db->select('SUM(customer_order.totalamount) as dinein_sales');
+        $this->db->from('customer_order');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('customer_order.cutomertype', 1);
+        $dinein_sales = $this->db->get()->row()->dinein_sales ?? 0;
+
+        // Takeaway Sales (cutomertype = 4)
+        $this->db->select('SUM(customer_order.totalamount) as takeaway_sales');
+        $this->db->from('customer_order');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('customer_order.cutomertype', 4);
+        $takeaway_sales = $this->db->get()->row()->takeaway_sales ?? 0;
+
+        // Sales by Card (payment_type_id != 4)
+        $this->db->select('SUM(multipay_bill.amount) as card_sales');
+        $this->db->from('multipay_bill');
+        $this->db->join('customer_order', 'multipay_bill.order_id = customer_order.order_id', 'left');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('multipay_bill.payment_type_id !=', 4);
+        $card_sales = $this->db->get()->row()->card_sales ?? 0;
+
+        // Sales by Cash (payment_type_id = 4)
+        $this->db->select('SUM(multipay_bill.amount) as cash_sales');
+        $this->db->from('multipay_bill');
+        $this->db->join('customer_order', 'multipay_bill.order_id = customer_order.order_id', 'left');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('multipay_bill.payment_type_id', 4);
+        $cash_sales = $this->db->get()->row()->cash_sales ?? 0;
+
+        // Prepare data for the view
+        $data = [
+            'total_sales' => number_format($total_sales, 2),
+            'dinein_sales' => number_format($dinein_sales, 2),
+            'takeaway_sales' => number_format($takeaway_sales, 2),
+            'card_sales' => number_format($card_sales, 2),
+            'cash_sales' => number_format($cash_sales, 2)
+        ];
+
+        // Load the view with data
+        $this->load->view('todayorder', $data);
+    }
 	public function showonlineorder()
 	{
 		$this->load->view('onlineordertable');
@@ -5729,102 +5790,183 @@ class Order extends MX_Controller
 	// 	}
 	// }
 
+	// public function itemacepted()
+	// {
+	// 	if ($this->permission->method('ordermanage', 'read')->access() == FALSE) {
+	// 		redirect('dashboard/auth/logout');
+	// 	}
+
+	// 	$orderid = $this->input->post('orderid');
+	// 	$kitid = $this->input->post('kitid');
+	// 	$itemid = rtrim($this->input->post('itemid'), ',');
+	// 	$varient = rtrim($this->input->post('varient'), ',');
+
+	// 	$itemids = explode(',', $itemid);
+	// 	$varientids = explode(',', $varient);
+
+	// 	$i = 0;
+	// 	foreach ($itemids as $sitem) {
+	// 		if (!isset($varientids[$i])) {
+	// 			$i++;
+	// 			continue; // Skip if varient is missing for item
+	// 		}
+
+	// 		$vaids = $varientids[$i];
+	// 		echo $sitem . ' - ' . $vaids . '<br>';
+
+	// 		$isexit = $this->db->select('tbl_kitchen_order.*')
+	// 			->from('tbl_kitchen_order')
+	// 			->where('orderid', $orderid)
+	// 			->where('kitchenid', $kitid)
+	// 			->where('itemid', $sitem)
+	// 			->where('varient', $vaids)
+	// 			->get()
+	// 			->num_rows();
+
+	// 		// Debug: Remove in production
+	// 		log_message('debug', 'SQL: ' . $this->db->last_query());
+
+	// 		if ($isexit == 0) {
+	// 			$kitchenorder = array(
+	// 				'kitchenid' => $kitid,
+	// 				'orderid'   => $orderid,
+	// 				'itemid'    => $sitem,
+	// 				'varient'   => $vaids
+	// 			);
+	// 			$this->db->insert('tbl_kitchen_order', $kitchenorder);
+
+	// 			$itemaccepted = array(
+	// 				'accepttime' => date('Y-m-d H:i:s'),
+	// 				'orderid'    => $orderid,
+	// 				'menuid'     => $sitem,
+	// 				'varient'    => $vaids
+	// 			);
+	// 			$this->db->insert('tbl_itemaccepted', $itemaccepted);
+	// 		}
+	// 		$i++;
+	// 	}
+
+	// 	$alliteminfo = $this->order_model->customerorderkitchen($orderid, $kitid);
+	// 	$allchecked = "";
+
+	// 	foreach ($alliteminfo as $single) {
+	// 		$allisexit = $this->db->select('tbl_kitchen_order.*')
+	// 			->from('tbl_kitchen_order')
+	// 			->where('orderid', $orderid)
+	// 			->where('kitchenid', $kitid)
+	// 			->where('itemid', $single->menu_id)
+	// 			->where('varient', $single->variantid)
+	// 			->get()
+	// 			->num_rows();
+
+	// 		$allchecked .= ($allisexit > 0) ? "1," : "0,";
+	// 	}
+
+	// 	if (strpos($allchecked, '0') !== false) {
+	// 		echo 0;
+	// 	} else {
+	// 		echo 1;
+	// 	}
+
+	// 	$totalnumkitord = $this->db->select('tbl_kitchen_order.*')
+	// 		->from('tbl_kitchen_order')
+	// 		->where('orderid', $orderid)
+	// 		->where('itemid >', 0)
+	// 		->get()
+	// 		->num_rows();
+
+	// 	$totalmenuord = $this->db->select('order_menu.*')
+	// 		->from('order_menu')
+	// 		->where('order_id', $orderid)
+	// 		->get()
+	// 		->num_rows();
+
+	// 	if ($totalmenuord == $totalnumkitord) {
+	// 		$updatetData2 = array('order_status'  => 3);
+	// 		$this->db->where('order_id', $orderid);
+	// 		$this->db->update('customer_order', $updatetData2);
+	// 	}
+	// }
 	public function itemacepted()
 	{
 		if ($this->permission->method('ordermanage', 'read')->access() == FALSE) {
 			redirect('dashboard/auth/logout');
 		}
 
-		$orderid = $this->input->post('orderid');
-		$kitid = $this->input->post('kitid');
-		$itemid = rtrim($this->input->post('itemid'), ',');
-		$varient = rtrim($this->input->post('varient'), ',');
+		$orderid  = $this->input->post('orderid');
+		$kitid    = $this->input->post('kitid');
+		$itemid   = rtrim($this->input->post('itemid'), ',');
+		$varient  = rtrim($this->input->post('varient'), ',');
 
-		$itemids = explode(',', $itemid);
-		$varientids = explode(',', $varient);
+		$itemids     = explode(',', $itemid);
+		$varientids  = explode(',', $varient);
+		$updated     = [];
 
-		$i = 0;
-		foreach ($itemids as $sitem) {
+		foreach ($itemids as $i => $sitem) {
 			if (!isset($varientids[$i])) {
-				$i++;
-				continue; // Skip if varient is missing for item
+				continue; // skip if variant missing
 			}
-
 			$vaids = $varientids[$i];
 
-			$isexit = $this->db->select('tbl_kitchen_order.*')
-				->from('tbl_kitchen_order')
-				->where('orderid', $orderid)
-				->where('kitchenid', $kitid)
-				->where('itemid', $sitem)
-				->where('varient', $vaids)
-				->get()
-				->num_rows();
+			$isexist = $this->db->where([
+				'orderid'   => $orderid,
+				'kitchenid' => $kitid,
+				'itemid'    => $sitem,
+				'varient'   => $vaids
+			])->count_all_results('tbl_kitchen_order');
 
-			// Debug: Remove in production
-			log_message('debug', 'SQL: ' . $this->db->last_query());
-
-			if ($isexit == 0) {
-				$kitchenorder = array(
+			if ($isexist == 0) {
+				// Insert into kitchen order
+				$this->db->insert('tbl_kitchen_order', [
 					'kitchenid' => $kitid,
 					'orderid'   => $orderid,
 					'itemid'    => $sitem,
 					'varient'   => $vaids
-				);
-				$this->db->insert('tbl_kitchen_order', $kitchenorder);
+				]);
 
-				$itemaccepted = array(
+				// Insert into accepted table
+				$this->db->insert('tbl_itemaccepted', [
 					'accepttime' => date('Y-m-d H:i:s'),
 					'orderid'    => $orderid,
 					'menuid'     => $sitem,
 					'varient'    => $vaids
-				);
-				$this->db->insert('tbl_itemaccepted', $itemaccepted);
+				]);
 			}
-			$i++;
+			$updated[] = $sitem;
 		}
 
+		// Check if ALL items are now accepted
 		$alliteminfo = $this->order_model->customerorderkitchen($orderid, $kitid);
-		$allchecked = "";
+		$allaccepted = TRUE;
 
 		foreach ($alliteminfo as $single) {
-			$allisexit = $this->db->select('tbl_kitchen_order.*')
-				->from('tbl_kitchen_order')
-				->where('orderid', $orderid)
-				->where('kitchenid', $kitid)
-				->where('itemid', $single->menu_id)
-				->where('varient', $single->variantid)
-				->get()
-				->num_rows();
+			$exists = $this->db->where([
+				'orderid'   => $orderid,
+				'kitchenid' => $kitid,
+				'itemid'    => $single->menu_id,
+				'varient'   => $single->variantid
+			])->count_all_results('tbl_kitchen_order');
 
-			$allchecked .= ($allisexit > 0) ? "1," : "0,";
+			if ($exists == 0) {
+				$allaccepted = FALSE;
+				break;
+			}
 		}
 
-		if (strpos($allchecked, '0') !== false) {
-			echo 0;
-		} else {
-			echo 1;
+		// If all accepted, update order status
+		if ($allaccepted) {
+			$this->db->where('order_id', $orderid)
+					->update('customer_order', ['order_status' => 3]);
 		}
 
-		$totalnumkitord = $this->db->select('tbl_kitchen_order.*')
-			->from('tbl_kitchen_order')
-			->where('orderid', $orderid)
-			->where('itemid >', 0)
-			->get()
-			->num_rows();
-
-		$totalmenuord = $this->db->select('order_menu.*')
-			->from('order_menu')
-			->where('order_id', $orderid)
-			->get()
-			->num_rows();
-
-		if ($totalmenuord == $totalnumkitord) {
-			$updatetData2 = array('order_status'  => 3);
-			$this->db->where('order_id', $orderid);
-			$this->db->update('customer_order', $updatetData2);
-		}
+		echo json_encode([
+			'status'         => 'success',
+			'updatedItems'   => $updated,
+			'acceptedCount'  => count($updated),
+			'allAccepted'    => $allaccepted
+		]);
 	}
+
 	public function itemisready()
 	{
 		if ($this->permission->method('ordermanage', 'read')->access() == FALSE) {
@@ -8075,26 +8217,89 @@ class Order extends MX_Controller
         
     //     $this->load->view('ordermanage/suborderpay', $data);
     // }
+
+	// public function pay_split_by_amount()
+	// {
+	// 	$sub_id = $this->input->post('sub_id');
+	// 	$customerid = $this->input->post('customerid');
+	// 	$total = $this->input->post('total', true);
+	// 	$vat = $this->input->post('vat', true);
+	// 	$service = $this->input->post('service', true);
+		
+	// 	$updatetordfordiscount = array(
+	// 		'vat' => $vat,
+	// 		's_charge' => $service,
+	// 		'total_price' => $total,
+	// 		'customer_id' => $customerid,
+	// 	);
+
+	// 	$this->db->where('sub_id', $sub_id);
+	// 	$this->db->update('sub_order', $updatetordfordiscount);
+		
+	// 	$data['settinginfo'] = $this->order_model->settinginfo();
+	// 	$data['totaldue'] = $total + $vat + $service;
+	// 	$data['sub_id'] = $sub_id;
+	// 	$data['paymentmethod'] = $this->order_model->pmethod_dropdown();
+	// 	$data['banklist'] = $this->order_model->bank_dropdown();
+	// 	$data['terminalist'] = $this->order_model->allterminal_dropdown();
+		
+	// 	$this->load->view('ordermanage/suborderpay', $data);
+	// }
+
 	public function pay_split_by_amount()
 	{
-		$sub_id = $this->input->post('sub_id');
-		$customerid = $this->input->post('customerid');
+		$sub_id = $this->input->post('sub_id', true);
+		$customerid = $this->input->post('customerid', true);
 		$total = $this->input->post('total', true);
 		$vat = $this->input->post('vat', true);
 		$service = $this->input->post('service', true);
-		
+
+		if (empty($sub_id) || !is_numeric($sub_id)) {
+			log_message('error', 'Invalid sub_id: ' . $sub_id);
+			show_error('Invalid sub-order ID', 400);
+			return;
+		}
+		if (!empty($customerid) && !is_numeric($customerid)) {
+			log_message('error', 'Invalid customerid: ' . $customerid);
+			show_error('Invalid customer ID', 400);
+			return;
+		}
+		if (!is_numeric($total) || $total <= 0) {
+			log_message('error', 'Invalid total: ' . $total);
+			show_error('Invalid total amount', 400);
+			return;
+		}
+		if (!is_numeric($vat) || $vat < 0) {
+			log_message('error', 'Invalid vat: ' . $vat);
+			show_error('Invalid VAT amount', 400);
+			return;
+		}
+		if (!is_numeric($service) || $service < 0) {
+			log_message('error', 'Invalid service: ' . $service);
+			show_error('Invalid service charge', 400);
+			return;
+		}
+
 		$updatetordfordiscount = array(
 			'vat' => $vat,
 			's_charge' => $service,
 			'total_price' => $total,
-			'customer_id' => $customerid,
+			'customer_id' => $customerid ?: null,
+			'status' => 0
 		);
 
 		$this->db->where('sub_id', $sub_id);
-		$this->db->update('sub_order', $updatetordfordiscount);
+		$result = $this->db->update('sub_order', $updatetordfordiscount);
 		
+		if (!$result) {
+			log_message('error', 'Failed to update sub_order for sub_id: ' . $sub_id);
+			show_error('Failed to update sub-order', 500);
+			return;
+		}
+
 		$data['settinginfo'] = $this->order_model->settinginfo();
-		$data['totaldue'] = $total + $vat + $service;
+		$gtotal = $total + $vat + $service;
+		$data['totaldue'] = $gtotal;
 		$data['sub_id'] = $sub_id;
 		$data['paymentmethod'] = $this->order_model->pmethod_dropdown();
 		$data['banklist'] = $this->order_model->bank_dropdown();
