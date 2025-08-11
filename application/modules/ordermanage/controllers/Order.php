@@ -492,10 +492,71 @@ class Order extends MX_Controller
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('item_ajax', $data);
 	}
-	public function showtodayorder()
-	{
-		$this->load->view('todayorder');
-	}
+	// public function showtodayorder()
+	// {
+	// 	$this->load->view('todayorder');
+	// }
+	public function showtodayorder() {
+        $cdate = date('Y-m-d');
+
+        // Total Sales
+        $this->db->select('SUM(customer_order.totalamount) as total_sales');
+        $this->db->from('customer_order');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $total_sales = $this->db->get()->row()->total_sales ?? 0;
+
+        // Dine In Sales (cutomertype = 1)
+        $this->db->select('SUM(customer_order.totalamount) as dinein_sales');
+        $this->db->from('customer_order');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('customer_order.cutomertype', 1);
+        $dinein_sales = $this->db->get()->row()->dinein_sales ?? 0;
+
+        // Takeaway Sales (cutomertype = 4)
+        $this->db->select('SUM(customer_order.totalamount) as takeaway_sales');
+        $this->db->from('customer_order');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('customer_order.cutomertype', 4);
+        $takeaway_sales = $this->db->get()->row()->takeaway_sales ?? 0;
+
+        // Sales by Card (payment_type_id != 4)
+        $this->db->select('SUM(multipay_bill.amount) as card_sales');
+        $this->db->from('multipay_bill');
+        $this->db->join('customer_order', 'multipay_bill.order_id = customer_order.order_id', 'left');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('multipay_bill.payment_type_id !=', 4);
+        $card_sales = $this->db->get()->row()->card_sales ?? 0;
+
+        // Sales by Cash (payment_type_id = 4)
+        $this->db->select('SUM(multipay_bill.amount) as cash_sales');
+        $this->db->from('multipay_bill');
+        $this->db->join('customer_order', 'multipay_bill.order_id = customer_order.order_id', 'left');
+        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+        $this->db->where('customer_order.order_date', $cdate);
+        $this->db->where('bill.bill_status', 1);
+        $this->db->where('multipay_bill.payment_type_id', 4);
+        $cash_sales = $this->db->get()->row()->cash_sales ?? 0;
+
+        // Prepare data for the view
+        $data = [
+            'total_sales' => number_format($total_sales, 2),
+            'dinein_sales' => number_format($dinein_sales, 2),
+            'takeaway_sales' => number_format($takeaway_sales, 2),
+            'card_sales' => number_format($card_sales, 2),
+            'cash_sales' => number_format($cash_sales, 2)
+        ];
+
+        // Load the view with data
+        $this->load->view('todayorder', $data);
+    }
 	public function showonlineorder()
 	{
 		$this->load->view('onlineordertable');
