@@ -479,7 +479,65 @@
     setInterval(updateReservations, 5000);
 
     
+  function submitmultiplepaysub(subid) {
+      var thisForm = $('#paymodal-multiple-form');
+      var inputval = parseFloat(0);
+      var maintotalamount = $('#due-amount').text();
 
+      $(".number").each(function() {
+          var inputdata = parseFloat($(this).val());
+          inputval = inputval + inputdata;
+
+      });
+      if (inputval < parseFloat(maintotalamount)) {
+
+          setTimeout(function() {
+              toastr.options = {
+                  closeButton: true,
+                  progressBar: true,
+                  showMethod: 'slideDown',
+                  timeOut: 4000
+
+              };
+              toastr.error("Pay full amount ", 'Error');
+          }, 100);
+          return false;
+      }
+      var formdata = new FormData(thisForm[0]);
+      $.ajax({
+          type: "POST",
+          url: basicinfo.baseurl + "ordermanage/order/paymultiplsub",
+          data: formdata,
+          processData: false,
+          contentType: false,
+          success: function(data) {
+              var value = $('#get-order-flag').val();
+
+              setTimeout(function() {
+                  toastr.options = {
+                      closeButton: true,
+                      progressBar: true,
+                      showMethod: 'slideDown',
+                      timeOut: 4000
+
+                  };
+                  toastr.success("payment taken successfully", 'Success');
+                  $('#payprint_split').modal('hide');
+                  $('#subpay-' + subid).hide();
+                  $("#modal-ajaxview-split").empty();
+                  if (basicinfo.printtype != 1) {
+                      printRawHtml(data);
+                  }
+                  prevsltab.trigger("click");
+
+              }, 100);
+
+
+          },
+
+      });
+
+  }
 
 // Combined function to get orders or expired reservations
 function fetchOrdersOrExpiredReservations() {

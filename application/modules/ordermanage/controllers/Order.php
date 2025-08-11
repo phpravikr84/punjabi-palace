@@ -8074,26 +8074,89 @@ class Order extends MX_Controller
         
     //     $this->load->view('ordermanage/suborderpay', $data);
     // }
+
+	// public function pay_split_by_amount()
+	// {
+	// 	$sub_id = $this->input->post('sub_id');
+	// 	$customerid = $this->input->post('customerid');
+	// 	$total = $this->input->post('total', true);
+	// 	$vat = $this->input->post('vat', true);
+	// 	$service = $this->input->post('service', true);
+		
+	// 	$updatetordfordiscount = array(
+	// 		'vat' => $vat,
+	// 		's_charge' => $service,
+	// 		'total_price' => $total,
+	// 		'customer_id' => $customerid,
+	// 	);
+
+	// 	$this->db->where('sub_id', $sub_id);
+	// 	$this->db->update('sub_order', $updatetordfordiscount);
+		
+	// 	$data['settinginfo'] = $this->order_model->settinginfo();
+	// 	$data['totaldue'] = $total + $vat + $service;
+	// 	$data['sub_id'] = $sub_id;
+	// 	$data['paymentmethod'] = $this->order_model->pmethod_dropdown();
+	// 	$data['banklist'] = $this->order_model->bank_dropdown();
+	// 	$data['terminalist'] = $this->order_model->allterminal_dropdown();
+		
+	// 	$this->load->view('ordermanage/suborderpay', $data);
+	// }
+
 	public function pay_split_by_amount()
 	{
-		$sub_id = $this->input->post('sub_id');
-		$customerid = $this->input->post('customerid');
+		$sub_id = $this->input->post('sub_id', true);
+		$customerid = $this->input->post('customerid', true);
 		$total = $this->input->post('total', true);
 		$vat = $this->input->post('vat', true);
 		$service = $this->input->post('service', true);
-		
+
+		if (empty($sub_id) || !is_numeric($sub_id)) {
+			log_message('error', 'Invalid sub_id: ' . $sub_id);
+			show_error('Invalid sub-order ID', 400);
+			return;
+		}
+		if (!empty($customerid) && !is_numeric($customerid)) {
+			log_message('error', 'Invalid customerid: ' . $customerid);
+			show_error('Invalid customer ID', 400);
+			return;
+		}
+		if (!is_numeric($total) || $total <= 0) {
+			log_message('error', 'Invalid total: ' . $total);
+			show_error('Invalid total amount', 400);
+			return;
+		}
+		if (!is_numeric($vat) || $vat < 0) {
+			log_message('error', 'Invalid vat: ' . $vat);
+			show_error('Invalid VAT amount', 400);
+			return;
+		}
+		if (!is_numeric($service) || $service < 0) {
+			log_message('error', 'Invalid service: ' . $service);
+			show_error('Invalid service charge', 400);
+			return;
+		}
+
 		$updatetordfordiscount = array(
 			'vat' => $vat,
 			's_charge' => $service,
 			'total_price' => $total,
-			'customer_id' => $customerid,
+			'customer_id' => $customerid ?: null,
+			'status' => 0
 		);
 
 		$this->db->where('sub_id', $sub_id);
-		$this->db->update('sub_order', $updatetordfordiscount);
+		$result = $this->db->update('sub_order', $updatetordfordiscount);
 		
+		if (!$result) {
+			log_message('error', 'Failed to update sub_order for sub_id: ' . $sub_id);
+			show_error('Failed to update sub-order', 500);
+			return;
+		}
+
 		$data['settinginfo'] = $this->order_model->settinginfo();
-		$data['totaldue'] = $total + $vat + $service;
+		$gtotal = $total + $vat + $service;
+		$data['totaldue'] = $gtotal;
 		$data['sub_id'] = $sub_id;
 		$data['paymentmethod'] = $this->order_model->pmethod_dropdown();
 		$data['banklist'] = $this->order_model->bank_dropdown();

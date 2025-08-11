@@ -3286,32 +3286,27 @@ function paySuborder(element) {
 function submitmultiplepaysub(subid) {
     var thisForm = $('#paymodal-multiple-form');
     var inputval = parseFloat(0);
-    var maintotalamount = parseFloat($('#due-amount').text());
+    var maintotalamount = $('#due-amount').text();
 
-    $(".number").each(function() {
-        var inputdata = parseFloat($(this).val()) || 0;
-        inputval += inputdata;
+    $(".number").each(function () {
+        var inputdata = parseFloat($(this).val());
+        inputval = inputval + inputdata;
+
     });
+    if (inputval < parseFloat(maintotalamount)) {
 
-    if (inputval < maintotalamount) {
-        setTimeout(function() {
+        setTimeout(function () {
             toastr.options = {
                 closeButton: true,
                 progressBar: true,
                 showMethod: 'slideDown',
                 timeOut: 4000
+
             };
-            toastr.error("Pay full amount", 'Error');
+            toastr.error("Pay full amount ", 'Error');
         }, 100);
         return false;
     }
-
-    var splitType = $('#split-type').val() || '0';
-    var modalId = splitType === '1' ? '#payprint_split_byamount' : '#payprint_split';
-    var ajaxViewId = splitType === '1' ? '#modal-ajaxview-split_byamount' : '#modal-ajaxview-split';
-    var buttonId = splitType === '1' ? '#splitpay-' + subid : '#subpay-' + subid;
-    var orderId = $('#get-order-id').val();
-
     var formdata = new FormData(thisForm[0]);
     $.ajax({
         type: "POST",
@@ -3319,41 +3314,33 @@ function submitmultiplepaysub(subid) {
         data: formdata,
         processData: false,
         contentType: false,
-        success: function(data) {
-            setTimeout(function() {
+        success: function (data) {
+            var value = $('#get-order-flag').val();
+
+            setTimeout(function () {
                 toastr.options = {
                     closeButton: true,
                     progressBar: true,
                     showMethod: 'slideDown',
                     timeOut: 4000
+
                 };
-                toastr.success("Payment taken successfully", 'Success');
-                $(modalId).modal('hide');
-                $(ajaxViewId).empty();
-                $(buttonId).hide();
-                // Clear any stale modals
-                $('.modal').modal('hide');
-                if (splitType === '1') {
-                    showsplitmodalbyamount(orderId);
-                } else {
-                    prevsltab.trigger("click");
-                }
+                toastr.success("payment taken successfully", 'Success');
+                $('#payprint_split').modal('hide');
+                $('#subpay-' + subid).hide();
+                $("#modal-ajaxview-split").empty();
                 if (basicinfo.printtype != 1) {
                     printRawHtml(data);
                 }
+                prevsltab.trigger("click");
+
             }, 100);
+
+
         },
-        error: function(xhr, status, error) {
-            console.error('Payment error:', error);
-            toastr.options = {
-                closeButton: true,
-                progressBar: true,
-                showMethod: 'slideDown',
-                timeOut: 4000
-            };
-            toastr.error("Payment failed. Please try again.", 'Error');
-        }
+
     });
+
 }
 
 function showsplit(orderid) {
@@ -3829,36 +3816,19 @@ function paySplitByAmount(element) {
     var vat = $('#vat-split-' + id).val();
     var service = $('#service-split-' + id).val();
     var total = $('#total-split-' + id).val();
-    var customerid = $('#customer-' + id).val() || '';
-
-    if (!$('#total-split-' + id).length || !total || isNaN(total) || total <= 0) {
-        console.warn('Invalid total for sub_id: ' + id);
-        alert('Please ensure the total amount is valid.');
-        return;
-    }
-    if (!$('#vat-split-' + id).length || isNaN(vat) || vat < 0) {
-        console.warn('Invalid VAT for sub_id: ' + id);
-        alert('Please ensure the VAT amount is valid.');
-        return;
-    }
-    if (!$('#service-split-' + id).length || isNaN(service) || service < 0) {
-        console.warn('Invalid service charge for sub_id: ' + id);
-        alert('Please ensure the service charge is valid.');
-        return;
-    }
-
-    //$('#payprint_split_byamount').modal('hide');
-    $("#modal-ajaxview-split_byamount").empty();
-    var data = 'sub_id=' + id + '&vat=' + vat + '&service=' + service + '&total=' + total + '&customerid=' + customerid + '&csrf_test_name=' + $('#csrfhashresarvation').val() + '&split_type=1';
-    try {
-        getAjaxModal(url, false, '#modal-ajaxview-split_byamount', '#payprint_split_byamount', data, 'post', function() {
-            if (!$('#payprint_split_byamount').hasClass('show')) {
-                $('#payprint_split_byamount').modal('show');
-            }
-        });
-    } catch (e) {
-        console.error('Error initiating payment: ', e);
-        alert('Failed to load payment popup. Please try again.');
+    var customerid = $('#customer-' + id).val();
+    
+    if ($('#total-split-' + id).length) {
+        $('#payprint_split_byamount').modal('hide');
+        $("#modal-ajaxview-split_byamount").empty();
+        var data = 'sub_id=' + id + '&vat=' + vat + '&service=' + service + '&total=' + total + '&customerid=' + customerid + '&csrf_test_name=' + $('#csrfhashresarvation').val();
+        try {
+            getAjaxModal(url, false, '#modal-ajaxview-split_byamount', '#payprint_split_byamount', data, 'post');
+        } catch (e) {
+            console.error('Error initiating payment: ', e);
+        }
+    } else {
+        console.warn('Total input not found for sub_id: ' + id);
     }
 }
 /**
