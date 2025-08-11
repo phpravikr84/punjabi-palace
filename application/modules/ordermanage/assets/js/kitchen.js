@@ -46,45 +46,108 @@ $('input[type="checkbox"]').click(function(){
             }
           
         });
-function orderaccept(ordid,kitid){
-	var values = $('input[name="item'+ordid+kitid+'"]:checked').map(function() {
-      return $(this).val();
-    }).get().join(',');
-var varient = $('input[name="item'+ordid+kitid+'"]:checked').map(function() {
-      		return $(this).attr('title');
-    		}).get().join(',');	
-var allvarient=varient+',';
-if(values==''){
-	swal(lang.check_item, lang.check_item_message, "warning");
-	return false;
-	}
-			 var csrf = $('#csrfhashresarvation').val();
-			 var dataString = 'orderid='+ordid+'&kitid='+kitid+'&itemid='+values+'&varient='+allvarient+'&csrf_test_name='+csrf;
-			$.ajax({
-				type: "POST",
-				url: basicinfo.baseurl+"ordermanage/order/itemacepted",
-				data: dataString,
-				success: function(data){
-					if(data==1){
-					$('input[name="item'+ordid+kitid+'"]:checked').removeAttr('disabled');
-					$("#topsec"+ordid+kitid).removeClass("pending");
-					$("#isprepare"+ordid+kitid).removeClass("display-none");
-					$("#isprepare"+ordid+kitid).addClass("display-block");
-					$("#isongoing"+ordid+kitid).removeClass("display-block");
-					$("#isongoing"+ordid+kitid).addClass("display-none");
-					$('input[name="item'+ordid+kitid+'"]:checked').attr('alt',1);
-					$('input[name="item'+ordid+kitid+'"]:checked').removeAttr('checked');
-					//Forcelly Reload page
-					window.top.location.href = baseurl + "ordermanage/order/allkitchen";
-					}
-					else{
-						$('input[name="item'+ordid+kitid+'"]:checked').attr('alt',1);
-						$('input[name="item'+ordid+kitid+'"]:checked').prop( "disabled", true );
-						}
+// function orderaccept(ordid,kitid){
+// 		var values = $('input[name="item'+ordid+kitid+'"]:checked').map(function() {
+// 		return $(this).val();
+// 		}).get().join(',');
+// 		console.log('Item values: '+values);
+// 	var varient = $('input[name="item'+ordid+kitid+'"]:checked').map(function() {
+// 				return $(this).attr('title');
+// 				}).get().join(',');	
+// 	var allvarient=varient+',';
+// 	if(values==''){
+// 		swal(lang.check_item, lang.check_item_message, "warning");
+// 		return false;
+// 		}
+// 			 var csrf = $('#csrfhashresarvation').val();
+// 			 var dataString = 'orderid='+ordid+'&kitid='+kitid+'&itemid='+values+'&varient='+allvarient+'&csrf_test_name='+csrf;
+// 			$.ajax({
+// 				type: "POST",
+// 				url: basicinfo.baseurl+"ordermanage/order/itemacepted",
+// 				data: dataString,
+// 				success: function(data){
+// 					if(data==1){
+// 					$('input[name="item'+ordid+kitid+'"]:checked').removeAttr('disabled');
+// 					$("#topsec"+ordid+kitid).removeClass("pending");
+// 					$("#isprepare"+ordid+kitid).removeClass("display-none");
+// 					$("#isprepare"+ordid+kitid).addClass("display-block");
+// 					$("#isongoing"+ordid+kitid).removeClass("display-block");
+// 					$("#isongoing"+ordid+kitid).addClass("display-none");
+// 					$('input[name="item'+ordid+kitid+'"]:checked').attr('alt',1);
+// 					$('input[name="item'+ordid+kitid+'"]:checked').removeAttr('checked');
+// 					//Forcelly Reload page
+// 					window.top.location.href = baseurl + "ordermanage/order/allkitchen";
+// 					}
+// 					else{
+// 						$('input[name="item'+ordid+kitid+'"]:checked').attr('alt',1);
+// 						$('input[name="item'+ordid+kitid+'"]:checked').prop( "disabled", true );
+// 						}
 					
-					}
-				});
-			}
+// 					}
+// 				});
+// 			}
+function orderaccept(ordid, kitid) {
+    var values = $('input[name="item' + ordid + kitid + '"]:checked').map(function () {
+        return $(this).val();
+    }).get().join(',');
+
+    console.log('Item values: ' + values);
+
+    var varient = $('input[name="item' + ordid + kitid + '"]:checked').map(function () {
+        return $(this).attr('title');
+    }).get().join(',');
+
+    var allvarient = varient + ',';
+
+    if (values == '') {
+        swal(lang.check_item, lang.check_item_message, "warning");
+        return false;
+    }
+
+    var csrf = $('#csrfhashresarvation').val();
+    var dataString = 'orderid=' + ordid +
+                     '&kitid=' + kitid +
+                     '&itemid=' + values +
+                     '&varient=' + allvarient +
+                     '&csrf_test_name=' + csrf;
+
+    $.ajax({
+        type: "POST",
+        url: basicinfo.baseurl + "ordermanage/order/itemacepted",
+        data: dataString,
+        success: function (data) {
+            var res;
+            try {
+                res = JSON.parse(data); // Expecting JSON from PHP
+            } catch (e) {
+                console.error("Invalid JSON response", data);
+                return;
+            }
+
+            // Disable and uncheck updated items
+            $('input[name="item' + ordid + kitid + '"]:checked').each(function () {
+                $(this).attr('alt', 1).prop("disabled", true).prop("checked", false);
+            });
+
+            // Show messages
+            if (res.allAccepted) {
+                swal("All Accepted", "All items are ready to pick up!", "success");
+                $("#topsec" + ordid + kitid).removeClass("pending");
+                $("#isprepare" + ordid + kitid).removeClass("display-none").addClass("display-block");
+                $("#isongoing" + ordid + kitid).removeClass("display-block").addClass("display-none");
+                window.top.location.href = baseurl + "ordermanage/order/allkitchen";
+            } else {
+                swal(
+                    res.acceptedCount + (res.acceptedCount === 1 ? " item" : " items") + " Ready",
+                    "Ready to pick up",
+                    "info"
+                );
+				 window.top.location.href = baseurl + "ordermanage/order/allkitchen";
+            }
+        }
+    });
+}
+
 	function ordercancel(ordid,kitid){
 		$('#cancelord').modal('show');
 		var values = $('input[name="item'+ordid+kitid+'"]:checked:not(:disabled)').map(function() {
