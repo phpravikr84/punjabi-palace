@@ -1877,6 +1877,81 @@ function showSubcategories(mainKey) {
   //         $('#ctypeid').val(ctypeId);
   //     }
   // });
+// $(document).ready(function () {
+//     // 1. On page load: Set dropdowns from URL
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const customerName = urlParams.get('customer_name');
+//     const ctypeId = urlParams.get('ctypeid');
+
+//     setTimeout(() => {
+//       if (customerName) {
+//           $('#customer_name').val(customerName).change(); // Trigger change event to update URL
+//       }
+
+//       if (ctypeId) {
+//           $('#ctypeid').val(ctypeId);
+//           if (ctypeId == 1) {
+//             //select customerName with value 1 and disable it
+//             $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
+//             $('#customer_name').prop('disabled', true);
+//             $('#customer_name').next('.select2-container').prop('disabled', true);
+//             $("#add_cust").hide();
+//           } else {
+//             $('#customer_name').prop('disabled', false);
+//             $('#customer_name').next('.select2-container').prop('disabled', false);
+//             $("#add_cust").show();
+//           }
+//       } else {
+//         //select customerName with value 1 and disable it
+//         $('#ctypeid').val(1).change();
+//         $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
+//         $('#customer_name').prop('disabled', true);
+//         $('#customer_name').next('.select2-container').prop('disabled', true);
+//         $("#add_cust").hide();
+//       }
+//     }, 1000);
+
+//     // 2. Handle changes
+//     $(document).on('change', '#customer_name, #ctypeid', function () {
+//         let customerName = $('#customer_name').val();
+//         let ctypeId = $('#ctypeid').val();
+
+//         let currentUrl = new URL(window.location.href);
+//         let pathSegments = currentUrl.pathname.split('/');
+
+//         // Update path if ctypeId is present
+//         let posIndex = pathSegments.indexOf('pos_invoice');
+//         if (posIndex !== -1 && pathSegments.length > posIndex + 1 && ctypeId) {
+//             pathSegments[posIndex + 1] = ctypeId;
+//         }
+
+//         // Always update search params
+//         if (customerName) {
+//             currentUrl.searchParams.set('customer_name', customerName);
+//         } else {
+//             // currentUrl.searchParams.delete('customer_name');
+//         }
+
+
+//         if (ctypeId) {
+//             currentUrl.searchParams.set('ctypeid', ctypeId);
+//         } else {
+//             // currentUrl.searchParams.delete('ctypeid');
+//         }
+
+//         // Final URL
+//         let newUrl = currentUrl.origin + pathSegments.join('/') + '/' + ctypeId + '?' + currentUrl.searchParams.toString();
+
+//         // Update browser URL without reload
+//         window.history.replaceState({}, '', newUrl);
+
+//         // Reload only if #ctypeid is changed
+//         if ($(this).attr('id') === 'ctypeid') {
+//             $("#poscartclearbtn").click();
+//             window.location.href = newUrl;
+//         }
+//     });
+// });
 $(document).ready(function () {
     // 1. On page load: Set dropdowns from URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -1884,31 +1959,29 @@ $(document).ready(function () {
     const ctypeId = urlParams.get('ctypeid');
 
     setTimeout(() => {
-      if (customerName) {
-          $('#customer_name').val(customerName).change(); // Trigger change event to update URL
-      }
+        if (customerName) {
+            $('#customer_name').val(customerName).change();
+        }
 
-      if (ctypeId) {
-          $('#ctypeid').val(ctypeId);
-          if (ctypeId == 1) {
-            //select customerName with value 1 and disable it
-            $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
+        if (ctypeId) {
+            $('#ctypeid').val(ctypeId);
+            if (ctypeId == 1) {
+                $('#customer_name').val(1).change();
+                $('#customer_name').prop('disabled', true);
+                $('#customer_name').next('.select2-container').prop('disabled', true);
+                $("#add_cust").hide();
+            } else {
+                $('#customer_name').prop('disabled', false);
+                $('#customer_name').next('.select2-container').prop('disabled', false);
+                $("#add_cust").show();
+            }
+        } else {
+            $('#ctypeid').val(1).change();
+            $('#customer_name').val(1).change();
             $('#customer_name').prop('disabled', true);
             $('#customer_name').next('.select2-container').prop('disabled', true);
             $("#add_cust").hide();
-          } else {
-            $('#customer_name').prop('disabled', false);
-            $('#customer_name').next('.select2-container').prop('disabled', false);
-            $("#add_cust").show();
-          }
-      } else {
-        //select customerName with value 1 and disable it
-        $('#ctypeid').val(1).change();
-        $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
-        $('#customer_name').prop('disabled', true);
-        $('#customer_name').next('.select2-container').prop('disabled', true);
-        $("#add_cust").hide();
-      }
+        }
     }, 1000);
 
     // 2. Handle changes
@@ -1919,27 +1992,27 @@ $(document).ready(function () {
         let currentUrl = new URL(window.location.href);
         let pathSegments = currentUrl.pathname.split('/');
 
-        // Update path if ctypeId is present
+        // Ensure the ctypeId is in the path after pos_invoice
         let posIndex = pathSegments.indexOf('pos_invoice');
-        if (posIndex !== -1 && pathSegments.length > posIndex + 1 && ctypeId) {
-            pathSegments[posIndex + 1] = ctypeId;
+        if (posIndex !== -1) {
+            // If no ctypeid segment exists after pos_invoice, add it
+            if (pathSegments.length <= posIndex + 1 || isNaN(pathSegments[posIndex + 1])) {
+                pathSegments.splice(posIndex + 1, 0, ctypeId);
+            } else {
+                // Replace existing ctypeid
+                pathSegments[posIndex + 1] = ctypeId;
+            }
         }
 
         // Always update search params
         if (customerName) {
             currentUrl.searchParams.set('customer_name', customerName);
-        } else {
-            // currentUrl.searchParams.delete('customer_name');
         }
-
-
         if (ctypeId) {
             currentUrl.searchParams.set('ctypeid', ctypeId);
-        } else {
-            // currentUrl.searchParams.delete('ctypeid');
         }
 
-        // Final URL
+        // Final URL with both path + query string
         let newUrl = currentUrl.origin + pathSegments.join('/') + '?' + currentUrl.searchParams.toString();
 
         // Update browser URL without reload
@@ -1952,6 +2025,7 @@ $(document).ready(function () {
         }
     });
 });
+
 
 $(document).on('submit', "#validate", function (e) {
     e.preventDefault();
