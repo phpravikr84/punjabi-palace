@@ -451,6 +451,9 @@ $('body').on('click', '.select_product', function (e) {
                 if (isNaN($('#caltotal').text())) {
                     $('#caltotal').text(parseFloat(0));
                 }
+                if ($("#hasModifiers_" + pid).val() == 1) {
+                    $("#cartModToggle_"+pid).click();
+                }
             }
         });
     } else {
@@ -896,6 +899,7 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
 
 
 function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promoqty = 0) {
+    console.log("selectedDealSubMods on ApplyModifierSelect: ", JSON.stringify(selectedDealSubMods));
     if (pid == 0) {
         console.log("No Item Found !");
         return false;
@@ -915,7 +919,11 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
         }
     });
     console.log("selectedValues cartmodifiersave: " + selectedValues);
-    loader.css({ display: 'flex' });
+    loader.show();
+    $(".modifierCancelbtn").prop("disabled", true);
+    $(".modifierCancelbtn").css({ cursor: 'not-allowed', opacity: 0.5 });
+    $(".modifierChoosebtn").prop("disabled", true);
+    $(".modifierChoosebtn").css({ cursor: 'not-allowed', opacity: 0.5 });
     if (selectedValues.length > 0) {
         checkModGroupMaxItemNumber(pid, selectedValues, function (isValid) {
             if (isValid) {
@@ -939,6 +947,10 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                                 closeOnConfirm: true
                             });
                             loader.hide();
+                            $(".modifierCancelbtn").prop("disabled", false);
+                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+                            $(".modifierChoosebtn").prop("disabled", false);
+                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
                             return false;
                         }
                     } else {
@@ -952,6 +964,10 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                                 closeOnConfirm: true
                             });
                             loader.hide();
+                            $(".modifierCancelbtn").prop("disabled", false);
+                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+                            $(".modifierChoosebtn").prop("disabled", false);
+                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
                             return false;
                         }
                     }
@@ -969,11 +985,20 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                                 closeOnConfirm: true
                             });
                             loader.hide();
+                            $(".modifierCancelbtn").prop("disabled", false);
+                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+                            $(".modifierChoosebtn").prop("disabled", false);
+                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
                             return false;
                         }
                     }
                 }
-                $(".page-loader-wrapper").show();
+                // $(".page-loader-wrapper").show();
+                loader.show();
+                $(".modifierCancelbtn").prop("disabled", true);
+                $(".modifierCancelbtn").css({ cursor: 'not-allowed', opacity: 0.5 });
+                $(".modifierChoosebtn").prop("disabled", true);
+                $(".modifierChoosebtn").css({ cursor: 'not-allowed', opacity: 0.5 });
                 // the following settimeout function is to wait for the above posaddonsfoodtocart, removecart function to complete its execution
                 // before proceeding to save the modifiers. but I want it to be dynamic and not hardcoded to 3000ms
                 setTimeout(() => {
@@ -991,6 +1016,10 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                         success: function (data) {
                             $(".page-loader-wrapper").hide();
                             loader.hide();
+                            $(".modifierCancelbtn").prop("disabled", false);
+                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+                            $(".modifierChoosebtn").prop("disabled", false);
+                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
                             console.log("Modifier save data: " + data);
                             if (data == 420) {
                                 // alert("The modifier doesn't have any ingredients!!!");
@@ -1229,10 +1258,65 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
     }
 }
 
-$(document).on('click', '#newModSection tr', function (e) {
+$(document).on('click', '#newModSection tr td', function (e) {
     if (!$(e.target).is("input[type='checkbox']")) {
         let $checkbox = $(this).find("input[name='modifier_items[]']"),
         loader = $('#posSidebarLoader'),
+        modifierChoosebtn = $('.modifierChoosebtn');
+        $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
+
+        if ($checkbox.is(":checked")) {
+            let myurl = $('#modifierCheckUrl').val(),
+                csrf = $('#csrfhashresarvation').val(),
+                group_id = $checkbox.data('group-id'),
+                addon_id = $checkbox.val(),
+                pid = $checkbox.data('pid');
+            // $(".page-loader-wrapper").show();
+            loader.css({display:'flex'});
+            modifierChoosebtn.prop("disabled", true);
+            modifierChoosebtn.css({cursor: 'not-allowed', opacity: 0.5});
+            $.ajax({
+                type: "POST",
+                url: myurl,
+                data: {
+                    group_id: group_id,
+                    addon_id: addon_id,
+                    pid: pid,
+                    csrf_test_name: csrf
+                },
+                success: function (data) {
+                    // $(".page-loader-wrapper").hide();
+                    loader.hide();
+                    modifierChoosebtn.prop("disabled", false);
+                    modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+                    if (data == '0') {
+                    } else {
+                        if (data != "") {
+                            console.log("Modifiers found: " + data);
+                            $("#mealDealSubModListModal").find('.modal-body').html(data);
+                            $("#mealDealSubModListModal").modal('show');
+                        }
+                    }
+                },
+                error: function () {
+                    $(".page-loader-wrapper").hide();
+                    swal({
+                        title: "Error",
+                        text: "An error occurred while checking modifiers. Please try again.",
+                        type: "error",
+                        confirmButtonText: "OK",
+                        closeOnConfirm: true
+                    });
+                }
+            });
+        }
+    }
+});
+$(document).on('click', '#sideMfContainer table tr', function (e) {
+    console.log("Clicked on sideMfContainer table row");
+    if (!$(e.target).is("input[type='checkbox']")) {
+        let $checkbox = $(this).find("input[name='modifier_items[]']"),
+        loader = $('#posDrawerLoader'),
         modifierChoosebtn = $('.modifierChoosebtn');
         $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
 
@@ -1325,6 +1409,56 @@ $(document).on('click', "#newModSection input[name='modifier_items[]']", functio
                 } else {
                     console.log("Modifiers found: " + data);
                     $("#mealDealSubModListModal").find('.modal-body').html(data);
+                    $("#mealDealSubModListModal").find('#mealDealSubModListModalLabel').html(`Select Side Modifiers`);
+                    $("#mealDealSubModListModal").modal('show');
+                }
+            },
+            error: function () {
+                $(".page-loader-wrapper").hide();
+                // Handle error case
+                swal({
+                    title: "Error",
+                    text: "An error occurred while checking modifiers. Please try again.",
+                    type: "error",
+                    confirmButtonText: "OK",
+                    closeOnConfirm: true
+                });
+            }
+        });
+    }
+});
+$(document).on('click', "#sideMfContainer input[name='modifier_items[]']", function () {
+    var checkbox = $(this), // Save reference for later use
+    loader = $('#posDrawerLoader'),
+    modifierChoosebtn = $('.modifierChoosebtn');
+    //extract pid from the checkbox data attribute
+    var pid = checkbox.data('pid');
+
+    if (checkbox.is(":checked")) {
+        //make an ajax request to find the modifiers assigned to the checked item
+        var myurl = $('#modifierCheckUrl').val(),
+            csrf = $('#csrfhashresarvation').val(),
+            group_id = checkbox.data('group-id'),
+            addon_id = checkbox.val();
+        // $(".page-loader-wrapper").show();
+        loader.css({display:'flex'});
+        modifierChoosebtn.prop("disabled", true);
+        modifierChoosebtn.css({cursor: 'not-allowed', opacity: 0.5});
+        $.ajax({
+            type: "POST",
+            url: myurl,
+            data: { group_id: group_id, addon_id: addon_id, pid: pid, csrf_test_name: csrf },
+            success: function (data) {
+                // $(".page-loader-wrapper").hide();
+                loader.hide();
+                modifierChoosebtn.prop("disabled", false);
+                modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+                if (data == '0') {
+                    // No modifiers found for this item
+                } else {
+                    console.log("Modifiers found: " + data);
+                    $("#mealDealSubModListModal").find('.modal-body').html(data);
+                    $("#mealDealSubModListModal").find('#mealDealSubModListModalLabel').html(`Select Side Modifiers`);
                     $("#mealDealSubModListModal").modal('show');
                 }
             },
@@ -2713,6 +2847,8 @@ function printmergeinvoice(id) {
 
 function showhidecard(element) {
     var cardtype = $(element).val();
+    console.log("cardtype: ", cardtype);
+    
     var data = $(element).closest('div.row').next().find('div.cardarea');
 
     if (cardtype == 4) {
@@ -2723,6 +2859,16 @@ function showhidecard(element) {
         $("#assignlastdigit").val('');
     } else if (cardtype == 1) {
         $("#isonline").val(0);
+        $(element).closest('div.row').next().find('div.cardarea').removeClass("display-none");
+    } else if (cardtype == 101) {
+        $("#isonline").val(0);
+        $("#paidamount_marge").prop('readonly', true);
+        $("#discount_select").prop('readonly', true);
+        $("#paidamount_marge").prop('disabled', true);
+        $("#discountttch").prop('readonly', true);
+        $("#discountttch").prop('disabled', true);
+        $("#discount_select").prop('disabled', true);
+        $("#add_new_payment_type").prop('disabled', true);
         $(element).closest('div.row').next().find('div.cardarea').removeClass("display-none");
     } else {
         $("#isonline").val(1);

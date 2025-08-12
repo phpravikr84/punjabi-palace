@@ -1198,6 +1198,7 @@ class Order extends MX_Controller
 		$this->db->join('menu_add_on', 'modifier_groups.id=menu_add_on.modifier_groupid', 'inner');
 		$this->db->where('menu_add_on.menu_id', $pid);
 		$this->db->where('menu_add_on.is_active', 1);
+		$this->db->order_by('menu_add_on.sortby', 'asc');
 		$query = $this->db->get();
 		$modifiers = $query->result();
 
@@ -1207,6 +1208,7 @@ class Order extends MX_Controller
 		$data['taxinfos'] = $this->taxchecking();
 		$data['module'] = "ordermanage";
 		$data['page']   = "poscartlist";
+		$data['pid']   = $pid;
 		$this->load->view('ordermanage/poscartlist', $data);
 	}
 
@@ -4253,13 +4255,21 @@ class Order extends MX_Controller
 		// $this->db->where('a.is_food_item', 1);
 		$this->db->where('ma.menu_id', $menu_id);
 		$this->db->where('a.is_active', 1);
+		$this->db->order_by('ma.sortby', 'asc');
 		$q2 = $this->db->get();
 		$addons2 = $q2->result();
+
+		//have to structure the data with modifier_set_id to display add_ons grouped by modifier_set_id
+		$add2=[];
+		foreach ($addons2 as $ak => $addon) {
+			$add2[$addon->modifier_set_id][] = $addon;
+		}
+
 
 		// echo $this->db->last_query();
 		// echo "<br />";
 		// echo "<pre>";
-		// print_r($addons2);
+		// print_r($add2);
 		// echo "</pre>";
 		// exit;
 		// return json_encode($addons2);
@@ -4270,20 +4280,33 @@ class Order extends MX_Controller
                     <div class="mt-3">
                         <table class="table table-bordered">
                             <tbody>';
-			foreach ($addons2 as $miv) {
-			$data.= '<tr>
-						<td style="width: 85%;">
-							<label for="promo_sub_modifiers'.$miv->add_on_id.'" class="form-label">'.$miv->add_on_name.'</label>
-						</td>
-						<td style="width: 10%;text-align: end;">
+			foreach ($add2 as $adk=> $adv) {
+				$subTModPrice=0;
+				foreach ($adv as $mim => $miiv) {
+					$subTModPrice+=$miiv->price;
+				}
+				$data.='<tr class="bg-secondary text-white">
+							<td style="width: 100%;" colspan="3">
+								<label class="form-label">'.$adv[0]->name.'</label>
+							</td>
+						</tr>';
+				foreach ($adv as $mm => $miv) {
+				$data.= '<tr>
+							<td style="width: 85%;">
+								<label for="promo_sub_modifiers'.$miv->add_on_id.'" class="form-label">'.$miv->add_on_name.'</label>
+							</td>';
+					if ($subTModPrice>0) {
+						$data.= '<td style="width: 10%;text-align: end;">
 							<label for="promo_sub_modifiers'.$miv->add_on_id.'" class="form-label">'.(($currency->position == 1) ? $currency->curr_icon : '').$miv->price.'</label>
-						</td>
-						<td style="width: 5%;" class="text-center">
-							<div class="form-check">
-								<input class="form-check-input modifier-checkbox" type="checkbox" name="promo_sub_modifiers[]" value="'.$miv->add_on_id.'" id="promo_sub_modifiers_'.$miv->add_on_id.'" data-group-id="'.$miv->modifier_set_id.'" data-pid="'.$pid.'" autocomplete="off">
-							</div>
-						</td>
-					</tr>';
+						</td>';
+					}
+				$data.= '<td style="width: 5%;" class="text-center">
+								<div class="form-check">
+									<input class="form-check-input modifier-checkbox" type="checkbox" name="promo_sub_modifiers[]" value="'.$miv->add_on_id.'" id="promo_sub_modifiers_'.$miv->add_on_id.'" data-group-id="'.$miv->modifier_set_id.'" data-pid="'.$pid.'" autocomplete="off">
+								</div>
+							</td>
+						</tr>';
+				}
 			}
 			$data.= '</tbody>
                         </table>
