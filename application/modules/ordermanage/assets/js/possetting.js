@@ -3328,28 +3328,58 @@ $(function ($) {
 });
 
 /*for split order js*/
+// function showsplitmodal(orderid, option = null) {
+//     var url = basicinfo.baseurl + 'ordermanage/order/showsplitorder/' + orderid;
+//     callback = function (a) {
+//         $("#modal-ajaxview").html(a);
+
+//     };
+//     if (option == null) {
+
+//         getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
+//     } else {
+//         getAjaxModal(url, callback);
+//     }
+//     setTimeout(() => {
+//         var presentvalue = $(".splitOrderTr").find("td:eq(1)").text();
+//         if ($("#CurrSplitFoodQty")) {
+//             $("#CurrSplitFoodQty").remove();
+//         }
+//         var foodqtyhtml = `<input type="hidden" id="CurrSplitFoodQty" value="${presentvalue}" />`;
+//         $("#table-ajaxview").find(".modal-content").find(".modal-body").append(foodqtyhtml);
+//         console.log("presentvalue: " + presentvalue);
+//     }, 2000);
+
+// }
+
 function showsplitmodal(orderid, option = null) {
     var url = basicinfo.baseurl + 'ordermanage/order/showsplitorder/' + orderid;
-    callback = function (a) {
-        $("#modal-ajaxview").html(a);
 
+    // Define the callback function to handle the AJAX response
+    var callback = function (response) {
+        $("#modal-ajaxview").html(response);
+
+        // Ensure DOM is updated before manipulating it
+        var presentvalue = $(".splitOrderTr").find("td:eq(1)").text().trim(); // Trim to remove any unwanted whitespace
+        var $modalBody = $("#table-ajaxview").find(".modal-content").find(".modal-body");
+
+        // Check if CurrSplitFoodQty input exists, update its value or create a new one
+        if ($("#CurrSplitFoodQty").length) {
+            $("#CurrSplitFoodQty").val(presentvalue); // Update existing input
+        } else {
+            var foodqtyhtml = `<input type="hidden" id="CurrSplitFoodQty" value="${presentvalue}" />`;
+            $modalBody.append(foodqtyhtml); // Append new input
+        }
+
+        console.log("presentvalue: " + presentvalue);
     };
-    if (option == null) {
 
+    // Call getAjaxModal based on the option parameter
+    if (option == null) {
         getAjaxModal(url, false, '#table-ajaxview', '#tablemodal');
     } else {
         getAjaxModal(url, callback);
     }
-    setTimeout(() => {
-        var presentvalue = $(".splitOrderTr").find("td:eq(1)").text();
-        if ($("#CurrSplitFoodQty")) {
-            $("#CurrSplitFoodQty").remove();
-        }
-        var foodqtyhtml = `<input type="hidden" id="CurrSplitFoodQty" value="${presentvalue}" />`;
-        $("#table-ajaxview").find(".modal-content").find(".modal-body").append(foodqtyhtml);
-        console.log("presentvalue: " + presentvalue);
-    }, 2000);
-
 }
 
 function showsuborder(element) {
@@ -3891,28 +3921,28 @@ $(document).ready(function () {
 
 
 //Load Expanded Screen
-$(document).ready(function () {
-    function launchFullscreen() {
-    const docEl = document.documentElement;
+// $(document).ready(function () {
+//     function launchFullscreen() {
+//     const docEl = document.documentElement;
 
-    if (docEl.requestFullscreen) {
-      docEl.requestFullscreen();
-    } else if (docEl.webkitRequestFullscreen) {
-      docEl.webkitRequestFullscreen();
-    } else if (docEl.mozRequestFullScreen) {
-      docEl.mozRequestFullScreen();
-    } else if (docEl.msRequestFullscreen) {
-      docEl.msRequestFullscreen();
-    }
+//     if (docEl.requestFullscreen) {
+//       docEl.requestFullscreen();
+//     } else if (docEl.webkitRequestFullscreen) {
+//       docEl.webkitRequestFullscreen();
+//     } else if (docEl.mozRequestFullScreen) {
+//       docEl.mozRequestFullScreen();
+//     } else if (docEl.msRequestFullscreen) {
+//       docEl.msRequestFullscreen();
+//     }
 
-    $('#fullscreen i').addClass('fullscreen-active');
-    document.removeEventListener('click', launchFullscreen);
-  }
+//     $('#fullscreen i').addClass('fullscreen-active');
+//     document.removeEventListener('click', launchFullscreen);
+//   }
 
-  // Wait for first click anywhere on the page
-  document.addEventListener('click', launchFullscreen);
+//   // Wait for first click anywhere on the page
+//   document.addEventListener('click', launchFullscreen);
      
-});
+// });
 
 /**
  * Split by Amount

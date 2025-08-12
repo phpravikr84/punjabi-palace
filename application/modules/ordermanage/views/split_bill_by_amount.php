@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="number-of-split">Select number of people (1-8):</label>
+                    <label for="number-of-split">Select number of people (1-<?php echo $total_people; ?>):</label>
                     <?php
                     $list = array('' => 'Select Number');
                     $num = count($iteminfo);
-                    for ($i = 1; $i <= max($num, 8); $i++) {
+                    for ($i = 1; $i <= max($total_people, 1); $i++) {
                         $list[$i] = $i;
                     }
                     $selected = count($suborder_info) > 0 ? count($suborder_info) : '';

@@ -131,18 +131,27 @@ function orderaccept(ordid, kitid) {
 
             // Show messages
             if (res.allAccepted) {
-                swal("All Accepted", "All items are ready to pick up!", "success");
+                //swal("All Accepted", "All items are ready to pick up!", "success");
                 $("#topsec" + ordid + kitid).removeClass("pending");
                 $("#isprepare" + ordid + kitid).removeClass("display-none").addClass("display-block");
                 $("#isongoing" + ordid + kitid).removeClass("display-block").addClass("display-none");
-                window.top.location.href = baseurl + "ordermanage/order/allkitchen";
+				swal({
+						title: "All Accepted",
+						text: "All items are ready to pick up!",
+						type: "success",
+						confirmButtonText: "OK"
+					}, function(isConfirm) {
+						if (isConfirm) {
+							window.location.href = baseurl + "ordermanage/order/allkitchen";
+						}
+					});
             } else {
                 swal(
                     res.acceptedCount + (res.acceptedCount === 1 ? " item" : " items") + " Ready",
                     "Ready to pick up",
                     "info"
                 );
-				 window.top.location.href = baseurl + "ordermanage/order/allkitchen";
+
             }
         }
     });

@@ -16,17 +16,10 @@
 								?>
                             
                 	<div class="text-center boxpad draggable" id="<?php echo $table->tableid;?>" <?php echo $style;?> data-itemid='<?php echo $table->tableid;?>'>
-                        <input name="sortid[]" type="hidden" value="<?php echo $table->tableid;?>" />
-                        
-                        <!-- Table ID fixed on top -->
-                        <span class="tableid"><?php echo $table->tableid;?></span>
-                        
-                        <!-- Rotatable wrapper (only image rotates) -->
-                        <div class="rotatable-content">
-                            <img src="<?php echo base_url(!empty($table->table_icon)?$table->table_icon:'assets/img/icons/table/default.jpg'); ?>" class="img-thumbnail"/>
-                        </div>
+                    <input name="sortid[]" type="hidden" value="<?php echo $table->tableid;?>" />
+                    <div>
+                    <img src="<?php echo base_url(!empty($table->table_icon)?$table->table_icon:'assets/img/icons/table/default.jpg'); ?>" class="img-thumbnail"/></div>
                     </div>
-
                     <?php } }?>
                     
                </div>
@@ -36,38 +29,18 @@
     </div>
 </div>
 <style>
-    .tableid {
-        display: block;
-        position: absolute;
-        top: 40px;
-        left: 50%;
-        /* transform: translateX(-50%); */
-        transform: rotate(0deg);
-        transform-origin: center;
-        font-weight: bold;
-        background: rgba(255, 255, 255, 0.8);
-        padding: 2px 4px;
-        border-radius: 4px;
-        z-index: 10;
-    }
-
-    .rotatable-content {
-        display: inline-block;
-        position: relative;
-    }
-
     .ui-rotatable-handle {
-        width: 20px;
-        height: 20px;
-        background: #ffcc00;
-        border: 2px solid #333;
-        border-radius: 50%;
-        position: absolute;
-        right: -10px;
-        top: -10px;
-        cursor: grab;
-        z-index: 9999;
-    }
+    width: 20px;
+    height: 20px;
+    background: #ffcc00;
+    border: 2px solid #333;
+    border-radius: 50%;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    cursor: grab;
+    z-index: 9999;
+}
 
 </style>
 

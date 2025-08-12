@@ -526,24 +526,41 @@ class Order extends MX_Controller
         $takeaway_sales = $this->db->get()->row()->takeaway_sales ?? 0;
 
         // Sales by Card (payment_type_id != 4)
-        $this->db->select('SUM(multipay_bill.amount) as card_sales');
-        $this->db->from('multipay_bill');
-        $this->db->join('customer_order', 'multipay_bill.order_id = customer_order.order_id', 'left');
-        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
-        $this->db->where('customer_order.order_date', $cdate);
-        $this->db->where('bill.bill_status', 1);
-        $this->db->where('multipay_bill.payment_type_id !=', 4);
-        $card_sales = $this->db->get()->row()->card_sales ?? 0;
+
+		// Subquery to get distinct order_id and sum of multipay_bill.amount for payment_type_id 1, 2, or 3
+		$this->db->select('multipay_bill.order_id, SUM(multipay_bill.amount) as card_amount');
+		$this->db->from('customer_order');
+		$this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+		$this->db->join('multipay_bill', 'multipay_bill.order_id = customer_order.order_id', 'left');
+		$this->db->where('customer_order.order_date', $cdate);
+		$this->db->where('bill.bill_status', 1);
+		$this->db->where_in('multipay_bill.payment_type_id', [1, 2, 3]);
+		$this->db->group_by('multipay_bill.order_id'); // Ensure one row per order_id
+		$subquery = $this->db->get_compiled_select();
+
+		// Main query to sum card_amount from the subquery
+		$this->db->select('SUM(sub.card_amount) as card_sales');
+		$this->db->from("($subquery) as sub");
+		$query = $this->db->get();
+    	$card_sales = $query->row()->card_sales ?? 0;
 
         // Sales by Cash (payment_type_id = 4)
-        $this->db->select('SUM(multipay_bill.amount) as cash_sales');
-        $this->db->from('multipay_bill');
-        $this->db->join('customer_order', 'multipay_bill.order_id = customer_order.order_id', 'left');
-        $this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
-        $this->db->where('customer_order.order_date', $cdate);
-        $this->db->where('bill.bill_status', 1);
-        $this->db->where('multipay_bill.payment_type_id', 4);
-        $cash_sales = $this->db->get()->row()->cash_sales ?? 0;
+		// Subquery to get distinct order_id and totalamount for payment_type_id = 4
+		$this->db->select('customer_order.order_id, customer_order.totalamount');
+		$this->db->from('customer_order');
+		$this->db->join('bill', 'customer_order.order_id = bill.order_id', 'left');
+		$this->db->join('multipay_bill', 'multipay_bill.order_id = customer_order.order_id', 'left');
+		$this->db->where('customer_order.order_date', $cdate);
+		$this->db->where('bill.bill_status', 1);
+		$this->db->where('multipay_bill.payment_type_id', 4);
+		$this->db->group_by('customer_order.order_id'); // Ensure one row per order_id
+		$subquery = $this->db->get_compiled_select(); // Get the compiled subquery
+
+		// Main query to sum totalamount from the subquery
+		$this->db->select('SUM(sub.totalamount) as cash_sales');
+		$this->db->from("($subquery) as sub");
+		$query = $this->db->get();
+        $cash_sales = $query->row()->cash_sales ?? 0;
 
         // Prepare data for the view
         $data = [
@@ -8130,8 +8147,11 @@ class Order extends MX_Controller
         $data['taxinfos'] = $this->taxchecking();
         $data['bill_info'] = $this->order_model->read('*', 'bill', $array_id);
         $data['iteminfo'] = $this->order_model->customerorder($orderid);
-        $data['customerlist'] = $this->order_model->customer_dropdown();
+        $data['customerlist'] = $this->order_model->customer_dropdown_new();
         $data['suborder_info'] = $this->order_model->read_all('*', 'sub_order', $array_id);
+
+		// Fetch total_people from table_details
+    	$data['total_people'] = $this->order_model->get_total_people($orderid);
         $data['module'] = "ordermanage";
         $this->load->view('ordermanage/split_bill_by_amount', $data);
     }
@@ -8208,7 +8228,7 @@ class Order extends MX_Controller
         $data['suborder_info'] = $this->order_model->read_all('*', 'sub_order', $array_bill);
         $data['num'] = $num;
         $data['orderid'] = $orderid;
-        $data['customerlist'] = $this->order_model->customer_dropdown();
+        $data['customerlist'] = $this->order_model->customer_dropdown_new();
         $this->load->view('ordermanage/show_split_amounts', $data);
     }
 
