@@ -1,6 +1,5 @@
 <div class="row">
     <?php
-     $split_counter = 1; // Initialize split counter
     foreach ($suborder_info as $suborder) { 
         $customer = $suborder->customer_id ? $this->order_model->read('*', 'customer_info', array('customer_id' => $suborder->customer_id)) : null;
         ?>
@@ -10,10 +9,8 @@
                     <table class="table table-modal table-title">
                         <tbody>
                             <tr>
-                                <!-- <td><?php //echo display('split'); ?></td> -->
-                                <!-- <td><?php //echo $suborder->sub_id; ?></td> -->
-                                 <td><strong><?php echo 'Split Table'; ?></strong>:</td>
-                                 <td><strong><?php echo $tableno . '/' . $split_counter; ?></strong></td>
+                                <td><?php echo display('split'); ?></td>
+                                <td><?php echo $suborder->sub_id; ?></td>
                             </tr>
                             <?php if ($suborder->status == 1 && $customer) { ?>
                                 <tr>
@@ -66,5 +63,5 @@
                 <?php } ?>
             </div>
         </div>
-    <?php $split_counter++; } ?>
+    <?php } ?>
 </div>

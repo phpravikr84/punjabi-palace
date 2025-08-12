@@ -3032,5 +3032,22 @@ class Order_model extends CI_Model
 			return false;
 		}
 	}
+	//Get Table No from 
+	public function get_order_tableno($order_id)
+	{
+		$this->db->select('table_id');
+		$this->db->from('table_details');
+		$this->db->where('order_id', $order_id);
+		$this->db->where('delete_at', 0); // Ensure only non-deleted records are considered
+		$this->db->order_by('created_at', 'DESC'); // Get the latest record
+		$this->db->order_by('time_enter', 'DESC'); // Secondary sort by time_enter
+		$this->db->limit(1); // Limit to one record
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->row()->table_id;
+		}
+		return 0; // Return 0 if no record is found
+	}
 
 }

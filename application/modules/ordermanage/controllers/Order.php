@@ -8229,6 +8229,7 @@ class Order extends MX_Controller
         $data['num'] = $num;
         $data['orderid'] = $orderid;
         $data['customerlist'] = $this->order_model->customer_dropdown_new();
+		$data['tableno'] = $this->order_model->get_order_tableno($orderid);
         $this->load->view('ordermanage/show_split_amounts', $data);
     }
 
