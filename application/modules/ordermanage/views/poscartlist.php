@@ -378,3 +378,4 @@ $multiplletaxvalue = htmlentities(serialize($multiplletax));
 <input name="sc" type="hidden" value="<?php echo $servicecharge; ?>" id="sc" />
 <input name="tdiscount" type="hidden" value="<?php echo $pdiscount; ?>" placeholder="0.00" id="tdiscount" />
 <input name="tgtotal" type="hidden" value="<?php echo $calvat + $servicetotal + $itemtotal - $pdiscount; ?>" id="tgtotal" />
+<input name="hasModifiers" type="hidden" value="<?php echo ((count($modifiers)>0)? '1' :'0'); ?>" id="hasModifiers_<?=$pid;?>" />

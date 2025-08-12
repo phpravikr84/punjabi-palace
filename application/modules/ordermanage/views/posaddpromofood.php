@@ -87,6 +87,19 @@ $selectedMods = $q2->result();
       <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
       <?php
         foreach ($modifiers as $mk => $mv):
+            //Fetching modifier item information from the database
+            $this->db->select('add_on_id,add_on_name,price,is_comp');
+            $this->db->from('add_ons');
+            $this->db->where('modifier_set_id', $mv->id);
+            $this->db->where('is_active', 1);
+            $miq = $this->db->get();
+            $modifier_items = $miq->result();
+            if(count($modifier_items)>0):
+            $modifierPrice = 0;
+            foreach ($modifier_items as $mik => $miv):
+                $modifierPrice += $miv->price;
+            endforeach;
+            endif
       ?>
       <div class="panel panel-default" id="modifiersPanel_<?=$mv->id;?>">
           <div class="panel-heading" role="tab" id="headingModifiers_<?=$mv->id;?>">
@@ -111,13 +124,6 @@ $selectedMods = $q2->result();
                           </thead> -->
                           <tbody>
                               <?php 
-                              //Fetching modifier item information from the database
-                              $this->db->select('add_on_id,add_on_name,price,is_comp');
-                              $this->db->from('add_ons');
-                              $this->db->where('modifier_set_id', $mv->id);
-                              $this->db->where('is_active', 1);
-                              $miq = $this->db->get();
-                              $modifier_items = $miq->result();
                               if(count($modifier_items)>0):
                                 foreach ($modifier_items as $mik => $miv):
                                     $checked = "";
@@ -135,9 +141,11 @@ $selectedMods = $q2->result();
                                   <td style="width: 85%;">
                                       <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->add_on_name;?></label>
                                   </td>
+                                  <?php if($modifierPrice>0): ?>
                                   <td style="width: 10%;text-align: end;">
-                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->price;?></label>
+                                      <label for="modifiers_<?=$miv->add_on_id;?>" class="form-label"><?=(($currency->position == 1) ? $currency->curr_icon : '').$miv->price;?></label>
                                   </td>
+                                <?php endif; ?>
                                   <td style="width: 5%;" class="text-center">
                                       <div class="form-check">
                                           <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="modifier_items[]" value="<?=$miv->add_on_id;?>" id="modifier_item_<?=$miv->add_on_id;?>" data-group-id="<?=$mv->modifier_groupid;?>" data-pid="<?=$pid;?>" autocomplete="off">

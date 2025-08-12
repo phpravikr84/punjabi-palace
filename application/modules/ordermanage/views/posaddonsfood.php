@@ -228,7 +228,7 @@ if ($recipe_feature_flag == 1) {
       </div> -->
         <div class="row">
             <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
-                <button class="btn btn-danger" onclick="cancelModSelectionArea();">Cancel</button>
+                <button class="btn btn-danger modifierCancelbtn" onclick="cancelModSelectionArea();">Cancel</button>
                 <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>);">Apply</button>
             </div>
         </div>

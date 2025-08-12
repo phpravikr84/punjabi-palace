@@ -228,6 +228,10 @@ if (count($modifiers) > 0):
         $modifier_items = $miq->result();
         if(count($modifier_items)>0):
         $modGroupQty++;
+        $modPrice = 0;
+        foreach ($modifier_items as $miik => $miiv):
+            $modPrice += $miiv->price;
+        endforeach;
     ?>
         <div class="panel panel-default" id="modifiersPanel_<?=$mv->id;?>">
             <div class="panel-heading" role="tab" id="headingModifiers_<?=$mv->id;?>">
@@ -277,9 +281,11 @@ if (count($modifiers) > 0):
                                             <td style="width: 85%;">
                                                 <label for="modifier_item_<?=$miv->add_on_id;?>" class="form-label"><?=$miv->add_on_name;?></label>
                                             </td>
+                                            <?php if($modPrice>0): ?>
                                             <td style="width: 10%;text-align: end;">
                                                 <label for="modifier_item_<?=$miv->add_on_id;?>" class="form-label"><?=(($currency->position == 1) ? $currency->curr_icon : '').$miv->price;?></label>
                                             </td>
+                                            <?php endif; ?>
                                             <td style="width: 5%;" class="text-center">
                                                 <div class="form-check">
                                                     <input class="form-check-input modifier-checkbox" type="checkbox" <?=$checked;?> name="modifier_items[]" value="<?=$miv->add_on_id;?>" id="modifier_item_<?=$miv->add_on_id;?>" data-group-id="<?=$mv->modifier_groupid;?>" data-pid="<?=$pid;?>" autocomplete="off">
@@ -305,7 +311,7 @@ if (count($modifiers) > 0):
     ?>
     <div class="row">
         <div class="col-md-12 text-end" style="text-align: end;padding-top: 30px;" id="modifierChoosebtnDiv">
-            <button class="btn btn-danger" onclick="cancelModSelectionArea();">Cancel</button>
+            <button class="btn btn-danger modifierCancelbtn" onclick="cancelModSelectionArea();">Cancel</button>
             <button class="btn btn-success modifierChoosebtn" onclick="ApplyModifierSelect(<?=$pid;?>,'<?=$tr_row_id;?>',1);">Apply</button>
         </div>
     </div>

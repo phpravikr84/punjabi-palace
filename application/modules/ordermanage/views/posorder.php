@@ -510,6 +510,7 @@ foreach ($scan as $file) {
           Choose Modifiers
         </div>
         <small class="modifier-sec-sub-heading" id="modSubHeading">Choose the add-on items want to serve with the main food item</small>
+        <div class="customloader" id="posDrawerLoader"></div>
         <div class="card-body" id="sideMfContainer">
         </div>
       </div>

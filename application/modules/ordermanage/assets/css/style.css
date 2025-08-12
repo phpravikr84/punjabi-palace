@@ -778,11 +778,23 @@ a.disabled {
   top: 2%;
 }
 
-#posSidebarLoader
+#posSidebarLoader,
+#posDrawerLoader
 {
     display: none;
 }
 
+#mealDealSubModListModal .modal-body table tr,
+#mealDealSubModListModal .modal-body table tr td,
+#sideMfContainer table tr,
+#newModSection tr td
+{
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.bg-secondary {
+    background-color: #6c757d; /* Example secondary color */
+}
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

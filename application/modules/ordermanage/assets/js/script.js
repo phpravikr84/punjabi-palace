@@ -224,7 +224,7 @@ function removecart(rid) {
     url: geturl,
     data: dataString,
     success: function (data) {
-      selectedDealSubMods = [];
+      cancelModSelectionArea();
       $("#addfoodlist").html(data);
       var total = $("#grtotal").val();
       var totalitem = $("#totalitem").val();
@@ -245,6 +245,9 @@ function removecart(rid) {
       }
       $("#grandtotal").val(tgtotal);
       $("#orggrandTotal").val(tgtotal);
+      setTimeout(() => {
+        selectedDealSubMods = [];
+      }, 6000);
     },
   });
 }
