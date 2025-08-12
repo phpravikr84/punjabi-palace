@@ -3000,4 +3000,37 @@ class Order_model extends CI_Model
 		}
 	}
 
+	public function get_total_people($order_id)
+	{
+		$this->db->select('total_people');
+		$this->db->from('table_details');
+		$this->db->where('order_id', $order_id);
+		$this->db->where('delete_at', 0); // Ensure only non-deleted records are considered
+		$this->db->order_by('created_at', 'DESC'); // Get the latest record
+		$this->db->order_by('time_enter', 'DESC'); // Secondary sort by time_enter
+		$this->db->limit(1); // Limit to one record
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->row()->total_people;
+		}
+		return 0; // Return 0 if no record is found
+	}
+
+	public function customer_dropdown_new()
+	{
+		$data = $this->db->select("*")
+			->from('customer_info')
+			->get()
+			->result();
+
+		if (!empty($data)) {
+			foreach ($data as $value)
+				$list[$value->customer_id] = ($value->customer_phone != "") ? $value->customer_name.'('.$value->customer_phone.')' : $value->customer_name;
+			return $list;
+		} else {
+			return false;
+		}
+	}
+
 }

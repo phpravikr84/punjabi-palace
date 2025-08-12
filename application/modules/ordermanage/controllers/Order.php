@@ -8107,8 +8107,11 @@ class Order extends MX_Controller
         $data['taxinfos'] = $this->taxchecking();
         $data['bill_info'] = $this->order_model->read('*', 'bill', $array_id);
         $data['iteminfo'] = $this->order_model->customerorder($orderid);
-        $data['customerlist'] = $this->order_model->customer_dropdown();
+        $data['customerlist'] = $this->order_model->customer_dropdown_new();
         $data['suborder_info'] = $this->order_model->read_all('*', 'sub_order', $array_id);
+
+		// Fetch total_people from table_details
+    	$data['total_people'] = $this->order_model->get_total_people($orderid);
         $data['module'] = "ordermanage";
         $this->load->view('ordermanage/split_bill_by_amount', $data);
     }
@@ -8185,7 +8188,7 @@ class Order extends MX_Controller
         $data['suborder_info'] = $this->order_model->read_all('*', 'sub_order', $array_bill);
         $data['num'] = $num;
         $data['orderid'] = $orderid;
-        $data['customerlist'] = $this->order_model->customer_dropdown();
+        $data['customerlist'] = $this->order_model->customer_dropdown_new();
         $this->load->view('ordermanage/show_split_amounts', $data);
     }
 
