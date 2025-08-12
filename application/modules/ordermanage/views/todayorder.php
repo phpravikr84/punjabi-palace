@@ -49,7 +49,24 @@
             <div class="card-body bg-warning text-dark rounded" style="padding:10px 0;">
                 <i class="fa fa-money fa-2x"></i>
                 <h5 class="mt-3">Sales by Cash</h5>
-                <h2 class="fw-bold mb-0"><?php echo isset($cash_sales) ? $cash_sales : '0.00'; ?></h2>
+                <h2 class="fw-bold mb-0">
+                    <?php
+                        if (isset($cash_sales) && isset($card_sales)) {
+                            $difference = $cash_sales - $card_sales;
+
+                            if ($difference > 0) {
+                                echo number_format($difference, 2);
+                            } elseif ($difference < 0) {
+                                echo number_format($difference, 2);
+                            } else {
+                                echo "0.00";
+                            }
+                        } else {
+                            echo "0.00";
+                        }
+                        ?>
+
+                </h2>
             </div>
         </div>
     </div>
