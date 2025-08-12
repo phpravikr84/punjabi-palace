@@ -145,16 +145,13 @@ function orderaccept(ordid, kitid) {
 							window.location.href = baseurl + "ordermanage/order/allkitchen";
 						}
 					});
-
-
-                //window.top.location.href = baseurl + "ordermanage/order/allkitchen";
             } else {
                 swal(
                     res.acceptedCount + (res.acceptedCount === 1 ? " item" : " items") + " Ready",
                     "Ready to pick up",
                     "info"
                 );
-				 //window.top.location.href = baseurl + "ordermanage/order/allkitchen";
+
             }
         }
     });
