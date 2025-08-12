@@ -3775,28 +3775,28 @@ $(document).ready(function () {
 
 
 //Load Expanded Screen
-$(document).ready(function () {
-    function launchFullscreen() {
-    const docEl = document.documentElement;
+// $(document).ready(function () {
+//     function launchFullscreen() {
+//     const docEl = document.documentElement;
 
-    if (docEl.requestFullscreen) {
-      docEl.requestFullscreen();
-    } else if (docEl.webkitRequestFullscreen) {
-      docEl.webkitRequestFullscreen();
-    } else if (docEl.mozRequestFullScreen) {
-      docEl.mozRequestFullScreen();
-    } else if (docEl.msRequestFullscreen) {
-      docEl.msRequestFullscreen();
-    }
+//     if (docEl.requestFullscreen) {
+//       docEl.requestFullscreen();
+//     } else if (docEl.webkitRequestFullscreen) {
+//       docEl.webkitRequestFullscreen();
+//     } else if (docEl.mozRequestFullScreen) {
+//       docEl.mozRequestFullScreen();
+//     } else if (docEl.msRequestFullscreen) {
+//       docEl.msRequestFullscreen();
+//     }
 
-    $('#fullscreen i').addClass('fullscreen-active');
-    document.removeEventListener('click', launchFullscreen);
-  }
+//     $('#fullscreen i').addClass('fullscreen-active');
+//     document.removeEventListener('click', launchFullscreen);
+//   }
 
-  // Wait for first click anywhere on the page
-  document.addEventListener('click', launchFullscreen);
+//   // Wait for first click anywhere on the page
+//   document.addEventListener('click', launchFullscreen);
      
-});
+// });
 
 /**
  * Split by Amount
