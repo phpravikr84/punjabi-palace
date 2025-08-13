@@ -51,20 +51,18 @@
                 <h5 class="mt-3">Sales by Cash</h5>
                 <h2 class="fw-bold mb-0">
                     <?php
-                        if (isset($cash_sales) && isset($card_sales)) {
-                            $difference = $cash_sales - $card_sales;
+                        // Remove commas and cast to float
+                        $cash = (float) str_replace([',', ' '], '', (string)$cash_sales);
+                        $card = (float) str_replace([',', ' '], '', (string)$card_sales);
 
-                            if ($difference > 0) {
-                                echo number_format($difference, 2);
-                            } elseif ($difference < 0) {
-                                echo number_format($difference, 2);
-                            } else {
-                                echo "0.00";
-                            }
+                        if ($cash > 0 && $card > 0 && $cash != $card) {
+                            $difference = abs($cash - $card); // Always positive difference
+                            echo number_format($difference, 2, '.', ''); // Example: 865.24
                         } else {
-                            echo "0.00";
+                            echo '0.00';
                         }
-                        ?>
+                    ?>
+
 
                 </h2>
             </div>

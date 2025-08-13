@@ -2920,7 +2920,7 @@ class Order extends MX_Controller
 			$row[] = $rowdata->order_date;
 			$row[] = $rowdata->totalamount;
 			//$row[] = $update . $print . $posprint . $details . $split . $kot;
-			$row[] = $posprint;
+			$row[] = $split . $posprint;
 			$data[] = $row;
 		}
 		$output = array(
@@ -8227,6 +8227,7 @@ class Order extends MX_Controller
         $data['num'] = $num;
         $data['orderid'] = $orderid;
         $data['customerlist'] = $this->order_model->customer_dropdown_new();
+		$data['tableno'] = $this->order_model->get_order_tableno($orderid);
         $this->load->view('ordermanage/show_split_amounts', $data);
     }
 
@@ -8552,5 +8553,128 @@ class Order extends MX_Controller
 			return;
 		}
 	}
+
+	public function getsplitorder($order_id)
+    {
+        $this->db->select('so.*, c.firstname, c.lastname, co.tableid, t.tablename');
+        $this->db->from('sub_order so');
+        $this->db->join('customer_order co', 'so.order_id = co.order_id', 'left');
+        $this->db->join('customerinfo c', 'so.customer_id = c.customerid', 'left');
+        $this->db->join('table_details t', 'co.tableid = t.tableid', 'left');
+        $this->db->where('so.order_id', $order_id);
+        $query = $this->db->get();
+        $result = $query->result();
+
+        $data = array();
+        $split_index = 0;
+        foreach ($result as $split) {
+            $split_index++;
+            $row = array();
+            $row['sub_id'] = $split->sub_id; // Keep sub_id for print functionality
+            $row['invoice_no'] = $split->tableid ? $split->tableid . '/' . $split_index : 'N/A/' . $split_index;
+            $row['table_name'] = $split->tablename ? $split->tablename : 'N/A';
+            $row['customer_name'] = $split->customer_id ? $split->firstname . ' ' . $split->lastname : 'N/A';
+            $row['vat'] = $split->vat ? number_format($split->vat, 2) : '0.00';
+            $row['discount'] = number_format($split->discount, 2);
+            $row['s_charge'] = $split->s_charge ? number_format($split->s_charge, 2) : '0.00';
+            $row['total_price'] = $split->total_price ? number_format($split->total_price, 2) : '0.00';
+            $row['status'] = $split->status ? 'Paid' : 'Unpaid';
+            $row['split_type'] = $split->split_type ? 'By Amount' : 'By Item';
+
+            // Fetch order items
+            $items = array();
+            if ($split->order_menu_id) {
+                $menu_ids = unserialize($split->order_menu_id);
+                if (is_array($menu_ids)) {
+                    foreach ($menu_ids as $menu_id => $qty) {
+                        $this->db->select('menu_name, price');
+                        $this->db->from('item_foods');
+                        $this->db->where('ProductsID', $menu_id);
+                        $item = $this->db->get()->row();
+                        if ($item) {
+                            $items[] = [
+                                'name' => $item->menu_name,
+                                'qty' => $qty,
+                                'price' => number_format($item->price * $qty, 2)
+                            ];
+                        }
+                    }
+                }
+            }
+            $row['items'] = $items;
+
+            $data[] = $row;
+        }
+
+        echo json_encode($data);
+    }
+
+    public function printsplitinvoice($sub_id)
+    {
+        $this->db->select('so.*, c.firstname, c.lastname, co.saleinvoice, co.order_date, co.tableid, t.tablename');
+        $this->db->from('sub_order so');
+        $this->db->join('customer_order co', 'so.order_id = co.order_id', 'left');
+        $this->db->join('customerinfo c', 'so.customer_id = c.customerid', 'left');
+        $this->db->join('table_details t', 'co.tableid = t.tableid', 'left');
+        $this->db->where('so.sub_id', $sub_id);
+        $split = $this->db->get()->row();
+
+        if (!$split) {
+            show_404();
+        }
+
+        // Determine split index
+        $this->db->select('sub_id');
+        $this->db->from('sub_order');
+        $this->db->where('order_id', $split->order_id);
+        $this->db->order_by('sub_id', 'ASC');
+        $sub_orders = $this->db->get()->result_array();
+        $split_index = 0;
+        foreach ($sub_orders as $index => $sub) {
+            if ($sub['sub_id'] == $sub_id) {
+                $split_index = $index + 1;
+                break;
+            }
+        }
+
+        $items = array();
+        if ($split->order_menu_id) {
+            $menu_ids = unserialize($split->order_menu_id);
+            if (is_array($menu_ids)) {
+                foreach ($menu_ids as $menu_id => $qty) {
+                    $this->db->select('menu_name, price');
+                    $this->db->from('item_foods');
+                    $this->db->where('ProductsID', $menu_id);
+                    $item = $this->db->get()->row();
+                    if ($item) {
+                        $items[] = [
+                            'name' => $item->menu_name,
+                            'qty' => $qty,
+                            'price' => $item->price * $qty
+                        ];
+                    }
+                }
+            }
+        }
+
+        $data = [
+            'sub_id' => $split->sub_id,
+            'order_id' => $split->order_id,
+            'saleinvoice' => $split->saleinvoice,
+            'invoice_no' => $split->tableid ? $split->tableid . '/' . $split_index : 'N/A/' . $split_index,
+            'table_name' => $split->tablename ? $split->tablename : 'N/A',
+            'customer_name' => $split->customer_id ? $split->firstname . ' ' . $split->lastname : 'N/A',
+            'order_date' => $split->order_date,
+            'vat' => $split->vat ? number_format($split->vat, 2) : '0.00',
+            'discount' => number_format($split->discount, 2),
+            's_charge' => $split->s_charge ? number_format($split->s_charge, 2) : '0.00',
+            'total_price' => $split->total_price ? number_format($split->total_price, 2) : '0.00',
+            'status' => $split->status ? 'Paid' : 'Unpaid',
+            'split_type' => $split->split_type ? 'By Amount' : 'By Item',
+            'items' => $items
+        ];
+
+        $this->load->view('split_invoice_print', $data);
+    }
 		
 }

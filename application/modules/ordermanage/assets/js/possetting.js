@@ -2239,6 +2239,13 @@ function placeorder() {
         }
     } else {
         var waiter = $("#waiter").val();
+        var waiter_session = $("#waiter_session").val();
+        console.log("Waiter ID: " + waiter);
+        console.log("Waiter Session: " + waiter_session);
+        // If waiter_session has a value, assign it to waiter
+        if (waiter_session !== '' && waiter_session !== null) {
+            waiter = waiter_session;
+        }
         var tableid = $("#tableid").val();
         var table_member_multi = $('#table_member_multi').val();
         var table_member_multi_person = $('#table_member_multi_person').val();
@@ -2246,13 +2253,14 @@ function placeorder() {
         if (possetting.waiter == 1) {
             if (waiter == '') {
                 errormessage = errormessage + '<span>Please Select Waiter.</span>';
-                $("#waiter").select2('open');
+                //$("#waiter").select2('open');
+                toastr.warning("Please Select Waiter", 'Warning');
                 return false;
             }
         }
         if (possetting.tableid == 1) {
             if (tableid == '') {
-                $("#tableid").select2('open');
+                //$("#tableid").select2('open');
                 toastr.warning("Please Select Table", 'Warning');
                 return false;
             }
@@ -3934,7 +3942,67 @@ $('.lang_box').on('click', function (event) {
 });
 
 
-$(window).on('load', function () {
+/**
+ * On load old function 
+ */
+// $(window).on('load', function () {
+//     // Function to get query parameters
+//     function getQueryParam(param) {
+//         const urlParams = new URLSearchParams(window.location.search);
+//         return urlParams.get(param);
+//     }
+
+//     // Get query parameters
+//     const tid = getQueryParam('tid');
+//     const tmmulti = getQueryParam('tmmulti');
+//     const tmmultipr = getQueryParam('tmmultipr');
+//     const ps = getQueryParam('ps');
+//     const custid = getQueryParam('cid');
+//     const waiterid = getQueryParam('waiter');
+
+//     //Get Waiter Session
+//     const waiterSession = $('#waiter_session').val();
+
+
+//     // Set Select2 Table Id values
+//     // Destroy Select2 first (to avoid conflicts)
+//     if ($.fn.select2 && $('#tableid').data('select2')) {
+//         $('#tableid').select2('destroy');
+//     }
+
+//     // Reinitialize Select2
+//     $("#tableid").select2();
+
+//     setTimeout(function () {
+//         $('#tableid').val(tid).trigger('change.select2'); // Set value after a slight delay
+//         $('#tableid_sha').val(tid);
+//         //console.log("Table ID Updated to:", tid);
+//     }, 500);
+
+
+//     // Set values if available
+//     //if (tid !== null) $('#tableid').val(tid).trigger('change');
+//     if (tmmulti !== null) $('#table_member_multi').val(tmmulti);
+//     if (tmmultipr !== null) $('#table_member_multi_person').val(tmmultipr);
+//     if (ps !== null || ps !== 'undefined' || ps !== '') {
+//         $('#table_person').attr('value', ps); // Set button value
+//         $('#table_person').val(ps);
+//         $('#table_member').val(parseInt(ps));
+//     }
+//     if (custid !== null || custid !== 'undefined' || custid != '') {
+//         $("#customer_name").select2().val(custid).trigger('change');
+//     }
+//     if (waiterid !== null || waiterid !== 'undefined' || waiterid != '') {
+//         if (waiterSession != '' && waiterSession != null && waiterSession != undefined) {
+//             $("#waiter").select2().val(waiterSession).trigger('change');
+//         } else {
+//             $("#waiter").select2().val(waiterid).trigger('change');
+//         }
+//         //$("#waiter").select2().val(waiterid).trigger('change');
+//     }
+// });
+
+function initTableSettings() {
     // Function to get query parameters
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -3949,47 +4017,53 @@ $(window).on('load', function () {
     const custid = getQueryParam('cid');
     const waiterid = getQueryParam('waiter');
 
-    //Get Waiter Session
+    // Get Waiter Session
     const waiterSession = $('#waiter_session').val();
 
-
-    // Set Select2 Table Id values
-    // Destroy Select2 first (to avoid conflicts)
+    // Destroy and reinitialize Select2 for table ID
     if ($.fn.select2 && $('#tableid').data('select2')) {
         $('#tableid').select2('destroy');
     }
-
-    // Reinitialize Select2
     $("#tableid").select2();
 
+    // Delay setting table ID
     setTimeout(function () {
-        $('#tableid').val(tid).trigger('change.select2'); // Set value after a slight delay
-        $('#tableid_sha').val(tid);
-        //console.log("Table ID Updated to:", tid);
+        if (tid) {
+            $('#tableid').val(tid).trigger('change.select2');
+            $('#tableid_sha').val(tid);
+        }
     }, 500);
 
-
     // Set values if available
-    //if (tid !== null) $('#tableid').val(tid).trigger('change');
-    if (tmmulti !== null) $('#table_member_multi').val(tmmulti);
-    if (tmmultipr !== null) $('#table_member_multi_person').val(tmmultipr);
-    if (ps !== null || ps !== 'undefined' || ps !== '') {
-        $('#table_person').attr('value', ps); // Set button value
+    if (tmmulti) $('#table_member_multi').val(tmmulti);
+    if (tmmultipr) $('#table_member_multi_person').val(tmmultipr);
+
+    if (ps) {
         $('#table_person').val(ps);
         $('#table_member').val(parseInt(ps));
     }
-    if (custid !== null || custid !== 'undefined' || custid != '') {
+    if (custid) {
         $("#customer_name").select2().val(custid).trigger('change');
     }
-    if (waiterid !== null || waiterid !== 'undefined' || waiterid != '') {
-        if (waiterSession != '' && waiterSession != null && waiterSession != undefined) {
+    if (waiterid) {
+        if (waiterSession) {
             $("#waiter").select2().val(waiterSession).trigger('change');
         } else {
             $("#waiter").select2().val(waiterid).trigger('change');
         }
-        //$("#waiter").select2().val(waiterid).trigger('change');
     }
+}
+
+// Run on initial page load
+$(window).on('load', function () {
+    initTableSettings();
 });
+
+// Run again after AJAX content update (example)
+$(document).on('ajaxComplete', function () {
+    initTableSettings();
+});
+
 
 // Cron for Waiter
 
