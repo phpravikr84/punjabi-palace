@@ -441,13 +441,14 @@ $('body').on('click', '.select_product', function (e) {
                 var sc = $('#sc').val();
                 $('#service_charge').val(sc);
                 if (basicinfo.isvatinclusive == 1) {
-                    $('#caltotal').text(tgtotal - tax);
+                    $('#caltotal').text((parseFloat(tgtotal - tax) || 0).toFixed(2));
                 } else {
-                    $('#caltotal').text(tgtotal);
+                    $('#caltotal').text((parseFloat(tgtotal) || 0).toFixed(2));
                 }
-                $('#grandtotal').val(tgtotal);
-                $('#orggrandTotal').val(tgtotal);
-                $('#orginattotal').val(tgtotal);
+                // $('#grandtotal').val((tgtotal).toFixed(2));
+                $('#grandtotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+                $('#orggrandTotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+                $('#orginattotal').val((parseFloat(tgtotal) || 0).toFixed(2));
                 if (isNaN($('#caltotal').text())) {
                     $('#caltotal').text(parseFloat(0));
                 }
@@ -507,13 +508,13 @@ $('body').on('click', '.select_product', function (e) {
                 $('#getitemp').val(totalitem);
                 $('#invoice_discount').val(discount);
                 if (basicinfo.isvatinclusive == 1) {
-                    $('#caltotal').text(tgtotal - tax);
+                    $('#caltotal').text((parseFloat(tgtotal-tax) || 0).toFixed(2));
                 } else {
-                    $('#caltotal').text(tgtotal);
+                    $('#caltotal').text((parseFloat(tgtotal) || 0).toFixed(2));
                 }
-                $('#grandtotal').val(tgtotal);
-                $('#orggrandTotal').val(tgtotal);
-                $('#orginattotal').val(tgtotal);
+                $('#grandtotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+                $('#orggrandTotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+                $('#orginattotal').val((parseFloat(tgtotal) || 0).toFixed(2));
                 if (isNaN($('#caltotal').text())) {
                     $('#caltotal').text(parseFloat(0));
                 }
@@ -592,13 +593,13 @@ function selectGroupItem(th) {
             $('#getitemp').val(totalitem);
             $('#invoice_discount').val(discount);
             if (basicinfo.isvatinclusive == 1) {
-                $('#caltotal').text(tgtotal - tax);
+                $('#caltotal').text((parseFloat(tgtotal-tax) || 0).toFixed(2));
             } else {
-                $('#caltotal').text(tgtotal);
+                $('#caltotal').text((parseFloat(tgtotal) || 0).toFixed(2));
             }
-            $('#grandtotal').val(tgtotal);
-            $('#orggrandTotal').val(tgtotal);
-            $('#orginattotal').val(tgtotal);
+            $('#grandtotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+            $('#orggrandTotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+            $('#orginattotal').val((parseFloat(tgtotal) || 0).toFixed(2));
             if (isNaN($('#caltotal').text())) {
                 $('#caltotal').text(parseFloat(0));
             }
@@ -858,7 +859,8 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
             modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
             const response = data; // make sure it's parsed
             let valid = true;
-
+            //construct the selectedDealSubMods with the validation loop
+            var newselectedDealSubMods =[];
             response.forEach((rule) => {
                 mods.forEach((item) => {
                     if (item.deal_mod_pid == rule.menu_id && item.mgid == rule.modifier_groupid) {
@@ -878,11 +880,14 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
                                 type: "warning",
                                 confirmButtonText: "OK"
                             });
+                        } else {
+                            newselectedDealSubMods.push({ add_on_id: item.add_on_id, mgid: item.mgid, deal_mod_pid: item.deal_mod_pid, meal_deal_pid: item.meal_deal_pid });
                         }
                     }
                 });
             });
-
+            console.log("newselectedDealSubMods", newselectedDealSubMods);
+            selectedDealSubMods=newselectedDealSubMods;
             callback(valid);
         },
         error: function () {
@@ -898,245 +903,421 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
 }
 
 
+// function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promoqty = 0) {
+//     console.log("selectedDealSubMods on ApplyModifierSelect: ", JSON.stringify(selectedDealSubMods));
+//     if (pid == 0) {
+//         console.log("No Item Found !");
+//         return false;
+//     }
+//     let selectedValues = [],
+//         loader = $('#posSidebarLoader');
+
+//     $("input[name='modifier_items[]']:checked").each(function () {
+//         let value = $(this).val(),
+//         groupId = $(this).attr("data-group-id");
+//         //check for same groupId, pid and value within selectedValues
+//         let existingItem = selectedValues.find(item => item.mid === value && item.mgid === groupId && item.pid === pid);
+//         if (existingItem) {
+//             // selectedValues.push({ mid: value, mgid: groupId, pid: pid });
+//         } else {
+//             selectedValues.push({ mid: value, mgid: groupId, pid: pid });
+//         }
+//     });
+//     console.log("selectedValues cartmodifiersave: " + selectedValues);
+//     loader.show();
+//     $(".modifierCancelbtn").prop("disabled", true);
+//     $(".modifierCancelbtn").css({ cursor: 'not-allowed', opacity: 0.5 });
+//     $(".modifierChoosebtn").prop("disabled", true);
+//     $(".modifierChoosebtn").css({ cursor: 'not-allowed', opacity: 0.5 });
+//     if (selectedValues.length > 0) {
+//         checkModGroupMaxItemNumber(pid, selectedValues, function (isValid) {
+//             if (isValid) {
+//                 // proceed with logic here
+//                 console.log("Validation passed. Proceed...");
+
+//                 // if((selectedValues.length > 0) && checkModGroupMaxItemNumber(pid,selectedValues)){
+//                 // return false;
+//                 var mods = JSON.stringify(selectedValues);
+//                 console.log("Modifier Selected Values: " + mods);
+//                 //sending to the controller to check validations and save to the database
+//                 if (skipAddToCart == 0) {
+//                     if (promoqty != 0) {
+//                         if (!posaddonsfoodtocart(pid, 1, null, true, promoqty)) {
+//                             // alert("Error adding the free item to the cart!");
+//                             swal({
+//                                 title: "Error adding the free item to the cart!",
+//                                 text: "Please try again.",
+//                                 type: "error",
+//                                 confirmButtonText: "OK",
+//                                 closeOnConfirm: true
+//                             });
+//                             loader.hide();
+//                             $(".modifierCancelbtn").prop("disabled", false);
+//                             $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+//                             $(".modifierChoosebtn").prop("disabled", false);
+//                             $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
+//                             return false;
+//                         }
+//                     } else {
+//                         if (!posaddonsfoodtocart(pid, 1)) {
+//                             // alert("Error adding this item to the cart!");
+//                             swal({
+//                                 title: "Error adding this item to the cart!",
+//                                 text: "Please try again.",
+//                                 type: "error",
+//                                 confirmButtonText: "OK",
+//                                 closeOnConfirm: true
+//                             });
+//                             loader.hide();
+//                             $(".modifierCancelbtn").prop("disabled", false);
+//                             $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+//                             $(".modifierChoosebtn").prop("disabled", false);
+//                             $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
+//                             return false;
+//                         }
+//                     }
+//                 } else {
+//                     console.log("skipAddToCart else part");
+//                     if (promoqty == 0) {
+//                         removecart(tr_row_id);
+//                         if (!posaddonsfoodtocart(pid, 1)) {
+//                             // alert("Error adding this item to the cart!");
+//                             swal({
+//                                 title: "Error adding this item to the cart!",
+//                                 text: "Please try again.",
+//                                 type: "error",
+//                                 confirmButtonText: "OK",
+//                                 closeOnConfirm: true
+//                             });
+//                             loader.hide();
+//                             $(".modifierCancelbtn").prop("disabled", false);
+//                             $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+//                             $(".modifierChoosebtn").prop("disabled", false);
+//                             $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
+//                             return false;
+//                         }
+//                     }
+//                 }
+//                 // $(".page-loader-wrapper").show();
+//                 loader.show();
+//                 $(".modifierCancelbtn").prop("disabled", true);
+//                 $(".modifierCancelbtn").css({ cursor: 'not-allowed', opacity: 0.5 });
+//                 $(".modifierChoosebtn").prop("disabled", true);
+//                 $(".modifierChoosebtn").css({ cursor: 'not-allowed', opacity: 0.5 });
+//                 // the following settimeout function is to wait for the above posaddonsfoodtocart, removecart function to complete its execution
+//                 // before proceeding to save the modifiers. but I want it to be dynamic and not hardcoded to 3000ms
+//                 setTimeout(() => {
+//                     var trrowid = $("#tr_row_id_" + pid).val();
+//                     console.log("cart save row id: " + $("#tr_row_id_" + pid).val());
+//                     var csrf = $('#csrfhashresarvation').val(),
+//                         geturl = $("#cartmodifiersaveurl").val(),
+//                         ctype = $("#ctype").val(),
+//                         myurl = geturl,
+//                         dataString = "pid=" + pid + '&tr_row_id=' + trrowid + '&mods=' + mods + '&selectedDealSubMods=' + JSON.stringify(selectedDealSubMods) + '&ctype=' + ctype + '&csrf_test_name=' + csrf;
+//                     $.ajax({
+//                         type: "POST",
+//                         url: myurl,
+//                         data: dataString,
+//                         success: function (data) {
+//                             $(".page-loader-wrapper").hide();
+//                             loader.hide();
+//                             $(".modifierCancelbtn").prop("disabled", false);
+//                             $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
+//                             $(".modifierChoosebtn").prop("disabled", false);
+//                             $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
+//                             console.log("Modifier save data: " + data);
+//                             if (data == 420) {
+//                                 // alert("The modifier doesn't have any ingredients!!!");
+//                                 swal({
+//                                     title: "The modifier doesn't have any ingredients!!!",
+//                                     text: "Please check the modifier ingredients.",
+//                                     type: "warning",
+//                                     confirmButtonText: "OK",
+//                                     closeOnConfirm: true
+//                                 });
+//                                 return false;
+//                             }
+//                             if (data == 421) {
+//                                 // alert("The modifier doesn't have sufficient ingredients!!!");
+//                                 swal({
+//                                     title: "The modifier doesn't have sufficient ingredients!!!",
+//                                     text: "Please check the modifier stock.",
+//                                     type: "warning",
+//                                     confirmButtonText: "OK",
+//                                     closeOnConfirm: true
+//                                 });
+//                                 return false;
+//                             }
+//                             if (data == 422) {
+//                                 // alert("The modifier doesn't have sufficient stock!!!");
+//                                 swal({
+//                                     title: "The modifier doesn't have sufficient stock!!!",
+//                                     text: "Please check the modifier stock.",
+//                                     type: "warning",
+//                                     confirmButtonText: "OK",
+//                                     closeOnConfirm: true
+//                                 });
+//                                 return false;
+//                             }
+//                             if (data == 423) {
+//                                 // alert("The modifier can't be added!!!");
+//                                 swal({
+//                                     title: "The modifier can't be added!!!",
+//                                     text: "Please check the modifier settings.",
+//                                     type: "warning",
+//                                     confirmButtonText: "OK",
+//                                     closeOnConfirm: true
+//                                 });
+//                                 return false;
+//                             }
+//                             if ($("#selectedModsDetails_" + pid)) {
+//                                 $("#selectedModsDetails_" + pid).remove();
+//                                 $('#grtotal_' + pid).remove();
+//                                 $('#totalitem_' + pid).remove();
+//                                 $('#tvat_' + pid).remove();
+//                                 $('#tdiscount_' + pid).remove();
+//                                 $('#tgtotal_' + pid).remove();
+//                                 $('#sc_' + pid).remove();
+//                                 $('#promo_item_id_' + pid).remove();
+//                                 $('#promo_item_qty_' + pid).remove();
+//                             }
+//                             $("#addfoodlist").append(data);
+//                             closeNav();
+//                             $("#newModSection").html(newModifierDefaultContent);
+//                             var promo_item_id = promo_item_qty = 0;
+//                             if ($("#promo_item_id_" + pid).length > 0) {
+//                                 // Get the promo item id and quantity if they exist
+//                                 promo_item_id = $('#promo_item_id_' + pid).val();
+//                                 promo_item_qty = $('#promo_item_qty_' + pid).val();
+//                             }
+
+//                             var modTotalPrice = $('#modTotalPrice_' + pid).val();
+//                             var togText = $("#modToggleText_" + pid).val();
+//                             let selectedNewModsHtml = $("#selectedModsDetails_" + pid).html();
+//                             console.log("selectedNewModsHtml: " + selectedNewModsHtml);
+//                             $("#cartModToggle_" + pid).html(selectedNewModsHtml);
+//                             var oldIndvPrice = $("#subtotal").val();
+
+//                             var total = $('#grtotal_' + pid).val();
+//                             var totalitem = $('#totalitem_' + pid).val();
+//                             $('#item-number').text(totalitem);
+//                             $('#getitemp').val(totalitem);
+//                             var tax = $('#tvat_' + pid).val();
+//                             $('#vat').val(tax);
+//                             var discount = $('#tdiscount_' + pid).val();
+//                             var tgtotal = $('#tgtotal_' + pid).val();
+//                             $('#calvat').text(tax);
+//                             $('#invoice_discount').val(discount);
+//                             var sc = $('#sc_' + pid).val();
+//                             var ModTotalPrice = $('#ModTotalPrice_' + pid).val();
+//                             $('#service_charge').val(sc);
+//                             $('#caltotal').text((parseFloat(tgtotal) || 0).toFixed(2));
+//                             $('#grandtotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+//                             $('#orggrandTotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+//                             $('#orginattotal').val((parseFloat(tgtotal) || 0).toFixed(2));
+
+//                             // console.log("oldIndvPrice: "+oldIndvPrice);
+//                             console.log("Subtotal: " + parseFloat(total));
+//                             console.log("existiing price: " + $("#cartModToggle_" + pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
+
+//                             //The following line was used for updating the total price in the cart, but the logic is not correct as it always sets the cart total to the first item.
+//                             $("#cartModToggle_"+pid).closest('tr').find('td').eq(3).html(ModTotalPrice);
+//                             if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
+//                                 // Add the promo item to the cart
+//                                 isPromoFreeItem = true;
+//                                 $('.select_product_id[value="' + promo_item_id + '"]').parent('.panel-body').parent('.select_product').click();
+//                                 ApplyModifierSelect(promo_item_id, null, 0, promo_item_qty);
+//                                 $('#promo_item_id_' + pid).remove();
+//                                 $('#promo_item_qty_' + pid).remove();
+//                             }
+//                             // window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice";
+//                             $(".page-loader-wrapper").hide();
+//                         }
+//                     });
+//                 }, 10);
+
+
+//             } else {
+//                 console.log("Validation failed.");
+//             }
+//         });
+//     }
+// }
 function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promoqty = 0) {
     console.log("selectedDealSubMods on ApplyModifierSelect: ", JSON.stringify(selectedDealSubMods));
-    if (pid == 0) {
+    if (!pid) {
         console.log("No Item Found !");
         return false;
     }
-    let selectedValues = [];
-    let loader = $('#posSidebarLoader');
+
+    let selectedValues = [],
+        loader = $('#posSidebarLoader');
 
     $("input[name='modifier_items[]']:checked").each(function () {
-        let value = $(this).val();
-        let groupId = $(this).attr("data-group-id");
-        //check for same groupId, pid and value within selectedValues
-        let existingItem = selectedValues.find(item => item.mid === value && item.mgid === groupId && item.pid === pid);
-        if (existingItem) {
-            // selectedValues.push({ mid: value, mgid: groupId, pid: pid });
-        } else {
+        let value = $(this).val(),
+            groupId = $(this).attr("data-group-id");
+
+        // Avoid duplicates
+        if (!selectedValues.find(item => item.mid === value && item.mgid === groupId && item.pid === pid)) {
             selectedValues.push({ mid: value, mgid: groupId, pid: pid });
         }
     });
-    console.log("selectedValues cartmodifiersave: " + selectedValues);
+
+    console.log("selectedValues cartmodifiersave: ", selectedValues);
+    if (!selectedValues.length) return;
+
+    disableModifierButtons(true);
     loader.show();
-    $(".modifierCancelbtn").prop("disabled", true);
-    $(".modifierCancelbtn").css({ cursor: 'not-allowed', opacity: 0.5 });
-    $(".modifierChoosebtn").prop("disabled", true);
-    $(".modifierChoosebtn").css({ cursor: 'not-allowed', opacity: 0.5 });
-    if (selectedValues.length > 0) {
-        checkModGroupMaxItemNumber(pid, selectedValues, function (isValid) {
-            if (isValid) {
-                // proceed with logic here
-                console.log("Validation passed. Proceed...");
 
-                // if((selectedValues.length > 0) && checkModGroupMaxItemNumber(pid,selectedValues)){
-                // return false;
-                var mods = JSON.stringify(selectedValues);
-                console.log("Modifier Selected Values: " + mods);
-                //sending to the controller to check validations and save to the database
-                if (skipAddToCart == 0) {
-                    if (promoqty != 0) {
-                        if (!posaddonsfoodtocart(pid, 1, null, true, promoqty)) {
-                            // alert("Error adding the free item to the cart!");
-                            swal({
-                                title: "Error adding the free item to the cart!",
-                                text: "Please try again.",
-                                type: "error",
-                                confirmButtonText: "OK",
-                                closeOnConfirm: true
-                            });
-                            loader.hide();
-                            $(".modifierCancelbtn").prop("disabled", false);
-                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
-                            $(".modifierChoosebtn").prop("disabled", false);
-                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
-                            return false;
-                        }
-                    } else {
-                        if (!posaddonsfoodtocart(pid, 1)) {
-                            // alert("Error adding this item to the cart!");
-                            swal({
-                                title: "Error adding this item to the cart!",
-                                text: "Please try again.",
-                                type: "error",
-                                confirmButtonText: "OK",
-                                closeOnConfirm: true
-                            });
-                            loader.hide();
-                            $(".modifierCancelbtn").prop("disabled", false);
-                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
-                            $(".modifierChoosebtn").prop("disabled", false);
-                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
-                            return false;
-                        }
-                    }
-                } else {
-                    console.log("skipAddToCart else part");
-                    if (promoqty == 0) {
-                        removecart(tr_row_id);
-                        if (!posaddonsfoodtocart(pid, 1)) {
-                            // alert("Error adding this item to the cart!");
-                            swal({
-                                title: "Error adding this item to the cart!",
-                                text: "Please try again.",
-                                type: "error",
-                                confirmButtonText: "OK",
-                                closeOnConfirm: true
-                            });
-                            loader.hide();
-                            $(".modifierCancelbtn").prop("disabled", false);
-                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
-                            $(".modifierChoosebtn").prop("disabled", false);
-                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
-                            return false;
-                        }
-                    }
-                }
-                // $(".page-loader-wrapper").show();
-                loader.show();
-                $(".modifierCancelbtn").prop("disabled", true);
-                $(".modifierCancelbtn").css({ cursor: 'not-allowed', opacity: 0.5 });
-                $(".modifierChoosebtn").prop("disabled", true);
-                $(".modifierChoosebtn").css({ cursor: 'not-allowed', opacity: 0.5 });
-                // the following settimeout function is to wait for the above posaddonsfoodtocart, removecart function to complete its execution
-                // before proceeding to save the modifiers. but I want it to be dynamic and not hardcoded to 3000ms
-                setTimeout(() => {
-                    var trrowid = $("#tr_row_id_" + pid).val();
-                    console.log("cart save row id: " + $("#tr_row_id_" + pid).val());
-                    var csrf = $('#csrfhashresarvation').val(),
-                        geturl = $("#cartmodifiersaveurl").val(),
-                        ctype = $("#ctype").val(),
-                        myurl = geturl,
-                        dataString = "pid=" + pid + '&tr_row_id=' + trrowid + '&mods=' + mods + '&selectedDealSubMods=' + JSON.stringify(selectedDealSubMods) + '&ctype=' + ctype + '&csrf_test_name=' + csrf;
-                    $.ajax({
-                        type: "POST",
-                        url: myurl,
-                        data: dataString,
-                        success: function (data) {
-                            $(".page-loader-wrapper").hide();
-                            loader.hide();
-                            $(".modifierCancelbtn").prop("disabled", false);
-                            $(".modifierCancelbtn").css({ cursor: 'pointer', opacity: 1 });
-                            $(".modifierChoosebtn").prop("disabled", false);
-                            $(".modifierChoosebtn").css({ cursor: 'pointer', opacity: 1 });
-                            console.log("Modifier save data: " + data);
-                            if (data == 420) {
-                                // alert("The modifier doesn't have any ingredients!!!");
-                                swal({
-                                    title: "The modifier doesn't have any ingredients!!!",
-                                    text: "Please check the modifier ingredients.",
-                                    type: "warning",
-                                    confirmButtonText: "OK",
-                                    closeOnConfirm: true
-                                });
-                                return false;
-                            }
-                            if (data == 421) {
-                                // alert("The modifier doesn't have sufficient ingredients!!!");
-                                swal({
-                                    title: "The modifier doesn't have sufficient ingredients!!!",
-                                    text: "Please check the modifier stock.",
-                                    type: "warning",
-                                    confirmButtonText: "OK",
-                                    closeOnConfirm: true
-                                });
-                                return false;
-                            }
-                            if (data == 422) {
-                                // alert("The modifier doesn't have sufficient stock!!!");
-                                swal({
-                                    title: "The modifier doesn't have sufficient stock!!!",
-                                    text: "Please check the modifier stock.",
-                                    type: "warning",
-                                    confirmButtonText: "OK",
-                                    closeOnConfirm: true
-                                });
-                                return false;
-                            }
-                            if (data == 423) {
-                                // alert("The modifier can't be added!!!");
-                                swal({
-                                    title: "The modifier can't be added!!!",
-                                    text: "Please check the modifier settings.",
-                                    type: "warning",
-                                    confirmButtonText: "OK",
-                                    closeOnConfirm: true
-                                });
-                                return false;
-                            }
-                            if ($("#selectedModsDetails_" + pid)) {
-                                $("#selectedModsDetails_" + pid).remove();
-                                $('#grtotal_' + pid).remove();
-                                $('#totalitem_' + pid).remove();
-                                $('#tvat_' + pid).remove();
-                                $('#tdiscount_' + pid).remove();
-                                $('#tgtotal_' + pid).remove();
-                                $('#sc_' + pid).remove();
-                                $('#promo_item_id_' + pid).remove();
-                                $('#promo_item_qty_' + pid).remove();
-                            }
-                            $("#addfoodlist").append(data);
-                            closeNav();
-                            $("#newModSection").html(newModifierDefaultContent);
-                            var promo_item_id = promo_item_qty = 0;
-                            if ($("#promo_item_id_" + pid).length > 0) {
-                                // Get the promo item id and quantity if they exist
-                                promo_item_id = $('#promo_item_id_' + pid).val();
-                                promo_item_qty = $('#promo_item_qty_' + pid).val();
-                            }
+    checkModGroupMaxItemNumber(pid, selectedValues, function (isValid) {
+        if (!isValid) {
+            console.log("Validation failed.");
+            disableModifierButtons(false);
+            loader.hide();
+            return;
+        }
 
-                            var modTotalPrice = $('#modTotalPrice_' + pid).val();
-                            var togText = $("#modToggleText_" + pid).val();
-                            let selectedNewModsHtml = $("#selectedModsDetails_" + pid).html();
-                            console.log("selectedNewModsHtml: " + selectedNewModsHtml);
-                            $("#cartModToggle_" + pid).html(selectedNewModsHtml);
-                            var oldIndvPrice = $("#subtotal").val();
+        console.log("Validation passed. Proceed...");
+        let mods = JSON.stringify(selectedValues);
 
-                            var total = $('#grtotal_' + pid).val();
-                            var totalitem = $('#totalitem_' + pid).val();
-                            $('#item-number').text(totalitem);
-                            $('#getitemp').val(totalitem);
-                            var tax = $('#tvat_' + pid).val();
-                            $('#vat').val(tax);
-                            var discount = $('#tdiscount_' + pid).val();
-                            var tgtotal = $('#tgtotal_' + pid).val();
-                            $('#calvat').text(tax);
-                            $('#invoice_discount').val(discount);
-                            var sc = $('#sc_' + pid).val();
-                            $('#service_charge').val(sc);
-                            $('#caltotal').text(tgtotal);
-                            $('#grandtotal').val(tgtotal);
-                            $('#orggrandTotal').val(tgtotal);
-                            $('#orginattotal').val(tgtotal);
+        let addToCartSuccess = true;
+        if (!skipAddToCart) {
+            addToCartSuccess = promoqty
+                ? posaddonsfoodtocart(pid, 1, null, true, promoqty)
+                : posaddonsfoodtocart(pid, 1);
+        } else if (promoqty === 0) {
+            removecart(tr_row_id);
+            addToCartSuccess = posaddonsfoodtocart(pid, 1);
+        }
 
-                            // console.log("oldIndvPrice: "+oldIndvPrice);
-                            console.log("Subtotal: " + parseFloat(total));
-                            console.log("existiing price: " + $("#cartModToggle_" + pid).closest('.itemNumber').find('tr').find('td').eq(3).html());
+        if (!addToCartSuccess) {
+            swal({
+                title: "Error adding this item to the cart!",
+                text: "Please try again.",
+                type: "error",
+                confirmButtonText: "OK",
+                closeOnConfirm: true
+            });
+            disableModifierButtons(false);
+            loader.hide();
+            return;
+        }
 
-                            //The following line was used for updating the total price in the cart, but the logic is not correct as it always sets the cart total to the first item.
-                            // $("#cartModToggle_"+pid).closest('.itemNumber').find('tr').find('td').eq(3).html(parseFloat(total));
-                            if ((promo_item_id != "" || promo_item_id != 0) && (promo_item_qty != null || promo_item_qty != 0)) {
-                                // Add the promo item to the cart
-                                isPromoFreeItem = true;
-                                $('.select_product_id[value="' + promo_item_id + '"]').parent('.panel-body').parent('.select_product').click();
-                                ApplyModifierSelect(promo_item_id, null, 0, promo_item_qty);
-                                $('#promo_item_id_' + pid).remove();
-                                $('#promo_item_qty_' + pid).remove();
-                            }
-                            // window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice";
-                            $(".page-loader-wrapper").hide();
-                        }
-                    });
-                }, 4000);
-
-
-            } else {
-                console.log("Validation failed.");
-            }
+        // ✅ Wait dynamically for the tr_row_id to appear
+        waitForElement(`#tr_row_id_${pid}`, function () {
+            saveCartModifiers(pid, mods);
         });
+    });
+}
+
+/**
+ * Disable or enable modifier buttons
+ */
+function disableModifierButtons(disable) {
+    $(".modifierCancelbtn, .modifierChoosebtn").prop("disabled", disable)
+        .css({ cursor: disable ? 'not-allowed' : 'pointer', opacity: disable ? 0.5 : 1 });
+}
+
+/**
+ * Wait until a DOM element exists, then run callback
+ */
+function waitForElement(selector, callback, checkInterval = 100, timeout = 5000) {
+    let elapsed = 0;
+    let checkExist = setInterval(() => {
+        if ($(selector).length) {
+            clearInterval(checkExist);
+            callback();
+        } else if ((elapsed += checkInterval) >= timeout) {
+            clearInterval(checkExist);
+            console.error(`Timeout: ${selector} not found`);
+        }
+    }, checkInterval);
+}
+
+/**
+ * AJAX to save modifiers after cart update
+ */
+function saveCartModifiers(pid, mods) {
+    let trrowid = $(`#tr_row_id_${pid}`).val(),
+        csrf = $('#csrfhashresarvation').val(),
+        geturl = $("#cartmodifiersaveurl").val(),
+        ctype = $("#ctype").val(),
+        dataString = {
+            pid: pid,
+            tr_row_id: trrowid,
+            mods: mods,
+            selectedDealSubMods: JSON.stringify(selectedDealSubMods),
+            ctype: ctype,
+            csrf_test_name: csrf
+        };
+
+    $.post(geturl, dataString, function (data) {
+        $('#posSidebarLoader').hide();
+        disableModifierButtons(false);
+
+        if ([420, 421, 422, 423].includes(+data)) {
+            let messages = {
+                420: "The modifier doesn't have any ingredients!!!",
+                421: "The modifier doesn't have sufficient ingredients!!!",
+                422: "The modifier doesn't have sufficient stock!!!",
+                423: "The modifier can't be added!!!"
+            };
+            swal({
+                title: messages[data],
+                type: "warning",
+                confirmButtonText: "OK",
+                closeOnConfirm: true
+            });
+            return;
+        }
+
+        updateCartUI(pid, data);
+    });
+}
+
+/**
+ * Update UI after modifiers saved
+ */
+function updateCartUI(pid, data) {
+    if ($(`#selectedModsDetails_${pid}`).length) {
+        $(`#selectedModsDetails_${pid}, #grtotal_${pid}, #totalitem_${pid}, #tvat_${pid}, #tdiscount_${pid}, #tgtotal_${pid}, #sc_${pid}, #promo_item_id_${pid}, #promo_item_qty_${pid}`).remove();
+    }
+
+    $("#addfoodlist").append(data);
+    closeNav();
+    $("#newModSection").html(newModifierDefaultContent);
+
+    let promo_item_id = $(`#promo_item_id_${pid}`).val() || 0,
+        promo_item_qty = $(`#promo_item_qty_${pid}`).val() || 0,
+        ModTotalPrice = $(`#ModTotalPrice_${pid}`).val(),
+        tgtotal = parseFloat($(`#tgtotal_${pid}`).val()) || 0,
+        tax = $(`#tvat_${pid}`).val(),
+        discount = $(`#tdiscount_${pid}`).val(),
+        totalitem = $(`#totalitem_${pid}`).val(),
+        sc = $(`#sc_${pid}`).val();
+
+    $('#item-number').text(totalitem);
+    $('#getitemp').val(totalitem);
+    $('#vat').val(tax);
+    $('#calvat').text(tax);
+    $('#invoice_discount').val(discount);
+    $('#service_charge').val(sc);
+    $('#caltotal').text(parseFloat(tgtotal).toFixed(2));
+    $('#grandtotal').val(parseFloat(tgtotal).toFixed(2));
+    $('#orggrandTotal').val(parseFloat(tgtotal).toFixed(2));
+    $('#orginattotal').val(parseFloat(tgtotal).toFixed(2));
+
+    $(`#cartModToggle_${pid}`).closest('tr').find('td').eq(3).html(ModTotalPrice);
+    let selectedNewModsHtml = $("#selectedModsDetails_" + pid).html();
+    $("#cartModToggle_" + pid).html(selectedNewModsHtml);
+    if (promo_item_id && promo_item_qty) {
+        isPromoFreeItem = true;
+        $(`.select_product_id[value="${promo_item_id}"]`).closest('.select_product').click();
+        ApplyModifierSelect(promo_item_id, null, 0, promo_item_qty);
+        $(`#promo_item_id_${pid}, #promo_item_qty_${pid}`).remove();
     }
 }
+
 let isPromoFreeItem = false;
 function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0) {
     let selectedValues = [];
@@ -1239,10 +1420,10 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
                             $('#invoice_discount').val(discount);
                             var sc = $('#sc_' + pid).val();
                             $('#service_charge').val(sc);
-                            $('#caltotal').text(tgtotal);
-                            $('#grandtotal').val(tgtotal);
-                            $('#orggrandTotal').val(tgtotal);
-                            $('#orginattotal').val(tgtotal);
+                            $('#caltotal').text(parseFloat(tgtotal).toFixed(2));
+                            $('#grandtotal').val(parseFloat(tgtotal).toFixed(2));
+                            $('#orggrandTotal').val(parseFloat(tgtotal).toFixed(2));
+                            $('#orginattotal').val(parseFloat(tgtotal).toFixed(2));
 
                             // console.log("oldIndvPrice: "+oldIndvPrice);
                             console.log("Subtotal: " + parseFloat(total));
@@ -1964,13 +2145,13 @@ $(document).on('change', '#product_name', function () {
                     $('#getitemp').val(totalitem);
                     $('#invoice_discount').val(discount);
                     if (basicinfo.isvatinclusive == 1) {
-                        $('#caltotal').text(tgtotal - tax);
+                        $('#caltotal').text(parseFloat(tgtotal - tax).toFixed(2));
                     } else {
-                        $('#caltotal').text(tgtotal);
+                        $('#caltotal').text(parseFloat(tgtotal).toFixed(2));
                     }
-                    $('#grandtotal').val(tgtotal);
-                    $('#orggrandTotal').val(tgtotal);
-                    $('#orginattotal').val(tgtotal);
+                    $('#grandtotal').val(parseFloat(tgtotal).toFixed(2));
+                    $('#orggrandTotal').val(parseFloat(tgtotal).toFixed(2));
+                    $('#orginattotal').val(parseFloat(tgtotal).toFixed(2));
                     $('#product_name').html('');
 
                 }
@@ -2076,7 +2257,6 @@ function placeorder() {
                 return false;
             }
             if (possetting.tablemaping == 1) {
-
                 if (tableid == '' || !$.isNumeric($('#table_person').val())) {
                     toastr.warning("Please Select Table or number person", 'Warning');
                     return false;
@@ -2173,31 +2353,44 @@ function placeorder() {
                             confirmButtonText: "Done",
                             closeOnConfirm: true
                         },
-                            function () {
+                        function () {
 
-                            });
+                        });
                     } else {
                         swal({
                             title: lang.ord_succ,
-                            text: "Do you Want to Print Token No.???",
+                            text: "",
                             type: "success",
-                            showCancelButton: true,
+                            showCancelButton: false,
                             confirmButtonColor: "#28a745",
-                            confirmButtonText: lang.yes,
-                            cancelButtonText: lang.no,
-                            closeOnConfirm: true,
-                            closeOnCancel: true
+                            confirmButtonText: "Done",
+                            closeOnConfirm: true
                         },
-                            function (isConfirm) {
-                                if (isConfirm) {
-                                    printRawHtml(data);
-                                } else {
-                                    $('#waiter').select2('data', null);
-                                    $('#tableid').select2('data', null);
-                                    $('#waiter').val('');
-                                    $('#tableid').val('');
-                                }
-                            });
+                        function () {
+
+                        });
+                        //to enable print notification after order place, uncomment the following lines
+                        // swal({
+                        //     title: lang.ord_succ,
+                        //     text: "Do you Want to Print Token No.???",
+                        //     type: "success",
+                        //     showCancelButton: true,
+                        //     confirmButtonColor: "#28a745",
+                        //     confirmButtonText: lang.yes,
+                        //     cancelButtonText: lang.no,
+                        //     closeOnConfirm: true,
+                        //     closeOnCancel: true
+                        // },
+                        //     function (isConfirm) {
+                        //         if (isConfirm) {
+                        //             printRawHtml(data);
+                        //         } else {
+                        //             $('#waiter').select2('data', null);
+                        //             $('#tableid').select2('data', null);
+                        //             $('#waiter').val('');
+                        //             $('#tableid').val('');
+                        //         }
+                        //     });
                     }
                 }
             }
@@ -3281,13 +3474,13 @@ $(document).on('change', '#update_product_name', function () {
                     $('#service_charge').val(sc);
                     $('#invoice_discount').val(discount);
                     if (basicinfo.isvatinclusive == 1) {
-                        $('#caltotal').text(tgtotal - tax);
+                        $('#caltotal').text(parseFloat(tgtotal - tax).toFixed(2));
                     } else {
-                        $('#caltotal').text(tgtotal);
+                        $('#caltotal').text(parseFloat(tgtotal).toFixed(2));
                     }
-                    $('#grandtotal').val(tgtotal);
-                    $('#orggrandTotal').val(tgtotal);
-                    $('#orginattotal').val(tgtotal);
+                    $('#grandtotal').val(parseFloat(tgtotal).toFixed(2));
+                    $('#orggrandTotal').val(parseFloat(tgtotal).toFixed(2));
+                    $('#orginattotal').val(parseFloat(tgtotal).toFixed(2));
                     $('#update_product_name').html('');
 
                 }
@@ -4167,7 +4360,7 @@ function paySplitByAmount(element) {
                             }
                         });
 
-                        alert("Item deleted successfully.");
+                        // alert("Item deleted successfully.");
                     },
                     error: function(xhr, status, error) {
                         console.error('Error details:', xhr.responseText, 'Status:', status, 'Error:', error);

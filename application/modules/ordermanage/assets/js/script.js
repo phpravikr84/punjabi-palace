@@ -99,12 +99,12 @@ function addfoodtocart(pid, id) {
         var sc = $("#sc").val();
         $("#service_charge").val(sc);
         if (basicinfo.isvatinclusive == 1) {
-          $("#caltotal").text(tgtotal - tax);
+          $("#caltotal").text(parseFloat(tgtotal - tax).toFixed(2));
         } else {
-          $("#caltotal").text(tgtotal);
+          $("#caltotal").text(parseFloat(tgtotal).toFixed(2));
         }
-        $("#grandtotal").val(tgtotal);
-        $("#orggrandTotal").val(tgtotal);
+        $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
+        $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
       }
     },
   });
@@ -239,15 +239,16 @@ function removecart(rid) {
       var sc = $("#sc").val();
       $("#service_charge").val(sc);
       if (basicinfo.isvatinclusive == 1) {
-        $("#caltotal").text(tgtotal - tax);
+        //show only 2 decimal
+        $("#caltotal").text(parseFloat(tgtotal - tax).toFixed(2));
       } else {
-        $("#caltotal").text(tgtotal);
+        $("#caltotal").text(parseFloat(tgtotal).toFixed(2));
       }
-      $("#grandtotal").val(tgtotal);
-      $("#orggrandTotal").val(tgtotal);
-      setTimeout(() => {
+      $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
+      $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
+      // setTimeout(() => {
         selectedDealSubMods = [];
-      }, 6000);
+      // }, 6000);
     },
   });
 }
@@ -385,12 +386,12 @@ function addonsfoodtocart(pid, id) {
         var sc = $("#sc").val();
         $("#service_charge").val(sc);
         if (basicinfo.isvatinclusive == 1) {
-          $("#caltotal").text(tgtotal - tax);
+          $("#caltotal").text(parseFloat(tgtotal - tax).toFixed(2));
         } else {
-          $("#caltotal").text(tgtotal);
+          $("#caltotal").text(parseFloat(tgtotal).toFixed(2));
         }
-        $("#grandtotal").val(tgtotal);
-        $("#orggrandTotal").val(tgtotal);
+        $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
+        $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
       } else {
         $("#updatetlist").html(data);
         $("#edit").modal("hide");
@@ -402,13 +403,13 @@ function addonsfoodtocart(pid, id) {
         $("#calvat").text(tax);
         $("#invoice_discount").val(discount);
         if (basicinfo.isvatinclusive == 1) {
-          $("#caltotal").text(tgtotal - tax);
+          $("#caltotal").text(parseFloat(tgtotal - tax).toFixed(2));
         } else {
-          $("#caltotal").text(tgtotal);
+          $("#caltotal").text(parseFloat(tgtotal).toFixed(2));
         }
-        $("#grandtotal").val(tgtotal);
-        $("#orggrandTotal").val(tgtotal);
-        $("#orginattotal").val(tgtotal);
+        $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
+        $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
+        $("#orginattotal").val(parseFloat(tgtotal).toFixed(2));
       }
     },
   });
@@ -624,13 +625,13 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
             var sc = $("#sc").val();
             $("#service_charge").val(sc);
             if (basicinfo.isvatinclusive == 1) {
-              $("#caltotal").text(tgtotal - tax);
+              $("#caltotal").text(parseFloat(tgtotal - tax).toFixed(2));
             } else {
-              $("#caltotal").text(tgtotal);
+              $("#caltotal").text(parseFloat(tgtotal).toFixed(2));
             }
-            $("#grandtotal").val(tgtotal);
-            $("#orggrandTotal").val(tgtotal);
-            $("#orginattotal").val(tgtotal);
+            $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
+            $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
+            $("#orginattotal").val(parseFloat(tgtotal).toFixed(2));
             if (more != 1) {
               $("#edit").modal("hide");
             }
@@ -791,13 +792,13 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
       var sc = $("#sc").val();
       $("#service_charge").val(sc);
       if (basicinfo.isvatinclusive == 1) {
-        $("#caltotal").text(tgtotal - tax);
+        $("#caltotal").text(parseFloat(tgtotal - tax).toFixed(2));
       } else {
-        $("#caltotal").text(tgtotal);
+        $("#caltotal").text(parseFloat(tgtotal).toFixed(2));
       }
-      $("#grandtotal").val(tgtotal);
-      $("#orggrandTotal").val(tgtotal);
-      $("#orginattotal").val(tgtotal);
+      $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
+      $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
+      $("#orginattotal").val(parseFloat(tgtotal).toFixed(2));
       if (more != 1) {
         $("#edit").modal("hide");
       }
@@ -988,13 +989,13 @@ function posPromofoodtocart(pid, id, more = null) {
       var sc = $("#sc").val();
       $("#service_charge").val(sc);
       if (basicinfo.isvatinclusive == 1) {
-        $("#caltotal").text(tgtotal - tax);
+        $("#caltotal").text(parseFloat(tgtotal - tax).toFixed(2));
       } else {
-        $("#caltotal").text(tgtotal);
+        $("#caltotal").text(parseFloat(tgtotal).toFixed(2));
       }
-      $("#grandtotal").val(tgtotal);
-      $("#orggrandTotal").val(tgtotal);
-      $("#orginattotal").val(tgtotal);
+      $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
+      $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
+      $("#orginattotal").val(parseFloat(tgtotal).toFixed(2));
       if (more != 1) {
         $("#edit").modal("hide");
       }

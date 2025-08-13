@@ -499,9 +499,9 @@ foreach ($scan as $file) {
     <div class="row">
       <div class="col-md-6 col-lg-6 col-sm-12">
         <div class="card-header">
-          Choose Variants
+          Item Info
         </div>
-        <small class="modifier-sec-sub-heading">Choose the variant of the food item</small>
+        <small class="modifier-sec-sub-heading">Increase or decrease the quantity of the food item</small>
         <div class="card-body" id="sideVarContainer">
         </div>
       </div>
@@ -849,7 +849,7 @@ foreach ($scan as $file) {
                         </div>
                       </div> -->
                       <div class="modern-categories main-categories">
-                        <div class="category-card cat-btn active" onclick="showMain()">
+                        <div class="category-card cat-btn active" onclick="showMain('');">
                           <div class="cat-icon">🔲</div>
                           <div class="cat-title">All</div>
                           <div class="cat-count">

@@ -121,6 +121,7 @@ endif;
 </div>
 <?php
 // silence is golden
+$fx = 0;
 $grtotal = 0;
 $totalitem = 0;
 $calvat = 0;
@@ -168,6 +169,7 @@ if ($cart = $this->cart->contents()):
         // if ($modTotalPrice->mod_total_price > 0) {
         //   $itemprice+=$modTotalPrice->mod_total_price;
         // }
+        $fx = $modTotalPrice->mod_total_price;
         $itemprice += $modTotalPrice->mod_total_price;
         $mypdiscountprice = 0;
         if (!empty($taxinfos)) {
@@ -327,4 +329,5 @@ if ($promo_query->num_rows() > 0) {
     $promo_get_food_qty = 0;
 }
 echo '<input type="hidden" name="cartItemQty" id="cartItemQty_'.$pid.'" value="' . $cartItemQty . '">';
+echo '<input type="hidden" name="ModTotalPrice_'.$pid.'" id="ModTotalPrice_'.$pid.'" value="' . (($currency->position == 1) ? $currency->curr_icon : '').number_format((($subtotal-$fx)+$fx),2) . '">';
 ?>

@@ -66,35 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="pos-categories">
-                      <!-- <div class="modern-categories main-categories">
-                        <div class="category-card cat-btn active" onclick="showMain()">
-                          <div class="cat-icon">🔲</div>
-                          <div class="cat-title">All</div>
-                          <div class="cat-count">235 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('food')">
-                          <div class="cat-icon">🍳</div>
-                          <div class="cat-title">Food Menu</div>
-                          <div class="cat-count">19 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('beverage')">
-                          <div class="cat-icon">🥣</div>
-                          <div class="cat-title">Soups</div>
-                          <div class="cat-count">6 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('banquet')">
-                          <div class="cat-icon">🍝</div>
-                          <div class="cat-title">Pasta</div>
-                          <div class="cat-count">14 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('deals')">
-                          <div class="cat-icon">🍲</div>
-                          <div class="cat-title">Main Course</div>
-                          <div class="cat-count">67 items</div>
-                        </div>
-                      </div> -->
                       <div class="modern-categories main-categories">
-                    <div class="category-card cat-btn active" onclick="showMain()">
+                    <div class="category-card cat-btn active" onclick="showMainUpdate('');">
                         <div class="cat-icon">🔲</div>
                         <div class="cat-title">All</div>
                         <div class="cat-count">
@@ -108,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <?php foreach ($categories as $key => $cat): ?>
-                        <div class="category-card cat-btn" onclick="showSubcategories('<?= $key ?>'); getslcategory_update(<?= isset($cat['cid']) ? $cat['cid'] : '' ?>);">
+                        <div class="category-card cat-btn" onclick="showSubcategoriesUpdate('<?= $key ?>'); getslcategory_update(<?= isset($cat['cid']) ? $cat['cid'] : '' ?>);">
                         <div class="cat-icon"><?= isset($cat['icon']) ? $cat['icon'] : '📦' ?></div>
                         <div class="cat-title"><?= htmlspecialchars($cat['label']) ?></div>
                         <div class="cat-count"><?= isset($cat['count']) ? $cat['count'] : 0 ?> items</div>
@@ -683,42 +656,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
     const categories = <?=$categories_json;?>;
 
-    function showMain() {
-    getslcategory_update('');
-    document.getElementById("subcategories-update").innerHTML = "";
-    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelector('.cat-btn:first-child').classList.add('active');
+    function showMainUpdate() {
+        getslcategory_update('');
+        document.getElementById("subcategories-update").innerHTML = "";
+        document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.cat-btn:first-child').classList.add('active');
     }
 
-    function showSubcategories(mainKey) {
-    const container = document.getElementById("subcategories-update");
-    container.innerHTML = "";
+    function showSubcategoriesUpdate(mainKey) {
+        const container = document.getElementById("subcategories-update");
+        container.innerHTML = "";
 
-    const main = categories[mainKey];
-    main.subcategories.forEach(sub => {
-        const btn = document.createElement("button");
-        btn.className = "cat-btn";
-        btn.textContent = sub.name;
-        container.appendChild(btn);
-        // Add click event to each subcategory button
-        btn.onclick = function() {
-        getslcategory_update(sub.ccid);
-        document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
-        };
+        const main = categories[mainKey];
+        main.subcategories.forEach(sub => {
+            const btn = document.createElement("button");
+            btn.className = "cat-btn";
+            btn.textContent = sub.name;
+            container.appendChild(btn);
+            // Add click event to each subcategory button
+            btn.onclick = function() {
+            getslcategory_update(sub.ccid);
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            };
 
-        // Append children, if any
-        if (sub.children.length) {
-        sub.children.forEach(child => {
-            const childBtn = document.createElement("button");
-            childBtn.className = "cat-btn child-btn";
-            childBtn.textContent = child;
-            container.appendChild(childBtn);
+            // Append children, if any
+            if (sub.children.length) {
+            sub.children.forEach(child => {
+                const childBtn = document.createElement("button");
+                childBtn.className = "cat-btn child-btn";
+                childBtn.textContent = child;
+                container.appendChild(childBtn);
+            });
+            }
         });
-        }
-    });
 
-    document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
-    document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
+        document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
     }
 </script>

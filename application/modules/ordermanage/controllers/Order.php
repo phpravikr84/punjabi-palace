@@ -2430,9 +2430,9 @@ class Order extends MX_Controller
 														if (empty($productiondetails)) {
 															$isavailable = false;
 															// return 'Please set Ingredients!!first!!!' . $groupitem->items;
-															return '201';
-															break;
-															exit();
+															// return '201';
+															// break;
+															// exit();
 														} else {
 															foreach ($productiondetails as $productiondetail) {
 																$r_stock = $productiondetail->qty * ($foodqty * $groupitem->item_qty);
@@ -2445,9 +2445,9 @@ class Order extends MX_Controller
 
 																if ($stockcheck == 0) {
 																	// return 'Please check Ingredients!!Some Ingredients are not Available!!!' . $groupitem->items;
-																	return '202';
-																	break;
-																	exit();
+																	// return '202';
+																	// break;
+																	// exit();
 																}
 																/*end add ingredients*/
 															}
@@ -2482,9 +2482,9 @@ class Order extends MX_Controller
 
 													if ($stockcheck == 0) {
 														// return 'Please check Ingredients!!Some Ingredients are not Available!!!';
-														return '202';
-														break;
-														exit();
+														// return '202';
+														// break;
+														// exit();
 													}
 
 
@@ -2493,9 +2493,9 @@ class Order extends MX_Controller
 											} else {
 												if ($checksetitem->is_bom == 1) {
 													// return 'Please set Ingredients!!first!!!';
-													return '201';
-													break;
-													exit();
+													// return '201';
+													// break;
+													// exit();
 												} else {
 													// return 1;
 												}
@@ -2544,8 +2544,6 @@ class Order extends MX_Controller
 													$percent = ($percentage->category_weight_percent == 0) ? $percentage->total_weight_percent : $percentage->category_weight_percent;
 													$usedQty = $usedQty * ($percent / 100);
 												}
-
-
 												// Fetch sales price for the ingredient from `purchase_details`
 												$this->db->select('price, uom_id');
 												$this->db->from('purchase_details');

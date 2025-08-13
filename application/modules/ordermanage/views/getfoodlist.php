@@ -23,7 +23,8 @@
     }
   ?>
    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 col-p-3">
-     <div class="panel panel-bd product-panel p-12 rounded-lg <?php if($item->isgroup !=1): ?>select_product<?php endif; ?>" <?php if($item->isgroup ==1): ?>onclick="selectGroupItem($(this));"<?php endif; ?>>
+     <!-- <div class="panel panel-bd product-panel p-12 rounded-lg <?php ##if($item->isgroup !=1): ?>select_product<?php ##endif; ?>" <?php ##if($item->isgroup ==1): ?>onclick="selectGroupItem($(this));"<?php ##endif; ?>> -->
+     <div class="panel panel-bd product-panel p-12 rounded-lg select_product">
      <!-- <div class="panel panel-bd product-panel select_product"> -->
        <div class="panel-body"> <img src="<?php echo base_url(!empty($item->small_thumb) ? $item->small_thumb : 'assets/img/icons/default_pos_pro.jpg'); ?>" class="img-responsive" alt="<?php echo $item->ProductName; ?>">
          <input type="hidden" name="select_product_id" class="select_product_id" value="<?php echo $item->ProductsID; ?>">

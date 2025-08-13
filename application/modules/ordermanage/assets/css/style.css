@@ -754,7 +754,9 @@ a.disabled {
 .subMods small
 {
     font-style: italic;
-    font-size: 11px;
+    font-size: 11px !important;
+    color: #428bca;
+    font-weight: 550 !important;
 }
 .cartModToggle small
 {
@@ -794,6 +796,10 @@ a.disabled {
 }
 .bg-secondary {
     background-color: #6c757d; /* Example secondary color */
+}
+#newModSection .panel-body
+{
+    padding: 0px !important;
 }
 @keyframes spin {
   0% { transform: rotate(0deg); }
