@@ -8558,17 +8558,23 @@ class Order extends MX_Controller
 
 	public function getsplitorder($order_id)
     {
-        $this->db->select('so.*, c.firstname, c.lastname');
+        $this->db->select('so.*, c.firstname, c.lastname, co.tableid, t.tablename');
         $this->db->from('sub_order so');
+        $this->db->join('customer_order co', 'so.order_id = co.order_id', 'left');
         $this->db->join('customerinfo c', 'so.customer_id = c.customerid', 'left');
+        $this->db->join('table_details t', 'co.tableid = t.tableid', 'left');
         $this->db->where('so.order_id', $order_id);
         $query = $this->db->get();
         $result = $query->result();
 
         $data = array();
+        $split_index = 0;
         foreach ($result as $split) {
+            $split_index++;
             $row = array();
-            $row['sub_id'] = $split->sub_id;
+            $row['sub_id'] = $split->sub_id; // Keep sub_id for print functionality
+            $row['invoice_no'] = $split->tableid ? $split->tableid . '/' . $split_index : 'N/A/' . $split_index;
+            $row['table_name'] = $split->tablename ? $split->tablename : 'N/A';
             $row['customer_name'] = $split->customer_id ? $split->firstname . ' ' . $split->lastname : 'N/A';
             $row['vat'] = $split->vat ? number_format($split->vat, 2) : '0.00';
             $row['discount'] = number_format($split->discount, 2);
@@ -8605,19 +8611,32 @@ class Order extends MX_Controller
         echo json_encode($data);
     }
 
-	// Existing functions: todayallorder, showtodayorder (as above)
-
     public function printsplitinvoice($sub_id)
     {
-        $this->db->select('so.*, c.firstname, c.lastname, co.saleinvoice, co.order_date');
+        $this->db->select('so.*, c.firstname, c.lastname, co.saleinvoice, co.order_date, co.tableid, t.tablename');
         $this->db->from('sub_order so');
         $this->db->join('customer_order co', 'so.order_id = co.order_id', 'left');
         $this->db->join('customerinfo c', 'so.customer_id = c.customerid', 'left');
+        $this->db->join('table_details t', 'co.tableid = t.tableid', 'left');
         $this->db->where('so.sub_id', $sub_id);
         $split = $this->db->get()->row();
 
         if (!$split) {
             show_404();
+        }
+
+        // Determine split index
+        $this->db->select('sub_id');
+        $this->db->from('sub_order');
+        $this->db->where('order_id', $split->order_id);
+        $this->db->order_by('sub_id', 'ASC');
+        $sub_orders = $this->db->get()->result_array();
+        $split_index = 0;
+        foreach ($sub_orders as $index => $sub) {
+            if ($sub['sub_id'] == $sub_id) {
+                $split_index = $index + 1;
+                break;
+            }
         }
 
         $items = array();
@@ -8644,6 +8663,8 @@ class Order extends MX_Controller
             'sub_id' => $split->sub_id,
             'order_id' => $split->order_id,
             'saleinvoice' => $split->saleinvoice,
+            'invoice_no' => $split->tableid ? $split->tableid . '/' . $split_index : 'N/A/' . $split_index,
+            'table_name' => $split->tablename ? $split->tablename : 'N/A',
             'customer_name' => $split->customer_id ? $split->firstname . ' ' . $split->lastname : 'N/A',
             'order_date' => $split->order_date,
             'vat' => $split->vat ? number_format($split->vat, 2) : '0.00',

@@ -661,7 +661,7 @@ foreach ($scan as $file) {
 
         <div class="tgbar">
 
-          <a href="javascript:;" class="btn btn-success w-md m-b-5" onclick="closeopenresister()" role="button" style="padding:10px">Current Register</a>
+          <!-- <a href="javascript:;" class="btn btn-success w-md m-b-5" onclick="closeopenresister()" role="button" style="padding:10px">Current Register</a> -->
           <?php if ($new_version > $myversion) {
             if ($versioncheck->version != $new_version) {
           ?>

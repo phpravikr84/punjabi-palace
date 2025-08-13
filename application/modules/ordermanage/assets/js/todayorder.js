@@ -102,8 +102,9 @@ $(document).ready(function () {
                 var html = '';
                 $.each(data, function(index, split) {
                     html += '<div class="card mb-3">';
-                    html += '<div class="card-header">Split #' + split.sub_id + ' (' + split.split_type + ')</div>';
+                    html += '<div class="card-header">Split Invoice #' + split.invoice_no + ' (' + split.split_type + ')</div>';
                     html += '<div class="card-body">';
+                    html += '<p><strong>Table:</strong> ' + split.table_name + '</p>';
                     html += '<p><strong>Customer:</strong> ' + split.customer_name + '</p>';
                     html += '<p><strong>VAT:</strong> ' + split.vat + '</p>';
                     html += '<p><strong>Discount:</strong> ' + split.discount + '</p>';
