@@ -10,6 +10,7 @@
 			                        <thead>
 										<tr>
 											<th class="text-center"><?php echo display('invoice');?> </th>
+											<th class="text-center"><?php echo 'Split Table';?> </th>
                                             <th class="text-center"><?php echo display('customer_name');?></th>
 											<th class="text-right"><?php echo display('amount');?></th>
                                                 <th class="text-center"><?php echo display('action');?></th>
@@ -23,6 +24,7 @@
 
 											<tr>
 												<td><?php echo $item->sub_id;?></td>
+												<td><?php echo isset($item->table_split) && !empty($item->table_split) ? $item->table_split : '-';?></td>
 												<td><?php echo $item->customer_name;?></td>
                                                 <td><?php echo $total?></td>
 												<td><a href="javascript:;" onclick="possubpageprint('<?php echo $item->sub_id; ?>')" class="btn btn-xs btn-success btn-sm mr-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="<?php echo display('pos_invoice') ?>"><i class="fa fa-window-maximize"></i></a></td>

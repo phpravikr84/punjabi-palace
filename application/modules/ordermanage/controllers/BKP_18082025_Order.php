@@ -6645,7 +6645,6 @@ class Order extends MX_Controller
 		$suborder = $this->db->select('sub_id')
 			->from('sub_order')
 			->where('order_id', $orderid)
-			->where('status', 0)
 			->get()
 			->row();
 
@@ -7516,7 +7515,14 @@ class Order extends MX_Controller
 		$mydigit                 = $this->input->post('last4digit', true);
 		$payamonts               = $this->input->post('paidamount', true);
 		$paidamount = 0;
-		
+		$updatetordfordiscount = array(
+			'status'           => 1,
+			'discount'     		 => $discount
+
+		);
+
+		$this->db->where('sub_id', $orderid);
+		$this->db->update('sub_order', $updatetordfordiscount);
 		$settinginfo = $this->order_model->settinginfo();
 		if ($settinginfo->printtype == 1 || $settinginfo->printtype == 3) {
 			$updatetData = array('invoiceprint' => 2);
@@ -7536,16 +7542,6 @@ class Order extends MX_Controller
 			$this->add_multipay($order_id, $billinfo->bill_id, $data_pay);
 			$i++;
 		}
-
-		//update sub order
-		$updatetordfordiscount = array(
-			'status'           => 1,
-			'discount'     		 => $discount
-
-		);
-
-		$this->db->where('sub_id', $orderid);
-		$this->db->update('sub_order', $updatetordfordiscount);
 
 
 		$logData = array(
@@ -7749,17 +7745,27 @@ class Order extends MX_Controller
         $data['gtotal'] = $total + $vat + $servicecharge - $alldiscount;
 
         // Fetch payment details
-        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
+        $this->db->select('mb.payment_type_id, pm.payment_method, mb.amount');
         $this->db->from('multipay_bill mb');
         $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
         $this->db->where('mb.order_id', $order_sub->order_id);
-		$this->db->where('mb.suborder_id', $order_sub->sub_id); // Ensure we only get payments for this sub-order
         $query = $this->db->get();
         $payment_details = $query->result_array();
-		//echo $this->db->last_query(); // Debugging line to check the query
 
+        // Calculate total payment amount
+        $total_payment_amount = 0;
+        foreach ($payment_details as $payment) {
+            $total_payment_amount += $payment['amount'];
+        }
 
-		$data['payment_details'] = $payment_details;
+        // Filter payment details based on grand total match
+        if (abs($total_payment_amount - $data['gtotal']) < 0.01) {
+            // If sum matches grand total, select one payment (first one for simplicity)
+            $data['payment_details'] = !empty($payment_details) ? array($payment_details[0]) : [];
+        } else {
+            // If sum doesn't match, show all payment details
+            $data['payment_details'] = $payment_details;
+        }
 
         if (empty($data['payment_details'])) {
             log_message('debug', 'No payment details found for order_id: ' . $order_sub->order_id);
