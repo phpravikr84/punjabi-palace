@@ -4130,6 +4130,18 @@ class Order extends MX_Controller
 		$q2 = $this->db->get();
 		$selectedFoodsForCart = $q2->result();
 
+		 // Fetch payment details
+        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
+        $this->db->from('multipay_bill mb');
+        $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
+        $this->db->where('mb.order_id', $id);
+        $query = $this->db->get();
+        $payment_details = $query->result_array();
+		//echo $this->db->last_query(); // Debugging line to check the query
+
+
+		$data['payment_details'] = $payment_details;
+
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('posinvoiceview', $data);
@@ -5266,6 +5278,17 @@ class Order extends MX_Controller
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
 		$data['orderedMods']=$orderedMods;
+
+		 // Fetch payment details
+        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
+        $this->db->from('multipay_bill mb');
+        $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
+        $this->db->where('mb.order_id', $id);
+        $query = $this->db->get();
+        $payment_details = $query->result_array();
+
+		$data['payment_details'] = $payment_details;
+
 
 		$view = $this->load->view('posinvoicedirectprint', $data, true);
 		echo $view;
