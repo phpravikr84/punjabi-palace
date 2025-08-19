@@ -6365,6 +6365,9 @@ class Order extends MX_Controller
 
 	public function paymultiple()
 	{
+		//Mark table not clean
+		$this->order_model->mark_table_cleaning($this->input->post('orderid'));
+		//Delete all order details
 		$this->db->where('order_id', $this->input->post('orderid'))->delete('table_details');
 		$postdata				 = $this->input->post();
 		$discount                = $this->input->post('granddiscount', true);
@@ -7698,6 +7701,10 @@ class Order extends MX_Controller
 			$this->db->where('order_id', $order_id);
 			$this->db->update('bill', $updatetbill);
 			$this->savekitchenitem($orderid);
+
+			//Mark table not clean
+			$this->order_model->mark_table_cleaning($order_id);
+			//Delete all table details
 			$this->db->where('order_id', $order_id)->delete('table_details');
 
 			$orderinfo = $this->db->select('*')->from('customer_order')->where('order_id', $order_id)->get()->row();

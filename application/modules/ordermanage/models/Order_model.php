@@ -3122,4 +3122,31 @@ class Order_model extends CI_Model
 		return 0; // Return 0 if no record is found
 	}
 
+    /**
+     * Mark table as cleaning by order_id
+     * 
+     * @param int $order_id
+     * @return bool
+     */
+    public function mark_table_cleaning($order_id)
+    {
+        // Step 1: Get table_id from table_details
+        $this->db->select('table_id');
+        $this->db->from('table_details');
+        $this->db->where('order_id', $order_id);
+        $this->db->where('delete_at', 0); // only active records
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            $table_id = $row->table_id;
+
+            // Step 2: Update cleaning_table in rest_table
+            $this->db->where('tableid', $table_id);
+            return $this->db->update('rest_table', ['cleaning_table' => '1']);
+        }
+    }
+
+
+
 }
