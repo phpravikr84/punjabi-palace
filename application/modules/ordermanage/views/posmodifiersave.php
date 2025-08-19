@@ -2,7 +2,8 @@
 <input name="modToggleText_<?= $pid; ?>" type="hidden" value="<?php if ($modTotalPrice > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice; ?>) <?php endif; ?>" id="modToggleText_<?= $pid; ?>" />
 <div id="selectedModsDetails_<?= $pid; ?>" style="display: none; visibility:hidden;">
 <?php
-$this->db->select('add_ons.add_on_name, add_ons.price, cart_selected_modifiers.menu_id, add_ons.add_on_id, add_ons.modifier_id');
+$totalSelModPrice=$modTotalPrice;
+$this->db->select('add_ons.add_on_name, add_ons.price, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, add_ons.add_on_id, add_ons.modifier_id');
 $this->db->from('add_ons');
 $this->db->join('cart_selected_modifiers', 'cart_selected_modifiers.add_on_id=add_ons.add_on_id');
 $this->db->where('cart_selected_modifiers.menu_id',$pid);
@@ -49,7 +50,7 @@ if (count($selectedModsForCart)>0):
         $smv->add_on_name = $smv->add_on_name . ' (Food)';
 ?>
         <!-- <br /> -->
-        <small class="modCheck"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
+        <small class="modCheck" data-mgid="<?=$smv->modifier_groupid;?>"><?=$smv->add_on_name;?><?php if($smv->price>0):?> (<?=(($currency->position == 1)?$currency->curr_icon:'').' '.$smv->price;?>)<?php endif; ?></small>
 <?php 
     $this->db->select('add_ons.add_on_name, add_ons.price, add_ons.add_on_id, cart_selected_modifiers.modifier_groupid, cart_selected_modifiers.menu_id, cart_selected_modifiers.meal_deal_id');
     $this->db->from('add_ons');
@@ -121,7 +122,7 @@ endif;
 </div>
 <?php
 // silence is golden
-$fx = 0;
+$fx = $ww = 0;
 $grtotal = 0;
 $totalitem = 0;
 $calvat = 0;
@@ -154,7 +155,7 @@ if ($cart = $this->cart->contents()):
         //         $itemprice = $item['price'] * $item['qty'];
         // }
         $itemprice = $item['price'] * $item['qty'];
-
+        $ww = $itemprice;
         $cartItemQty = $item['qty'];
         //Fetching add-on prices
         $this->db->select('SUM(add_ons.price) AS mod_total_price');
@@ -329,5 +330,7 @@ if ($promo_query->num_rows() > 0) {
     $promo_get_food_qty = 0;
 }
 echo '<input type="hidden" name="cartItemQty" id="cartItemQty_'.$pid.'" value="' . $cartItemQty . '">';
-echo '<input type="hidden" name="ModTotalPrice_'.$pid.'" id="ModTotalPrice_'.$pid.'" value="' . (($currency->position == 1) ? $currency->curr_icon : '').number_format((($subtotal-$fx)+$fx),2) . '">';
+// echo "modTotalPrice: ".$modTotalPrice.", ww: ".$ww;
+$itemRowTotal = ($totalSelModPrice+$ww);
+echo '<input type="hidden" name="ModTotalPrice_'.$pid.'" id="ModTotalPrice_'.$pid.'" value="' . (($currency->position == 1) ? $currency->curr_icon : '').' '.number_format(($itemRowTotal),2) . '">';
 ?>

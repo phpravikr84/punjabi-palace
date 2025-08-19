@@ -204,6 +204,28 @@ function getslcategory(carid) {
         }
     });
 }
+function getslchildcategory(carid) {
+    var product_name = $('#product_name').val();
+    var csrf = $('#csrfhashresarvation').val();
+    var category_id = carid;
+    var myurl = $('#poschildurl').val();
+    $.ajax({
+        type: "post",
+        async: false,
+        url: myurl,
+        data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+        success: function (data) {
+            if (data == '420') {
+                $("#product_search").html('Product not found !');
+            } else {
+                $("#product_search").html(data);
+            }
+        },
+        error: function () {
+            alert(lang.req_failed);
+        }
+    });
+}
 function getslsubcategory(carid) {
     var product_name = $('#product_name').val();
     var csrf = $('#csrfhashresarvation').val();
@@ -367,7 +389,6 @@ $('body').on('click', '#search_button', function () {
 
 //Product search button js
 $('body').on('click', '.select_product', function (e) {
-    cancelModSelectionArea();
     e.preventDefault();
     var panel = $(this);
     var pid = panel.find('.panel-body input[name=select_product_id]').val();
@@ -383,6 +404,11 @@ $('body').on('click', '.select_product', function (e) {
     var hasaddons = panel.find('.panel-body input[name=select_addons]').val();
     var csrf = $('#csrfhashresarvation').val();
 
+
+    console.log("select_addons val: ",hasaddons);
+    if (hasaddons==0) {
+        cancelModSelectionArea();
+    }
     // Pace.restart();
     console.log("hasaddons: " + hasaddons);
     console.log("totalvarient: " + totalvarient);
@@ -789,56 +815,110 @@ function checkModGroupMaxItemNumber(pid, mods, callback) {
         modifierChoosebtn = $('.modifierChoosebtn'),
         geturl = $("#checkModGroupMaxItemNumberUrl").val(),
         dataString = "pid=" + pid + '&csrf_test_name=' + csrf;
+
     loader.css({ display: 'flex' });
-    modifierChoosebtn.prop("disabled", true);
-    modifierChoosebtn.css({ cursor: 'not-allowed', opacity: 0.5 });
-    $.ajax({
-        type: "POST",
-        url: geturl,
-        data: dataString,
-        success: function (data) {
-            loader.hide();
-            modifierChoosebtn.prop("disabled", false);
-            modifierChoosebtn.css({ cursor: 'pointer', opacity: 1 });
-            const response = data; // make sure it's parsed
-            let valid = true;
+    modifierChoosebtn.prop("disabled", true).css({ cursor: 'not-allowed', opacity: 0.5 });
 
-            response.forEach((rule) => {
-                mods.forEach((item) => {
-                    if (item.pid == rule.menu_id && item.mgid == rule.modifier_groupid) {
-                        const minSelect = parseInt(rule.min);
-                        const maxSelect = parseInt(rule.max);
-                        let count = $(`input[type="checkbox"][data-group-id="${item.mgid}"]:checked`).length;
-                        if (minSelect === 0 && maxSelect === 0) {
-                            count = 0; // Reset count to 0 if both are 0
-                        }
-                        if (count < minSelect || count > maxSelect) {
-                            valid = false;
-                            $(`input[type="checkbox"][data-group-id="${item.mgid}"]`).prop("checked", false);
-                            swal({
-                                title: "Invalid Selection",
-                                text: `You can select between ${minSelect} and ${maxSelect} items for this modifier group.`,
-                                type: "warning",
-                                confirmButtonText: "OK"
-                            });
-                        }
-                    }
-                });
-            });
+    let $modifierGroupInfo = $('input[name="modifierGroupInfo[]"]');
+    loader.hide();
+    modifierChoosebtn.prop("disabled", false).css({ cursor: 'pointer', opacity: 1 });
 
-            callback(valid);
-        },
-        error: function () {
-            swal({
-                title: "Error",
-                text: "Could not validate modifier group selection. Try again later.",
-                type: "error",
-                confirmButtonText: "OK"
-            });
-            callback(false);
-        }
+    let valid = true;
+
+    $modifierGroupInfo.each(function () {
+        let rule = $(this); // current hidden input
+
+        let mgid = rule.data('mgid'),
+            minSelect = parseInt(rule.data('min')),
+            maxSelect = parseInt(rule.data('max'));
+
+        console.log("mgid:", mgid, "min:", minSelect, "max:", maxSelect);
+
+        mods.forEach((item) => {
+            if (item.mgid == mgid) {
+                let count = $(`input[type="checkbox"][data-group-id="${item.mgid}"]:checked`).length;
+
+                if (minSelect === 0 && maxSelect === 0) {
+                    count = 0; // Reset count to 0 if both are 0
+                }
+
+                if (count < minSelect || count > maxSelect) {
+                    valid = false;
+
+                    // Uncheck all from this group
+                    // $(`input[type="checkbox"][data-group-id="${item.mgid}"][data-pid="${pid}"]`).prop("checked", false);
+                    $("#cartModToggle_" + pid).click();
+                    swal({
+                        title: "Invalid Selection",
+                        text: `You can select between ${minSelect} and ${maxSelect} items for this modifier group.`,
+                        type: "warning",
+                        confirmButtonText: "OK"
+                    });
+                }
+            }
+        });
     });
+
+    callback(valid);
 }
+
+// function checkModGroupMaxItemNumber(pid, mods, callback) {
+//     var csrf = $('#csrfhashresarvation').val(),
+//         loader = $('#posSidebarLoader'),
+//         modifierChoosebtn = $('.modifierChoosebtn'),
+//         geturl = $("#checkModGroupMaxItemNumberUrl").val(),
+//         dataString = "pid=" + pid + '&csrf_test_name=' + csrf;
+//     loader.css({ display: 'flex' });
+//     modifierChoosebtn.prop("disabled", true);
+//     modifierChoosebtn.css({ cursor: 'not-allowed', opacity: 0.5 });
+//     $.ajax({
+//         type: "POST",
+//         url: geturl,
+//         data: dataString,
+//         success: function (data) {
+//             loader.hide();
+//             modifierChoosebtn.prop("disabled", false);
+//             modifierChoosebtn.css({ cursor: 'pointer', opacity: 1 });
+//             const response = data; // make sure it's parsed
+//             let valid = true;
+
+//             response.forEach((rule) => {
+//                 mods.forEach((item) => {
+//                     if (item.pid == rule.menu_id && item.mgid == rule.modifier_groupid) {
+//                         const minSelect = parseInt(rule.min);
+//                         const maxSelect = parseInt(rule.max);
+//                         let count = $(`input[type="checkbox"][data-group-id="${item.mgid}"]:checked`).length;
+//                         if (minSelect === 0 && maxSelect === 0) {
+//                             count = 0; // Reset count to 0 if both are 0
+//                         }
+//                         if (count < minSelect || count > maxSelect) {
+//                             valid = false;
+//                             $(`input[type="checkbox"][data-group-id="${item.mgid}"]`).prop("checked", false);
+//                             swal({
+//                                 title: "Invalid Selection",
+//                                 text: `You can select between ${minSelect} and ${maxSelect} items for this modifier group.`,
+//                                 type: "warning",
+//                                 confirmButtonText: "OK"
+//                             });
+//                         }
+//                     }
+//                 });
+//             });
+
+//             callback(valid);
+//         },
+//         error: function () {
+//             swal({
+//                 title: "Error",
+//                 text: "Could not validate modifier group selection. Try again later.",
+//                 type: "error",
+//                 confirmButtonText: "OK"
+//             });
+//             callback(false);
+//         }
+//     });
+// }
+
 function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
     var csrf = $('#csrfhashresarvation').val(),
         loader = $('#posSidebarLoader'),
@@ -1186,8 +1266,8 @@ function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promo
                 ? posaddonsfoodtocart(pid, 1, null, true, promoqty)
                 : posaddonsfoodtocart(pid, 1);
         } else if (promoqty === 0) {
-            removecart(tr_row_id);
-            addToCartSuccess = posaddonsfoodtocart(pid, 1);
+            // removecart(tr_row_id,false);
+            // addToCartSuccess = posaddonsfoodtocart(pid, 1);
         }
 
         if (!addToCartSuccess) {
@@ -1221,7 +1301,7 @@ function disableModifierButtons(disable) {
 /**
  * Wait until a DOM element exists, then run callback
  */
-function waitForElement(selector, callback, checkInterval = 100, timeout = 5000) {
+function waitForElement(selector, callback, checkInterval = 300, timeout = 5000) {
     let elapsed = 0;
     let checkExist = setInterval(() => {
         if ($(selector).length) {
@@ -1229,7 +1309,7 @@ function waitForElement(selector, callback, checkInterval = 100, timeout = 5000)
             callback();
         } else if ((elapsed += checkInterval) >= timeout) {
             clearInterval(checkExist);
-            console.error(`Timeout: ${selector} not found`);
+            // console.error(`Timeout: ${selector} not found`);
         }
     }, checkInterval);
 }
@@ -1285,7 +1365,7 @@ function updateCartUI(pid, data) {
 
     $("#addfoodlist").append(data);
     closeNav();
-    $("#newModSection").html(newModifierDefaultContent);
+    // $("#newModSection").html(newModifierDefaultContent);
 
     let promo_item_id = $(`#promo_item_id_${pid}`).val() || 0,
         promo_item_qty = $(`#promo_item_qty_${pid}`).val() || 0,
@@ -1310,6 +1390,7 @@ function updateCartUI(pid, data) {
     $(`#cartModToggle_${pid}`).closest('tr').find('td').eq(3).html(ModTotalPrice);
     let selectedNewModsHtml = $("#selectedModsDetails_" + pid).html();
     $("#cartModToggle_" + pid).html(selectedNewModsHtml);
+    $("#cartModToggle_" + pid).click();
     if (promo_item_id && promo_item_qty) {
         isPromoFreeItem = true;
         $(`.select_product_id[value="${promo_item_id}"]`).closest('.select_product').click();
@@ -1471,6 +1552,7 @@ $(document).on('click', '#newModSection tr td', function (e) {
                     modifierChoosebtn.prop("disabled", false);
                     modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
                     if (data == '0') {
+                        $("#newModSection").find("#modifierChoosebtnDiv .modifierChoosebtn").click();
                     } else {
                         if (data != "") {
                             console.log("Modifiers found: " + data);
@@ -1481,6 +1563,9 @@ $(document).on('click', '#newModSection tr td', function (e) {
                 },
                 error: function () {
                     $(".page-loader-wrapper").hide();
+                    loader.hide();
+                    modifierChoosebtn.prop("disabled", false);
+                    modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
                     swal({
                         title: "Error",
                         text: "An error occurred while checking modifiers. Please try again.",
@@ -1587,6 +1672,7 @@ $(document).on('click', "#newModSection input[name='modifier_items[]']", functio
                 modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
                 if (data == '0') {
                     // No modifiers found for this item
+                    $("#newModSection").find("#modifierChoosebtnDiv .modifierChoosebtn").click();
                 } else {
                     console.log("Modifiers found: " + data);
                     $("#mealDealSubModListModal").find('.modal-body').html(data);
@@ -1596,6 +1682,9 @@ $(document).on('click', "#newModSection input[name='modifier_items[]']", functio
             },
             error: function () {
                 $(".page-loader-wrapper").hide();
+                loader.hide();
+                modifierChoosebtn.prop("disabled", false);
+                modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
                 // Handle error case
                 swal({
                     title: "Error",
@@ -1645,6 +1734,9 @@ $(document).on('click', "#sideMfContainer input[name='modifier_items[]']", funct
             },
             error: function () {
                 $(".page-loader-wrapper").hide();
+                loader.hide();
+                modifierChoosebtn.prop("disabled", false);
+                modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
                 // Handle error case
                 swal({
                     title: "Error",
@@ -1658,36 +1750,94 @@ $(document).on('click', "#sideMfContainer input[name='modifier_items[]']", funct
     }
 });
 
+// function selectMealDealSubMods(menu_id) {
+//     //Previous Selected Deal Modifiers
+//     let prevSelDealSubMods = selectedDealSubMods;
+//     $("input[name='promo_sub_modifiers[]']:checked").each(function () {
+//         let value = $(this).val();
+//         let groupId = $(this).attr("data-group-id");
+//         let pid = $(this).data("pid");
+
+//         //before this I have to check if the groupId, add_on_id and menu_id are already exists with the same pid into the selectedDealSubMods array
+//         let exists = selectedDealSubMods.some(function (item) {
+//             return item.add_on_id === value && item.mgid === groupId && item.deal_mod_pid === menu_id && item.meal_deal_pid === pid;
+//         });
+//         if (exists) {
+//             console.log("This sub mod is already selected: " + value);
+//             return; // Skip adding this sub mod if it already exists
+//         }
+//         // If it doesn't exist, add it to the selectedDealSubMods array
+//         console.log("Adding sub mod: " + value + " with groupId: " + groupId + " for menu_id: " + menu_id + " and pid: " + pid);
+//         selectedDealSubMods.push({ add_on_id: value, mgid: groupId, deal_mod_pid: menu_id, meal_deal_pid: pid });
+//     });
+//     if (selectedDealSubMods.length > 0) {
+//         checkMealDealModGroupMaxItemNumber(menu_id, selectedDealSubMods, function (isValid) {
+//             if (isValid) {
+//                 // proceed with logic here
+//                 console.log("Validation passed for meal deal sub mods. Proceed...");
+//                 var mods = JSON.stringify(selectedDealSubMods);
+//                 console.log("Selected Meal Deal Sub Mods: " + mods);
+//                 $("#mealDealSubModListModal").modal('hide');
+//                 //need to compare prevSelDealSubMods and selectedDealSubMods before clicking the following button.
+//                 $("#newModSection").find("#modifierChoosebtnDiv").children('.modifierChoosebtn').click();
+//             }
+//         });
+//     }
+// }
 function selectMealDealSubMods(menu_id) {
+    // Clone previous selectedDealSubMods (deep copy)
+    let prevSelDealSubMods = JSON.parse(JSON.stringify(selectedDealSubMods));
+
     $("input[name='promo_sub_modifiers[]']:checked").each(function () {
         let value = $(this).val();
         let groupId = $(this).attr("data-group-id");
         let pid = $(this).data("pid");
 
-        //before this I have to check if the groupId, add_on_id and menu_id are already exists with the same pid into the selectedDealSubMods array
+        // Check if it already exists in selectedDealSubMods
         let exists = selectedDealSubMods.some(function (item) {
-            return item.add_on_id === value && item.mgid === groupId && item.deal_mod_pid === menu_id && item.meal_deal_pid === pid;
+            return item.add_on_id === value &&
+                   item.mgid === groupId &&
+                   item.deal_mod_pid === menu_id &&
+                   item.meal_deal_pid === pid;
         });
+
         if (exists) {
             console.log("This sub mod is already selected: " + value);
-            return; // Skip adding this sub mod if it already exists
+            return; // Skip
         }
-        // If it doesn't exist, add it to the selectedDealSubMods array
+
+        // If not exists, add it
         console.log("Adding sub mod: " + value + " with groupId: " + groupId + " for menu_id: " + menu_id + " and pid: " + pid);
-        selectedDealSubMods.push({ add_on_id: value, mgid: groupId, deal_mod_pid: menu_id, meal_deal_pid: pid });
+        selectedDealSubMods.push({
+            add_on_id: value,
+            mgid: groupId,
+            deal_mod_pid: menu_id,
+            meal_deal_pid: pid
+        });
     });
+
     if (selectedDealSubMods.length > 0) {
         checkMealDealModGroupMaxItemNumber(menu_id, selectedDealSubMods, function (isValid) {
             if (isValid) {
-                // proceed with logic here
                 console.log("Validation passed for meal deal sub mods. Proceed...");
                 var mods = JSON.stringify(selectedDealSubMods);
                 console.log("Selected Meal Deal Sub Mods: " + mods);
                 $("#mealDealSubModListModal").modal('hide');
+
+                // Compare old vs new
+                let isDifferent = JSON.stringify(prevSelDealSubMods) !== JSON.stringify(selectedDealSubMods);
+
+                if (isDifferent) {
+                    console.log("Sub mod selection changed. Triggering modifierChoosebtn click.");
+                    $("#newModSection").find("#modifierChoosebtnDiv").children('.modifierChoosebtn').click();
+                } else {
+                    console.log("No change in sub mod selection. Skipping click.");
+                }
             }
         });
     }
 }
+
 
 
 $(document).ready(function () {
@@ -2283,6 +2433,7 @@ function placeorder() {
             data: dataString,
             success: function (data) {
                 selectedDealSubMods = [];
+                cancelModSelectionArea();
                 $('#addfoodlist').empty();
                 $("#getitemp").val('0');
                 $('#calvat').text('0');

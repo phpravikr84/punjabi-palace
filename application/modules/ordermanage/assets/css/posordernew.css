@@ -710,13 +710,14 @@ small.modifier-sec-sub-heading
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  margin-bottom: 2px;
 }
 
 .category-card {
   background: #ffffff;
   border-radius: 12px;
-  padding: 10px 12px;
+  /* padding: 10px 12px; */
+  padding: 7px 5px;
   width: 110px;
   text-align: center;
   cursor: pointer;
@@ -760,7 +761,7 @@ small.modifier-sec-sub-heading
   scrollbar-color: #ff6600 #f1f1f1;
 } */
 
-.sub-categories {
+/* .sub-categories {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -768,7 +769,17 @@ small.modifier-sec-sub-heading
   gap: 10px;
   scroll-behavior: smooth;
 
-  /* Hide scrollbar in all browsers */
+  /* Hide scrollbar in all browsers 
+  scrollbar-width: none; /* Firefox 
+  -ms-overflow-style: none;  /* IE 10+ 
+} */
+.sub-categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE 10+ */
 }
@@ -793,6 +804,35 @@ small.modifier-sec-sub-heading
   touch-action: pan-x; /* horizontal touch only */
 }
 
+/* Subcategory buttons */
+.sub-cat-btn {
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #ff6600;
+  font-size: 13px;
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.sub-cat-btn:hover {
+  background: rgba(255, 102, 0, 0.05);
+}
+
+/* Child category buttons */
+.child-cat-btn {
+  background: rgba(255, 102, 0, 0.05);
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  margin-left: 6px;
+  color: #ff6600;
+  border: 1px solid rgba(255, 102, 0, 0.15);
+  display: inline-block;
+}
+
 .sub-categories .cat-btn {
   background: #fff;
   border-radius: 10px;
@@ -807,6 +847,22 @@ small.modifier-sec-sub-heading
   cursor: pointer;
 }
 
+
+.sub-categories .cat-btn.active {
+  background: rgba(255, 102, 0, 0.05);
+  border: 1px dashed rgba(255, 102, 0, 0.3);
+    /* font-size: 11px; */
+    /* padding: 5px 9px; */
+    /* border-radius: 8px; */
+}
+.sub-categories .child-btn.active {
+    background: rgba(0, 90, 225, 0.05);
+    /* background: none !important; */
+    border: 1px dashed rgba(0, 90, 225, 0.3);
+    /* font-size: 11px; */
+    /* padding: 5px 9px; */
+    /* border-radius: 8px; */
+}
 .sub-categories .cat-btn:hover {
   background: rgba(255, 102, 0, 0.08);
   transform: scale(1.03);
@@ -814,12 +870,27 @@ small.modifier-sec-sub-heading
 #newModSection{
     margin-top: 22%;
 }
+#newModSection #modifierChoosebtnDiv{
+    display: none;
+}
 .sub-categories .child-btn {
   background: rgba(255, 102, 0, 0.05);
   border: 1px dashed rgba(255, 102, 0, 0.3);
   font-size: 11px;
   padding: 5px 9px;
   border-radius: 8px;
+}
+.sub-categories .child-btn {
+    /* background: rgb(0 90 225 / 5%); */
+    background: none;
+    border: 1px dashed rgb(0 90 225 / 30%);
+    font-size: 11px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    color: #42a4d9;
+}
+.sub-categories .child-btn:hover {
+    background: rgb(0 90 225 / 5%);
 }
 .sub-categories {
   scroll-snap-type: x mandatory;
@@ -829,6 +900,10 @@ small.modifier-sec-sub-heading
   scroll-snap-align: start;
 }
 
+/* #newModSection #modifierChoosebtnDiv
+{
+    display: none !important;
+} */
 
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {

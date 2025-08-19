@@ -212,7 +212,7 @@ function posupdatecart(id, pid, vid, qty, status) {
     });
   }
 }
-function removecart(rid) {
+function removecart(rid,removeModSec=true) {
   var geturl = $("#removeurl").val();
   var csrf = $("#csrfhashresarvation").val();
   var dataString = "rowid=" + rid + "&csrf_test_name=" + csrf;
@@ -224,7 +224,7 @@ function removecart(rid) {
     url: geturl,
     data: dataString,
     success: function (data) {
-      cancelModSelectionArea();
+      (removeModSec) ? cancelModSelectionArea() : '';
       $("#addfoodlist").html(data);
       var total = $("#grtotal").val();
       var totalitem = $("#totalitem").val();
@@ -246,9 +246,9 @@ function removecart(rid) {
       }
       $("#grandtotal").val(parseFloat(tgtotal).toFixed(2));
       $("#orggrandTotal").val(parseFloat(tgtotal).toFixed(2));
-      // setTimeout(() => {
+      setTimeout(() => {
         selectedDealSubMods = [];
-      // }, 6000);
+      }, 5000);
     },
   });
 }

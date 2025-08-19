@@ -255,6 +255,7 @@ if (count($modifiers) > 0):
                                 </tr>
                             </thead> -->
                             <tbody>
+                            <input type="hidden" name="modifierGroupInfo[]" id="modifierGroupInfo_<?=$mv->id;?>" data-mgid="<?=$mv->id;?>" data-max="<?=$mv->max;?>" data-min="<?=$mv->min;?>" data-meal_deal_id="<?=$mv->meal_deal_item_id;?>" />
                                 <?php
                                 // echo "<pre>";
                                 // print_r($selectedMods);

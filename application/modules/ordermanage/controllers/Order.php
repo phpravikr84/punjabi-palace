@@ -12,7 +12,7 @@ class Order extends MX_Controller
 			'order_model',
 			'logs_model'
 		));
-		$this->load->library('cart');
+		$this->load->library('cart'); 
 	}
 
 	public function possetting() 
@@ -454,8 +454,62 @@ class Order extends MX_Controller
 		// print_r($categories);
 		// echo "</pre>";
 		// exit;
+		// Controller
+		$allCategories = $this->order_model->get_all_categories();
+
+		// Step 1: Add item counts and icon defaults
+		foreach ($allCategories as &$cat) {
+			$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID']);
+			$cat['icon'] = $cat['CategoryImage'] ?: '🍽';
+		}
+		unset($cat);
+
+		// Step 2: Group categories by parentid for quick lookup
+		$categoriesByParent = [];
+		foreach ($allCategories as $cat) {
+			$categoriesByParent[$cat['parentid']][] = $cat;
+		}
+
+		// Step 3: Recursive formatter
+		function formatForJs($cat, $categoriesByParent)
+		{
+			$formatted = [
+				'cid' => $cat['CategoryID'],
+				'label' => $cat['Name'],
+				'icon' => $cat['icon'],
+				'count' => $cat['item_count'],
+				'subcategories' => []
+			];
+
+			if (isset($categoriesByParent[$cat['CategoryID']])) {
+				foreach ($categoriesByParent[$cat['CategoryID']] as $childCat) {
+					$formatted['subcategories'][] = formatForJs($childCat, $categoriesByParent);
+				}
+			}
+
+			return $formatted;
+		}
+
+		// Step 4: Build only top-level categories
+		$jsCategories = [];
+		if (isset($categoriesByParent[0])) {
+			foreach ($categoriesByParent[0] as $cat) {
+				$catId = (string) $cat['CategoryID']; // Use ID as JSON key
+				$jsCategories[$catId] = formatForJs($cat, $categoriesByParent);
+			}
+		}
+
+		// Step 5: Pass JSON to view
+		$data['categories_json'] = json_encode($jsCategories, JSON_UNESCAPED_UNICODE);
+
+
+		// Promotional count
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$allfoodPromoCount = $this->order_model->allfoodPromoCount();
+		$data['allfoodPromoCount'] = !empty($allfoodPromoCount) ? $allfoodPromoCount : 0;
+
 		$data['categories'] = $categories;
-		$data['categories_json'] = json_encode($categories);
+		// $data['categories_json'] = json_encode($categories);
 
 		echo Modules::run('template/layout', $data);
 	}
@@ -606,6 +660,31 @@ class Order extends MX_Controller
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
 		$getproduct = $this->order_model->searchprod($catid, $prod);
+		$settinginfo = $this->order_model->settinginfo();
+		$data['settinginfo'] = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		if (!empty($getproduct)) {
+			$data['itemlist'] = $getproduct;
+			$data['module'] = "ordermanage";
+			if ($isuptade == 1) {
+				$data['page']   = "getfoodlistup";
+				$this->load->view('ordermanage/getfoodlistup', $data);
+			} else {
+				$data['page']   = "getfoodlist";
+				$this->load->view('ordermanage/getfoodlist', $data);
+			}
+		} else {
+			echo 420;
+		}
+	}
+	public function getchilditemlist()
+	{
+		$this->permission->method('ordermanage', 'read')->redirect();
+		$data['title'] = display('supplier_edit');
+		$prod = $this->input->post('product_name', true);
+		$isuptade = $this->input->post('isuptade', true);
+		$catid = $this->input->post('category_id');
+		$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -1417,7 +1496,7 @@ class Order extends MX_Controller
 		$data['mainFoodsList']   = $this->order_model->findMainFoodsPromo($id);
 		$data['mainCats']   = $this->order_model->findMainCats($id);
 		$data['varientlist']   = $this->order_model->findByvmenuId($id);
-		$this->load->view('ordermanage/posaddmodifier', $data);
+		$this->load->view('ordermanage/posaddmodifier', $data); 
 	}
 	public function posaddmodifierupdate()
 	{
@@ -1873,7 +1952,12 @@ class Order extends MX_Controller
 	}
 	public function posclear()
 	{
+		$saveid = $this->session->userdata('id');
 		$this->cart->destroy();
+		//delete from cart_selected_modifiers where saveid = $saveid;
+		$this->db->where('saveid', $saveid);
+		$this->db->where('DATE(created_at)', date('Y-m-d'));
+		$this->db->delete('cart_selected_modifiers');
 		redirect('ordermanage/order/pos_invoice');
 	}
 
@@ -2031,7 +2115,6 @@ class Order extends MX_Controller
 	public function pos_order($value = null)
 	{
 		$this->form_validation->set_rules('ctypeid', display('customer_type'), 'required');
-
 		$this->form_validation->set_rules('customer_name', 'Customer Name', 'required');
 		// $this->db->trans_begin();
 		$saveid = $this->session->userdata('id');

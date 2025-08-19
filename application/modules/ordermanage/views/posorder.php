@@ -788,6 +788,7 @@ foreach ($scan as $file) {
             <div class="col-sm-12 col-md-12">
               <div class="panel">
                 <input name="url" type="hidden" id="posurl" value="<?php echo base_url("ordermanage/order/getitemlist") ?>" />
+                <input name="url" type="hidden" id="poschildurl" value="<?php echo base_url("ordermanage/order/getchilditemlist") ?>" />
                 <input name="url" type="hidden" id="possuburl" value="<?php echo base_url("ordermanage/order/getsubitemlist") ?>" />
                 <input name="url" type="hidden" id="posBanqurl" value="<?php echo base_url("ordermanage/order/getBanqitemlist") ?>" />
                 <input name="url" type="hidden" id="posPromoDealurl" value="<?php echo base_url("ordermanage/order/getPromoDealsItemlist") ?>" />
@@ -821,78 +822,51 @@ foreach ($scan as $file) {
                       </div>
                     </div>
                     <div class="pos-categories">
-                      <!-- <div class="modern-categories main-categories">
-                        <div class="category-card cat-btn active" onclick="showMain()">
-                          <div class="cat-icon">🔲</div>
-                          <div class="cat-title">All</div>
-                          <div class="cat-count">235 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('food')">
-                          <div class="cat-icon">🍳</div>
-                          <div class="cat-title">Food Menu</div>
-                          <div class="cat-count">19 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('beverage')">
-                          <div class="cat-icon">🥣</div>
-                          <div class="cat-title">Soups</div>
-                          <div class="cat-count">6 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('banquet')">
-                          <div class="cat-icon">🍝</div>
-                          <div class="cat-title">Pasta</div>
-                          <div class="cat-count">14 items</div>
-                        </div>
-                        <div class="category-card cat-btn" onclick="showSubcategories('deals')">
-                          <div class="cat-icon">🍲</div>
-                          <div class="cat-title">Main Course</div>
-                          <div class="cat-count">67 items</div>
-                        </div>
-                      </div> -->
-                      <div class="modern-categories main-categories">
-                        <div class="category-card cat-btn active" onclick="showMain('');">
-                          <div class="cat-icon">🔲</div>
-                          <div class="cat-title">All</div>
-                          <div class="cat-count">
-                            <?php
-                              $totalCount = array_sum(array_map(function($item) {
-                                return isset($item['count']) ? $item['count'] : 0;
-                              }, $categories));
-                              echo $totalCount . ' items';
+                        <div class="modern-categories main-categories">
+                            <!-- All Button -->
+                            <?php 
+                              // echo "<pre>" ;
+                              // print_r($categories);
+                              // echo "</pre>";
                             ?>
-                          </div>
+                            <div class="category-card cat-btn active" onclick="showMain();">
+                                <div class="cat-icon">🔲</div>
+                                <div class="cat-title">All</div>
+                                <div class="cat-count">
+                                    <?php
+                                    $totalCount = array_sum(array_map(function ($item) {
+                                        return isset($item['count']) ? $item['count'] : 0;
+                                    }, $categories));
+                                    echo $totalCount . ' items';
+                                    ?>
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Main Categories -->
+                            <?php foreach ($categories as $catId => $cat): ?>
+                                <div class="category-card cat-btn"
+                                    onclick="showSubcategories('<?= $catId ?>'); getslcategory(<?= $catId ?>);">
+                                    <div class="cat-icon"><?= !empty($cat['icon']) ? $cat['icon'] : '📦' ?></div>
+                                    <div class="cat-title"><?= htmlspecialchars($cat['label']) ?></div>
+                                    <div class="cat-count"><?= isset($cat['count']) ? $cat['count'] : 0 ?> items</div>
+                                </div>
+                            <?php endforeach; ?>
+
+                            <!-- Deals -->
+                            <div class="category-card cat-btn"
+                                onclick="getPromotionalDeals(); showSubcategories('deals');">
+                                <div class="cat-icon">🍽</div>
+                                <div class="cat-title">Deals</div>
+                                <div class="cat-count"><?= $allfoodPromoCount ?> items</div>
+                            </div>
                         </div>
 
-                        <?php 
-                        $smenuCnter = 0;
-                        foreach ($categories as $key => $cat):
-                          $smenuCnter=$key;
-                        ?>
-                          <div class="category-card cat-btn" onclick="showSubcategories('<?= $key ?>'); getslcategory(<?= isset($cat['cid']) ? $cat['cid'] : '' ?>);">
-                            <div class="cat-icon"><?= isset($cat['icon']) ? $cat['icon'] : '📦' ?></div>
-                            <div class="cat-title"><?= htmlspecialchars($cat['label']) ?></div>
-                            <div class="cat-count"><?= isset($cat['count']) ? $cat['count'] : 0 ?> items</div>
-                          </div>
-                        <?php 
-                        endforeach; 
-                        ?>
-                        <div class="category-card cat-btn" onclick="getPromotionalDeals();showSubcategories('<?=($smenuCnter+1);?>');">
-                          <div class="cat-icon">🍽</div>
-                          <div class="cat-title">Deals</div>
-                          <div class="cat-count">
-                            <?php
-                              
-                              echo $allfoodPromoCount . ' items';
-                            ?>
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <!-- Sub Categories -->
-                      <div class="sub-categories" id="subcategories">
-                        <!-- Dynamically added by JS -->
-                      </div>
+                        <!-- Sub Categories -->
+                        <div class="sub-categories" id="subcategories"></div>
+                        <div class="sub-categories" id="child-subcategories"></div>
                     </div>
+
+
 
                     <div class="row">
                       <div class="col-md-9 col-lg-9">
@@ -1299,8 +1273,13 @@ foreach ($scan as $file) {
                                         $totalamount = $totalamount + $nittotal;
                                         $subtotal = $subtotal + $nittotal + $itemprice;
                                         $i++;
+                                        // echo "<pre>";
+                                        // print_r($item);
+                                        // echo "</pre>";
                                       ?>
+                                      <input name="tr_row_id_<?=$i;?>" id="tr_row_id_<?=$i;?>" type="hidden" value="<?=$item['rowid'];?>">
                                         <tr id="<?php echo $i; ?>">
+
                                           <th id="product_name_MFU4E" style="text-align:left;">
                                             <?php echo  $item['name'];
                                             if (!empty($item['addonsid'])) {
@@ -1766,198 +1745,94 @@ foreach ($scan1 as $file) {
 <script src="<?=base_url('ordermanage/order/possettingjs');?>" type="text/javascript"></script>
 <script src="<?=base_url('ordermanage/order/quickorderjs');?>" type="text/javascript"></script>
 <script src="<?=base_url('application/modules/ordermanage/assets/js/possetting.js');?>" type="text/javascript"></script>
-<script>
-// const categories = {
-//   food: {
-//     label: 'Food Menu',
-//     subcategories: [
-//       { name: 'Starters', children: ['Paneer Tikka', 'Spring Rolls'] },
-//       { name: 'Main Course', children: ['Butter Chicken', 'Dal Makhani'] },
-//       { name: 'Desserts', children: ['Gulab Jamun'] }
-//     ]
-//   },
-//   beverage: {
-//     label: 'Beverage',
-//     subcategories: [
-//       { name: 'Hot Drinks', children: ['Tea', 'Coffee'] },
-//       { name: 'Cold Drinks', children: ['Soda', 'Juice'] }
-//     ]
-//   },
-//   banquet: {
-//     label: 'Banquet',
-//     subcategories: [
-//       { name: 'Wedding', children: [] },
-//       { name: 'Corporate', children: [] }
-//     ]
-//   },
-//   deals: {
-//     label: 'Deals',
-//     subcategories: [
-//       { name: 'Lunch Combo', children: [] },
-//       { name: 'Dinner Combo', children: [] }
-//     ]
-//   }
-// };
-const categories = <?=$categories_json;?>;
-
+<script type="text/javascript">
+// categories will be a PHP JSON output with CategoryID as the key
+const categories = <?= $categories_json; ?>;
 function showMain() {
-  getslcategory('');
-  document.getElementById("subcategories").innerHTML = "";
-  document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector('.cat-btn:first-child').classList.add('active');
+    const subContainer = document.getElementById("subcategories");
+    subContainer.innerHTML = "";
+    document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.main-categories .cat-btn:first-child').classList.add('active');
 }
 
 function showSubcategories(mainKey) {
-  const container = document.getElementById("subcategories");
-  container.innerHTML = "";
+    const container = document.getElementById("subcategories");
+    const child_container = document.getElementById("child-subcategories");
+    container.innerHTML = "";
+    child_container.innerHTML = "";
 
-  const main = categories[mainKey];
-  if (!main) {
-    console.error(`No main category found for key: ${mainKey}`);
+    const main = categories[mainKey];
+    if (!main) return; // safety check
+
+    main.subcategories.forEach(sub => {
+        // Subcategory button
+        const btn = document.createElement("button");
+        btn.className = "cat-btn";
+        btn.textContent = sub.label;
+        container.appendChild(btn);
+        // Add click event to each subcategory button
+        btn.onclick = function() {
+          getslcategory(sub.cid);
+          showSubChildcategories(mainKey,sub.cid);
+          document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+        };
+
+        // Child categories
+        // if (sub.subcategories.length) {
+        //     sub.subcategories.forEach(child => {
+        //         const childBtn = document.createElement("button");
+        //         childBtn.className = "cat-btn child-btn";
+        //         childBtn.textContent = child.label;
+        //         container.appendChild(childBtn);
+        //         // Add click event to each subcategory button
+        //         childBtn.onclick = function() {
+        //           getslcategory(child.cid);
+        //           document.querySelectorAll('.child-btn').forEach(childBtn => childBtn.classList.remove('active'));
+        //           this.classList.add('active');
+        //         };
+        //     });
+        // }
+    });
+
+    // Active highlight
     document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
-    return;
-  }
-  main.subcategories.forEach(sub => {
-    const btn = document.createElement("button");
-    btn.className = "cat-btn";
-    btn.textContent = sub.name;
-    container.appendChild(btn);
-    // Add click event to each subcategory button
-    btn.onclick = function() {
-      getslcategory(sub.ccid);
-      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-    };
+}
+function showSubChildcategories(mainKey,cid)
+{
+    const child_container = document.getElementById("child-subcategories");
+    child_container.innerHTML = "";
 
-    // Append children, if any
-    if (sub.children.length) {
-      sub.children.forEach(child => {
-        const childBtn = document.createElement("button");
-        childBtn.className = "cat-btn child-btn";
-        childBtn.textContent = child;
-        container.appendChild(childBtn);
-      });
-    }
-  });
+    const main = categories[mainKey];
+    if (!main) return; // safety check
 
-  document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
+    main.subcategories.forEach(sub => {
+        if (sub.cid == cid) {
+          // Child categories
+          if (sub.subcategories.length) {
+              sub.subcategories.forEach(child => {
+                  const childBtn = document.createElement("button");
+                  childBtn.className = "cat-btn child-btn";
+                  childBtn.textContent = child.label;
+                  child_container.appendChild(childBtn);
+                  // Add click event to each subcategory button
+                  childBtn.onclick = function() {
+                    getslchildcategory(child.cid);
+                    document.querySelectorAll('.child-btn').forEach(childBtn => childBtn.classList.remove('active'));
+                    this.classList.add('active');
+                  };
+              });
+          }
+        }
+    });
+    // Active highlight
+    // document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
+    // document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
 }
 </script>
 
 <script type="text/javascript">
-  // $(document).on('change', '#customer_name, #ctypeid', function () {
-  //     let customerName = $('#customer_name').val();
-  //     let ctypeId = $('#ctypeid').val();
-
-  //     let url = new URL(window.location.href);
-      
-  //     if (customerName) {
-  //         url.searchParams.set('customer_name', customerName);
-  //     } else {
-  //         url.searchParams.delete('customer_name');
-  //     }
-
-  //     if (ctypeId) {
-  //         url.searchParams.set('ctypeid', ctypeId);
-  //     } else {
-  //         url.searchParams.delete('ctypeid');
-  //     }
-
-  //     // Update URL without reload
-  //     window.history.replaceState({}, '', url.toString());
-  // });
-
-
-  // $(document).ready(function () {
-  //     const urlParams = new URLSearchParams(window.location.search);
-  //     const customerName = urlParams.get('customer_name');
-  //     const ctypeId = urlParams.get('ctypeid');
-
-  //     if (customerName) {
-  //         $('#customer_name').val(customerName);
-  //     }
-
-  //     if (ctypeId) {
-  //         $('#ctypeid').val(ctypeId);
-  //     }
-  // });
-// $(document).ready(function () {
-//     // 1. On page load: Set dropdowns from URL
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const customerName = urlParams.get('customer_name');
-//     const ctypeId = urlParams.get('ctypeid');
-
-//     setTimeout(() => {
-//       if (customerName) {
-//           $('#customer_name').val(customerName).change(); // Trigger change event to update URL
-//       }
-
-//       if (ctypeId) {
-//           $('#ctypeid').val(ctypeId);
-//           if (ctypeId == 1) {
-//             //select customerName with value 1 and disable it
-//             $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
-//             $('#customer_name').prop('disabled', true);
-//             $('#customer_name').next('.select2-container').prop('disabled', true);
-//             $("#add_cust").hide();
-//           } else {
-//             $('#customer_name').prop('disabled', false);
-//             $('#customer_name').next('.select2-container').prop('disabled', false);
-//             $("#add_cust").show();
-//           }
-//       } else {
-//         //select customerName with value 1 and disable it
-//         $('#ctypeid').val(1).change();
-//         $('#customer_name').val(1).change(); // Clear customer name if ctypeId is 1
-//         $('#customer_name').prop('disabled', true);
-//         $('#customer_name').next('.select2-container').prop('disabled', true);
-//         $("#add_cust").hide();
-//       }
-//     }, 1000);
-
-//     // 2. Handle changes
-//     $(document).on('change', '#customer_name, #ctypeid', function () {
-//         let customerName = $('#customer_name').val();
-//         let ctypeId = $('#ctypeid').val();
-
-//         let currentUrl = new URL(window.location.href);
-//         let pathSegments = currentUrl.pathname.split('/');
-
-//         // Update path if ctypeId is present
-//         let posIndex = pathSegments.indexOf('pos_invoice');
-//         if (posIndex !== -1 && pathSegments.length > posIndex + 1 && ctypeId) {
-//             pathSegments[posIndex + 1] = ctypeId;
-//         }
-
-//         // Always update search params
-//         if (customerName) {
-//             currentUrl.searchParams.set('customer_name', customerName);
-//         } else {
-//             // currentUrl.searchParams.delete('customer_name');
-//         }
-
-
-//         if (ctypeId) {
-//             currentUrl.searchParams.set('ctypeid', ctypeId);
-//         } else {
-//             // currentUrl.searchParams.delete('ctypeid');
-//         }
-
-//         // Final URL
-//         let newUrl = currentUrl.origin + pathSegments.join('/') + '/' + ctypeId + '?' + currentUrl.searchParams.toString();
-
-//         // Update browser URL without reload
-//         window.history.replaceState({}, '', newUrl);
-
-//         // Reload only if #ctypeid is changed
-//         if ($(this).attr('id') === 'ctypeid') {
-//             $("#poscartclearbtn").click();
-//             window.location.href = newUrl;
-//         }
-//     });
-// });
 $(document).ready(function () {
     // 1. On page load: Set dropdowns from URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -2113,50 +1988,6 @@ $(document).on('submit', "#validate", function (e) {
         }
     });
 });
-
-// $(document).on('keyup', '#mobile', function () {
-//     let mobile = $(this).val();
-
-//     // Sanitize: remove non-digit characters
-//     // mobile = mobile.replace(/[^0-9]/g, '');
-
-//     console.log("Mobile Number After Sanitize: ", mobile);
-
-//     if (mobile.length === 10 && !isNaN(mobile)) {
-//         $(this).removeClass('is-invalid');
-//         console.log("Mobile Number After 10 digits check: ", mobile);
-
-//         var url = basicinfo.baseurl + 'ordermanage/order/check_customer_by_mobile',
-//             csrf = $('#csrfhashresarvation').val();
-
-//         $.ajax({
-//             type: "POST",
-//             url: url,
-//             data: {
-//                 mobile: mobile,
-//                 csrf_test_name: csrf
-//             },
-//             dataType: "json",
-//             success: function (data) {
-//                 if (data.status == 1) {
-//                     $("#name").val(data.customer_name);
-//                     $("#email").val(data.email);
-//                     $("#mobile").val(data.mobile);
-//                     $("#address").val(data.address);
-//                     $("#favaddress").val(data.favaddress);
-//                 } else {
-//                     $("#name").val('');
-//                     $("#email").val('');
-//                     $("#address").val('');
-//                     $("#favaddress").val('');
-//                 }
-//             }
-//         });
-
-//     } else {
-//         $(this).addClass('is-invalid');
-//     }
-// });
 $(document).on('keyup', '#mobile', function () {
     let $mobileInput = $(this);
     let mobile = $mobileInput.val().replace(/[^0-9]/g, '');

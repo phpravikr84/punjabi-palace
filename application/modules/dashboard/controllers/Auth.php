@@ -178,7 +178,8 @@ class Auth extends MX_Controller {
             } elseif ($user->counter == 1) {
                 redirect('ordermanage/order/counterboard');
             } elseif ($waiter_exist->num_rows() > 0) {
-                redirect('ordermanage/order/pos_invoice');
+                // redirect('ordermanage/order/pos_invoice');
+                redirect('ordermanage/order/alltables');
             } else {
                 redirect('dashboard/home');
             }
