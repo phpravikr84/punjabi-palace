@@ -1219,6 +1219,9 @@ function getAjaxModalNew(
   var csrf = $("#csrfhashresarvation").val();
   var fulldata = data + "&csrf_test_name=" + csrf;
 
+  console.log("getAjaxModalNew called with URL: " + url);
+  console.log("Data sent: " + fulldata); // Debugging
+
   $.ajax({
     url: url,
     type: method,

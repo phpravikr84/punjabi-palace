@@ -19,7 +19,7 @@
                         <input name="sortid[]" type="hidden" value="<?php echo $table->tableid;?>" />
                         
                         <!-- Table ID fixed on top -->
-                        <span class="tableid"><?php echo $table->tableid;?></span>
+                        <span class="tableid"><?php echo $table->tablename;?></span>
                         
                         <!-- Rotatable wrapper (only image rotates) -->
                         <div class="rotatable-content">
@@ -36,18 +36,20 @@
     </div>
 </div>
 <style>
+    #gallery img {
+        height: 45px !important;
+        width: 45px !important;
+    }
     .tableid {
         display: block;
         position: absolute;
-        top: 40px;
-        left: 50%;
+        font-size: 10px;
+        top: 35px;
+        left: 35px;;
         /* transform: translateX(-50%); */
         transform: rotate(0deg);
         transform-origin: center;
         font-weight: bold;
-        background: rgba(255, 255, 255, 0.8);
-        padding: 2px 4px;
-        border-radius: 4px;
         z-index: 10;
     }
 

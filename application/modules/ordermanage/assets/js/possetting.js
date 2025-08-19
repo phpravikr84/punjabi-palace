@@ -4156,6 +4156,7 @@ function initTableSettings() {
 
     // Get query parameters
     const tid = getQueryParam('tid');
+    const tname = getQueryParam('tname');
     const tmmulti = getQueryParam('tmmulti');
     const tmmultipr = getQueryParam('tmmultipr');
     const ps = getQueryParam('ps');
@@ -4175,8 +4176,10 @@ function initTableSettings() {
     setTimeout(function () {
         if (tid) {
             $('#tableid').val(tid).trigger('change.select2');
-            $('#tableid_sha').val(tid);
         }
+          if(tname){
+                 $('#tableid_sha').val(tname);
+            }
     }, 500);
 
     // Set values if available
