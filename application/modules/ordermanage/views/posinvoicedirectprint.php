@@ -631,6 +631,23 @@ body
                     </div>
                     <h5 class="my-5"> <?php if($billinfo->bill_status==1){if($currency->position==1){echo $currency->curr_icon;} echo $customepaid; if($currency->position==2){echo $currency->curr_icon;} } else{ if($currency->position==1){echo $currency->curr_icon;} echo $customepaid;if($currency->position==2){echo $currency->curr_icon;} }?></h5>
                 </div>
+
+                 <?php if (!empty($payment_details)) { ?>
+                    <div class="row-data border-top">
+                        <div class="item-info">
+                            <h5><?php echo 'Payment Details'; ?>:</h5>
+                        </div>
+                    </div>
+                    <?php foreach ($payment_details as $payment) { ?>
+                            <div class="row-data">
+                                <div class="item-info">
+                                    <h5><?php echo $payment['payment_method']; ?></h5>
+                                </div>
+                                <h5><?php if ($currency->position == 1) { echo $currency->curr_icon; } ?><?php echo $payment['amount']; ?><?php if ($currency->position == 2) { echo $currency->curr_icon; } ?></h5>
+                            </div>
+                    <?php } ?>
+                <?php } ?>
+
             </div>
             
             <div class="invoice_address">
@@ -663,6 +680,7 @@ body
                     </h5>
                   </div>
                 </div>
+                
                 <div class="text-center">
                     <h3 class="mt-10"><?php echo display('thanks_you')?></h3>
                     <p class="b_top"><?php echo display('powerbyadzguru')?></p>

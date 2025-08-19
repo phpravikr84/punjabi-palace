@@ -1,4 +1,5 @@
-  <?php 
+  <?php
+  $split_counter = 1; // Initialize split counter
   foreach ($suborderid as $id) {
   
        ?>
@@ -16,8 +17,10 @@
                                                 <table class="table table-modal table-title">
                                                     <tbody>
                                                         <tr>
-                                                            <td><?php echo display('ord');?></td>
-                                                            <td><?php echo $id; ?></td>
+                                                            <!-- <td><?php //echo display('ord');?></td>
+                                                            <td><?php //echo $id; ?></td> -->
+                                                            <td><strong><?php echo 'Split Table'; ?></strong>:</td>
+                                                            <td><strong><?php echo $tableno . '/' . $split_counter; ?></strong></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -1204,4 +1204,22 @@ if (!function_exists('get_item_code')) {
 
         return implode(', ', $results);
     }
+
+    /**
+     * Get payment details for a given order ID
+     * 
+     * @param int $order_id The ID of the order
+     * @return array Array of payment details (payment_type_id, payment_method, amount)
+     */
+    function get_payment_details($order_id) {
+        $CI =& get_instance();
+        $CI->db->select('mb.payment_type_id, pm.payment_method, mb.amount');
+        $CI->db->from('multipay_bill mb');
+        $CI->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
+        $CI->db->where('mb.order_id', $order_id);
+        $query = $CI->db->get();
+        
+        return $query->result_array();
+    }
+
 }

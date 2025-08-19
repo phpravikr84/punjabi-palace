@@ -1,3 +1,11 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+<!-- Printable area start -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Print Invoice</title>
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/modules/ordermanage/assets/css/pos_token.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/modules/ordermanage/assets/css/pos_print.css'); ?>">
 <style>
@@ -19,8 +27,6 @@ body
         display: none;
     }
 }
-</style>
-<style>
 .mb-0 {
     margin-bottom: 0;
 }
@@ -235,7 +241,7 @@ body
 }
 
 .b_top {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #858080;
     padding-top: 12px;
 }
 
@@ -358,24 +364,24 @@ body
 .text-center {
     text-align: center;
 }
-.border-top{border-top: 2px dashed #858080;
-    background: #ececec;}
-.text-bold{font-weight:bold !important;}
 </style>
-<div class="page-wrapper">
+</head>
+
+<body>
+
+<div class="page-wrapper" id="printableArea">
         <div class="invoice-card">
             <div class="invoice-head">
-                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" style="width:35%;" alt="">
+                <img src="<?php echo base_url();?><?php echo $storeinfo->logo?>" alt="Punjabi Palace" style="width: 35%;">
                 <h4><?php echo $storeinfo->storename;?></h4>
                 <p class="my-0"><?php echo $storeinfo->address;?></p>
             </div>
 			<div class="invoice_address">
                 <div class="row-data">
                     <div class="item-info">
-                        <h5 class="item-title"><?php echo display('date');?>: <?php echo date("M d, Y", strtotime($orderinfo->order_date));?></h5>
+                        <h5 class="item-title"><?php echo display('date');?>: <?php echo date("M d, Y", strtotime($billinfo->bill_date));?></h5>
                     </div>
-                    <!-- <?php ##if($storeinfo->isvatnumshow==1){?><h5 class="item-title"><?php ##echo display('tinvat');?>: <?php ##echo $storeinfo->vattinno;?></h5><?php ##} ?> -->
-                    <?php if($storeinfo->isvatnumshow==1){?><h5 class="item-title">TIN/GST NO.: <?php echo $storeinfo->vattinno;?></h5><?php } ?>
+                    <?php if($storeinfo->isvatnumshow==1){?><h5 class="item-title"><?php echo display('tinvat');?>: <?php echo $storeinfo->vattinno;?></h5><?php } ?>
                 </div>
             </div>
             <div class="invoice-details">
@@ -386,25 +392,40 @@ body
                     </div>
 
                     <div class="invoice-data">
-                        <?php $this->load->model('ordermanage/order_model',	'ordermodel');
-				  $i=0; 
+                    <?php 
+				$i=0; 
 				  $totalamount=0;
 					  $subtotal=0;
-					  $total=$orderinfo->totalamount;
 					  $pdiscount=0;
+					  $total=$orderinfo->total_price;
+            $vat=$orderinfo->vat;
+            $servicecharge=$orderinfo->s_charge;
+			$alldiscount=$orderinfo->discount;
+            $gtotal=$total+$vat+$servicecharge-$alldiscount;
+            $presentsub = unserialize($orderinfo->order_menu_id);
+
 					foreach ($iteminfo as $item){
 						$i++;
-						if($item->price>0){
-							$itemprice= $item->price*$item->menuqty;
-							$singleprice=$item->price;
-						}
-						else{
-							$itemprice= $item->mprice*$item->menuqty;
-							$singleprice=$item->mprice;
-						}
-						$itemdetails=$this->ordermodel->getiteminfo($item->menu_id);
+						$isoffer=$this->order_model->read('*', 'order_menu', array('row_id' => $item->row_id));	
+                                                 if($isoffer->isgroup==1){
+													$this->db->select('order_menu.*,item_foods.ProductName,item_foods.OffersRate,variant.variantid,variant.variantName,variant.price');
+													$this->db->from('order_menu');
+													$this->db->join('item_foods','order_menu.groupmid=item_foods.ProductsID','left');
+													$this->db->join('variant','order_menu.groupvarient=variant.variantid','left');
+													$this->db->where('order_menu.row_id',$item->row_id);
+													$query = $this->db->get();
+													$orderinfo=$query->row(); 
+													$item->ProductName=$orderinfo->ProductName;
+													$item->OffersRate=$orderinfo->OffersRate;
+													$item->price=$orderinfo->price;
+													$item->variantName=$orderinfo->variantName;
+													
+												  }
+            $isaddones=$this->order_model->read('*', 'check_addones', array('order_menuid' => $item->row_id));
+						$itemprice= $item->price*$presentsub[$item->row_id];
+						$itemdetails=$this->order_model->getiteminfo($item->menu_id);
 						if($itemdetails->OffersRate>0){
-						 $ptdiscount=$itemdetails->OffersRate*$itemprice/100;
+						  $ptdiscount=$itemdetails->OffersRate*$itemprice/100;
 						  $pdiscount=$pdiscount+($itemdetails->OffersRate*$itemprice/100);
 						}
 						else{
@@ -413,7 +434,8 @@ body
 							}
 						$discount=0;
 						$adonsprice=0;
-						if(!empty($item->add_on_id)){
+						if(!empty($item->add_on_id) && !empty($isaddones)){
+
 							$addons=explode(",",$item->add_on_id);
 							$addonsqty=explode(",",$item->addonsqty);
 							$x=0;
@@ -430,66 +452,17 @@ body
 							$text='';
 							}
 						 $totalamount=$totalamount+$nittotal;
-						 $subtotal=$subtotal+$itemprice;
+						 $subtotal=$subtotal+$item->price*$item->menuqty;
 					?>                
                         <div class="row-data">
                             <div class="item-info">
                                 <h5 class="item-title"><?php echo $item->ProductName;?></h5>
                                 <!-- <p class="item-size"><?php ##echo $item->variantName;?></p> -->
-                                <p class="item-number"><?php echo $singleprice;?> x <?php echo $item->menuqty;?></p>
+                                <p class="item-number"><?php echo $item->price;?> x <?php echo $item->menuqty;?></p>
                             </div>
-                            <h5><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemprice;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                            <h5><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $itemprice-$ptdiscount;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                         </div>
                     <?php 
-                    if(count($orderedMods)>0){
-                        foreach ($orderedMods as $mk => $mv) {
-                          if ($mv->menu_id == $item->menu_id) {
-                            // echo "<pre>";
-                            // print_r($mv);
-                            // echo "</pre>";
-                      ?>
-                      <div class="row-data">
-                        <div class="item-info">
-                          <h5 class="item-title">-<?php echo "Modifiers: ".$mv->add_on_name;?></h5>
-                          <p class="item-number"><?php echo $mv->price;?> x 1</p>
-                        </div>
-                        <h5>
-                          <?php if($currency->position==1){echo $currency->curr_icon;}?>
-                          <?php echo $mv->price*1;?>
-                          <?php if($currency->position==2){echo $currency->curr_icon;}?>
-                        </h5>
-                      </div>
-                      <?php
-                          }
-                        }
-                      }
-                    if(count($selectedFoodsForCart)>0){
-                        foreach ($selectedFoodsForCart as $mfk => $mfv) {
-                          if ($mfv->menu_id == $item->menu_id) {
-                            $this->db->select('variantName');
-                            $this->db->from('variant');
-                            $this->db->where('variantid',$mfv->variant_id);
-                            $vq = $this->db->get();
-                            $variant = $vq->row();
-                            // echo "<pre>";
-                            // print_r($mv);
-                            // echo "</pre>";
-                      ?>
-                      <div class="row-data">
-                        <div class="item-info">
-                          <h5 class="item-title">-<?php echo "Promo Food: ".$mfv->food_name." [". $variant->variantName ."]";?></h5>
-                          <p class="item-number"> x 1</p>
-                        </div>
-                        <h5>
-                          <?php if($currency->position==1){echo $currency->curr_icon;}?>
-                          <?php echo 0*1;?>
-                          <?php if($currency->position==2){echo $currency->curr_icon;}?>
-                        </h5>
-                      </div>
-                      <?php
-                          }
-                        }
-                      }
 			if(!empty($item->add_on_id)){
 				$y=0;
 					foreach($addons as $addonsid){
@@ -509,16 +482,8 @@ body
 			 $itemtotal=$totalamount+$subtotal;
 			 $calvat=$itemtotal*15/100;
 			 
-			 $servicecharge=0; 
-			 if(empty($billinfo)){ $servicecharge;} 
-			 else{$servicecharge=$billinfo->service_charge;}
-			 
-			 $sdr=0; 
-			 if($storeinfo->service_chargeType==1){ 
-			 $sdpr=$billinfo->service_charge*100/$billinfo->total_amount;
-			 $sdr='('.round($sdpr).'%)';
-			 } 
-			 else{$sdr='('.$currency->curr_icon.')';}
+			
+			
 			 
 			  $discount=0; 
 			 if(empty($billinfo)){ $discount;} 
@@ -530,7 +495,6 @@ body
 			 $discountpr='('.round($dispr).'%)';
 			 } 
 			 else{$discountpr='('.$currency->curr_icon.')';}
-			  $calvat=$billinfo->VAT;
 			 ?>
                         
                         
@@ -544,111 +508,34 @@ body
                     <div class="item-info">
                         <h5 class="item-title"><?php echo display('subtotal')?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $billinfo->total_amount;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $total;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
-                <?php if(empty($taxinfos)){?>
-      <div class="row-data">
-        <div class="item-info">
-          <!-- <h5 class="item-title"><?php echo display('vat_tax')?>(<?php echo $storeinfo->vat;?>%)</h5> -->
-          <h5 class="item-title">GST(<?php echo $storeinfo->vat;?>%)</h5>
-        </div>
-        <h5 class="my-5">
-          <?php if($currency->position==1){echo $currency->curr_icon;}?>
-          <?php echo $calvat; ?>
-          <?php if($currency->position==2){echo $currency->curr_icon;}?>
-        </h5>
-      </div>
-      <?php }else{
-			$i=0;
-			foreach($taxinfos as $mvat){
-			if($mvat['is_show']==1){
-			$taxinfo=$this->order_model->read('*', 'tax_collection', array('relation_id' => $orderinfo->order_id));	
-			$fieldname='tax'.$i;
-			?>
-      <div class="row-data">
-        <div class="item-info">
-          <h5 class="item-title"><?php echo $mvat['tax_name'];?></h5>
-        </div>
-        <h5 class="my-5">
-          <?php if($currency->position==1){echo $currency->curr_icon;}?>
-          <?php echo $taxinfo->$fieldname;?>
-          <?php if($currency->position==2){echo $currency->curr_icon;}?>
-        </h5>
-      </div>
-      <?php $i++;} }}?>
+                <div class="row-data">
+                    <div class="item-info">
+                        <h5 class="item-title"><?php echo display('vat_tax')?></h5>
+                    </div>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $vat; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                </div>
                 <div class="row-data">
                     <div class="item-info">
                         <h5 class="item-title"><?php echo display('service_chrg')?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?><?php $sdcharge=0; if(empty($billinfo)){ echo $sdcharge;} else{echo $sdcharge=$billinfo->service_charge;} ?><?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?><?php echo $servicecharge; ?><?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
                 <div class="row-data">
                     <div class="item-info">
                         <h5 class="item-title"><?php echo display('discount')?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php $discount=0; if(empty($billinfo)){ echo $discount;} else{echo $discount=$billinfo->discount;} ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $alldiscount;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
                 
                 <div class="row-data border-top">
                     <div class="item-info">
-                        <h5 class="item-title text-bold"><?php echo display('grand_total')?></h5>
+                        <h5 class="item-title"><?php echo display('grand_total')?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $billinfo->bill_amount;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
-                </div>
-                <?php 
-			if($orderinfo->customerpaid>0){
-				$customepaid=$orderinfo->customerpaid;
-				$changes=$customepaid-$orderinfo->totalamount;
-				}
-			else{
-				$customepaid=$orderinfo->totalamount;
-				$changes=0;
-				}
-			if($billinfo->bill_status==1){?>
-                <div class="row-data">
-                    <div class="item-info">
-                        <h5 class="item-title"><?php echo display('customer_paid_amount')?></h5>
-                    </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $customepaid; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
-                </div>
-                <?php } else{ ?>
-                <div class="row-data">
-                    <div class="item-info">
-                        <h5 class="item-title"><?php echo display('total_due')?></h5>
-                    </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $customepaid; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
-                </div>
-                <?php } ?>
-                <div class="row-data">
-                    <div class="item-info">
-                        <h5 class="item-title"><?php echo display('change_due')?></h5>
-                    </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $changes; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
-                </div>
-                <div class="row-data">
-                    <div class="item-info">
-                        <h5 class="item-title"><?php echo display('totalpayment')?></h5>
-                    </div>
-                    <h5 class="my-5"> <?php if($billinfo->bill_status==1){if($currency->position==1){echo $currency->curr_icon;} echo $customepaid; if($currency->position==2){echo $currency->curr_icon;} } else{ if($currency->position==1){echo $currency->curr_icon;} echo $customepaid;if($currency->position==2){echo $currency->curr_icon;} }?></h5>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $gtotal;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
             </div>
-
-            <?php if (!empty($payment_details)) { ?>
-                <div class="row-data border-top">
-                    <div class="item-info">
-                        <h5><?php echo 'Payment Details'; ?>:</h5>
-                    </div>
-                </div>
-                <?php foreach ($payment_details as $payment) { ?>
-                        <div class="row-data">
-                            <div class="item-info">
-                                <h5><?php echo $payment['payment_method']; ?></h5>
-                            </div>
-                            <h5><?php if ($currency->position == 1) { echo $currency->curr_icon; } ?><?php echo $payment['amount']; ?><?php if ($currency->position == 2) { echo $currency->curr_icon; } ?></h5>
-                        </div>
-                <?php } ?>
-            <?php } ?>
-
             
             <div class="invoice_address">
                 <div class="row-data">
@@ -662,7 +549,7 @@ body
                         <h5 class="item-title"><?php echo display('table');?>: <?php echo $tableinfo->tablename;?></h5>
                     </div>
                     <div class="item-info">
-                        <h5 class="item-title"><?php echo display('orderno')?>: <?php echo $orderinfo->order_id;?></h5>
+                        <h5 class="item-title"><?php echo display('orderno')?>:<?php echo $mainorderinfo->saleinvoice;?>(<?php echo $orderinfo->sub_id;?>)</h5>
                     </div>
                 </div>
                 <div class="middle-data">
@@ -688,3 +575,6 @@ body
         </div>
     </div>
 
+
+</body>
+</html>

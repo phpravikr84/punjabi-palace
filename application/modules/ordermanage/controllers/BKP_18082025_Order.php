@@ -12,7 +12,7 @@ class Order extends MX_Controller
 			'order_model',
 			'logs_model'
 		));
-		$this->load->library('cart'); 
+		$this->load->library('cart');
 	}
 
 	public function possetting() 
@@ -454,62 +454,8 @@ class Order extends MX_Controller
 		// print_r($categories);
 		// echo "</pre>";
 		// exit;
-		// Controller
-		$allCategories = $this->order_model->get_all_categories();
-
-		// Step 1: Add item counts and icon defaults
-		foreach ($allCategories as &$cat) {
-			$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID']);
-			$cat['icon'] = $cat['CategoryImage'] ?: '🍽';
-		}
-		unset($cat);
-
-		// Step 2: Group categories by parentid for quick lookup
-		$categoriesByParent = [];
-		foreach ($allCategories as $cat) {
-			$categoriesByParent[$cat['parentid']][] = $cat;
-		}
-
-		// Step 3: Recursive formatter
-		function formatForJs($cat, $categoriesByParent)
-		{
-			$formatted = [
-				'cid' => $cat['CategoryID'],
-				'label' => $cat['Name'],
-				'icon' => $cat['icon'],
-				'count' => $cat['item_count'],
-				'subcategories' => []
-			];
-
-			if (isset($categoriesByParent[$cat['CategoryID']])) {
-				foreach ($categoriesByParent[$cat['CategoryID']] as $childCat) {
-					$formatted['subcategories'][] = formatForJs($childCat, $categoriesByParent);
-				}
-			}
-
-			return $formatted;
-		}
-
-		// Step 4: Build only top-level categories
-		$jsCategories = [];
-		if (isset($categoriesByParent[0])) {
-			foreach ($categoriesByParent[0] as $cat) {
-				$catId = (string) $cat['CategoryID']; // Use ID as JSON key
-				$jsCategories[$catId] = formatForJs($cat, $categoriesByParent);
-			}
-		}
-
-		// Step 5: Pass JSON to view
-		$data['categories_json'] = json_encode($jsCategories, JSON_UNESCAPED_UNICODE);
-
-
-		// Promotional count
-		$this->permission->method('ordermanage', 'read')->redirect();
-		$allfoodPromoCount = $this->order_model->allfoodPromoCount();
-		$data['allfoodPromoCount'] = !empty($allfoodPromoCount) ? $allfoodPromoCount : 0;
-
 		$data['categories'] = $categories;
-		// $data['categories_json'] = json_encode($categories);
+		$data['categories_json'] = json_encode($categories);
 
 		echo Modules::run('template/layout', $data);
 	}
@@ -660,31 +606,6 @@ class Order extends MX_Controller
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
 		$getproduct = $this->order_model->searchprod($catid, $prod);
-		$settinginfo = $this->order_model->settinginfo();
-		$data['settinginfo'] = $settinginfo;
-		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
-		if (!empty($getproduct)) {
-			$data['itemlist'] = $getproduct;
-			$data['module'] = "ordermanage";
-			if ($isuptade == 1) {
-				$data['page']   = "getfoodlistup";
-				$this->load->view('ordermanage/getfoodlistup', $data);
-			} else {
-				$data['page']   = "getfoodlist";
-				$this->load->view('ordermanage/getfoodlist', $data);
-			}
-		} else {
-			echo 420;
-		}
-	}
-	public function getchilditemlist()
-	{
-		$this->permission->method('ordermanage', 'read')->redirect();
-		$data['title'] = display('supplier_edit');
-		$prod = $this->input->post('product_name', true);
-		$isuptade = $this->input->post('isuptade', true);
-		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -1496,7 +1417,7 @@ class Order extends MX_Controller
 		$data['mainFoodsList']   = $this->order_model->findMainFoodsPromo($id);
 		$data['mainCats']   = $this->order_model->findMainCats($id);
 		$data['varientlist']   = $this->order_model->findByvmenuId($id);
-		$this->load->view('ordermanage/posaddmodifier', $data); 
+		$this->load->view('ordermanage/posaddmodifier', $data);
 	}
 	public function posaddmodifierupdate()
 	{
@@ -1952,12 +1873,7 @@ class Order extends MX_Controller
 	}
 	public function posclear()
 	{
-		$saveid = $this->session->userdata('id');
 		$this->cart->destroy();
-		//delete from cart_selected_modifiers where saveid = $saveid;
-		$this->db->where('saveid', $saveid);
-		$this->db->where('DATE(created_at)', date('Y-m-d'));
-		$this->db->delete('cart_selected_modifiers');
 		redirect('ordermanage/order/pos_invoice');
 	}
 
@@ -2115,6 +2031,7 @@ class Order extends MX_Controller
 	public function pos_order($value = null)
 	{
 		$this->form_validation->set_rules('ctypeid', display('customer_type'), 'required');
+
 		$this->form_validation->set_rules('customer_name', 'Customer Name', 'required');
 		// $this->db->trans_begin();
 		$saveid = $this->session->userdata('id');
@@ -4213,18 +4130,6 @@ class Order extends MX_Controller
 		$q2 = $this->db->get();
 		$selectedFoodsForCart = $q2->result();
 
-		 // Fetch payment details
-        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
-        $this->db->from('multipay_bill mb');
-        $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
-        $this->db->where('mb.order_id', $id);
-        $query = $this->db->get();
-        $payment_details = $query->result_array();
-		//echo $this->db->last_query(); // Debugging line to check the query
-
-
-		$data['payment_details'] = $payment_details;
-
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('posinvoiceview', $data);
@@ -5361,17 +5266,6 @@ class Order extends MX_Controller
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
 		$data['orderedMods']=$orderedMods;
-
-		 // Fetch payment details
-        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
-        $this->db->from('multipay_bill mb');
-        $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
-        $this->db->where('mb.order_id', $id);
-        $query = $this->db->get();
-        $payment_details = $query->result_array();
-
-		$data['payment_details'] = $payment_details;
-
 
 		$view = $this->load->view('posinvoicedirectprint', $data, true);
 		echo $view;
@@ -6751,7 +6645,6 @@ class Order extends MX_Controller
 		$suborder = $this->db->select('sub_id')
 			->from('sub_order')
 			->where('order_id', $orderid)
-			->where('status', 0)
 			->get()
 			->row();
 
@@ -7622,7 +7515,14 @@ class Order extends MX_Controller
 		$mydigit                 = $this->input->post('last4digit', true);
 		$payamonts               = $this->input->post('paidamount', true);
 		$paidamount = 0;
-		
+		$updatetordfordiscount = array(
+			'status'           => 1,
+			'discount'     		 => $discount
+
+		);
+
+		$this->db->where('sub_id', $orderid);
+		$this->db->update('sub_order', $updatetordfordiscount);
 		$settinginfo = $this->order_model->settinginfo();
 		if ($settinginfo->printtype == 1 || $settinginfo->printtype == 3) {
 			$updatetData = array('invoiceprint' => 2);
@@ -7642,16 +7542,6 @@ class Order extends MX_Controller
 			$this->add_multipay($order_id, $billinfo->bill_id, $data_pay);
 			$i++;
 		}
-
-		//update sub order
-		$updatetordfordiscount = array(
-			'status'           => 1,
-			'discount'     		 => $discount
-
-		);
-
-		$this->db->where('sub_id', $orderid);
-		$this->db->update('sub_order', $updatetordfordiscount);
 
 
 		$logData = array(
@@ -7855,17 +7745,27 @@ class Order extends MX_Controller
         $data['gtotal'] = $total + $vat + $servicecharge - $alldiscount;
 
         // Fetch payment details
-        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
+        $this->db->select('mb.payment_type_id, pm.payment_method, mb.amount');
         $this->db->from('multipay_bill mb');
         $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
         $this->db->where('mb.order_id', $order_sub->order_id);
-		$this->db->where('mb.suborder_id', $order_sub->sub_id); // Ensure we only get payments for this sub-order
         $query = $this->db->get();
         $payment_details = $query->result_array();
-		//echo $this->db->last_query(); // Debugging line to check the query
 
+        // Calculate total payment amount
+        $total_payment_amount = 0;
+        foreach ($payment_details as $payment) {
+            $total_payment_amount += $payment['amount'];
+        }
 
-		$data['payment_details'] = $payment_details;
+        // Filter payment details based on grand total match
+        if (abs($total_payment_amount - $data['gtotal']) < 0.01) {
+            // If sum matches grand total, select one payment (first one for simplicity)
+            $data['payment_details'] = !empty($payment_details) ? array($payment_details[0]) : [];
+        } else {
+            // If sum doesn't match, show all payment details
+            $data['payment_details'] = $payment_details;
+        }
 
         if (empty($data['payment_details'])) {
             log_message('debug', 'No payment details found for order_id: ' . $order_sub->order_id);

@@ -271,12 +271,12 @@
                     </div>
                 </div>
                 <?php foreach ($payment_details as $payment) { ?>
-                        <div class="row-data">
-                            <div class="item-info">
-                                <h5><?php echo $payment['payment_method']; ?></h5>
-                            </div>
-                            <h5><?php if ($currency->position == 1) { echo $currency->curr_icon; } ?><?php echo $payment['amount']; ?><?php if ($currency->position == 2) { echo $currency->curr_icon; } ?></h5>
+                    <div class="row-data">
+                        <div class="item-info">
+                            <h5><?php echo $payment['payment_method']; ?></h5>
                         </div>
+                        <h5><?php if ($currency->position == 1) { echo $currency->curr_icon; } ?><?php echo $payment['amount']; ?><?php if ($currency->position == 2) { echo $currency->curr_icon; } ?></h5>
+                    </div>
                 <?php } ?>
             <?php } ?>
             <div class="text-center">

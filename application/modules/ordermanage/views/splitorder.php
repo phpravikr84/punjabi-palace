@@ -95,8 +95,10 @@
                                                 <table class="table table-modal table-title">
                                                     <tbody>
                                                         <tr>
-                                                            <td><?php echo display('ord');?></td>
-                                                            <td><?php echo $suborder->sub_id; ?></td>
+                                                            <!-- <td><?php //echo display('ord');?></td>
+                                                            <td><?php //echo $suborder->sub_id; ?></td> -->
+                                                             <td><strong><?php echo 'Split Table'; ?></strong>:</td>
+                                                            <td><strong><?php echo $suborder->table_split; ?></strong></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

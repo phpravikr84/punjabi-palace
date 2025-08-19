@@ -12,7 +12,7 @@ class Order extends MX_Controller
 			'order_model',
 			'logs_model'
 		));
-		$this->load->library('cart'); 
+		$this->load->library('cart');
 	}
 
 	public function possetting() 
@@ -454,62 +454,8 @@ class Order extends MX_Controller
 		// print_r($categories);
 		// echo "</pre>";
 		// exit;
-		// Controller
-		$allCategories = $this->order_model->get_all_categories();
-
-		// Step 1: Add item counts and icon defaults
-		foreach ($allCategories as &$cat) {
-			$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID']);
-			$cat['icon'] = $cat['CategoryImage'] ?: '🍽';
-		}
-		unset($cat);
-
-		// Step 2: Group categories by parentid for quick lookup
-		$categoriesByParent = [];
-		foreach ($allCategories as $cat) {
-			$categoriesByParent[$cat['parentid']][] = $cat;
-		}
-
-		// Step 3: Recursive formatter
-		function formatForJs($cat, $categoriesByParent)
-		{
-			$formatted = [
-				'cid' => $cat['CategoryID'],
-				'label' => $cat['Name'],
-				'icon' => $cat['icon'],
-				'count' => $cat['item_count'],
-				'subcategories' => []
-			];
-
-			if (isset($categoriesByParent[$cat['CategoryID']])) {
-				foreach ($categoriesByParent[$cat['CategoryID']] as $childCat) {
-					$formatted['subcategories'][] = formatForJs($childCat, $categoriesByParent);
-				}
-			}
-
-			return $formatted;
-		}
-
-		// Step 4: Build only top-level categories
-		$jsCategories = [];
-		if (isset($categoriesByParent[0])) {
-			foreach ($categoriesByParent[0] as $cat) {
-				$catId = (string) $cat['CategoryID']; // Use ID as JSON key
-				$jsCategories[$catId] = formatForJs($cat, $categoriesByParent);
-			}
-		}
-
-		// Step 5: Pass JSON to view
-		$data['categories_json'] = json_encode($jsCategories, JSON_UNESCAPED_UNICODE);
-
-
-		// Promotional count
-		$this->permission->method('ordermanage', 'read')->redirect();
-		$allfoodPromoCount = $this->order_model->allfoodPromoCount();
-		$data['allfoodPromoCount'] = !empty($allfoodPromoCount) ? $allfoodPromoCount : 0;
-
 		$data['categories'] = $categories;
-		// $data['categories_json'] = json_encode($categories);
+		$data['categories_json'] = json_encode($categories);
 
 		echo Modules::run('template/layout', $data);
 	}
@@ -660,31 +606,6 @@ class Order extends MX_Controller
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
 		$getproduct = $this->order_model->searchprod($catid, $prod);
-		$settinginfo = $this->order_model->settinginfo();
-		$data['settinginfo'] = $settinginfo;
-		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
-		if (!empty($getproduct)) {
-			$data['itemlist'] = $getproduct;
-			$data['module'] = "ordermanage";
-			if ($isuptade == 1) {
-				$data['page']   = "getfoodlistup";
-				$this->load->view('ordermanage/getfoodlistup', $data);
-			} else {
-				$data['page']   = "getfoodlist";
-				$this->load->view('ordermanage/getfoodlist', $data);
-			}
-		} else {
-			echo 420;
-		}
-	}
-	public function getchilditemlist()
-	{
-		$this->permission->method('ordermanage', 'read')->redirect();
-		$data['title'] = display('supplier_edit');
-		$prod = $this->input->post('product_name', true);
-		$isuptade = $this->input->post('isuptade', true);
-		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -1496,7 +1417,7 @@ class Order extends MX_Controller
 		$data['mainFoodsList']   = $this->order_model->findMainFoodsPromo($id);
 		$data['mainCats']   = $this->order_model->findMainCats($id);
 		$data['varientlist']   = $this->order_model->findByvmenuId($id);
-		$this->load->view('ordermanage/posaddmodifier', $data); 
+		$this->load->view('ordermanage/posaddmodifier', $data);
 	}
 	public function posaddmodifierupdate()
 	{
@@ -1952,12 +1873,7 @@ class Order extends MX_Controller
 	}
 	public function posclear()
 	{
-		$saveid = $this->session->userdata('id');
 		$this->cart->destroy();
-		//delete from cart_selected_modifiers where saveid = $saveid;
-		$this->db->where('saveid', $saveid);
-		$this->db->where('DATE(created_at)', date('Y-m-d'));
-		$this->db->delete('cart_selected_modifiers');
 		redirect('ordermanage/order/pos_invoice');
 	}
 
@@ -2115,6 +2031,7 @@ class Order extends MX_Controller
 	public function pos_order($value = null)
 	{
 		$this->form_validation->set_rules('ctypeid', display('customer_type'), 'required');
+
 		$this->form_validation->set_rules('customer_name', 'Customer Name', 'required');
 		// $this->db->trans_begin();
 		$saveid = $this->session->userdata('id');
@@ -4213,18 +4130,6 @@ class Order extends MX_Controller
 		$q2 = $this->db->get();
 		$selectedFoodsForCart = $q2->result();
 
-		 // Fetch payment details
-        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
-        $this->db->from('multipay_bill mb');
-        $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
-        $this->db->where('mb.order_id', $id);
-        $query = $this->db->get();
-        $payment_details = $query->result_array();
-		//echo $this->db->last_query(); // Debugging line to check the query
-
-
-		$data['payment_details'] = $payment_details;
-
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
 		$this->load->view('posinvoiceview', $data);
@@ -5361,17 +5266,6 @@ class Order extends MX_Controller
 		$q1=$this->db->get();
 		$orderedMods=$q1->result();
 		$data['orderedMods']=$orderedMods;
-
-		 // Fetch payment details
-        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
-        $this->db->from('multipay_bill mb');
-        $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
-        $this->db->where('mb.order_id', $id);
-        $query = $this->db->get();
-        $payment_details = $query->result_array();
-
-		$data['payment_details'] = $payment_details;
-
 
 		$view = $this->load->view('posinvoicedirectprint', $data, true);
 		echo $view;
@@ -6674,188 +6568,75 @@ class Order extends MX_Controller
 			$this->db->update('order_menu', $updatetmenu);
 		}
 	}
-
-	// public function add_multipay($orderid, $billid, $array_post)
-	// {
-	// 	$multipay = array(
-	// 		'order_id'			=>	$orderid,
-	// 		'payment_type_id'	=>	$array_post['paytype'],
-	// 		'amount'		    =>	$array_post['payamont'],
-	// 	);
-
-	// 	$this->db->insert('multipay_bill', $multipay);
-	// 	$multipay_id = $this->db->insert_id();
-	// 	$orderinfo = $this->db->select('*')->from('customer_order')->where('order_id', $orderid)->get()->row();
-	// 	$cusinfo = $this->db->select('*')->from('customer_info')->where('customer_id', $orderinfo->customer_id)->get()->row();
-	// 	if ($array_post['paytype'] != 1) {
-	// 		if ($array_post['paytype'] == 4) {
-	// 			$headcode = 1020101;
-	// 		} else {
-	// 			$paytype = $this->db->select('payment_method')->from('payment_method')->where('payment_method_id', $array_post['paytype'])->get()->row();
-	// 			$coainfo = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName', $paytype->payment_method)->get()->row();
-	// 			$headcode = $coainfo->HeadCode;
-	// 		}
-	// 		$saveid = $this->session->userdata('id');
-
-	// 		//Income for company
-	// 		$income3 = array(
-	// 			'VNo'            => "Sale" . $orderinfo->saleinvoice,
-	// 			'Vtype'          => 'Sales Products',
-	// 			'VDate'          =>  $orderinfo->order_date,
-	// 			'COAID'          => $headcode,
-	// 			'Narration'      => 'Sale Income For Online payment' . $cusinfo->cuntomer_no . '-' . $cusinfo->customer_name,
-	// 			'Debit'          => $array_post['payamont'],
-	// 			'Credit'         => 0,
-	// 			'IsPosted'       => 1,
-	// 			'CreateBy'       => $saveid,
-	// 			'CreateDate'     => $orderinfo->order_date,
-	// 			'IsAppove'       => 1
-	// 		);
-	// 		$this->db->insert('acc_transaction', $income3);
-	// 	}
-
-	// 	if ($array_post['paytype'] == 1) {
-	// 		$cardinfo = array(
-	// 			'bill_id'			    =>	$billid,
-	// 			'multipay_id'			=>	$multipay_id,
-	// 			'card_no'		        =>	$array_post['mydigit'],
-	// 			'terminal_name'		    =>	$array_post['cterminal'],
-	// 			'bank_name'	            =>	$array_post['mybank'],
-	// 		);
-
-	// 		$this->db->insert('bill_card_payment', $cardinfo);
-	// 		$bankinfo = $this->db->select('bank_name')->from('tbl_bank')->where('bankid', $array_post['mybank'])->get()->row();
-	// 		$coainfo = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName', $bankinfo->bank_name)->get()->row();
-
-	// 		$saveid = $this->session->userdata('id');
-	// 		$income2 = array(
-	// 			'VNo'            => "Sale" . $orderinfo->saleinvoice,
-	// 			'Vtype'          => 'Sales Products',
-	// 			'VDate'          => $orderinfo->order_date,
-	// 			'COAID'          => $coainfo->HeadCode,
-	// 			'Narration'      => 'Sale Income For ' . $cusinfo->cuntomer_no . '-' . $cusinfo->customer_name,
-	// 			'Debit'          => $array_post['payamont'],
-	// 			'Credit'         => 0,
-	// 			'IsPosted'       => 1,
-	// 			'CreateBy'       => $saveid,
-	// 			'CreateDate'     => $orderinfo->order_date,
-	// 			'IsAppove'       => 1
-	// 		);
-	// 		$this->db->insert('acc_transaction', $income2);
-	// 	}
-	// }
-
 	public function add_multipay($orderid, $billid, $array_post)
 	{
-		// Get suborder_id if exists
-		$suborder = $this->db->select('sub_id')
-			->from('sub_order')
-			->where('order_id', $orderid)
-			->where('status', 0)
-			->get()
-			->row();
-
-		$suborder_id = !empty($suborder) ? $suborder->sub_id : NULL;
-
 		$multipay = array(
-			'order_id'         => $orderid,
-			'suborder_id'      => $suborder_id, // New column
-			'payment_type_id'  => $array_post['paytype'],
-			'amount'           => $array_post['payamont'],
+			'order_id'			=>	$orderid,
+			'payment_type_id'	=>	$array_post['paytype'],
+			'amount'		    =>	$array_post['payamont'],
 		);
 
 		$this->db->insert('multipay_bill', $multipay);
 		$multipay_id = $this->db->insert_id();
-
-		$orderinfo = $this->db->select('*')
-			->from('customer_order')
-			->where('order_id', $orderid)
-			->get()
-			->row();
-
-		$cusinfo = $this->db->select('*')
-			->from('customer_info')
-			->where('customer_id', $orderinfo->customer_id)
-			->get()
-			->row();
-
+		$orderinfo = $this->db->select('*')->from('customer_order')->where('order_id', $orderid)->get()->row();
+		$cusinfo = $this->db->select('*')->from('customer_info')->where('customer_id', $orderinfo->customer_id)->get()->row();
 		if ($array_post['paytype'] != 1) {
 			if ($array_post['paytype'] == 4) {
 				$headcode = 1020101;
 			} else {
-				$paytype = $this->db->select('payment_method')
-					->from('payment_method')
-					->where('payment_method_id', $array_post['paytype'])
-					->get()
-					->row();
-
-				$coainfo = $this->db->select('HeadCode')
-					->from('acc_coa')
-					->where('HeadName', $paytype->payment_method)
-					->get()
-					->row();
-
+				$paytype = $this->db->select('payment_method')->from('payment_method')->where('payment_method_id', $array_post['paytype'])->get()->row();
+				$coainfo = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName', $paytype->payment_method)->get()->row();
 				$headcode = $coainfo->HeadCode;
 			}
 			$saveid = $this->session->userdata('id');
 
 			//Income for company
 			$income3 = array(
-				'VNo'        => "Sale" . $orderinfo->saleinvoice,
-				'Vtype'      => 'Sales Products',
-				'VDate'      => $orderinfo->order_date,
-				'COAID'      => $headcode,
-				'Narration'  => 'Sale Income For Online payment' . $cusinfo->cuntomer_no . '-' . $cusinfo->customer_name,
-				'Debit'      => $array_post['payamont'],
-				'Credit'     => 0,
-				'IsPosted'   => 1,
-				'CreateBy'   => $saveid,
-				'CreateDate' => $orderinfo->order_date,
-				'IsAppove'   => 1
+				'VNo'            => "Sale" . $orderinfo->saleinvoice,
+				'Vtype'          => 'Sales Products',
+				'VDate'          =>  $orderinfo->order_date,
+				'COAID'          => $headcode,
+				'Narration'      => 'Sale Income For Online payment' . $cusinfo->cuntomer_no . '-' . $cusinfo->customer_name,
+				'Debit'          => $array_post['payamont'],
+				'Credit'         => 0,
+				'IsPosted'       => 1,
+				'CreateBy'       => $saveid,
+				'CreateDate'     => $orderinfo->order_date,
+				'IsAppove'       => 1
 			);
 			$this->db->insert('acc_transaction', $income3);
 		}
 
 		if ($array_post['paytype'] == 1) {
 			$cardinfo = array(
-				'bill_id'      => $billid,
-				'multipay_id'  => $multipay_id,
-				'card_no'      => $array_post['mydigit'],
-				'terminal_name'=> $array_post['cterminal'],
-				'bank_name'    => $array_post['mybank'],
+				'bill_id'			    =>	$billid,
+				'multipay_id'			=>	$multipay_id,
+				'card_no'		        =>	$array_post['mydigit'],
+				'terminal_name'		    =>	$array_post['cterminal'],
+				'bank_name'	            =>	$array_post['mybank'],
 			);
 
 			$this->db->insert('bill_card_payment', $cardinfo);
-			$bankinfo = $this->db->select('bank_name')
-				->from('tbl_bank')
-				->where('bankid', $array_post['mybank'])
-				->get()
-				->row();
-
-			$coainfo = $this->db->select('HeadCode')
-				->from('acc_coa')
-				->where('HeadName', $bankinfo->bank_name)
-				->get()
-				->row();
+			$bankinfo = $this->db->select('bank_name')->from('tbl_bank')->where('bankid', $array_post['mybank'])->get()->row();
+			$coainfo = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName', $bankinfo->bank_name)->get()->row();
 
 			$saveid = $this->session->userdata('id');
 			$income2 = array(
-				'VNo'        => "Sale" . $orderinfo->saleinvoice,
-				'Vtype'      => 'Sales Products',
-				'VDate'      => $orderinfo->order_date,
-				'COAID'      => $coainfo->HeadCode,
-				'Narration'  => 'Sale Income For ' . $cusinfo->cuntomer_no . '-' . $cusinfo->customer_name,
-				'Debit'      => $array_post['payamont'],
-				'Credit'     => 0,
-				'IsPosted'   => 1,
-				'CreateBy'   => $saveid,
-				'CreateDate' => $orderinfo->order_date,
-				'IsAppove'   => 1
+				'VNo'            => "Sale" . $orderinfo->saleinvoice,
+				'Vtype'          => 'Sales Products',
+				'VDate'          => $orderinfo->order_date,
+				'COAID'          => $coainfo->HeadCode,
+				'Narration'      => 'Sale Income For ' . $cusinfo->cuntomer_no . '-' . $cusinfo->customer_name,
+				'Debit'          => $array_post['payamont'],
+				'Credit'         => 0,
+				'IsPosted'       => 1,
+				'CreateBy'       => $saveid,
+				'CreateDate'     => $orderinfo->order_date,
+				'IsAppove'       => 1
 			);
 			$this->db->insert('acc_transaction', $income2);
 		}
 	}
-
 
 	public function changeMargeorder()
 	{
@@ -7446,68 +7227,29 @@ class Order extends MX_Controller
 		$data['customerlist']   = $this->order_model->customer_dropdown();
 		$this->load->view('ordermanage/splitorder', $data);
 	}
-	// public function showsuborder($num)
-	// {
-	// 	$this->permission->method('ordermanage', 'read')->redirect();
-	// 	$orderid = $this->input->post('orderid');
-	// 	$array_biil_id = array('order_id' => $orderid);
-	// 	$billinfo = $this->order_model->read('*', 'bill', $array_biil_id);
-	// 	$data['num'] = $num;
-	// 	$data['service_chrg_data'] = $billinfo->service_charge / $num;
-	// 	$data['orderid'] = $orderid;
-	// 	$data['customerlist']   = $this->order_model->customer_dropdown();
-	// 	$insertid = array();
-	// 	$this->db->where('order_id', $orderid)->delete('sub_order');
-	// 	for ($i = 0; $i < $num; $i++) {
-	// 		$sub_order = array(
-	// 			'order_id' => $orderid,
-
-	// 		);
-	// 		$this->db->insert('sub_order', $sub_order);
-	// 		$insertid[$i] = $this->db->insert_id();
-	// 	}
-	// 	$data['suborderid'] = $insertid;
-	// 	$this->load->view('ordermanage/showsuborder', $data);
-	// }
-
 	public function showsuborder($num)
 	{
 		$this->permission->method('ordermanage', 'read')->redirect();
 		$orderid = $this->input->post('orderid');
-
-		// Get bill info
 		$array_biil_id = array('order_id' => $orderid);
 		$billinfo = $this->order_model->read('*', 'bill', $array_biil_id);
-
 		$data['num'] = $num;
 		$data['service_chrg_data'] = $billinfo->service_charge / $num;
 		$data['orderid'] = $orderid;
-		$data['customerlist'] = $this->order_model->customer_dropdown();
-
-		// Get table number from model
-		$table_id = $this->order_model->get_order_tableno($orderid);
-
-		// Remove old sub orders
-		$this->db->where('order_id', $orderid)->delete('sub_order');
-
+		$data['customerlist']   = $this->order_model->customer_dropdown();
 		$insertid = array();
+		$this->db->where('order_id', $orderid)->delete('sub_order');
 		for ($i = 0; $i < $num; $i++) {
-			$split_value = $table_id . '/' . ($i + 1); // e.g., 8/1, 8/2, etc.
-
 			$sub_order = array(
-				'order_id'     => $orderid,
-				'table_split'  => $split_value
-			);
+				'order_id' => $orderid,
 
+			);
 			$this->db->insert('sub_order', $sub_order);
 			$insertid[$i] = $this->db->insert_id();
 		}
-
 		$data['suborderid'] = $insertid;
-		$data['tableno'] = $this->order_model->get_order_tableno($orderid);	
 		$this->load->view('ordermanage/showsuborder', $data);
 	}
-
 
 
 
@@ -7622,7 +7364,14 @@ class Order extends MX_Controller
 		$mydigit                 = $this->input->post('last4digit', true);
 		$payamonts               = $this->input->post('paidamount', true);
 		$paidamount = 0;
-		
+		$updatetordfordiscount = array(
+			'status'           => 1,
+			'discount'     		 => $discount
+
+		);
+
+		$this->db->where('sub_id', $orderid);
+		$this->db->update('sub_order', $updatetordfordiscount);
 		$settinginfo = $this->order_model->settinginfo();
 		if ($settinginfo->printtype == 1 || $settinginfo->printtype == 3) {
 			$updatetData = array('invoiceprint' => 2);
@@ -7642,16 +7391,6 @@ class Order extends MX_Controller
 			$this->add_multipay($order_id, $billinfo->bill_id, $data_pay);
 			$i++;
 		}
-
-		//update sub order
-		$updatetordfordiscount = array(
-			'status'           => 1,
-			'discount'     		 => $discount
-
-		);
-
-		$this->db->where('sub_id', $orderid);
-		$this->db->update('sub_order', $updatetordfordiscount);
 
 
 		$logData = array(
@@ -7806,86 +7545,37 @@ class Order extends MX_Controller
 		exit;
 	}
 
-	public function posprintdirectsub($id) {
-        // Fetch sub-order details
-        $array_id = array('sub_id' => $id);
-        $order_sub = $this->order_model->read('*', 'sub_order', $array_id);
-
-        if (empty($order_sub)) {
-            log_message('error', 'Sub-order not found for sub_id: ' . $id);
-            show_error('Sub-order not found.', 404);
-            return;
-        }
-
-        // Unserialize order_menu_id
-        $presentsub = unserialize($order_sub->order_menu_id);
-        if (empty($presentsub)) {
-            log_message('error', 'No menu items found in sub-order for sub_id: ' . $id);
-            show_error('No menu items found for this sub-order.', 404);
-            return;
-        }
-
-        $menuarray = array_keys($presentsub);
-        $data['iteminfo'] = $this->order_model->updateSuborderDatalist($menuarray);
-        if (empty($data['iteminfo'])) {
-            log_message('error', 'Item info could not be retrieved for sub-order: ' . $id);
-            show_error('Item information could not be retrieved.', 500);
-            return;
-        }
-
-        // Fetch other required data
-        $data['orderinfo'] = $order_sub;
-        $data['customerinfo'] = $this->order_model->read('*', 'customer_info', array('customer_id' => $order_sub->customer_id));
-        $data['billinfo'] = $this->order_model->billinfo($order_sub->order_id);
-        $data['cashierinfo'] = $this->order_model->read('*', 'user', array('id' => $data['billinfo']->create_by));
-        $data['mainorderinfo'] = $this->order_model->read('*', 'customer_order', array('order_id' => $order_sub->order_id));
-        $data['table_split'] = $order_sub->table_split; // Use table_split from sub_order
-        $settinginfo = $this->order_model->settinginfo();
-
-        $data['settinginfo'] = $settinginfo;
-        $data['storeinfo'] = $settinginfo;
-        $data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
-        $data['taxinfos'] = $this->taxchecking();
-
-        // Calculate grand total
-        $total = $order_sub->total_price;
-        $vat = $order_sub->vat;
-        $servicecharge = $order_sub->s_charge;
-        $alldiscount = $order_sub->discount;
-        $data['gtotal'] = $total + $vat + $servicecharge - $alldiscount;
-
-        // Fetch payment details
-        $this->db->select('mb.payment_type_id, pm.payment_method, mb.suborder_id, mb.amount');
-        $this->db->from('multipay_bill mb');
-        $this->db->join('payment_method pm', 'mb.payment_type_id = pm.payment_method_id', 'left');
-        $this->db->where('mb.order_id', $order_sub->order_id);
-		$this->db->where('mb.suborder_id', $order_sub->sub_id); // Ensure we only get payments for this sub-order
-        $query = $this->db->get();
-        $payment_details = $query->result_array();
-		//echo $this->db->last_query(); // Debugging line to check the query
+	public function posprintdirectsub($id)
+	{
+		$array_id =  array('sub_id' => $id);
+		$order_sub = $this->order_model->read('*', 'sub_order', $array_id);
+		$presentsub = unserialize($order_sub->order_menu_id);
+		$menuarray = array_keys($presentsub);
+		$data['iteminfo'] = $this->order_model->updateSuborderDatalist($menuarray);
+		$saveid = $this->session->userdata('id');
+		$isadmin = $this->session->userdata('user_type');
 
 
-		$data['payment_details'] = $payment_details;
+		$data['orderinfo']  	   = $order_sub;
+		$data['customerinfo']   = $this->order_model->read('*', 'customer_info', array('customer_id' => $order_sub->customer_id));
 
-        if (empty($data['payment_details'])) {
-            log_message('debug', 'No payment details found for order_id: ' . $order_sub->order_id);
-        }
+		$data['billinfo']	   = $this->order_model->billinfo($order_sub->order_id);
+		$data['cashierinfo']   = $this->order_model->read('*', 'user', array('id' => $data['billinfo']->create_by));
+		$data['mainorderinfo']  	   = $this->order_model->read('*', 'customer_order', array('order_id' => $order_sub->order_id));
+		$data['tableinfo'] = $this->order_model->read('*', 'rest_table', array('tableid' => $data['mainorderinfo']->table_no));
+		$settinginfo = $this->order_model->settinginfo();
 
-        $data['module'] = "ordermanage";
-        $data['page'] = "posprintsuborder";
+		$data['settinginfo'] = $settinginfo;
+		$data['storeinfo']      = $settinginfo;
+		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
+		$data['taxinfos'] = $this->taxchecking();
+		$data['module'] = "ordermanage";
+		$data['page']   = "posinvoice";
 
-        // Load and output the view
-        try {
-            $view = $this->load->view('posprintsuborder', $data, true);
-            echo $view;
-        } catch (Exception $e) {
-            log_message('error', 'Error loading view posprintsuborder: ' . $e->getMessage());
-            show_error('Error generating print view.', 500);
-        }
-        exit;
-    }
-
-
+		$view = $this->load->view('posprintsuborder', $data, true);
+		echo $view;
+		exit;
+	}
 	public function showsplitorderlist($order)
 	{
 
@@ -8474,9 +8164,6 @@ class Order extends MX_Controller
         $existing_suborders = $this->order_model->read_all('*', 'sub_order', $array_bill);
         $existing_count = count($existing_suborders);
 
-		 // Get table_id for split value
-    	$table_id = $this->order_model->get_order_tableno($orderid);
-
         // Prepare menu items for serialization if new sub-orders are needed
         if ($existing_count < $num) {
             $this->db->select('menu_id, add_on_id, addonsqty');
@@ -8520,9 +8207,6 @@ class Order extends MX_Controller
             
             $insertid = array();
             for ($i = 0; $i < $remaining_num; $i++) {
-
-				$split_value = $table_id . '/' . ($i + 1); // e.g., 8/1, 8/2, etc.
-
                 $sub_order = array(
                     'order_id' => $orderid,
                     'total_price' => $total_amount,
@@ -8531,8 +8215,7 @@ class Order extends MX_Controller
                     'order_menu_id' => $order_menu_id,
                     'adons_id' => $addons_id ?: NULL,
                     'adons_qty' => $addons_qty ?: NULL,
-					'split_type' => 1,
-					'table_split'  => $split_value // Store table split value
+					'split_type' => 1 // Add for split-by-amount
                 );
                 $this->db->insert('sub_order', $sub_order);
                 $insertid[] = $this->db->insert_id();
