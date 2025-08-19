@@ -7280,6 +7280,9 @@ class Order extends MX_Controller
 
 	public function showtablemodalnew($tableid = null)
 	{
+		if ($tableid === null) {
+			show_404();
+		}
 		$data['tableinfo'] = $this->order_model->get_table_total_bytableid($tableid);
 		$this->load->view('tablebookviewmodal', $data);
 	}
@@ -7409,7 +7412,7 @@ class Order extends MX_Controller
 
 		$insertid = array();
 		for ($i = 0; $i < $num; $i++) {
-			$split_value = $table_id . '/' . ($i + 1); // e.g., 8/1, 8/2, etc.
+			$split_value = get_tablename($table_id) . '/' . ($i + 1); // e.g., 8/1, 8/2, etc.
 
 			$sub_order = array(
 				'order_id'     => $orderid,
@@ -8438,7 +8441,7 @@ class Order extends MX_Controller
             $insertid = array();
             for ($i = 0; $i < $remaining_num; $i++) {
 
-				$split_value = $table_id . '/' . ($i + 1); // e.g., 8/1, 8/2, etc.
+				$split_value = get_tablename($table_id) . '/' . ($i + 1); // e.g., 8/1, 8/2, etc.
 
                 $sub_order = array(
                     'order_id' => $orderid,
@@ -8910,5 +8913,25 @@ class Order extends MX_Controller
 
         $this->load->view('split_invoice_print', $data);
     }
+
+	/**
+	 * Mark table clean
+	 */
+	public function mark_table_clean($tableId = null) {
+		//$tableId = $this->input->post('tableid');
+		if ($tableId) {
+			$this->db->where('tableid', $tableId);
+			$this->db->update('rest_table', ['cleaning_table' => '0']);
+
+			if ($this->db->affected_rows() > 0) {
+				echo json_encode(['status' => 'success']);
+			} else {
+				echo json_encode(['status' => 'error']);
+			}
+		} else {
+			echo json_encode(['status' => 'error', 'message' => 'Invalid Table ID']);
+		}
+	}
+
 		
 }

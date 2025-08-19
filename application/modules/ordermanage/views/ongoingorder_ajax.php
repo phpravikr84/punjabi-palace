@@ -100,7 +100,7 @@
               <div class="card-body text-center">
                 <?php if ($onprocess->cutomertype == 1) { ?>
                   <!-- Dine In: Table No. in large font -->
-                  <h3 class="mb-1 tablename"><?php echo display('table'); ?>: <?php echo $onprocess->table_no; ?></h3>
+                  <h3 class="mb-1 tablename"><?php echo display('table'); ?>: <?php echo get_tablename($onprocess->table_no); ?></h3>
                   <div class="row mb-1">
                     <div class="col-6"><?php echo display('waiter'); ?>: <?php echo $onprocess->first_name . ' ' . $onprocess->last_name; ?></div>
                     <div class="col-6">

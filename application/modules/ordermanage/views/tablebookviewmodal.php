@@ -83,7 +83,7 @@
                                                     <option value="<?= $i ?>"><?= $i ?></option>
                                                 <?php endfor; ?>
                                             </select>
-
+                                            <input type="hidden" id="tablename" name="tablename" value="<?= $table['tablename'] ?>">
                                             <button type="button" onclick="checktable(<?= $table['tableid'] ?>)" class="btn add_btn">
                                                  Submit
                                             </button>

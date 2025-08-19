@@ -1222,4 +1222,25 @@ if (!function_exists('get_item_code')) {
         return $query->result_array();
     }
 
+
+    // Get Table Name
+    if (!function_exists('get_tablename')) {
+      function get_tablename($tableid)
+      {
+          $CI =& get_instance();
+          $CI->load->database();
+
+          $query = $CI->db->select('tablename')
+                          ->from('rest_table')
+                          ->where('tableid', $tableid)
+                          ->get();
+
+          if ($query->num_rows() > 0) {
+              return $query->row()->tablename;
+          } else {
+              return null; // or return "Unknown"
+          }
+      }
+  }
+
 }

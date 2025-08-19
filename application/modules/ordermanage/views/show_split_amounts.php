@@ -13,7 +13,7 @@
                                 <!-- <td><?php //echo display('split'); ?></td> -->
                                 <!-- <td><?php //echo $suborder->sub_id; ?></td> -->
                                  <td><strong><?php echo 'Split Table'; ?></strong>:</td>
-                                 <td><strong><?php echo $tableno . '/' . $split_counter; ?></strong></td>
+                                 <td><strong><?php echo get_tablename($tableno) . '/' . $split_counter; ?></strong></td>
                             </tr>
                             <?php if ($suborder->status == 1 && $customer) { ?>
                                 <tr>
