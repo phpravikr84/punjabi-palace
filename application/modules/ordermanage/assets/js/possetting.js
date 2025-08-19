@@ -2481,9 +2481,7 @@ function placeorder() {
                             confirmButtonText: lang.yes + ", " + lang.cancel + "!",
                             closeOnConfirm: true
                         },
-                            function () {
-
-                            });
+                            function () {});
                         return false;
                         break;
                 }
@@ -2497,9 +2495,7 @@ function placeorder() {
                         confirmButtonText: lang.yes + ", " + lang.cancel + "!",
                         closeOnConfirm: true
                     },
-                        function () {
-
-                        });
+                        function () {});
                 } else {
                     selectedDealSubMods = [];
                     if (basicinfo.printtype == 1) {
@@ -2512,9 +2508,7 @@ function placeorder() {
                             confirmButtonText: "Done",
                             closeOnConfirm: true
                         },
-                        function () {
-
-                        });
+                        function () {});
                     } else {
                         swal({
                             title: lang.ord_succ,
