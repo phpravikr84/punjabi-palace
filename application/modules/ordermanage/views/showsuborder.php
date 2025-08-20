@@ -20,7 +20,7 @@
                                                             <!-- <td><?php //echo display('ord');?></td>
                                                             <td><?php //echo $id; ?></td> -->
                                                             <td><strong><?php echo 'Split Table'; ?></strong>:</td>
-                                                            <td><strong><?php echo $tableno . '/' . $split_counter; ?></strong></td>
+                                                            <td><strong><?php echo get_tablename($tableno) . '/' . $split_counter; ?></strong></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
