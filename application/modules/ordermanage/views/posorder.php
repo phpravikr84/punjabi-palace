@@ -1888,6 +1888,7 @@ $(document).ready(function () {
         // Always update search params
         if (customerName) {
             currentUrl.searchParams.set('customer_name', customerName);
+            currentUrl.searchParams.set('cid', customerName);
         }
         if (ctypeId) {
             currentUrl.searchParams.set('ctypeid', ctypeId);

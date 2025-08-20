@@ -180,7 +180,17 @@
 
                         //Get table name
                         var tableName = $('#tablename').val();
-                        
+
+                        let cust_id;
+                        let cid = params.get("cid");
+
+                        if (cid !== null && cid !== "") {
+                            cust_id = cid;
+                        } else {
+                            cust_id = $('#custid').val();
+                        }
+                        console.log('Customer ID url: ' + cust_id);
+                                                
                         /**
                          * In below line ps is the number of person and tid is the table id
                          * tmmulti is the table_member_multi and table_member_multi_person is the number of person
@@ -188,10 +198,10 @@
                         //window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice?ps=" + order_person + "&tid=" + id + "&tmmulti=0&tmmultipr=0";
                         var params = new URLSearchParams(window.location.search);
                         window.location.href = basicinfo.baseurl + "ordermanage/order/pos_invoice?ps=" + order_person + "&tid=" + id + "&tname=" + encodeURIComponent(tableName) + "&tmmulti=0&tmmultipr=0"
-                            + (params.get("cid") || params.get("waiter") || params.get("waiter") !== "0"
-                                ? "&cid=" + encodeURIComponent(params.get("cid")) + "&waiter=" + encodeURIComponent(params.get("waiter"))
+                            + (cust_id || params.get("waiter") || params.get("waiter") !== "0"
+                                ? "&cid=" + encodeURIComponent(cust_id) + "&waiter=" + encodeURIComponent(params.get("waiter"))
                                 : "");
-                                $('#cid').val()(params.get("cid"));
+                                $('#cid').val()(cust_id);
                                 $('#waiter').val()(params.get("waiter"));
 
                       return false;
