@@ -88,5 +88,7 @@ $(document).ready(function () {
     });
 });
 
-
+// var basicinfo = {
+//        baseurl: "<?php ##echo base_url(); ?>"
+//    };
 </script>
