@@ -84,6 +84,7 @@
                                                 <?php endfor; ?>
                                             </select>
                                             <input type="hidden" id="tablename" name="tablename" value="<?= $table['tablename'] ?>">
+                                            <input type="hidden" id="custid" name="custid" value="<?= $this->session->userdata('id'); ?>">
                                             <button type="button" onclick="checktable(<?= $table['tableid'] ?>)" class="btn add_btn">
                                                  Submit
                                             </button>
