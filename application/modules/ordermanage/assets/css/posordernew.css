@@ -904,7 +904,12 @@ small.modifier-sec-sub-heading
 {
     display: none !important;
 } */
-
+.modifierSectionItemName {
+    font-size: 14px;
+    font-weight: 550;
+    color: #428bca;
+    text-shadow: 1px 1px 2px #62d0f1; 
+}
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}

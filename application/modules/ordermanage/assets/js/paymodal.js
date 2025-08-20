@@ -9,11 +9,11 @@
 });
 "use strict";
  function changedue(){
-		var main=$("#totalamount_marge").val();
-		var paid=$("#paidamount_marge").val();
-		var change=main-paid;
-		$("#change").val(Math.round(change));
-	}
+	var main=$("#totalamount_marge").val();
+	var paid=$("#paidamount_marge").val();
+	var change=main-paid;
+	$("#change").val(Math.round(change));
+}
 function changetype(){
 	var distypech=$("#discountttch").val();
 	var discount_select = $('#discount_select');
@@ -65,7 +65,7 @@ function changetype(){
 				 $("#paidamount_marge").val(newtotal);
 				 $("#grandtotal").val(newtotal);
 				 $("#due-amount").text(newtotal);
-				 $("#granddiscount").val(granddiscount.toFixed(2));				 
+				 $("#granddiscount").val(granddiscount.toFixed(2));
 				 }
 		//$("#adddiscount").hide();
 		$("#adddiscount").addClass('display-none');

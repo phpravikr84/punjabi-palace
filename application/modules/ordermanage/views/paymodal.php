@@ -7,7 +7,7 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                <div class="panel">
+                <div class="panel"> 
                     <div class="panel-body">
                         <?php
                         if ($ismerge == 1) { ?>

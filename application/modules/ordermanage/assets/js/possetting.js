@@ -809,48 +809,101 @@ function itemModifiersUpdate(pid, orderid) {
 //     });
 // }
 
+// function checkModGroupMaxItemNumber(pid, mods, callback) {
+//     var csrf = $('#csrfhashresarvation').val(),
+//         loader = $('#posSidebarLoader'),
+//         modifierChoosebtn = $('.modifierChoosebtn'),
+//         geturl = $("#checkModGroupMaxItemNumberUrl").val(),
+//         dataString = "pid=" + pid + '&csrf_test_name=' + csrf;
+
+//     loader.css({ display: 'flex' });
+//     modifierChoosebtn.prop("disabled", true).css({ cursor: 'not-allowed', opacity: 0.5 });
+
+//     let $modifierGroupInfo = $('input[name="modifierGroupInfo[]"]');
+//     loader.hide();
+//     modifierChoosebtn.prop("disabled", false).css({ cursor: 'pointer', opacity: 1 });
+
+//     let valid = true;
+
+//     $modifierGroupInfo.each(function () {
+//         let rule = $(this); // current hidden input
+
+//         let mgid = rule.data('mgid'),
+//             minSelect = parseInt(rule.data('min')),
+//             maxSelect = parseInt(rule.data('max'));
+
+//         console.log("mgid:", mgid, "min:", minSelect, "max:", maxSelect);
+//         // here getting output: mgid: 1 min: 0 max: 1 **
+ 
+//         mods.forEach((item) => {
+//             if (item.mgid == mgid) {
+//                 let count = $(`input[type="checkbox"][data-group-id="${item.mgid}"]:checked`).length;
+
+//                 if (minSelect === 0 && maxSelect === 0) {
+//                     count = 0; // Reset count to 0 if both are 0
+//                 }
+//                 console.log('count: ', count);
+//                 //also getting output 1 here in console.
+//                 if (count < minSelect || count > maxSelect) {
+//                     //** still getting true on this condition
+//                     valid = false;
+
+//                     // Uncheck all from this group
+//                     // $(`input[type="checkbox"][data-group-id="${item.mgid}"][data-pid="${pid}"]`).prop("checked", false);
+//                     $("#cartModToggle_" + pid).click();
+//                     swal({
+//                         title: "Invalid Selection",
+//                         text: `You can select between ${minSelect} and ${maxSelect} items for this modifier group.`,
+//                         type: "warning",
+//                         confirmButtonText: "OK"
+//                     });
+//                 }
+//             }
+//         });
+//     });
+
+//     callback(valid);
+// }
 function checkModGroupMaxItemNumber(pid, mods, callback) {
     var csrf = $('#csrfhashresarvation').val(),
         loader = $('#posSidebarLoader'),
-        modifierChoosebtn = $('.modifierChoosebtn'),
-        geturl = $("#checkModGroupMaxItemNumberUrl").val(),
-        dataString = "pid=" + pid + '&csrf_test_name=' + csrf;
+        modifierChoosebtn = $('.modifierChoosebtn');
 
     loader.css({ display: 'flex' });
     modifierChoosebtn.prop("disabled", true).css({ cursor: 'not-allowed', opacity: 0.5 });
 
     let $modifierGroupInfo = $('input[name="modifierGroupInfo[]"]');
-    loader.hide();
-    modifierChoosebtn.prop("disabled", false).css({ cursor: 'pointer', opacity: 1 });
-
     let valid = true;
 
     $modifierGroupInfo.each(function () {
-        let rule = $(this); // current hidden input
-
-        let mgid = rule.data('mgid'),
+        let rule = $(this),
+            mgid = rule.data('mgid'),
             minSelect = parseInt(rule.data('min')),
             maxSelect = parseInt(rule.data('max'));
 
-        console.log("mgid:", mgid, "min:", minSelect, "max:", maxSelect);
+        console.log(`mgid: ${mgid}, min: ${minSelect}, max: ${maxSelect}`);
 
         mods.forEach((item) => {
             if (item.mgid == mgid) {
                 let count = $(`input[type="checkbox"][data-group-id="${item.mgid}"]:checked`).length;
+                console.log('count:', count);
 
                 if (minSelect === 0 && maxSelect === 0) {
                     count = 0; // Reset count to 0 if both are 0
                 }
 
+                // Check if count is outside allowed range
                 if (count < minSelect || count > maxSelect) {
                     valid = false;
 
-                    // Uncheck all from this group
+                    // Reset selection for this group
                     // $(`input[type="checkbox"][data-group-id="${item.mgid}"][data-pid="${pid}"]`).prop("checked", false);
-                    $("#cartModToggle_" + pid).click();
+                    setTimeout(() => {
+                        $("#cartModToggle_" + pid).click();
+                    }, 1000);
                     swal({
                         title: "Invalid Selection",
-                        text: `You can select between ${minSelect} and ${maxSelect} items for this modifier group.`,
+                        text: `You must select between ${minSelect} and ${maxSelect} items for this modifier group.`,
                         type: "warning",
                         confirmButtonText: "OK"
                     });
@@ -858,6 +911,9 @@ function checkModGroupMaxItemNumber(pid, mods, callback) {
             }
         });
     });
+
+    loader.hide();
+    modifierChoosebtn.prop("disabled", false).css({ cursor: 'pointer', opacity: 1 });
 
     callback(valid);
 }
@@ -985,7 +1041,7 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
     });
 }
 
-
+// The old function all in one... was taking much time.
 // function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promoqty = 0) {
 //     console.log("selectedDealSubMods on ApplyModifierSelect: ", JSON.stringify(selectedDealSubMods));
 //     if (pid == 0) {
@@ -1226,6 +1282,7 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
 //         });
 //     }
 // }
+// The new part by part broke down function to reduce the resource ocupancy and runtime.
 function ApplyModifierSelect(pid = 0, tr_row_id = null, skipAddToCart = 0, promoqty = 0) {
     console.log("selectedDealSubMods on ApplyModifierSelect: ", JSON.stringify(selectedDealSubMods));
     if (!pid) {
@@ -1523,64 +1580,69 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
     }
 }
 
-$(document).on('click', '#newModSection tr td', function (e) {
-    if (!$(e.target).is("input[type='checkbox']")) {
-        let $checkbox = $(this).find("input[name='modifier_items[]']"),
-        loader = $('#posSidebarLoader'),
-        modifierChoosebtn = $('.modifierChoosebtn');
-        $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
+$(document).on('click', '#newModSection tr', function (e) {
+    let $row = $(e.target).closest('tr'); // Always get the <tr>
+    if ($row.length) {
+        console.log("Row clicked:", $row.index());
+        if (!$(e.target).is("input[type='checkbox']")) {
+            let $checkbox = $(this).find("input[name='modifier_items[]']"),
+            loader = $('#posSidebarLoader'),
+            modifierChoosebtn = $('.modifierChoosebtn');
+            $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
 
-        if ($checkbox.is(":checked")) {
-            let myurl = $('#modifierCheckUrl').val(),
-                csrf = $('#csrfhashresarvation').val(),
-                group_id = $checkbox.data('group-id'),
-                addon_id = $checkbox.val(),
-                pid = $checkbox.data('pid');
-            // $(".page-loader-wrapper").show();
-            loader.css({display:'flex'});
-            modifierChoosebtn.prop("disabled", true);
-            modifierChoosebtn.css({cursor: 'not-allowed', opacity: 0.5});
-            $.ajax({
-                type: "POST",
-                url: myurl,
-                data: {
-                    group_id: group_id,
-                    addon_id: addon_id,
-                    pid: pid,
-                    csrf_test_name: csrf
-                },
-                success: function (data) {
-                    // $(".page-loader-wrapper").hide();
-                    loader.hide();
-                    modifierChoosebtn.prop("disabled", false);
-                    modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
-                    if (data == '0') {
-                        $("#newModSection").find("#modifierChoosebtnDiv .modifierChoosebtn").click();
-                    } else {
-                        if (data != "") {
-                            console.log("Modifiers found: " + data);
-                            $("#mealDealSubModListModal").find('.modal-body').html(data);
-                            $("#mealDealSubModListModal").modal('show');
+            if ($checkbox.is(":checked")) {
+                let myurl = $('#modifierCheckUrl').val(),
+                    csrf = $('#csrfhashresarvation').val(),
+                    group_id = $checkbox.data('group-id'),
+                    addon_id = $checkbox.val(),
+                    pid = $checkbox.data('pid');
+                // $(".page-loader-wrapper").show();
+                loader.css({display:'flex'});
+                modifierChoosebtn.prop("disabled", true);
+                modifierChoosebtn.css({cursor: 'not-allowed', opacity: 0.5});
+                $.ajax({
+                    type: "POST",
+                    url: myurl,
+                    data: {
+                        group_id: group_id,
+                        addon_id: addon_id,
+                        pid: pid,
+                        csrf_test_name: csrf
+                    },
+                    success: function (data) {
+                        // $(".page-loader-wrapper").hide();
+                        loader.hide();
+                        modifierChoosebtn.prop("disabled", false);
+                        modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+                        if (data == '0') {
+                            $("#newModSection").find("#modifierChoosebtnDiv .modifierChoosebtn").click();
+                        } else {
+                            if (data != "") {
+                                console.log("Modifiers found: " + data);
+                                $("#mealDealSubModListModal").find('.modal-body').html(data);
+                                $("#mealDealSubModListModal").modal('show');
+                            }
                         }
+                    },
+                    error: function () {
+                        $(".page-loader-wrapper").hide();
+                        loader.hide();
+                        modifierChoosebtn.prop("disabled", false);
+                        modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+                        swal({
+                            title: "Error",
+                            text: "An error occurred while checking modifiers. Please try again.",
+                            type: "error",
+                            confirmButtonText: "OK",
+                            closeOnConfirm: true
+                        });
                     }
-                },
-                error: function () {
-                    $(".page-loader-wrapper").hide();
-                    loader.hide();
-                    modifierChoosebtn.prop("disabled", false);
-                    modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
-                    swal({
-                        title: "Error",
-                        text: "An error occurred while checking modifiers. Please try again.",
-                        type: "error",
-                        confirmButtonText: "OK",
-                        closeOnConfirm: true
-                    });
-                }
-            });
+                });
+            }
         }
     }
 });
+
 $(document).on('click', '#sideMfContainer table tr', function (e) {
     console.log("Clicked on sideMfContainer table row");
     if (!$(e.target).is("input[type='checkbox']")) {
@@ -1639,9 +1701,13 @@ $(document).on('click', '#sideMfContainer table tr', function (e) {
 
 
 $(document).on('click', '#mealDealSubModListModal .modal-body table tr', function (e) {
-    if (!$(e.target).is("input[type='checkbox']")) {
-        const $checkbox = $(this).find("input[name='promo_sub_modifiers[]']");
-        $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change"); // Toggle and trigger
+    let $row = $(e.target).closest('tr'); // Always get the <tr>
+    if ($row.length) {
+        console.log("Row clicked:", $row.index());
+        if (!$(e.target).is("input[type='checkbox']")) {
+            const $checkbox = $(this).find("input[name='promo_sub_modifiers[]']");
+            $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change"); // Toggle and trigger
+        }
     }
 });
 
@@ -3236,8 +3302,8 @@ function submitmultiplepay() {
 
     $(".number").each(function () {
         var inputdata = parseFloat($(this).val());
+        console.log('inputdata: ',inputdata);
         inputval = inputval + inputdata;
-
     });
     if (inputval < parseFloat(maintotalamount)) {
 
@@ -3247,7 +3313,6 @@ function submitmultiplepay() {
                 progressBar: true,
                 showMethod: 'slideDown',
                 timeOut: 4000
-
             };
             toastr.error("Pay full amount ", 'Error');
         }, 100);
@@ -3299,7 +3364,6 @@ function changedueamount() {
     $(".number").each(function () {
         var inputdata = parseFloat($(this).val());
         inputval = inputval + inputdata;
-
     });
 
     restamount = (parseFloat(maintotalamount)) - (parseFloat(inputval));
@@ -3311,7 +3375,6 @@ function changedueamount() {
         $("#change-amount").text(0);
         $("#pay-amount").text(changes);
     }
-
 }
 
 function mergeorderlist() {
@@ -3817,10 +3880,12 @@ function submitmultiplepaysub(subid) {
 
     $(".number").each(function() {
         var inputdata = parseFloat($(this).val()) || 0;
-        inputval += inputdata;
+        console.log('inputdata: ',inputdata);
+        inputval = inputval + inputdata;
     });
-
-    if (inputval < maintotalamount) {
+    console.log('inputval: ',inputval);
+    var c = inputval.toFixed(3);
+    if (Math.abs(c) < maintotalamount) {
         setTimeout(function() {
             toastr.options = {
                 closeButton: true,

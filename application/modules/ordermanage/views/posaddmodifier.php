@@ -212,6 +212,7 @@ endif;
 if (count($modifiers) > 0):
 ?>
 <div class="panel-group" id="foodAccordion" role="tablist" aria-multiselectable="false">
+    <h6 class="text-center modifierSectionItemName"><?=$selectedItemName;?></h6>
     <?php
     $modGroupQty = 0;
     foreach ($modifiers as $mk => $mv):
