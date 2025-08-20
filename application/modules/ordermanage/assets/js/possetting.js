@@ -951,6 +951,9 @@ function checkMealDealModGroupMaxItemNumber(pid, mods, callback) {
                         if (minSelect === 0 && maxSelect === 0) {
                             count = 0; // Reset count to 0 if both are 0
                         }
+                        console.log('checkMealDealModGroupMaxItemNumber count: ',count);
+                        console.log('checkMealDealModGroupMaxItemNumber minSelect: ',minSelect);
+                        console.log('checkMealDealModGroupMaxItemNumber maxSelect: ',maxSelect);
                         if (count < minSelect || count > maxSelect) {
                             valid = false;
                             $(`input[type="checkbox"][name="promo_sub_modifiers[]"][data-group-id="${item.mgid}"]`).prop("checked", false);
@@ -1787,6 +1790,7 @@ $(document).on('click', "#sideMfContainer input[name='modifier_items[]']", funct
 function selectMealDealSubMods(menu_id) {
     // Clone previous selectedDealSubMods (deep copy)
     let prevSelDealSubMods = JSON.parse(JSON.stringify(selectedDealSubMods));
+    selectedDealSubMods=[];
 
     $("input[name='promo_sub_modifiers[]']:checked").each(function () {
         let value = $(this).val();

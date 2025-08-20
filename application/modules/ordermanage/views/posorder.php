@@ -803,7 +803,7 @@ foreach ($scan as $file) {
                 <input name="url" type="hidden" id="cartmodifiersaveurl" value="<?php echo base_url("ordermanage/order/cartmodifiersave") ?>" />
                 <input name="url" type="hidden" id="cartPromoFoodModifierSaveUrl" value="<?php echo base_url("ordermanage/order/cartPromoFoodModifierSave") ?>" />
                 <input name="url" type="hidden" id="removeurl" value="<?php echo base_url("ordermanage/order/removetocart") ?>" />
-                <input name="url" type="hidden" id="modifierCheckUrl" value="<?php echo base_url("ordermanage/order/modifierCheck") ?>" />
+                <input name="url" type="hidden" id="modifierCheckUrl" value="<?php echo base_url("ordermanage/order/modifierCheck") ?>" /> 
                 <input name="url" type="hidden" id="checkModGroupMaxItemNumberUrl" value="<?php echo base_url("ordermanage/order/checkModGroupMaxItemNumber") ?>" />
                 <input name="updateid" type="hidden" id="updateid" value="" />
                 <input name="ctype" type="hidden" id="ctype" value="<?=$ctype;?>" />
