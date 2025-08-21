@@ -90,6 +90,22 @@ function showCleaningTableDetails(tableId) {
 
     var csrf = $('#csrfhashresarvation').val();
 
+     // Case 1: Table is occupied
+    if ($tableBtn.hasClass('btn-occupied')) {
+        Swal.fire({
+            title: 'Warning',
+            text: 'You cannot book this table! It is currently occupied.',
+            icon: 'warning',
+            confirmButtonText: 'OK',
+            customClass: {
+                popup: 'pos-swal-popup',
+                confirmButton: 'pos-swal-confirm'
+            },
+            buttonsStyling: false
+        });
+        return; // stop further execution
+    }
+
     // Check if table is in cleaning state (btn-paid means cleaning in your logic)
     if ($tableBtn.hasClass('btn-paid')) {
         Swal.fire({
