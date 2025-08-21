@@ -82,10 +82,10 @@ function current_version(){
              <?php if ((float)$new_version>$myversion) {if($versioncheck->version!=(float)$new_version){ ?><li><a href="<?php echo base_url("dashboard/autoupdate") ?>" style="display: flex;align-items: center;background: #f81111;padding: 0 10px;margin-top: 12px;color: #fff;animation-name: anim_opa; animation-duration: 0.8s; animation-iteration-count: infinite;"><i class="fa fa-warning" style="background: transparent; border: 0; color: #fff;"></i><span style="font-size: 16px;font-weight: 600;">Update Available</span></a></li><?php } } ?>
             <li><a id="fullscreen" href="#" class="getid1"><i class="pe-7s-expand1"></i></a></li>
             <li class="dropdown messages-menu">
-                <a href="<?php echo base_url("reservation/reservation") ?>" class="dropdown-toggle">
+                <!-- <a href="<?php //echo base_url("reservation/reservation") ?>" class="dropdown-toggle">
                     <i class="fa fa-bell-o"></i>
                     <span class="label label-success reservenotif">0</span>
-                </a>
+                </a> -->
                 <input name="csrfres" id="csrfresarvation" type="hidden" value="<?php echo $this->security->get_csrf_token_name(); ?>" />
                 <input name="csrfhash" id="csrfhashresarvation" type="hidden" value="<?php echo $this->security->get_csrf_hash(); ?>" />
             </li> 
