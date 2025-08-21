@@ -396,7 +396,11 @@ class Order extends MX_Controller
 			$icon = $cat['CategoryImage'] ?: '🍽'; // default icon if empty
 
 			//get item_foods count under this category $cat['CategoryID']
-			$itemCount = $this->order_model->get_item_count_by_category($id);
+			//$itemCount = $this->order_model->get_item_count_by_category($id);
+			$ctype = $this->input->get('ctypeid', true) ?: null; 
+			// Pass ctype to get_item_count_by_category
+        	$itemCount = $this->order_model->get_item_count_by_category($id, $ctype);
+
 
 			// If main category
 			if ($parentId == 0) {
@@ -459,7 +463,8 @@ class Order extends MX_Controller
 
 		// Step 1: Add item counts and icon defaults
 		foreach ($allCategories as &$cat) {
-			$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID']);
+			//$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID']);
+			$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID'], $ctype);
 			$cat['icon'] = $cat['CategoryImage'] ?: '🍽';
 		}
 		unset($cat);
@@ -659,7 +664,13 @@ class Order extends MX_Controller
 		$prod = $this->input->post('product_name', true);
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchprod($catid, $prod);
+		$ctype = $this->input->post('ctypeid', true);
+		// Pass ctype to searchprod
+		if ($ctype) {
+			$getproduct = $this->order_model->searchprod($catid, $prod, $ctype);
+		} else {
+			$getproduct = $this->order_model->searchprod($catid, $prod);
+		}
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -684,7 +695,14 @@ class Order extends MX_Controller
 		$prod = $this->input->post('product_name', true);
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
+		//$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
+		$ctype = $this->input->post('ctypeid', true);
+		// Pass ctype to searchprod
+		if ($ctype) {
+			$getproduct = $this->order_model->searchchildsubprod($catid, $prod, $ctype);
+		} else {
+			$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
+		}
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -709,7 +727,14 @@ class Order extends MX_Controller
 		$prod = $this->input->post('product_name', true);
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		//$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		$ctype = $this->input->post('ctypeid', true);
+		// Pass ctype to searchprod
+		if ($ctype) {
+			$getproduct = $this->order_model->searchsubprod($catid, $prod, $ctype);
+		} else {
+			$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		}
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -3865,7 +3890,11 @@ class Order extends MX_Controller
 			$icon = $cat['CategoryImage'] ?: '🍽'; // default icon if empty
 
 			//get item_foods count under this category $cat['CategoryID']
-			$itemCount = $this->order_model->get_item_count_by_category($id);
+			//$itemCount = $this->order_model->get_item_count_by_category($id);
+			// Pass ctype to get_item_count_by_category
+			$ctype = $this->input->get('ctypeid', true) ?: null; // Get ctype from GET or set to null
+			// If ctype is not provided, it will default to null
+        	$itemCount = $this->order_model->get_item_count_by_category($id, $ctype);
 
 			// If main category
 			if ($parentId == 0) {

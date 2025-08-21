@@ -186,12 +186,18 @@ function getslcategory(carid) {
     var product_name = $('#product_name').val();
     var csrf = $('#csrfhashresarvation').val();
     var category_id = carid;
+    // Get the current URL
+    const url = new URL(window.location.href);
+
+    // Get ctypeid from the query string
+    var ctypeid = url.searchParams.get('ctypeid');
+
     var myurl = $('#posurl').val();
     $.ajax({
         type: "post",
         async: false,
         url: myurl,
-        data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+        data: { product_name: product_name, category_id: category_id, isuptade: 0, ctypeid:ctypeid, csrf_test_name: csrf },
         success: function (data) {
             if (data == '420') {
                 $("#product_search").html('Product not found !');
@@ -209,11 +215,15 @@ function getslchildcategory(carid) {
     var csrf = $('#csrfhashresarvation').val();
     var category_id = carid;
     var myurl = $('#poschildurl').val();
+    // Get the current URL
+    const url = new URL(window.location.href);
+    // Get ctypeid from the query string
+    var ctypeid = url.searchParams.get('ctypeid');
     $.ajax({
         type: "post",
         async: false,
         url: myurl,
-        data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+        data: { product_name: product_name, category_id: category_id, isuptade: 0, ctypeid:ctypeid, csrf_test_name: csrf },
         success: function (data) {
             if (data == '420') {
                 $("#product_search").html('Product not found !');
@@ -231,11 +241,15 @@ function getslsubcategory(carid) {
     var csrf = $('#csrfhashresarvation').val();
     var category_id = carid;
     var myurl = $('#possuburl').val();
+    // Get the current URL
+    const url = new URL(window.location.href);
+    // Get ctypeid from the query string
+    var ctypeid = url.searchParams.get('ctypeid');
     $.ajax({
         type: "post",
         async: false,
         url: myurl,
-        data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+        data: { product_name: product_name, category_id: category_id, ctypeid:ctypeid, isuptade: 0, csrf_test_name: csrf },
         success: function (data) {
             if (data == '420') {
                 $("#product_search").html('Product not found !');

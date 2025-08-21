@@ -274,37 +274,91 @@ class Order_model extends CI_Model
 		$countQuery = $this->db->get();
 		return $totalCount = $countQuery->row()->total;
 	}
-	public function get_item_count_by_category($categoryId)
+	// public function get_item_count_by_category($categoryId)
+	// {
+	// 	//get all subcategory ids under the given categoryId and count items in item_foods table
+	// 	$this->db->select('CategoryID');
+	// 	$this->db->from('item_category');
+	// 	$this->db->where('Parentid', $categoryId);
+	// 	//order by
+	// 	$this->db->order_by('Position', 'ASC');
+	// 	$subQuery = $this->db->get();
+	// 	$subCategoryIds = array_column($subQuery->result_array(), 'CategoryID');
+	// 	// If there are no subcategories, just count items in the given category
+	// 	if (empty($subCategoryIds)) {
+	// 		$subCategoryIds = array($categoryId);
+	// 	}
+	// 	// Count items in item_foods table for the given category and its subcategories
+	// 	$this->db->reset_query(); // Reset the query builder
+	// 	$this->db->select('COUNT(*) as item_count');
+	// 	$this->db->from('item_foods');
+	// 	$this->db->where_in('CategoryID', $subCategoryIds);
+	// 	// $this->db->where('cusine_type', 1);
+	// 	// $this->db->where('is_customqty', 0); // Assuming you want to count only items with is_customqty = 0
+	// 	$this->db->where('isgroup', null); // Assuming you want to count only non-group items
+	// 	$this->db->where('ProductsIsActive', 1);
+	// 	// $this->db->where('CategoryID', $categoryId);
+	// 	$query = $this->db->get();
+	// 	if ($query->num_rows() > 0) {
+	// 		return $query->row()->item_count;
+	// 	} else {
+	// 		return 0; // No items found
+	// 	}
+	// }
+	public function get_item_count_by_category($categoryId, $ctype = null)
 	{
-		//get all subcategory ids under the given categoryId and count items in item_foods table
+		// Step 1: Get all subcategory IDs under the given categoryId
 		$this->db->select('CategoryID');
 		$this->db->from('item_category');
-		$this->db->where('Parentid', $categoryId);
-		//order by
+		$this->db->where('parentid', $categoryId);
 		$this->db->order_by('Position', 'ASC');
 		$subQuery = $this->db->get();
 		$subCategoryIds = array_column($subQuery->result_array(), 'CategoryID');
-		// If there are no subcategories, just count items in the given category
+
+		// If no subcategories, include only the given category
 		if (empty($subCategoryIds)) {
-			$subCategoryIds = array($categoryId);
-		}
-		// Count items in item_foods table for the given category and its subcategories
-		$this->db->reset_query(); // Reset the query builder
-		$this->db->select('COUNT(*) as item_count');
-		$this->db->from('item_foods');
-		$this->db->where_in('CategoryID', $subCategoryIds);
-		// $this->db->where('cusine_type', 1);
-		// $this->db->where('is_customqty', 0); // Assuming you want to count only items with is_customqty = 0
-		$this->db->where('isgroup', null); // Assuming you want to count only non-group items
-		$this->db->where('ProductsIsActive', 1);
-		// $this->db->where('CategoryID', $categoryId);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			return $query->row()->item_count;
+			$subCategoryIds = [$categoryId];
 		} else {
-			return 0; // No items found
+			// Add the parent category to the list
+			$subCategoryIds[] = $categoryId;
 		}
+
+		// Step 2: Count items in item_foods for the given category and subcategories
+		$this->db->reset_query(); // Reset the query builder
+		$this->db->select('COUNT(DISTINCT item_foods.ProductsID) as item_count');
+		$this->db->from('item_foods');
+		$this->db->join('variant', 'item_foods.ProductsID = variant.menuid', 'inner'); // Ensure items have variants
+		$this->db->join('production', 'item_foods.ProductsID = production.itemid', 'inner'); // Ensure items are in production
+		$this->db->where_in('item_foods.CategoryID', $subCategoryIds);
+		$this->db->where('item_foods.ProductsIsActive', 1);
+		$this->db->where('item_foods.isgroup IS NULL');
+
+		if(isset($ctype) && $ctype !== null) {
+			// Filter by ctype for valid prices
+			if ($ctype == '4') { // Takeaway
+				$this->db->where('variant.takeaway_price IS NOT NULL');
+				$this->db->where('variant.takeaway_price !=', '');
+				$this->db->where('variant.takeaway_price >', 0);
+			} elseif ($ctype == '2') { // Uber Eats
+				$this->db->where('variant.uber_eats_price IS NOT NULL');
+				$this->db->where('variant.uber_eats_price !=', '');
+				$this->db->where('variant.uber_eats_price >', 0);
+			} else { // Dine-in (ctype=1 or default)
+				$this->db->where('variant.price IS NOT NULL');
+				$this->db->where('variant.price !=', '');
+				$this->db->where('variant.price >', 0);
+			}
+		} else {
+			// Default to dine-in price if ctype is not set
+			$this->db->where('variant.price IS NOT NULL');
+			$this->db->where('variant.price !=', '');
+			$this->db->where('variant.price >', 0);
+		}
+
+		$query = $this->db->get();
+		return $query->num_rows() > 0 ? $query->row()->item_count : 0;
 	}
+
 	public function allfoodPromo()
 	{
 		$this->db->select('*');
@@ -781,78 +835,186 @@ class Order_model extends CI_Model
 		return $itemlist;
 	}
 
-	public function searchprod($cid = null, $pname = null)
+	// public function searchprod($cid = null, $pname = null)
+	// {
+	// 	if (!empty($cid)) {
+	// 		$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->order_by('Position', 'ASC')->get()->row();
+	// 		$catids = $cid;
+	// 		if ($catinfo->parentid > 0) {
+	// 			$catids = $cid . ',' . $catinfo->parentid;
+	// 		}
+	// 	} else {
+	// 		$catids = "";
+	// 	}
+	// 	$catcontition = "CategoryID IN($catids)";
+	// 	$this->db->select('*');
+	// 	$this->db->from('item_foods');
+	// 	if (!empty($cid)) {
+	// 		$this->db->where($catcontition);
+	// 	}
+	// 	if (!empty($pname)) {
+	// 		$this->db->like('ProductName', $pname);
+	// 	}
+	// 	$this->db->where('isgroup', null);
+	// 	$this->db->where('ProductsIsActive', 1);
+	// 	$query = $this->db->get();
+	// 	$itemlist = $query->result();
+	// 	// echo $this->db->last_query();
+	// 	$output = array();
+	// 	if (!empty($itemlist)) {
+	// 		$k = 0;
+	// 		foreach ($itemlist as $items) {
+	// 			$productionInfo= $this->db->select("production.itemid")->from('production')->where('production.itemid', $items->ProductsID)->get()->row();
+	// 			if (!empty($productionInfo)) {
+	// 				$varientinfo = $this->db->select("variant.*,count(menuid) as totalvarient")->from('variant')->where('menuid', $items->ProductsID)->get()->row();
+	// 				if (!empty($varientinfo)) {
+	// 					$output[$k]['variantid'] = $varientinfo->variantid;
+	// 					$output[$k]['totalvarient'] = $varientinfo->totalvarient;
+	// 					$output[$k]['variantName'] = $varientinfo->variantName;
+	// 					$output[$k]['price'] = $varientinfo->price;
+	// 				} else {
+	// 					$output[$k]['variantid'] = '';
+	// 					$output[$k]['totalvarient'] = 0;
+	// 					$output[$k]['variantName'] = '';
+	// 					$output[$k]['price'] = '';
+	// 				}
+	// 				$output[$k]['ProductsID'] = $items->ProductsID;
+	// 				$output[$k]['CategoryID'] = $items->CategoryID;
+	// 				$output[$k]['ProductName'] = $items->ProductName;
+	// 				$output[$k]['ProductImage'] = $items->ProductImage;
+	// 				$output[$k]['bigthumb'] = $items->bigthumb;
+	// 				$output[$k]['medium_thumb'] = $items->medium_thumb;
+	// 				$output[$k]['small_thumb'] = $items->small_thumb;
+	// 				$output[$k]['component'] = $items->component;
+	// 				$output[$k]['descrip'] = $items->descrip;
+	// 				$output[$k]['itemnotes'] = $items->itemnotes;
+	// 				$output[$k]['menutype'] = $items->menutype;
+	// 				$output[$k]['productvat'] = $items->productvat;
+	// 				$output[$k]['special'] = $items->special;
+	// 				$output[$k]['OffersRate'] = $items->OffersRate;
+	// 				$output[$k]['offerIsavailable'] = $items->offerIsavailable;
+	// 				$output[$k]['offerstartdate'] = $items->offerstartdate;
+	// 				$output[$k]['offerendate'] = $items->offerendate;
+	// 				$output[$k]['Position'] = $items->Position;
+	// 				$output[$k]['kitchenid'] = $items->kitchenid;
+	// 				$output[$k]['isgroup'] = $items->isgroup;
+	// 				$output[$k]['is_customqty'] = $items->is_customqty;
+	// 				$output[$k]['cookedtime'] = $items->cookedtime;
+	// 				$output[$k]['ProductsIsActive'] = $items->ProductsIsActive;
+	// 				$k++;
+	// 			}
+	// 		}
+	// 	}
+	// 	return $output;
+	// }
+
+	public function searchprod($cid = null, $pname = null, $ctype = null)
 	{
+		// Category condition
+		$catids = "";
 		if (!empty($cid)) {
-			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->order_by('Position', 'ASC')->get()->row();
+			$catinfo = $this->db->select("*")
+				->from('item_category')
+				->where('CategoryID', $cid)
+				->order_by('Position', 'ASC')
+				->get()
+				->row();
 			$catids = $cid;
-			if ($catinfo->parentid > 0) {
+			if (!empty($catinfo) && $catinfo->parentid > 0) {
 				$catids = $cid . ',' . $catinfo->parentid;
 			}
-		} else {
-			$catids = "";
 		}
-		$catcontition = "CategoryID IN($catids)";
+
 		$this->db->select('*');
 		$this->db->from('item_foods');
 		if (!empty($cid)) {
-			$this->db->where($catcontition);
+			$this->db->where("CategoryID IN($catids)", null, false);
 		}
 		if (!empty($pname)) {
 			$this->db->like('ProductName', $pname);
 		}
-		$this->db->where('isgroup', null);
+		$this->db->where('isgroup IS NULL', null, false); // fixed null
 		$this->db->where('ProductsIsActive', 1);
+
 		$query = $this->db->get();
 		$itemlist = $query->result();
-		// echo $this->db->last_query();
+
 		$output = array();
 		if (!empty($itemlist)) {
 			$k = 0;
 			foreach ($itemlist as $items) {
-				$productionInfo= $this->db->select("production.itemid")->from('production')->where('production.itemid', $items->ProductsID)->get()->row();
+				// check product in production
+				$productionInfo = $this->db->select("itemid")
+					->from('production')
+					->where('itemid', $items->ProductsID)
+					->get()
+					->row();
+
 				if (!empty($productionInfo)) {
-					$varientinfo = $this->db->select("variant.*,count(menuid) as totalvarient")->from('variant')->where('menuid', $items->ProductsID)->get()->row();
+					// get variant info
+					$varientinfo = $this->db->select("variant.*, COUNT(menuid) as totalvarient", false)
+						->from('variant')
+						->where('menuid', $items->ProductsID)
+						->group_by('menuid')
+						->get()
+						->row();
+
 					if (!empty($varientinfo)) {
-						$output[$k]['variantid'] = $varientinfo->variantid;
+						$output[$k]['variantid']    = $varientinfo->variantid;
 						$output[$k]['totalvarient'] = $varientinfo->totalvarient;
-						$output[$k]['variantName'] = $varientinfo->variantName;
-						$output[$k]['price'] = $varientinfo->price;
+						$output[$k]['variantName']  = $varientinfo->variantName;
+
+						// price handling based on ctype
+						if (isset($ctype) && $ctype !== null) {
+							if ($ctype == '4') { // Takeaway
+								$output[$k]['price'] = $varientinfo->takeaway_price;
+							} elseif ($ctype == '2') { // Uber Eats
+								$output[$k]['price'] = $varientinfo->uber_eats_price;
+							} else { // Dine-in (ctype=1 or default)
+								$output[$k]['price'] = $varientinfo->price;
+							}
+						} else {
+							$output[$k]['price'] = $varientinfo->price;
+						}
 					} else {
-						$output[$k]['variantid'] = '';
+						$output[$k]['variantid']    = '';
 						$output[$k]['totalvarient'] = 0;
-						$output[$k]['variantName'] = '';
-						$output[$k]['price'] = '';
+						$output[$k]['variantName']  = '';
+						$output[$k]['price']        = '';
 					}
-					$output[$k]['ProductsID'] = $items->ProductsID;
-					$output[$k]['CategoryID'] = $items->CategoryID;
-					$output[$k]['ProductName'] = $items->ProductName;
-					$output[$k]['ProductImage'] = $items->ProductImage;
-					$output[$k]['bigthumb'] = $items->bigthumb;
-					$output[$k]['medium_thumb'] = $items->medium_thumb;
-					$output[$k]['small_thumb'] = $items->small_thumb;
-					$output[$k]['component'] = $items->component;
-					$output[$k]['descrip'] = $items->descrip;
-					$output[$k]['itemnotes'] = $items->itemnotes;
-					$output[$k]['menutype'] = $items->menutype;
-					$output[$k]['productvat'] = $items->productvat;
-					$output[$k]['special'] = $items->special;
-					$output[$k]['OffersRate'] = $items->OffersRate;
-					$output[$k]['offerIsavailable'] = $items->offerIsavailable;
-					$output[$k]['offerstartdate'] = $items->offerstartdate;
-					$output[$k]['offerendate'] = $items->offerendate;
-					$output[$k]['Position'] = $items->Position;
-					$output[$k]['kitchenid'] = $items->kitchenid;
-					$output[$k]['isgroup'] = $items->isgroup;
-					$output[$k]['is_customqty'] = $items->is_customqty;
-					$output[$k]['cookedtime'] = $items->cookedtime;
-					$output[$k]['ProductsIsActive'] = $items->ProductsIsActive;
+
+					// product details
+					$output[$k]['ProductsID']        = $items->ProductsID;
+					$output[$k]['CategoryID']        = $items->CategoryID;
+					$output[$k]['ProductName']       = $items->ProductName;
+					$output[$k]['ProductImage']      = $items->ProductImage;
+					$output[$k]['bigthumb']          = $items->bigthumb;
+					$output[$k]['medium_thumb']      = $items->medium_thumb;
+					$output[$k]['small_thumb']       = $items->small_thumb;
+					$output[$k]['component']         = $items->component;
+					$output[$k]['descrip']           = $items->descrip;
+					$output[$k]['itemnotes']         = $items->itemnotes;
+					$output[$k]['menutype']          = $items->menutype;
+					$output[$k]['productvat']        = $items->productvat;
+					$output[$k]['special']           = $items->special;
+					$output[$k]['OffersRate']        = $items->OffersRate;
+					$output[$k]['offerIsavailable']  = $items->offerIsavailable;
+					$output[$k]['offerstartdate']    = $items->offerstartdate;
+					$output[$k]['offerendate']       = $items->offerendate;
+					$output[$k]['Position']          = $items->Position;
+					$output[$k]['kitchenid']         = $items->kitchenid;
+					$output[$k]['isgroup']           = $items->isgroup;
+					$output[$k]['is_customqty']      = $items->is_customqty;
+					$output[$k]['cookedtime']        = $items->cookedtime;
+					$output[$k]['ProductsIsActive']  = $items->ProductsIsActive;
 					$k++;
 				}
 			}
 		}
+
 		return $output;
-	}
+}
+
 	public function searchsubprod($cid = null, $pname = null)
 	{
 		if (!empty($cid)) {
@@ -889,7 +1051,19 @@ class Order_model extends CI_Model
 						$output[$k]['variantid'] = $varientinfo->variantid;
 						$output[$k]['totalvarient'] = $varientinfo->totalvarient;
 						$output[$k]['variantName'] = $varientinfo->variantName;
-						$output[$k]['price'] = $varientinfo->price;
+						//$output[$k]['price'] = $varientinfo->price;
+						// price handling based on ctype
+						if (isset($ctype) && $ctype !== null) {
+							if ($ctype == '4') { // Takeaway
+								$output[$k]['price'] = $varientinfo->takeaway_price;
+							} elseif ($ctype == '2') { // Uber Eats
+								$output[$k]['price'] = $varientinfo->uber_eats_price;
+							} else { // Dine-in (ctype=1 or default)
+								$output[$k]['price'] = $varientinfo->price;
+							}
+						} else {
+							$output[$k]['price'] = $varientinfo->price;
+						}
 					} else {
 						$output[$k]['variantid'] = '';
 						$output[$k]['totalvarient'] = 0;
@@ -925,7 +1099,7 @@ class Order_model extends CI_Model
 		}
 		return $output;
 	}
-	public function searchchildsubprod($cid = null, $pname = null)
+	public function searchchildsubprod($cid = null, $pname = null, $ctype = null)
 	{
 		if (!empty($cid)) {
 			$catinfo = $this->db->select("*")->from('item_category')->where('CategoryID', $cid)->order_by('Position', 'ASC')->get()->row();
@@ -962,7 +1136,19 @@ class Order_model extends CI_Model
 						$output[$k]['variantid'] = $varientinfo->variantid;
 						$output[$k]['totalvarient'] = $varientinfo->totalvarient;
 						$output[$k]['variantName'] = $varientinfo->variantName;
-						$output[$k]['price'] = $varientinfo->price;
+						//$output[$k]['price'] = $varientinfo->price;
+						// price handling based on ctype
+						if (isset($ctype) && $ctype !== null) {
+							if ($ctype == '4') { // Takeaway
+								$output[$k]['price'] = $varientinfo->takeaway_price;
+							} elseif ($ctype == '2') { // Uber Eats
+								$output[$k]['price'] = $varientinfo->uber_eats_price;
+							} else { // Dine-in (ctype=1 or default)
+								$output[$k]['price'] = $varientinfo->price;
+							}
+						} else {
+							$output[$k]['price'] = $varientinfo->price;
+						}
 					} else {
 						$output[$k]['variantid'] = '';
 						$output[$k]['totalvarient'] = 0;
