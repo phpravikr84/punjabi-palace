@@ -3068,6 +3068,7 @@ class Order extends MX_Controller
 		$onprocesstab = $this->input->post('onprocesstab', true);
 		$orderinfo = $this->db->select("*")->from('customer_order')->where('order_id', $orderid)->get()->row();
 		$customerinfo = $this->db->select("*")->from('customer_info')->where('customer_id', $orderinfo->customer_id)->get()->row();
+		$this->db->where('order_id', $this->input->post('orderid'))->delete('table_details');
 		if ($acceptreject == 1) {
 			$mymsg = "You Order is Accepted";
 			$bodymsg = display('ordid') . $orderid . " Order amount:" . $orderinfo->totalamount;
