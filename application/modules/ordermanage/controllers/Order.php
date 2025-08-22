@@ -9053,5 +9053,30 @@ class Order extends MX_Controller
 		}
 	}
 
+	/**
+	 * 
+	 */
+	// Method to check if table is occupied
+    public function check_table_occupancy() {
+        $table_id = $this->input->post('table_id');
+
+        // Check if table_id exists in table_details with delete_at = 0
+        $this->db->where('table_id', $table_id);
+        $query = $this->db->get('table_details');
+
+        if ($query->num_rows() > 0) {
+            $response = array(
+                'status' => 'occupied',
+                'message' => 'Table is already occupied. Please choose another table.'
+            );
+        } else {
+            $response = array(
+                'status' => 'available',
+                'message' => 'Table is available.'
+            );
+        }
+
+        echo json_encode($response);
+    }
 		
 }

@@ -2505,6 +2505,35 @@ function placeorder() {
                 }
             }
         }
+
+         // AJAX call to check table occupancy
+            var tableCheck = $.ajax({
+                type: "POST",
+                url: basicinfo.baseurl + "ordermanage/order/check_table_occupancy",
+                data: {
+                    table_id: tableid,
+                    csrf_test_name: csrf
+                },
+                dataType: "json",
+                async: false, // Synchronous call to wait for response
+                success: function (response) {
+                    if (response.status === 'occupied') {
+                        toastr.error(response.message, 'Error');
+                        errormessage = response.message;
+                        return false;
+                    }
+                },
+                error: function () {
+                    toastr.error("Error checking table occupancy", 'Error');
+                    errormessage = "Error checking table occupancy";
+                    return false;
+                }
+            });
+
+            // // If table is occupied, stop further processing
+            // if (errormessage !== '') {
+            //     return false;
+            // }
     }
     if (errormessage == '') {
         order_date = encodeURIComponent(order_date);
