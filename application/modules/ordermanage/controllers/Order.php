@@ -6409,10 +6409,24 @@ class Order extends MX_Controller
 		$mydigit                 = $this->input->post('last4digit', true);
 		$payamonts               = $this->input->post('paidamount', true);
 		$paidamount = 0;
-		$updatetordfordiscount = array(
-			'totalamount'           => $this->input->post('grandtotal', true),
-			'customerpaid'           => $this->input->post('grandtotal', true)
-		);
+
+		$tenderamount 			 = $this->input->post('tender_amount', TRUE) ?? 0.00;
+		if($tenderamount > 0){
+			 // Calculate change amount
+    		$changeamount = $tenderamount - $grandtotal >= 0 ? number_format($tenderamount - $grandtotal, 2, '.', '') : 0.00;
+			$updatetordfordiscount = array(
+				'totalamount'           => $this->input->post('grandtotal', true),
+				'customerpaid'           => $this->input->post('grandtotal', true),
+				'tenderamount' => $tenderamount,
+        		'changeamount' => $changeamount
+			);
+
+		} else {
+			$updatetordfordiscount = array(
+				'totalamount'           => $this->input->post('grandtotal', true),
+				'customerpaid'           => $this->input->post('grandtotal', true)
+			);
+		}
 
 		$this->db->where('order_id', $orderid);
 		$this->db->update('customer_order', $updatetordfordiscount);
@@ -6495,13 +6509,28 @@ class Order extends MX_Controller
 		$billinfo = $this->db->select('*')->from('bill')->where('order_id', $orderid)->get()->row();
 		foreach ($payamonts  as $payamont) {
 			$paidamount = $paidamount + $payamont;
-			$data_pay = array(
-				'paytype' => $paytype[$i],
-				'cterminal' => $cterminal[$i],
-				'mybank' => $mybank[$i],
-				'mydigit' => $mydigit[$i],
-				'payamont' => $payamont
-			);
+			if($tenderamount > 0){
+				 // Calculate change amount
+    			$changeamount = $tenderamount - $payamont >= 0 ? number_format($tenderamount - $payamont, 2, '.', '') : 0.00;
+				$data_pay = array(
+						'paytype' => $paytype[$i],
+						'cterminal' => $cterminal[$i],
+						'mybank' => $mybank[$i],
+						'mydigit' => $mydigit[$i],
+						'payamont' => $payamont,
+						'tenderamount' => $tenderamount,
+            			'changeamount' => $changeamount
+					);
+			} else {
+					$data_pay = array(
+						'paytype' => $paytype[$i],
+						'cterminal' => $cterminal[$i],
+						'mybank' => $mybank[$i],
+						'mydigit' => $mydigit[$i],
+						'payamont' => $payamont
+					);
+			}
+			
 			$this->add_multipay($orderid, $billinfo->bill_id, $data_pay);
 			$i++;
 		}
@@ -6790,6 +6819,28 @@ class Order extends MX_Controller
 
 		$suborder_id = !empty($suborder) ? $suborder->sub_id : NULL;
 
+		if( $array_post['tenderamount'] > 0 ){
+			// Calculate change amount
+			$changeamount = $array_post['tenderamount'] - $array_post['payamont'] >= 0 ? number_format($array_post['tenderamount'] - $array_post['payamont'], 2, '.', '') : 0.00;
+			$array_post['changeamount'] = $changeamount;
+			$multipay = array(
+				'order_id'         => $orderid,
+				'suborder_id'      => $suborder_id, // New column
+				'payment_type_id'  => $array_post['paytype'],
+				'amount'           => $array_post['payamont'],
+				'tenderamount' => $array_post['tenderamount'],
+            	'changeamount' => $changeamount
+			);
+		} else {
+			$array_post['changeamount'] = 0.00;
+			$multipay = array(
+				'order_id'         => $orderid,
+				'suborder_id'      => $suborder_id, // New column
+				'payment_type_id'  => $array_post['paytype'],
+				'amount'           => $array_post['payamont'],
+			);
+		}
+		
 		$multipay = array(
 			'order_id'         => $orderid,
 			'suborder_id'      => $suborder_id, // New column

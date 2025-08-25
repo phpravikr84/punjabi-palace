@@ -146,6 +146,16 @@
                                 </div>
 
                                 <div class="row no-gutters">
+                                    <div class="form-group col-md-6">
+                                        
+                                    </div>
+                                     <div class="form-group col-md-6 tender-amount-box">
+                                        <label for="tender_amount" class="col-form-label pb-2"><?php echo 'Tender amount'; ?></label>
+                                        <input type="text" id="tender_amount" class="form-control" name="tender_amount" placeholder="0" onkeyup="validateTenderAmount()" onclick="givefocus(this)" />
+                                    </div>
+                                </div>
+
+                                <div class="row no-gutters">
                                     <div class="cardarea w-100 no-gutters display-none">
                                         <div class="form-group col-md-6">
                                             <label for="card_terminal" class="col-form-label"><?php echo display('crd_terminal'); ?></label>

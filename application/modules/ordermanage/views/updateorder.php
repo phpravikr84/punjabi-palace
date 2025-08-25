@@ -221,28 +221,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <label for="customer_name"><?php echo display('customer_name');?> <span class="color-red">*</span></label>
                                     <div class="d-flex">
                                         <?php $cusid=1;
-                                        echo form_dropdown('customer_name', $customerlist, (!empty($orderinfo->customer_id) ? $orderinfo->customer_id : null), 'class="postform resizeselect form-control" id="customer_name_update" required') ?>
+                                        echo form_dropdown('customer_name', $customerlist, (!empty($orderinfo->customer_id) ? $orderinfo->customer_id : null), 'class="postform resizeselect form-control" id="customer_name_update" required disabled') ?>
                                         <button type="button" class="btn btn-primary ml-l" aria-hidden="true" data-toggle="modal" data-target="#client-info"><i class="ti-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="store_id"><?php echo display('customer_type');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                     <?php $ctype=1;
-                                    echo form_dropdown('ctypeid', $curtomertype, (!empty($orderinfo->cutomertype) ? $orderinfo->cutomertype : null), 'class="form-control" id="ctypeid_update" required') ?>
+                                    echo form_dropdown('ctypeid', $curtomertype, (!empty($orderinfo->cutomertype) ? $orderinfo->cutomertype : null), 'class="form-control" id="ctypeid_update" required disabled') ?>
                                 </div>
                                 <div id="nonthirdparty_update" class="col-md-12">
                                     <div class="row">
                                         <?php if($possetting->waiter==1){?>
                                         <div class="col-md-6 form-group">
                                             <label for="store_id"><?php echo display('waiter');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                            <?php echo form_dropdown('waiter', $waiterlist, (!empty($orderinfo->waiter_id) ? $orderinfo->waiter_id : null), 'class="form-control" id="waiter_update" required') ?>
+                                            <?php echo form_dropdown('waiter', $waiterlist, (!empty($orderinfo->waiter_id) ? $orderinfo->waiter_id : null), 'class="form-control" id="waiter_update" required disabled="disabled"') ?>
                                         </div>
                                         <?php }
                                         if($possetting->tableid==1){
                                         ?>
                                         <div class="col-md-6 form-group" id="tblsec_update">
                                             <label for="store_id"><?php echo display('table');?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-red">*</span></label>
-                                            <?php echo form_dropdown('tableid', $tablelist, (!empty($orderinfo->table_no) ? $orderinfo->table_no : null), 'class="form-control" id="tableid_update" required') ?>
+                                            <?php echo form_dropdown('tableid', $tablelist, (!empty($orderinfo->table_no) ? $orderinfo->table_no : null), 'class="form-control" id="tableid_update" required disabled="disabled"') ?>
                                         </div>
                                         <?php } ?>
                                     </div>
