@@ -130,7 +130,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="adddiscount" class="display-none">
+                            <!-- <div id="adddiscount" class="display-none"> -->
+                            <div id="adddiscount">
                                 <div class="row no-gutters">
                                     <div class="form-group col-md-6">
                                         <label for="payments" class="col-form-label pb-2"><?php echo display('paymd'); ?></label>
@@ -336,7 +337,7 @@
                 $("#granddiscount").val(granddiscount.toFixed(2));				 
             }
             //$("#adddiscount").hide();
-            $("#adddiscount").addClass('display-none');
+            //$("#adddiscount").addClass('display-none');
             $("#add_new_payment").empty();
             $("#adddiscount").removeClass('display-none');
         }

@@ -11,7 +11,7 @@
             <div class="panel-body">
                   <div class="col-md-8 row ">
                   <div class="row no-gutters">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                         	
                         	<div class="form-group">
                             <label for="discounttt" class="col-form-label pb-2"><?php echo display('discount_type');?></label>
@@ -23,7 +23,7 @@
                             
                             
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                         	<div class="form-group">
                              <label for="discount" class="col-form-label pb-2"><?php echo display('discount');?>(<span id="chty"><?php if($settinginfo->discount_type==0){echo $currency->curr_icon;}else{ echo "%";}?></span>)</label>
                              <input type="hidden" id="discounttype" value="<?php echo $settinginfo->discount_type;?>"/>
@@ -35,7 +35,7 @@
                              <input type="hidden" id="isredeempoint" name="isredeempoint" value=""/> 
                              </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                         	<?php if($pointsys==1 && $membership>1){
 								$customerpoints=$this->db->select("*")->from('tbl_customerpoint')->where('customerid',$customerid)->get()->row();
 								?>
@@ -48,7 +48,7 @@
                             </div>
                             <?php } ?>
                             <div class="form-group" style="padding-top:<?php if($pointsys==1 && $membership>1){echo "35px";}else{ echo "28px";}?>">  
-                        	<button type="button" id="paymentnow" class="btn btn-success w-md m-b-5" ><?php echo display('payment');?></button>   
+                        	<!-- <button type="button" id="paymentnow" class="btn btn-success w-md m-b-5" ><?php //echo display('payment');?></button>    -->
                             </div>             	
                         </div>
                     </div>

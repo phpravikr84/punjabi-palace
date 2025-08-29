@@ -3937,8 +3937,9 @@ function submitmultiplepaysub(subid) {
         inputval = inputval + inputdata;
     });
     console.log('inputval: ',inputval);
-    var c = inputval.toFixed(3);
-    if (Math.abs(c) < maintotalamount) {
+    //var c = inputval.toFixed(3);
+    //if (Math.abs(c) < maintotalamount) {
+    if (parseFloat(inputval).toFixed(2) < parseFloat(maintotalamount).toFixed(2)) {
         setTimeout(function() {
             toastr.options = {
                 closeButton: true,
