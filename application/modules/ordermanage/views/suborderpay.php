@@ -52,7 +52,7 @@
                             </div>             	
                         </div>
                     </div>
-                    <div id="adddiscount">
+                    <div id="adddiscount-suborder">
                     <div class="row no-gutters">
                         <div class="form-group col-md-6">
                             <label for="payments" class="col-form-label pb-2"><?php echo display('paymd');?></label>
