@@ -1580,6 +1580,68 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
     }
 }
 
+$(document).on('click', '#newModSection tr td label', function (e) {
+    let $row = $(e.target).closest('tr'); // Always get the <tr>
+    if ($row.length) {
+        console.log("Row clicked:", $row.index());
+        if (!$(e.target).is("input[type='checkbox']")) {
+            let $checkbox = $(this).find("input[name='modifier_items[]']"),
+            loader = $('#posSidebarLoader'),
+            modifierChoosebtn = $('.modifierChoosebtn');
+            $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
+
+            if ($checkbox.is(":checked")) {
+                let myurl = $('#modifierCheckUrl').val(),
+                    csrf = $('#csrfhashresarvation').val(),
+                    group_id = $checkbox.data('group-id'),
+                    addon_id = $checkbox.val(),
+                    pid = $checkbox.data('pid');
+                // $(".page-loader-wrapper").show();
+                loader.css({display:'flex'});
+                modifierChoosebtn.prop("disabled", true);
+                modifierChoosebtn.css({cursor: 'not-allowed', opacity: 0.5});
+                $.ajax({
+                    type: "POST",
+                    url: myurl,
+                    data: {
+                        group_id: group_id,
+                        addon_id: addon_id,
+                        pid: pid,
+                        csrf_test_name: csrf
+                    },
+                    success: function (data) {
+                        // $(".page-loader-wrapper").hide();
+                        loader.hide();
+                        modifierChoosebtn.prop("disabled", false);
+                        modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+                        if (data == '0') {
+                            $("#newModSection").find("#modifierChoosebtnDiv .modifierChoosebtn").click();
+                        } else {
+                            if (data != "") {
+                                console.log("Modifiers found: " + data);
+                                $("#mealDealSubModListModal").find('.modal-body').html(data);
+                                $("#mealDealSubModListModal").modal('show');
+                            }
+                        }
+                    },
+                    error: function () {
+                        $(".page-loader-wrapper").hide();
+                        loader.hide();
+                        modifierChoosebtn.prop("disabled", false);
+                        modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+                        swal({
+                            title: "Error",
+                            text: "An error occurred while checking modifiers. Please try again.",
+                            type: "error",
+                            confirmButtonText: "OK",
+                            closeOnConfirm: true
+                        });
+                    }
+                });
+            }
+        }
+    }
+});
 $(document).on('click', '#newModSection tr', function (e) {
     let $row = $(e.target).closest('tr'); // Always get the <tr>
     if ($row.length) {

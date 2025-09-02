@@ -55,7 +55,7 @@
     $map  = directory_map($path);
     if (is_array($map) && sizeof($map) > 0)
     foreach ($map as $key => $value) {
-        $js   = str_replace("\\", '/', $path.$key.'assets/js/script.js'); 
+        $js   = str_replace("\\", '/', $path.$key.'assets/js/script.js');
         if (file_exists($js)) {
            echo "<script src=".base_url($js)."?v=1.4 type=\"text/javascript\"></script>";
         }   
