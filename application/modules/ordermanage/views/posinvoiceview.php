@@ -604,12 +604,24 @@ body
 				$customepaid=$orderinfo->totalamount;
 				$changes=0;
 				}
+
+            if($orderinfo->tenderamount>0){
+                $customertenderpaid=$orderinfo->tenderamount;
+            } else {
+                $customertenderpaid=$orderinfo->customerpaid;
+            }
+
+            if($orderinfo->changeamount>0){
+                $changeamount=$orderinfo->changeamount;
+            } else {
+                $changeamount=0;
+            }
 			if($billinfo->bill_status==1){?>
                 <div class="row-data">
                     <div class="item-info">
                         <h5 class="item-title"><?php echo display('customer_paid_amount')?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $customepaid; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>   <?php echo $customertenderpaid; ?>  <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
                 <?php } else{ ?>
                 <div class="row-data">
@@ -621,9 +633,9 @@ body
                 <?php } ?>
                 <div class="row-data">
                     <div class="item-info">
-                        <h5 class="item-title"><?php echo display('change_due')?></h5>
+                        <h5 class="item-title"><?php echo 'Change' ?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $changes; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $changeamount; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
                 <div class="row-data">
                     <div class="item-info">

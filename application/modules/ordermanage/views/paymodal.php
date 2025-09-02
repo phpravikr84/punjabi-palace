@@ -130,7 +130,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="adddiscount" class="display-none">
+                            <!-- <div id="adddiscount" class="display-none"> -->
+                            <div id="adddiscount">
                                 <div class="row no-gutters">
                                     <div class="form-group col-md-6">
                                         <label for="payments" class="col-form-label pb-2"><?php echo display('paymd'); ?></label>
@@ -142,6 +143,16 @@
                                     <div class="form-group col-md-6">
                                         <label for="4digit" class="col-form-label pb-2"><?php echo display('cuspayment'); ?></label>
                                         <input type="text" id="paidamount_marge" class="form-control number pay firstpay" name="paidamount[]" value="<?php echo $totaldue - $disamount; ?>" onkeyup="changedueamount()" placeholder="0" onclick="givefocus(this)" />
+                                    </div>
+                                </div>
+
+                                <div class="row no-gutters">
+                                    <div class="form-group col-md-6">
+                                        
+                                    </div>
+                                     <div class="form-group col-md-6 tender-amount-box">
+                                        <label for="tender_amount" class="col-form-label pb-2"><?php echo 'Tender amount'; ?></label>
+                                        <input type="text" id="tender_amount" class="form-control" name="tender_amount" placeholder="0" onkeyup="validateTenderAmount()" onclick="givefocus(this)" />
                                     </div>
                                 </div>
 
@@ -326,7 +337,7 @@
                 $("#granddiscount").val(granddiscount.toFixed(2));				 
             }
             //$("#adddiscount").hide();
-            $("#adddiscount").addClass('display-none');
+            //$("#adddiscount").addClass('display-none');
             $("#add_new_payment").empty();
             $("#adddiscount").removeClass('display-none');
         }

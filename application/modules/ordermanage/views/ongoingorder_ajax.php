@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/modules/ordermanage/assets/css/onoing_ajax.css'); ?>">
 <div class="col-md-12">
-  <div class="row mb-2">
+  <!-- <div class="row mb-2">
     <div class="col-sm-3">
       <select id="ongoingtable_name" class="form-control dont-select-me search-table-field" dir="ltr" name="s">
       </select>
@@ -10,10 +10,10 @@
       </select>
     </div>
     <div class="col-sm-6">
-      <button class="btn btn-success float-right" onclick="mergeorderlist()"><?php echo display('mergeord') ?></button>
+      <button class="btn btn-success float-right" onclick="mergeorderlist()"><?php //echo display('mergeord') ?></button>
     </div>
-  </div>
-  <div class="row">
+  </div> -->
+  <div class="row mt-2" style="margin-top: 15px;">
     <?php 
     if (!empty($ongoingorder)) {
       foreach ($ongoingorder as $onprocess) {
@@ -30,7 +30,7 @@
               </div>
               <!-- Merge checkbox in top-right -->
               <?php if ($this->permission->method('ordermanage', 'update')->access() && $onprocess->splitpay_status == 0) { ?>
-                <div class="merge-checkbox">
+                <div class="merge-checkbox" style="display:none;">
                   <input id='chkbox-<?php echo $onprocess->order_id; ?>' type='checkbox' class="individual" name="margeorder" value="<?php echo $onprocess->order_id; ?>"/>
                   <label for='chkbox-<?php echo $onprocess->order_id; ?>' class="mb-0">
                     <span class="radio-shape"><i class="fa fa-check"></i></span>
@@ -90,7 +90,7 @@
               </div>
               <!-- Merge checkbox in top-right -->
               <?php if ($this->permission->method('ordermanage', 'update')->access() && $onprocess->splitpay_status == 0) { ?>
-                <div class="merge-checkbox">
+                <div class="merge-checkbox" style="display:none;">
                   <input id='chkbox-<?php echo $onprocess->order_id; ?>' type='checkbox' class="individual" name="margeorder" value="<?php echo $onprocess->order_id; ?>"/>
                   <label for='chkbox-<?php echo $onprocess->order_id; ?>' class="mb-0">
                     <span class="radio-shape"><i class="fa fa-check"></i></span>
@@ -157,6 +157,7 @@
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .hero-widget.card:hover {
   transform: scale(1.05);

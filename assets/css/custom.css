@@ -4425,7 +4425,7 @@ pre .arg {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    /* background-image: url(../img/profile-bg.jpg); */
+    background-image: url(../img/profile-bg.jpg);
     background-size: cover;
     background-position: center center;
     padding: 30px 15px;

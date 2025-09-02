@@ -221,28 +221,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <label for="customer_name"><?php echo display('customer_name');?> <span class="color-red">*</span></label>
                                     <div class="d-flex">
                                         <?php $cusid=1;
-                                        echo form_dropdown('customer_name', $customerlist, (!empty($orderinfo->customer_id) ? $orderinfo->customer_id : null), 'class="postform resizeselect form-control" id="customer_name_update" required') ?>
+                                        echo form_dropdown('customer_name', $customerlist, (!empty($orderinfo->customer_id) ? $orderinfo->customer_id : null), 'class="postform resizeselect form-control" id="customer_name_update" required disabled') ?>
                                         <button type="button" class="btn btn-primary ml-l" aria-hidden="true" data-toggle="modal" data-target="#client-info"><i class="ti-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="store_id"><?php echo display('customer_type');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                     <?php $ctype=1;
-                                    echo form_dropdown('ctypeid', $curtomertype, (!empty($orderinfo->cutomertype) ? $orderinfo->cutomertype : null), 'class="form-control" id="ctypeid_update" required') ?>
+                                    echo form_dropdown('ctypeid', $curtomertype, (!empty($orderinfo->cutomertype) ? $orderinfo->cutomertype : null), 'class="form-control" id="ctypeid_update" required disabled') ?>
                                 </div>
                                 <div id="nonthirdparty_update" class="col-md-12">
                                     <div class="row">
                                         <?php if($possetting->waiter==1){?>
                                         <div class="col-md-6 form-group">
                                             <label for="store_id"><?php echo display('waiter');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                            <?php echo form_dropdown('waiter', $waiterlist, (!empty($orderinfo->waiter_id) ? $orderinfo->waiter_id : null), 'class="form-control" id="waiter_update" required') ?>
+                                            <?php echo form_dropdown('waiter', $waiterlist, (!empty($orderinfo->waiter_id) ? $orderinfo->waiter_id : null), 'class="form-control" id="waiter_update" required disabled') ?>
                                         </div>
                                         <?php }
                                         if($possetting->tableid==1){
                                         ?>
                                         <div class="col-md-6 form-group" id="tblsec_update">
                                             <label for="store_id"><?php echo display('table');?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-red">*</span></label>
-                                            <?php echo form_dropdown('tableid', $tablelist, (!empty($orderinfo->table_no) ? $orderinfo->table_no : null), 'class="form-control" id="tableid_update" required') ?>
+                                            <?php echo form_dropdown('tableid', $tablelist, (!empty($orderinfo->table_no) ? $orderinfo->table_no : null), 'class="form-control" id="tableid_update" required disabled') ?>
                                         </div>
                                         <?php } ?>
                                     </div>
@@ -587,6 +587,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="bottomarea">
                             <div class="row">
                                 <div class="col-sm-12 d-flex justify-content-end">
+                                    <?php
+                                        $CI =& get_instance();
+                                        $CI->load->database();
+
+                                        // Fetch split_type from sub_order table
+                                        $split_row = $CI->db->get_where('sub_order', ['order_id' => $orderinfo->order_id])->row();
+                                        $split_type = !empty($split_row) ? $split_row->split_type : 0;
+                                        $payment_status = !empty($split_row) ? $split_row->status : 0;
+                                    ?>
                                     <?php if ($orderinfo->splitpay_status == 0) { ?>
                                         <a href="javascript:void(0);" onclick="createMargeorder(<?php echo $orderinfo->order_id;?>,1)" class="btn btn-success btn-large cusbtn mr-1" data-toggle="tooltip" data-placement="top" title="<?php echo display('cmplt'); ?>">
                                             <?php echo display('cmplt'); ?>
@@ -610,21 +619,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <!-- <i class="fa fa-trash-o"></i> -->Cancel
                                             </a>
                                         <?php } ?>
-                                        <a href="javascript:void(0);" class="btn btn-danger cusbtn mr-1 due_print" data-toggle="tooltip" data-placement="top" title="<?php echo display('due_invoice'); ?>" data-url="<?php echo base_url("ordermanage/order/dueinvoice/".$orderinfo->order_id); ?>">
+                                        <!-- <a href="javascript:void(0);" class="btn btn-danger cusbtn mr-1 due_print" data-toggle="tooltip" data-placement="top" title="<?php echo display('due_invoice'); ?>" data-url="<?php echo base_url("ordermanage/order/dueinvoice/".$orderinfo->order_id); ?>">
                                            Invoice
-                                        </a>
+                                        </a> -->
                                     <?php } else { ?>
 
                                         <!-- Check split type -->
                                         
-                                        <?php
-                                            $CI =& get_instance();
-                                            $CI->load->database();
-
-                                            // Fetch split_type from sub_order table
-                                            $split_row = $CI->db->get_where('sub_order', ['order_id' => $orderinfo->order_id])->row();
-                                            $split_type = !empty($split_row) ? $split_row->split_type : 0;
-                                            ?>
+                                       
 
                                             <?php if ($split_type == 0): ?>
                                                 <!-- Split by Item -->
@@ -640,7 +642,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                     <?php } ?>
                                     <input name="getuv" id="uvchange" type="hidden" value="0" />
-                                    <input type="button" id="update_order_confirm" onclick="postupdateorder_ajax()" class="btn btn-success btn-large cusbtn" name="add-payment" value="Update">
+                                    <?php if($payment_status == 0) { ?>
+                                        <input type="button" id="update_order_confirm" onclick="postupdateorder_ajax()" class="btn btn-success btn-large cusbtn" name="add-payment" value="Update">
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -694,4 +698,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.querySelectorAll('.main-categories .cat-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
     }
+
+    $(document).ready(function () {
+        $("#waiter_update").prop("disabled", true);
+        $("#tableid_update").prop("disabled", true);
+    });
 </script>

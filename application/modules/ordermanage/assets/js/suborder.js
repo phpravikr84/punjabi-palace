@@ -49,7 +49,7 @@ $('body').on('change', '#discount', function(e){
 				 $("#granddiscount").val(granddiscount.toFixed(2));
 				 $(".firstpay").val(newtotal);				 
 				 }
-		$("#adddiscount").addClass('display-none');
+		//$("#adddiscount").addClass('display-none');
 		$("#add_new_payment").empty();
             
 });

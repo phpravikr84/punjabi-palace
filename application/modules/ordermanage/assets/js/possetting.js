@@ -186,12 +186,18 @@ function getslcategory(carid) {
     var product_name = $('#product_name').val();
     var csrf = $('#csrfhashresarvation').val();
     var category_id = carid;
+    // Get the current URL
+    const url = new URL(window.location.href);
+
+    // Get ctypeid from the query string
+    var ctypeid = url.searchParams.get('ctypeid');
+
     var myurl = $('#posurl').val();
     $.ajax({
         type: "post",
         async: false,
         url: myurl,
-        data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+        data: { product_name: product_name, category_id: category_id, isuptade: 0, ctypeid:ctypeid, csrf_test_name: csrf },
         success: function (data) {
             if (data == '420') {
                 $("#product_search").html('Product not found !');
@@ -209,11 +215,15 @@ function getslchildcategory(carid) {
     var csrf = $('#csrfhashresarvation').val();
     var category_id = carid;
     var myurl = $('#poschildurl').val();
+    // Get the current URL
+    const url = new URL(window.location.href);
+    // Get ctypeid from the query string
+    var ctypeid = url.searchParams.get('ctypeid');
     $.ajax({
         type: "post",
         async: false,
         url: myurl,
-        data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+        data: { product_name: product_name, category_id: category_id, isuptade: 0, ctypeid:ctypeid, csrf_test_name: csrf },
         success: function (data) {
             if (data == '420') {
                 $("#product_search").html('Product not found !');
@@ -231,11 +241,15 @@ function getslsubcategory(carid) {
     var csrf = $('#csrfhashresarvation').val();
     var category_id = carid;
     var myurl = $('#possuburl').val();
+    // Get the current URL
+    const url = new URL(window.location.href);
+    // Get ctypeid from the query string
+    var ctypeid = url.searchParams.get('ctypeid');
     $.ajax({
         type: "post",
         async: false,
         url: myurl,
-        data: { product_name: product_name, category_id: category_id, isuptade: 0, csrf_test_name: csrf },
+        data: { product_name: product_name, category_id: category_id, ctypeid:ctypeid, isuptade: 0, csrf_test_name: csrf },
         success: function (data) {
             if (data == '420') {
                 $("#product_search").html('Product not found !');
@@ -2553,6 +2567,35 @@ function placeorder() {
                 }
             }
         }
+
+         // AJAX call to check table occupancy
+            var tableCheck = $.ajax({
+                type: "POST",
+                url: basicinfo.baseurl + "ordermanage/order/check_table_occupancy",
+                data: {
+                    table_id: tableid,
+                    csrf_test_name: csrf
+                },
+                dataType: "json",
+                async: false, // Synchronous call to wait for response
+                success: function (response) {
+                    if (response.status === 'occupied') {
+                        toastr.error(response.message, 'Error');
+                        errormessage = response.message;
+                        return false;
+                    }
+                },
+                error: function () {
+                    toastr.error("Error checking table occupancy", 'Error');
+                    errormessage = "Error checking table occupancy";
+                    return false;
+                }
+            });
+
+            // // If table is occupied, stop further processing
+            // if (errormessage !== '') {
+            //     return false;
+            // }
     }
     if (errormessage == '') {
         order_date = encodeURIComponent(order_date);
@@ -3364,11 +3407,14 @@ function submitmultiplepay() {
 
     $(".number").each(function () {
         var inputdata = parseFloat($(this).val());
-        console.log('inputdata: ',inputdata);
-        inputval = inputval + inputdata;
+        console.log('inputdata inn: ',inputdata);
+        //inputval = inputval + inputdata;
+        inputval += inputdata;
     });
-    if (inputval < parseFloat(maintotalamount)) {
-
+    console.log('Final Total:', inputval);
+    console.log('maintotalamount: ', maintotalamount);
+    //if (inputval < parseFloat(maintotalamount)) {
+    if (parseFloat(inputval).toFixed(2) < parseFloat(maintotalamount).toFixed(2)) {
         setTimeout(function () {
             toastr.options = {
                 closeButton: true,
@@ -3428,12 +3474,19 @@ function changedueamount() {
         inputval = inputval + inputdata;
     });
 
+    console.log('inputval: ', inputval);
+    console.log('maintotalamount: ', maintotalamount);
+
     restamount = (parseFloat(maintotalamount)) - (parseFloat(inputval));
     var changes = restamount.toFixed(3);
+    console.log('changes: ', changes);
     if (changes <= 0) {
         $("#change-amount").text(Math.abs(changes));
         $("#pay-amount").text(0);
+         $('.tender-amount-box').show();
     } else {
+        //Hide
+        $('.tender-amount-box').hide();
         $("#change-amount").text(0);
         $("#pay-amount").text(changes);
     }
@@ -3946,8 +3999,9 @@ function submitmultiplepaysub(subid) {
         inputval = inputval + inputdata;
     });
     console.log('inputval: ',inputval);
-    var c = inputval.toFixed(3);
-    if (Math.abs(c) < maintotalamount) {
+    //var c = inputval.toFixed(3);
+    //if (Math.abs(c) < maintotalamount) {
+    if (parseFloat(inputval).toFixed(2) < parseFloat(maintotalamount).toFixed(2)) {
         setTimeout(function() {
             toastr.options = {
                 closeButton: true,
@@ -4765,4 +4819,40 @@ function paySplitByAmount(element) {
 
 function cancelModSelectionArea() {
     $("#newModSection").html(newModifierDefaultContent);
+}
+
+/**
+ * Validate Tender Amount
+ */
+function validateTenderAmount() {
+            var tenderAmount = parseFloat($('#tender_amount').val()) || 0;
+    var grandTotal = parseFloat($('#grandtotal').val()) || 0;
+    var errorMessage = '';
+
+    if (!tenderAmount) {
+        errorMessage = 'Tender amount cannot be empty.';
+    } else if (tenderAmount <= 0) {
+        errorMessage = 'Tender amount must be greater than 0.';
+    } else if (tenderAmount < grandTotal) {
+        errorMessage = 'Insufficient tender amount. Must be at least ' + grandTotal.toFixed(2);
+    }
+
+    if (errorMessage) {
+        $('#tender_amount').addClass('is-invalid');
+        if (!$('#tender_error').length) {
+            $('#tender_amount').after('<div id="tender_error" class="text-danger">' + errorMessage + '</div>');
+        } else {
+            $('#tender_error').text(errorMessage);
+        }
+        //$('#pay_bill').prop('disabled', true);
+        //$('#paidbill').prop('disabled', true);
+    } else {
+        $('#tender_amount').removeClass('is-invalid');
+        $('#tender_error').remove();
+        //$('#pay_bill').prop('disabled', false);
+        //$('#paidbill').prop('disabled', false);
+        var changes = (tenderAmount - grandTotal).toFixed(2);
+        $('#change-amount').text(changes);
+        $("#pay-amount").text(50);
+    }
 }

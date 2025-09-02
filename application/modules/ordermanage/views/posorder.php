@@ -938,9 +938,15 @@ foreach ($scan as $file) {
                                       ?>
                                       <h5><?php echo $item->ProductsID.'-'.$item->ProductName; ?>
                                         <?php 
+                                        // if (!empty($item->itemnotes)) {
+                                        //   echo " -<span class='posShDesc'>" . $item->itemnotes."</span>";
+                                        // }
                                         if (!empty($item->itemnotes)) {
-                                          echo " -<span class='posShDesc'>" . $item->itemnotes."</span>";
+                                            echo " -<span class='posShDesc'>" 
+                                                . htmlspecialchars(mb_strimwidth($item->itemnotes, 0, 50, "...")) 
+                                                . "</span>";
                                         }
+
                           
                                       if (!empty($item->component)) {
                                           $components = explode(',', $item->component);

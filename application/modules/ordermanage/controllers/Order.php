@@ -396,7 +396,11 @@ class Order extends MX_Controller
 			$icon = $cat['CategoryImage'] ?: '🍽'; // default icon if empty
 
 			//get item_foods count under this category $cat['CategoryID']
-			$itemCount = $this->order_model->get_item_count_by_category($id);
+			//$itemCount = $this->order_model->get_item_count_by_category($id);
+			$ctype = $this->input->get('ctypeid', true) ?: null; 
+			// Pass ctype to get_item_count_by_category
+        	$itemCount = $this->order_model->get_item_count_by_category($id, $ctype);
+
 
 			// If main category
 			if ($parentId == 0) {
@@ -459,7 +463,8 @@ class Order extends MX_Controller
 
 		// Step 1: Add item counts and icon defaults
 		foreach ($allCategories as &$cat) {
-			$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID']);
+			//$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID']);
+			$cat['item_count'] = $this->order_model->get_item_count_by_category($cat['CategoryID'], $ctype);
 			$cat['icon'] = $cat['CategoryImage'] ?: '🍽';
 		}
 		unset($cat);
@@ -659,7 +664,13 @@ class Order extends MX_Controller
 		$prod = $this->input->post('product_name', true);
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchprod($catid, $prod);
+		$ctype = $this->input->post('ctypeid', true);
+		// Pass ctype to searchprod
+		if ($ctype) {
+			$getproduct = $this->order_model->searchprod($catid, $prod, $ctype);
+		} else {
+			$getproduct = $this->order_model->searchprod($catid, $prod);
+		}
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -684,7 +695,14 @@ class Order extends MX_Controller
 		$prod = $this->input->post('product_name', true);
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
+		//$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
+		$ctype = $this->input->post('ctypeid', true);
+		// Pass ctype to searchprod
+		if ($ctype) {
+			$getproduct = $this->order_model->searchchildsubprod($catid, $prod, $ctype);
+		} else {
+			$getproduct = $this->order_model->searchchildsubprod($catid, $prod);
+		}
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -709,7 +727,14 @@ class Order extends MX_Controller
 		$prod = $this->input->post('product_name', true);
 		$isuptade = $this->input->post('isuptade', true);
 		$catid = $this->input->post('category_id');
-		$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		//$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		$ctype = $this->input->post('ctypeid', true);
+		// Pass ctype to searchprod
+		if ($ctype) {
+			$getproduct = $this->order_model->searchsubprod($catid, $prod, $ctype);
+		} else {
+			$getproduct = $this->order_model->searchsubprod($catid, $prod);
+		}
 		$settinginfo = $this->order_model->settinginfo();
 		$data['settinginfo'] = $settinginfo;
 		$data['currency'] = $this->order_model->currencysetting($settinginfo->currency);
@@ -3043,6 +3068,7 @@ class Order extends MX_Controller
 		$onprocesstab = $this->input->post('onprocesstab', true);
 		$orderinfo = $this->db->select("*")->from('customer_order')->where('order_id', $orderid)->get()->row();
 		$customerinfo = $this->db->select("*")->from('customer_info')->where('customer_id', $orderinfo->customer_id)->get()->row();
+		$this->db->where('order_id', $this->input->post('orderid'))->delete('table_details');
 		if ($acceptreject == 1) {
 			$mymsg = "You Order is Accepted";
 			$bodymsg = display('ordid') . $orderid . " Order amount:" . $orderinfo->totalamount;
@@ -3865,7 +3891,11 @@ class Order extends MX_Controller
 			$icon = $cat['CategoryImage'] ?: '🍽'; // default icon if empty
 
 			//get item_foods count under this category $cat['CategoryID']
-			$itemCount = $this->order_model->get_item_count_by_category($id);
+			//$itemCount = $this->order_model->get_item_count_by_category($id);
+			// Pass ctype to get_item_count_by_category
+			$ctype = $this->input->get('ctypeid', true) ?: null; // Get ctype from GET or set to null
+			// If ctype is not provided, it will default to null
+        	$itemCount = $this->order_model->get_item_count_by_category($id, $ctype);
 
 			// If main category
 			if ($parentId == 0) {
@@ -6379,10 +6409,24 @@ class Order extends MX_Controller
 		$mydigit                 = $this->input->post('last4digit', true);
 		$payamonts               = $this->input->post('paidamount', true);
 		$paidamount = 0;
-		$updatetordfordiscount = array(
-			'totalamount'           => $this->input->post('grandtotal', true),
-			'customerpaid'           => $this->input->post('grandtotal', true)
-		);
+
+		$tenderamount 			 = $this->input->post('tender_amount', TRUE) ?? 0.00;
+		if($tenderamount > 0){
+			 // Calculate change amount
+    		$changeamount = $tenderamount - $grandtotal >= 0 ? number_format($tenderamount - $grandtotal, 2, '.', '') : 0.00;
+			$updatetordfordiscount = array(
+				'totalamount'           => $this->input->post('grandtotal', true),
+				'customerpaid'           => $this->input->post('grandtotal', true),
+				'tenderamount' => $tenderamount,
+        		'changeamount' => $changeamount
+			);
+
+		} else {
+			$updatetordfordiscount = array(
+				'totalamount'           => $this->input->post('grandtotal', true),
+				'customerpaid'           => $this->input->post('grandtotal', true)
+			);
+		}
 
 		$this->db->where('order_id', $orderid);
 		$this->db->update('customer_order', $updatetordfordiscount);
@@ -6465,13 +6509,28 @@ class Order extends MX_Controller
 		$billinfo = $this->db->select('*')->from('bill')->where('order_id', $orderid)->get()->row();
 		foreach ($payamonts  as $payamont) {
 			$paidamount = $paidamount + $payamont;
-			$data_pay = array(
-				'paytype' => $paytype[$i],
-				'cterminal' => $cterminal[$i],
-				'mybank' => $mybank[$i],
-				'mydigit' => $mydigit[$i],
-				'payamont' => $payamont
-			);
+			if($tenderamount > 0){
+				 // Calculate change amount
+    			$changeamount = $tenderamount - $payamont >= 0 ? number_format($tenderamount - $payamont, 2, '.', '') : 0.00;
+				$data_pay = array(
+						'paytype' => $paytype[$i],
+						'cterminal' => $cterminal[$i],
+						'mybank' => $mybank[$i],
+						'mydigit' => $mydigit[$i],
+						'payamont' => $payamont,
+						'tenderamount' => $tenderamount,
+            			'changeamount' => $changeamount
+					);
+			} else {
+					$data_pay = array(
+						'paytype' => $paytype[$i],
+						'cterminal' => $cterminal[$i],
+						'mybank' => $mybank[$i],
+						'mydigit' => $mydigit[$i],
+						'payamont' => $payamont
+					);
+			}
+			
 			$this->add_multipay($orderid, $billinfo->bill_id, $data_pay);
 			$i++;
 		}
@@ -6760,6 +6819,28 @@ class Order extends MX_Controller
 
 		$suborder_id = !empty($suborder) ? $suborder->sub_id : NULL;
 
+		if( $array_post['tenderamount'] > 0 ){
+			// Calculate change amount
+			$changeamount = $array_post['tenderamount'] - $array_post['payamont'] >= 0 ? number_format($array_post['tenderamount'] - $array_post['payamont'], 2, '.', '') : 0.00;
+			$array_post['changeamount'] = $changeamount;
+			$multipay = array(
+				'order_id'         => $orderid,
+				'suborder_id'      => $suborder_id, // New column
+				'payment_type_id'  => $array_post['paytype'],
+				'amount'           => $array_post['payamont'],
+				'tenderamount' => $array_post['tenderamount'],
+            	'changeamount' => $changeamount
+			);
+		} else {
+			$array_post['changeamount'] = 0.00;
+			$multipay = array(
+				'order_id'         => $orderid,
+				'suborder_id'      => $suborder_id, // New column
+				'payment_type_id'  => $array_post['paytype'],
+				'amount'           => $array_post['payamont'],
+			);
+		}
+		
 		$multipay = array(
 			'order_id'         => $orderid,
 			'suborder_id'      => $suborder_id, // New column
@@ -9023,5 +9104,30 @@ class Order extends MX_Controller
 		}
 	}
 
+	/**
+	 * 
+	 */
+	// Method to check if table is occupied
+    public function check_table_occupancy() {
+        $table_id = $this->input->post('table_id');
+
+        // Check if table_id exists in table_details with delete_at = 0
+        $this->db->where('table_id', $table_id);
+        $query = $this->db->get('table_details');
+
+        if ($query->num_rows() > 0) {
+            $response = array(
+                'status' => 'occupied',
+                'message' => 'Table is already occupied. Please choose another table.'
+            );
+        } else {
+            $response = array(
+                'status' => 'available',
+                'message' => 'Table is available.'
+            );
+        }
+
+        echo json_encode($response);
+    }
 		
 }

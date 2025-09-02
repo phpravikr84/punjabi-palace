@@ -68,7 +68,7 @@ function changetype(){
 				 $("#granddiscount").val(granddiscount.toFixed(2));
 				 }
 		//$("#adddiscount").hide();
-		$("#adddiscount").addClass('display-none');
+		//$("#adddiscount").addClass('display-none');
 		$("#add_new_payment").empty();
 		$("#adddiscount").removeClass('display-none');
 });

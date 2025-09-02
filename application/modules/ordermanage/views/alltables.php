@@ -1,7 +1,26 @@
 <div class="container-fluid pos-table-container">
     <div class="row">
         <div class="col-12 text-center mb-4">
-            <a href="<?php echo $this->input->server('HTTP_REFERER') ?: 'javascript:history.back()'; ?>" class="btn btn-primary btn-large" style="padding:20px 40px; font-size:2rem;">Back To POS Screen</a>
+            <!-- <a href="<?php //echo $this->input->server('HTTP_REFERER') ?: 'javascript:history.back()'; ?>" class="btn btn-primary btn-large" style="padding:20px 40px; font-size:2rem;">Back To POS Screen</a> -->
+             <?php
+                // Get query params
+                $cid            = $this->input->get('cid');
+                $customer_name = $this->input->get('customer_name');
+
+                // Check if any of them has a value (not null/empty/zero)
+                if (!empty($cid) || !empty($customer_name)) {
+                    // Go back to referer if available, else history.back()
+                    $backUrl = $this->input->server('HTTP_REFERER') ?: 'javascript:history.back()';
+                } else {
+                    // Default POS invoice page
+                    $backUrl = base_url('ordermanage/order/pos_invoice');
+                }
+            ?>
+            <a href="<?php echo $backUrl; ?>" 
+                class="btn btn-primary btn-large" 
+                style="padding:20px 40px; font-size:2rem;">
+                Back To POS Screen
+            </a>
         </div>
         <?php 
         foreach ($tableinfo as $table) {
@@ -89,6 +108,22 @@ function showCleaningTableDetails(tableId) {
     }
 
     var csrf = $('#csrfhashresarvation').val();
+
+     // Case 1: Table is occupied
+    if ($tableBtn.hasClass('btn-occupied')) {
+        Swal.fire({
+            title: 'Warning',
+            text: 'You cannot book this table! It is currently occupied.',
+            icon: 'warning',
+            confirmButtonText: 'OK',
+            customClass: {
+                popup: 'pos-swal-popup',
+                confirmButton: 'pos-swal-confirm'
+            },
+            buttonsStyling: false
+        });
+        return; // stop further execution
+    }
 
     // Check if table is in cleaning state (btn-paid means cleaning in your logic)
     if ($tableBtn.hasClass('btn-paid')) {
