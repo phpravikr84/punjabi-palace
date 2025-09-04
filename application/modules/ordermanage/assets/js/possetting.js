@@ -1461,7 +1461,8 @@ function updateCartUI(pid, data) {
     $('#orggrandTotal').val(parseFloat(tgtotal).toFixed(2));
     $('#orginattotal').val(parseFloat(tgtotal).toFixed(2));
 
-    $(`#cartModToggle_${pid}`).closest('tr').find('td').eq(3).html(ModTotalPrice);
+    // $(`#cartModToggle_${pid}`).closest('tr').find('td').eq(3).html(ModTotalPrice);
+    $(`#cartModToggle_${pid}`).closest('tr').find('.ritempr').html(ModTotalPrice);
     let selectedNewModsHtml = $("#selectedModsDetails_" + pid).html();
     $("#cartModToggle_" + pid).html(selectedNewModsHtml);
     $("#cartModToggle_" + pid).click();
@@ -1594,7 +1595,7 @@ function ApplyPromoFoodAndModifierSelect(pid = 0, tr_row_id = null, skipAddToCar
     }
 }
 
-$(document).on('click', '#newModSection tr td label', function (e) {
+$(document).on('click', '#newModSection tr td label.form-label', function (e) {
     let $row = $(e.target).closest('tr'); // Always get the <tr>
     if ($row.length) {
         console.log("Row clicked:", $row.index());
@@ -1656,69 +1657,78 @@ $(document).on('click', '#newModSection tr td label', function (e) {
         }
     }
 });
-$(document).on('click', '#newModSection tr', function (e) {
-    let $row = $(e.target).closest('tr'); // Always get the <tr>
-    if ($row.length) {
-        console.log("Row clicked:", $row.index());
-        if (!$(e.target).is("input[type='checkbox']")) {
-            let $checkbox = $(this).find("input[name='modifier_items[]']"),
-            loader = $('#posSidebarLoader'),
-            modifierChoosebtn = $('.modifierChoosebtn');
-            $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
+// Reusable function
+// function handleModifierClick($checkbox) {
+//     if (!$checkbox.length) return;
 
-            if ($checkbox.is(":checked")) {
-                let myurl = $('#modifierCheckUrl').val(),
-                    csrf = $('#csrfhashresarvation').val(),
-                    group_id = $checkbox.data('group-id'),
-                    addon_id = $checkbox.val(),
-                    pid = $checkbox.data('pid');
-                // $(".page-loader-wrapper").show();
-                loader.css({display:'flex'});
-                modifierChoosebtn.prop("disabled", true);
-                modifierChoosebtn.css({cursor: 'not-allowed', opacity: 0.5});
-                $.ajax({
-                    type: "POST",
-                    url: myurl,
-                    data: {
-                        group_id: group_id,
-                        addon_id: addon_id,
-                        pid: pid,
-                        csrf_test_name: csrf
-                    },
-                    success: function (data) {
-                        // $(".page-loader-wrapper").hide();
-                        loader.hide();
-                        modifierChoosebtn.prop("disabled", false);
-                        modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
-                        if (data == '0') {
-                            $("#newModSection").find("#modifierChoosebtnDiv .modifierChoosebtn").click();
-                        } else {
-                            if (data != "") {
-                                console.log("Modifiers found: " + data);
-                                $("#mealDealSubModListModal").find('.modal-body').html(data);
-                                $("#mealDealSubModListModal").modal('show');
-                            }
-                        }
-                    },
-                    error: function () {
-                        $(".page-loader-wrapper").hide();
-                        loader.hide();
-                        modifierChoosebtn.prop("disabled", false);
-                        modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
-                        swal({
-                            title: "Error",
-                            text: "An error occurred while checking modifiers. Please try again.",
-                            type: "error",
-                            confirmButtonText: "OK",
-                            closeOnConfirm: true
-                        });
-                    }
-                });
-            }
-        }
-    }
-});
+//     let loader = $('#posSidebarLoader'),
+//         modifierChoosebtn = $('.modifierChoosebtn');
 
+//     // Toggle checkbox
+//     $checkbox.prop("checked", !$checkbox.prop("checked")).trigger("change");
+//     if ($checkbox.is(":checked")) {
+//         let myurl = $('#modifierCheckUrl').val(),
+//             csrf = $('#csrfhashresarvation').val(),
+//             group_id = $checkbox.data('group-id'),
+//             addon_id = $checkbox.val(),
+//             pid = $checkbox.data('pid');
+//         // $(".page-loader-wrapper").show();
+//         loader.css({display:'flex'});
+//         modifierChoosebtn.prop("disabled", true);
+//         modifierChoosebtn.css({cursor: 'not-allowed', opacity: 0.5});
+//         $.ajax({
+//             type: "POST",
+//             url: myurl,
+//             data: {
+//                 group_id: group_id,
+//                 addon_id: addon_id,
+//                 pid: pid,
+//                 csrf_test_name: csrf
+//             },
+//             success: function (data) {
+//                 // $(".page-loader-wrapper").hide();
+//                 loader.hide();
+//                 modifierChoosebtn.prop("disabled", false);
+//                 modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+//                 if (data == '0') {
+//                     $("#newModSection").find("#modifierChoosebtnDiv .modifierChoosebtn").click();
+//                 } else {
+//                     if (data != "") {
+//                         console.log("Modifiers found: " + data);
+//                         $("#mealDealSubModListModal").find('.modal-body').html(data);
+//                         $("#mealDealSubModListModal").modal('show');
+//                     }
+//                 }
+//             },
+//             error: function () {
+//                 $(".page-loader-wrapper").hide();
+//                 loader.hide();
+//                 modifierChoosebtn.prop("disabled", false);
+//                 modifierChoosebtn.css({cursor: 'pointer', opacity: 1});
+//                 swal({
+//                     title: "Error",
+//                     text: "An error occurred while checking modifiers. Please try again.",
+//                     type: "error",
+//                     confirmButtonText: "OK",
+//                     closeOnConfirm: true
+//                 });
+//             }
+//         });
+//     }
+// }
+// Event binding — using the reusable function
+// $(document).on('click', '#newModSection tr td label.form-label', function (e) {
+//     e.preventDefault();
+//     let targetId = $(this).attr("for");   // get input id from label
+//     let $checkbox = $("#" + targetId);    // find checkbox by id
+//     handleModifierClick($checkbox);       // call the reusable function
+// });
+// $(document).on('click', '#sideMfContainer table tr td', function (e) {
+//     e.preventDefault();
+//     let targetId = $(this).find('label').attr("for");   // get input id from label
+//     let $checkbox = $("#" + targetId);    // find checkbox by id
+//     handleModifierClick($checkbox);       // call the reusable function
+// });
 $(document).on('click', '#sideMfContainer table tr', function (e) {
     console.log("Clicked on sideMfContainer table row");
     if (!$(e.target).is("input[type='checkbox']")) {
@@ -3397,6 +3407,11 @@ function showhidecard(element) {
         $("#assigncard_terminal").val('');
         $("#assignbank").val('');
         $("#assignlastdigit").val('');
+    }
+    if (cardtype != 4) {
+        $(".tender-amount-box").hide();
+    } else {
+        $(".tender-amount-box").show();
     }
 }
 

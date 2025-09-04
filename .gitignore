@@ -7,4 +7,3 @@ assets/data/outgoing/backup.sql
 assets/js/product.json
 assets/data/outgoing/*
 # /assets
-application/config/database.php

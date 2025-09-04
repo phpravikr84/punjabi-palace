@@ -829,7 +829,7 @@ foreach ($scan as $file) {
                               // print_r($categories);
                               // echo "</pre>";
                             ?>
-                            <div class="category-card cat-btn active" onclick="showMain();">
+                            <div class="category-card cat-btn active" onclick="showMain();getslcategory();">
                                 <div class="cat-icon">🔲</div>
                                 <div class="cat-title">All</div>
                                 <div class="cat-count">
@@ -1368,7 +1368,6 @@ foreach ($scan as $file) {
                                               <small class="modCheck posAddMod" id="cartModToggle_<?= $item['pid']; ?>">+ Modifiers <?php if ($modTotalPrice->mod_total_price > 0): ?>(<?= (($currency->position == 1) ? $currency->curr_icon : '') . ' ' . $modTotalPrice->mod_total_price; ?>) <?php endif; ?></small>
                                               <?php endif; ?>
                                                 <?php
-
                                                 // echo $this->db->last_query();
                                                 // echo "<pre>";
                                                 // print_r($selectedModsForCart);
@@ -1440,11 +1439,11 @@ foreach ($scan as $file) {
                                             <?php if($itemprice!=0): ?>
                                             <a class="btn btn-danger btn-sm btnrightalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'del')"><i class="fa fa-minus" aria-hidden="true"></i></a> 
                                             <?php endif; ?>
-                                            <span id="productionsetting-<?php echo $item['pid'] . '-' . $item['sizeid'] ?>"> <?php echo $item['qty']; ?> </span> 
+                                            <span id="productionsetting-<?php echo $item['pid'] . '-' . $item['sizeid'] ?>"> <?php echo $item['qty']; ?> </span>
                                             <?php if($itemprice!=0): ?>
                                             <a class="btn btn-info btn-sm btnleftalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid']; ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'add')"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
                                             <?php endif; ?>
-                                          <td width=""><?php if ($currency->position == 1) {
+                                          <td width="" class="ritempr"><?php if ($currency->position == 1) {
                                                           echo $currency->curr_icon;
                                                         } ?>
                                             <?php echo $itemprice - $mypdiscount; ?>

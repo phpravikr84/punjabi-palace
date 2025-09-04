@@ -611,7 +611,7 @@ function posaddonsfoodtocart(pid, id, more = null, excludePrice = false, promoqt
             console.log("Add to cart data: " + data);
             console.log("Add to cart row id: " + $("#tr_row_id_"+pid).val());
           $('#sideMfContainer').html($("#modifierContent").html());
-        //   $("#modifierContent").show();
+            // $("#modifierContent").show();
             var total = $("#grtotal").val();
             var totalitem = $("#totalitem").val();
             $("#item-number").text(totalitem);

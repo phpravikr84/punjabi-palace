@@ -329,7 +329,7 @@ if ($cart = $this->cart->contents()) {
             <a class="btn btn-info btn-sm btnleftalign btn-group" onclick="posupdatecart('<?php echo $item['rowid'] ?>',<?php echo $item['pid'] ?>,<?php echo $item['sizeid'] ?>,<?php echo $item['qty']; ?>,'add')"><i class="fa fa-plus" aria-hidden="true"></i></a>
             <?php endif; ?>
           </td>
-          <td width="">
+          <td width="" class="ritempr">
             <?php echo (($currency->position == 1)?$currency->curr_icon:'').' '.$itemprice - $mypdiscount; ?>  
           </td>
           <td width="80"><a class="btn btn-danger btn-sm btnrightalign" onclick="removecart('<?php echo $item['rowid']; ?>')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
