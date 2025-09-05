@@ -432,7 +432,8 @@ $('span.error').html('');
 success:function(result){
 swal({
 title: result.msg,
-text: result.tokenmsg,
+//text: result.tokenmsg,
+text: '',
 type: "success",
 showCancelButton: true,
 confirmButtonColor: "#28a745",
@@ -448,7 +449,7 @@ type: "GET",
 data: {csrf_test_name:csrf},
 url: basicinfo.baseurl+"ordermanage/order/postokengenerateupdate/"+result.orderid+"/1",
 success: function(data) {
-printRawHtml(data);
+//printRawHtml(data);
 }
 });
 } else {

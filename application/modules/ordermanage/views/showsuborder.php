@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                   <?php                            
+                                   <?php         $split_counter++;                     
 }
 ?>
 

@@ -216,33 +216,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input name="custmercode" type="hidden" id="custmercode" value="<?php echo $customerinfo->cuntomer_no;?>" />
                             <input name="custmername" type="hidden" id="custmername" value="<?php echo $customerinfo->customer_name;?>" />
                             <input name="saleinvoice" type="hidden" id="saleinvoice" value="<?php echo $orderinfo->saleinvoice;?>" />
-                            <div class="row">
+                            
+                            <div class="row" id="updateformview">
                                 <div class="col-md-6 form-group">
                                     <label for="customer_name"><?php echo display('customer_name');?> <span class="color-red">*</span></label>
                                     <div class="d-flex">
                                         <?php $cusid=1;
-                                        echo form_dropdown('customer_name', $customerlist, (!empty($orderinfo->customer_id) ? $orderinfo->customer_id : null), 'class="postform resizeselect form-control" id="customer_name_update" required disabled') ?>
+                                        echo form_dropdown('customer_name', $customerlist, (!empty($orderinfo->customer_id) ? $orderinfo->customer_id : null), 'class="postform resizeselect select-disabled-illusion form-control" id="customer_name_update" required') ?>
                                         <button type="button" class="btn btn-primary ml-l" aria-hidden="true" data-toggle="modal" data-target="#client-info"><i class="ti-plus"></i></button>
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="store_id"><?php echo display('customer_type');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                     <?php $ctype=1;
-                                    echo form_dropdown('ctypeid', $curtomertype, (!empty($orderinfo->cutomertype) ? $orderinfo->cutomertype : null), 'class="form-control" id="ctypeid_update" required disabled') ?>
+                                    echo form_dropdown('ctypeid', $curtomertype, (!empty($orderinfo->cutomertype) ? $orderinfo->cutomertype : null), 'class="form-control select-disabled-illusion" id="ctypeid_update" required') ?>
                                 </div>
                                 <div id="nonthirdparty_update" class="col-md-12">
                                     <div class="row">
                                         <?php if($possetting->waiter==1){?>
                                         <div class="col-md-6 form-group">
                                             <label for="store_id"><?php echo display('waiter');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                            <?php echo form_dropdown('waiter', $waiterlist, (!empty($orderinfo->waiter_id) ? $orderinfo->waiter_id : null), 'class="form-control" id="waiter_update" required disabled') ?>
+                                            <?php echo form_dropdown('waiter', $waiterlist, (!empty($orderinfo->waiter_id) ? $orderinfo->waiter_id : null), 'class="form-control select-disabled-illusion" id="waiter_update" required') ?>
                                         </div>
                                         <?php }
                                         if($possetting->tableid==1){
                                         ?>
                                         <div class="col-md-6 form-group" id="tblsec_update">
                                             <label for="store_id"><?php echo display('table');?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-red">*</span></label>
-                                            <?php echo form_dropdown('tableid', $tablelist, (!empty($orderinfo->table_no) ? $orderinfo->table_no : null), 'class="form-control" id="tableid_update" required disabled') ?>
+                                            <?php echo form_dropdown('tableid', $tablelist, (!empty($orderinfo->table_no) ? $orderinfo->table_no : null), 'class="form-control select-disabled-illusion" id="tableid_update" required') ?>
                                         </div>
                                         <?php } ?>
                                     </div>
@@ -250,7 +251,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div id="thirdparty_update" class="col-md-12 display-none">
                                     <div class="form-group">
                                         <label for="store_id"><?php echo display('del_company');?> <span class="color-red">*</span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <?php echo form_dropdown('delivercom', $thirdpartylist, (!empty($orderinfo->isthirdparty) ? $orderinfo->isthirdparty : null), 'class="form-control wpr_95" id="delivercom_update" required disabled="disabled"') ?>
+                                        <?php echo form_dropdown('delivercom', $thirdpartylist, (!empty($orderinfo->isthirdparty) ? $orderinfo->isthirdparty : null), 'class="form-control wpr_95" id="delivercom_update" required') ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -264,6 +265,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <input type="hidden" id="product_value" name="">
                                 </div>
                             </div>
+
                             <div class="product-list">
                                 <div id="updatefoodlist">
                                     <div class="">
@@ -699,8 +701,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
     }
 
-    $(document).ready(function () {
-        $("#waiter_update").prop("disabled", true);
-        $("#tableid_update").prop("disabled", true);
-    });
+    // $(document).ready(function () {
+    //     $("#waiter_update").prop("disabled", true);
+    //     $("#tableid_update").prop("disabled", true);
+    // });
 </script>
+<style>
+    #updateformview .select2-container--default .select2-selection--single .select2-selection__rendered {
+        background-color: #e9ecef !important;
+    }
+
+</style>
