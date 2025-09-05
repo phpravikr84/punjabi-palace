@@ -9113,6 +9113,7 @@ class Order extends MX_Controller
 
         // Check if table_id exists in table_details with delete_at = 0
         $this->db->where('table_id', $table_id);
+        $this->db->where('DATE(created_at)', date('Y-m-d'));
         $query = $this->db->get('table_details');
 
         if ($query->num_rows() > 0) {
