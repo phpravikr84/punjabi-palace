@@ -297,7 +297,7 @@ $selectedMods = $q2->result();
     </table>
 <?php endif; ?>
 <a class="btn btn-success asingle" id="add_to_cart" onclick="posaddonsfoodtocart(<?php echo $item->ProductsID; ?>,1)"><?php echo display('add_to_cart') ?></a>
-<a class="btn btn-success" id="add_to_cart" onclick="posaddonsfoodtocart(<?php echo $item->ProductsID; ?>,1,1)"><?php echo display('add_to_cart_more') ?></a>
+<!-- <a class="btn btn-success" id="add_to_cart" onclick="posaddonsfoodtocart(<?php echo $item->ProductsID; ?>,1,1)"><?php //echo display('add_to_cart_more') ?></a> -->
 
 <script type="text/javascript">
     $(document).on("keypress", '#itemqty_1', function(e) {

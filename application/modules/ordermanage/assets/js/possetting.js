@@ -2975,14 +2975,16 @@ function postupdateorder_ajax() {
         success: function (result) {
             swal({
                 title: result.msg,
-                text: result.tokenmsg,
+                //text: result.tokenmsg,
+                text: '',
                 type: "success",
-                showCancelButton: true,
+                showCancelButton: false,
                 confirmButtonColor: "#28a745",
-                confirmButtonText: lang.yes,
-                cancelButtonText: lang.no,
+                //confirmButtonText: lang.yes,
+                //cancelButtonText: lang.no,
+                confirmButtonText: 'DONE',
                 closeOnConfirm: true,
-                closeOnCancel: true
+                //closeOnCancel: true
             },
                 function (isConfirm) {
                     if (isConfirm) {
@@ -2990,7 +2992,7 @@ function postupdateorder_ajax() {
                             type: "GET",
                             url: "postokengenerateupdate/" + result.orderid + "/1",
                             success: function (data) {
-                                printRawHtml(data);
+                                //printRawHtml(data);
                                 $(".maindashboard").removeClass("disabled");
                                 $("#fhome").removeClass("disabled");
                                 $("#kitchenorder").removeClass("disabled");
@@ -3807,7 +3809,8 @@ $(document).on('change', '#update_product_name', function () {
         success: function (data) {
 
 
-            var myurl = "adonsproductadd" + '/' + id;
+            //var myurl = "adonsproductadd" + '/' + id;
+            var myurl = baseurl + "ordermanage/order/adonsproductadd" + '/' + id;
             $.ajax({
                 type: "GET",
                 url: myurl,
@@ -4667,8 +4670,9 @@ function paySplitByAmount(element) {
             var tableId = $(this).closest('table').attr('id'); // table-tbody-24-38
             var parts = tableId.split('-');
             var orderid = parts[2]; // Extract orderid (24)
-            var service_chrg = parseFloat($('#service-' + suborderid).val() || 0); // Current service charge
-            var csrf = $('input[name="csrf_test_name"]').val(); // Correct CSRF selector
+            //var service_chrg = parseFloat($('#service-' + suborderid).val() || 0); // Current service charge
+            //var csrf = $('input[name="csrf_test_name"]').val(); // Correct CSRF selector
+             var csrf = $('#csrfhashresarvation').val();
 
             if (!suborderid || !orderid || !menuid) {
                 alert('Error: Missing required parameters.');
@@ -4683,12 +4687,12 @@ function paySplitByAmount(element) {
 
                 $.ajax({
                     url: baseurl + "ordermanage/order/deletesuborderitem",
-                    method: "GET",
+                    method: "POST",
                     data: {
                         menuid: menuid,
                         suborderid: suborderid,
                         orderid: orderid,
-                        service_chrg: service_chrg,
+                        //service_chrg: service_chrg,
                         csrf_test_name: csrf
                     },
                     success: function(response) {

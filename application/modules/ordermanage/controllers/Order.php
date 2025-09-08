@@ -5619,7 +5619,7 @@ class Order extends MX_Controller
 		$data['orderTiming'] = $order_timings;
 
 		$view = $this->load->view('postoken', $data);
-		echo $view;
+		//echo $view;
 		$this->db->where('ordid', $id)->delete('tbl_updateitems');
 		$updatetData = array(
 			'isupdate' => NULL,
@@ -8821,11 +8821,11 @@ class Order extends MX_Controller
 		$this->permission->method('ordermanage', 'delete')->redirect();
 
 		// Get input parameters
-		$menuid = $this->input->get('menuid', true);
-		$suborderid = $this->input->get('suborderid', true);
-		$orderid = $this->input->get('orderid', true);
-		$service_chrg_data = $this->input->get('service_chrg', true) ?: 0;
-		$csrf_token = $this->input->get('csrf_test_name', true);
+		$menuid = $this->input->post('menuid', true);
+		$suborderid = $this->input->post('suborderid', true);
+		$orderid = $this->input->post('orderid', true);
+		//$service_chrg_data = $this->input->get('service_chrg', true) ?: 0;
+		//$csrf_token = $this->input->get('csrf_test_name', true);
 
 		// Validate inputs
 		if (empty($menuid) || empty($suborderid) || empty($orderid)) {
@@ -8835,15 +8835,16 @@ class Order extends MX_Controller
 		}
 
 		// Validate CSRF token
-		if ($this->security->get_csrf_hash() !== $csrf_token) {
-			log_message('error', 'CSRF token mismatch: received=' . $csrf_token . ', expected=' . $this->security->get_csrf_hash());
-			show_error('CSRF token mismatch', 403);
-			return;
-		}
+		// if ($this->security->get_csrf_hash() !== $csrf_token) {
+		// 	log_message('error', 'CSRF token mismatch: received=' . $csrf_token . ', expected=' . $this->security->get_csrf_hash());
+		// 	show_error('CSRF token mismatch', 403);
+		// 	return;
+		// }
 
 		// Get current suborder
 		$array_id = array('sub_id' => $suborderid);
 		$order_sub = $this->order_model->read('*', 'sub_order', $array_id);
+		
 
 		if (empty($order_sub)) {
 			log_message('error', 'Suborder not found for sub_id=' . $suborderid);
@@ -8882,6 +8883,10 @@ class Order extends MX_Controller
 				'adons_qty' => null
 			);
 
+			// echo '<pre>';
+			// print_r($order_sub);
+			// echo '</pre>';
+
 			$this->db->where('sub_id', $suborderid);
 			if (!$this->db->update('sub_order', $updatetready)) {
 				log_message('error', 'Failed to update sub_order for sub_id=' . $suborderid);
@@ -8893,22 +8898,40 @@ class Order extends MX_Controller
 		}
 
 		// Get updated data for view
+		// $menuarray = !empty($presentsub) ? array_keys($presentsub) : array();
+		// try {
+		// 	$data['iteminfo'] = $this->order_model->updateSuborderDatalist($menuarray) ?: array();
+		// } catch (Exception $e) {
+		// 	log_message('error', 'Error in updateSuborderDatalist: ' . $e->getMessage());
+		// 	show_error('Error fetching suborder data', 500);
+		// 	return;
+		// }
+
 		$menuarray = !empty($presentsub) ? array_keys($presentsub) : array();
-		try {
-			$data['iteminfo'] = $this->order_model->updateSuborderDatalist($menuarray) ?: array();
-		} catch (Exception $e) {
-			log_message('error', 'Error in updateSuborderDatalist: ' . $e->getMessage());
-			show_error('Error fetching suborder data', 500);
-			return;
+
+		if (!empty($menuarray)) {
+			try {
+				$data['iteminfo'] = $this->order_model->updateSuborderDatalist($menuarray);
+				// Ensure it's always an array
+				if (!is_array($data['iteminfo'])) {
+					$data['iteminfo'] = array();
+				}
+			} catch (Exception $e) {
+				// On any error, return empty array
+				$data['iteminfo'] = array();
+			}
+		} else {
+			$data['iteminfo'] = array();
 		}
+
 
 		$data['taxinfos'] = $this->taxchecking() ?: array();
 		$data['presenttab'] = $presentsub;
 		$data['settinginfo'] = $this->order_model->settinginfo() ?: (object) ['servicecharge' => 0, 'vat' => 0];
 		$data['suborderid'] = $suborderid;
 		$data['orderid'] = $orderid;
-		$data['service_chrg_data'] = $service_chrg_data;
-		$data['SDtotal'] = $this->order_model->read('service_charge', 'bill', array('order_id' => $orderid)) ?: (object) ['service_charge' => 0];
+		//$data['service_chrg_data'] = $service_chrg_data;
+		//$data['SDtotal'] = $this->order_model->read('service_charge', 'bill', array('order_id' => $orderid)) ?: (object) ['service_charge' => 0];
 
 		// Calculate totals
 		$data['totalprice'] = 0;

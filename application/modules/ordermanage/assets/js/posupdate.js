@@ -280,27 +280,7 @@ $(document).ready(function () {
       $("#tableid_update").prop("disabled", false);
     }
   });
-  $(".update_search-field").select2({
-    placeholder: "Select Product",
-    minimumInputLength: 1,
-    ajax: {
-      url: "getitemlistdroup",
-      dataType: "json",
-      delay: 250,
-      //data:{csrf_test_name:basicinfo.csrftokeng},
-      processResults: function (data) {
-        return {
-          results: $.map(data, function (item) {
-            return {
-              text: item.text + "-" + item.variantName,
-              id: item.id + "-" + item.variantid,
-            };
-          }),
-        };
-      },
-      cache: true,
-    },
-  });
+  
 });
 function positemupdate(
   itemid,
