@@ -701,10 +701,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.querySelector(`.main-categories .cat-btn[onclick*="${mainKey}"]`).classList.add('active');
     }
 
-    // $(document).ready(function () {
-    //     $("#waiter_update").prop("disabled", true);
-    //     $("#tableid_update").prop("disabled", true);
-    // });
+    $(document).ready(function () {
+        // $("#waiter_update").prop("disabled", true);
+        // $("#tableid_update").prop("disabled", true);
+        $(".update_search-field").select2({
+            placeholder: "Select Product",
+            minimumInputLength: 1,
+            ajax: {
+             url: baseurl + '/ordermanage/order/getitemlistdroup',
+            dataType: "json",
+            delay: 250,
+            //data:{csrf_test_name:basicinfo.csrftokeng},
+            processResults: function (data) {
+                return {
+                results: $.map(data, function (item) {
+                    return {
+                    text: item.text + "-" + item.variantName,
+                    id: item.id + "-" + item.variantid,
+                    };
+                }),
+                };
+            },
+            cache: true,
+            },
+        });
+    });
 </script>
 <style>
     #updateformview .select2-container--default .select2-selection--single .select2-selection__rendered {
