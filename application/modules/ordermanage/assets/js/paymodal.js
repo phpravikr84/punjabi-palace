@@ -9,7 +9,8 @@
 });
 "use strict";
  function changedue(){
-	var main=$("#totalamount_marge").val();
+	// var main=$("#totalamount_marge").val();
+	var main=$("#due-amount").val();
 	var paid=$("#paidamount_marge").val();
 	var change=main-paid;
 	$("#change").val(Math.round(change));

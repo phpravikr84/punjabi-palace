@@ -5369,9 +5369,9 @@ class Order extends MX_Controller
 
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 
-		$data['orderinfo']  	   = $customerorder;
-		$data['customerinfo']   = $this->order_model->read('*', 'customer_info', array('customer_id' => $customerorder->customer_id));
-		$data['iteminfo']       = $this->order_model->customerorder($id);
+		$data['orderinfo']     = $customerorder;
+		$data['customerinfo']  = $this->order_model->read('*', 'customer_info', array('customer_id' => $customerorder->customer_id));
+		$data['iteminfo']      = $this->order_model->customerorder($id);
 		$data['billinfo']	   = $this->order_model->billinfo($id);
 		$data['cashierinfo']   = $this->order_model->read('*', 'user', array('id' => $data['billinfo']->create_by));
 		$settinginfo = $this->order_model->settinginfo();
@@ -6424,7 +6424,7 @@ class Order extends MX_Controller
 		} else {
 			$updatetordfordiscount = array(
 				'totalamount'           => $this->input->post('grandtotal', true),
-				'customerpaid'           => $this->input->post('grandtotal', true)
+				'customerpaid'          => $this->input->post('grandtotal', true)
 			);
 		}
 
@@ -6498,9 +6498,15 @@ class Order extends MX_Controller
 		} else {
 			$finaldis = $prebillinfo->discount;
 		}
+		if ($settinginfo->vat >0) {
+			// $vatcalc = $this->input->post('grandtotal', true) * $settinginfo->vat / 100;
+			$vatcalc = $prebillinfo->total_amount + $prebillinfo->service_charge + $prebillinfo->VAT - $finaldis;
+		} else {
+			$vatcalc = $this->input->post('grandtotal', true);
+		}
 		$updatetprebill = array(
 			'discount'              => $finaldis,
-			'bill_amount'           => $this->input->post('grandtotal', true)
+			'bill_amount'           => $vatcalc
 		);
 
 		$this->db->where('order_id', $orderid);
@@ -6510,7 +6516,7 @@ class Order extends MX_Controller
 		foreach ($payamonts  as $payamont) {
 			$paidamount = $paidamount + $payamont;
 			if($tenderamount > 0){
-				 // Calculate change amount
+				// Calculate change amount
     			$changeamount = $tenderamount - $payamont >= 0 ? number_format($tenderamount - $payamont, 2, '.', '') : 0.00;
 				$data_pay = array(
 						'paytype' => $paytype[$i],

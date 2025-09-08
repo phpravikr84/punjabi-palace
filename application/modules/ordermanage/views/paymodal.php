@@ -1,3 +1,8 @@
+    <?php 
+    // echo "<pre>";
+    // print_r($settinginfo);
+    // echo "</pre>";
+    ?>
     <?php echo form_open('', 'method="get" class="navbar-search" name="sdf" id="paymodal-multiple-form"') ?>
     <input name="<?php echo $this->security->get_csrf_token_name(); ?>" type="hidden" value="<?php echo $this->security->get_csrf_hash(); ?>" />
     <div class="modal-content">
@@ -80,11 +85,16 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <?php if ($settinginfo->discount_type == 1) {
+                                        <?php
+                                        if ($settinginfo->discount_type == 1) {
                                             $disamount = $totalamount * $settinginfo->discountrate / 100;
                                         } else {
                                             $disamount = $settinginfo->discountrate;
-                                        }
+                                        }                                         
+                                        // $totamt = $totaldue;
+                                        $totamt = $totaldue - $disamount;
+                                        $tax = $totamt * ($settinginfo->vat / 100);
+                                        $totalWithTax = $totamt + $tax;
 
                                         ?>
                                         <label for="discount" class="col-form-label pb-2"><?php echo display('discount'); ?>(<span id="chty"><?php if ($settinginfo->discount_type == 0) {
@@ -142,7 +152,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="4digit" class="col-form-label pb-2"><?php echo display('cuspayment'); ?></label>
-                                        <input type="text" id="paidamount_marge" class="form-control number pay firstpay" name="paidamount[]" value="<?php echo $totaldue - $disamount; ?>" onkeyup="changedueamount()" placeholder="0" onclick="givefocus(this)" />
+                                        <input type="text" id="paidamount_marge" class="form-control number pay firstpay" name="paidamount[]" value="<?php echo $totalWithTax; ?>" onkeyup="changedueamount()" placeholder="0" onclick="givefocus(this)" />
                                     </div>
                                 </div>
 
@@ -203,10 +213,21 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        <?php echo 'Tax'; ?>
+                                    </td>
+                                    <td id="due-amount">
+                                        <?php 
+
+                                        echo $tax;
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <?php echo display('total_due'); ?>
                                     </td>
                                     <td id="due-amount">
-                                        <?php echo $totaldue - $disamount; ?>
+                                        <?php echo $totalWithTax; ?>
                                     </td>
                                 </tr>
                                 <tr>

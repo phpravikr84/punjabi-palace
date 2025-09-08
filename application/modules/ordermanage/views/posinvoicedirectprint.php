@@ -15,7 +15,7 @@ body
     margin: 0px;  
 } 
 @media screen {
-    .header, .footer {
+    .header, .footer { 
         display: none;
     }
 }
@@ -588,34 +588,38 @@ body
                     </div>
                     <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php $discount=0; if(empty($billinfo)){ echo $discount;} else{echo $discount=$billinfo->discount;} ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
-                
+                <?php 
+                    if($orderinfo->customerpaid>0){
+                        $customepaid=$orderinfo->customerpaid;
+                        $changes=$customepaid-$orderinfo->totalamount;
+                        }
+                    else{
+                        $customepaid=$orderinfo->totalamount;
+                        $changes=0;
+                        }
+                    
+                    if($orderinfo->tenderamount>0){
+                        $customertenderpaid=$orderinfo->tenderamount;
+                    } else {
+                        $customertenderpaid=$orderinfo->customerpaid;
+                    }
+
+                    if($orderinfo->changeamount>0){
+                        $changeamount=$orderinfo->changeamount;
+                    } else {
+                        $changeamount=0;
+                    }
+                ?>
                 <div class="row-data border-top">
                     <div class="item-info">
                         <h5 class="item-title text-bold"><?php echo display('grand_total')?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?> <?php echo $billinfo->bill_amount;?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                    <h5 class="my-5">
+                        <?php ##if($currency->position==1){echo $currency->curr_icon;}?> <?php ##echo (($billinfo->bill_amount + $calvat) - $discount);?> <?php ##if($currency->position==2){echo $currency->curr_icon;}?>
+                        <?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php echo $customertenderpaid; ?> <?php if($currency->position==2){echo $currency->curr_icon;}?>
+                    </h5>
                 </div>
                 <?php 
-			if($orderinfo->customerpaid>0){
-				$customepaid=$orderinfo->customerpaid;
-				$changes=$customepaid-$orderinfo->totalamount;
-				}
-			else{
-				$customepaid=$orderinfo->totalamount;
-				$changes=0;
-				}
-            
-            if($orderinfo->tenderamount>0){
-                $customertenderpaid=$orderinfo->tenderamount;
-            } else {
-                $customertenderpaid=$orderinfo->customerpaid;
-            }
-
-            if($orderinfo->changeamount>0){
-                $changeamount=$orderinfo->changeamount;
-            } else {
-                $changeamount=0;
-            }
 
 			if($billinfo->bill_status==1){?>
                 <div class="row-data">

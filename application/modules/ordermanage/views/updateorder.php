@@ -554,7 +554,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td class="text-right wpr_494"><strong><?php echo display('service_chrg')?><?php echo $settinginfo->service_chargeType == 0 ? "(".$currency->curr_icon.")" : "(%)";?></strong></td>
                                             <td class="text-right wpr_28">
                                                 <strong>
-                                                    <input name="service_charge" class="text-right" id="service_charge_update" type="number" placeholder="0.00" onkeyup="sumcalculation(1)" value="<?php echo $settinginfo->servicecharge;?>" />
+                                                    <input name="service_charge" class="text-right" id="service_charge_update" type="number" placeholder="0.00" onkeyup="sumcalculation(1)" value="<?php echo $settinginfo->servicecharge;?>" readonly />
                                                 </strong>
                                             </td>
                                             <td class="text-right wpr_126">&nbsp;</td>
@@ -572,7 +572,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <input name="tgtotal" type="hidden" value="<?php echo $calvat+$itemtotal+$servicecharge-$discount;?>" id="tgtotal" />
                                                 <input name="orginattotal" id="orginattotal_update" type="hidden" value="<?php echo $calvat+$itemtotal+$servicecharge-$discount;?>" /><input name="grandtotal" id="grandtotal_update" type="hidden" value="<?php echo $calvat+$itemtotal+$servicecharge-$discount;?>" /><?php if($currency->position==1){echo $currency->curr_icon;}?> <strong id="gtotal_update"><?php
                                                 $isvatinclusive = $this->db->select("*")->from('setting')->get()->row();
-                                                echo number_format($isvatinclusive->isvatinclusive == 1 ? $itemtotal + $servicecharge - $discount : $calvat + $itemtotal + $servicecharge - $discount, 3);
+                                                echo number_format($isvatinclusive->isvatinclusive == 1 ? $calvat + $itemtotal + $servicecharge - $discount : $itemtotal + $servicecharge - $discount, 3);
                                                 ?>
                                                 </strong> <?php if($currency->position==2){echo $currency->curr_icon;}?>
                                             </td>
