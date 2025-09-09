@@ -331,7 +331,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                             if (isset($categories[$category_id])) {
                                                                                 $category_name = $categories[$category_id];
                                                                             } else {
-                                                                                $category_name = isset($item->cat_name) && !empty($item->cat_name) ? $item->cat_name : 'Unknown';
+                                                                                $category_name = isset($item->cat_name) && !empty($item->cat_name) ? $item->cat_name : '';
                                                                             }
                                                                             $items_by_category[$category_name][] = $item;
                                                                         }
