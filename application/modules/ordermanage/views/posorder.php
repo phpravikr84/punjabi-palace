@@ -316,9 +316,10 @@ $ptdiscount = 0; ?>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="canreason" class="col-sm-4 col-form-label"><?php echo display('can_reason'); ?></label>
+                  <label for="canreason" class="col-sm-4 col-form-label"><?php echo display('can_reason'); ?>*</label>
                   <div class="col-sm-7 customesl">
-                    <textarea name="canreason" id="canreason" cols="35" rows="3" class="form-control"></textarea>
+                     <textarea name="canreason" id="canreason" cols="35" rows="3" 
+                    class="form-control" required></textarea>
                   </div>
                 </div>
                 <div class="form-group text-right">

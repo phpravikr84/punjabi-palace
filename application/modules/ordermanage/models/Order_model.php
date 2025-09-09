@@ -2110,7 +2110,7 @@ class Order_model extends CI_Model
 		$this->db->join('order_menu', 'order_menu.order_id=customer_order.order_id', 'left');
 		$this->db->join('item_foods', 'item_foods.ProductsID=order_menu.menu_id', 'Inner');
 		$this->db->where($where);
-		$this->db->where('item_foods.kitchenid', $id);
+		//$this->db->where('item_foods.kitchenid', $id);
 		$this->db->order_by('customer_order.order_id', 'desc');
 		$this->db->group_by('customer_order.order_id');
 		$query = $this->db->get();
