@@ -7675,11 +7675,18 @@ class Order extends MX_Controller
 		$total = $this->input->post('total', true);
 		$customerid = $this->input->post('customerid');
 		$gtotal = $service + $vat + $total;
+		$tenderamount = $this->input->post('tender_amount', true) ?? 0.00;
+		// Calculate change amount
+		$changeamount = ($tenderamount - $gtotal >= 0) 
+			? number_format($tenderamount - $gtotal, 2, '.', '') 
+			: 0.00;
 		$updatetordfordiscount = array(
 			'vat'           => $vat,
 			's_charge'      => $service,
 			'total_price'   => $total,
 			'customer_id'   => $customerid,
+			'tenderamount' => $tenderamount,
+        	'changeamount' => $changeamount
 
 		);
 
@@ -7729,11 +7736,24 @@ class Order extends MX_Controller
 			$this->add_multipay($order_id, $billinfo->bill_id, $data_pay);
 			$i++;
 		}
+		
+		 // Tender amount (force numeric)
+        $tenderamount = (float) $this->input->post('tender_amount', true);
+        if ($tenderamount <= 0) {
+            $tenderamount = 0.00;
+        }
+    
+        // Change amount
+        $changeamount = ($tenderamount - $grandtotal > 0)
+            ? number_format($tenderamount - $grandtotal, 2, '.', '')
+            : 0.00;
 
 		//update sub order
 		$updatetordfordiscount = array(
 			'status'           => 1,
-			'discount'     		 => $discount
+			'discount'     		 => $discount,
+			 'tenderamount'=> $tenderamount,
+            'changeamount'=> $changeamount
 
 		);
 
@@ -7961,6 +7981,9 @@ class Order extends MX_Controller
         if (empty($data['payment_details'])) {
             log_message('debug', 'No payment details found for order_id: ' . $order_sub->order_id);
         }
+
+		$data['tenderamount'] = $order_sub->tenderamount ?? 0.00;
+		$data['changeamount'] = $order_sub->changeamount ?? 0.00;
 
         $data['module'] = "ordermanage";
         $data['page'] = "posprintsuborder";
@@ -8703,6 +8726,12 @@ class Order extends MX_Controller
 		$total = $this->input->post('total', true);
 		$vat = $this->input->post('vat', true);
 		$service = $this->input->post('service', true);
+		$tenderamount = $this->input->post('tender_amount', TRUE) ?? 0.00;
+
+		  // Calculate change
+		$changeamount = ($tenderamount - $total >= 0) 
+			? number_format($tenderamount - $total, 2, '.', '') 
+			: 0.00;
 
 		if (empty($sub_id) || !is_numeric($sub_id)) {
 			log_message('error', 'Invalid sub_id: ' . $sub_id);
@@ -8735,7 +8764,9 @@ class Order extends MX_Controller
 			's_charge' => $service,
 			'total_price' => $total,
 			'customer_id' => $customerid ?: null,
-			'status' => 0
+			'status' => 0,
+			'tenderamount' => $tenderamount,
+        	'changeamount' => $changeamount
 		);
 
 		$this->db->where('sub_id', $sub_id);

@@ -3410,8 +3410,16 @@ function showhidecard(element) {
         $("#assignbank").val('');
         $("#assignlastdigit").val('');
     }
-    if (cardtype != 4) {
-        $(".tender-amount-box").hide();
+    if (cardtype == 4) {
+        //$(".tender-amount-box").hide();
+        var firspay = parseFloat($("#firspay").val()) || 0;
+        var tamount = parseFloat($("#tamount").val()) || 0;
+
+        if (firspay > tamount) {
+            $(".tender-amount-box").show();
+        } else {
+            $(".tender-amount-box").hide();
+        }
     } else {
         $(".tender-amount-box").show();
     }
@@ -4872,6 +4880,6 @@ function validateTenderAmount() {
         //$('#paidbill').prop('disabled', false);
         var changes = (tenderAmount - grandTotal).toFixed(2);
         $('#change-amount').text(changes);
-        $("#pay-amount").text(50);
+        $("#pay-amount").text(tenderAmount.toFixed(2));
     }
 }

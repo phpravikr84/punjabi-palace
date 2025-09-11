@@ -239,6 +239,19 @@
                 </div>
                 <h5><?php if ($currency->position == 1) { echo $currency->curr_icon; } ?><?php echo $gtotal; ?><?php if ($currency->position == 2) { echo $currency->curr_icon; } ?></h5>
             </div>
+            <div class="row-data border-top">
+                <div class="item-info">
+                    <h5><?php echo 'Tender Amount'; ?></h5>
+                </div>
+                <h5><?php if ($currency->position == 1) { echo $currency->curr_icon; } ?><?php echo $tenderamount; ?><?php if ($currency->position == 2) { echo $currency->curr_icon; } ?></h5>
+            </div>
+            <div class="row-data border-top">
+                <div class="item-info">
+                    <h5><?php echo 'Change Amount'; ?></h5>
+                </div>
+                <h5><?php if ($currency->position == 1) { echo $currency->curr_icon; } ?><?php echo $changeamount; ?><?php if ($currency->position == 2) { echo $currency->curr_icon; } ?></h5>
+            </div>
+
             <div class="row-data">
                 <div class="item-info">
                     <h5><?php echo display('billing_to'); ?>: <?php echo $customerinfo->customer_name; ?></h5>
