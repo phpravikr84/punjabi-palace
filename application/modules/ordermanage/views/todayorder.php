@@ -4,7 +4,7 @@
         <div class="card shadow-sm border-0 h-100">
             <div class="card-body bg-primary text-white rounded" style="padding:10px 0;">
                 <i class="fa fa-shopping-cart fa-2x"></i>
-                <h5 class="mt-3">Today Total Sales</h5>
+                <h5 class="mt-3">Today Total Sales <?php echo 'Cash : '.$cash; ?></h5>
                 <h2 class="fw-bold mb-0"><?php echo isset($total_sales) ? $total_sales : '0.00'; ?></h2>
             </div>
         </div>
@@ -52,11 +52,12 @@
                 <h2 class="fw-bold mb-0">
                     <?php
                         // Remove commas and cast to float
-                        $cash = (float) str_replace([',', ' '], '', (string)$cash_sales);
-                        $card = (float) str_replace([',', ' '], '', (string)$card_sales);
+                        //$cash = (float) str_replace([',', ' '], '', (string)$cash_sales);
+                        //$card = (float) str_replace([',', ' '], '', (string)$card_sales);
+                        //echo $cash_sales;
 
-                        if ($cash > 0 && $card > 0 && $cash != $card) {
-                            $difference = abs($cash - $card); // Always positive difference
+                        if ($cash_sales > 0 || $card_sales > 0 && $cash_sales != $card_sales) {
+                            $difference = abs($cash_sales - $card_sales); // Always positive difference
                             echo number_format($difference, 2, '.', ''); // Example: 865.24
                         } else {
                             echo '0.00';
@@ -95,5 +96,6 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/todayorder.js'); ?>" type="text/javascript"></script>
                                 

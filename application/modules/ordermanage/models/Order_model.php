@@ -1722,13 +1722,13 @@ class Order_model extends CI_Model
 	}
 	public function customerorderkitchen($id, $kitchen)
 	{
-		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.kitchenid,item_foods.cookedtime,item_category.CategoryID as category_id, item_category.Name as cat_name, variant.variantid,variant.variantName,variant.price');
+		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.kitchenid,item_foods.cookedtime,item_category.CategoryID as category_id, IFNULL(item_category.Name, "Uncategorized") as cat_name, variant.variantid,variant.variantName,variant.price');
 		$this->db->from('order_menu');
 		$this->db->join('item_foods', 'order_menu.menu_id=item_foods.ProductsID', 'left');
 		$this->db->join('item_category', 'item_foods.CategoryID=item_category.CategoryID', 'left');
 		$this->db->join('variant', 'order_menu.varientid=variant.variantid', 'left');
 		$this->db->where('order_menu.order_id', $id);
-		$this->db->where('item_foods.kitchenid', $kitchen);
+		//$this->db->where('item_foods.kitchenid', $kitchen);
 		$this->db->order_by('order_menu.order_id', 'desc');
 		$query = $this->db->get();
 		$orderinfo = $query->result();
@@ -2110,7 +2110,7 @@ class Order_model extends CI_Model
 		$this->db->join('order_menu', 'order_menu.order_id=customer_order.order_id', 'left');
 		$this->db->join('item_foods', 'item_foods.ProductsID=order_menu.menu_id', 'Inner');
 		$this->db->where($where);
-		$this->db->where('item_foods.kitchenid', $id);
+		//$this->db->where('item_foods.kitchenid', $id);
 		$this->db->order_by('customer_order.order_id', 'desc');
 		$this->db->group_by('customer_order.order_id');
 		$query = $this->db->get();
@@ -2215,9 +2215,77 @@ class Order_model extends CI_Model
 			$this->db->order_by(key($order), $order[key($order)]);
 		}
 	}
+
+	private function get_alltodayorder_query_new()
+	{
+		$column_order = array(
+			null, // 0 SL
+			'customer_order.saleinvoice', // 1 Invoice
+			'customer_info.customer_name', // 2 Customer Name
+			'customer_type.customer_type', // 3 Customer Type
+			'employee_history.first_name', // 4 Waiter (first name)
+			'rest_table.tablename',        // 5 Table No
+			'customer_order.order_date',   // 6 Order Date
+			'customer_order.totalamount',  // 7 Amount
+			null                           // 8 Action
+		);
+
+		$column_search = array(
+			'customer_order.saleinvoice',
+			'customer_info.customer_name',
+			'customer_type.customer_type',
+			'employee_history.first_name',
+			'employee_history.last_name',
+			'rest_table.tablename',
+			'customer_order.order_date',
+			'customer_order.totalamount'
+		);
+
+		$order = array('customer_order.order_id' => 'desc'); // default order
+
+		$cdate = date('Y-m-d');
+		$this->db->select('customer_order.*,customer_info.customer_name,customer_type.customer_type,
+			employee_history.first_name,employee_history.last_name,rest_table.tablename,bill.bill_status');
+		$this->db->from('customer_order');
+		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
+		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
+		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
+		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
+		$this->db->where('customer_order.order_date', $cdate);
+		$this->db->where('bill.bill_status', 1);
+		$this->db->group_by('customer_order.order_id');
+
+		$i = 0;
+		foreach ($column_search as $item) {
+			if ($_POST['search']['value']) {
+				if ($i === 0) {
+					$this->db->group_start();
+					$this->db->like($item, $_POST['search']['value']);
+				} else {
+					$this->db->or_like($item, $_POST['search']['value']);
+				}
+				if (count($column_search) - 1 == $i)
+					$this->db->group_end();
+			}
+			$i++;
+		}
+
+		// Handle ordering properly
+		if (isset($_POST['order'])) {
+			$this->db->order_by(
+				$column_order[$_POST['order']['0']['column']],
+				$_POST['order']['0']['dir']
+			);
+		} else {
+			// default order
+			$this->db->order_by(key($order), $order[key($order)]);
+		}
+	}
+
 	public function get_completeorder()
 	{
-		$this->get_alltodayorder_query();
+		$this->get_alltodayorder_query_new();
 		if ($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);
 		$query = $this->db->get();
@@ -2483,7 +2551,7 @@ class Order_model extends CI_Model
 	}
 	public function get_itemlist($id)
 	{
-		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.CategoryID,item_category.Name as CategoryName,variant.variantid,variant.variantName,variant.price');
+		$this->db->select('order_menu.*,item_foods.ProductName,item_foods.CategoryID,IFNULL(item_category.Name, "Uncategorized") as CategoryName,variant.variantid,variant.variantName,variant.price');
 		$this->db->from('order_menu');
 		$this->db->join('item_foods', 'order_menu.menu_id=item_foods.ProductsID', 'left');
 		$this->db->join('item_category', 'item_foods.CategoryID=item_category.CategoryID', 'left');
@@ -3204,7 +3272,7 @@ class Order_model extends CI_Model
 	 */
 	public function get_completecancelorder()
 	{
-		$this->get_alltodaycancelorder_query();
+		$this->get_alltodaycancelorder_query_new();
 		if ($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);
 		$query = $this->db->get();
@@ -3254,6 +3322,73 @@ class Order_model extends CI_Model
 		{
 			$this->db->order_by($column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
 		} else if (isset($order)) {
+			$this->db->order_by(key($order), $order[key($order)]);
+		}
+	}
+
+	private function get_alltodaycancelorder_query_new()
+	{
+		$column_order = array(
+			null, // 0 SL
+			'customer_order.saleinvoice', // 1 Invoice
+			'customer_info.customer_name', // 2 Customer Name
+			'customer_type.customer_type', // 3 Customer Type
+			'employee_history.first_name', // 4 Waiter (first name)
+			'rest_table.tablename',        // 5 Table No
+			'customer_order.order_date',   // 6 Order Date
+			'customer_order.totalamount',  // 7 Amount
+			null                           // 8 Action
+		);
+
+		$column_search = array(
+			'customer_order.saleinvoice',
+			'customer_info.customer_name',
+			'customer_type.customer_type',
+			'employee_history.first_name',
+			'employee_history.last_name',
+			'rest_table.tablename',
+			'customer_order.order_date',
+			'customer_order.totalamount'
+		);
+
+		$order = array('customer_order.order_id' => 'desc'); // default order
+
+		$cdate = date('Y-m-d');
+		$this->db->select('customer_order.*,customer_info.customer_name,customer_type.customer_type,
+			employee_history.first_name,employee_history.last_name,rest_table.tablename,bill.bill_status');
+		$this->db->from('customer_order');
+		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
+		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
+		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
+		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
+		$this->db->where('customer_order.order_date', $cdate);
+		$this->db->where('bill.bill_status', 0);
+		$this->db->group_by('customer_order.order_id');
+
+		$i = 0;
+		foreach ($column_search as $item) {
+			if ($_POST['search']['value']) {
+				if ($i === 0) {
+					$this->db->group_start();
+					$this->db->like($item, $_POST['search']['value']);
+				} else {
+					$this->db->or_like($item, $_POST['search']['value']);
+				}
+				if (count($column_search) - 1 == $i)
+					$this->db->group_end();
+			}
+			$i++;
+		}
+
+		// Handle ordering properly
+		if (isset($_POST['order'])) {
+			$this->db->order_by(
+				$column_order[$_POST['order']['0']['column']],
+				$_POST['order']['0']['dir']
+			);
+		} else {
+			// default order
 			$this->db->order_by(key($order), $order[key($order)]);
 		}
 	}

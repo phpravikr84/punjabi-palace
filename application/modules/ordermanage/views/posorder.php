@@ -316,9 +316,10 @@ $ptdiscount = 0; ?>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="canreason" class="col-sm-4 col-form-label"><?php echo display('can_reason'); ?></label>
+                  <label for="canreason" class="col-sm-4 col-form-label"><?php echo display('can_reason'); ?>*</label>
                   <div class="col-sm-7 customesl">
-                    <textarea name="canreason" id="canreason" cols="35" rows="3" class="form-control"></textarea>
+                     <textarea name="canreason" id="canreason" cols="35" rows="3" 
+                    class="form-control" required></textarea>
                   </div>
                 </div>
                 <div class="form-group text-right">
@@ -536,7 +537,7 @@ foreach ($scan as $file) {
           <?php }  else { ?>
           <li><a href="<?php echo base_url() ?>ordermanage/order/alltables" class="maindashboard"><i class="fa fa-table"></i> <?php echo 'All tables'; ?></a></li>
           <?php } ?>
-          <li class="active"> <a href="#home" role="tab" data-toggle="tab" title="<?php echo display('nw_order') ?>" id="fhome" autofocus class="home newtab" onclick="giveselecttab(this)"><i class="fa fa-plus smallview"></i> <span class="responsiveview"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;<?php echo display('nw_order'); ?></span> </a></li>
+          <li class="active"> <a href="#home" role="tab" data-toggle="tab" title="<?php echo display('nw_order') ?>" id="fhome" autofocus class="home newtab norder" onclick="giveselecttab(this)"><i class="fa fa-plus smallview"></i> <span class="responsiveview"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;<?php echo display('nw_order'); ?></span> </a></li>
           <li><a href="#profile" role="tab" data-toggle="tab" class="ongord newtab" id="ongoingorder" onclick="giveselecttab(this)"><i class="fa fa-hourglass-start smallview"></i> <span class="responsiveview"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;<?php echo display('ongoingorder'); ?></span> </a> </li>
           <li><a href="#kitchen" role="tab" data-toggle="tab" class="kstatus newtab" id="kitchenorder" onclick="giveselecttab(this)"><i class="fa fa-coffee smallview"></i> <span class="responsiveview"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp;<?php echo display('kitchen_status'); ?></span> </a> </li>
           <?php if ($qrapp == 1) { ?>
@@ -544,7 +545,7 @@ foreach ($scan as $file) {
           <?php } ?>
           <li class="seelist"> <a href="#settings" role="tab" data-toggle="tab" class="comorder newtab" id="todayonlieorder" onclick="giveselecttab(this)"><i class="fa fa-shopping-bag smallview"></i> <span class="responsiveview"><i class="fa fa-internet-explorer" aria-hidden="true"></i>&nbsp;<?php echo display('onlineord'); ?></span> </a> <a href="" class="notif" style="display: none !important;"><span class="label label-danger count">0</span></a></li>
           <li> <a href="#messages" role="tab" data-toggle="tab" class="torder newtab" id="todayorder" onclick="giveselecttab(this)"><i class="fa fa-first-order smallview"></i> <span class="responsiveview"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;<?php echo display('tdayorder'); ?></span> </a> </li>
-          <li> <a href="#cancelorder" role="tab" data-toggle="tab" class="corder newtab" id="cancelorder" onclick="giveselecttab(this)"><i class="fa fa-first-order smallview"></i> <span class="responsiveview"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;<?php echo 'Cancel Order'; ?></span> </a> </li>
+          <li> <a href="#cancelmessages" role="tab" data-toggle="tab" class="corder newtab" id="cancelorder" onclick="giveselecttab(this)"><i class="fa fa-first-order smallview"></i> <span class="responsiveview"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;<?php echo 'Cancel Order'; ?></span> </a> </li>
           <li class="mobiletag"><a href="javascript:void(0);" class="btn" onclick="closeopenresister()" role="button" data-toggle="tooltip" data-placement="top" title="Click to close the counter register" data-original-title="Click to close the counter register"><i class="fa fa-window-close fa-lg"></i></a></li>
           <li class="mobiletag"><a href="#"><i class="fa fa-keyboard hover-q text-muted" aria-hidden="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<table class='table table-condensed table-striped' >
         <tr>
@@ -1593,7 +1594,7 @@ foreach ($scan as $file) {
         <?php } ?>
         <div class="tab-pane fade" id="settings"> </div>
         <div class="tab-pane fade" id="messages"> </div>
-        <div class="tab-pane fade" id="cancelorder"> </div>
+        <div class="tab-pane fade" id="cancelmessages"> </div>
       </div>
     </div>
   </div>

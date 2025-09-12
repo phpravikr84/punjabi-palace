@@ -331,8 +331,16 @@ $(document).on('click', '#todayqrorder', function(){
 $(document).on('click', '#cancelreason', function(){ 
 				$("#cancelord").modal('hide');
 				var ordid=$("#mycanorder").val();
-				var reason=$("#canreason").val();
+				//var reason=$("#canreason").val();
+				var reason  = $("#canreason").val().trim();
 				var csrf = $('#csrfhashresarvation').val();
+				  // Check if reason is empty
+				if(reason === "") {
+					// You can use alert, swal, or show error message
+					swal("Error", "Please enter a cancellation reason!", "error");
+					$("#canreason").focus();
+					return false; // stop execution
+				}
 				var dataString = 'status=1&onprocesstab=1&acceptreject=0&reason='+reason+'&orderid='+ordid+'&csrf_test_name='+csrf;
 				$.ajax({
 						type: "POST",
