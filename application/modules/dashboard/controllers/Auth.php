@@ -53,7 +53,7 @@ class Auth extends MX_Controller {
                     )
                 );
                 
-                $this->form_validation->set_message('required', 'Captcha is required.');
+                //$this->form_validation->set_message('required', 'Captcha is required.');
                 $this->form_validation->set_message('captcha_check', 'Invalid captcha, please try again.');
             }
         }
