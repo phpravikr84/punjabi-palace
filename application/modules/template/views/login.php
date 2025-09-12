@@ -270,10 +270,10 @@
         </div>
         <div class="col-lg-5 col-sm-12 col-md-5 d-flex justify-content-right text-right">
             <div class="login-content login-content_bg p-4">
-                <?php //if ($this->session->flashdata('form_submitted')) { ?>
+                <?php if ($this->session->flashdata('form_submitted')) { ?>
                     <div class="mt-3">
                         <?php if ($this->session->flashdata('message')) { ?>
-                            <div class="alert alert-info alert-dismissable">
+                            <div class="alert alert-danger alert-dismissable" id="flashMessage">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <?php echo $this->session->flashdata('message'); ?>
                             </div>
@@ -287,13 +287,13 @@
                         <?php } ?> -->
 
                         <?php if (validation_errors()) { ?>
-                            <div class="alert alert-danger alert-dismissable">
+                            <div class="alert alert-danger alert-dismissable" id="flashErrorMessage">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <?php echo validation_errors(); ?>
                             </div>
                         <?php } ?>
                     </div>
-                <?php //} ?>
+                <?php } ?>
 
                 <div class="text-center mt-3">
                     <h1 class="text-white login-textheading"><?php echo 'Welcome !'; ?></h1>
@@ -429,6 +429,15 @@
             });
         });
 
+    </script>
+     <script>
+        // hide after 5 seconds (5000ms)
+        setTimeout(function () {
+            $("#flashMessage").fadeOut("slow");
+        }, 2000);
+        setTimeout(function () {
+            $("#flashErrorMessage").fadeOut("slow");
+        }, 2000);
     </script>
     <style>
         #loginTabContent {
