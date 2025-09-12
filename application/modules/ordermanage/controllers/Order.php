@@ -621,6 +621,7 @@ class Order extends MX_Controller
 		$query = $this->db->get();
         $cash_sales = $query->row()->cash_sales ?? 0;
 
+		//echo 'Cash Sales: ' . $cash_sales; // Debug output
         // Prepare data for the view
         $data = [
             'total_sales' => number_format($total_sales, 2),

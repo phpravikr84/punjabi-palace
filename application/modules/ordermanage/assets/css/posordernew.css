@@ -292,7 +292,7 @@ listcat.listcat {
     }
  @media  (min-width:992px) {
     .update-order-height{
-        height: calc(100vh - 130px);
+        /* height: calc(100vh - 130px); */
         overflow-y: hidden;
     }
  }

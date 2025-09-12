@@ -3,9 +3,6 @@ $(document).ready(function () {
     $('#onprocessing').DataTable({ 
         responsive: true, 
         paging: true,
-        columnDefs: [
-        { orderable: false, targets: [0, 8] } // disable sort for Row Number and Action buttons
-        ],
         "language": {
             "sProcessing":     lang.Processingod,
             "sSearch":         lang.search,

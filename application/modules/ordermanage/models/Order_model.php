@@ -2215,9 +2215,77 @@ class Order_model extends CI_Model
 			$this->db->order_by(key($order), $order[key($order)]);
 		}
 	}
+
+	private function get_alltodayorder_query_new()
+	{
+		$column_order = array(
+			null,
+			'customer_order.saleinvoice',
+			'customer_info.customer_name',
+			'customer_type.customer_type',
+			'employee_history.first_name',
+			'employee_history.last_name',
+			'rest_table.tablename',
+			'customer_order.order_date',
+			'customer_order.totalamount'
+		);
+
+		$column_search = array(
+			'customer_order.saleinvoice',
+			'customer_info.customer_name',
+			'customer_type.customer_type',
+			'employee_history.first_name',
+			'employee_history.last_name',
+			'rest_table.tablename',
+			'customer_order.order_date',
+			'customer_order.totalamount'
+		);
+
+		$order = array('customer_order.order_id' => 'desc'); // default order
+
+		$cdate = date('Y-m-d');
+		$this->db->select('customer_order.*,customer_info.customer_name,customer_type.customer_type,
+			employee_history.first_name,employee_history.last_name,rest_table.tablename,bill.bill_status');
+		$this->db->from('customer_order');
+		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
+		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
+		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
+		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
+		$this->db->where('customer_order.order_date', $cdate);
+		$this->db->where('bill.bill_status', 1);
+		$this->db->group_by('customer_order.order_id');
+
+		$i = 0;
+		foreach ($column_search as $item) {
+			if ($_POST['search']['value']) {
+				if ($i === 0) {
+					$this->db->group_start();
+					$this->db->like($item, $_POST['search']['value']);
+				} else {
+					$this->db->or_like($item, $_POST['search']['value']);
+				}
+				if (count($column_search) - 1 == $i)
+					$this->db->group_end();
+			}
+			$i++;
+		}
+
+		// Handle ordering properly
+		if (isset($_POST['order'])) {
+			$this->db->order_by(
+				$column_order[$_POST['order']['0']['column']],
+				$_POST['order']['0']['dir']
+			);
+		} else {
+			// default order
+			$this->db->order_by(key($order), $order[key($order)]);
+		}
+	}
+
 	public function get_completeorder()
 	{
-		$this->get_alltodayorder_query();
+		$this->get_alltodayorder_query_new();
 		if ($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);
 		$query = $this->db->get();

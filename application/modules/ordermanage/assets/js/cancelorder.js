@@ -1,7 +1,7 @@
 // JavaScript Document
 $(document).ready(function () {
                                 "use strict";
-                                $('#oncancel').DataTable({ 
+                                $('#canceltodaylist').DataTable({ 
                                         responsive: true, 
                                         paging: true,
 											"language": {

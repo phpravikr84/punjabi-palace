@@ -1,4 +1,4 @@
-<table class="table table-fixed table-bordered table-hover bg-white wpr_100" id="oncancel">
+<table class="table table-fixed table-bordered table-hover bg-white wpr_100" id="canceltodaylist">
                                     <thead>
                                          <tr>
                                                 <th class="text-center"><?php echo display('sl');?>. </th>
