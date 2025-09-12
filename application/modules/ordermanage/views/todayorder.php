@@ -96,5 +96,6 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+
 <script src="<?php echo base_url('application/modules/ordermanage/assets/js/todayorder.js'); ?>" type="text/javascript"></script>
                                 

@@ -3,9 +3,6 @@ $(document).ready(function () {
     $('#onprocessing').DataTable({ 
         responsive: true, 
         paging: true,
-        columnDefs: [
-        { orderable: false, targets: [0, 8] } // disable sort for Row Number and Action buttons
-        ],
         "language": {
             "sProcessing":     lang.Processingod,
             "sSearch":         lang.search,
@@ -63,6 +60,16 @@ $(document).ready(function () {
                 data.csrf_test_name = $('#csrfhashresarvation').val();
             }
         },
+        order: [
+            [1, 'desc'], // Invoice
+            [5, 'asc'],  // Table No
+            [6, 'desc'], // Order Date
+            [7, 'desc']  // Amount
+        ],
+        columnDefs: [
+            { orderable: false, targets: [0, 2, 3, 4, 8] }, // disable sort
+            { orderable: true, targets: [1, 5, 6, 7] }      // enable sort
+        ],
         "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
             var intVal = function ( i ) {
