@@ -326,7 +326,7 @@
                                 <span class="input-group-addon"><i class="fas fa-lock" style="color: #999;"></i></span>
                                 <input type="password" class="form-control" aria-label="<?php echo display('password') ?>" placeholder="<?php echo display('password') ?>" name="password" id="password" autocomplete="off" style="padding-left: 0px !important;" />
                                 <span class="input-group-addon eye" onclick="togglePassword($(this));"><i class="fa fa-eye" aria-hidden="true"></i></span>
-                            </div>
+                            </div> 
                         </div>
 
                         <div class="form-group">

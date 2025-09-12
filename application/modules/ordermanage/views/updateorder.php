@@ -556,7 +556,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td class="text-right wpr_494"><strong><?php echo display('service_chrg')?><?php echo $settinginfo->service_chargeType == 0 ? "(".$currency->curr_icon.")" : "(%)";?></strong></td>
                                             <td class="text-right wpr_28">
                                                 <strong>
-                                                    <input name="service_charge" class="text-right" id="service_charge_update" type="number" placeholder="0.00" onkeyup="sumcalculation(1)" value="<?php echo $settinginfo->servicecharge;?>" readonly />
+                                                    <input name="service_charge" readonly disabled class="text-right" id="service_charge_update" type="number" placeholder="0.00" onkeyup="sumcalculation(1)" value="<?php echo $settinginfo->servicecharge;?>" style="cursor:not-allowed; />
                                                 </strong>
                                             </td>
                                             <td class="text-right wpr_126">&nbsp;</td>

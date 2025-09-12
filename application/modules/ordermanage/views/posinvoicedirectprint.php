@@ -586,7 +586,20 @@ body
                     <div class="item-info">
                         <h5 class="item-title"><?php echo display('discount')?></h5>
                     </div>
-                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php $discount=0; if(empty($billinfo)){ echo $discount;} else{echo $discount=$billinfo->discount;} ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
+                    <?php 
+                        $gross = $billinfo->total_amount + $billinfo->service_charge + $billinfo->VAT;
+
+                        if ($settinginfo->discount_type == 0) {
+                            // Fixed discount
+                            $discount_amount = $settinginfo->discountrate;
+                        } else {
+                            // Percentage discount
+                            $discount_amount = $gross * ($settinginfo->discountrate / 100);
+                        }
+
+                        $final_total = $gross - $discount_amount;
+                    ?>
+                    <h5 class="my-5"><?php if($currency->position==1){echo $currency->curr_icon;}?>  <?php $discount=0; if(empty($billinfo)){ echo $discount;} else{echo $discount=$discount_amount;} ?> <?php if($currency->position==2){echo $currency->curr_icon;}?></h5>
                 </div>
                 <?php 
                     if($orderinfo->customerpaid>0){

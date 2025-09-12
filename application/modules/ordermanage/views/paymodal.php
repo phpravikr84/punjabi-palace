@@ -90,7 +90,7 @@
                                             $disamount = $totalamount * $settinginfo->discountrate / 100;
                                         } else {
                                             $disamount = $settinginfo->discountrate;
-                                        }                                         
+                                        }
                                         // $totamt = $totaldue;
                                         $totamt = $totaldue - $disamount;
                                         $tax = $totamt * ($settinginfo->vat / 100);

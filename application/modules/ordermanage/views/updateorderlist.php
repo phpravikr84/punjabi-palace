@@ -420,7 +420,7 @@
                   $sdamount = $billinfo->service_charge;
                 }
                 ?>
-        <input name="service_charge" class="text-right" id="service_charge_update" type="number" placeholder="0.00" onkeyup="sumcalculation(1)" value="<?php echo $settinginfo->servicecharge; ?>" />
+        <input name="service_charge" class="text-right" id="service_charge_update" type="number" placeholder="0.00" onkeyup="sumcalculation(1)" value="<?php echo $settinginfo->servicecharge; ?>" readonly disabled style="cursor:not-allowed;" />
 
       </strong>
     </td>

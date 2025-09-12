@@ -6415,8 +6415,8 @@ class Order extends MX_Controller
 			 // Calculate change amount
     		$changeamount = $tenderamount - $grandtotal >= 0 ? number_format($tenderamount - $grandtotal, 2, '.', '') : 0.00;
 			$updatetordfordiscount = array(
-				'totalamount'           => $this->input->post('grandtotal', true),
-				'customerpaid'           => $this->input->post('grandtotal', true),
+				'totalamount'  => $this->input->post('grandtotal', true),
+				'customerpaid' => $this->input->post('grandtotal', true),
 				'tenderamount' => $tenderamount,
         		'changeamount' => $changeamount
 			);
@@ -6709,6 +6709,7 @@ class Order extends MX_Controller
 
 		$data['selectedFoodsForCart']=$selectedFoodsForCart;
 		$data['orderedMods']=$orderedMods;
+		$data['settinginfo']=$settinginfo;
 		$view = $this->posprintdirect($orderid);
 		echo $view;
 		exit;
