@@ -3393,6 +3393,29 @@ class Order_model extends CI_Model
 		}
 	}
 
+	public function count_filtertcancelorder()
+	{
+		$this->get_alltodaycancelorder_query_new();
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	public function count_alltodaycancelorder()
+	{
+		$cdate = date('Y-m-d');
+		$this->db->select('customer_order.*,customer_info.customer_name,customer_type.customer_type,employee_history.first_name,employee_history.last_name,rest_table.tablename,bill.bill_status');
+		$this->db->from('customer_order');
+		$this->db->join('customer_info', 'customer_order.customer_id=customer_info.customer_id', 'left');
+		$this->db->join('customer_type', 'customer_order.cutomertype=customer_type.customer_type_id', 'left');
+		$this->db->join('employee_history', 'customer_order.waiter_id=employee_history.emp_id', 'left');
+		$this->db->join('rest_table', 'customer_order.table_no=rest_table.tableid', 'left');
+		$this->db->join('bill', 'customer_order.order_id=bill.order_id', 'left');
+		$this->db->where('customer_order.order_date', $cdate);
+		$this->db->where('bill.bill_status', 0);
+		return $this->db->count_all_results();
+	}
+
+
 	public function get_total_people($order_id)
 	{
 		$this->db->select('total_people');

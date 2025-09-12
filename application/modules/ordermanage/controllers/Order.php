@@ -8832,8 +8832,8 @@ class Order extends MX_Controller
 		}
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->order_model->count_alltodayorder(),
-			"recordsFiltered" => $this->order_model->count_filtertorder(),
+			"recordsTotal" => $this->order_model->count_alltodaycancelorder(),
+			"recordsFiltered" => $this->order_model->count_filtertcancelorder(),
 			"data" => $data,
 		);
 		echo json_encode($output);
