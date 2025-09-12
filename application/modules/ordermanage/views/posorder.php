@@ -2132,6 +2132,25 @@ $(document).on('click', '.suggestion-item', function () {
 
 </script>
 
+<script>
+// Listen for ESC key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    // Exit fullscreen if active
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
+
+    // Change icon inside #fullscreen
+    const icon = document.querySelector("#fullscreen i");
+    if (icon) {
+      icon.classList.remove("pe-7s-contract", "fullscreen-inactive");
+      icon.classList.add("pe-7s-expand1", "fullscreen-active");
+    }
+  }
+});
+</script>
+
 <style>
   .nav-tabs > li > a.corder {
     box-shadow: none !important;
