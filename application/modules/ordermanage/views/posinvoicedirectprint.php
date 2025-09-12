@@ -605,12 +605,12 @@ body
                     if($orderinfo->customerpaid>0){
                         $customepaid=$orderinfo->customerpaid;
                         $changes=$customepaid-$orderinfo->totalamount;
-                        }
-                    else{
+                    }
+                    else
+                    {
                         $customepaid=$orderinfo->totalamount;
                         $changes=0;
-                        }
-                    
+                    }                    
                     if($orderinfo->tenderamount>0){
                         $customertenderpaid=$orderinfo->tenderamount;
                     } else {
