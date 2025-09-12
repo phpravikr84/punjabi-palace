@@ -19,26 +19,30 @@ class Auth extends MX_Controller {
     {  
         if ($this->session->userdata('isLogIn'))
             redirect('dashboard/home');
-        
         $data['title'] = display('login'); 
-        
         #-------------------------------------#
-        // Check if form was submitted
-        $is_post = $this->input->server('REQUEST_METHOD') === 'POST';
-        
+
         // Check login type to determine validation rules
         $login_type = $this->input->post('login_type', true);
-        
-        if ($is_post) {
-            if ($login_type === 'pin') {
-                // PIN Login Validation
-                $this->form_validation->set_rules('login_pin', 'PIN', 'required|numeric|trim');
-            } else {
-                // Username Login Validation
-                $this->form_validation->set_rules('email', display('email'), 'required|valid_email|max_length[100]|trim');
-                $this->form_validation->set_rules('password', display('password'), 'required|max_length[32]|trim');
-                
-                $this->form_validation->set_rules(
+        if ($login_type === 'pin') {
+            // PIN Login Validation
+            $this->form_validation->set_rules('login_pin', 'PIN', 'required|numeric|trim');
+        } else {
+            // Username Login Validation
+            $this->form_validation->set_rules('email', display('email'), 'required|valid_email|max_length[100]|trim');
+            $this->form_validation->set_rules('password', display('password'), 'required|max_length[32]|md5|trim');
+            //Old Captch Rule
+            // $this->form_validation->set_rules('captcha', display('captcha'), array(
+            //     'matches[captcha]', 
+            //     function($captcha) { 
+            //         $oldCaptcha = $this->session->userdata('captcha');
+            //         if ($captcha == $oldCaptcha) {
+            //             return true;
+            //         }
+            //     }
+            // ));
+
+            $this->form_validation->set_rules(
                     'captcha',
                     display('captcha'),
                     array(
@@ -52,10 +56,10 @@ class Auth extends MX_Controller {
                         )
                     )
                 );
-                
+
                 $this->form_validation->set_message('required', 'Captcha is required.');
                 $this->form_validation->set_message('captcha_check', 'Invalid captcha, please try again.');
-            }
+
         }
 
         #-------------------------------------#
@@ -67,74 +71,38 @@ class Auth extends MX_Controller {
         );
 
         #-------------------------------------#
-        if ($is_post && $this->form_validation->run())
+        if ($this->form_validation->run())
         {
-            
             $this->session->unset_userdata('captcha');
 
             if ($login_type === 'pin') {
                 // PIN Login
                 $pin = $this->input->post('login_pin', true);
-                $user = $this->auth_model->checkPin($pin);
+                $user = $this->auth_model->checkPin($pin); // Assuming checkPin returns a user object or false
 
-                if (!$user) {
+                if ($user) {
+                    // Proceed with session and permission setup (same as username login)
+                    $user = (object)array('id' => $user->id, 'email' => $user->email, 'fullname' => $user->fullname, 'is_admin' => $user->is_admin, 'user_level' => $user->user_level, 'image' => $user->image, 'last_login' => $user->last_login, 'last_logout' => $user->last_logout, 'ip_address' => $user->ip_address, 'counter' => $user->counter);
+                } else {
                     $this->session->set_flashdata('form_submitted', TRUE);
-                    //$this->session->set_flashdata('active_tab', 'pin');
-                    //$this->session->set_flashdata('login_pin', $pin);
-                    $this->session->set_flashdata('message', 'Incorrect Pin!');
+                    $this->session->set_flashdata('active_tab', 'pin');
+                    $this->session->set_flashdata('login_pin', $pin);
+                    $this->session->set_flashdata('exception', display('incorrect_pin'));
                     redirect('login');
                 }
-                
-                // Convert to object for consistency
-                $user = (object)array(
-                    'id' => $user->id, 
-                    'email' => $user->email, 
-                    'fullname' => $user->fullname, 
-                    'is_admin' => $user->is_admin, 
-                    'user_level' => $user->user_level, 
-                    'image' => $user->image, 
-                    'last_login' => $user->last_login, 
-                    'last_logout' => $user->last_logout, 
-                    'ip_address' => $user->ip_address, 
-                    'counter' => $user->counter
-                );
             } else {
-                // Username Login - FIXED SECTION
-                $user_result = $this->auth_model->checkUser($userData);
+                // Username Login
+                $user = $this->auth_model->checkUser($userData);
 
-                // echo '<pre>'; print_r($user_result); echo '</pre>'; // Debugging line
-
-                // // Username Login - DEBUG SECTION
-                // echo "<h3>DEBUG INFORMATION:</h3>";
-                // echo "Email: " . $userData['email'] . "<br>";
-                // echo "Password: " . $userData['password'] . "<br>";
-                // echo "MD5 Hash: " . md5($userData['password']) . "<br>";
-                
-                // $user_result = $this->auth_model->checkUser($userData);
-                
-                // echo "Number of rows found: " . $user_result->num_rows() . "<br>";
-                
-                // // Check what's actually in the database
-                // $db_user = $this->db->where('email', $userData['email'])->get('user')->row();
-                // if ($db_user) {
-                //     echo "User found in DB. Password hash: " . $db_user->password . "<br>";
-                //     echo "Password match: " . (md5($userData['password']) == $db_user->password ? 'YES' : 'NO') . "<br>";
-                // } else {
-                //     echo "No user found with email: " . $userData['email'] . "<br>";
-                // }
-
-                //exit; // Stop execution to check the output
-                
-                // Check if we got a result object and if it has any rows
-                if ($user_result->num_rows() == 0) {
+                if ($user->num_rows() == 0) {
                     $this->session->set_flashdata('form_submitted', TRUE);
-                    //$this->session->set_flashdata('active_tab', 'username');
-                    //$this->session->set_flashdata('email', $userData['email']);
-                    $this->session->set_flashdata('message', 'Incorrect Email or Password!');
+                    $this->session->set_flashdata('active_tab', 'username');
+                    $this->session->set_flashdata('email', $userData['email']);
+                    $this->session->set_flashdata('exception', display('incorrect_email_or_password'));
                     redirect('login');
                 }
 
-                $user = $user_result->row();
+                $user = $user->row();
             }
 
             // Common logic for successful login (username or PIN)
@@ -230,13 +198,21 @@ class Auth extends MX_Controller {
             } elseif ($user->counter == 1) {
                 redirect('ordermanage/order/counterboard');
             } elseif ($waiter_exist->num_rows() > 0) {
+                // redirect('ordermanage/order/pos_invoice');
                 redirect('ordermanage/order/alltables');
             } else {
                 redirect('dashboard/home');
             }
 
+
         } else {
-            // Generate captcha for both GET and failed POST requests
+            // Validation failed or no submission
+            $this->session->set_flashdata('form_submitted', TRUE);
+            $this->session->set_flashdata('active_tab', $login_type ?: 'press');
+            $this->session->set_flashdata('email', $this->input->post('email', true));
+            $this->session->set_flashdata('login_pin', $this->input->post('login_pin', true));
+            $this->session->set_flashdata('exception', validation_errors() ?: display('please_fill_required_fields'));
+
             $captcha = create_captcha(array(
                 'img_path'      => './assets/img/captcha/',
                 'img_url'       => base_url('assets/img/captcha/'),
@@ -255,23 +231,9 @@ class Auth extends MX_Controller {
                     'grid'       => array(241, 243, 246)
                 )
             ));
-            
             $data['captcha_word'] = $captcha['word'];
             $data['captcha_image'] = $captcha['image'];
             $this->session->set_userdata('captcha', $captcha['word']);
-
-            // Only set flashdata if it's a POST request (form submission)
-            if ($is_post) {
-                $this->session->set_flashdata('form_submitted', TRUE);
-                $this->session->set_flashdata('active_tab', $login_type ?: 'press');
-                $this->session->set_flashdata('email', $this->input->post('email', true));
-                $this->session->set_flashdata('login_pin', $this->input->post('login_pin', true));
-                
-                // Only set exception if there are validation errors
-                if (validation_errors()) {
-                    $this->session->set_flashdata('exception', validation_errors());
-                }
-            }
 
             echo Modules::run('template/login', $data);
         }
