@@ -6737,7 +6737,7 @@ class Order extends MX_Controller
 				$this->db->insert('tbl_kitchen_order', $inserekit);
 			}
 			$updatetmenu = array(
-				'food_status'           => 1,
+				'food_status'          => 1,
 				'allfoodready'     	   => 1
 			);
 			$this->db->where('order_id', $orderid);
