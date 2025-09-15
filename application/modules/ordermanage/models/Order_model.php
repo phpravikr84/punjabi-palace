@@ -923,6 +923,18 @@ class Order_model extends CI_Model
 			if (!empty($catinfo) && $catinfo->parentid > 0) {
 				$catids = $cid . ',' . $catinfo->parentid;
 			}
+			//When Parent Category is selected, include all its subcategories Added to Show Parent Category
+			if(empty($catinfo) || $catinfo->parentid == 0) {
+				$subcatids = $this->db->select("GROUP_CONCAT(CategoryID) as subcatids", false)
+					->from('item_category')
+					->where('parentid', $cid)
+					->get()
+					->row();
+				if (!empty($subcatids) && !empty($subcatids->subcatids)) {
+					$catids .= ',' . $subcatids->subcatids;
+				}
+			}
+
 		}
 
 		$this->db->select('*');
