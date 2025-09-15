@@ -1548,7 +1548,7 @@ foreach ($scan as $file) {
                                         } ?>
                                         :</label>
                                       <div class="col-sm-4 p-0">
-                                        <input type="text" id="service_charge" onkeyup="calculatetotal();" class="form-control text-right mb-5" value="<?php echo $servicecharge; ?>" name="service_charge" placeholder="0.00" />
+                                        <input type="text" id="service_charge" onkeyup="calculatetotal();" class="form-control text-right mb-5" value="<?php echo $servicecharge; ?>" name="service_charge" placeholder="0.00" readonly disabled style="cursor:not-allowed;" />
                                       </div>
                                     </td>
                                   </tr>
